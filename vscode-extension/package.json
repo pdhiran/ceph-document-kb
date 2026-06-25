@@ -1,0 +1,72 @@
+{
+  "name": "ceph-doc-kb-vscode",
+  "displayName": "Ceph Documentation KB",
+  "description": "Search and browse Ceph documentation from VS Code via the ceph-doc-kb REST API",
+  "version": "0.1.0",
+  "publisher": "ceph-doc-kb",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ceph-doc-kb.searchDocs",
+        "title": "Ceph Docs: Search Documentation"
+      },
+      {
+        "command": "ceph-doc-kb.searchExamples",
+        "title": "Ceph Docs: Search Code Examples"
+      },
+      {
+        "command": "ceph-doc-kb.findDocsForCommand",
+        "title": "Ceph Docs: Find Docs for Command"
+      },
+      {
+        "command": "ceph-doc-kb.getDocPage",
+        "title": "Ceph Docs: Get Documentation Page"
+      },
+      {
+        "command": "ceph-doc-kb.listComponents",
+        "title": "Ceph Docs: List Components"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ceph-doc-kb.searchDocs",
+        "key": "ctrl+alt+d",
+        "mac": "cmd+alt+d"
+      },
+      {
+        "command": "ceph-doc-kb.searchExamples",
+        "key": "ctrl+alt+e",
+        "mac": "cmd+alt+e"
+      },
+      {
+        "command": "ceph-doc-kb.findDocsForCommand",
+        "key": "ctrl+alt+f",
+        "mac": "cmd+alt+f"
+      }
+    ],
+    "configuration": {
+      "title": "Ceph Documentation KB",
+      "properties": {
+        "ceph-doc-kb.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:8100",
+          "description": "URL of the ceph-doc-kb REST API server"
+        },
+        "ceph-doc-kb.defaultComponent": {
+          "type": "string",
+          "default": "",
+          "description": "Default component to scope searches (e.g. rados, cephfs, rbd). Leave empty for global search."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

@@ -1,0 +1,28 @@
+---
+description: Guidelines for using the ceph-doc-kb MCP to look up Ceph documentation
+globs:
+alwaysApply: false
+---
+
+# Ceph Documentation Lookup
+
+When answering questions about Ceph configuration, operations, or troubleshooting:
+
+1. **Scope your search**: Use `list_components()` to see available doc sections, then search within the relevant component rather than globally.
+
+2. **Command docs**: If the question involves a specific command, use `find_docs_for_command(command)` first — it's instant and exact.
+
+3. **Conceptual questions**: Use `search_docs(query, component)` with semantic search for "how do I..." or conceptual questions.
+
+4. **Code examples**: Use `search_examples(query, component)` when the user needs config snippets or command examples.
+
+5. **Verify commands**: Cross-reference with `ceph-cmd-kb` MCP's `verify_command` to ensure syntax is current.
+
+## Component Map
+
+- `rados` — Core storage: pools, PGs, erasure coding, CRUSH, recovery
+- `rbd` — Block storage: images, snapshots, mirroring, live migration
+- `rgw` — Object gateway: S3/Swift, multisite, users, buckets
+- `cephfs` — File system: mounting, MDS, quotas, snapshots
+- `cephadm` — Deployment: bootstrap, services, upgrades, day-2 ops
+- `architecture` — Cross-cutting concepts, design docs

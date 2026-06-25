@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ceph-doc-kb"
+version = "0.1.0"
+description = "Version-aware, component-scoped Ceph documentation knowledge base with MCP server"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+    "fastembed>=0.3",
+    "faiss-cpu>=1.7",
+    "rank-bm25>=0.2",
+    "docutils>=0.20",
+    "pyyaml>=6.0",
+    "mcp>=1.0",
+    "uvicorn>=0.27",
+    "starlette>=0.36",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+]
+
+[project.scripts]
+ceph-doc-kb = "ceph_doc_kb.server.mcp_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ceph_doc_kb"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

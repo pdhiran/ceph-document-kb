@@ -1,0 +1,31 @@
+embedding:
+  model: "BAAI/bge-small-en-v1.5"
+  dimensions: 384
+
+search:
+  default_limit: 10
+  max_limit: 50
+  bm25_threshold: 0.25
+  semantic_fallback_ratio: 0.5
+  quality_boost_factor: 0.3
+
+chunking:
+  min_chunk_tokens: 50
+  max_chunk_tokens: 1000
+  target_chunk_tokens: 500
+
+components:
+  - rados
+  - cephfs
+  - rbd
+  - rgw
+  - cephadm
+  - architecture
+  - glossary
+  - dev
+  - install
+  - start
+
+server:
+  host: "127.0.0.1"
+  port: 8100
