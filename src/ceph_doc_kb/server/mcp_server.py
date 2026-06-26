@@ -406,7 +406,25 @@ def create_server(kb_path: str | None = None, version: str | None = None) -> Ser
     doc_server = CephDocMCPServer(resolved_path, config)
     doc_server._load()
 
-    server = Server("ceph-doc-kb")
+    from mcp.types import Icon
+
+    ceph_icon = Icon(
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4Ij48Y2lyY2xlIGN4PSIyNCIgY3k9IjI0IiByPSIyMiIgZmlsbD0iI0VGNTAzQSIvPjx0ZXh0IHg9IjI0IiB5PSIzMiIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RDwvdGV4dD48L3N2Zz4=",
+        mimeType="image/svg+xml",
+    )
+
+    server = Server(
+        "ceph-doc-kb",
+        instructions=(
+            "Ceph documentation knowledge base with semantic search. "
+            "Use this MCP when you need to find Ceph documentation, "
+            "look up how-to guides, find code examples, or get explanations "
+            "of Ceph concepts. Searches across all Ceph doc components: "
+            "rados, rbd, rgw, cephfs, cephadm, and more. "
+            "Key tools: search_docs, search_examples, find_docs_for_command, list_components."
+        ),
+        icons=[ceph_icon],
+    )
 
     @server.list_tools()
     async def list_tools() -> list[Tool]:
