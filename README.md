@@ -160,6 +160,36 @@ python3 index_docs.py --update --docs-path /tmp/ceph-docs/doc \
 | [BOB_INTEGRATION_GUIDE.md](BOB_INTEGRATION_GUIDE.md) | REST API reference, agent integration, deployment |
 | [vscode-extension/README.md](vscode-extension/README.md) | VS Code extension install and usage |
 
+## Running All Ceph MCPs Together
+
+Three specialized MCPs work together as the Ceph Engineering Intelligence Platform:
+
+| MCP | Purpose | SSE Port | Repo |
+|-----|---------|----------|------|
+| **ceph-cmd-kb** | Commands, configs, test validation | 8081 | [ceph-command-kb](https://github.com/pdhiran/ceph-command-kb) |
+| **ceph-doc-kb** | Documentation search, code examples | 8082 | [ceph-doc-kb](https://github.com/pdhiran/ceph-document-kb) |
+| **ceph-issue-kb** | Known issues, workarounds, fixes | 8083 | [ceph-issue-kb](https://github.com/pdhiran/ceph-issue-kb) |
+
+Start all three for SSE clients (Bob, Claude Desktop, etc.):
+
+```bash
+python -m ceph_command_kb.server.mcp_server --transport sse --port 8081 &
+python -m ceph_doc_kb.server.mcp_server --transport sse --port 8082 &
+python -m ceph_issue_kb.server.mcp_server --transport sse --port 8083 &
+```
+
+Combined agent config (`.bob/mcp.json`, `claude_desktop_config.json`, etc.):
+
+```json
+{
+  "mcpServers": {
+    "ceph-cmd-kb": { "url": "http://localhost:8081/sse", "transport": "sse" },
+    "ceph-doc-kb": { "url": "http://localhost:8082/sse", "transport": "sse" },
+    "ceph-issue-kb": { "url": "http://localhost:8083/sse", "transport": "sse" }
+  }
+}
+```
+
 ## Development
 
 ```bash
