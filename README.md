@@ -23,7 +23,9 @@ python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
 - **Quality scoring**: Chunks with code examples, commands, and explanations rank higher
 - **Version-aware**: Supports multiple Ceph release indices side by side
 
-## MCP Server
+## Connect Your Agent
+
+**Cursor** — add to `~/.cursor/mcp.json`:
 
 ```json
 {
@@ -35,6 +37,63 @@ python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
     }
   }
 }
+```
+
+---
+
+**Claude Desktop** — start the server, then add to `claude_desktop_config.json`:
+
+```bash
+python -m ceph_doc_kb.server.mcp_server --transport sse --port 8082
+```
+
+```json
+{
+  "mcpServers": {
+    "ceph-doc-kb": { "url": "http://localhost:8082/sse" }
+  }
+}
+```
+
+---
+
+**Continue / Cline / Windsurf** — start the server and point to the SSE endpoint:
+
+```bash
+python -m ceph_doc_kb.server.mcp_server --transport sse --port 8082
+```
+
+Connect to `http://localhost:8082/sse` in the tool's MCP settings.
+
+---
+
+**IBM Bob** — Bob supports MCP over SSE natively:
+
+```bash
+python -m ceph_doc_kb.server.mcp_server --transport sse --host 0.0.0.0 --port 8082
+```
+
+Add to Bob's `.bob/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "ceph-doc-kb": {
+      "url": "http://localhost:8082/sse",
+      "transport": "sse"
+    }
+  }
+}
+```
+
+If running on a shared server, replace `localhost` with the hostname.
+
+---
+
+**LangChain / CrewAI / CI pipelines** — use the REST API:
+
+```bash
+python -m ceph_doc_kb.server.rest_api --host 0.0.0.0 --port 8100
 ```
 
 ### Tools
