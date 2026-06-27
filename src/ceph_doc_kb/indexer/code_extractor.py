@@ -123,7 +123,7 @@ def _dedent_block(text: str) -> str:
     if not non_empty:
         return text
     min_indent = min(len(l) - len(l.lstrip()) for l in non_empty)
-    return '\n'.join(l[min_indent:] if len(l) > min_indent else l for l in lines)
+    return '\n'.join(l[min_indent:] if len(l) >= min_indent else l for l in lines)
 
 
 def extract_from_file(file_path: Path, docs_root: Path) -> list[CodeExample]:

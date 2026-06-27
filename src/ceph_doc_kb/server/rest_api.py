@@ -18,8 +18,6 @@ from ceph_doc_kb.server.mcp_server import CephDocMCPServer, _load_config, _resol
 
 logger = logging.getLogger(__name__)
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-
 
 def _error(status: int, message: str) -> JSONResponse:
     return JSONResponse({"error": message}, status_code=status)
@@ -45,7 +43,7 @@ def create_app(kb_path: str | None = None, version: str | None = None) -> Starle
             limit = int(request.query_params.get("limit", 10))
         except ValueError:
             return _error(400, "Parameter 'limit' must be an integer")
-        limit = min(limit, doc_server.config.get("search", {}).get("max_limit", 50))
+        limit = max(1, min(limit, doc_server.config.get("search", {}).get("max_limit", 50)))
         results = doc_server._search_docs(query, component, limit)
         return JSONResponse({"query": query, "component": component, "results": results})
 
@@ -59,7 +57,7 @@ def create_app(kb_path: str | None = None, version: str | None = None) -> Starle
             limit = int(request.query_params.get("limit", 10))
         except ValueError:
             return _error(400, "Parameter 'limit' must be an integer")
-        limit = min(limit, doc_server.config.get("search", {}).get("max_limit", 50))
+        limit = max(1, min(limit, doc_server.config.get("search", {}).get("max_limit", 50)))
         results = doc_server._search_examples(query, component, language, limit)
         return JSONResponse({"query": query, "component": component, "language": language, "results": results})
 
@@ -104,10 +102,13 @@ def create_app(kb_path: str | None = None, version: str | None = None) -> Starle
         Route("/api/capabilities", capabilities),
     ]
 
+    config = _load_config()
+    cors_origins = config.get("server", {}).get("cors_origins", ["*"])
+
     middleware = [
         Middleware(
             CORSMiddleware,
-            allow_origins=["*"],
+            allow_origins=cors_origins,
             allow_methods=["GET"],
             allow_headers=["*"],
         ),

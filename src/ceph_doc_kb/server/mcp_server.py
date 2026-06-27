@@ -374,13 +374,13 @@ class CephDocMCPServer:
             "search_docs": lambda: self._search_docs(
                 arguments["query"],
                 arguments.get("component"),
-                min(arguments.get("limit", 10), max_limit),
+                max(1, min(arguments.get("limit", 10), max_limit)),
             ),
             "search_examples": lambda: self._search_examples(
                 arguments["query"],
                 arguments.get("component"),
                 arguments.get("language"),
-                min(arguments.get("limit", 10), max_limit),
+                max(1, min(arguments.get("limit", 10), max_limit)),
             ),
             "get_doc_page": lambda: self._get_doc_page(arguments["source_file"]),
             "find_docs_for_command": lambda: self._find_docs_for_command(arguments["command"]),

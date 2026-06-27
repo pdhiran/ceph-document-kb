@@ -77,10 +77,10 @@ def lookup_command(xref: dict[str, list[dict[str, str]]], command: str) -> list[
     if normalized in xref:
         return xref[normalized]
 
-    # Prefix match: find all commands that start with the query
+    # Bidirectional prefix match: find commands where either side is a prefix
     results = []
     for cmd, entries in xref.items():
-        if cmd.startswith(normalized):
+        if cmd.startswith(normalized) or normalized.startswith(cmd):
             results.extend(entries)
 
     # Deduplicate by chunk_id

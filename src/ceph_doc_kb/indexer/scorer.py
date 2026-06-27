@@ -32,13 +32,17 @@ def score_chunk(chunk: DocChunk) -> float:
     if has_code and has_prose:
         score += 0.2
 
+    # Short titled chunks without code get a small bonus for being concise
+    # reference entries, but very short chunks (< 20 words) still receive a
+    # -0.2 penalty below — the net effect is intentional: titled but
+    # extremely short chunks end up penalized overall.
     if word_count < 50 and chunk.title and not has_code:
         score += 0.1
 
     if TOC_INDICATORS.search(content):
         score -= 0.3
 
-    if word_count > 50:
+    if word_count >= 50:
         score += 0.1
 
     if word_count < 20:

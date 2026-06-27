@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from ceph_doc_kb.models import DocChunk, IndexMetadata, ComponentIndex
+from ceph_doc_kb.indexer.parser import _detect_component_and_topic
 from ceph_doc_kb.indexer.scorer import score_chunks
 from ceph_doc_kb.indexer.code_extractor import extract_code_blocks
 from ceph_doc_kb.indexer.xref import build_xref, save_xref
@@ -48,6 +49,9 @@ def build_index(
     logger.info("Scoring chunks...")
     score_chunks(chunks)
 
+    # TODO: Each RST file is read twice (once by parser, once here for code
+    # extraction). Consolidating requires changing the parser API to return
+    # raw content alongside chunks — non-trivial refactor deferred.
     logger.info("Extracting code examples...")
     all_code_examples = []
     code_by_component: dict[str, list] = defaultdict(list)
@@ -57,8 +61,7 @@ def build_index(
         except OSError:
             continue
         rel_path = str(rst_file.relative_to(docs_path))
-        parts = rel_path.split('/')
-        component = parts[0] if parts else "other"
+        component, _ = _detect_component_and_topic(rel_path)
         examples = extract_code_blocks(content, rel_path, component)
         all_code_examples.extend(examples)
         code_by_component[component].extend(examples)

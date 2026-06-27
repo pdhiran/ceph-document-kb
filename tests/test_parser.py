@@ -1,5 +1,8 @@
 """Tests for RST parser and chunker."""
 
+# TODO: Tests create side effects by writing into the source tree (fixtures/).
+# Refactor to use tmp_path so tests are fully isolated.
+
 from pathlib import Path
 
 import pytest

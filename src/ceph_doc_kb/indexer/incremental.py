@@ -12,7 +12,7 @@ from ceph_doc_kb.models import DocChunk, IndexMetadata, ComponentIndex
 from ceph_doc_kb.indexer.parser import parse_rst_file
 from ceph_doc_kb.indexer.scorer import score_chunks
 from ceph_doc_kb.indexer.code_extractor import extract_code_blocks
-from ceph_doc_kb.indexer.xref import build_xref, save_xref, load_xref
+from ceph_doc_kb.indexer.xref import build_xref, save_xref
 from ceph_doc_kb.indexer.embedder import Embedder, IndexBuilder
 
 logger = logging.getLogger(__name__)
@@ -95,12 +95,15 @@ def incremental_update(
         for rel_file in files:
             file_path = docs_path / rel_file
             if not file_path.exists():
-                # File was deleted
                 continue
             parsed = parse_rst_file(file_path, docs_path, version=to_version)
             new_chunks_by_component[component].extend(parsed)
 
-            content = file_path.read_text(encoding='utf-8', errors='replace')
+            try:
+                content = file_path.read_text(encoding='utf-8', errors='replace')
+            except OSError:
+                logger.warning("File disappeared before read: %s", file_path)
+                continue
             examples = extract_code_blocks(content, rel_file, component)
             new_code_by_component[component].extend(examples)
 
@@ -117,12 +120,25 @@ def incremental_update(
         comp_dir = index_path / component
         builder.build_component_index(chunks, comp_dir)
 
-        # Update code examples
+        # Merge code examples: keep existing examples from unchanged files
         code_path = comp_dir / "code_examples.json"
-        if new_code_by_component[component]:
-            code_path.write_text(
-                json.dumps([e.to_dict() for e in new_code_by_component[component]], indent=2)
-            )
+        existing_examples = []
+        if code_path.exists():
+            try:
+                existing_data = json.loads(code_path.read_text())
+                changed_set = set(affected_components.get(component, []))
+                existing_examples = [
+                    e for e in existing_data
+                    if e.get("source_file") not in changed_set
+                ]
+            except (json.JSONDecodeError, OSError):
+                logger.warning("Failed to load existing code examples for %s", component)
+
+        merged_examples = existing_examples + [
+            e.to_dict() for e in new_code_by_component[component]
+        ]
+        if merged_examples:
+            code_path.write_text(json.dumps(merged_examples, indent=2))
 
     # Rebuild xref from all chunks (including newly added components)
     all_component_names = set(existing_metadata.components) | set(affected_components)

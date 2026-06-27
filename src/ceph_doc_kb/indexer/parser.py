@@ -32,6 +32,9 @@ APPROX_CHARS_PER_TOKEN = 4
 TARGET_MAX_TOKENS = 1000
 MAX_CHUNK_CHARS = TARGET_MAX_TOKENS * APPROX_CHARS_PER_TOKEN
 
+_CODE_BLOCK_RE = re.compile(r"(```[^\n]*\n.*?\n```)", re.DOTALL)
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+")
+
 
 # ---------------------------------------------------------------------------
 # Register Sphinx-only directives so docutils doesn't discard them
@@ -373,15 +376,6 @@ def _collect_meta(node: nodes.Node, meta: _SectionMeta) -> None:
         _collect_meta(child, meta)
 
 
-def _extract_commands(code_blocks: list[str]) -> list[str]:
-    """Extract unique Ceph CLI commands referenced across code blocks."""
-    found: set[str] = set()
-    for block in code_blocks:
-        for match in COMMAND_PATTERN.finditer(block):
-            found.add(match.group(0))
-    return sorted(found)
-
-
 # ---------------------------------------------------------------------------
 # Chunking
 # ---------------------------------------------------------------------------
@@ -391,14 +385,15 @@ def _split_oversized(
 ) -> list[str]:
     """Split text exceeding *max_chars* on paragraph boundaries.
 
-    Code blocks (``` ... ```) are never broken mid-block.  Falls back to
-    sentence-level splitting for single paragraphs that exceed the limit.
+    Code blocks (``` ... ```) are never broken mid-block — this is
+    intentional to preserve code example integrity even if a single code
+    block exceeds the limit.  Falls back to sentence-level splitting for
+    single prose paragraphs that exceed the limit.
     """
     if len(text) <= max_chars:
         return [text]
 
-    code_block_re = re.compile(r"(```[^\n]*\n.*?\n```)", re.DOTALL)
-    segments = code_block_re.split(text)
+    segments = _CODE_BLOCK_RE.split(text)
 
     chunks: list[str] = []
     current: list[str] = []
@@ -413,7 +408,7 @@ def _split_oversized(
 
     for segment in segments:
         seg_len = len(segment)
-        if code_block_re.match(segment):
+        if _CODE_BLOCK_RE.match(segment):
             if current_len + seg_len > max_chars and current:
                 _flush()
             current.append(segment)
@@ -438,7 +433,7 @@ def _split_oversized(
 
 def _split_on_sentences(text: str, max_chars: int) -> list[str]:
     """Last-resort split for a single block of text with no paragraph breaks."""
-    sentences = re.split(r"(?<=[.!?])\s+", text)
+    sentences = _SENTENCE_SPLIT_RE.split(text)
     chunks: list[str] = []
     current: list[str] = []
     current_len = 0
@@ -543,7 +538,7 @@ def _build_chunks_for_file(
             source_file=source_file,
             section_path=sec_path,
             doc_url=doc_url,
-            commands_referenced=_extract_commands(meta.code_blocks),
+            commands_referenced=[],
             version=version,
             deprecated=meta.deprecated,
             version_added=meta.version_added,
@@ -557,7 +552,7 @@ def _build_chunks_for_file(
     for sec in sections:
         sec_content: str = sec["content"]
         meta: _SectionMeta = sec["meta"]
-        commands = _extract_commands(meta.code_blocks)
+        commands: list[str] = []
 
         text_pieces = _split_oversized(sec_content)
 

@@ -104,10 +104,7 @@ class IndexMetadata:
     build_timestamp: str = ""
 
     def to_dict(self) -> dict[str, Any]:
-        d = asdict(self)
-        d["components"] = {k: v.to_dict() if isinstance(v, ComponentIndex) else v
-                          for k, v in self.components.items()}
-        return d
+        return asdict(self)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> IndexMetadata:
