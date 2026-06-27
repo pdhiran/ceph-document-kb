@@ -4,11 +4,14 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-import faiss
 import numpy as np
 
 from ceph_doc_kb.models import DocChunk, SearchResult
+
+if TYPE_CHECKING:
+    import faiss
 
 logger = logging.getLogger(__name__)
 
@@ -33,10 +36,22 @@ def _embed(texts: list[str]) -> np.ndarray:
     return np.array(embeddings, dtype=np.float32)
 
 
+def _import_faiss():
+    """Lazy import of faiss to allow graceful degradation."""
+    try:
+        import faiss as _faiss
+        return _faiss
+    except ImportError:
+        raise ImportError(
+            "faiss-cpu is required for semantic search. "
+            "Install with: pip install faiss-cpu"
+        )
+
+
 class _ComponentSemanticIndex:
     __slots__ = ("index", "chunks")
 
-    def __init__(self, index: faiss.Index, chunks: list[DocChunk]) -> None:
+    def __init__(self, index, chunks: list[DocChunk]) -> None:
         self.index = index
         self.chunks = chunks
 
@@ -56,7 +71,11 @@ class SemanticSearch:
         if not chunks:
             return
         try:
+            faiss = _import_faiss()
             index = faiss.read_index(str(faiss_path))
+        except ImportError:
+            logger.warning("faiss-cpu not installed; semantic search disabled for %s", component)
+            return
         except Exception:
             logger.exception("Failed to read FAISS index: %s", faiss_path)
             return
@@ -88,6 +107,10 @@ class SemanticSearch:
         if not targets:
             return []
 
+        try:
+            faiss = _import_faiss()
+        except ImportError:
+            return []
         query_vec = _embed([query])
         faiss.normalize_L2(query_vec)
 

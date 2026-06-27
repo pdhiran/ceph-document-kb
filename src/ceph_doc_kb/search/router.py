@@ -140,7 +140,8 @@ class SearchRouter:
             if eid not in seen or r.score > seen[eid].score:
                 seen[eid] = r
 
-        # Normalize semantic scores to [0, 1] before merging
+        min_sem = 0.0
+        sem_range = 0.0
         if semantic:
             max_sem = max(r.score for r in semantic)
             min_sem = min(r.score for r in semantic)

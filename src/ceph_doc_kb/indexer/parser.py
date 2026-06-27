@@ -13,7 +13,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 import docutils.nodes as nodes
-from docutils.frontend import OptionParser
+from docutils.frontend import get_default_settings
 from docutils.parsers.rst import Directive, Parser as RSTParser, directives
 from docutils.utils import new_document
 
@@ -137,7 +137,7 @@ def _rel_source(file_path: Path, docs_root: Path) -> str:
 
 def _parse_rst(text: str) -> nodes.document:
     parser = RSTParser()
-    settings = OptionParser(components=(RSTParser,)).get_default_values()
+    settings = get_default_settings(RSTParser)
     settings.report_level = 5
     settings.halt_level = 5
     doc = new_document("<rst-doc>", settings)
