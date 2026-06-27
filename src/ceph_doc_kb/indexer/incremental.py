@@ -112,6 +112,10 @@ def incremental_update(
         score_chunks(all_component_chunks)
         new_chunks_by_component[component] = all_component_chunks
 
+    # Enrich all chunks with command cross-references before persisting
+    all_new_chunks = [c for cs in new_chunks_by_component.values() for c in cs]
+    build_xref(all_new_chunks)
+
     # Rebuild indices only for affected components
     embedder = Embedder(model_name)
     builder = IndexBuilder(embedder, model_name)

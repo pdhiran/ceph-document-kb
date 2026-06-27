@@ -135,6 +135,6 @@ def extract_from_file(file_path: Path, docs_root: Path) -> list[CodeExample]:
 
     rel_path = str(file_path.relative_to(docs_root))
     parts = rel_path.split('/')
-    component = parts[0] if parts else "other"
+    component = parts[0] if parts else "unknown"
 
     return extract_code_blocks(content, rel_path, component)

@@ -22,12 +22,6 @@ from ceph_doc_kb.models import DocChunk
 log = logging.getLogger(__name__)
 
 CEPH_DOCS_BASE_URL = "https://docs.ceph.com/en/latest"
-COMMAND_PATTERN = re.compile(
-    r"\b(ceph-bluestore-tool|ceph-authtool|ceph-rbdnamer|ceph-volume"
-    r"|ceph-fuse|ceph-mds|ceph-mgr|ceph-mon|ceph-osd"
-    r"|radosgw-admin|rgw-orphan-list|rbd-mirror|rbd-nbd|mount\.ceph"
-    r"|cephadm|crushtool|ceph|rados|rbd)(?=\s|$|[;|&,()'\"])"
-)
 APPROX_CHARS_PER_TOKEN = 4
 TARGET_MAX_TOKENS = 1000
 MAX_CHUNK_CHARS = TARGET_MAX_TOKENS * APPROX_CHARS_PER_TOKEN
