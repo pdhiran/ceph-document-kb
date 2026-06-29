@@ -150,6 +150,29 @@ def _build_tools() -> list[Tool]:
             },
         ),
         Tool(
+            name="get_doc_chunk",
+            description=(
+                "Get the full content of a specific documentation chunk by its entity ID.\n\n"
+                "Use this after find_docs_for_command or search_docs when you have a\n"
+                "chunk_id/entity_id and want to read that specific section's full content\n"
+                "without fetching the entire page. Returns the chunk's title, full text,\n"
+                "component, source file, and referenced commands.\n\n"
+                "Args:\n"
+                "    entity_id: The chunk's 16-character hex entity ID (from search results\n"
+                "        or find_docs_for_command references)\n"
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "entity_id": {
+                        "type": "string",
+                        "description": "16-char hex chunk ID (e.g. from find_docs_for_command results)",
+                    },
+                },
+                "required": ["entity_id"],
+            },
+        ),
+        Tool(
             name="find_docs_for_command",
             description=(
                 "Find documentation pages that reference a specific Ceph CLI command.\n\n"
@@ -273,6 +296,14 @@ class CephDocMCPServer:
             }
         return {"error": f"No documentation found for source file: {source_file}"}
 
+    def _get_doc_chunk(self, entity_id: str) -> dict:
+        router = self._get_router()
+        for chunks in router._chunks_by_component.values():
+            for chunk in chunks:
+                if chunk.entity_id == entity_id:
+                    return chunk.to_dict()
+        return {"error": f"Chunk not found: {entity_id}"}
+
     def _find_docs_for_command(self, command: str) -> dict:
         normalized = command.strip().lower()
 
@@ -327,6 +358,7 @@ class CephDocMCPServer:
                 "search_docs",
                 "search_examples",
                 "get_doc_page",
+                "get_doc_chunk",
                 "find_docs_for_command",
                 "list_components",
                 "list_topics",
@@ -359,6 +391,7 @@ class CephDocMCPServer:
             "search_docs": ["query"],
             "search_examples": ["query"],
             "get_doc_page": ["source_file"],
+            "get_doc_chunk": ["entity_id"],
             "find_docs_for_command": ["command"],
             "list_topics": ["component"],
         }
@@ -383,6 +416,7 @@ class CephDocMCPServer:
                 max(1, min(arguments.get("limit", 10), max_limit)),
             ),
             "get_doc_page": lambda: self._get_doc_page(arguments["source_file"]),
+            "get_doc_chunk": lambda: self._get_doc_chunk(arguments["entity_id"]),
             "find_docs_for_command": lambda: self._find_docs_for_command(arguments["command"]),
             "list_components": lambda: self._list_components(),
             "list_topics": lambda: self._list_topics(arguments["component"]),
