@@ -472,6 +472,17 @@ def create_server(kb_path: str | None = None, version: str | None = None) -> Ser
     return server
 
 
+def _silence_stderr_logging() -> None:
+    """Suppress all logging to stderr for stdio transport.
+
+    Cursor classifies any stderr output as [error] in the MCP output panel,
+    making the server appear broken even when healthy.
+    """
+    logging.disable(logging.CRITICAL)
+    import warnings
+    warnings.filterwarnings("ignore")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Ceph Documentation KB — MCP Server")
     parser.add_argument(
@@ -487,6 +498,8 @@ def main() -> None:
         help="Index version to load (default: latest)",
     )
     args = parser.parse_args()
+
+    _silence_stderr_logging()
 
     server = create_server(kb_path=args.kb_path, version=args.version)
 
