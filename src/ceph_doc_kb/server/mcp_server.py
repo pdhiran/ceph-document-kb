@@ -434,7 +434,10 @@ class CephDocMCPServer:
             return json.dumps({"error": str(e)})
 
 
-def create_server(kb_path: str | None = None, version: str | None = None) -> Server:
+def create_server(
+    kb_path: str | None = None, version: str | None = None,
+) -> tuple[Server, CephDocMCPServer]:
+    """Create and return the MCP ``Server`` and the backing ``CephDocMCPServer``."""
     config = _load_config()
     resolved_path = _resolve_kb_path(kb_path, version)
     doc_server = CephDocMCPServer(resolved_path, config)
@@ -469,7 +472,7 @@ def create_server(kb_path: str | None = None, version: str | None = None) -> Ser
         result = doc_server.handle_tool_call(name, arguments)
         return [TextContent(type="text", text=result)]
 
-    return server
+    return server, doc_server
 
 
 def _silence_stderr_logging() -> None:
@@ -497,11 +500,28 @@ def main() -> None:
         default=None,
         help="Index version to load (default: latest)",
     )
+    parser.add_argument(
+        "--auto-update",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Auto-pull latest changes from git on startup (default: enabled)",
+    )
+    parser.add_argument(
+        "--update-interval",
+        type=float,
+        default=1,
+        metavar="HOURS",
+        help="Hours between periodic update checks (default: 1, 0=disable periodic)",
+    )
     args = parser.parse_args()
 
     _silence_stderr_logging()
 
-    server = create_server(kb_path=args.kb_path, version=args.version)
+    server, doc_server = create_server(kb_path=args.kb_path, version=args.version)
+
+    if args.auto_update:
+        from ceph_doc_kb.server.auto_update import start_auto_update
+        start_auto_update(doc_server, update_interval_hours=args.update_interval)
 
     async def _run():
         async with stdio_server() as (read_stream, write_stream):
