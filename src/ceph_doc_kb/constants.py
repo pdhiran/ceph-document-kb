@@ -4,6 +4,74 @@ from __future__ import annotations
 
 import re
 
+# ---------------------------------------------------------------------------
+# IBM Storage Ceph Documentation
+# ---------------------------------------------------------------------------
+
+IBM_DOCS_BASE_URL = "https://www.ibm.com/docs/en/storage-ceph"
+
+IBM_VERSIONS = {
+    "8.0": {"url_version": "8.0.0", "ceph_upstream": "reef-18.x", "product_id": "SSEG27_8.0"},
+    "8.1": {"url_version": "8.1.0", "ceph_upstream": "reef-18.x", "product_id": "SSEG27_8.1"},
+    "9.0": {"url_version": "9.9.0", "ceph_upstream": "squid-19.x", "product_id": "SSEG27_9.9.0"},
+    "9.1": {"url_version": "9.9.1", "ceph_upstream": "tentacle-20.x", "product_id": "SSEG27_9.9.1"},
+}
+
+IBM_TOPIC_COMPONENT_MAP: dict[str, str] = {
+    "installation": "cephadm",
+    "installing": "cephadm",
+    "bootstrap": "cephadm",
+    "cephadm": "cephadm",
+    "upgrading": "cephadm",
+    "crossgrad": "cephadm",
+    "staggered": "cephadm",
+    "ceph-file-system": "cephfs",
+    "cephfs": "cephfs",
+    "mds": "cephfs",
+    "nfs": "cephfs",
+    "smb": "cephfs",
+    "block-device": "rbd",
+    "rbd": "rbd",
+    "iscsi": "rbd",
+    "nvme": "rbd",
+    "object-gateway": "radosgw",
+    "rgw": "radosgw",
+    "multisite": "radosgw",
+    "bucket": "radosgw",
+    "s3": "radosgw",
+    "swift": "radosgw",
+    "rados": "rados",
+    "osd": "rados",
+    "pool": "rados",
+    "crush": "rados",
+    "erasure": "rados",
+    "stretch": "rados",
+    "bluestore": "rados",
+    "placement-group": "rados",
+    "monitor": "rados",
+    "mon-": "rados",
+    "dashboard": "mgr",
+    "monitoring": "mgr",
+    "prometheus": "mgr",
+    "grafana": "mgr",
+    "alertmanager": "mgr",
+    "telemetry": "mgr",
+    "call-home": "mgr",
+    "storage-insights": "mgr",
+    "troubleshooting": "troubleshooting",
+    "developer": "dev",
+    "api": "dev",
+    "compatibility": "general",
+    "release-notes": "general",
+    "planning": "general",
+    "overview": "general",
+    "getting-started": "general",
+    "edge-cluster": "general",
+    "hardening": "general",
+    "encryption": "general",
+    "kerberos": "general",
+}
+
 CEPH_COMMAND_PREFIXES = (
     "ceph-bluestore-tool",
     "ceph-authtool",

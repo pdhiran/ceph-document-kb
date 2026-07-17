@@ -8,20 +8,25 @@ Version-aware, component-scoped Ceph documentation knowledge base. Indexes Ceph 
 # Install
 pip install -e .
 
-# Build index from Ceph docs
+# Build index from upstream Ceph docs
 git clone --depth 1 --branch v20.2.1 --sparse https://github.com/ceph/ceph.git /tmp/ceph-docs
 cd /tmp/ceph-docs && git sparse-checkout set doc
 cd /path/to/ceph-doc-kb
 python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
+
+# Build index from IBM Storage Ceph docs (downstream)
+python3 index_ibm_docs.py --version 8.1 --verbose
+python3 index_ibm_docs.py --version 8.0 --verbose
 ```
 
 ## Architecture
 
 - **Component-scoped indices**: Each Ceph component (rados, rbd, rgw, cephfs, cephadm) gets its own FAISS index for fast, targeted search
 - **Two-tier search**: BM25 keyword match for exact terms, fastembed semantic search for conceptual queries
+- **Multi-source**: Indexes both upstream Ceph RST docs and IBM Storage Ceph downstream docs (HTML via API)
 - **Command cross-reference**: Instant lookup from any `ceph`/`rbd`/`rados` command to relevant docs
 - **Quality scoring**: Chunks with code examples, commands, and explanations rank higher
-- **Version-aware**: Supports multiple Ceph release indices side by side
+- **Version-aware**: Supports multiple Ceph release indices side by side (upstream + IBM)
 
 ## Connect Your Agent
 
@@ -150,6 +155,38 @@ LangChain and CrewAI wrappers included. See [BOB_INTEGRATION_GUIDE.md](BOB_INTEG
 python3 index_docs.py --update --docs-path /tmp/ceph-docs/doc \
     --repo-path /tmp/ceph-docs --from-version v20.2.1 --to-version v20.2.2
 ```
+
+## IBM Storage Ceph (Downstream) Docs
+
+The KB also indexes IBM's product documentation from `ibm.com/docs/en/storage-ceph`.
+This covers IBM-specific content not in upstream: registry procedures, licensing,
+crossgrade paths, staggered upgrades, IBM Dashboard, Call Home, Storage Insights, etc.
+
+```bash
+# Full index build (crawls ~1700 pages via IBM docs API, takes ~10-15 min)
+python3 index_ibm_docs.py --version 8.1 --verbose
+
+# With caching (saves HTML locally for fast re-indexing)
+python3 index_ibm_docs.py --version 8.1 --cache-dir ./cache/ibm-8.1 --verbose
+
+# Re-index from cache (no network needed)
+python3 index_ibm_docs.py --version 8.1 --cache-dir ./cache/ibm-8.1 --verbose
+
+# Quick test (5 pages only)
+python3 index_ibm_docs.py --version 8.1 --max-pages 5 --verbose
+```
+
+**Supported IBM versions:**
+
+| IBM Version | Upstream Equivalent | Output Directory |
+|---|---|---|
+| 8.0 | Ceph Reef (18.x) | `knowledge/doc-ibm-8.0` |
+| 8.1 | Ceph Reef (18.x) | `knowledge/doc-ibm-8.1` |
+
+The MCP server automatically discovers and loads all indices under `knowledge/`,
+merging results from upstream and IBM docs transparently. Search results include
+a `source_file` field indicating the origin (e.g., `ibm-docs/8.1/installing` vs
+`rados/operations/pools.rst`).
 
 ## Documentation
 
