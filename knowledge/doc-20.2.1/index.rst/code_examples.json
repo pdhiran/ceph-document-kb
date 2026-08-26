@@ -1,0 +1,22 @@
+[
+  {
+    "entity_id": "92aa9addef6fd0af",
+    "code": ":ref:`If this is your first time using Ceph, read the \"Basic Workflow\"\npage in the Ceph Developer Guide to learn how to contribute to the\nCeph project. (Click anywhere in this paragraph to read the \"Basic\nWorkflow\" page of the Ceph Developer Guide.) <basic workflow dev guide>`.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "index.rst",
+    "component": "index.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4ca82e49bdaf91df",
+    "code": ":ref:`If you want to make a commit to the documentation but you don't\nknow how to get started, read the \"Documenting Ceph\" page. (Click anywhere\nin this paragraph to read the \"Documenting Ceph\" page.) <documenting_ceph>`.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "index.rst",
+    "component": "index.rst",
+    "section_title": "",
+    "commands_used": []
+  }
+]

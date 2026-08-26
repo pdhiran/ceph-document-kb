@@ -1,0 +1,176 @@
+[
+  {
+    "entity_id": "e8d6a2a310b05289",
+    "code": "# ceph orch ps --service_name prometheus\nNAME                         HOST                          PORTS   STATUS          REFRESHED  AGE  MEM USE  MEM LIM  VERSION  IMAGE ID      CONTAINER ID\nprometheus.cephtest-node-00  cephtest-node-00.cephlab.com  *:9095  running (103m)    50s ago   5w     142M        -  2.33.4   514e6a882f6e  efe3cbc2e521",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch ps --service_name"
+    ]
+  },
+  {
+    "entity_id": "430b99a1b2a1907f",
+    "code": "ceph_daemon_socket_up{ceph_daemon=\"mds.a\",hostname=\"testhost\"} 1\nceph_daemon_socket_up{ceph_daemon=\"osd.1\",hostname=\"testhost\"} 0",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e3e3c0d62a5f308c",
+    "code": "ceph_daemon_socket_up == 0 or min_over_time(ceph_daemon_socket_up[12h]) == 0",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "65244c1cd6dbd8e3",
+    "code": "ceph_osd_op_r{ceph_daemon=\"osd.0\", instance=\"192.168.122.7:9283\", job=\"ceph\"} = 73981",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b7617bf43ee88f34",
+    "code": "# Writes (B/s):\nsum(irate(ceph_osd_op_w_in_bytes[1m]))",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "121204a49d0b2cbd",
+    "code": "# Writes (ops/s):\nsum(irate(ceph_osd_op_w[1m]))",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dfbc015b3cce9f39",
+    "code": "sum(irate(ceph_osd_op_latency_sum[1m]))",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e34d0920dc6551ee",
+    "code": "# OSD 0 read latency\nirate(ceph_osd_op_r_latency_sum{ceph_daemon=~\"osd.0\"}[1m]) / on (ceph_daemon) irate(ceph_osd_op_r_latency_count[1m])",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9544ffcbdf532585",
+    "code": "# Read latency of device used by osd.0\nlabel_replace(irate(node_disk_read_time_seconds_total[1m]) / irate(node_disk_reads_completed_total[1m]), \"instance\", \"$1\", \"instance\", \"([^:.]*).*\") and on (instance, device) label_replace(label_replace(ceph_disk_occupation_human{ceph_daemon=~\"osd.0\"}, \"device\", \"$1\", \"device\", \"/dev/(.*)\"), \"instance\", \"$1\", \"instance\", \"([^:.]*).*\")",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c0b6ad1eae5e3398",
+    "code": "# Total raw capacity available in the cluster:\nsum(ceph_osd_stat_bytes)",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "401669011c3cc66a",
+    "code": "ceph_rgw_req{instance=\"192.168.122.7:9283\", instance_id=\"154247\", job=\"ceph\"} = 12345",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "97dfd8eb4c39c69c",
+    "code": "# Average GET latency\nrate(ceph_rgw_op_global_get_obj_lat_sum[30s]) / rate(ceph_rgw_op_global_get_obj_lat_count[30s]) * on (instance_id) group_left (ceph_daemon) ceph_rgw_metadata",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0dda8975e51e3b49",
+    "code": "ceph_mds_request{ceph_daemon=\"mds.test.cephtest-node-00.hmhsoh\", instance=\"192.168.122.7:9283\", job=\"ceph\"} = 1452",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d6362cf8240a4a69",
+    "code": "ceph_mds_metadata{ceph_daemon=\"mds.test.cephtest-node-00.hmhsoh\", ceph_version=\"ceph version 17.2.6 (d7ff0d10654d2280e08f1ab989c7cdf3064446a5) quincy (stable)\", fs_id=\"-1\", hostname=\"cephtest-node-00.cephlab.com\", instance=\"cephtest-node-00.cephlab.com:9283\", job=\"ceph\", public_addr=\"192.168.122.145:6801/118896446\", rank=\"-1\"}",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph version 17"
+    ]
+  },
+  {
+    "entity_id": "7a67f0c94798f995",
+    "code": "# Total MDS read workload:\nsum(rate(ceph_objecter_op_r[1m]))",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "20e7271ed28bbe88",
+    "code": "ceph_rbd_read_bytes{image=\"test2\", instance=\"cephtest-node-00.cephlab.com:9283\", job=\"ceph\", pool=\"testrbdpool\"}",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e8613a92b091fdd1",
+    "code": "# Average read latency\nrate(ceph_rbd_read_latency_sum[30s]) / rate(ceph_rbd_read_latency_count[30s]) * on (instance) group_left (ceph_daemon) ceph_rgw_metadata",
+    "language": "bash",
+    "context": "",
+    "source_file": "monitoring/index.rst",
+    "component": "monitoring",
+    "section_title": "",
+    "commands_used": []
+  }
+]

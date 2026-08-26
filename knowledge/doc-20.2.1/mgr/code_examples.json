@@ -1,0 +1,1002 @@
+[
+  {
+    "entity_id": "80ce799720143c16",
+    "code": "The ``prometheus`` Manager module must be restarted to apply configuration changes.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "865d94c402747ce9",
+    "code": "The :confval:`mgr/prometheus/scrape_interval` of this module should match\nPrometheus' scrape interval to work properly.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "21edc110bc66438d",
+    "code": "# HELP ceph_health_detail healthcheck status by type (0=inactive, 1=active)\n# TYPE ceph_health_detail gauge\nceph_health_detail{name=\"OSDMAP_FLAGS\",severity=\"HEALTH_WARN\"} 0.0\nceph_health_detail{name=\"OSD_DOWN\",severity=\"HEALTH_WARN\"} 1.0\nceph_health_detail{name=\"PG_DEGRADED\",severity=\"HEALTH_WARN\"} 1.0",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c3e00a430bd997f",
+    "code": "Healthcheck Name          First Seen (UTC)      Last seen (UTC)       Count  Active\nOSDMAP_FLAGS              2021/09/16 03:17:47   2021/09/16 22:07:40       2    No\nOSD_DOWN                  2021/09/17 00:11:59   2021/09/17 00:11:59       1   Yes\nPG_DEGRADED               2021/09/17 00:11:59   2021/09/17 00:11:59       1   Yes\n3 health check(s) listed",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bedbcd88d74b08ce",
+    "code": "ceph_pool_metadata{pool_id=\"2\",name=\"cephfs_metadata_a\"} 1.0",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "390cdda89a28815e",
+    "code": "ceph_osd_metadata{cluster_addr=\"172.21.9.34:6802/19096\",device_class=\"ssd\",ceph_daemon=\"osd.0\",public_addr=\"172.21.9.34:6801/19096\",weight=\"1.0\"} 1.0",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6067b9c02a1fd4fd",
+    "code": "ceph_disk_occupation_human{ceph_daemon=\"osd.0\", device=\"sdd\", exported_instance=\"myhost\"}",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "96cf5b7abce556da",
+    "code": "rate(node_disk_written_bytes_total[30s]) and\non (device,instance) ceph_disk_occupation_human{ceph_daemon=\"osd.0\"}",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ceb23e6262294bb1",
+    "code": "If you need to group on the ``ceph_daemon`` label instead of ``device`` and\n``instance`` labels, using ``ceph_disk_occupation_human`` may not work reliably.\nIt is advised that you use ``ceph_disk_occupation`` instead.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2571976f85dce248",
+    "code": "label_replace(\n    rate(node_disk_written_bytes_total[30s]),\n    \"exported_instance\",\n    \"$1\",\n    \"instance\",\n    \"(.*):.*\"\n) and on (device, exported_instance) ceph_disk_occupation_human{ceph_daemon=\"osd.0\"}",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c1e9b7ddde5f30c9",
+    "code": "global:\n  scrape_interval:     15s\n  evaluation_interval: 15s",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "507f6c6d916c7bbb",
+    "code": "[\n    {\n        \"targets\": [ \"senta04.mydomain.com:9283\" ],\n        \"labels\": {}\n    }\n]",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3860b5bc08f6e43b",
+    "code": "[\n    {\n        \"targets\": [ \"senta04.mydomain.com:9100\" ],\n        \"labels\": {\n            \"instance\": \"senta04\"\n        }\n    }\n]",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/prometheus.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3bc337b68f5fbedd",
+    "code": "- resource_type: ceph.smb.cluster\n  cluster_id: rhumba\n  # ... other fields skipped for brevity ...\n- resource_type: ceph.smb.cluster\n  cluster_id: salsa\n  # ... other fields skipped for brevity ...\n- resource_type: ceph.smb.share\n  cluster_id: salsa\n  share_id: foo\n  # ... other fields skipped for brevity ...",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "41d6e51d723c623a",
+    "code": "[\n  {\"resource_type\": \"ceph.smb.cluster\",\n   \"cluster_id\": \"rhumba\",\n   \"...\": \"... other fields skipped for brevity ...\"\n  },\n  {\"resource_type\": \"ceph.smb.cluster\",\n   \"cluster_id\": \"salsa\",\n   \"...\": \"... other fields skipped for brevity ...\"\n  },\n  {\"resource_type\": \"ceph.smb.share\",\n   \"cluster_id\": \"salsa\",\n   \"share_id\": \"foo\",\n   \"...\": \"... other fields skipped for brevity ...\"\n  }\n]",
+    "language": "json",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5120963a88d10332",
+    "code": "resources:\n  - resource_type: ceph.smb.cluster\n    cluster_id: rhumba\n    # ... other fields skipped for brevity ...\n  - resource_type: ceph.smb.cluster\n    cluster_id: salsa\n    # ... other fields skipped for brevity ...\n  - resource_type: ceph.smb.share\n    cluster_id: salsa\n    share_id: foo\n    # ... other fields skipped for brevity ...",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eb7d27bdc49592a3",
+    "code": "{\n  \"resources\": [\n    {\"resource_type\": \"ceph.smb.cluster\",\n     \"cluster_id\": \"rhumba\",\n     \"...\": \"... other fields skipped for brevity ...\"\n    },\n    {\"resource_type\": \"ceph.smb.cluster\",\n     \"cluster_id\": \"salsa\",\n     \"...\": \"... other fields skipped for brevity ...\"\n    },\n    {\"resource_type\": \"ceph.smb.share\",\n     \"cluster_id\": \"salsa\",\n     \"share_id\": \"foo\",\n     \"...\": \"... other fields skipped for brevity ...\"\n    }\n  ]\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b5361908fcc00271",
+    "code": "---\nresource_type: ceph.smb.cluster\ncluster_id: rhumba\n# ... other fields skipped for brevity ...\n---\nresource_type: ceph.smb.cluster\ncluster_id: salsa\n# ... other fields skipped for brevity ...\n---\nresource_type: ceph.smb.share\ncluster_id: salsa\nshare_id: foo\n# ... other fields skipped for brevity ...",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f4ee2ae5638753ea",
+    "code": "resource_type: ceph.smb.cluster\ncluster_id: tango\nauth_mode: active-directory\ndomain_settings:\n  realm: DOMAIN1.SINK.TEST\n  join_sources:\n    # this join source refers to a join auth resource with id \"join1-admin\"\n    - source_type: resource\n      ref: join1-admin\ncustom_dns:\n  - \"192.168.76.204\"\nplacement:\n  count: 1",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "12c0c2f53138d524",
+    "code": "resource_type: ceph.smb.cluster\ncluster_id: rhumba\nauth_mode: user\nuser_group_settings:\n  - source_type: resource\n    ref: ug1\nplacement:\n  hosts:\n    - node6.mycluster.sink.test",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "41bc68155824befa",
+    "code": "resource_type: ceph.smb.cluster\ncluster_id: rhumba\nintent: removed",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c9d8e9f7245afb1",
+    "code": "resource_type: ceph.smb.share\ncluster_id: tango\nshare_id: sp1\nname: \"Staff Pics\"\ncephfs:\n  volume: cephfs\n  path: /pics\n  subvolumegroup: smbshares\n  subvolume: staff",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2d271b2dec2380f",
+    "code": "resource_type: ceph.smb.share\ncluster_id: tango\nshare_id: sp2\nintent: removed",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0dd111ab12fa5291",
+    "code": "resource_type: ceph.smb.join.auth\nauth_id: join1-admin\nauth:\n  username: Administrator\n  password: Passw0rd",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "257d3010451d6c4f",
+    "code": "resource_type: ceph.smb.usersgroups\nusers_groups_id: ug1\nvalues:\n  users:\n    - name: chuckx\n      password: 3xample101\n    - name: steves\n      password: F00Bar123\n    groups: []",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "06cf393d6856eff3",
+    "code": "resource_type: ceph.smb.tls.credential\ntls_credential_id: mycert1\ncredential_type: cert\n# NOTE: The value below is truncated to make the documentation more\n# consise. A real embedded certificate is expected to be valid and\n# will be longer than this example.\nvalue: |\n  -----BEGIN CERTIFICATE-----\n  MIIFDjCCA/agAwIBAgISBtFQfoXc4RmyVabbv28RClKdMA0GCSqGSIb3DQEBCwUA\n  MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD\n  EwNSMTAwHhcNMjUwNTE5MTAyNzUyWhcNMjUwODE3MTAyNzUxWjASMRAwDgYDVQQD\n  EwdjZXBoLmlvMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx6fif6PQ\n  LOTdnO8d1JHcF7D+oB/mQlplFz4vwq/GB6Y4oWK3uCQ4PPz/qyvE4wyvc5EPhjfg\n  d8XNc4ajEBcSUoRj3UwWwiA4oht0SyoJIfwVGp/kF5jxHhVCLdoaaqAxv7nAghWM\n  6Dg=\n  -----END CERTIFICATE-----",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "da544dc51cfec9d3",
+    "code": "resources:\n  # Define an AD member server cluster\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    auth_mode: active-directory\n    domain_settings:\n      realm: DOMAIN1.SINK.TEST\n      join_sources:\n        - source_type: resource\n          ref: join1-admin\n    custom_dns:\n      - \"192.168.76.204\"\n    # deploy 1 set of samba containers on a host labeled \"ilovesmb\"\n    placement:\n      count: 1\n      label: ilovesmb\n  # Define a join auth that our cluster will use to join AD\n  # Warning: Typically you do not want to use the Administrator user\n  # to perform joins on a production AD\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    auth:\n      username: Administrator\n      password: Passw0rd\n  # A share that uses the root of a subvolume\n  # The share name is the same as its id\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    cephfs:\n      volume: cephfs\n      subvolumegroup: smb1\n      subvolume: cache\n      path: /\n  # A share that uses the a sub-dir of a subvolume\n  # The share name is not the same as its id\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    name: \"Staff Pics\"\n    cephfs:\n      volume: cephfs\n      path: /pics\n      subvolumegroup: smb1\n      subvolume: staff",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "571035637969bb94",
+    "code": "resources:\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    intent: removed\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    intent: removed\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    intent: removed\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    intent: removed",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/smb.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d5375a95d569a220",
+    "code": "NAME      ENABLED    DEFAULT    DESC\nbasic     ON         ON         Share basic cluster information (size, version)\ncrash     ON         ON         Share metadata about Ceph daemon crashes (version, stack straces, etc)\ndevice    ON         ON         Share device health metrics (e.g., SMART data, minus potentially identifying info like serial numbers)\nident     OFF        OFF        Share a user-provided description and/or contact email for the cluster\nperf      ON         OFF        Share various performance metrics of a cluster",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/telemetry.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9888310cbcf951c0",
+    "code": "NAME                            STATUS                                               DESC\nbasic_base                      NOT REPORTING: NOT OPTED-IN                          Basic information about the cluster (capacity, number and type of daemons, version, etc.)\nbasic_mds_metadata              NOT REPORTING: NOT OPTED-IN                          MDS metadata\nbasic_pool_flags                NOT REPORTING: NOT OPTED-IN                          Per-pool flags\nbasic_pool_options_bluestore    NOT REPORTING: NOT OPTED-IN                          Per-pool bluestore config options\nbasic_pool_usage                NOT REPORTING: NOT OPTED-IN                          Default pool application and usage statistics\nbasic_rook_v01                  NOT REPORTING: NOT OPTED-IN                          Basic Rook deployment data\nbasic_stretch_cluster           NOT REPORTING: NOT OPTED-IN                          Stretch Mode information for stretch clusters deployments\nbasic_usage_by_class            NOT REPORTING: NOT OPTED-IN                          Default device class usage statistics\ncrash_base                      NOT REPORTING: NOT OPTED-IN                          Information about daemon crashes (daemon type and version, backtrace, etc.)\ndevice_base                     NOT REPORTING: NOT OPTED-IN                          Information about device health metrics\nident_base                      NOT REPORTING: NOT OPTED-IN, CHANNEL ident IS OFF    User-provided identifying information about the cluster\nperf_memory_metrics             NOT REPORTING: NOT OPTED-IN, CHANNEL perf IS OFF     Heap stats and mempools for mon and mds\nperf_perf                       NOT REPORTING: NOT OPTED-IN, CHANNEL perf IS OFF     Information about performance counters of the cluster",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/telemetry.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "88a2df5dcf08f147",
+    "code": "NAME\n        Collection name; prefix indicates the channel the collection\n        belongs to.",
+    "language": "text",
+    "context": ".. glossary",
+    "source_file": "mgr/telemetry.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2b530612be49a66",
+    "code": "rgw_realm: myrealm\nrgw_zonegroup: myzonegroup\nrgw_zone: myzone\nplacement:\n  hosts:\n   - ceph-node-1\n   - ceph-node-2\nspec:\n  rgw_frontend_port: 5500",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/rgw.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf6e3b5780d2c32b",
+    "code": "rgw_realm: myrealm\nrgw_zonegroup: myzonegroup\nrgw_zone: myzone\nzone_endpoints: http://<rgw_host1>:<rgw_port1>, http://<rgw_host2>:<rgw_port2>",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/rgw.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1cff51baf298f4ec",
+    "code": "[\n  {\n    \"realm\": \"myrealm1\",\n    \"token\": \"ewogICAgInJlYWxtX25hbWUiOiAibXlyZWFs....NHlBTFhoIgp9\"\n  },\n  {\n    \"realm\": \"myrealm2\",\n    \"token\": \"ewogICAgInJlYWxtX25hbWUiOiAibXlyZWFs....RUU12ZDB0Igp9\"\n  }\n]",
+    "language": "json",
+    "context": "",
+    "source_file": "mgr/rgw.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a5a0d74321517d2f",
+    "code": "rgw_zone: my-secondary-zone\nrgw_realm_token: <token>\nplacement:\n  hosts:\n   - ceph-node-1\n   - ceph-node-2\nspec:\n  rgw_frontend_port: 5500",
+    "language": "yaml",
+    "context": "",
+    "source_file": "mgr/rgw.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "915d5417f80a2b6e",
+    "code": "/etc/pki/ca-trust/source/anchors/<cert_name>.crt",
+    "language": "text",
+    "context": "#. On the nodes where the RGW service is running, store the certificate on the\n   following path",
+    "source_file": "mgr/rgw.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8587abf422dc1b44",
+    "code": "Use caution when disabling SSL as usernames and passwords will be sent to the\ndashboard unencrypted.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5fd2b1313020fb3f",
+    "code": "You must restart Ceph manager processes after changing the SSL\ncertificate and key. This can be accomplished by either running ``ceph mgr\nfail mgr`` or by disabling and re-enabling the dashboard module (which also\ntriggers the manager to respawn itself):",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr fail mgr"
+    ]
+  },
+  {
+    "entity_id": "d0106886479ce506",
+    "code": "The command ``ceph mgr services`` will show you all endpoints that are\ncurrently configured. Look for the ``dashboard`` key to obtain the URL for\naccessing the dashboard.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr services"
+    ]
+  },
+  {
+    "entity_id": "50ad24f6e7f3ca0f",
+    "code": "This feature can be disabled by setting the default number of lock-out attempts to 0.\nHowever, by disabling this feature, the account is more vulnerable to brute-force or\ndictionary based attacks. This can be disabled by:",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8086eb3c125b1ead",
+    "code": "The iSCSI management functionality of Ceph Dashboard depends on the latest\nversion 3 of the `ceph-iscsi <https://github.com/ceph/ceph-iscsi>`_ project.\nMake sure that your operating system provides the correct version, otherwise\nthe dashboard will not enable the management features.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dec8f3487156e519",
+    "code": "Prometheus' security model presumes that untrusted users have access to the\nPrometheus HTTP endpoint and logs. Untrusted users have access to all the\n(meta)data Prometheus collects that is contained in the database, plus a\nvariety of operational and debugging information.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ce9cf63768fba78",
+    "code": "global:\n  scrape_interval: 5s",
+    "language": "text",
+    "context": "#.  Add the corresponding scrape configuration to Prometheus. This may look\n    like",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e5a3b34864afc3ba",
+    "code": "Please note that in the above example, Prometheus is configured\nto scrape data from itself (port 9090), the Ceph manager module\n`prometheus` (port 9283), which exports Ceph internal data, and the Node\nExporter (port 9100), which provides OS and hardware metrics for each host.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dc9c992359bec337",
+    "code": "[auth.anonymous]\nenabled = true\norg_name = Main Org.\norg_role = Viewer",
+    "language": "ini",
+    "context": "#.  Configure anonymous mode in ``/etc/grafana/grafana.ini``",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "31a052aaecb96980",
+    "code": "[security]\nallow_embedding = true",
+    "language": "ini",
+    "context": "",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cf01162e807431d4",
+    "code": "The Ceph Dashboard embeds Grafana dashboards via ``iframe`` HTML elements.\nIf Grafana is configured without SSL/TLS support, most browsers will block the\nembedding of insecure content if SSL support is\nenabled for the dashboard (which is the default). If you\ncan't see the embedded Grafana dashboards after enabling them as outlined\nabove, check your browser's documentation on how to unblock mixed content.\nAlternatively, consider enabling SSL/TLS support in Grafana.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b1572bef152abe44",
+    "code": "Ceph Dashboard configuration information can also be unset. For example, to\nclear the Grafana API URL we configured above:",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a08d24983ab72b13",
+    "code": "Ceph Dashboard SSO support relies on onelogin's\n`python-saml <https://pypi.org/project/python-saml/>`_ library.\nPlease ensure that this library is installed on your system, either by using\nyour distribution's package management or via Python's `pip` installer.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "29da0b482d90d4e6",
+    "code": "The issuer value of SAML requests will follow this pattern:  **<ceph_dashboard_base_url>**/auth/saml2/metadata",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b072bf74d636ac45",
+    "code": "For more information about `onelogin_settings`, please check the `onelogin documentation <https://github.com/onelogin/python-saml>`_.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9fe2c5034ef57e5e",
+    "code": "route:\n  receiver: 'ceph-dashboard'\n...\nreceivers:\n  - name: 'ceph-dashboard'\n    webhook_configs:\n    - url: '<url-to-dashboard>/api/prometheus_receiver'",
+    "language": "text",
+    "context": "Add the dashboard receiver and the new route to your Alertmanager\n  configuration. This should look like",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c663a28295f05721",
+    "code": "# example of a role\n{\n  'role': 'my_new_role',\n  'description': 'My new role',\n  'scopes_permissions': {\n    'pool': ['read', 'create'],\n    'rbd-image': ['read', 'create', 'update', 'delete']\n  }\n}",
+    "language": "text",
+    "context": "See below for an example of a role specification, in the form of a Python dictionary",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df150a0751492171",
+    "code": "If you attempt to activate redirection by using the command above and you\nget the error message ``EINVAL: unrecognized config option\n'mgr/dashboard/redirect_resolve_ip_addr'``, then you might be running a\nrelease of Ceph prior to version 17.2.6. This feature was introduced in\n17.2.6, in this commit: https://github.com/ceph/ceph/pull/48219.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "02f24dea7defb562",
+    "code": "defaults\n  log global\n  option log-health-checks\n  timeout connect 5s\n  timeout client 50s\n  timeout server 450s",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "75bada3b66e22734",
+    "code": "2018-10-22 15:27:01.302514 mgr.x [INF] [DASHBOARD] from='https://[::ffff:127.0.0.1]:37022' path='/api/rgw/user/klaus' method='PUT' user='admin' params='{\"max_buckets\": \"1000\", \"display_name\": \"Klaus Mustermann\", \"uid\": \"klaus\", \"suspended\": \"0\", \"email\": \"klaus.mustermann@ceph.com\"}'",
+    "language": "text",
+    "context": "A log entry may look like this",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "05f08ef049e99412",
+    "code": "\"https://host:port\"",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6d331b9a5c580f30",
+    "code": "Many Ceph tools return results in JSON format. We suggest that\nyou install the `jq <https://stedolan.github.io/jq>`_ command-line\nutility to facilitate working with JSON data.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5364c8813bdae928",
+    "code": "[\n  \"dashboard\",\n  \"iostat\",\n  \"restful\"\n]",
+    "language": "text",
+    "context": "Ensure the Ceph Dashboard module is listed in the return value of the\n   command. Example snipped output from the command above",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1fb07ab334f8682c",
+    "code": "/var/log/ceph/$cluster-$name.log",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0ee40b58b2998f94",
+    "code": "Error ENOENT: User <username> does not exist",
+    "language": "text",
+    "context": "This command returns your user data. If the user does not exist, it will\n   print",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c9c999af9305a93e",
+    "code": "...\n--- 11 --- 2020-11-07 11:11:11.960659 --- mgr.x/dashboard/log_level = debug ---\n...",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "02e3c2b59ed8f064",
+    "code": "Orchestrator modules might implement only a subset of the commands listed\nbelow. The implementation of the commands may differ between modules.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/orchestrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c378b544b05d1fca",
+    "code": "ceph orch device ident-on <dev_id>\nceph orch device ident-on <dev_name> <host>\nceph orch device fault-on <dev_id>\nceph orch device fault-on <dev_name> <host>",
+    "language": "text",
+    "context": "..\n    Turn On Device Lights\n    ^^^^^^^^^^^^^^^^^^^^^",
+    "source_file": "mgr/orchestrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch device fault-on",
+      "ceph orch device ident-on"
+    ]
+  },
+  {
+    "entity_id": "2a97c50525ceca19",
+    "code": "The orchestrator will not configure the services. See the relevant\ndocumentation for details about how to configure particular services.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/orchestrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d795d9c3f82fecf6",
+    "code": "\"host1,host2\"",
+    "language": "text",
+    "context": "hould you want to have more than one NFS Ganesha\ndaemon running per node). For example, the following placement string means\n\"deploy NFS Ganesha daemons on nodes host1 and host2\" (one daemon per host)",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "42549cd40ca46723",
+    "code": "\"2 host1,host2\"",
+    "language": "text",
+    "context": "and this placement specification says to deploy single NFS Ganesha daemon each\non nodes host1 and host2 (for a total of two NFS Ganesha daemons in the\ncluster)",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5d7587c2f36a06ae",
+    "code": "LOG {\n    COMPONENTS {\n        ALL = FULL_DEBUG;\n    }\n}",
+    "language": "text",
+    "context": "#. Changing log level.  The logging level can be adjusted with the following\n   config fragment",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fd97aae8f7e6c9d8",
+    "code": "EXPORT {\n  Export_Id = 100;\n  Transports = TCP;\n  Path = /;\n  Pseudo = /ceph/;\n  Protocols = 4;\n  Access_Type = RW;\n  Attr_Expiration_Time = 0;\n  Squash = None;\n  FSAL {\n    Name = CEPH;\n    Filesystem = \"filesystem name\";\n    User_Id = \"user id\";\n    Secret_Access_Key = \"secret key\";\n  }\n}",
+    "language": "text",
+    "context": "The following sample block creates a single export. This export will not be\n   managed by the ``ceph nfs export`` interface",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f248d2a7e2fb34fd",
+    "code": "{\n  \"export_id\": 1,\n  \"path\": \"/\",\n  \"cluster_id\": \"mynfs\",\n  \"pseudo\": \"/cephfs\",\n  \"access_type\": \"RW\",\n  \"squash\": \"no_root_squash\",\n  \"security_label\": true,\n  \"protocols\": [\n    4\n  ],\n  \"transports\": [\n    \"TCP\"\n  ],\n  \"fsal\": {\n    \"name\": \"CEPH\",\n    \"fs_name\": \"a\",\n    \"sec_label_xattr\": \"\",\n    \"cmount_path\": \"/\"\n  },\n  \"clients\": []\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0870a0de470e03f1",
+    "code": "{\n  \"export_id\": 1,\n  \"path\": \"/\",\n  \"cluster_id\": \"mynfs\",\n  \"pseudo\": \"/cephfs_testing\",\n  \"access_type\": \"RO\",\n  \"squash\": \"no_root_squash\",\n  \"security_label\": true,\n  \"protocols\": [\n    4\n  ],\n  \"transports\": [\n    \"TCP\"\n  ],\n  \"fsal\": {\n    \"name\": \"CEPH\",\n    \"fs_name\": \"a\",\n    \"sec_label_xattr\": \"\",\n    \"cmount_path\": \"/\"\n  },\n  \"clients\": []\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "31ba90a0cfc009ae",
+    "code": "EXPORT {\n    FSAL {\n        name = \"CEPH\";\n        filesystem = \"a\";\n    }\n    export_id = 1;\n    path = \"/\";\n    pseudo = \"/a\";\n    access_type = \"RW\";\n    squash = \"none\";\n    attr_expiration_time = 0;\n    security_label = true;\n    protocols = 4;\n    transports = \"TCP\";\n}",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ed3697c9390e34f4",
+    "code": "rados://$pool/$namespace/export-$i        rados://$pool/$namespace/userconf-nfs.$cluster_id\n         (export config)                          (user config)",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "mgr/nfs.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f9429e5b440e22b2",
+    "code": "MODULE_OPTIONS = [\n    Option(name=\"check_interval\",\n           level=OptionLevel.ADVANCED,\n           default=60,\n           type=\"secs\",\n           desc=\"The interval in seconds to check the inbox\",\n           long_desc=\"The interval in seconds to check the inbox. Set to 0 to disable the check\",\n           min=0,\n           runtime=True)\n]",
+    "language": "python",
+    "context": "",
+    "source_file": "mgr/modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7a9cddc341d30826",
+    "code": "$ cd build\n$ MDS=0 MGR=1 OSD=3 MON=1 ../src/vstart.sh -n -x\n$ bin/ceph mgr module enable selftest\n$ ../src/pybind/ceph_mgr_repl.py --show-env\n   $ export PYTHONPATH=/home/me/ceph/src/pybind:/home/me/ceph/build/lib/cython_modules/lib.3:/home/me/ceph/src/python-common:$PYTHONPATH\n   $ export LD_LIBRARY_PATH=/home/me/ceph/build/lib:$LD_LIBRARY_PATH\n$ export PYTHONPATH=/home/me/ceph/src/pybind:/home/me/ceph/build/lib/cython_modules/lib.3:/home/me/ceph/src/python-common:$PYTHONPATH\n$ export LD_LIBRARY_PATH=/home/me/ceph/build/lib:$LD_LIBRARY_PATH\n$ ../src/pybind/ceph_mgr_repl.py\n$ ../src/pybind/ceph_mgr_repl.py\nPython 3.9.2 (default, Feb 28 2021, 17:03:44)\n[GCC 10.2.1 20210110] on linux\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n(MgrModuleInteractiveConsole)\n[mgr self-test eval] >>> print(mgr.version)\nceph version Development (no_version) quincy (dev)\n[mgr self-test eval] >>> from timeit import timeit\n[mgr self-test eval] >>> timeit(mgr.get_mgr_id)\n0.16303414600042743\n[mgr self-test eval] >>>",
+    "language": "console",
+    "context": "",
+    "source_file": "mgr/modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable",
+      "ceph version Development"
+    ]
+  },
+  {
+    "entity_id": "7026ee1453e326da",
+    "code": "This is developer documentation, describing Ceph internals that\nare relevant only to people writing ceph-mgr modules.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "mgr/modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e75ccaca6eb75bae",
+    "code": "<mgr_daemon_log_file_name>.<module_name>.log",
+    "language": "text",
+    "context": "The module's log file is located in the same directory as the Manager daemon's\nlog file with the following name pattern",
+    "source_file": "mgr/modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8d49c3ac786c16b6",
+    "code": "antigravity send to blackhole <oid> [<blackhole>]  Send the specified object to black hole",
+    "language": "text",
+    "context": "The manager daemon cooks the usage of the command from these ingredients,\nlike",
+    "source_file": "mgr/modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bd0737ef5000d377",
+    "code": "COMMANDS = [\n    {\n        \"cmd\": \"foobar name=myarg,type=CephString\",\n        \"desc\": \"Do something awesome\",\n        \"perm\": \"rw\",\n        # optional:\n        \"poll\": \"true\"\n    }\n]",
+    "language": "ini",
+    "context": "This method uses the ``COMMANDS`` class attribute of your module to define\na list of dicts like this",
+    "source_file": "mgr/modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df4aa3a6736c17b1",
+    "code": "build/out/mgr.x.log",
+    "language": "text",
+    "context": "The log is found in the following file",
+    "source_file": "mgr/hello.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fe5d37dfac78cb21",
+    "code": "[mgr]\n   debug_mgr = 20",
+    "language": "ini",
+    "context": "",
+    "source_file": "mgr/influx.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0f793bda34beae02",
+    "code": "[[inputs.socket_listener]]\n# service_address = \"tcp://:8094\"\n# service_address = \"tcp://127.0.0.1:http\"\n# service_address = \"tcp4://:8094\"\n# service_address = \"tcp6://:8094\"\n# service_address = \"tcp6://[2001:db8::1]:8094\"\nservice_address = \"udp://:8094\"\n# service_address = \"udp4://:8094\"\n# service_address = \"udp6://:8094\"\n# service_address = \"unix:///tmp/telegraf.sock\"\n# service_address = \"unixgram:///tmp/telegraf.sock\"\ndata_format = \"influx\"",
+    "language": "ini",
+    "context": "",
+    "source_file": "mgr/telegraf.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4e9964c760e81469",
+    "code": "udp://:8094",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/telegraf.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "158c2ae936eb3cdb",
+    "code": "This is developer documentation, describing Ceph internals that\nare only relevant to people writing ceph-mgr orchestrator modules.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "mgr/orchestrator_modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "70e74364ec168af9",
+    "code": "digraph G {\n    subgraph cluster_1 {\n        volumes [label=\"mgr/volumes\"]\n        rook [label=\"mgr/rook\"]\n        dashboard [label=\"mgr/dashboard\"]\n        orchestrator_cli [label=\"mgr/orchestrator\"]\n        orchestrator [label=\"Orchestrator Interface\"]\n        cephadm [label=\"mgr/cephadm\"]",
+    "language": "text",
+    "context": ".. graphviz",
+    "source_file": "mgr/orchestrator_modules.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "21362bbfe0243d56",
+    "code": "{\n\t\"enabled_modules\": [\n\t\t\"status\"\n\t],\n\t\"disabled_modules\": [\n\t\t\"dashboard\"\n\t]\n}",
+    "language": "console",
+    "context": "",
+    "source_file": "mgr/administrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "864abd1ce70bac8a",
+    "code": "{\n\t\"enabled_modules\": [\n\t\t\"status\",\n\t\t\"dashboard\"\n\t],\n\t\"disabled_modules\": [\n\t]\n}",
+    "language": "console",
+    "context": "",
+    "source_file": "mgr/administrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3865b2e11f3eb06b",
+    "code": "{\n\t\"dashboard\": \"http://myserver.com:7789/\"\n}",
+    "language": "console",
+    "context": "",
+    "source_file": "mgr/administrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "20fa5f04698f7e84",
+    "code": "[mon]\n    mgr_initial_modules = dashboard balancer",
+    "language": "ini",
+    "context": "",
+    "source_file": "mgr/administrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9093fd173249cacb",
+    "code": "mgr active: $name",
+    "language": "text",
+    "context": "Check that the mgr has come up by looking at the output of ``ceph status``,\nwhich should now include a mgr status line",
+    "source_file": "mgr/administrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0ad6e8f95f1feeb8",
+    "code": "Prior to Quincy, the ``devicehealth`` module created a\n``device_health_metrics`` pool to store device SMART statistics. With\nQuincy, this pool is automatically renamed to be the common manager module\npool.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "mgr/administrator.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0b4d3f369a06dbbf",
+    "code": "http://<server_addr>:<server_port>/api",
+    "language": "text",
+    "context": "by the\n:ref:`mgr-dashboard` module. The Ceph API\nservice is available at the same URL as the regular Ceph Dashboard, under the\n``/api`` base path (please refer to :ref:`dashboard-host-name-and-port`)",
+    "source_file": "mgr/ceph_api/index.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "70f1e8869757f97b",
+    "code": "https://<server_addr>:<ssl_server_port>/api",
+    "language": "text",
+    "context": "or, if HTTPS is enabled (please refer to :ref:`dashboard-ssl-tls-support`)",
+    "source_file": "mgr/ceph_api/index.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d01f856bdc119f06",
+    "code": "{ \"token\": \"<redacted_token>\", ...}",
+    "language": "json",
+    "context": "",
+    "source_file": "mgr/ceph_api/index.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fbc0a0c11d74635",
+    "code": "Debug: 'disabled'",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard_plugins/debug.inc.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d42c69a09256f9e4",
+    "code": "Debug: 'enabled'",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard_plugins/debug.inc.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fbc0a0c11d74635",
+    "code": "Debug: 'disabled'",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard_plugins/debug.inc.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "44dbfaf98d00cf25",
+    "code": "Feature 'cephfs': 'enabled'\nFeature 'iscsi': 'enabled'\nFeature 'nvmeof': 'enabled'\nFeature 'mirroring': 'enabled'\nFeature 'rbd': 'enabled'\nFeature 'rgw': 'enabled'\nFeature 'nfs': 'enabled'",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard_plugins/feature_toggles.inc.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "59f57f7c3e02d3f5",
+    "code": "Feature 'iscsi': disabled\nFeature 'mirroring': disabled",
+    "language": "text",
+    "context": "",
+    "source_file": "mgr/dashboard_plugins/feature_toggles.inc.rst",
+    "component": "mgr",
+    "section_title": "",
+    "commands_used": []
+  }
+]

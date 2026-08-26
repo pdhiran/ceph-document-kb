@@ -1,0 +1,2006 @@
+[
+  {
+    "entity_id": "de2ebb90bba0c56c",
+    "code": "openssl req -x509 -newkey rsa:4096 -nodes -keyout server.key -out server.crt -days 3650 -subj /CN=my.server -addext \"subjectAltName=IP:10.243.64.15,IP:10.243.64.17,IP:10.243.64.13,IP:10.243.64.4\"",
+    "language": "bash",
+    "context": "Managing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-managing-nvme-service",
+    "component": "rbd",
+    "section_title": "Managing the NVMe-oF service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "baac391ee6220d48",
+    "code": "ceph osd pool create POOL_NAME PG_NUM\nceph osd pool application enable POOL_NAME rbd\nrbd pool init -p POOL_NAME",
+    "language": "bash",
+    "context": "Creating block device pools",
+    "source_file": "ibm-docs/8.0/devices-creating-block-device-pools",
+    "component": "rbd",
+    "section_title": "Creating block device pools",
+    "commands_used": [
+      "ceph osd pool create POOL_NAME",
+      "ceph osd pool application enable",
+      "rbd\nrbd pool init -p"
+    ]
+  },
+  {
+    "entity_id": "fa74a900e1a88e22",
+    "code": "[root@rbd-client ~]# ceph osd pool create pool1\n[root@rbd-client ~]# ceph osd pool application enable pool1 rbd\n[root@rbd-client ~]# rbd pool init -p pool1",
+    "language": "bash",
+    "context": "Creating block device pools",
+    "source_file": "ibm-docs/8.0/devices-creating-block-device-pools",
+    "component": "rbd",
+    "section_title": "Creating block device pools",
+    "commands_used": [
+      "ceph osd pool create pool1",
+      "ceph osd pool application enable",
+      "rbd pool init -p pool1"
+    ]
+  },
+  {
+    "entity_id": "ff4fd8d336f7488f",
+    "code": "rbd map POOL_NAME/IMAGE_NAME --OPT1 VAL1 --OPT2 VAL2",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.0/devices-rbdmap-service",
+    "component": "rbd",
+    "section_title": "rbdmap service",
+    "commands_used": [
+      "rbd map POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "379c9a176ca76831",
+    "code": "foo/bar1    id=admin,keyring=/etc/ceph/ceph.client.admin.keyring\nfoo/bar2    id=admin,keyring=/etc/ceph/ceph.client.admin.keyring,options='lock_on_read,queue_depth=1024'",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/devices-configuring-rbdmap-service",
+    "component": "rbd",
+    "section_title": "Configuring rbdmap service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5fb42f01eaae4e25",
+    "code": "[root@client ~]# systemctl enable rbdmap.service",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/devices-configuring-rbdmap-service",
+    "component": "rbd",
+    "section_title": "Configuring rbdmap service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "652ea0b9f9f55414",
+    "code": "rbd clone --pool POOL_NAME --image PARENT_IMAGE --snap SNAP_NAME --dest-pool POOL_NAME --dest CHILD_IMAGE_NAME\nrbd clone POOL_NAME/PARENT_IMAGE@SNAP_NAME  POOL_NAME/CHILD_IMAGE_NAME",
+    "language": "bash",
+    "context": "Cloning a single block device snapshot",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-single-block-device",
+    "component": "rbd",
+    "section_title": "Cloning a single block device snapshot",
+    "commands_used": [
+      "rbd clone --pool POOL_NAME --image",
+      "rbd clone POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "436abbe552b4d92e",
+    "code": "[root@rbd-client ~]# rbd clone --pool pool1 --image image1 --snap snap1 --dest-pool pool1 --dest childimage1\n[root@rbd-client ~]# rbd clone pool1/image1@snap1 pool1/childimage1",
+    "language": "bash",
+    "context": "Cloning a single block device snapshot",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-single-block-device",
+    "component": "rbd",
+    "section_title": "Cloning a single block device snapshot",
+    "commands_used": [
+      "rbd clone --pool pool1 --image",
+      "rbd clone pool1"
+    ]
+  },
+  {
+    "entity_id": "125f574f24c5b505",
+    "code": "[root@rbd-client]# ] rbd clone --snap-id 4 pool1/image1 pool1/i1clone1 --rbd-default-clone-format 2",
+    "language": "bash",
+    "context": "Cloning from group snapshots is supported only with clone v2 --rbd-default-clone-format\n2.",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-block-device-group",
+    "component": "rbd",
+    "section_title": "Cloning block device group snapshot",
+    "commands_used": [
+      "rbd clone --snap-id 4 pool1"
+    ]
+  },
+  {
+    "entity_id": "ff50572f94f3680d",
+    "code": "rbd snap ls --all POOL_NAME/PARENT_IMAGE_NAME",
+    "language": "bash",
+    "context": "Cloning block device group snapshot",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-block-device-group",
+    "component": "rbd",
+    "section_title": "Cloning block device group snapshot",
+    "commands_used": [
+      "rbd snap ls --all POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "723a34ccba359c18",
+    "code": "[root@rbd-client] # rbd snap ls --all pool1/image1\nSNAPID     NAME             SIZE     PROTECTED   TIMESTAMP                    NAMESPACE\n3          snap1            10 GiB   yes         Thu Jul 25 06:21:33 2024     user\n4          .group.2_39d     10 GiB               Wed Jul 31 02:28:49 2024     group (pool1/group1@p1g1snap1)",
+    "language": "bash",
+    "context": "The following example has a group snapshot, indicated with SNAPID listed as\n4 and the NAMESPACE as group.",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-block-device-group",
+    "component": "rbd",
+    "section_title": "Cloning block device group snapshot",
+    "commands_used": [
+      "rbd snap ls --all pool1"
+    ]
+  },
+  {
+    "entity_id": "d93ed7e9c912b721",
+    "code": "rbd clone --snap-id <SNAP_ID> POOL_NAME/IMAGE_NAME POOL_NAME/CLONE_IMAGE_NAME --rbd-default-clone-format 2",
+    "language": "bash",
+    "context": "Cloning block device group snapshot",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-block-device-group",
+    "component": "rbd",
+    "section_title": "Cloning block device group snapshot",
+    "commands_used": [
+      "rbd clone --snap-id"
+    ]
+  },
+  {
+    "entity_id": "09efb03c0bb40acf",
+    "code": "[root@rbd-client]# rbd clone --snap-id 4 pool1/image1 pool2/clone2 --rbd-default-clone-format 2",
+    "language": "bash",
+    "context": "Cloning block device group snapshot",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-block-device-group",
+    "component": "rbd",
+    "section_title": "Cloning block device group snapshot",
+    "commands_used": [
+      "rbd clone --snap-id 4 pool1"
+    ]
+  },
+  {
+    "entity_id": "c62ff75d5ae07ac0",
+    "code": "[root@rbd-client]# rbd ls -p pool2\nclone2",
+    "language": "bash",
+    "context": "Use the rbd ls command to verify the clone image of the group snapshot is\ncreated successfully.",
+    "source_file": "ibm-docs/8.0/snapshot-cloning-block-device-group",
+    "component": "rbd",
+    "section_title": "Cloning block device group snapshot",
+    "commands_used": [
+      "rbd ls -p pool2\nclone2"
+    ]
+  },
+  {
+    "entity_id": "ab6edbb107718810",
+    "code": "rbd image-meta set POOL_NAME/IMAGE_NAME conf_rbd_mirroring_replay_delay MINIMUM_DELAY_IN_SECONDS",
+    "language": "bash",
+    "context": "Delaying block device replication",
+    "source_file": "ibm-docs/8.0/mirroring-delaying-block-device-replication",
+    "component": "rbd",
+    "section_title": "Delaying block device replication",
+    "commands_used": [
+      "rbd image-meta set POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "8aaa40ee30a9460f",
+    "code": "[root@rbd-client ~]# rbd image-meta set vms/vm-1 conf_rbd_mirroring_replay_delay 600",
+    "language": "bash",
+    "context": "Delaying block device replication",
+    "source_file": "ibm-docs/8.0/mirroring-delaying-block-device-replication",
+    "component": "rbd",
+    "section_title": "Delaying block device replication",
+    "commands_used": [
+      "rbd image-meta set vms"
+    ]
+  },
+  {
+    "entity_id": "fe1660fd96897059",
+    "code": "subscription-manager repos --enable=ibmceph-8-tools-for-rhel-9-x86_64-rpms",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c38b8214ec952eb7",
+    "code": "[root@rbd-client ~]# subscription-manager repos --enable=ibmceph-8-tools-for-rhel-9-x86_64-rpms",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fa9a774ada69c2b3",
+    "code": "dnf install ceph-common",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0dc9c3a26cac988a",
+    "code": "scp root@MONITOR_NODE:/etc/ceph/ceph.conf /etc/ceph/ceph.conf",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c1ab8e39481c07ee",
+    "code": "[root@rbd-client ~]# scp root@cluster1-node2:/etc/ceph/ceph.conf /etc/ceph/ceph.conf\nroot@192.168.0.32's password:\nceph.conf                                                            100%  497   724.9KB/s   00:00",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "007890cdc68a23fa",
+    "code": "scp root@MONITOR_NODE:/etc/ceph/ceph.client.admin.keyring /etc/ceph/ceph.client.admin.keyring",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4c6a815145319eba",
+    "code": "[root@rbd-client ~]# scp root@cluster1-node2:/etc/ceph/ceph.client.admin.keyring /etc/ceph/ceph.client.admin.keyring\nroot@192.168.0.32's password:\nceph.client.admin.keyring                                                          100%  151   265.0KB/s   00:00",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "82e0b116fe273c18",
+    "code": "rbd map --pool POOL_NAME IMAGE_NAME --id admin",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": [
+      "rbd map --pool POOL_NAME IMAGE_NAME"
+    ]
+  },
+  {
+    "entity_id": "795b65023a9a38d3",
+    "code": "[root@rbd-client ~]# rbd map --pool block-device-pool image1 --id admin\n/dev/rbd0",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": [
+      "rbd map --pool block-device-pool image1"
+    ]
+  },
+  {
+    "entity_id": "0e4ec16ae733b2ca",
+    "code": "parted /dev/MAPPED_BLOCK_DEVICE mklabel msdos",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "27ae3fa878c33e3a",
+    "code": "[root@rbd-client ~]# parted /dev/rbd0 mklabel msdos\nInformation: You may need to update /etc/fstab.",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eb1f95fceb736ed7",
+    "code": "parted /dev/MAPPED_BLOCK_DEVICE mkpart primary xfs 0% 100%",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8f469065207d3e66",
+    "code": "[root@rbd-client ~]# parted /dev/rbd0 mkpart primary xfs 0% 100%\nInformation: You may need to update /etc/fstab.",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c4c279085f6f25b6",
+    "code": "mkfs.xfs /dev/MAPPED_BLOCK_DEVICE_WITH_PARTITION_NUMBER",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d3ffc6008ceca013",
+    "code": "[root@rbd-client ~]# mkfs.xfs /dev/rbd0p1\nmeta-data=/dev/rbd0p1            isize=512    agcount=16, agsize=163824 blks\n        =                       sectsz=512   attr=2, projid32bit=1\n        =                       crc=1        finobt=1, sparse=1, rmapbt=0\n        =                       reflink=1\ndata     =                       bsize=4096   blocks=2621184, imaxpct=25\n        =                       sunit=16     swidth=16 blks\nnaming   =version 2              bsize=4096   ascii-ci=0, ftype=1\nlog      =internal log           bsize=4096   blocks=2560, version=2\n        =                       sectsz=512   sunit=16 blks, lazy-count=1\nrealtime =none                   extsz=4096   blocks=0, rtextents=0",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8d952d8ed910aa2c",
+    "code": "mkdir PATH_TO_DIRECTORY",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "02323bd08ebb2616",
+    "code": "[root@rbd-client ~]# mkdir /mnt/ceph",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f1d2c760bc552ea",
+    "code": "mount /dev/MAPPED_BLOCK_DEVICE_WITH_PARTITION_NUMBER PATH_TO_DIRECTORY",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "38a9cdc515fb4bdd",
+    "code": "[root@rbd-client ~]# mount /dev/rbd0p1 /mnt/ceph/",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "af45c7cb8fbae3b5",
+    "code": "df -h PATH_TO_DIRECTORY",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c4c17041aae22c54",
+    "code": "[root@rbd-client ~]# df -h /mnt/ceph/\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/rbd0p1      10G  105M  9.9G   2% /mnt/ceph",
+    "language": "bash",
+    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "source_file": "ibm-docs/8.0/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
+    "component": "rbd",
+    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
+    "commands_used": []
+  },
+  {
+    "entity_id": "01d14ee840cd42ce",
+    "code": "[root@rbd-client ~]# rbd list",
+    "language": "bash",
+    "context": "Mapping a block device",
+    "source_file": "ibm-docs/8.0/module-mapping-block-device",
+    "component": "rbd",
+    "section_title": "Mapping a block device",
+    "commands_used": [
+      "rbd list"
+    ]
+  },
+  {
+    "entity_id": "6ca130542ea20a7c",
+    "code": "rbd device map POOL_NAME/IMAGE_NAME --id USER_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.0/module-mapping-block-device",
+    "component": "rbd",
+    "section_title": "Mapping a block device",
+    "commands_used": [
+      "rbd device map POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "3af948ceaacd744d",
+    "code": "[root@rbd-client ~]# rbd device map rbd/myimage --id admin",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/module-mapping-block-device",
+    "component": "rbd",
+    "section_title": "Mapping a block device",
+    "commands_used": [
+      "rbd device map rbd"
+    ]
+  },
+  {
+    "entity_id": "f0dd8a40388af38d",
+    "code": "[root@rbd-client ~]# rbd device map POOL_NAME/IMAGE_NAME --id USER_NAME --keyring PATH_TO_KEYRING",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.0/module-mapping-block-device",
+    "component": "rbd",
+    "section_title": "Mapping a block device",
+    "commands_used": [
+      "rbd device map POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "cf3b217f5f6d976d",
+    "code": "[root@rbd-client ~]# rbd device map POOL_NAME/IMAGE_NAME --id USER_NAME --keyfile PATH_TO_FILE",
+    "language": "bash",
+    "context": "or",
+    "source_file": "ibm-docs/8.0/module-mapping-block-device",
+    "component": "rbd",
+    "section_title": "Mapping a block device",
+    "commands_used": [
+      "rbd device map POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "75d992dde7d084c2",
+    "code": "[root@rbd-client ~]# rbd device list",
+    "language": "bash",
+    "context": "Display the mapped block devices:",
+    "source_file": "ibm-docs/8.0/module-displaying-mapped-block-devices",
+    "component": "rbd",
+    "section_title": "Displaying mapped block devices",
+    "commands_used": [
+      "rbd device list"
+    ]
+  },
+  {
+    "entity_id": "93c7bf6ab3e5032b",
+    "code": "[root@rbd-client ~]# rbd device list",
+    "language": "bash",
+    "context": "Unmapping a block device",
+    "source_file": "ibm-docs/8.0/module-unmapping-block-device",
+    "component": "rbd",
+    "section_title": "Unmapping a block device",
+    "commands_used": [
+      "rbd device list"
+    ]
+  },
+  {
+    "entity_id": "2120d5c3d2b00e75",
+    "code": "rbd device unmap /dev/rbd/POOL_NAME/IMAGE_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.0/module-unmapping-block-device",
+    "component": "rbd",
+    "section_title": "Unmapping a block device",
+    "commands_used": [
+      "rbd device unmap"
+    ]
+  },
+  {
+    "entity_id": "0292585700799078",
+    "code": "[root@rbd-client ~]# rbd device unmap /dev/rbd/pool1/image1",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/module-unmapping-block-device",
+    "component": "rbd",
+    "section_title": "Unmapping a block device",
+    "commands_used": [
+      "rbd device unmap"
+    ]
+  },
+  {
+    "entity_id": "e30725e822252a56",
+    "code": "cluster = rados.Rados(conffile='my_ceph.conf')\ncluster.connect()\nioctx = cluster.open_ioctx('mypool')",
+    "language": "bash",
+    "context": "Connect to RADOS and open an IO context:",
+    "source_file": "ibm-docs/8.0/devices-ceph-block-device-python-module",
+    "component": "rbd",
+    "section_title": "Ceph Block Device python module",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a6592469cb3d1f8c",
+    "code": "rbd_inst = rbd.RBD()\nsize = 4 * 1024**3  # 4 GiB\nrbd_inst.create(ioctx, 'myimage', size)",
+    "language": "bash",
+    "context": "Instantiate an :class:rbd.RBD object, which you use to create the image:",
+    "source_file": "ibm-docs/8.0/devices-ceph-block-device-python-module",
+    "component": "rbd",
+    "section_title": "Ceph Block Device python module",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a1f37bf9d5f32875",
+    "code": "image = rbd.Image(ioctx, 'myimage')\ndata = 'foo' * 200\nimage.write(data, 0)",
+    "language": "bash",
+    "context": "To perform I/O on the image, instantiate an :class:rbd.Image object:",
+    "source_file": "ibm-docs/8.0/devices-ceph-block-device-python-module",
+    "component": "rbd",
+    "section_title": "Ceph Block Device python module",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8e6a6f6b8aae7c69",
+    "code": "image.close()\nioctx.close()\ncluster.shutdown()",
+    "language": "bash",
+    "context": "Close the image, the IO context and the connection to RADOS:",
+    "source_file": "ibm-docs/8.0/devices-ceph-block-device-python-module",
+    "component": "rbd",
+    "section_title": "Ceph Block Device python module",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0b8fa2c0ed956ff2",
+    "code": "import rados\nimport rbd\n\ncluster = rados.Rados(conffile='my_ceph_conf')\ntry:\n    ioctx = cluster.open_ioctx('my_pool')\n    try:\n        rbd_inst = rbd.RBD()\n        size = 4 * 1024**3  # 4 GiB\n        rbd_inst.create(ioctx, 'myimage', size)\n        image = rbd.Image(ioctx, 'myimage')\n        try:\n            data = 'foo' * 200\n            image.write(data, 0)\n        finally:\n            image.close()\n    finally:\n        ioctx.close()\nfinally:\n    cluster.shutdown()",
+    "language": "bash",
+    "context": "To be safe, each of these calls must to be in a separate :finally block:",
+    "source_file": "ibm-docs/8.0/devices-ceph-block-device-python-module",
+    "component": "rbd",
+    "section_title": "Ceph Block Device python module",
+    "commands_used": [
+      "rados\nimport rbd\n\ncluster"
+    ]
+  },
+  {
+    "entity_id": "9823fb30f22b62c1",
+    "code": "with rados.Rados(conffile='my_ceph.conf') as cluster:\n    with cluster.open_ioctx('mypool') as ioctx:\n        rbd_inst = rbd.RBD()\n        size = 4 * 1024**3  # 4 GiB\n        rbd_inst.create(ioctx, 'myimage', size)\n        with rbd.Image(ioctx, 'myimage') as image:\n            data = 'foo' * 200\n            image.write(data, 0)",
+    "language": "bash",
+    "context": "This can be cumbersome, so the Rados, Ioctx, and Image classes can be used\nas context managers that close or shut down automatically. Using them as context managers, the above\nexample becomes:",
+    "source_file": "ibm-docs/8.0/devices-ceph-block-device-python-module",
+    "component": "rbd",
+    "section_title": "Ceph Block Device python module",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aad6732fdd0d548e",
+    "code": "ceph orch ls --export > FILE.yaml",
+    "language": "bash",
+    "context": "NVMe-oF gateway performance best practices",
+    "source_file": "ibm-docs/8.0/gateway-nvme-performance-best-practices",
+    "component": "rbd",
+    "section_title": "NVMe-oF gateway performance best practices",
+    "commands_used": [
+      "ceph orch ls --export"
+    ]
+  },
+  {
+    "entity_id": "571f4c126e19b3d2",
+    "code": "ceph orch ls nvmeof --export > nvme-spec.yaml",
+    "language": "bash",
+    "context": "NVMe-oF gateway performance best practices",
+    "source_file": "ibm-docs/8.0/gateway-nvme-performance-best-practices",
+    "component": "rbd",
+    "section_title": "NVMe-oF gateway performance best practices",
+    "commands_used": [
+      "ceph orch ls nvmeof --export"
+    ]
+  },
+  {
+    "entity_id": "b6c6de433c180fa7",
+    "code": "service_type: nvmeof\nservice_id: NVME-OF_POOL_NAME.GROUP_NAME\nplacement:\n  hosts:\n    - HOST_NAME\nspec:\n  pool: NVME-OF_POOL_NAME\n  tgt_cmd_extra_args: --cpumask=0xFF",
+    "language": "bash",
+    "context": "NVMe-oF gateway performance best practices",
+    "source_file": "ibm-docs/8.0/gateway-nvme-performance-best-practices",
+    "component": "rbd",
+    "section_title": "NVMe-oF gateway performance best practices",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0154fce344bd26e8",
+    "code": "[ceph: root@host01/ ]# cat file.yaml\nservice_type: nvmeof\nservice_id: nvmeof_pool01.group1\nplacement:\n  hosts:\n    - host01\n    - host02\nspec:\n  pool: nvmeof_pool01\n  tgt_cmd_extra_args: --cpumask=0xFF",
+    "language": "bash",
+    "context": "NVMe-oF gateway performance best practices",
+    "source_file": "ibm-docs/8.0/gateway-nvme-performance-best-practices",
+    "component": "rbd",
+    "section_title": "NVMe-oF gateway performance best practices",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f26501865a20986",
+    "code": "ceph orch apply -i FILE.yaml",
+    "language": "bash",
+    "context": "NVMe-oF gateway performance best practices",
+    "source_file": "ibm-docs/8.0/gateway-nvme-performance-best-practices",
+    "component": "rbd",
+    "section_title": "NVMe-oF gateway performance best practices",
+    "commands_used": [
+      "ceph orch apply -i FILE"
+    ]
+  },
+  {
+    "entity_id": "feda10757baa1b69",
+    "code": "ceph orch reconfig NVME-OF_SERVICE_NAME",
+    "language": "bash",
+    "context": "NVMe-oF gateway performance best practices",
+    "source_file": "ibm-docs/8.0/gateway-nvme-performance-best-practices",
+    "component": "rbd",
+    "section_title": "NVMe-oF gateway performance best practices",
+    "commands_used": [
+      "ceph orch reconfig NVME-OF_SERVICE_NAME"
+    ]
+  },
+  {
+    "entity_id": "1d2ed080f97bbafd",
+    "code": "[ceph: root@host01/ ]# ceph orch reconfig nvmeof.nvmeof_pool01.group1",
+    "language": "bash",
+    "context": "NVMe-oF gateway performance best practices",
+    "source_file": "ibm-docs/8.0/gateway-nvme-performance-best-practices",
+    "component": "rbd",
+    "section_title": "NVMe-oF gateway performance best practices",
+    "commands_used": [
+      "ceph orch reconfig nvmeof"
+    ]
+  },
+  {
+    "entity_id": "80ce24809a94f7d3",
+    "code": "ceph osd pool create NVME-OF_POOL_NAME",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph osd pool create NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "cfb98eb7d26fc223",
+    "code": "[root@host01 ~]# ceph osd pool create nvmeof_pool01",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph osd pool create nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "13a3a610c5fb46a2",
+    "code": "rbd pool init NVME-OF_POOL_NAME",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "rbd pool init NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "637be5a82389a470",
+    "code": "[root@host01 ~]# rbd pool init nvmeof_pool01",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "rbd pool init nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "c6c41f2952a420cb",
+    "code": "ceph orch apply nvmeof NVME-OF_POOL_NAME NVME-OF_GROUP_NAME --placement=\"NUMBER_OF_NODES NODE1 NODE2,...\"",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch apply nvmeof NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "872ba909203f5364",
+    "code": "[ceph: root@host01 /]# ceph orch apply nvmeof nvmeof_pool01 nvmeof_group01 --placement=\"2 host01 host02\"",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch apply nvmeof nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "a82f4e08796355be",
+    "code": "[ceph: root@host01 /]# ceph orch apply nvmeof nvmeof_pool01 nvmeof_group2 --placement=\"2 host04 host05\"",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch apply nvmeof nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "67b272c54638763c",
+    "code": "ceph orch redeploy nvmeof.SERVICE_NAME",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch redeploy nvmeof"
+    ]
+  },
+  {
+    "entity_id": "0d4846feb014048d",
+    "code": "[ceph: root@host01 /]# ceph orch redeploy nvmeof.nvmeof-pool\nScheduled to redeploy nvmeof.nvmeof-pool.a-rhel9-node2.blhrht on host 'a-rhel9-node2'",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch redeploy nvmeof"
+    ]
+  },
+  {
+    "entity_id": "42df45527472a609",
+    "code": "ceph orch host label add NODE LABEL",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch host label add"
+    ]
+  },
+  {
+    "entity_id": "8d17c9f1538a3835",
+    "code": "[ceph: root@host01 /]# ceph orch host label add host01 nvmeof_label\n[ceph: root@host01 /]# ceph orch host label add host02 nvmeof_label",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch host label add",
+      "ceph orch host label add"
+    ]
+  },
+  {
+    "entity_id": "4133bec8cbcdb423",
+    "code": "ceph orch host ls",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch host ls"
+    ]
+  },
+  {
+    "entity_id": "a8b298a80c8a9d6d",
+    "code": "[ceph: root@host01 /]# ceph orch host ls\nHOST    ADDR  LABELS                       STATUS\nhost01        mon,mgr,_admin,nvmeof_label\nhost02        mon,mgr,_admin,nvmeof_label",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch host ls\nHOST"
+    ]
+  },
+  {
+    "entity_id": "9bbf71f9cdce3d6c",
+    "code": "ceph orch apply nvmeof NVME-OF_POOL_NAME NVME-OF_GROUP_NAME --placement=\"label:LABEL\"",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch apply nvmeof NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "6e451b399295f079",
+    "code": "[ceph: root@host01 /]# ceph orch apply nvmeof nvmeof_pool01 nvmeof_group01 --placement=\"label:nvmeof_label\"",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch apply nvmeof nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "521c6543c146e842",
+    "code": "ceph orch redeploy nvmeof.POOL_NAME.GROUP_NAME",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch redeploy nvmeof"
+    ]
+  },
+  {
+    "entity_id": "0d4846feb014048d",
+    "code": "[ceph: root@host01 /]# ceph orch redeploy nvmeof.nvmeof-pool\nScheduled to redeploy nvmeof.nvmeof-pool.a-rhel9-node2.blhrht on host 'a-rhel9-node2'",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch redeploy nvmeof"
+    ]
+  },
+  {
+    "entity_id": "442d34318a394a9e",
+    "code": "service_type: nvmeof\nservice_id: NVME-OF_POOL_NAME.NVME-OF_GROUP_NAME\nservice_name: SERVICE_TYPE.NVME-OF_POOL_NAME.NVME-OF_GROUP_NAME\nplacement:\n  hosts:\n    - HOST_NAME1\n    - HOST_NAME2\nspec:\n  pool: NVME-OF_POOL_NAME\n  group: NVME-OF_GROUP_NAME",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e6aa9aa32013fc5d",
+    "code": "[root@host01 ~]# cat file.yaml\nservice_type: nvmeof\nservice_id: nvmeof_pool01.nvmeof_group01\nservice_name: nvmeof.nvmeof_pool01.nvmeof_group01\nplacement:\n  hosts:\n    - host01\n    - host02\nspec:\n  pool: nvmeof_pool01\n  group: nvmeof_group01",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5ea1d26c4de3174a",
+    "code": "ceph orch apply -i NVME_FILE",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch apply -i NVME_FILE"
+    ]
+  },
+  {
+    "entity_id": "521c6543c146e842",
+    "code": "ceph orch redeploy nvmeof.POOL_NAME.GROUP_NAME",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch redeploy nvmeof"
+    ]
+  },
+  {
+    "entity_id": "0d4846feb014048d",
+    "code": "[ceph: root@host01 /]# ceph orch redeploy nvmeof.nvmeof-pool\nScheduled to redeploy nvmeof.nvmeof-pool.a-rhel9-node2.blhrht on host 'a-rhel9-node2'",
+    "language": "bash",
+    "context": "Deploying the NVMe-oF gateway",
+    "source_file": "ibm-docs/8.0/gateway-deploying-nvme",
+    "component": "rbd",
+    "section_title": "Deploying the NVMe-oF gateway",
+    "commands_used": [
+      "ceph orch redeploy nvmeof"
+    ]
+  },
+  {
+    "entity_id": "30953a01fa3d2431",
+    "code": "nvmeof-cli --help",
+    "language": "bash",
+    "context": "Using nvmeof-cli commands",
+    "source_file": "ibm-docs/8.0/gateway-using-nvmeof-cli-commands",
+    "component": "rbd",
+    "section_title": "Using nvmeof-cli commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7b7cf8725e2f4744",
+    "code": "podman pull cp.icr.io/cp/ibm-ceph/nvmeof-cli-rhel9:1.3",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2e954c700c329e9c",
+    "code": "alias nvmeof-cli=\"podman run --rm cp.icr.io/cp/ibm-ceph/nvmeof-cli-rhel9:1.3\"",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbe26abd1506319e",
+    "code": "nvmeof-cli",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6644a8f053cfb283",
+    "code": "[root@host01 ~]# alias nvmeof-cli=\"podman run --rm cp.icr.io/cp/ibm-ceph/nvmeof-cli-rhel9:1.3\"\n[root@host01 ~]# nvmeof-cli\nusage: python3 -m control.cli [-h] [--format {text,json,yaml,plain,python}] [--output {log,stdio}]\n                              [--server-address SERVER_ADDRESS] [--server-port SERVER_PORT]\n                              [--client-key CLIENT_KEY] [--client-cert CLIENT_CERT]\n                              [--server-cert SERVER_CERT]\n                              {version,gw,log_level,subsystem,listener,host,connection,namespace,ns}\n                              ...\n\nCLI to manage NVMe gateways\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --format {text,json,yaml,plain,python}\n                        CLI output format\n  --output {log,stdio}  CLI output method\n  --server-address SERVER_ADDRESS\n                        Server address\n  --server-port SERVER_PORT\n                        Server port\n  --client-key CLIENT_KEY\n                        Path to the client key file\n  --client-cert CLIENT_CERT\n                        Path to the client certificate file\n  --server-cert SERVER_CERT\n                        Path to the server certificate file\n\nCommands:\n  {version,gw,log_level,subsystem,listener,host,connection,namespace,ns}\n    version             Get CLI version\n    gw                  Gateway commands\n    log_level           Log level commands\n    subsystem           Subsystem commands\n    listener            Listener commands\n    host                Host commands\n    connection          Connection commands\n    namespace (ns)      Namespace commands\n[root@host01 ~]#",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "38aeb590b660be88",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port 5500 subsystem add --subsystem SUBSYSTEM_NQN [--serial-number SERIAL_NUMBER] [--max-namespaces MAX_NAMESPACES]",
+    "language": "bash",
+    "context": "In this example, SUBSYSTEM_NQN is defined as\nnqn.2016-06.io.spdk:cnode1 and group1 is appended after the\nsubsystem add command. .",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "492b1b87dbe18b07",
+    "code": "nvmeof-cli --server-address 10.172.19.21 --server-port 5500 subsystem add --subsystem nqn.2016-06.io.spdk:cnode1\nAdding subsystem nqn.2016-06.io.spdk:cnode1.group1: Successful",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "adf26c9da9fba236",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT listener add --subsystem SUBSYSTEM_NQN --host-name HOST_NAME --traddr GATEWAY_IP",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4242cf918d64d2f8",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 listener add --subsystem nqn.2016-06.io.spdk:cnode1.group1 --host-name host02 --traddr 10.172.19.01",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3b45a411b7ee91b4",
+    "code": "cat /etc/nvme/hostnqn",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a96eaa92c026596e",
+    "code": "# cat /etc/nvme/hostnqn\nnqn.2014-08.org.nvmexpress:uuid:950ddadf-f995-47b7-9416-b9bb233f66e3",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d17f4d517bd075fe",
+    "code": "esxcli nvme info get",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2557584c2769b4d7",
+    "code": "esxcli nvme info get\nHost NQN: nqn.2014-08.com.ibm.ceph:nvme:host01",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9a14b9526807dd43",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT host add --subsystem SUBSYSTEM_NQN --host-nqn HOST01_NQN HOST02_NQN",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "78c7274fad4a884f",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 host add --subsystem nqn.2016-06.io.spdk:cnode1.group1 --host-nqn nqn.2014-08.org.nvmexpress:uuid:950ddadf-f995-47b7-9416-b9bb233f66e3 nqn.2014-08.org.nvmexpress:uuid:123ddadf-f456-47b7-9416-b9bb233f67f4\nAdding host nqn.2014-08.org.nvmexpress:uuid:950ddadf-f995-47b7-9416-b9bb233f66e3 to nqn.2016-06.io.spdk:cnode1.group1: Successful\nAdding host nqn.2014-08.org.nvmexpress:uuid:123ddadf-f456-47b7-9416-b9bb233f67f4 to nqn.2016-06.io.spdk:cnode1.group1: Successful",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4fc0f93cd33473af",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT host list --subsystem SUBSYSTEM_NQN",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e24163587427d193",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.0.211.119 --server-port 5500 host list --subsystem nqn.2016-06.io.spdk:cnode1.group1\nHosts allowed to access nqn.2016-06.io.spdk:cnode1.group1:\n\u2552\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2555\n\u2502                               Host NQN                               \u2502Uses PSK\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 nqn.2014-08.org.nvmexpress:uuid:950ddadf-f995-47b7-9416-b9bb233f66e3 \u2502No      |\n|----------------------------------------------------------------------|--------|\n|nqn.2014-08.org.nvmexpress:uuid:123ddadf-f456-47b7-9416-b9bb233f67f4  |No      |\n\u2558\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255b\n[root@host01 ~]#",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0329a69fbc02e841",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT subsystem list",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e75b3d7f049e3402",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 subsystem list\nSubsystems:\nSubtype| NQN                               | HA State | Serial            | Controller IDs | Namespace | Max\n       |                                   |          | Number            |                | Count     | Namespaces\n=============================================================================================================\nNVMe   | nqn.2016-06.10.spdk:cnode1.group1 | enabled  | Ceph1230985676540 | 4081-6120      | 32        | 256        \n-------------------------------------------------------------------------------------------------------------\nNVMe   | nqn.2016-06.10.spdk:cnode2.group1 | enabled  | Ceph5400985676123 | 4081-6120      | 32        | 256",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "858374198c09e4f0",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT listener list --subsystem SUBSYSTEM_NQN",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8a44be9a1d3a6a9b",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 listener list --subsystem nqn.2016-06.io.spdk:cnode1.group1 \n\nListeners for nqn.2016-06.io.spdk:cnode1.group1:\nHost   | Transport | Address | Address\n       |           | Family  |    \n=================================================\nhost03 | TCP       | IPv4    | 10.8.128.223:4420\n-------------------------------------------------\nhost04 | TCP       | IPv4    | 10.8.128.223:4420",
+    "language": "bash",
+    "context": "Defining an NVMe-oF subsystem",
+    "source_file": "ibm-docs/8.0/target-defining-nvme-subsystem",
+    "component": "rbd",
+    "section_title": "Defining an NVMe-oF subsystem",
+    "commands_used": []
+  },
+  {
+    "entity_id": "12180ed2c98dc2af",
+    "code": "ceph osd pool create POOL_NAME PG_NUM\nceph osd pool application enable POOL_NAME rbd\nrbd pool init -p POOL_NAME",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": [
+      "ceph osd pool create POOL_NAME",
+      "ceph osd pool application enable",
+      "rbd\nrbd pool init -p"
+    ]
+  },
+  {
+    "entity_id": "dfe8c3580d088a25",
+    "code": "[root@rbd-client ~]# ceph osd pool create pool1\n[root@rbd-client ~]# ceph osd pool application enable pool1 rbd\n[root@rbd-client ~]# rbd pool init -p pool1",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": [
+      "ceph osd pool create pool1",
+      "ceph osd pool application enable",
+      "rbd pool init -p pool1"
+    ]
+  },
+  {
+    "entity_id": "f754ed53c2895faa",
+    "code": "rbd create IMAGE_NAME --size MEGABYTES --pool POOL_NAME",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": [
+      "rbd create IMAGE_NAME --size MEGABYTES"
+    ]
+  },
+  {
+    "entity_id": "bba722a45ece2060",
+    "code": "[root@host01 ~]# rbd create image1 --size 1024 --pool pool1",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": [
+      "rbd create image1 --size 1024"
+    ]
+  },
+  {
+    "entity_id": "b27c22f37de951c0",
+    "code": "nvmeof-cli --server-address GATEWAY_IP gw info",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bd694b029126b902",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT namespace add --subsystem SUBSYSTEM_NQN --rbd-pool RBD_POOL --rbd-image RBD_IMAGE",
+    "language": "bash",
+    "context": "During a namespace addition, a\nload-balancing group is automatically assigned to the NVMe-oF namespace with any available NVMe-oF\ngateway load-balancing group.",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": []
+  },
+  {
+    "entity_id": "512a364fc5c392e3",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 namespace add --subsystem nqn.2016-06.io.spdk:cnode1.group1  --rbd-pool pool1 --rbd-image image1",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": []
+  },
+  {
+    "entity_id": "512a364fc5c392e3",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 namespace add --subsystem nqn.2016-06.io.spdk:cnode1.group1  --rbd-pool pool1 --rbd-create-image --rbd-image image1 --size 1024",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": []
+  },
+  {
+    "entity_id": "58efac4225aee5a8",
+    "code": "rbd ls -p pool1",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": [
+      "rbd ls -p pool1"
+    ]
+  },
+  {
+    "entity_id": "745c47b375528bb2",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT namespace list --subsystem SUBSYSTEM_NQN",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4ea84edbb08ddbc6",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 namespace list --subsystem nqn.2016-06.io.spdk:cnode1.group1 \nNamespaces in subsystem nqn.2016-06.io.spdk:cnode1.group1 :\nNSID| Bdev                    | RBD   | RBD    | Image    | Block | UUID                | Load            | R/W IOs    | R/W MB     | Read MBs   | Write MBs\n    | Name                    | Pool  | Image  | Size     | Size  |                     | Balancing Group | per second | per second | per second | per second    \n==============================================================================================================================================================\n1   | bdev-32c94dd8-8754-     | pool1 | image1 | 1024 MiB | 512 B | 32c94dd8-8754-442f- | 2               | unlimited  | unlimited  | unlimited  | unlimited  \n    | 442f-a12c-123abc456789  |       |        |          |       | a12c-123abc456789   |                 |            |            |            |            \n--------------------------------------------------------------------------------------------------------------------------------------------------------------\n2   | bdev-45c94ee8-ab56-     | pool1 | image2 | 1024 MiB | 512 B | 45c94ee8-ab56-332f- | 1               | unlimited  | unlimited  | unlimited  | unlimited  \n    | 332f-a24c-abc123ae7890  |       |        |          |       | a24c-abc123ae7890   |                 |            |            |            |",
+    "language": "bash",
+    "context": "Defining block devices to use NVMe/TCP",
+    "source_file": "ibm-docs/8.0/target-defining-block-devices-use-nvmetcp",
+    "component": "rbd",
+    "section_title": "Defining block devices to use NVMe/TCP",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e2fd3dff18bc1bb7",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT namespace list --subsystem SUBSYSTEM_NQN",
+    "language": "bash",
+    "context": "Expanding a block device image",
+    "source_file": "ibm-docs/8.0/nvmetcp-expanding-block-device-image",
+    "component": "rbd",
+    "section_title": "Expanding a block device image",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ce6f903e45f507e",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 namespace list --subsystem nqn.2016-06.io.spdk:cnode1.group1 \nNamespaces in subsystem nqn.2016-06.io.spdk:cnode1.group1 :\nNSID| Bdev                    | RBD   | RBD    | Image    | Block | UUID                | Load            | R/W IOs    | R/W MB     | Read MBs   | Write MBs\n    | Name                    | Pool  | Image  | Size     | Size  |                     | Balancing Group | per second | per second | per second | per second    \n==============================================================================================================================================================\n1   | bdev-32c94dd8-8754-     | pool1 | image1 | 1024 MiB | 512 B | 32c94dd8-8754-442f- | 2               | unlimited  | unlimited  | unlimited  | unlimited  \n    | 442f-a12c-123abc456789  |       |        |          |       | a12c-123abc456789   |                 |            |            |            |            \n--------------------------------------------------------------------------------------------------------------------------------------------------------------\n2   | bdev-45c94ee8-ab56-     | pool1 | image2 | 1024 MiB | 512 B | 45c94ee8-ab56-332f- | 1               | unlimited  | unlimited  | unlimited  | unlimited  \n    | 332f-a24c-abc123ae7890  |       |        |          |       | a24c-abc123ae7890   |                 |            |            |            |",
+    "language": "bash",
+    "context": "Expanding a block device image",
+    "source_file": "ibm-docs/8.0/nvmetcp-expanding-block-device-image",
+    "component": "rbd",
+    "section_title": "Expanding a block device image",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3341e615084774df",
+    "code": "nvmeof-cli --server-address GATEWAY_IP --server-port SERVER_PORT namespace resize --subsystem SUBSYSTEM_NQN --nsid NSID --size SIZE",
+    "language": "bash",
+    "context": "The size is indicated in bytes, by default. To indicate a\ndifferent size type, specify the unit. The supported size units are: K, KB, M, MB, G, GB, T,\nTB.",
+    "source_file": "ibm-docs/8.0/nvmetcp-expanding-block-device-image",
+    "component": "rbd",
+    "section_title": "Expanding a block device image",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9e5bbaf45bfe1fa6",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 10.172.19.01 --server-port 5500 namespace resize --subsystem nqn.2016-06.io.spdk:cnode1.group1  --nsid 2 --size 1536",
+    "language": "bash",
+    "context": "Expanding a block device image",
+    "source_file": "ibm-docs/8.0/nvmetcp-expanding-block-device-image",
+    "component": "rbd",
+    "section_title": "Expanding a block device image",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0e9271026c457dc8",
+    "code": "yum install nvme-cli",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fd079b9f4500eb70",
+    "code": "modprobe nvme-fabrics",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "798ffa9d785d063d",
+    "code": "nvme discover -t tcp -a GATEWAY_IP -s 8009",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bd044134d0295b0a",
+    "code": "[root@host01 ~]# nvme discover --transport tcp -a 10.172.19.01 -s 8009\n=====Discovery Log Entry 0======\ntrtype:  tcp\nadrfam:  ipv4\nsubtype: nvme subsystem\ntreq:    not required\nportid:  0\ntrsvcid: 4420\nsubnqn:  nqn.2016-06.io.spdk:cnode1.group1\ntraddr:  9.147.168.14\neflags:  none\nsectype: none\n=====Discovery Log Entry 1======\ntrtype:  tcp\nadrfam:  ipv4\nsubtype: nvme subsystem\ntreq:    not required\nportid:  1\ntrsvcid: 4420\nsubnqn:  nqn.2016-06.io.spdk:cnode1.group1\ntraddr:  9.147.168.32\neflags:  none\nsectype: none",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aaff4916eba0bef0",
+    "code": "nvme connect-all --traddr GATEWAY_IP --transport tcp -l 1800 -s 8009",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6b4953e6b5c6f2fd",
+    "code": "[root@host01 ~]# nvme list\nNode                    Generic           SN                   Model                   Namespace Usage                      Format           FW Rev\n---------------------   ----------------  -------------------  ----------------------- --------- -------------------------- ---------------- --------\n/home/nvme01_node01     /home/ng1n1       SPDK00000000000001   SPDK bdev Controller    1          10,49  MB /  10,49  MB      4 KiB +  0 B   23.01\n...",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2e9f87221c920d4b",
+    "code": "nvme list-subsys",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "45241bf681586bd4",
+    "code": "[root@init-nvme-vm5 ~]# nvme list-subsys\nnvme-subsys5 - NQN=nqn.2016-06.io.spdk:cnode2\n\\\n+- nvme5 tcp traddr=10.243.64.5,trsvcid=4420 live\n+- nvme6 tcp traddr=10.243.64.10,trsvcid=4420 live\n+- nvme7 tcp traddr=10.243.64.11,trsvcid=4420 live\n+- nvme8 tcp traddr=10.243.64.12,trsvcid=4420 live\nnvme-subsys1 - NQN=nqn.2016-06.io.spdk:cnode1.group1\n\\\n+- nvme1 tcp traddr=10.243.64.5,trsvcid=4420 live",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9dad49b35f98ce9a",
+    "code": "mkfs NVME_NODE_PATH",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a93f3817584269cf",
+    "code": "[root@host01 ~]# mkfs /home/nvme01_node01\nmke2fs 1.46.5 (20-Dec-2023)\nDiscarding device blocks: done\nCreating filesystem with 2560 4k blocks and 2560 inodes\n\nAllocating group tables: done\nWriting inode tables: done\nWriting superblocks and filesystem accounting information: done",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e2e0da21df73a17c",
+    "code": "mkdir /mnt/nvmeof",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6bf18f964c21e66e",
+    "code": "[root@host01 ~]# mkdir /mnt/nvmeof",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0f543fde2f274ceb",
+    "code": "mount NVME_NODE_PATH /mnt/nvmeof",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e6fc41ee7f1d85d6",
+    "code": "[root@host01 ~]# mount /home/nvme01_node01 /mnt/nvmeof",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9258f5b403b80158",
+    "code": "ls /mnt/nvmeof",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8e214b3c8fca086b",
+    "code": "$ ls /mnt/nvmeof\nlost+found",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b675652c2e5ceab8",
+    "code": "$ sudo bash -c \"echo Hello NVMe-oF > /mnt/nvmeof/hello.txt\"",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b430583c17729d5e",
+    "code": "$ cat /mnt/nvmeof/hello.txt\nHello NVMe-oF",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f5aefbbd1f434942",
+    "code": "esxcli nvme fabrics enable --protocol TCP --device vmnicN",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e6b41d57ffd8cee3",
+    "code": "esxcli network ip interface tag add --interface-name vmkN --tagname NVMeTCP",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a40b29a4efc4016d",
+    "code": "esxcli nvme adapter list",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "795975e045f0243e",
+    "code": "[root@host01:~] esxcli nvme adapter list\nAdapter  Adapter Qualified Name           Transport Type  Driver     Associated Devices\n-------  -------------------------------- --------------  ---------  ------------------\nvmhba64  aqn:nvmetcp:ac-1f-6b-0a-18-74-T  TCP             nvmetcp    vmnic0",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4b00b593443a2939",
+    "code": "esxcli nvme fabrics discover -a NVME_TCP_ADAPTER -i GATEWAY_IP -p 8009",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f5cabea4b0a0b670",
+    "code": "[root@host01:~] esxcli nvme fabrics discover -a vmhba64 -i 10.0.211.196 -p 8009\n\nTransport Type Address Family Subsystem Type Controller ID Admin Queue Max Size Transport Address Transport Service ID Subsystem NQN              Connected\n-------------- -------------- -------------- ------------- -------------------- ----------------- -------------------- -------------------------- ---------\nTCP            IPv4           NVM            65535         128                   10.0.211.196     8009                 nqn.2016-06.io.spdk:cnode1.group1   false",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d5681be5eaa20c9f",
+    "code": "esxcli nvme fabrics discover -a NVME_TCP_ADAPTER -i GATEWAY_IP -p 8009 -c",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c3ec4c0bc28f207d",
+    "code": "esxcli nvme fabrics connect -a NVME_TCP_ADAPTER -i GATEWAY_IP -s SUBSYSTEM_NQN -p 8009",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b4356c4c79844aa9",
+    "code": "[root@host01:~] esxcli nvme fabrics connect -a vmhba64 -i 10.0.211.196 -s nqn.2016-06.io.spdk:cnode1.group1  -p 8009",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "116cbe6bf8dd5e79",
+    "code": "esxcli nvme controller list |grep TCP",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eddafe649f3f5c63",
+    "code": "[root@host01:~] esxcli nvme fabrics discover -a vmhba64 -i 10.0.211.196 -p 8009 -c\n\nTransport Type Address Family Subsystem Type Controller ID Admin Queue Max Size Transport Address Transport Service ID Subsystem NQN              Connected\n-------------- -------------- -------------- ------------- -------------------- ----------------- -------------------- -------------------------- ---------\nTCP            IPv4           NVM            65535         128                   10.0.211.196     8009                 nqn.2016-06.io.spdk:cnode1.group1   true",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "069913007f2fac4d",
+    "code": "esxcli nvme controller list",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ef51c174e709dfe7",
+    "code": "[root@host01:~] esxcli nvme controller list\nName                                                            Controller Number  Adapter  Transport Type  Is Online  Is VVOL\n--------------------------------------------------------------  -----------------  -------  --------------  ---------  -------\nnqn.2014-08.org.nvmexpress.discovery#vmhba65#10.0.211.196:8009                257  vmhba65  TCP                  true    false\nnqn.2016-06.io.spdk:cnode1.group1 #vmhba65#10.0.211.196:4420                          258  vmhba65  TCP                  true    false                                                      301  vmhba64  TCP                  true",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1e0c69aa960a41cb",
+    "code": "esxcli nvme namespace list",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e2d546814b9e88df",
+    "code": "[root@host01:~] esxcli nvme namespace list\nName                                Controller Number  Namespace ID  Block Size  Capacity in MB\n------------------                  -----------------  ------------  ----------  --------------\neui.0100000001000000e4d25c00001ae214               256             1         512          953869\neui.01abc123def456g7e4d25c00001ae214               301             1         512             500\neui.02abc123def456g7e4d25c00001ae215               301             2         512             500\neui.03abc123def456g7e4d25c00001ae216               301             3         512             500",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "source_file": "ibm-docs/8.0/initiator-configuring-nvme-vmware-esxi",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for VMware ESXi",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c0f8cd0e88edd18b",
+    "code": "ceph orch host label add NODE LABEL",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch host label add"
+    ]
+  },
+  {
+    "entity_id": "8a0eb489667033d1",
+    "code": "[ceph: root@host01 /]# ceph orch host label add host01 nvmeof_label\n[ceph: root@host01 /]# ceph orch host label add host02 nvmeof_label",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch host label add",
+      "ceph orch host label add"
+    ]
+  },
+  {
+    "entity_id": "3c5af621894e0ab5",
+    "code": "ceph orch host ls",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch host ls"
+    ]
+  },
+  {
+    "entity_id": "d9ffdfc7be0ddc2a",
+    "code": "[ceph: root@host01 /]# ceph orch host ls\nHOST    ADDR  LABELS                     STATUS\nhost01        mon,mgr,_admin,nvmeof_label\nhost02        mon,mgr,_admin,nvmeof_label",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch host ls\nHOST"
+    ]
+  },
+  {
+    "entity_id": "d3f2c71ec2db4988",
+    "code": "ceph orch apply nvmeof NVME-OF_POOL_NAME GW_GROUP --placement=\"label:LABEL\"",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch apply nvmeof NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "b7bb6ea28a2942ae",
+    "code": "[ceph: root@host01 /]# ceph orch apply nvmeof nvmeof_pool01 group2 --placement=\"label:nvmeof_label\"",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch apply nvmeof nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "f13ed017ff2ab378",
+    "code": "ceph orch host label rm HOST_NAME LABEL",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch host label rm"
+    ]
+  },
+  {
+    "entity_id": "a7d0cd12b8daa0bf",
+    "code": "[ceph: root@host01 /]# ceph orch host label rm host02 nvmeof_label",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch host label rm"
+    ]
+  },
+  {
+    "entity_id": "d3f2c71ec2db4988",
+    "code": "ceph orch apply nvmeof NVME-OF_POOL_NAME GW_GROUP --placement=\"label:LABEL\"",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch apply nvmeof NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "2c7645a7b94a832e",
+    "code": "[ceph: root@host01 /]# ceph orch apply nvmeof nvmeof_pool01 group1 --placement=\"label:nvmeof_label\"",
+    "language": "bash",
+    "context": "Managing NVMe-oF gateway host labels",
+    "source_file": "ibm-docs/8.0/gateways-managing-nvme-gateway-host-labels",
+    "component": "rbd",
+    "section_title": "Managing NVMe-oF gateway host labels",
+    "commands_used": [
+      "ceph orch apply nvmeof nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "13b3efc60906be9c",
+    "code": "esxcli nvme controller list\nName                                                                                        Controller Number  Adapter  Transport Type  Is Online\n------------------------------------------------------------------------------------------  -----------------  -------  --------------  ---------\nnqn.2014-08.org.nvmexpress_8086_INTEL_SSDPE2KX010T7_____________________PHLF733300LH1P0GGN                256  vmhba2   PCIe                 true\nnqn.2016-06.io.spdk:cnode2#vmhba64#10.0.210.14:4420                                                       282  vmhba64  TCP                 false\nnqn.2016-06.io.spdk:cnode1.group1 #vmhba64#10.0.210.14:4420                                                       278  vmhba64  TCP                 false",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "18ff240f000a0398",
+    "code": "nvme disconnect-all",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7648b40b74e88c94",
+    "code": "esxcli nvme fabrics disconnect -n CONTROLLER_NUMBER -a ADAPTER -s SUBSYSTEM_NQN",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "efd7c89a9a220cfa",
+    "code": "esxcli nvme fabrics disconnect -n 282 -a vmhba64 -s nqn.2016-06.io.spdk:cnode2.group1",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "60a50f3a78d833c8",
+    "code": "nvmeof-cli --server-address IP --server-port 5500 subsystem del --subsystem SUBSYSTEM_NQN --force",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a5469eeb9c904777",
+    "code": "[root@host01 ~]# nvmeof-cli --server-address 192.0.2.1 --server-port 5500 subsystem del --subsystem nqn.2016-06.io.spdk:cnode1.group1 --force",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fca10c31bfde987",
+    "code": "ceph orch rm nvmeof.NVME-OF_POOL_NAME.GW_GROUP",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": [
+      "ceph orch rm nvmeof"
+    ]
+  },
+  {
+    "entity_id": "a3400e23d31d2136",
+    "code": "[ceph: root@host01 /]# ceph orch rm nqn.2016-06.io.spdk:cnode1.group1",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": [
+      "ceph orch rm nqn"
+    ]
+  },
+  {
+    "entity_id": "cd917269f04f3084",
+    "code": "ceph config set mon mon_allow_pool_delete true",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": [
+      "ceph config set mon mon_allow_pool_delete"
+    ]
+  },
+  {
+    "entity_id": "8f05fa90dfa66c36",
+    "code": "ceph osd pool rm NVME-OF_POOL_NAME NVME-OF_POOL_NAME --yes-i-really-really-mean-it",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": [
+      "ceph osd pool rm NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "72b3eae0da73f1b0",
+    "code": "[ceph: root@host01 /]# ceph osd pool rm nvmeof_pool01 nvmeof_pool01 --yes-i-really-really-mean-it",
+    "language": "bash",
+    "context": "Removing the NVMe-oF service",
+    "source_file": "ibm-docs/8.0/gateway-removing-nvme-service",
+    "component": "rbd",
+    "section_title": "Removing the NVMe-oF service",
+    "commands_used": [
+      "ceph osd pool rm nvmeof_pool01"
+    ]
+  },
+  {
+    "entity_id": "327e6e6cd09cafed",
+    "code": "[root@host01 ~]# nvme list\nNode                    Generic           SN                   Model                   Namespace Usage                      Format           FW Rev\n---------------------   ----------------  -------------------  ----------------------- --------- -------------------------- ---------------- --------\n/home/nvme01_node01     /home/ng1n1       SPDK00000000000001   SPDK bdev Controller    1          10,49  MB /  10,49  MB      4 KiB +  0 B   23.01\n...",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "739dfb6b89e36ce7",
+    "code": "nvme list-subsys",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "804f65e4a0917608",
+    "code": "[root@init-nvme-vm5 ~]# nvme list-subsys\nnvme-subsys5 - NQN=nqn.2016-06.io.spdk:cnode2\n\\\n+- nvme5 tcp traddr=10.243.64.5,trsvcid=4420 live\n+- nvme6 tcp traddr=10.243.64.10,trsvcid=4420 live\n+- nvme7 tcp traddr=10.243.64.11,trsvcid=4420 live\n+- nvme8 tcp traddr=10.243.64.12,trsvcid=4420 live\nnvme-subsys1 - NQN=nqn.2016-06.io.spdk:cnode1.group1 \n\\\n+- nvme1 tcp traddr=10.243.64.5,trsvcid=4420 live",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1bd000c1886ede1a",
+    "code": "mkfs NVME_NODE_PATH",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e113d1aec9e87f04",
+    "code": "[root@host01 ~]# mkfs /home/nvme01_node01\nmke2fs 1.46.5 (20-Dec-2023)\nDiscarding device blocks: done\nCreating filesystem with 2560 4k blocks and 2560 inodes\n\nAllocating group tables: done\nWriting inode tables: done\nWriting superblocks and filesystem accounting information: done",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4b8985a7c9833fd6",
+    "code": "mkdir /mnt/nvmeof",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "be10cb55e3930105",
+    "code": "[root@host01 ~]# mkdir /mnt/nvmeof",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ed6b3d61fb7bbdee",
+    "code": "mount NVME_NODE_PATH /mnt/nvmeof",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "323bcc11dbe56f04",
+    "code": "[root@host01 ~]# mount /home/nvme01_node01 /mnt/nvmeof",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d25f2333fd7f9fed",
+    "code": "ls /mnt/nvmeof",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "96f81f4051d6a4f3",
+    "code": "$ ls /mnt/nvmeof\nlost+found",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eea03305814b933b",
+    "code": "$ sudo bash -c \"echo Hello NVMe-oF > /mnt/nvmeof/hello.txt\"",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "56b1e6262dcf59d5",
+    "code": "$ cat /mnt/nvmeof/hello.txt\nHello NVMe-oF",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6d2a13c9f9615141",
+    "code": "ceph orch redeploy nvmeof.POOL_NAME.GROUP_NAME",
+    "language": "bash",
+    "context": "Troubleshooting NVMe-oF gateways",
+    "source_file": "ibm-docs/8.0/troubleshooting-nvme-gateways",
+    "component": "rbd",
+    "section_title": "Troubleshooting NVMe-oF gateways",
+    "commands_used": [
+      "ceph orch redeploy nvmeof"
+    ]
+  }
+]

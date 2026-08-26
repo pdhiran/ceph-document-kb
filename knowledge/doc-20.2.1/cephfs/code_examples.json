@@ -1,0 +1,3240 @@
+[
+  {
+    "entity_id": "2ff7cdeefb181d09",
+    "code": "up:standby",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0461567111076cc1",
+    "code": "up:standby_replay",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7d2b2abe8fe34208",
+    "code": "up:creating",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e28f56e808c3c919",
+    "code": "up:starting",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "67f16501bf86ef54",
+    "code": "up:stopping",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5d087fca5cfd3ec9",
+    "code": "up:resolve",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9bcedc01b5ea6a0c",
+    "code": "up:reconnect",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1108fcac351c17ee",
+    "code": "up:clientreplay",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "67a002ee31066f04",
+    "code": "down:failed",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f07dd86e6527cce4",
+    "code": "$ ceph fs dump\n...\nmax_mds 1\nin      0\nup      {}\nfailed  0\n...",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump"
+    ]
+  },
+  {
+    "entity_id": "82ee85aea87a5bdb",
+    "code": "down:damaged",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f86dee677f8d517b",
+    "code": "$ ceph fs dump\n...\nmax_mds 1\nin      0\nup      {}\nfailed  \ndamaged 0\n...",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump"
+    ]
+  },
+  {
+    "entity_id": "fc602e0bcb0d86cf",
+    "code": "down:stopped",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "03d4473a3c31582a",
+    "code": "$ ceph fs dump\n...\nmax_mds 1\nin      0\nup      {}\nfailed  \ndamaged \nstopped 1\n...",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/mds-states.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump"
+    ]
+  },
+  {
+    "entity_id": "9fca89f7d6c42b1d",
+    "code": "cephfs-journal-tool --rank=<fs>:<rank> event get list",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mds-journaling.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1854589b1f1f5ea3",
+    "code": "# fsmap e5: 1/1/1 up {0=a=up:active}, 2 up:standby",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/multimds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "abb671443fbb78de",
+    "code": "# fsmap e9: 2/2/2 up {0=a=up:active,1=c=up:active}, 1 up:standby\nceph fs set <fs_name> max_mds 1\n# fsmap e10: 2/2/1 up {0=a=up:active,1=c=up:stopping}, 1 up:standby\n# fsmap e10: 2/2/1 up {0=a=up:active,1=c=up:stopping}, 1 up:standby\n...\n# fsmap e10: 1/1/1 up {0=a=up:active}, 2 up:standby",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/multimds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "1d290b0a9127b2dc",
+    "code": "mount -t ceph cephuser@.cephfs=/subvolume/dir1/dir2 /mnt/mycephfs -o secretfile=/etc/ceph/cephuser.secret",
+    "language": "text",
+    "context": "To mount a subtree of the CephFS root, append the path to the device string",
+    "source_file": "cephfs/mount-using-kernel-driver.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph cephuser"
+    ]
+  },
+  {
+    "entity_id": "8cd973eeaa5e5660",
+    "code": "{name}@.{fs_name}=/ {mount}/{mountpoint} ceph [mon_addr={ipaddress},secret=secretkey|secretfile=/path/to/secretfile],[{mount.options}]  {fs_freq}  {fs_passno}",
+    "language": "json",
+    "context": "To mount CephFS in your file systems table as a kernel driver, add the\nfollowing to ``/etc/fstab``",
+    "source_file": "cephfs/mount-using-kernel-driver.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "39bd98468579099e",
+    "code": "cephuser@.cephfs=/     /mnt/ceph    ceph    mon_addr=192.168.0.1:6789,noatime,_netdev    0       0",
+    "language": "text",
+    "context": "For example",
+    "source_file": "cephfs/mount-using-kernel-driver.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph mon_addr"
+    ]
+  },
+  {
+    "entity_id": "59306cdce195c11a",
+    "code": "client.foo\n  key: *key*\n  caps: [mds] allow r, allow rw path=/bar\n  caps: [mon] allow r\n  caps: [osd] allow rw tag cephfs data=cephfs_a",
+    "language": "text",
+    "context": "This results in",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "31cac89a0f4bba67",
+    "code": "client quota df = false",
+    "language": "text",
+    "context": "To make the client report the overall usage of the file system and not only the\nquota usage on the mounted sub-directory, set the following config option on\nthe client",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "066bfaa02cc46c02",
+    "code": "client.0\n    key: AQAz7EVWygILFRAAdIcuJ12opU/JKyfFmxhuaw==\n    caps: [mds] allow rwp\n    caps: [mon] allow r\n    caps: [osd] allow rw tag cephfs data=cephfs_a",
+    "language": "text",
+    "context": "For example, in the following snippet ``client.0`` can modify layouts and\nquotas on the file system ``cephfs_a``, but ``client.1`` cannot",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "04389e4902643fba",
+    "code": "client.0\n    key: AQAz7EVWygILFRAAdIcuJ12opU/JKyfFmxhuaw==\n    caps: [mds] allow rw, allow rws path=/bar\n    caps: [mon] allow r\n    caps: [osd] allow rw tag cephfs data=cephfs_a",
+    "language": "text",
+    "context": "For example, in the following snippet ``client.0`` can create or delete snapshots\nin the ``bar`` directory of file system ``cephfs_a``",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ed166b033dc77815",
+    "code": "client.foo\n  key: *key*\n  caps: [mds] allow r network 10.0.0.0/8, allow rw path=/bar network 10.0.0.0/8\n  caps: [mon] allow r network 10.0.0.0/8\n  caps: [osd] allow rw tag cephfs data=cephfs_a network 10.0.0.0/8",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fef710a40891b076",
+    "code": "name: cephfs, metadata pool: cephfs_metadata, data pools: [cephfs_data ]\nname: cephfs2, metadata pool: cephfs2_metadata, data pools: [cephfs2_data ]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c31ecba897014161",
+    "code": "[client.someuser]\n    key = AQAmthpf89M+JhAAiHDYQkMiCq3x+J0n9e8REQ==",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b8137c2756cc5bc0",
+    "code": "[client.someuser]\n    key = AQAmthpf89M+JhAAiHDYQkMiCq3x+J0n9e8REQ==\n    caps mds = \"allow rw fsname=cephfs\"\n    caps mon = \"allow r fsname=cephfs\"\n    caps osd = \"allow rw tag cephfs data=cephfs\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "12fe2aee6cfb03ab",
+    "code": "name: cephfs, metadata pool: cephfs_metadata, data pools: [cephfs_data ]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fef710a40891b076",
+    "code": "name: cephfs, metadata pool: cephfs_metadata, data pools: [cephfs_data ]\nname: cephfs2, metadata pool: cephfs2_metadata, data pools: [cephfs2_data ]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1f76e09529e4304c",
+    "code": "[client.someuser]\n    key = AQBPSARfg8hCJRAAEegIxjlm7VkHuiuntm6wsA==",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f03acd470c20d43",
+    "code": "exported keyring for client.someuser",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "659cbbdfab878f05",
+    "code": "[client.someuser]\n    key = AQBPSARfg8hCJRAAEegIxjlm7VkHuiuntm6wsA==\n    caps mds = \"allow rw fsname=cephfs\"\n    caps mon = \"allow r\"\n    caps osd = \"allow rw tag cephfs data=cephfs\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "262c2c9cf1c9ed8f",
+    "code": "ceph-fuse[96634]: starting ceph client\nceph-fuse[96634]: starting fuse",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph client ceph-fuse"
+    ]
+  },
+  {
+    "entity_id": "a26275dac92936fc",
+    "code": "ceph-fuse on /mnt/cephfs1 type fuse.ceph-fuse (rw,nosuid,nodev,relatime,user_id=0,group_id=0,allow_other)",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4729f3bbf5ff8420",
+    "code": "ceph-fuse[96599]: starting ceph client\nceph-fuse[96599]: ceph mount failed with (1) Operation not permitted",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph client ceph-fuse",
+      "ceph mount failed with"
+    ]
+  },
+  {
+    "entity_id": "157e80e0a4fcbfdc",
+    "code": "[client.test_a]\nkey = AQBZcDpfEbEUKxAADk14VflBXt71rL9D966mYA==\ncaps mds = \"allow rw fsname=a root_squash, allow rw fsname=a path=/volumes\"\ncaps mon = \"allow r fsname=a\"\ncaps osd = \"allow rw tag cephfs data=a\"",
+    "language": "ini",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8f779eff8756da1",
+    "code": "[client.x]\n    key = AQAOtSVk9WWtIhAAJ3gSpsjwfIQ0gQ6vfSx/0w==",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "29200ba306576882",
+    "code": "[client.x]\n      key = AQAOtSVk9WWtIhAAJ3gSpsjwfIQ0gQ6vfSx/0w==\n      caps mds = \"allow rw fsname=a\"\n      caps mon = \"allow r fsname=a\"\n      caps osd = \"allow rw tag cephfs data=a\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1b31673c7baf782b",
+    "code": "no update for caps of client.x",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c90138815cc130a1",
+    "code": "updated caps for client.x",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "336112a6331916aa",
+    "code": "[client.x]\n        key = AQAOtSVk9WWtIhAAJ3gSpsjwfIQ0gQ6vfSx/0w==\n        caps mds = \"allow r fsname=a, allow rw fsname=a path=some/dir\"\n        caps mon = \"allow r fsname=a\"\n        caps osd = \"allow rw tag cephfs data=a\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c90138815cc130a1",
+    "code": "updated caps for client.x",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6a46b4e86093c70d",
+    "code": "[client.x]\n        key = AQD6tiVk0uJdARAABMaQuLRotxTi3Qdj47FkBA==\n        caps mds = \"allow rw fsname=a, allow rw fsname=b\"\n        caps mon = \"allow r fsname=a, allow r fsname=b\"\n        caps osd = \"allow rw tag cephfs data=a, allow rw tag cephfs data=b\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "11db676d0994e3a1",
+    "code": "[client.x]\n        key = AQBBKjBkIFhBDBAA6q5PmDDWaZtYjd+jafeVUQ==\n        caps mds = \"allow r fsname=a\"\n        caps mon = \"allow r fsname=a\"\n        caps osd = \"allow r tag cephfs data=a\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1348e15c31058fb6",
+    "code": "[client.x]\n        key = AQD61CVkcA1QCRAAd0XYqPbHvcc+lpUAuc6Vcw==",
+    "language": "text",
+    "context": "ceph fs authorize a client.x / rw root_squash",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "faecad1659461646",
+    "code": "[client.x]\n        key = AQD61CVkcA1QCRAAd0XYqPbHvcc+lpUAuc6Vcw==\n        caps mds = \"allow rw fsname=a root_squash\"\n        caps mon = \"allow r fsname=a\"\n        caps osd = \"allow rw tag cephfs data=a\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "092567166d86cba3",
+    "code": "[client.x]\n        key = AQD61CVkcA1QCRAAd0XYqPbHvcc+lpUAuc6Vcw==\nno update was performed for caps of client.x. caps of client.x remains unchanged.",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "53d2db6cf11532f2",
+    "code": "[client.x]\n        key = AQC1tyVknMt+JxAAp0pVnbZGbSr/nJrmkMNKqA==\n        caps mds = \"allow rw fsname=a path=/dir1\"\n        caps mon = \"allow r fsname=a\"\n        caps osd = \"allow rw tag cephfs data=a\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c90138815cc130a1",
+    "code": "updated caps for client.x",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "53d2db6cf11532f2",
+    "code": "[client.x]\n        key = AQC1tyVknMt+JxAAp0pVnbZGbSr/nJrmkMNKqA==\n        caps mds = \"allow rw fsname=a path=dir1, allow rw fsname=a path=dir2\"\n        caps mon = \"allow r fsname=a\"\n        caps osd = \"allow rw tag cephfs data=a\"",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/client-auth.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8db936c2c9c7a45b",
+    "code": "See the `OS recommendations`_ for information about client package support.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "274e7be650beb0b1",
+    "code": "ceph-dokan.exe -c c:\\ceph.conf -l x",
+    "language": "text",
+    "context": "Run the following command to mount a Ceph file system",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ed32dcebd0c63469",
+    "code": "[client]\n# client_permissions = true\nclient_mount_uid = 1000\nclient_mount_gid = 1000",
+    "language": "ini",
+    "context": "The uid and gid used for mounting the file system default to ``0`` and can be\nchanged using the following ``ceph.conf`` options",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "88a04a3ec8af8cf8",
+    "code": "mkdir -Force C:\\mnt\\mycephfs2\nceph-dokan.exe --mountpoint C:\\mnt\\mycephfs2 --client_fs mycephfs2",
+    "language": "text",
+    "context": "If you have more than one file system on your Ceph cluster, use the option\n``--client_fs`` to mount the non-default file system",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b472ff6bf38ec421",
+    "code": "ceph-dokan -l y --root-path /a",
+    "language": "text",
+    "context": "Mount CephFS subdirectories by using the ``--root-path`` parameter",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c609ca97f429a005",
+    "code": "PS C:\\> Get-Volume -FriendlyName \"Ceph*\" | `\n        Select-Object -Property @(\"DriveLetter\", \"Filesystem\", \"FilesystemLabel\")",
+    "language": "text",
+    "context": "If the ``-o --removable`` flags are set, the mounts will show up in the\n``Get-Volume`` results",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dfa0e62a3762e9be",
+    "code": "ceph-dokan --id foo -l x\nceph-dokan --name client.foo -l x",
+    "language": "text",
+    "context": "The ``--id`` option passes the name of the CephX user whose keyring is used\nwhen mounting a CephFS file system. The following commands are equivalent",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1eeffaae07571a5c",
+    "code": "ceph-dokan.exe unmap -l x",
+    "language": "text",
+    "context": "The mount can be removed by either issuing ctrl-c or using the unmap command,\nlike so",
+    "source_file": "cephfs/ceph-dokan.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6347b239f389b332",
+    "code": "$ ceph mgr module enable stats",
+    "language": "bash",
+    "context": "`stats` plugin is disabled by default and should be enabled via",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable"
+    ]
+  },
+  {
+    "entity_id": "28cbb3317a213852",
+    "code": "$ ceph fs perf stats",
+    "language": "bash",
+    "context": "Once enabled, Ceph Filesystem metrics can be fetched via",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs perf stats"
+    ]
+  },
+  {
+    "entity_id": "65c4bd185247b5ea",
+    "code": "$ ceph fs perf stats --client_id=1234",
+    "language": "bash",
+    "context": "Metrics can be fetched for a particular client and/or for a set of active MDSs. To fetch metrics\nfor a particular client (e.g., for client-id: 1234)",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs perf stats"
+    ]
+  },
+  {
+    "entity_id": "c7882a070399d0c2",
+    "code": "$ ceph fs perf stats --mds_rank=1,2",
+    "language": "bash",
+    "context": "To fetch metrics only for a subset of active MDSs (e.g., MDS rank 1 and 2)",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs perf stats"
+    ]
+  },
+  {
+    "entity_id": "3c2e8b9b75d7792b",
+    "code": "$ ceph auth get-or-create client.fstop mon 'allow r' mds 'allow r' osd 'allow r' mgr 'allow r'\n$ cephfs-top",
+    "language": "bash",
+    "context": "By default, `cephfs-top` uses `client.fstop` user to connect to a Ceph cluster",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "b5a89fcb24698e0f",
+    "code": "$ cephfs-top --id <name>",
+    "language": "bash",
+    "context": "To use a non-default user (other than `client.fstop`) use",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9ad538bf03c45209",
+    "code": "$ cephfs-top --cluster <cluster>",
+    "language": "bash",
+    "context": "By default, `cephfs-top` connects to cluster name `ceph`. To use a non-default cluster name",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cf519598743476c7",
+    "code": "$ cephfs-top -d <seconds>",
+    "language": "bash",
+    "context": "`cephfs-top` refreshes stats every second by default. To choose a different refresh interval use",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f3c69539cf0c90ae",
+    "code": "$ cephfs-top --dump",
+    "language": "bash",
+    "context": "To dump the metrics to stdout without creating a curses display use",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dafcd5b51b1797e9",
+    "code": "$ cephfs-top --dumpfs <fs_name>",
+    "language": "bash",
+    "context": "To dump the metrics of the given filesystem to stdout without creating a curses display use",
+    "source_file": "cephfs/cephfs-top.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fc15cbe687fb8973",
+    "code": "# on client host\nmkdir -p -m 755 /etc/ceph\nssh {user}@{mon-host} \"sudo ceph config generate-minimal-conf\" | sudo tee /etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "#. Generate a minimal conf file for the client host and place it at a\n   standard location",
+    "source_file": "cephfs/mount-prerequisites.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config generate-minimal-conf",
+      "ceph ssh"
+    ]
+  },
+  {
+    "entity_id": "ae78e87ae922ebdd",
+    "code": "chmod 644 /etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "#. Ensure that the conf has appropriate permissions",
+    "source_file": "cephfs/mount-prerequisites.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2580ba76b24ede48",
+    "code": "ssh {user}@{mon-host} \"sudo ceph fs authorize cephfs client.foo / rw\" | sudo tee /etc/ceph/ceph.client.foo.keyring",
+    "language": "text",
+    "context": "#. Create a CephX user and get its secret key",
+    "source_file": "cephfs/mount-prerequisites.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs authorize cephfs"
+    ]
+  },
+  {
+    "entity_id": "d72ff14a833bb9e6",
+    "code": "chmod 600 /etc/ceph/ceph.client.foo.keyring",
+    "language": "text",
+    "context": "#. Ensure that the keyring has appropriate permissions",
+    "source_file": "cephfs/mount-prerequisites.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df12fd1174436bbb",
+    "code": "ceph config help debug_client\n debug_client - Debug level for client\n (str, advanced)                                                                                                                      Default: 0/5\n Can update at runtime: true",
+    "language": "text",
+    "context": "Certain client configurations can be applied at runtime. To check if a configuration option can be applied (taken into affect by a client) at runtime, use the `config help` command",
+    "source_file": "cephfs/client-config-ref.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config help debug_client"
+    ]
+  },
+  {
+    "entity_id": "d409ad7dabb19aff",
+    "code": "ceph config set client debug_client 20/20",
+    "language": "text",
+    "context": "To update a configuration option at runtime, use the `config set` command",
+    "source_file": "cephfs/client-config-ref.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set client"
+    ]
+  },
+  {
+    "entity_id": "eaecf7073e9a9d0f",
+    "code": "ceph config get client\n WHO    MASK LEVEL    OPTION                    VALUE     RO \n client      advanced debug_client              20/20          \n global      advanced osd_pool_default_min_size 1            \n global      advanced osd_pool_default_size     3",
+    "language": "text",
+    "context": "To check configured options use the `config get` command",
+    "source_file": "cephfs/client-config-ref.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config get client"
+    ]
+  },
+  {
+    "entity_id": "76383ec5de2f8652",
+    "code": "$ sudo ceph auth get-or-create mds.${id} mon 'profile mds' mgr 'profile mds' mds 'allow *' osd 'allow *' > /var/lib/ceph/mds/ceph-${id}/keyring",
+    "language": "bash",
+    "context": "#. Create the authentication key, if you use CephX:",
+    "source_file": "cephfs/add-remove-mds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create mds"
+    ]
+  },
+  {
+    "entity_id": "63dab84035e033f4",
+    "code": "$ sudo systemctl start ceph-mds@${id}",
+    "language": "bash",
+    "context": "#. Start the service:",
+    "source_file": "cephfs/add-remove-mds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a9b72b74c5a18152",
+    "code": "mds: ${id}:1 {0=${id}=up:active} 2 up:standby",
+    "language": "text",
+    "context": "#. The status of the cluster should show:",
+    "source_file": "cephfs/add-remove-mds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "14924565e9e13ee9",
+    "code": "$ ceph config set mds.${id} mds_join_fs ${fs}",
+    "language": "bash",
+    "context": "#. Optionally, configure the file system the MDS should join (:ref:`mds-join-fs`):",
+    "source_file": "cephfs/add-remove-mds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mds"
+    ]
+  },
+  {
+    "entity_id": "945586cb01df35aa",
+    "code": "$ sudo systemctl stop ceph-mds@${id}",
+    "language": "bash",
+    "context": "#. Stop the MDS to be removed.",
+    "source_file": "cephfs/add-remove-mds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8d105dbdec6ce0a",
+    "code": "$ sudo rm -rf /var/lib/ceph/mds/ceph-${id}",
+    "language": "bash",
+    "context": "#. Remove the ``/var/lib/ceph/mds/ceph-${id}`` directory on the MDS.",
+    "source_file": "cephfs/add-remove-mds.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7fde4813b50f6c74",
+    "code": "ceph fs new <file system name> <metadata pool name> <data pool name>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs new"
+    ]
+  },
+  {
+    "entity_id": "4f04d40cd0e99c08",
+    "code": "ceph fs ls",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs ls"
+    ]
+  },
+  {
+    "entity_id": "e3d57bf22fcde54a",
+    "code": "ceph fs lsflags <file system name>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs lsflags"
+    ]
+  },
+  {
+    "entity_id": "f534047b5d9bf74f",
+    "code": "ceph fs dump [epoch]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump"
+    ]
+  },
+  {
+    "entity_id": "346d91aab722b85e",
+    "code": "ceph fs rm <file system name> [--yes-i-really-mean-it]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs rm"
+    ]
+  },
+  {
+    "entity_id": "012039d02934d4fc",
+    "code": "ceph fs get <file system name>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs get"
+    ]
+  },
+  {
+    "entity_id": "03fcb985750413c6",
+    "code": "ceph fs set <file system name> <var> <val> [--yes-i-really-mean-it]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "8d87e76a04815163",
+    "code": "ceph fs add_data_pool <file system name> <pool name/id>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs add_data_pool"
+    ]
+  },
+  {
+    "entity_id": "ceabff001d2a2df6",
+    "code": "ceph fs rm_data_pool <file system name> <pool name/id>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs rm_data_pool"
+    ]
+  },
+  {
+    "entity_id": "2f213c74763b0f30",
+    "code": "ceph fs rename <file system name> <new file system name> [--yes-i-really-mean-it]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs rename"
+    ]
+  },
+  {
+    "entity_id": "b6e1989252812052",
+    "code": "fs swap <fs1-name> <fs1_id> <fs2-name> <fs2_id> [--swap-fscids=yes|no] [--yes-i-really-mean-it]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dd128ab9b21fade3",
+    "code": "ceph fs set <fs> joinable true\nceph fs set <fs> refuse_client_sessions false",
+    "language": "text",
+    "context": "system name. Any active file system mounts for either CephFSs\nmust remount. Existing unflushed operations will be lost. When it is judged\nthat one of the swapped file systems is ready for clients, run",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "1e6b99b69a58b269",
+    "code": "ceph fs set <fs name> max_file_size <size in bytes>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "cba68def104a0237",
+    "code": "ceph fs set <fs_name> down true",
+    "language": "text",
+    "context": "Taking a CephFS cluster down is done by setting the down flag:",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "9e27bc05d6eb81b1",
+    "code": "ceph fs set <fs_name> down false",
+    "language": "text",
+    "context": "Taking a CephFS cluster down is done by setting the down flag:\n \n:: \n \n    ceph fs set <fs_name> down true\n \nTo bring the cluster back online:",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "72319b6654c815ef",
+    "code": "ceph fs fail <fs_name> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs fail"
+    ]
+  },
+  {
+    "entity_id": "7cc8ac3d4b93d97e",
+    "code": "ceph fs set <fs_name> joinable false",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "35da2c7081be3568",
+    "code": "# For all ranks, 0-N:\nceph mds fail <fs_name>:<n> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds fail"
+    ]
+  },
+  {
+    "entity_id": "4d6b4f16659e9d01",
+    "code": "ceph fs set <fs_name> joinable true",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "390fb42987e7269d",
+    "code": "<fs_name>:<rank>\n<fs_id>:<rank>\n<rank>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8abf9ed0fb60cb41",
+    "code": "ceph mds fail <gid/name/role>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds fail"
+    ]
+  },
+  {
+    "entity_id": "e4f46bd57b5de46d",
+    "code": "ceph tell mds.<daemon name> command ...",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "4c19df1ddd3e25fc",
+    "code": "ceph mds metadata <gid/name/role>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds metadata"
+    ]
+  },
+  {
+    "entity_id": "52b6016fae0eec71",
+    "code": "ceph mds repaired <role>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds repaired"
+    ]
+  },
+  {
+    "entity_id": "8564f0cfad284b7e",
+    "code": "ceph mds last-seen <name>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds last-seen"
+    ]
+  },
+  {
+    "entity_id": "42e52aefce7fd111",
+    "code": "ceph fs required_client_features <fs name> add reply_encoding\nceph fs required_client_features <fs name> rm reply_encoding",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs required_client_features"
+    ]
+  },
+  {
+    "entity_id": "01c16fd438be9f42",
+    "code": "ceph fs feature ls",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs feature ls"
+    ]
+  },
+  {
+    "entity_id": "44a9d42479d06fec",
+    "code": "reply_encoding",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f54bc30803bf6a33",
+    "code": "reclaim_client",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "76e6f2fbc8ab7c5f",
+    "code": "lazy_caps_wanted",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13e8c1ac62068a10",
+    "code": "multi_reconnect",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "26d0c910e3505e7f",
+    "code": "metric_collect",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9698648a0ee8cdb9",
+    "code": "alternate_name",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "34e180f0babea82b",
+    "code": "client_mds_auth_caps",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fc30b26232fb164",
+    "code": "ceph fs flag set <flag name> <flag val> [<confirmation string>]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs flag set"
+    ]
+  },
+  {
+    "entity_id": "b60a97ca6179b923",
+    "code": "ceph mds rmfailed",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds rmfailed"
+    ]
+  },
+  {
+    "entity_id": "bc88c528cda65495",
+    "code": "ceph fs reset <file system name>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs reset"
+    ]
+  },
+  {
+    "entity_id": "2deb45161c6a2a42",
+    "code": "ceph fs new <file system name> <metadata pool name> <data pool name> --fscid <fscid> --force",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/administration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs new"
+    ]
+  },
+  {
+    "entity_id": "86a56605704db92c",
+    "code": "ceph tell mds.0 client ls",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/eviction.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "0271fb6aff347fbb",
+    "code": "# These all work\nceph tell mds.0 client evict id=4305\nceph tell mds.0 client evict client_metadata.=4305",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/eviction.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "4616107fd4189730",
+    "code": "$ ceph osd blocklist ls\nlisted 1 entries\n127.0.0.1:0/3710147553 2018-03-19 11:32:24.716146\n$ ceph osd blocklist rm 127.0.0.1:0/3710147553\nun-blocklisting 127.0.0.1:0/3710147553",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/eviction.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd blocklist ls",
+      "ceph osd blocklist rm"
+    ]
+  },
+  {
+    "entity_id": "e7e834b794454a22",
+    "code": "Mantle is for research and development of metadata balancer algorithms,\nnot for use on production CephFS clusters.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "503d838982a10173",
+    "code": "Developing balancers with vstart is difficult because running all daemons\nand clients on one node can overload the system. Let the system run for a\nwhile, even though there will likely be many lost heartbeat warnings and\nmany laggy MDS warnings. In most cases this guide will work, but sometimes\nwhen developing with vstart all MDSs will lock up and you cannot actually\nsee them spill. It is better to run this on a multi-node cluster.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "366bf197e871c205",
+    "code": "while true; do\n  touch \"/cephfs/blah-`date`\"\ndone",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ae5a12f8bf5a9b50",
+    "code": "cd build\n../src/vstart.sh -n -l\nfor i in a b c; do \n  bin/ceph --admin-daemon out/mds.$i.asok config set debug_ms 0\n  bin/ceph --admin-daemon out/mds.$i.asok config set debug_mds 2\n  bin/ceph --admin-daemon out/mds.$i.asok config set mds_beacon_grace 1500\ndone",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon out"
+    ]
+  },
+  {
+    "entity_id": "95b1ad418a7215b1",
+    "code": "bin/rados put --pool=cephfs_metadata_a greedyspill.lua ../src/mds/balancers/greedyspill.lua",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "rados put --pool"
+    ]
+  },
+  {
+    "entity_id": "4d265a5e2b2e330c",
+    "code": "bin/ceph fs set cephfs max_mds 5\nbin/ceph fs set cephfs_a balancer greedyspill.lua",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set cephfs",
+      "ceph fs set cephfs_a"
+    ]
+  },
+  {
+    "entity_id": "eb49e2d6d8b7f39c",
+    "code": "bin/ceph-fuse /cephfs -o allow_other &\ntail -f out/mds.a.log",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0464bd9a23a22ad7",
+    "code": "for i in 0 1 2; do\n  docker run -d \\\n    --name=client$i \\\n    -v /cephfs:/cephfs \\\n    michaelsevilla/mdtest \\\n    -F -C -n 100000 -d \"/cephfs/client-test$i\"\ndone",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ab433fd5e52e0436",
+    "code": "for i in 0 1 2 3; do docker rm -f client$i; done",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50fd08ee2f9e2a12",
+    "code": "2016-08-21 06:44:01.763930 7fd03aaf7700  0 lua.balancer MDS0: < auth.meta_load=0.0 all.meta_load=0.0 req_rate=1.0 queue_len=0.0 cpu_load_avg=1.35 > load=0.0\n2016-08-21 06:44:01.763966 7fd03aaf7700  0 lua.balancer MDS1: < auth.meta_load=0.0 all.meta_load=0.0 req_rate=0.0 queue_len=0.0 cpu_load_avg=1.35 > load=0.0\n2016-08-21 06:44:01.763982 7fd03aaf7700  0 lua.balancer MDS2: < auth.meta_load=0.0 all.meta_load=0.0 req_rate=0.0 queue_len=0.0 cpu_load_avg=1.35 > load=0.0\n2016-08-21 06:44:01.764010 7fd03aaf7700  2 lua.balancer when: not migrating! my_load=0.0 hisload=0.0\n2016-08-21 06:44:01.764033 7fd03aaf7700  2 mds.0.bal  mantle decided that new targets={}",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9ba8ba8664b549d9",
+    "code": "2016-08-21 06:45:21.869994 7fd03aaf7700  0 lua.balancer MDS0: < auth.meta_load=5834.188908912 all.meta_load=1953.3492228857 req_rate=12591.0 queue_len=1075.0 cpu_load_avg=3.05 > load=1953.3492228857\n2016-08-21 06:45:21.870017 7fd03aaf7700  0 lua.balancer MDS1: < auth.meta_load=0.0 all.meta_load=0.0 req_rate=0.0 queue_len=0.0 cpu_load_avg=3.05 > load=0.0\n2016-08-21 06:45:21.870027 7fd03aaf7700  0 lua.balancer MDS2: < auth.meta_load=0.0 all.meta_load=0.0 req_rate=0.0 queue_len=0.0 cpu_load_avg=3.05 > load=0.0\n2016-08-21 06:45:21.870034 7fd03aaf7700  2 lua.balancer when: migrating! my_load=1953.3492228857 hisload=0.0\n2016-08-21 06:45:21.870050 7fd03aaf7700  2 mds.0.bal  mantle decided that new targets={0=0,1=976.675,2=0}\n2016-08-21 06:45:21.870094 7fd03aaf7700  0 mds.0.bal    - exporting [0,0.52287 1.04574] 1030.88 to mds.1 [dir 100000006ab /client-test2/ [2,head] auth pv=33 v=32 cv=32/0 ap=2+3+4 state=1610612802|complete f(v0 m2016-08-21 06:44:20.366935 1=0+1) n(v2 rc2016-08-21 06:44:30.946816 3790=3788+2) hs=1+0,ss=0+0 dirty=1 | child=1 dirty=1 authpin=1 0x55d2762fd690]\n2016-08-21 06:45:21.870151 7fd03aaf7700  0 mds.0.migrator nicely exporting to mds.1 [dir 100000006ab /client-test2/ [2,head] auth pv=33 v=32 cv=32/0 ap=2+3+4 state=1610612802|complete f(v0 m2016-08-21 06:44:20.366935 1=0+1) n(v2 rc2016-08-21 06:44:30.946816 3790=3788+2) hs=1+0,ss=0+0 dirty=1 | child=1 dirty=1 authpin=1 0x55d2762fd690]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bb6f141af08b94b7",
+    "code": "2016-08-21 06:47:10.210253 7fd03aaf7700  0 lua.balancer MDS0: < auth.meta_load=415.77414300449 all.meta_load=415.79000078186 req_rate=82813.0 queue_len=0.0 cpu_load_avg=11.97 > load=415.79000078186\n2016-08-21 06:47:10.210277 7fd03aaf7700  0 lua.balancer MDS1: < auth.meta_load=228.72023977691 all.meta_load=186.5606496623 req_rate=28580.0 queue_len=0.0 cpu_load_avg=11.97 > load=186.5606496623\n2016-08-21 06:47:10.210290 7fd03aaf7700  0 lua.balancer MDS2: < auth.meta_load=0.0 all.meta_load=0.0 req_rate=1.0 queue_len=0.0 cpu_load_avg=11.97 > load=0.0\n2016-08-21 06:47:10.210298 7fd03aaf7700  2 lua.balancer when: not migrating! my_load=415.79000078186 hisload=186.5606496623\n2016-08-21 06:47:10.210311 7fd03aaf7700  2 mds.0.bal  mantle decided that new targets={}",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8d9457278d875bb",
+    "code": "mds[0][\"queue_len\"]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "766309e9896cc914",
+    "code": "BAL_LOG(0, \"this is a log message\")",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/mantle.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fdd5bb05d7b7ea6",
+    "code": "ceph fs flag set enable_multiple true",
+    "language": "text",
+    "context": "Existing clusters must set a flag to enable multiple file systems",
+    "source_file": "cephfs/multifs.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs flag set"
+    ]
+  },
+  {
+    "entity_id": "4fbc860776dc6e88",
+    "code": "ceph fs volume create <fs_name>",
+    "language": "text",
+    "context": "he new ``volumes`` plugin interface (see: :doc:`/cephfs/fs-volumes`) automates\nmost of the work of configuring a new file system. The \"volume\" concept is\nsimply a new file system. This can be done via",
+    "source_file": "cephfs/multifs.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs volume create"
+    ]
+  },
+  {
+    "entity_id": "d4d34c8c5ddded06",
+    "code": "ceph fs volume create <vol-name> --meta-pool <meta-pool-name> --data-pool <data-pool-name>",
+    "language": "text",
+    "context": "If the data and metadata pools for the volume are already present, the names of\nthese pool(s) can be passed as follows",
+    "source_file": "cephfs/multifs.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs volume create"
+    ]
+  },
+  {
+    "entity_id": "5e66b466f9742578",
+    "code": "$ ceph fs set <fs_name> allow_new_snaps true",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/snapshots.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "61cd77c3701191f7",
+    "code": "$ touch file1\n$ cd .snap\n$ mkdir my_snapshot",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/snapshots.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5ce3a03c20a5117b",
+    "code": "$ touch /mnt/cephfs/file1\n$ cd .snap\n$ mkdir snap1",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/snapshots.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0981cb05f13909fe",
+    "code": "$ touch /mnt/cephfs/file2\n$ cd .snap\n$ mkdir snap2",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/snapshots.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "925d19ef50a2e5a8",
+    "code": "$ rm /mnt/cephfs/file1\n$ cd .snap\n$ mkdir snap3",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/snapshots.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1133d08c76cf9041",
+    "code": "$ cd .snap\n$ cd snap2\n$ cp file1 /mnt/cephfs/",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/snapshots.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bff213fc6b273f76",
+    "code": "$ cd .snap\n$ rmdir my_snapshot",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/snapshots.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f698710798996b2d",
+    "code": "mkdir /mnt/mycephfs\nceph-fuse --id foo /mnt/mycephfs",
+    "language": "text",
+    "context": "Mounting CephFS\n===============\nTo FUSE-mount the Ceph file system, use the ``ceph-fuse`` command",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c9c7966c3b400d53",
+    "code": "ceph-fuse -n client.foo /mnt/mycephfs",
+    "language": "text",
+    "context": "`--id`` passes the name of the CephX user whose keyring we intend to\nuse for mounting CephFS. In the above command, it's ``foo``. You can also use\n``-n`` instead, although ``--id`` is evidently easier",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0b15b80b796b293c",
+    "code": "ceph-fuse --id foo -k /path/to/keyring /mnt/mycephfs",
+    "language": "text",
+    "context": "In case the keyring is not present in standard locations, you may pass it\ntoo",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3053f2e11da5467b",
+    "code": "ceph-fuse --id foo -m 192.168.0.1:6789 /mnt/mycephfs",
+    "language": "text",
+    "context": "You may pass a Monitor's address and port on the commandline, although this is not mandatory",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a8c400a65fac07c7",
+    "code": "ceph-fuse --id foo -r /path/to/dir /mnt/mycephfs",
+    "language": "text",
+    "context": "You can also mount a specific directory within CephFS instead of mounting\nthe CephFS root",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f7498c2f984540cf",
+    "code": "ceph-fuse --id foo --client_fs mycephfs2 /mnt/mycephfs2",
+    "language": "text",
+    "context": "If you serve more than one CephFS file system from your Ceph cluster, use the option\n``--client_fs`` to mount the non-default file system",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "70533ceba76adfe9",
+    "code": "umount /mnt/mycephfs",
+    "language": "text",
+    "context": "Use ``umount`` to unmount CephFS like any other FS",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf9773250aef4961",
+    "code": "#DEVICE PATH       TYPE      OPTIONS\nnone    /mnt/mycephfs  fuse.ceph ceph.id={user-ID}[,ceph.conf={path/to/conf.conf}],_netdev,defaults  0 0",
+    "language": "text",
+    "context": "To mount CephFS as a file system in user space, add the following to ``/etc/fstab``",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph"
+    ]
+  },
+  {
+    "entity_id": "656c1a622578c91b",
+    "code": "none    /mnt/mycephfs  fuse.ceph ceph.id=myuser,_netdev,defaults  0 0\nnone    /mnt/mycephfs  fuse.ceph ceph.id=myuser,ceph.conf=/etc/ceph/foo.conf,_netdev,defaults  0 0",
+    "language": "text",
+    "context": "For example",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph"
+    ]
+  },
+  {
+    "entity_id": "45031b7a002407cf",
+    "code": "none    /mnt/mycephfs  fuse.ceph ceph.id=myuser,ceph.client_mountpoint=/path/to/dir,_netdev,defaults  0 0",
+    "language": "text",
+    "context": "To mount a subdirectory of the CephFS, add the following to ``/etc/fstab``",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph"
+    ]
+  },
+  {
+    "entity_id": "72775740bf686462",
+    "code": "systemctl start ceph-fuse@/mnt/mycephfs.service\nsystemctl enable ceph-fuse.target\nsystemctl enable ceph-fuse@-mnt-mycephfs.service",
+    "language": "text",
+    "context": "d units are available.\nAs usual, these unit files declare the default dependencies and recommended\nexecution context for ``ceph-fuse``. After making the fstab entry shown above,\nrun following commands",
+    "source_file": "cephfs/mount-using-fuse.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "88b25d9d342ed8c2",
+    "code": "Under certain conditions, NFS access using the CephFS FSAL fails. This\ncauses an error to be thrown that reads \"Input/output error\". Under these\ncircumstances, the application metadata must be set for the CephFS metadata\nand data pools. Do this by running the following command:",
+    "language": "text",
+    "context": ".. important",
+    "source_file": "cephfs/nfs.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7902b3da1bc60914",
+    "code": "[client]\n        mon host = [v2:192.168.1.7:3300,v1:192.168.1.7:6789], [v2:192.168.1.8:3300,v1:192.168.1.8:6789], [v2:192.168.1.9:3300,v1:192.168.1.9:6789]",
+    "language": "text",
+    "context": "clients includes a ``[client]`` section with\n``mon_host`` option set to let the clients connect to the Ceph cluster's\nmonitors, usually generated via ``ceph config generate-minimal-conf``.\nFor example",
+    "source_file": "cephfs/nfs.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4b80257d3ba9e831",
+    "code": "/* generic cap bits */\n#define CEPH_CAP_GSHARED     1  /* (metadata) client can read (s) */\n#define CEPH_CAP_GEXCL       2  /* (metadata) client can read and update (x) */\n#define CEPH_CAP_GCACHE      4  /* (file) client can cache reads (c) */\n#define CEPH_CAP_GRD         8  /* (file) client can read (r) */\n#define CEPH_CAP_GWR        16  /* (file) client can write (w) */\n#define CEPH_CAP_GBUFFER    32  /* (file) client can buffer writes (b) */\n#define CEPH_CAP_GWREXTEND  64  /* (file) client can extend EOF (a) */\n#define CEPH_CAP_GLAZYIO   128  /* (file) client can perform lazy io (l) */",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/capabilities.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e03b4a3124b512d9",
+    "code": "/* per-lock shift */\n#define CEPH_CAP_SAUTH      2 /* A */\n#define CEPH_CAP_SLINK      4 /* L */\n#define CEPH_CAP_SXATTR     6 /* X */\n#define CEPH_CAP_SFILE      8 /* F */",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/capabilities.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9959abdd5f8dc189",
+    "code": "| AUTH | LINK | XATTR | FILE\n2      4      6       8",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/capabilities.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "af51a64f83656802",
+    "code": "#define CEPH_CAP_AUTH_SHARED  (CEPH_CAP_GSHARED  << CEPH_CAP_SAUTH)",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/capabilities.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "768be26453455784",
+    "code": "#define CEPH_CAP_PIN  1  /* no specific capabilities beyond the pin */",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/capabilities.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0518286f9d0d56af",
+    "code": "+---+---+---+---+---+---+---+---+\n| p | _ |As   x |Ls   x |Xs   x |\n+---+---+---+---+---+---+---+---+\n|Fs   x   c   r   w   b   a   l |\n+---+---+---+---+---+---+---+---+",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/capabilities.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f4a1050d45b8e9c8",
+    "code": "ceph mgr module enable snap_schedule",
+    "language": "text",
+    "context": "The *snap_schedule* module is enabled with",
+    "source_file": "cephfs/snap-schedule.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable"
+    ]
+  },
+  {
+    "entity_id": "0021db21e7fabb0a",
+    "code": "#> ceph fs snap-schedule\nno valid command found; 8 closest matches:\nfs snap-schedule status [<path>] [<fs>] [<format>]\nfs snap-schedule list <path> [--recursive] [<fs>] [<format>]\nfs snap-schedule add <path> <snap_schedule> [<start>] [<fs>]\nfs snap-schedule remove <path> [<repeat>] [<start>] [<fs>]\nfs snap-schedule retention add <path> <retention_spec_or_period> [<retention_count>] [<fs>]\nfs snap-schedule retention remove <path> <retention_spec_or_period> [<retention_count>] [<fs>]\nfs snap-schedule activate <path> [<repeat>] [<start>] [<fs>]\nfs snap-schedule deactivate <path> [<repeat>] [<start>] [<fs>]\nError EINVAL: invalid command",
+    "language": "text",
+    "context": "When no subcommand is supplied a synopsis is printed",
+    "source_file": "cephfs/snap-schedule.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snap-schedule no"
+    ]
+  },
+  {
+    "entity_id": "cb68eab2d767fb19",
+    "code": "ceph fs snap-schedule status /\nceph fs snap-schedule status /foo/bar --format=json\nceph fs snap-schedule list /\nceph fs snap-schedule list / --recursive=true # list all schedules in the tree",
+    "language": "text",
+    "context": "Examples",
+    "source_file": "cephfs/snap-schedule.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snap-schedule list",
+      "ceph fs snap-schedule status"
+    ]
+  },
+  {
+    "entity_id": "c456201b9c9a7d33",
+    "code": "ceph fs snap-schedule add / 1h\nceph fs snap-schedule add / 1h 11:55\nceph fs snap-schedule add / 2h 11:55\nceph fs snap-schedule remove / 1h 11:55 # removes one single schedule\nceph fs snap-schedule remove / 1h # removes all schedules with --repeat=1h\nceph fs snap-schedule remove / # removes all schedules on path /",
+    "language": "text",
+    "context": "Examples",
+    "source_file": "cephfs/snap-schedule.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snap-schedule add",
+      "ceph fs snap-schedule remove"
+    ]
+  },
+  {
+    "entity_id": "83cd42c571c3a30a",
+    "code": "ceph fs snap-schedule retention add / h 24 # keep 24 snapshots at least an hour apart\nceph fs snap-schedule retention add / d 7 # and 7 snapshots at least a day apart\nceph fs snap-schedule retention remove / h 24 # remove retention for 24 hourlies\nceph fs snap-schedule retention add / 24h4w # add 24 hourly and 4 weekly to retention\nceph fs snap-schedule retention remove / 7d4w # remove 7 daily and 4 weekly, leaves 24 hourly",
+    "language": "text",
+    "context": "Examples",
+    "source_file": "cephfs/snap-schedule.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snap-schedule retention"
+    ]
+  },
+  {
+    "entity_id": "1f544776465f4dfe",
+    "code": "ceph fs snap-schedule activate / # activate all schedules on the root directory\nceph fs snap-schedule deactivate / 1d # deactivates daily snapshots on the root directory",
+    "language": "text",
+    "context": "Examples",
+    "source_file": "cephfs/snap-schedule.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snap-schedule activate",
+      "ceph fs snap-schedule deactivate"
+    ]
+  },
+  {
+    "entity_id": "eadf5217569ea6ef",
+    "code": "ceph mds fail 5446     # GID\nceph mds fail myhost   # Daemon name\nceph mds fail 0        # Unqualified rank\nceph mds fail 3:0      # FSCID and rank\nceph mds fail myfs:0   # File System name and rank",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/standby.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds fail 0",
+      "ceph mds fail 3",
+      "ceph mds fail 5446",
+      "ceph mds fail myfs",
+      "ceph mds fail myhost"
+    ]
+  },
+  {
+    "entity_id": "a9c71f6cd75bcc01",
+    "code": "ceph fs set <fs name> standby_count_wanted <count>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/standby.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "c1de69071ec1e61e",
+    "code": "ceph fs set <fs name> allow_standby_replay <bool>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/standby.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "23d0dfee727a714c",
+    "code": "ceph fs set <fs name> refuse_standby_for_another_fs true",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/standby.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "3df72ddb331f0897",
+    "code": "$ ceph fs dump\ndumped fsmap epoch 399\n...\nFilesystem 'cephfs' (27)\n...\ne399\nmax_mds 1\nin      0\nup      {0=20384}\nfailed\ndamaged\nstopped\n...\n[mds.a{0:20384} state up:active seq 239 addr [v2:127.0.0.1:6854/966242805,v1:127.0.0.1:6855/966242805]]",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/standby.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump dumped"
+    ]
+  },
+  {
+    "entity_id": "33b0226cde406bbe",
+    "code": "$ ceph config set mds.b mds_join_fs cephfs",
+    "language": "bash",
+    "context": "You may set ``mds_join_fs`` on the standby to enforce your preference:",
+    "source_file": "cephfs/standby.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mds"
+    ]
+  },
+  {
+    "entity_id": "686ab9be96b9527f",
+    "code": "$ ceph fs dump\ndumped fsmap epoch 405\ne405\n...\nFilesystem 'cephfs' (27)\n...\nmax_mds 1\nin      0\nup      {0=10420}\nfailed\ndamaged\nstopped\n...\n[mds.b{0:10420} state up:active seq 274 join_fscid=27 addr [v2:127.0.0.1:6856/2745199145,v1:127.0.0.1:6857/2745199145]]",
+    "language": "bash",
+    "context": "after automatic failover:",
+    "source_file": "cephfs/standby.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump dumped"
+    ]
+  },
+  {
+    "entity_id": "f8e43e0e1d052a86",
+    "code": "$ ceph auth get-or-create client.mirror mon 'profile cephfs-mirror' mds 'allow r' osd 'allow rw tag cephfs metadata=*, allow r tag cephfs data=*' mgr 'allow r'",
+    "language": "bash",
+    "context": "r) for the ``cephfs-mirror`` daemon. This user\nrequires write capability on the metadata pool to create RADOS objects (index objects)\nfor watch/notify operation and read capability on the data pool(s)",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "f758c972edebdeb9",
+    "code": "$ ceph fs authorize <fs_name> client.mirror_remote / rwps",
+    "language": "bash",
+    "context": "Create a Ceph user for each file system peer (on the secondary/remote cluster). This user needs\nto have full capabilities on the MDS (to take snapshots) and the OSDs",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs authorize"
+    ]
+  },
+  {
+    "entity_id": "8a9a6f3c662eacb8",
+    "code": "$ systemctl enable cephfs-mirror@mirror\n$ systemctl start cephfs-mirror@mirror",
+    "language": "bash",
+    "context": "The mirror daemon is managed by ``systemd``, though in most cases it is best to use\nthe ``cephadm`` interface",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "07bed88c38cac11d",
+    "code": "$ cephfs-mirror --id mirror --cluster site-a -f",
+    "language": "bash",
+    "context": "``cephfs-mirror`` daemon can be run in foreground using",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "93cf920c2e32508f",
+    "code": "$ mkdir -p /d0/d1/d2\n$ ceph fs snapshot mirror add cephfs /d0/d1/d2\n{}\n$ ceph fs snapshot mirror add cephfs /d0/d1/../d1/d2\nError EEXIST: directory /d0/d1/d2 is already tracked",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "d159ee0250022524",
+    "code": "$ ceph fs snapshot mirror add cephfs /d0/d1\nError EINVAL: /d0/d1 is a ancestor of tracked path /d0/d1/d2\n$ ceph fs snapshot mirror add cephfs /d0/d1/d2/d3\nError EINVAL: /d0/d1/d2/d3 is a subtree of tracked path /d0/d1/d2",
+    "language": "bash",
+    "context": "After a directory is added for mirroring, the additional mirroring of\nsubdirectories or ancestor directories is disallowed",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "2fddccaf4fa62543",
+    "code": "$ ceph fs snapshot mirror peer_bootstrap create <fs_name> <client_entity> <site-name>",
+    "language": "bash",
+    "context": "cluster (manager host and hosts running the\nmirror daemon). This can be avoided by bootstrapping and importing a peer token. Peer\nbootstrap involves creating a bootstrap token on the peer cluster via",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "d54aee53d47363f7",
+    "code": "$ ceph fs snapshot mirror peer_bootstrap create backup_fs client.mirror_remote site-remote\n{\"token\": \"eyJmc2lkIjogIjBkZjE3MjE3LWRmY2QtNDAzMC05MDc5LTM2Nzk4NTVkNDJlZiIsICJmaWxlc3lzdGVtIjogImJhY2t1cF9mcyIsICJ1c2VyIjogImNsaWVudC5taXJyb3JfcGVlcl9ib290c3RyYXAiLCAic2l0ZV9uYW1lIjogInNpdGUtcmVtb3RlIiwgImtleSI6ICJBUUFhcDBCZ0xtRmpOeEFBVnNyZXozai9YYUV0T2UrbUJEZlJDZz09IiwgIm1vbl9ob3N0IjogIlt2MjoxOTIuMTY4LjAuNTo0MDkxOCx2MToxOTIuMTY4LjAuNTo0MDkxOV0ifQ==\"}",
+    "language": "bash",
+    "context": "e.g.",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "1a3b253b9edf621f",
+    "code": "$ ceph fs snapshot mirror peer_bootstrap import <fs_name> <token>",
+    "language": "bash",
+    "context": "Import the bootstrap token in the primary cluster via",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "d82d8d86a811809d",
+    "code": "$ ceph fs snapshot mirror peer_bootstrap import cephfs eyJmc2lkIjogIjBkZjE3MjE3LWRmY2QtNDAzMC05MDc5LTM2Nzk4NTVkNDJlZiIsICJmaWxlc3lzdGVtIjogImJhY2t1cF9mcyIsICJ1c2VyIjogImNsaWVudC5taXJyb3JfcGVlcl9ib290c3RyYXAiLCAic2l0ZV9uYW1lIjogInNpdGUtcmVtb3RlIiwgImtleSI6ICJBUUFhcDBCZ0xtRmpOeEFBVnNyZXozai9YYUV0T2UrbUJEZlJDZz09IiwgIm1vbl9ob3N0IjogIlt2MjoxOTIuMTY4LjAuNTo0MDkxOCx2MToxOTIuMTY4LjAuNTo0MDkxOV0ifQ==",
+    "language": "bash",
+    "context": "e.g.",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "ff8798dae4480f71",
+    "code": "$ mkdir -p /d0/d1/d2/.snap/snap1",
+    "language": "bash",
+    "context": "To initiate snapshot mirroring, create a snapshot of the configured directory in the primary cluster",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "51fc2affb96af418",
+    "code": "$ ceph fs snapshot mirror daemon status\n[\n  {\n    \"daemon_id\": 284167,\n    \"filesystems\": [\n      {\n        \"filesystem_id\": 1,\n        \"name\": \"a\",\n        \"directory_count\": 1,\n        \"peers\": [\n          {\n            \"uuid\": \"02117353-8cd1-44db-976b-eb20609aa160\",\n            \"remote\": {\n              \"client_name\": \"client.mirror_remote\",\n              \"cluster_name\": \"ceph\",\n              \"fs_name\": \"backup_fs\"\n            },\n            \"stats\": {\n              \"failure_count\": 1,\n              \"recovery_count\": 0\n            }\n          }\n        ]\n      }\n    ]\n  }\n]",
+    "language": "bash",
+    "context": "CephFS mirroring module provides ``mirror daemon status`` interface to check mirror daemon status",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "07f18ed42c7b4c0a",
+    "code": "$ ceph --admin-daemon /path/to/mirror/daemon/admin/socket help\n{\n    ....\n    ....\n    \"fs mirror status cephfs@360\": \"get filesystem mirror status\",\n    ....\n    ....\n}",
+    "language": "bash",
+    "context": "CephFS mirror daemons provide admin socket commands for querying mirror status. To check\navailable commands for mirror status use",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "2628e9dd4589900d",
+    "code": "$ ceph --admin-daemon /var/run/ceph/cephfs-mirror.asok fs mirror status cephfs@360\n{\n  \"rados_inst\": \"192.168.0.5:0/1476644347\",\n  \"peers\": {\n      \"a2dc7784-e7a1-4723-b103-03ee8d8768f8\": {\n          \"remote\": {\n              \"client_name\": \"client.mirror_remote\",\n              \"cluster_name\": \"site-a\",\n              \"fs_name\": \"backup_fs\"\n          }\n      }\n  },\n  \"snap_dirs\": {\n      \"dir_count\": 1\n  }\n}",
+    "language": "bash",
+    "context": "This command currently provides minimal information regarding mirror status",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "40cc389e5585513f",
+    "code": "$ ceph --admin-daemon /var/run/ceph/cephfs-mirror.asok fs mirror peer status cephfs@360 a2dc7784-e7a1-4723-b103-03ee8d8768f8\n{\n  \"/d0\": {\n      \"state\": \"idle\",\n      \"last_synced_snap\": {\n          \"id\": 120,\n          \"name\": \"snap1\",\n          \"sync_duration\": 3,\n          \"sync_time_stamp\": \"274900.558797s\",\n          \"sync_bytes\": 52428800\n      },\n      \"snaps_synced\": 2,\n      \"snaps_deleted\": 0,\n      \"snaps_renamed\": 0\n  }\n}",
+    "language": "bash",
+    "context": "Commands beginning with ``fs mirror peer status`` provide peer synchronization status. The\ncommand parameter is of format ``filesystem-name@filesystem-id peer-uuid``",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "40cc389e5585513f",
+    "code": "$ ceph --admin-daemon /var/run/ceph/cephfs-mirror.asok fs mirror peer status cephfs@360 a2dc7784-e7a1-4723-b103-03ee8d8768f8\n{\n  \"/d0\": {\n      \"state\": \"syncing\",\n      \"current_syncing_snap\": {\n          \"id\": 121,\n          \"name\": \"snap2\"\n      },\n      \"last_synced_snap\": {\n          \"id\": 120,\n          \"name\": \"snap1\",\n          \"sync_duration\": 3,\n          \"sync_time_stamp\": \"274900.558797s\",\n          \"sync_bytes\": 52428800\n      },\n      \"snaps_synced\": 2,\n      \"snaps_deleted\": 0,\n      \"snaps_renamed\": 0\n  }\n}",
+    "language": "bash",
+    "context": "When a directory is currently being synchronized, the mirror daemon marks it as ``syncing`` and\n``fs mirror peer status`` shows the snapshot being synchronized under the ``current_syncing_snap``",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "7dfad4c965b6c050",
+    "code": "$ ceph fs snapshot mirror add cephfs /f0\n$ ceph --admin-daemon /var/run/ceph/cephfs-mirror.asok fs mirror peer status cephfs@360 a2dc7784-e7a1-4723-b103-03ee8d8768f8\n{\n  \"/d0\": {\n      \"state\": \"idle\",\n      \"last_synced_snap\": {\n          \"id\": 121,\n          \"name\": \"snap2\",\n          \"sync_duration\": 5,\n          \"sync_time_stamp\": \"500900.600797s\",\n          \"sync_bytes\": 78643200\n      },\n      \"snaps_synced\": 3,\n      \"snaps_deleted\": 0,\n      \"snaps_renamed\": 0\n  },\n  \"/f0\": {\n      \"state\": \"failed\",\n      \"snaps_synced\": 0,\n      \"snaps_deleted\": 0,\n      \"snaps_renamed\": 0\n  }\n}",
+    "language": "bash",
+    "context": "E.g., adding a regular file for synchronization would result in failed status",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon",
+      "ceph fs snapshot mirror"
+    ]
+  },
+  {
+    "entity_id": "9131c7fd3b48a3fe",
+    "code": "$ ceph fs subvolume snapshot create cephfs subvol1 snap2 group1\nor\n$ mkdir /d0/.snap/snap2",
+    "language": "bash",
+    "context": "Adding a new snapshot or a new directory manually in the ``.snap`` directory of the\nremote filesystem will result in failed status of the corresponding configured directory.\nIn the remote filesystem",
+    "source_file": "cephfs/cephfs-mirroring.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs subvolume snapshot"
+    ]
+  },
+  {
+    "entity_id": "2a7a749cf3d7fbb2",
+    "code": "+---------------------+\n|     Application     |\n+---------------------+\n  |\n  V\n+---------------------+  Data IOs  +--------------------+\n|    CephFS Library   | ---------> |       LibRados     |\n+---------------------+            +--------------------+\n  |                                  |\n  | Metadata Operations              | Objects Read/Write\n  V                                  V\n+---------------------+            +--------------------+\n|         MDSs        | -=-------> |         OSDs       |\n+---------------------+            +--------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "cephfs/cephfs-io-path.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "69d64ab05babb333",
+    "code": "This tool is **dangerous** because it directly modifies internal\ndata structures of the file system.  Make backups, be careful, and\nseek expert advice.  If you are unsure, do not run this tool. As a\nprecaution, cephfs-journal-tool doesn't work on an active filesystem.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d963e42f8883e588",
+    "code": "cephfs-journal-tool [:ref:`options<cephfs_journal_tool_options>`] journal <inspect|import|export|reset>\ncephfs-journal-tool [:ref:`options<cephfs_journal_tool_options>`] header <get|set> <trimmed_pos|expire_pos|write_pos|pool_id> <value>\ncephfs-journal-tool [:ref:`options<cephfs_journal_tool_options>`] event <get|splice|recover_dentries> [filter] <list|json|summary|binary>",
+    "language": "text",
+    "context": ".. parsed-literal",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "54e11499e20c750b",
+    "code": "# cephfs-journal-tool journal inspect\nOverall journal integrity: DAMAGED\nObjects missing:\n  0x1\nCorrupt regions:\n  0x400000-ffffffffffffffff",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d26c40b26b8e6653",
+    "code": "# cephfs-journal-tool journal export myjournal.bin\njournal is 4194304~80643\nread 80643 bytes at offset 4194304\nwrote 80643 bytes at offset 4194304 to myjournal.bin\nNOTE: this is a _sparse_ file; you can\n    $ tar cSzf myjournal.bin.tgz myjournal.bin\n      to efficiently compress it while preserving sparseness.",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a38586a52e4f7b46",
+    "code": "It is wise to use the ``journal export <backup file>`` command to make a journal backup\nbefore any further manipulation.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "712f3b408261ee8b",
+    "code": "# cephfs-journal-tool header get\n{ \"magic\": \"ceph fs volume v011\",\n  \"write_pos\": 4274947,\n  \"expire_pos\": 4194304,\n  \"trimmed_pos\": 4194303,\n  \"stream_format\": 1,\n  \"layout\": { \"stripe_unit\": 4194304,\n      \"stripe_count\": 1,\n      \"object_size\": 4194304,\n      \"pool_id\": 2,\n      \"pool_ns\": \"\"}}",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs volume v011"
+    ]
+  },
+  {
+    "entity_id": "eacd502d054677c3",
+    "code": "cephfs-journal-tool event <action> [filter] <output>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d653a441a5db9e56",
+    "code": "# cephfs-journal-tool event get json --path output.json\nWrote output to JSON file 'output.json'",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/cephfs-journal-tool.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ee4472bf89e1145f",
+    "code": "setfattr -n ceph.quota.max_bytes -v 100000000 /some/dir     # 100 MB\nsetfattr -n ceph.quota.max_files -v 10000 /some/dir         # 10,000 files",
+    "language": "text",
+    "context": "To set a quota, set the extended attribute on a CephFS directory with a\nvalue",
+    "source_file": "cephfs/quota.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "77b293532a7a4ec5",
+    "code": "setfattr -n ceph.quota.max_bytes -v 100K /some/dir          # 100 KiB\nsetfattr -n ceph.quota.max_bytes -v 5Gi /some/dir           # 5 GiB",
+    "language": "text",
+    "context": "``ceph.quota.max_bytes`` can also be set using human-friendly units",
+    "source_file": "cephfs/quota.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a3d7952eb1d35cb8",
+    "code": "$ getfattr -n ceph.quota.max_bytes /some/dir\n# file: dir1/\nceph.quota.max_bytes=\"100000000\"\n$\n$ getfattr -n ceph.quota.max_files /some/dir\n# file: dir1/\nceph.quota.max_files=\"10000\"",
+    "language": "bash",
+    "context": "To view quota limit",
+    "source_file": "cephfs/quota.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "333b617fd4419804",
+    "code": "$ setfattr -x ceph.quota.max_bytes /some/dir\n$ getfattr /some/dir -n ceph.quota.max_bytes\n/some/dir/: ceph.quota.max_bytes: No such attribute\n$\n$ setfattr -x ceph.quota.max_files /some/dir\n$ getfattr /some/dir/ -n ceph.quota.max_files\n/some/dir/: ceph.quota.max_files: No such attribute",
+    "language": "bash",
+    "context": "Utilizing remove",
+    "source_file": "cephfs/quota.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "338013609b57b369",
+    "code": "$ setfattr -n ceph.quota.max_bytes -v 0 /some/dir\n$ getfattr /some/dir -n ceph.quota.max_bytes\n/some/dir/: ceph.quota.max_bytes: No such attribute\n$\n$ setfattr -n ceph.quota.max_files -v 0 /some/dir\n$ getfattr /some/dir/ -n ceph.quota.max_files\n/some/dir/: ceph.quota.max_files: No such attribute",
+    "language": "bash",
+    "context": "Remove by setting value to zero",
+    "source_file": "cephfs/quota.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ba0f7d7df19aefa2",
+    "code": "client quota df = false",
+    "language": "text",
+    "context": "This behaviour can be disabled by setting following option in client section\nof ``ceph.conf``",
+    "source_file": "cephfs/quota.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b0165efe0288832e",
+    "code": "$ ceph auth get-or-create client.guest mds 'allow r path=/home/volumes, allow rw path=/home/volumes/group' mgr 'allow rw' osd 'allow rw tag cephfs metadata=*' mon 'allow r'",
+    "language": "bash",
+    "context": "An example command to create such an user is as below",
+    "source_file": "cephfs/quota.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "c6e4cb5439dbbd45",
+    "code": "HDFS < NFS < CephFS < {XFS, ext4}",
+    "language": "text",
+    "context": "In other words, when it comes to POSIX,",
+    "source_file": "cephfs/posix.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0916434139c8cd0c",
+    "code": "If you do not have expert knowledge of CephFS internals, you will\nneed to seek assistance before using any of these tools.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "80ed40bc472502e4",
+    "code": "The resulting state of the backing store is not guaranteed to be\nself-consistent, and an online MDS scrub will be required afterwards. The\njournal contents will not be modified by this command. Truncate the journal\nseparately after recovering what you can.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3eb431c09825ee67",
+    "code": "# Worker 0\ncephfs-data-scan scan_extents --worker_n 0 --worker_m 4\n# Worker 1\ncephfs-data-scan scan_extents --worker_n 1 --worker_m 4\n# Worker 2\ncephfs-data-scan scan_extents --worker_n 2 --worker_m 4\n# Worker 3\ncephfs-data-scan scan_extents --worker_n 3 --worker_m 4",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a3589f075a8d8ef8",
+    "code": "# Worker 0\ncephfs-data-scan cleanup --worker_n 0 --worker_m 4\n# Worker 1\ncephfs-data-scan cleanup --worker_n 1 --worker_m 4\n# Worker 2\ncephfs-data-scan cleanup --worker_n 2 --worker_m 4\n# Worker 3\ncephfs-data-scan cleanup --worker_n 3 --worker_m 4",
+    "language": "text",
+    "context": "The cleanup phase can be run with multiple instances to speed up execution",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "013f822c203a74fc",
+    "code": "The data pool parameters for ``scan_extents``, ``scan_inodes`` and\n``cleanup`` commands are optional, and usually the tool will be able to\ndetect the pools automatically. Still, you may override this. The\n``scan_extents`` command requires that all data pools be specified, but the\n``scan_inodes`` and ``cleanup`` commands require only that you specify the\nmain data pool.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3f5f106e6c9167b2",
+    "code": "During this process, multiple metadata pools will contain data referring to\nthe same data pool. Extreme caution must be exercised to avoid changing the\ncontents of the data pool while this is the case. After recovery is\ncomplete, archive or delete the damaged metadata pool.",
+    "language": "text",
+    "context": ".. caution",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ca6d6e1f639fc042",
+    "code": "``<fs_name>`` here and below refers to the original, damaged file system.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3fc95f5aaca7a879",
+    "code": "You may rename the recovery metadata pool and file system at a future time.\nThe ``--recover`` flag prevents any MDS daemon from joining the new file\nsystem.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "37bf0dec621a36a2",
+    "code": "Each of the scan procedures above scans through the entire data pool.\nThis may take a long time. See the previous section on how to distribute\nthis task among workers.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "21b5e1f3cbd0262c",
+    "code": "Verify that the config has not been set globally or with a local\n``ceph.conf`` file.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6f6eeab9185eca4b",
+    "code": "The `Symbolic link recovery <https://tracker.ceph.com/issues/46166>`_ is\nsupported starting in the Quincy release.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dd5703d3f4aa95ea",
+    "code": "If the data pool is also corrupt, some files may not be restored because\nthe backtrace information associated with them is lost. If any data\nobjects are missing (due to issues like lost placement groups on the\ndata pool), the recovered files will contain holes in place of the\nmissing data.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery-experts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6067db7e2694c001",
+    "code": "\"mds_client_metrics\": [\n    {\n        \"labels\": {\n            \"fs_name\": \"<fsname>\",\n            \"id\": \"14213\"\n        },\n        \"counters\": {\n            \"num_clients\": 2\n        }\n    }\n],\n\"mds_client_metrics-<fsname>\": [\n    {\n        \"labels\": {\n            \"client\": \"client.0\",\n            \"rank\": \"0\"\n        },\n        \"counters\": {\n            \"cap_hits\": 5149,\n            \"cap_miss\": 1,\n            \"avg_read_latency\": 0.000000000,\n            \"avg_write_latency\": 0.000000000,\n            \"avg_metadata_latency\": 0.000000000,\n            \"dentry_lease_hits\": 0,\n            \"dentry_lease_miss\": 0,\n            \"opened_files\": 1,\n            \"opened_inodes\": 2,\n            \"pinned_icaps\": 2,\n            \"total_inodes\": 2,\n            \"total_read_ops\": 0,\n            \"total_read_size\": 0,\n            \"total_write_ops\": 4836,\n            \"total_write_size\": 633864192\n        }\n    },\n    {\n        \"labels\": {\n            \"client\": \"client.1\",\n            \"rank\": \"0\"\n        },\n        \"counters\": {\n            \"cap_hits\": 3375,\n            \"cap_miss\": 8,\n            \"avg_read_latency\": 0.000000000,\n            \"avg_write_latency\": 0.000000000,\n            \"avg_metadata_latency\": 0.000000000,\n            \"dentry_lease_hits\": 0,\n            \"dentry_lease_miss\": 0,\n            \"opened_files\": 1,\n            \"opened_inodes\": 2,\n            \"pinned_icaps\": 2,\n            \"total_inodes\": 2,\n            \"total_read_ops\": 0,\n            \"total_read_size\": 0,\n            \"total_write_ops\": 3169,\n            \"total_write_size\": 415367168\n        }\n    }\n]",
+    "language": "text",
+    "context": "from the MDS admin socket as well as using the tell interface. The ``mds_client_metrics-<fsname>`` section in the output of ``counter dump`` command displays the metrics for each client as shown below",
+    "source_file": "cephfs/metrics.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "96af4df90f2e9826",
+    "code": "This command does not repair any metadata, so when restoring files in\nthis case you must *remove* the damaged file and replace it in order\nto have a fresh inode. Do not overwrite damaged files in place.",
+    "language": "text",
+    "context": ".. danger",
+    "source_file": "cephfs/disaster-recovery.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4087a516766c673f",
+    "code": "cephfs-data-scan pg_files <path> <pg id> [<pg id>...]",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/disaster-recovery.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8e4e35e0aa5b5df5",
+    "code": "cephfs-data-scan pg_files /home/bob 1.4 4.5",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/disaster-recovery.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "423633d02a6be394",
+    "code": "This command acts as a normal CephFS client to find all the files in the\nfile system and read their layouts. This means that the MDS must be up and\nrunning in order for this command to be usable.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/disaster-recovery.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fb56b0bd2ec4cd5d",
+    "code": "$ touch file\n$ getfattr -n ceph.file.layout file\n# file: file\nceph.file.layout=\"stripe_unit=4194304 stripe_count=1 object_size=4194304 pool=cephfs_data\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4a74fe0a7e1d7fe0",
+    "code": "$ getfattr -n ceph.file.layout.pool_name file\n# file: file\nceph.file.layout.pool_name=\"cephfs_data\"\n$ getfattr -n ceph.file.layout.pool_id file\n# file: file\nceph.file.layout.pool_id=\"5\"\n$ getfattr -n ceph.file.layout.pool file\n# file: file\nceph.file.layout.pool=\"cephfs_data\"\n$ getfattr -n ceph.file.layout.stripe_unit file\n# file: file\nceph.file.layout.stripe_unit=\"4194304\"\n$ getfattr -n ceph.file.layout.stripe_count file\n# file: file\nceph.file.layout.stripe_count=\"1\"\n$ getfattr -n ceph.file.layout.object_size file\n# file: file\nceph.file.layout.object_size=\"4194304\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "155f66cb3cd09e9a",
+    "code": "$ mkdir dir\n$ getfattr -n ceph.dir.layout dir\ndir: ceph.dir.layout: No such attribute\n$ setfattr -n ceph.dir.layout.stripe_count -v 2 dir\n$ getfattr -n ceph.dir.layout dir\n# file: dir\nceph.dir.layout=\"stripe_unit=4194304 stripe_count=2 object_size=4194304 pool=cephfs_data\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "68492c48cfbe1eb4",
+    "code": "$ getfattr -n ceph.dir.layout.json --only-values /mnt/mycephs/accounts\n{\"stripe_unit\": 4194304, \"stripe_count\": 1, \"object_size\": 4194304, \"pool_name\": \"cephfs.a.data\", \"pool_id\": 3, \"pool_namespace\": \"\", \"inheritance\": \"@default\"}",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d1c4fb7da731171e",
+    "code": "$ ceph osd lspools\n0 rbd\n1 cephfs_data\n2 cephfs_metadata",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd lspools 0"
+    ]
+  },
+  {
+    "entity_id": "b88449029c02a4d6",
+    "code": "# touch an empty file\n$ touch file1\n# modify layout field successfully\n$ setfattr -n ceph.file.layout.stripe_count -v 3 file1",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cd0a13f06d4b5a1c",
+    "code": "$ setfattr -n ceph.file.layout.json -v '{\"stripe_unit\": 4194304, \"stripe_count\": 1, \"object_size\": 4194304, \"pool_name\": \"cephfs.a.data\", \"pool_id\": 3, \"pool_namespace\": \"\", \"inheritance\": \"@default\"}' file1",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "814bb2f725578950",
+    "code": "setfattr -x ceph.dir.layout mydir",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f10a7682dc56a5fa",
+    "code": "# Create a dir and set a namespace on it\nmkdir mydir\nsetfattr -n ceph.dir.layout.pool_namespace -v foons mydir\ngetfattr -n ceph.dir.layout mydir\nceph.dir.layout=\"stripe_unit=4194304 stripe_count=1 object_size=4194304 pool=cephfs_data_a pool_namespace=foons\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2699ce0550ce5659",
+    "code": "$ getfattr -n ceph.dir.layout dir\n# file: dir\nceph.dir.layout=\"stripe_unit=4194304 stripe_count=2 object_size=4194304 pool=cephfs_data\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c17b46c239f42d02",
+    "code": "$ getfattr -n ceph.dir.layout dir\n# file: dir\nceph.dir.layout=\"stripe_unit=4194304 stripe_count=4 object_size=4194304 pool=cephfs_data\"\n$ mkdir dir/childdir\n$ getfattr -n ceph.dir.layout dir/childdir\ndir/childdir: ceph.dir.layout: No such attribute\n$ touch dir/childdir/grandchild\n$ getfattr -n ceph.file.layout dir/childdir/grandchild\n# file: dir/childdir/grandchild\nceph.file.layout=\"stripe_unit=4194304 stripe_count=4 object_size=4194304 pool=cephfs_data\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c1d9ae74a4ad2323",
+    "code": "$ ceph fs add_data_pool cephfs cephfs_data_ssd\n$ ceph fs ls  # Pool should now show up\n.... data pools: [cephfs_data cephfs_data_ssd ]",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs add_data_pool cephfs",
+      "ceph fs ls"
+    ]
+  },
+  {
+    "entity_id": "5331f7e05c3a40af",
+    "code": "$ mkdir /mnt/cephfs/myssddir\n$ setfattr -n ceph.dir.layout.pool -v cephfs_data_ssd /mnt/cephfs/myssddir",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7e2f5d98f2762512",
+    "code": "Your linux distribution may not ship with commands for manipulating xattrs by default,\nthe required package is usually called ``attr``.",
+    "language": "text",
+    "context": ".. tip",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f41f144d29563776",
+    "code": "RADOS enforces a configurable limit on object sizes: if you increase CephFS\nobject sizes beyond that limit then writes may not succeed.  The OSD\nsetting is ``osd_max_object_size``, which is 128MB by default.\nVery large RADOS objects may prevent smooth operation of the cluster,\nso increasing the object size limit past the default is not recommended.",
+    "language": "text",
+    "context": ".. tip",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ebada18356a9058f",
+    "code": "When reading layouts, the pool will usually be indicated by name.  However, in \nrare cases when pools have only just been created, the ID may be output instead.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b0cbf4a5c52d8f91",
+    "code": "When the layout fields of a file are modified using ``setfattr``, this file must be empty, otherwise an error will occur.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephfs/file-layouts.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dde855a45853533e",
+    "code": "(num_caps >> mds_session_cache_liveness_magnitude)",
+    "language": "text",
+    "context": "To determine whether a client (a session) is inactive, the session's\n``cache_liveness`` parameters is checked and compared with the value",
+    "source_file": "cephfs/cache-configuration.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9b8f4dc42331ad5f",
+    "code": "ceph fs new <fs_name> <metadata_pool> <data_pool> --force --recover",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/recover-fs-after-mon-store-loss.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs new"
+    ]
+  },
+  {
+    "entity_id": "d9f0321daab261ef",
+    "code": "ceph fs set <fs_name> joinable true",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/recover-fs-after-mon-store-loss.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "4f268339b5763a42",
+    "code": "ceph fs status",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/recover-fs-after-mon-store-loss.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs status"
+    ]
+  },
+  {
+    "entity_id": "7076fdf7c866ec43",
+    "code": "mds.a(mds.0): replay: 50.0446% complete - elapsed time: 582s, estimated time remaining: 581s",
+    "language": "text",
+    "context": "he MDS emits an `MDS_ESTIMATED_REPLAY_TIME` warning when the act of replaying\nthe journal takes more than 30 seconds. The warning message includes an\nestimated time to the completion of journal replay",
+    "source_file": "cephfs/troubleshooting.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c0376af9f57007d4",
+    "code": "data pool=fsname\nmetadata pool=fsname_metadata",
+    "language": "text",
+    "context": "not the\ndirectory info, but file data) they will not know which Ceph file system name\nto look up. This is true also of pool names, because the 'defaults' themselves\nchanged in the major releases, from",
+    "source_file": "cephfs/troubleshooting.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4b37238de7f90924",
+    "code": "data pool=fsname.data and\nmetadata pool=fsname.meta",
+    "language": "text",
+    "context": "to",
+    "source_file": "cephfs/troubleshooting.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e2b5a9e5290e8847",
+    "code": "$ ceph config set mds filer_max_purge_ops 40",
+    "language": "bash",
+    "context": "Start from the most trivial config ``filer_max_purge_ops``, which should help\nreclaim the space more quickly",
+    "source_file": "cephfs/purge-queue.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mds"
+    ]
+  },
+  {
+    "entity_id": "ebaa208d7564ad19",
+    "code": "$ ceph config set mds mds_max_purge_files 256\n$ ceph config set mds mds_max_purge_ops 32768\n$ ceph config set mds mds_max_purge_ops_per_pg 2",
+    "language": "bash",
+    "context": "Incrementing ``filer_max_purge_ops`` should just work for most\nclusters but if it doesn't then move ahead with tuning other configs",
+    "source_file": "cephfs/purge-queue.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mds"
+    ]
+  },
+  {
+    "entity_id": "f529f270fee06b3c",
+    "code": "\"purge_queue\": {\n    \"pq_executing_ops\": 56655,\n    \"pq_executing_ops_high_water\": 65350,\n    \"pq_executing\": 1,\n    \"pq_executing_high_water\": 3,\n    \"pq_executed\": 25,\n    \"pq_item_in_journal\": 6567004\n}",
+    "language": "text",
+    "context": "When analysing MDS perf dumps, the purge queue statistics look like",
+    "source_file": "cephfs/purge-queue.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "26f73f29b8b6663a",
+    "code": "mon 'allow r'\nmgr 'allow rw'",
+    "language": "text",
+    "context": "* Cephx client user (see :doc:`/rados/operations/user-management`) with\n  at least the following capabilities",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2242c57b02a5bd43",
+    "code": "{\n    \"mon_addrs\": [\n        \"192.168.1.7:40977\"\n    ],\n    \"pending_subvolume_deletions\": 0,\n    \"pools\": {\n        \"data\": [\n            {\n                \"avail\": 106288709632,\n                \"name\": \"cephfs.vol_name.data\",\n                \"used\": 4096\n            }\n        ],\n        \"metadata\": [\n            {\n                \"avail\": 106288709632,\n                \"name\": \"cephfs.vol_name.meta\",\n                \"used\": 155648\n            }\n        ]\n    },\n    \"used_size\": 0\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5636c8d146cf60c1",
+    "code": "{\n    \"created_at\": \"2022-06-14 13:54:58.618769\",\n    \"data_pool\": \"cephfs.cephfs.data\",\n    \"has_pending_clones\": \"yes\",\n    \"pending_clones\": [\n        {\n            \"name\": \"clone_1\",\n            \"target_group\": \"target_subvol_group\"\n        },\n        {\n            \"name\": \"clone_2\"\n        },\n        {\n            \"name\": \"clone_3\",\n            \"target_group\": \"target_subvol_group\"\n        }\n    ]\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5636c8d146cf60c1",
+    "code": "{\n    \"created_at\": \"2022-06-14 13:54:58.618769\",\n    \"data_pool\": \"cephfs.cephfs.data\",\n    \"has_pending_clones\": \"no\"\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "576bb8f6a75cc100",
+    "code": "{\n  \"status\": {\n    \"state\": \"in-progress\",\n    \"source\": {\n      \"volume\": \"cephfs\",\n      \"subvolume\": \"subvol1\",\n      \"snapshot\": \"snap1\"\n    },\n    \"progress_report\": {\n      \"percentage cloned\": \"12.24%\",\n      \"amount cloned\": \"376M/3.0G\",\n      \"files cloned\": \"4/6\"\n    }\n  }\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1a325c717e62932a",
+    "code": "progress:\n  3 ongoing clones - average progress is 47.569% (10s)\n    [=============...............] (remaining: 11s)",
+    "language": "text",
+    "context": "n-progress``.\nHere the progress is reported only for the specific clone. For collective\nprogress made by all ongoing clones, a progress bar is printed at the bottom\nin ouput of ``ceph status`` command",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c2f01154e522044d",
+    "code": "progress:\n  4 ongoing clones - average progress is 27.669% (15s)\n    [=======.....................] (remaining: 41s)\n  Total 5 clones - average progress is 41.667% (3s)\n    [===========.................] (remaining: 4s)",
+    "language": "text",
+    "context": "If the number of clone jobs are more than cloner threads, two progress bars\nare printed, one for ongoing clones (same as above) and other for all\n(ongoing+pending) clones",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0d266990a74c20ee",
+    "code": "{\n    \"status\": {\n        \"state\": \"failed\",\n        \"source\": {\n            \"volume\": \"cephfs\",\n            \"subvolume\": \"subvol1\",\n            \"snapshot\": \"snap1\"\n            \"size\": \"104857600\"\n        },\n        \"failure\": {\n            \"errno\": \"122\",\n            \"errstr\": \"Disk quota exceeded\"\n        }\n    }\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7f84247bffc81350",
+    "code": "{\n    \"status\": {\n        \"state\": \"complete\"\n    }\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ccb07149b01b9573",
+    "code": "{\n    \"status\": {\n        \"state\": \"canceled\",\n        \"source\": {\n            \"volume\": \"cephfs\",\n            \"subvolume\": \"subvol1\",\n            \"snapshot\": \"snap1\"\n        }\n    }\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a0a1627f4e6d1e3e",
+    "code": "{\"casesensitive\":true,\"normalization\":\"nfd\",\"encoding\":\"utf8\"}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cd56a0fa8ddc0763",
+    "code": "{\"casesensitive\":false,\"normalization\":\"nfd\",\"encoding\":\"utf8\"}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephfs/fs-volumes.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f6c26ad9cee4c7d3",
+    "code": "$ setfattr -n ceph.dir.normalization -v \"\" foo/",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/charmap.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ae2d7f5957fd2c56",
+    "code": "$ setfattr -n ceph.dir.normalization -v nfc foo/\n$ getfattr -n ceph.dir.normalization foo/\n# file: foo/\nceph.dir.normalization=\"nfc\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/charmap.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "635eada9a78add6b",
+    "code": "$ setfattr -n ceph.dir.casesensitive -v 0 foo/\n$ getfattr -n ceph.dir.casesensitive foo/\n# file: foo/\nceph.dir.casesensitive=\"0\"",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/charmap.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ba0b316d47799c71",
+    "code": "$ setfattr -x ceph.dir.charmap foo/",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/charmap.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4958d44a3b98ec24",
+    "code": "$ getfattr -n ceph.dir.charmap foo/\nfoo/: ceph.dir.charmap: No such attribute",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephfs/charmap.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9b8c5bee25b55d6c",
+    "code": "CephFS forward scrubs are started and manipulated on rank 0. All scrub\ncommands must be directed at rank 0.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5a44fb6076ad875d",
+    "code": "ceph tell mds.<fsname>:0 scrub start <path> [scrubopts] [tag]",
+    "language": "text",
+    "context": "To start a scrub operation for a directory tree use the following command",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "89afc486f7d3ce3c",
+    "code": "ceph tell mds.cephfs:0 scrub start / recursive\n{\n    \"return_code\": 0,\n    \"scrub_tag\": \"6f0d204c-6cfd-4300-9e02-73f382fd23c1\",\n    \"mode\": \"asynchronous\"\n}",
+    "language": "text",
+    "context": "where ``scrubopts`` is a comma delimited list of ``recursive``, ``force``, or\n``repair`` and ``tag`` is an optional custom string tag (the default is a generated\nUUID). An example command is",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "c9d64fb4b011586f",
+    "code": "ceph tell mds.cephfs:0 scrub status\n{\n    \"status\": \"scrub active (85 inodes in the stack)\",\n    \"scrubs\": {\n        \"6f0d204c-6cfd-4300-9e02-73f382fd23c1\": {\n            \"path\": \"/\",\n            \"options\": \"recursive\"\n        }\n    }\n}",
+    "language": "text",
+    "context": "of ongoing scrubs can be monitored and polled using in `scrub status`\ncommand. This commands lists out ongoing scrubs (identified by the tag) along\nwith the path and options used to initiate the scrub",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "e4d977f2d8f205d4",
+    "code": "ceph status\n[...]",
+    "language": "text",
+    "context": "hange on subsequent `scrub status` invocations. Also, a high level summary of\nscrub operation (which includes the operation state and paths on which scrub is triggered)\ngets displayed in `ceph status`",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "0794185a4f1de489",
+    "code": "ceph tell mds.cephfs:0 scrub pause\n{\n    \"return_code\": 0\n}",
+    "language": "text",
+    "context": "- Pause: Pausing ongoing scrub operations results in no new or pending inodes being\n  scrubbed after in-flight RADOS ops (for the inodes that are currently being scrubbed)\n  finish",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "41cc7f4ebba51658",
+    "code": "ceph tell mds.cephfs:0 scrub status\n{\n    \"status\": \"PAUSED (66 inodes in the stack)\",\n    \"scrubs\": {\n        \"6f0d204c-6cfd-4300-9e02-73f382fd23c1\": {\n            \"path\": \"/\",\n            \"options\": \"recursive\"\n        }\n    }\n}",
+    "language": "text",
+    "context": "The ``scrub status`` after pausing reflects the paused state. At this point,\n  initiating new scrub operations (via ``scrub start``) would just queue the\n  inode for scrub",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "0b79850a8a683337",
+    "code": "ceph tell mds.cephfs:0 scrub resume\n{\n    \"return_code\": 0\n}",
+    "language": "text",
+    "context": "- Resume: Resuming kick starts a paused scrub operation",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "2f96b73af2b137cd",
+    "code": "ceph tell mds.cephfs:0 scrub abort\n{\n    \"return_code\": 0\n}",
+    "language": "text",
+    "context": "bort: Aborting ongoing scrub operations removes pending inodes from the scrub\n  queue (thereby aborting the scrub) after in-flight RADOS ops (for the inodes that\n  are currently being scrubbed) finish",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "206d9d3852ca479f",
+    "code": "ceph tell mds.<fsname>:0 scrub start /path recursive, repair, force",
+    "language": "text",
+    "context": "These above named MDS damages can be repaired by using the following command",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "e972979b4a3cd6d4",
+    "code": "ceph tell mds.<fsname>:0 scrub start ~mdsdir recursive",
+    "language": "text",
+    "context": "- In order to evaluate strays i.e. purge stray directories in ``~mdsdir`` use the following command",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "12f568c63e59b129",
+    "code": "ceph tell mds.<fsname>:0 scrub start / recursive,scrub_mdsdir",
+    "language": "text",
+    "context": "- ``~mdsdir`` is not enqueued by default when scrubbing at the CephFS root. In order to perform stray evaluation\n  at root, run scrub with flags ``scrub_mdsdir`` and ``recursive``",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "3b1167c4a455e8c2",
+    "code": "ceph tell mds.<fsname>:0 dump stray\n{\n\"strays\": [\n    {\n        \"ino\": \"0x100000001f7\",\n        \"stray_prior_path\": \"/dir/dir1\",\n        \"client_caps\": [\n            {\n                \"client_id\": 4156,\n                \"pending\": \"pAsLsXsFscr\",\n                \"issued\": \"pAsLsXsFscr\",\n                \"wanted\": \"-\",\n                \"last_sent\": 3\n            }\n        ],\n        \"loner\": -1,\n        \"want_loner\": -1,\n        \"mds_caps_wanted\": [],\n        \"is_subvolume\": false\n    }\n]}",
+    "language": "text",
+    "context": "- In order to dump stray folder content on a specific MDS, use the following command",
+    "source_file": "cephfs/scrub.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "739b77b0cd916325",
+    "code": "ceph fs set <fs_name> allow_standby_replay false",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "bd30c98bcab4a58a",
+    "code": "ceph fs dump # find standby-replay daemons\nceph mds fail mds.<X>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump",
+      "ceph mds fail mds"
+    ]
+  },
+  {
+    "entity_id": "f72c27472700cb70",
+    "code": "ceph fs set <fs_name> max_mds 1",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "cd9d11f8756bdf47",
+    "code": "ceph status # wait for MDS to finish stopping",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "2f0bd2593a1368ac",
+    "code": "# use package manager to update cluster\nsystemctl restart ceph-mds.target",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "83e48fe3253aabc6",
+    "code": "ceph fs set <fs_name> max_mds <old_max_mds>\nceph fs set <fs_name> allow_standby_replay <old_allow_standby_replay>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "c7f2ffc4dc1dbf03",
+    "code": "This advice only applies to users with file systems\ncreated using versions of Ceph older than *Firefly* (0.80).\nUsers creating new file systems may disregard this advice.",
+    "language": "text",
+    "context": ".. tip",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "48e8593451c98f4c",
+    "code": "cephfs-data-scan tmap_upgrade <metadata pool name>",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/upgrading.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cd93d909f1180271",
+    "code": "$ ceph health detail\nHEALTH_WARN 1 MDSs report slow metadata IOs; 1 MDSs report slow requests\nMDS_SLOW_METADATA_IO 1 MDSs report slow metadata IOs\n   mds.fs-01(mds.0): 3 slow metadata IOs are blocked > 30 secs, oldest blocked for 51123 secs\nMDS_SLOW_REQUEST 1 MDSs report slow requests\n   mds.fs-01(mds.0): 5 slow requests are blocked > 30 secs",
+    "language": "bash",
+    "context": "``ceph health detail`` shows the details of the conditions. Following\nis a typical health report from a cluster experiencing MDS related\nperformance issues",
+    "source_file": "cephfs/health-messages.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": [
+      "ceph health detail HEALTH_WARN"
+    ]
+  },
+  {
+    "entity_id": "512760cc1e7c4887",
+    "code": "/* Client a (ca) opens the shared file file.txt */\nint fda = ceph_open(ca, \"shared_file.txt\", O_CREAT|O_RDWR, 0644);",
+    "language": "text",
+    "context": "",
+    "source_file": "cephfs/lazyio.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a7cf73b8edc9ecdc",
+    "code": "CephFS Java bindings are no longer tested by CI. They may not work properly\nor corrupt data.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephfs/api/libcephfs-java.rst",
+    "component": "cephfs",
+    "section_title": "",
+    "commands_used": []
+  }
+]

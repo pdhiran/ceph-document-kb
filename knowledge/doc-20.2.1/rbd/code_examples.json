@@ -1,0 +1,2783 @@
+[
+  {
+    "entity_id": "b5f6c1e28d2912b0",
+    "code": "+------------------------+ +------------------------+\n|     Kernel Module      | |        librbd          |\n+------------------------+-+------------------------+\n|                   RADOS Protocol                  |\n+------------------------+-+------------------------+\n|          OSDs          | |        Monitors        |\n+------------------------+ +------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/index.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "de4c4d0407e12cd7",
+    "code": "+--------------------------------------------------------+\n|                         QEMU                           |\n+--------------------------------------------------------+\n|                librbd (cloned images)                  |\n+-------------------+-+----------------------------------+\n|      librados     | |  ceph--immutable--object--cache  |\n+-------------------+ +----------------------------------+\n|      OSDs/Mons    | |     local cached parent image    |\n+-------------------+ +----------------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/rbd-persistent-read-only-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "badda0432c5822c8",
+    "code": "rbd parent cache enabled = true\nrbd plugins = parent_cache",
+    "language": "text",
+    "context": "To enable RBD shared read-only parent image cache, the following Ceph settings\nneed to added in the ``[client]`` `section`_ of your ``ceph.conf`` file",
+    "source_file": "rbd/rbd-persistent-read-only-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd parent cache enabled",
+      "rbd plugins"
+    ]
+  },
+  {
+    "entity_id": "b9eeb6d31efcf003",
+    "code": "ceph auth get-or-create client.ceph-immutable-object-cache.{unique id} mon 'allow r' osd 'profile rbd-read-only'",
+    "language": "text",
+    "context": "``ceph-immutable-object-cache`` daemon should use a unique Ceph user ID.\nTo `create a Ceph user`_, with ``ceph`` specify the ``auth get-or-create``\ncommand, user name, monitor caps, and OSD caps",
+    "source_file": "rbd/rbd-persistent-read-only-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "a177d5b1ecd05e85",
+    "code": "systemctl enable ceph-immutable-object-cache@ceph-immutable-object-cache.{unique id}",
+    "language": "text",
+    "context": "The ``ceph-immutable-object-cache`` daemon can be managed by ``systemd`` by specifying the user\nID as the daemon instance",
+    "source_file": "rbd/rbd-persistent-read-only-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6c8b81b569dd723a",
+    "code": "ceph-immutable-object-cache -f --log-file={log_path}",
+    "language": "text",
+    "context": "The ``ceph-immutable-object-cache`` can also be run in foreground by ``ceph-immutable-object-cache`` command",
+    "source_file": "rbd/rbd-persistent-read-only-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fd081f3053c7f363",
+    "code": "+-------------+               +-------------+\n| {s} c999    |               | {s}         |\n|  Live       | Target refers |  Live       |\n|  migration  |<-------------*|  migration  |\n|  source     |  to Source    |  target     |\n|             |               |             |\n| (read only) |               | (writable)  |\n+-------------+               +-------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "263d0823f3e06191",
+    "code": "$ rbd migration prepare migration_source [migration_target]",
+    "language": "bash",
+    "context": "The default live-migration process for images within the same Ceph cluster is\ninitiated by running the `rbd migration prepare` command, providing the source\nand target images",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd migration prepare migration_source"
+    ]
+  },
+  {
+    "entity_id": "d3a7d6d78f07987e",
+    "code": "$ rbd status migration_target\nWatchers: none\nMigration:\n    \tsource: rbd/migration_source (5e2cba2f62e)\n    \tdestination: rbd/migration_target (5e2ed95ed806)\n    \tstate: prepared",
+    "language": "bash",
+    "context": "The `rbd status` command will show the current state of the live-migration",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd status migration_target Watchers"
+    ]
+  },
+  {
+    "entity_id": "08b88c7442790b15",
+    "code": "$ rbd info migration_source\nrbd: error opening image migration_source: (2) No such file or directory\n$ rbd trash ls --all\n5e2cba2f62e migration_source",
+    "language": "bash",
+    "context": "Note that the source image will be moved to the RBD trash to avoid mistaken\nusage during the migration process",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd info migration_source rbd",
+      "rbd trash ls --all"
+    ]
+  },
+  {
+    "entity_id": "b128fd23ce9b51a2",
+    "code": "$ rbd migration prepare --import-only --source-spec \"<JSON>\" migration_target",
+    "language": "bash",
+    "context": "pec`` to describe how to access\nthe source image data. This ``source-spec`` can either be passed\ndirectly via the `--source-spec` optional, or via a file or STDIN via the\n`--source-spec-path` optional",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd migration prepare --import-only"
+    ]
+  },
+  {
+    "entity_id": "c5acf09767c39462",
+    "code": "$ rbd status migration_target\nWatchers: none\nMigration:\n source: {\"stream\":{\"file_path\":\"/mnt/image.raw\",\"type\":\"file\"},\"type\":\"raw\"}\n\tdestination: rbd/migration_target (ac69113dc1d7)\n state: prepared",
+    "language": "bash",
+    "context": "The `rbd status` command will show the current state of the live-migration",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd status migration_target Watchers"
+    ]
+  },
+  {
+    "entity_id": "7861b3323250d2b6",
+    "code": "{\n    \"type\": \"<format-type>\",\n    <format unique parameters>\n    \"stream\": {\n        \"type\": \"<stream-type>\",\n        <stream unique parameters>\n    }\n}",
+    "language": "json",
+    "context": "The general format for the ``source-spec`` JSON is as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9ec559b241c58535",
+    "code": "{\n    \"type\": \"native\",\n    [\"cluster_name\": \"<cluster-name>\",] (specify if image in another cluster,\n                                         requires ``<cluster-name>.conf`` file)\n    [\"client_name\": \"<client-name>\",] (for connecting to another cluster,\n                                       default is ``client.admin``)\n    \"pool_name\": \"<pool-name>\",\n    [\"pool_id\": <pool-id>,] (optional alternative to \"pool_name\")\n    [\"pool_namespace\": \"<pool-namespace\",] (optional)\n    \"image_name\": \"<image-name>\",\n    [\"image_id\": \"<image-id>\",] (specify if image in trash)\n    \"snap_name\": \"<snap-name>\",\n    [\"snap_id\": \"<snap-id>\",] (optional alternative to \"snap_name\")\n}",
+    "language": "json",
+    "context": "The ``native`` format can be used to describe a native RBD image within a\nCeph cluster as the source image. Its ``source-spec`` JSON is encoded\nas follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1b2a4e356da3740b",
+    "code": "{\n    \"type\": \"native\",\n    \"pool_name\": \"rbd\",\n    \"pool_namespace\": \"ns1\",\n    \"image_name\": \"image1\",\n    \"snap_name\": \"snap1\"\n}",
+    "language": "json",
+    "context": "native`` format does not include the ``stream`` object since\nit utilizes native Ceph operations. For example, to import from the image\n``rbd/ns1/image1@snap1``, the ``source-spec`` could be encoded as",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e72ca683894ba113",
+    "code": "{\n    \"type\": \"qcow\",\n    \"stream\": {\n        <stream unique parameters>\n    }\n}",
+    "language": "json",
+    "context": "ssing features may be added\nin a future release. The ``qcow`` format data can be linked to any supported\nstream source described below. For example, its base ``source-spec`` JSON is\nencoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9f5047f1877655ea",
+    "code": "{\n    \"type\": \"raw\",\n    \"stream\": {\n        <stream unique parameters for HEAD, non-snapshot revision>\n    },\n    \"snapshots\": [\n        {\n            \"type\": \"raw\",\n            \"name\": \"<snapshot-name>\",\n            \"stream\": {\n                <stream unique parameters for snapshot>\n            }\n        },\n    ] (optional oldest to newest ordering of snapshots)\n}",
+    "language": "json",
+    "context": "i.e. `rbd export --export-format 1 <snap-spec>`). The ``raw`` format\ndata can be linked to any supported stream source described below. For example,\nits base ``source-spec`` JSON is encoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "876ae58e0018683c",
+    "code": "{\n    <format unique parameters>\n    \"stream\": {\n        \"type\": \"file\",\n        \"file_path\": \"<file-path>\"\n    }\n}",
+    "language": "json",
+    "context": "The ``file`` stream can be used to import from a locally accessible POSIX file\nsource. Its ``source-spec`` JSON is encoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "61f8b3982f950f72",
+    "code": "{\n    \"type\": \"raw\",\n    \"stream\": {\n        \"type\": \"file\",\n        \"file_path\": \"/mnt/image.raw\"\n    }\n}",
+    "language": "json",
+    "context": "For example, to import a raw-format image from a file located at\n`/mnt/image.raw`, its ``source-spec`` JSON is encoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5d2394ca79cfb27d",
+    "code": "{\n    <format unique parameters>\n    \"stream\": {\n        \"type\": \"http\",\n        \"url\": \"<url-path>\"\n    }\n}",
+    "language": "json",
+    "context": "The ``http`` stream can be used to import from a remote HTTP or HTTPS web\nserver. Its ``source-spec`` JSON is encoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f205fe79ade4ecf0",
+    "code": "{\n    \"type\": \"raw\",\n    \"stream\": {\n        \"type\": \"http\",\n        \"url\": \"https://download.ceph.com/image.raw\"\n    }\n}",
+    "language": "json",
+    "context": "For example, to import a raw-format image from a file located at\n`https://download.ceph.com/image.raw`, its ``source-spec`` JSON is encoded\nas follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7e210fe930cd8e71",
+    "code": "{\n    <format unique parameters>\n    \"stream\": {\n        \"type\": \"s3\",\n        \"url\": \"<url-path>\",\n        \"access_key\": \"<access-key>\",\n        \"secret_key\": \"<secret-key>\"\n    }\n}",
+    "language": "json",
+    "context": "The ``s3`` stream can be used to import from a remote S3 bucket. Its\n``source-spec`` JSON is encoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f893372e1c779944",
+    "code": "{\n    \"type\": \"raw\",\n    \"stream\": {\n        \"type\": \"s3\",\n        \"url\": \"https://s3.ceph.com/bucket/image.raw\",\n        \"access_key\": \"NX5QOQKC6BH2IDN8HC7A\",\n        \"secret_key\": \"LnEsqNNqZIpkzauboDcLXLcYaWwLQ3Kop0zAnKIn\"\n    }\n}",
+    "language": "json",
+    "context": "For example, to import a raw-format image from a file located at\n`https://s3.ceph.com/bucket/image.raw`, its ``source-spec`` JSON is encoded\nas follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e94d2782282bc958",
+    "code": "{\n    <format unique parameters>\n    \"stream\": {\n        \"type\": \"nbd\",\n        \"uri\": \"<nbd-uri>\",\n    }\n}",
+    "language": "json",
+    "context": "The ``nbd`` stream can be used to import from a remote NBD export. Its\n``source-spec`` JSON is encoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bbd02eff25654afe",
+    "code": "{\n    \"type\": \"raw\",\n    \"stream\": {\n        \"type\": \"nbd\",\n        \"uri\": \"nbd://nbd.ceph.com/image.raw\",\n    }\n}",
+    "language": "json",
+    "context": "For example, to import a raw-format image from an NBD export located at\n``nbd://nbd.ceph.com`` with export name ``image.raw``, its ``source-spec``\nJSON is encoded as follows",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "460243a959855029",
+    "code": "$ rbd migration execute migration_target\nImage migration: 100% complete...done.",
+    "language": "bash",
+    "context": "After preparing the live-migration, the image blocks from the source image\nmust be copied to the target image. This is accomplished by running the\n`rbd migration execute` command",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd migration execute migration_target"
+    ]
+  },
+  {
+    "entity_id": "3356bd5f50417fa2",
+    "code": "$ rbd status migration_target\nWatchers:\n\twatcher=1.2.3.4:0/3695551461 client.123 cookie=123\nMigration:\n    \tsource: rbd/migration_source (5e2cba2f62e)\n    \tdestination: rbd/migration_target (5e2ed95ed806)\n    \tstate: executing (32% complete)",
+    "language": "bash",
+    "context": "The `rbd status` command will also provide feedback on the progress of the\nmigration block deep-copy process",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd status migration_target Watchers"
+    ]
+  },
+  {
+    "entity_id": "d3a7d6d78f07987e",
+    "code": "$ rbd status migration_target\nWatchers: none\nMigration:\n    \tsource: rbd/migration_source (5e2cba2f62e)\n    \tdestination: rbd/migration_target (5e2ed95ed806)\n    \tstate: executed\n$ rbd migration commit migration_target\nCommit image migration: 100% complete...done.",
+    "language": "bash",
+    "context": "Once the live-migration has completed deep-copying all data blocks from the\nsource image to the target, the migration can be committed",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd migration commit migration_target",
+      "rbd status migration_target Watchers"
+    ]
+  },
+  {
+    "entity_id": "576209c7f5e2dcc1",
+    "code": "$ rbd trash list --all",
+    "language": "bash",
+    "context": "Committing the live-migration will remove the cross-links between the source\nand target images, and will remove the source image",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd trash list --all"
+    ]
+  },
+  {
+    "entity_id": "7bb1cb27a01775dc",
+    "code": "$ rbd migration abort migration_target\nAbort image migration: 100% complete...done.",
+    "language": "bash",
+    "context": "If you wish to revert the prepare or execute step, run the `rbd migration abort`\ncommand to revert the migration process",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd migration abort migration_target"
+    ]
+  },
+  {
+    "entity_id": "f85c2dba9f6f96d3",
+    "code": "$ rbd ls\nmigration_source",
+    "language": "bash",
+    "context": "Aborting the migration will result in the target image being deleted and access\nto the original source image being restored",
+    "source_file": "rbd/rbd-live-migration.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd ls migration_source"
+    ]
+  },
+  {
+    "entity_id": "e4a8c77aa651a3ea",
+    "code": "+---------------------------------------------------+\n|                     libvirt                       |\n+------------------------+--------------------------+\n                         |\n                         | configures\n                         v\n+---------------------------------------------------+\n|                       QEMU                        |\n+---------------------------------------------------+\n|                      librbd                       |\n+---------------------------------------------------+\n|                     librados                      |\n+------------------------+-+------------------------+\n|          OSDs          | |        Monitors        |\n+------------------------+ +------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "89925faa91a41a75",
+    "code": "ceph osd pool create libvirt-pool",
+    "language": "text",
+    "context": "#. `Create a pool`_. The following example uses the\n   pool name ``libvirt-pool``.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool create"
+    ]
+  },
+  {
+    "entity_id": "77116f62913a1b67",
+    "code": "ceph osd lspools",
+    "language": "text",
+    "context": "Verify the pool exists.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd lspools"
+    ]
+  },
+  {
+    "entity_id": "fdb2c730937b78bc",
+    "code": "rbd pool init <pool-name>",
+    "language": "text",
+    "context": "#. Use the ``rbd`` tool to initialize the pool for use by RBD",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd pool init"
+    ]
+  },
+  {
+    "entity_id": "4b18768df81ce2e8",
+    "code": "ceph auth get-or-create client.libvirt mon 'profile rbd' osd 'profile rbd pool=libvirt-pool'",
+    "language": "text",
+    "context": "#. `Create a Ceph User`_ (or use ``client.admin`` for version 0.9.7 and\n   earlier). The following example uses the Ceph user name ``client.libvirt``\n   and references ``libvirt-pool``.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client",
+      "rbd pool"
+    ]
+  },
+  {
+    "entity_id": "aef7afc9fd41ded1",
+    "code": "ceph auth ls",
+    "language": "text",
+    "context": "Verify the name exists.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth ls"
+    ]
+  },
+  {
+    "entity_id": "f7be22847b187a9f",
+    "code": "qemu-img create -f rbd rbd:libvirt-pool/new-libvirt-image 2G",
+    "language": "text",
+    "context": "#. Use QEMU to `create an image`_ in your RBD pool.\n   The following example uses the image name ``new-libvirt-image``\n   and references ``libvirt-pool``.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd rbd"
+    ]
+  },
+  {
+    "entity_id": "4c51b4f7a2e69eb5",
+    "code": "rbd -p libvirt-pool ls",
+    "language": "text",
+    "context": "Verify the image exists.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd -p libvirt-pool ls"
+    ]
+  },
+  {
+    "entity_id": "25d6a514d8589c63",
+    "code": "[client.libvirt]\nlog file = /var/log/ceph/qemu-guest-$pid.log\nadmin socket = /var/run/ceph/$cluster-$type.$id.$pid.$cctid.asok",
+    "language": "text",
+    "context": ".. tip:: Optionally, if you wish to enable debug logs and the admin socket for\n   this client, you can add the following section to ``/etc/ceph/ceph.conf``",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f036a15d02d1bc2f",
+    "code": "sudo apt-get install virt-manager",
+    "language": "text",
+    "context": "#. Install a virtual machine manager. See `KVM/VirtManager`_ for details.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "492f31f7c92ed2bb",
+    "code": "sudo virt-manager",
+    "language": "text",
+    "context": "#. Launch the virtual machine manager.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "84f1aa8987369329",
+    "code": "libvirt-virtual-machine",
+    "language": "text",
+    "context": "ame ``libvirt-virtual-machine``. You may use any name you wish,\n   but ensure you replace ``libvirt-virtual-machine`` with the name you\n   choose in subsequent commandline and configuration examples.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bd3037b420be4a2f",
+    "code": "/path/to/image/recent-linux.img",
+    "language": "text",
+    "context": "#. Import the image.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9cd882226cbd7790",
+    "code": "sudo virsh list",
+    "language": "text",
+    "context": "#. You may use ``virsh list`` to verify the VM domain exists.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "41e4bf045645a5de",
+    "code": "sudo virsh edit {vm-domain-name}",
+    "language": "text",
+    "context": "#. Open the configuration file with ``virsh edit``.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cbb10ad899d00134",
+    "code": "<devices>\n\t<emulator>/usr/bin/kvm</emulator>\n\t<disk type='file' device='disk'>\n\t\t<driver name='qemu' type='raw'/>\n\t\t<source file='/path/to/image/recent-linux.img'/>\n\t\t<target dev='vda' bus='virtio'/>\n\t\t<address type='drive' controller='0' bus='0' unit='0'/>\n\t</disk>",
+    "language": "text",
+    "context": "Under ``<devices>`` there should be a ``<disk>`` entry.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9b6e1056735cf821",
+    "code": "<disk type='network' device='disk'>\n\t<source protocol='rbd' name='libvirt-pool/new-libvirt-image'>\n\t\t<host name='{monitor-host}' port='6789'/>\n\t</source>\n\t<target dev='vdb' bus='virtio'/>\n</disk>",
+    "language": "text",
+    "context": "#. Add the Ceph RBD image you created as a ``<disk>`` entry.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8b869684af3a8bb3",
+    "code": "cat > secret.xml <<EOF\n<secret ephemeral='no' private='no'>\n\t<usage type='ceph'>\n\t\t<name>client.libvirt secret</name>\n\t</usage>\n</secret>\nEOF",
+    "language": "text",
+    "context": "#. If your Ceph Storage Cluster has `Ceph Authentication`_ enabled (it does by\n   default), you must generate a secret.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d6f08f74d8d2fc4c",
+    "code": "sudo virsh secret-define --file secret.xml\n{uuid of secret}",
+    "language": "text",
+    "context": "#. Define the secret.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c2d20c7c2093a6d",
+    "code": "ceph auth get-key client.libvirt | sudo tee client.libvirt.key",
+    "language": "text",
+    "context": "#. Get the ``client.libvirt`` key and save the key string to a file.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-key client"
+    ]
+  },
+  {
+    "entity_id": "671cd094967da7e3",
+    "code": "sudo virsh secret-set-value --secret {uuid of secret} --base64 $(cat client.libvirt.key) && rm client.libvirt.key secret.xml",
+    "language": "text",
+    "context": "#. Set the UUID of the secret.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "41e4bf045645a5de",
+    "code": "sudo virsh edit {vm-domain-name}",
+    "language": "text",
+    "context": "et the secret manually by adding the following ``<auth>``\n   entry to the ``<disk>`` element you entered earlier (replacing the\n   ``uuid`` value with the result from the command line example above).",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fe467dcf7a3437a4",
+    "code": "...\n</source>\n<auth username='libvirt'>\n\t<secret type='ceph' uuid='{uuid of secret}'/>\n</auth>\n<target ...",
+    "language": "text",
+    "context": "Then, add ``<auth></auth>`` element to the domain configuration file",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d33225365212a1d1",
+    "code": "ceph health",
+    "language": "text",
+    "context": "#. Check to see if Ceph is running",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph health"
+    ]
+  },
+  {
+    "entity_id": "9cd882226cbd7790",
+    "code": "sudo virsh list",
+    "language": "text",
+    "context": "#. Check to see if the VM is running.",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f8caef7273b8d580",
+    "code": "sudo virsh qemu-monitor-command --hmp {vm-domain-name} 'info block'",
+    "language": "text",
+    "context": "#. Check to see if the VM is communicating with Ceph. Replace\n   ``{vm-domain-name}`` with the name of your VM domain",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0a8a59caa1f018c0",
+    "code": "virsh domblklist {vm-domain-name} --details",
+    "language": "text",
+    "context": "#. Check to see if the device from ``<target dev='vdb' bus='virtio'/>`` exists",
+    "source_file": "rbd/libvirt.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ba484e9ed27eadee",
+    "code": "+------------+         +-------------+\n| {s}        |         | {s} c999    |\n|   Active   |<-------*|   Snapshot  |\n|   Image    |         |   of Image  |\n| (stop i/o) |         | (read only) |\n+------------+         +-------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/rbd-snapshot.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cbbba70c7fcb61d9",
+    "code": "+-------------+              +-------------+\n| {s} c999    |              | {s}         |\n|  Snapshot   | Child refers |  COW Clone  |\n|  of Image   |<------------*| of Snapshot |\n|             |  to Parent   |             |\n| (read only) |              | (writable)  |\n+-------------+              +-------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/rbd-snapshot.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2d782e38e852d786",
+    "code": "+----------------------------+        +-----------------------------+\n|                            |        |                             |\n| Create Block Device Image  |------->|      Create a Snapshot      |\n|                            |        |                             |\n+----------------------------+        +-----------------------------+\n                                                     |\n              +--------------------------------------+\n              |\n              v\n+----------------------------+        +-----------------------------+\n|                            |        |                             |\n|   Protect the Snapshot     |------->|     Clone the Snapshot      |\n|                            |        |                             |\n+----------------------------+        +-----------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/rbd-snapshot.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0a22e6c289675870",
+    "code": "rbd mirror pool enable [--site-name {local-site-name}] {pool-name} {mode}",
+    "language": "text",
+    "context": "To enable mirroring on a pool with ``rbd``, issue the ``mirror pool enable``\nsubcommand with the pool name, the mirroring mode, and an optional friendly\nsite name to describe the local cluster",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool enable"
+    ]
+  },
+  {
+    "entity_id": "c50cbecb79c22a06",
+    "code": "$ rbd --cluster site-a mirror pool enable --site-name site-a image-pool image\n$ rbd --cluster site-b mirror pool enable --site-name site-b image-pool image",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "2cc89499bf555ab8",
+    "code": "rbd mirror pool disable {pool-name}",
+    "language": "text",
+    "context": "To disable mirroring on a pool with ``rbd``, specify the ``mirror pool disable``\ncommand and the pool name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool disable"
+    ]
+  },
+  {
+    "entity_id": "0c47445f54d859b0",
+    "code": "$ rbd --cluster site-a mirror pool disable image-pool\n$ rbd --cluster site-b mirror pool disable image-pool",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "e879f9cd38e92f76",
+    "code": "rbd mirror pool peer bootstrap create [--site-name {local-site-name}] {pool-name}",
+    "language": "text",
+    "context": "To manually create a new bootstrap token with ``rbd``, issue the\n``mirror pool peer bootstrap create`` subcommand, a pool name, and an\noptional friendly site name to describe the local cluster",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool peer"
+    ]
+  },
+  {
+    "entity_id": "0185cd8dfb9bea3f",
+    "code": "$ rbd --cluster site-a mirror pool peer bootstrap create --site-name site-a image-pool\neyJmc2lkIjoiOWY1MjgyZGItYjg5OS00NTk2LTgwOTgtMzIwYzFmYzM5NmYzIiwiY2xpZW50X2lkIjoicmJkLW1pcnJvci1wZWVyIiwia2V5IjoiQVFBUnczOWQwdkhvQmhBQVlMM1I4RmR5dHNJQU50bkFTZ0lOTVE9PSIsIm1vbl9ob3N0IjoiW3YyOjE5Mi4xNjguMS4zOjY4MjAsdjE6MTkyLjE2OC4xLjM6NjgyMV0ifQ==",
+    "language": "bash",
+    "context": "The output of ``mirror pool peer bootstrap create`` will be a token that should\nbe provided to the ``mirror pool peer bootstrap import`` command. For example,\non site-a",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "34d04d78e887195b",
+    "code": "rbd mirror pool peer bootstrap import [--site-name {local-site-name}] [--direction {rx-only or rx-tx}] {pool-name} {token-path}",
+    "language": "text",
+    "context": "with an\noptional friendly site name to describe the local cluster and a mirroring\ndirection (defaults to rx-tx for bidirectional mirroring, but can also be set\nto rx-only for unidirectional mirroring)",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool peer"
+    ]
+  },
+  {
+    "entity_id": "dfbae931da5c7faa",
+    "code": "$ cat <<EOF > token\neyJmc2lkIjoiOWY1MjgyZGItYjg5OS00NTk2LTgwOTgtMzIwYzFmYzM5NmYzIiwiY2xpZW50X2lkIjoicmJkLW1pcnJvci1wZWVyIiwia2V5IjoiQVFBUnczOWQwdkhvQmhBQVlMM1I4RmR5dHNJQU50bkFTZ0lOTVE9PSIsIm1vbl9ob3N0IjoiW3YyOjE5Mi4xNjguMS4zOjY4MjAsdjE6MTkyLjE2OC4xLjM6NjgyMV0ifQ==\nEOF\n$ rbd --cluster site-b mirror pool peer bootstrap import --site-name site-b image-pool token",
+    "language": "bash",
+    "context": "For example, on site-b",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "187f17cffffa6b54",
+    "code": "$ ceph auth get-or-create client.rbd-mirror-peer mon 'profile rbd-mirror-peer' osd 'profile rbd'",
+    "language": "bash",
+    "context": "rroring. A new local Ceph user should be created for the remote\ndaemon to use. To `create a Ceph user`_, with ``ceph`` specify the\n``auth get-or-create`` command, user name, monitor caps, and OSD caps",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "578be8b8422deedc",
+    "code": "rbd mirror pool peer add {pool-name} {client-name}@{cluster-name}",
+    "language": "text",
+    "context": "To manually add a mirroring peer Ceph cluster with ``rbd``, specify the\n``mirror pool peer add`` command, the pool name, and a cluster specification",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool peer"
+    ]
+  },
+  {
+    "entity_id": "c1166133897b95e6",
+    "code": "$ rbd --cluster site-a mirror pool peer add image-pool client.rbd-mirror-peer@site-b\n$ rbd --cluster site-b mirror pool peer add image-pool client.rbd-mirror-peer@site-a",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "c0ccd91389df3465",
+    "code": "$ cat <<EOF > remote-key-file\nAQAeuZdbMMoBChAAcj++/XUxNOLFaWdtTREEsw==\nEOF\n$ rbd --cluster site-a mirror pool peer add image-pool client.rbd-mirror-peer@site-b --remote-mon-host 192.168.1.1,192.168.1.2 --remote-key-file remote-key-file\n$ rbd --cluster site-a mirror pool info image-pool --all\nMode: pool\nPeers: \n  UUID                                 NAME   CLIENT                 MON_HOST                KEY                                      \n  587b08db-3d33-4f32-8af8-421e77abb081 site-b client.rbd-mirror-peer 192.168.1.1,192.168.1.2 AQAeuZdbMMoBChAAcj++/XUxNOLFaWdtTREEsw==",
+    "language": "bash",
+    "context": "local Ceph monitor ``config-key`` store. To specify the\npeer cluster connection attributes when adding a mirroring peer, use the\n``--remote-mon-host`` and ``--remote-key-file`` optionals. For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "52d83b3cda4078fc",
+    "code": "rbd mirror pool peer remove {pool-name} {peer-uuid}",
+    "language": "text",
+    "context": "To remove a mirroring peer Ceph cluster with ``rbd``, specify the\n``mirror pool peer remove`` command, the pool name, and the peer UUID\n(available from the ``rbd mirror pool info`` command)",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool peer"
+    ]
+  },
+  {
+    "entity_id": "350cb8f3911c5b1e",
+    "code": "$ rbd --cluster site-a mirror pool peer remove image-pool 55672766-c02b-4729-8567-f13a66893445\n$ rbd --cluster site-b mirror pool peer remove image-pool 60c0e299-b38f-4234-91f6-eed0a367be08",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "a84f8dcd560cca97",
+    "code": "rbd mirror pool enable {pool-name}/{local-namespace-name} {mode} [--remote-namespace {remote-namespace-name}]",
+    "language": "text",
+    "context": "To enable mirroring on a namespace with ``rbd``, issue the ``mirror pool enable``\nsubcommand with the namespace spec and the mirroring mode, and an optional\nremote namespace name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool enable"
+    ]
+  },
+  {
+    "entity_id": "f14919b4770aadb4",
+    "code": "$ rbd --cluster site-a mirror pool enable image-pool/namespace-a image --remote-namespace namespace-b\n$ rbd --cluster site-b mirror pool enable image-pool/namespace-b image --remote-namespace namespace-a",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "db503df7ad696e74",
+    "code": "$ rbd --cluster site-a mirror pool enable image-pool pool --remote-namespace namespace-c\n$ rbd --cluster site-b mirror pool enable image-pool init-only\n$ rbd --cluster site-b mirror pool enable image-pool/namespace-c pool --remote-namespace \"\"",
+    "language": "bash",
+    "context": "To set up pool mode mirroring between ``image-pool`` (default namespace) on\ncluster ``site-a`` and ``image-pool/namespace-c`` on cluster ``site-b``",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "1c452c88fa58a184",
+    "code": "$ rbd --cluster site-a mirror pool enable image-pool pool --remote-namespace namespace-d\n$ rbd --cluster site-a mirror pool enable image-pool/namespace-e image --remote-namespace \"\"\n$ rbd --cluster site-b mirror pool enable image-pool image --remote-namespace namespace-e\n$ rbd --cluster site-b mirror pool enable image-pool/namespace-d pool --remote-namespace \"\"",
+    "language": "bash",
+    "context": "pool/namespace-d`` on cluster ``site-b`` and\nat the same time image mode mirroring between ``image-pool`` (default namespace)\non cluster ``site-b`` and ``image-pool/namespace-e`` on cluster ``site-a``",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "b10fa7b5617d7c66",
+    "code": "rbd mirror pool disable {pool-name}/{namespace-name}",
+    "language": "text",
+    "context": "To disable mirroring on a namespace with ``rbd``, specify the ``mirror pool disable``\ncommand and the namespace spec",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool disable"
+    ]
+  },
+  {
+    "entity_id": "dc42ade80bdcf398",
+    "code": "$ rbd --cluster site-a mirror pool disable image-pool/namespace-a\n$ rbd --cluster site-b mirror pool disable image-pool/namespace-b",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror",
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "614413a451334918",
+    "code": "rbd mirror image enable {pool-name}/{image-name} {mode}",
+    "language": "text",
+    "context": "explicitly enable mirroring for each image within the pool.\nTo enable mirroring for a specific image with ``rbd``, specify the\n``mirror image enable`` command along with the pool, image name, and mode",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image enable"
+    ]
+  },
+  {
+    "entity_id": "8e5e2f3e3e69d964",
+    "code": "$ rbd --cluster site-a mirror image enable image-pool/image-1 snapshot\n$ rbd --cluster site-a mirror image enable image-pool/image-2 journal",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "29fcecac3353d5d6",
+    "code": "rbd feature enable {pool-name}/{image-name} {feature-name}",
+    "language": "text",
+    "context": ", the journaling feature can be dynamically enabled on\npre-existing RBD images. To enable journaling with ``rbd``, specify\nthe ``feature enable`` command, the pool and image name, and the feature name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd feature enable"
+    ]
+  },
+  {
+    "entity_id": "9356c4711c9c5a27",
+    "code": "$ rbd --cluster site-a feature enable image-pool/image-1 journaling",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a feature"
+    ]
+  },
+  {
+    "entity_id": "b6c0ef7a4604f21d",
+    "code": "rbd mirror image snapshot {pool-name}/{image-name}",
+    "language": "text",
+    "context": "never it is desired to mirror the changed contents of the RBD image. To\ncreate a mirror-snapshot manually with ``rbd``, specify the\n``mirror image snapshot`` command along with the pool and image name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image snapshot"
+    ]
+  },
+  {
+    "entity_id": "8e0f029eb92cfdf1",
+    "code": "$ rbd --cluster site-a mirror image snapshot image-pool/image-1",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "02c24a19e513327b",
+    "code": "rbd mirror snapshot schedule add [--pool {pool-name}] [--image {image-name}] {interval} [{start-time}]",
+    "language": "text",
+    "context": "To create a mirror-snapshot schedule with ``rbd``, specify the\n``mirror snapshot schedule add`` command along with an optional pool or\nimage name; interval; and optional start time",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror snapshot schedule"
+    ]
+  },
+  {
+    "entity_id": "cbc6b2a862b4d70f",
+    "code": "$ rbd --cluster site-a mirror snapshot schedule add --pool image-pool 24h 14:00:00-05:00\n$ rbd --cluster site-a mirror snapshot schedule add --pool image-pool --image image1 6h",
+    "language": "bash",
+    "context": "The ``interval`` can be specified in days, hours, or minutes using ``d``, ``h``,\n``m`` suffix respectively. The optional ``start-time`` can be specified using\nthe ISO 8601 time format. For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "24fa5cf40b9d034b",
+    "code": "$ rbd --cluster site-a mirror snapshot schedule ls --pool image-pool --recursive\nPOOL        NAMESPACE IMAGE  SCHEDULE                            \nimage-pool  -         -      every 1d starting at 14:00:00-05:00 \nimage-pool            image1 every 6h",
+    "language": "bash",
+    "context": "snapshot schedule ls`` command along with\nan optional pool or image name. Additionally, the ``--recursive`` option can\nbe specified to list all schedules at the specified level and below. For\nexample",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "1949cd1f0255f780",
+    "code": "rbd mirror snapshot schedule status [--pool {pool-name}] [--image {image-name}]",
+    "language": "text",
+    "context": "atus for when the next snapshots will be created for\nsnapshot-based mirroring RBD images with ``rbd``, specify the\n``mirror snapshot schedule status`` command along with an optional pool or\nimage name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror snapshot schedule"
+    ]
+  },
+  {
+    "entity_id": "0df21296b405de49",
+    "code": "$ rbd --cluster site-a mirror snapshot schedule status\nSCHEDULE TIME       IMAGE             \n2020-02-26 18:00:00 image-pool/image1",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "aa0e6359e5111eb5",
+    "code": "rbd mirror image disable {pool-name}/{image-name}",
+    "language": "text",
+    "context": "To disable mirroring for a specific image with ``rbd``, specify the\n``mirror image disable`` command along with the pool and image name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image disable"
+    ]
+  },
+  {
+    "entity_id": "c9ab9f9ecbe7aa39",
+    "code": "$ rbd --cluster site-a mirror image disable image-pool/image-1",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "a6c2eda1e5794296",
+    "code": "rbd mirror image demote {pool-name}/{image-name}",
+    "language": "text",
+    "context": "To demote a specific image to non-primary with ``rbd``, specify the\n``mirror image demote`` command along with the pool and image name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image demote"
+    ]
+  },
+  {
+    "entity_id": "a299b5a0769d1cf7",
+    "code": "$ rbd --cluster site-a mirror image demote image-pool/image-1",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "d9d8b76d31cda146",
+    "code": "rbd mirror pool demote {pool-name}",
+    "language": "text",
+    "context": "To demote all primary images within a pool to non-primary with ``rbd``, specify\nthe ``mirror pool demote`` command along with the pool name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool demote"
+    ]
+  },
+  {
+    "entity_id": "2f6d3f94b022fd7e",
+    "code": "$ rbd --cluster site-a mirror pool demote image-pool",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "0105ade88de7dc45",
+    "code": "rbd mirror image promote [--force] {pool-name}/{image-name}",
+    "language": "text",
+    "context": "To promote a specific image to primary with ``rbd``, specify the\n``mirror image promote`` command along with the pool and image name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image promote"
+    ]
+  },
+  {
+    "entity_id": "9a3c7f7439a86878",
+    "code": "$ rbd --cluster site-b mirror image promote image-pool/image-1",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-b mirror"
+    ]
+  },
+  {
+    "entity_id": "76e3d032af5f73a4",
+    "code": "rbd mirror pool promote [--force] {pool-name}",
+    "language": "text",
+    "context": "To promote all non-primary images within a pool to primary with ``rbd``, specify\nthe ``mirror pool promote`` command along with the pool name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool promote"
+    ]
+  },
+  {
+    "entity_id": "016bbf69e01a2b04",
+    "code": "$ rbd --cluster site-a mirror pool promote image-pool",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd --cluster site-a mirror"
+    ]
+  },
+  {
+    "entity_id": "14885bf44afc6161",
+    "code": "rbd mirror image resync {pool-name}/{image-name}",
+    "language": "text",
+    "context": "e`_ determined to be out-of-date and then request a\nresync to the primary image. To request an image resync with ``rbd``, specify\nthe ``mirror image resync`` command along with the pool and image name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image resync"
+    ]
+  },
+  {
+    "entity_id": "a855fd09013781c1",
+    "code": "$ rbd mirror image resync image-pool/image-1",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image resync"
+    ]
+  },
+  {
+    "entity_id": "d0384fdebb12b2d6",
+    "code": "rbd mirror image status {pool-name}/{image-name}",
+    "language": "text",
+    "context": "To request the mirror image status with ``rbd``, specify the\n``mirror image status`` command along with the pool and image name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image status"
+    ]
+  },
+  {
+    "entity_id": "305cb6d7eb3116b4",
+    "code": "$ rbd mirror image status image-pool/image-1",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror image status"
+    ]
+  },
+  {
+    "entity_id": "faf574f081c23485",
+    "code": "rbd mirror pool status {pool-name}",
+    "language": "text",
+    "context": "To request the mirror pool summary status with ``rbd``, specify the\n``mirror pool status`` command along with the pool name",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool status"
+    ]
+  },
+  {
+    "entity_id": "c108715afcdfddff",
+    "code": "$ rbd mirror pool status image-pool",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror pool status"
+    ]
+  },
+  {
+    "entity_id": "4f98632adc567f3e",
+    "code": "ceph auth get-or-create client.rbd-mirror.{unique id} mon 'profile rbd-mirror' osd 'profile rbd'",
+    "language": "text",
+    "context": "Each ``rbd-mirror`` daemon should use a unique Ceph user ID. To\n`create a Ceph user`_, with ``ceph`` specify the ``auth get-or-create``\ncommand, user name, monitor caps, and OSD caps",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "15f9a2ce238ea7d2",
+    "code": "systemctl enable ceph-rbd-mirror@rbd-mirror.{unique id}",
+    "language": "text",
+    "context": "The ``rbd-mirror`` daemon can be managed by ``systemd`` by specifying the user\nID as the daemon instance",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c2fe0d21398d1acc",
+    "code": "rbd-mirror -f --log-file={log_path}",
+    "language": "text",
+    "context": "The ``rbd-mirror`` can also be run in foreground by ``rbd-mirror`` command",
+    "source_file": "rbd/rbd-mirroring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a0b956ec88edf989",
+    "code": "+---------------------------------------------------+\n|                   CloudStack                      |\n+---------------------------------------------------+\n|                     libvirt                       |\n+------------------------+--------------------------+\n                         |\n                         | configures\n                         v\n+---------------------------------------------------+\n|                       QEMU                        |\n+---------------------------------------------------+\n|                      librbd                       |\n+---------------------------------------------------+\n|                     librados                      |\n+------------------------+-+------------------------+\n|          OSDs          | |        Monitors        |\n+------------------------+ +------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/rbd-cloudstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "113fe353cd5d03a7",
+    "code": "ceph osd pool create cloudstack",
+    "language": "text",
+    "context": "By default, Ceph block devices use the ``rbd`` pool. Create a pool for\nCloudStack NFS Primary Storage. Ensure your Ceph cluster is running, then create\nthe pool.",
+    "source_file": "rbd/rbd-cloudstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool create"
+    ]
+  },
+  {
+    "entity_id": "9bb77a0f7ebc5c7a",
+    "code": "rbd pool init cloudstack",
+    "language": "text",
+    "context": "A newly created pool must be initialized prior to use. Use the ``rbd`` tool\nto initialize the pool",
+    "source_file": "rbd/rbd-cloudstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd pool init cloudstack"
+    ]
+  },
+  {
+    "entity_id": "0148c56562610e40",
+    "code": "ceph auth get-or-create client.cloudstack mon 'profile rbd' osd 'profile rbd pool=cloudstack'",
+    "language": "text",
+    "context": "correct\ncredentials to access the ``cloudstack`` pool we just created. Although we could\nuse ``client.admin`` for this, it's recommended to create a user with only\naccess to the ``cloudstack`` pool.",
+    "source_file": "rbd/rbd-cloudstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client",
+      "rbd pool"
+    ]
+  },
+  {
+    "entity_id": "194e2ee24149f854",
+    "code": "# yum install ceph-ansible",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-target-ansible.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7327d8a60894dc84",
+    "code": "[iscsigws]\nceph-igw-1\nceph-igw-2",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-target-ansible.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b7ec2e9a3fdd672a",
+    "code": "[root@rh7-iscsi-client ceph-ansible]# ansible-playbook purge_gateways.yml\nWhich configuration elements should be purged? (all, lio or abort) [abort]: all",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-target-ansible.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6c6a3bd249adb594",
+    "code": "$ ceph osd pool create kubernetes",
+    "language": "bash",
+    "context": "By default, Ceph block devices use the ``rbd`` pool. Create a pool for\nKubernetes volume storage. Ensure your Ceph cluster is running, then create\nthe pool.",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool create"
+    ]
+  },
+  {
+    "entity_id": "2c686278dc3e2aad",
+    "code": "$ rbd pool init kubernetes",
+    "language": "bash",
+    "context": "A newly created pool must be initialized prior to use. Use the ``rbd`` tool\nto initialize the pool",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd pool init kubernetes"
+    ]
+  },
+  {
+    "entity_id": "e818f7f438aa3188",
+    "code": "$ ceph auth get-or-create client.kubernetes mon 'profile rbd' osd 'profile rbd pool=kubernetes' mgr 'profile rbd pool=kubernetes'\n[client.kubernetes]\n    key = AQD9o0Fd6hQRChAAt7fMaSZXduT3NWEqylNpmg==",
+    "language": "bash",
+    "context": "Create a new user for Kubernetes and `ceph-csi`. Execute the following and\nrecord the generated key",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client",
+      "rbd pool"
+    ]
+  },
+  {
+    "entity_id": "314c86032346ef8c",
+    "code": "$ ceph mon dump\n<...>\nfsid b9127830-b0cc-4e34-aa47-9d1a2e9949a8\n<...>\n0: [v2:192.168.1.1:3300/0,v1:192.168.1.1:6789/0] mon.a\n1: [v2:192.168.1.2:3300/0,v1:192.168.1.2:6789/0] mon.b\n2: [v2:192.168.1.3:3300/0,v1:192.168.1.3:6789/0] mon.c",
+    "language": "bash",
+    "context": "The `ceph-csi` requires a `ConfigMap` object stored in Kubernetes to define the\nthe Ceph monitor addresses for the Ceph cluster. Collect both the Ceph cluster\nunique `fsid` and the monitor addresses",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "1b60d808ca78b4f9",
+    "code": "$ cat <<EOF > csi-config-map.yaml\n---\napiVersion: v1\nkind: ConfigMap\ndata:\n  config.json: |-\n    [\n      {\n        \"clusterID\": \"b9127830-b0cc-4e34-aa47-9d1a2e9949a8\",\n        \"monitors\": [\n          \"192.168.1.1:6789\",\n          \"192.168.1.2:6789\",\n          \"192.168.1.3:6789\"\n        ]\n      }\n    ]\nmetadata:\n  name: ceph-csi-config\nEOF",
+    "language": "bash",
+    "context": "Generate a `csi-config-map.yaml` file similar to the example below, substituting\nthe `fsid` for \"clusterID\", and the monitor addresses for \"monitors\"",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4a734dfe3c4bad85",
+    "code": "$ kubectl apply -f csi-config-map.yaml",
+    "language": "bash",
+    "context": "Once generated, store the new `ConfigMap` object in Kubernetes",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0479d06ab2368d23",
+    "code": "$ cat <<EOF > csi-kms-config-map.yaml\n---\napiVersion: v1\nkind: ConfigMap\ndata:\n  config.json: |-\n    {}\nmetadata:\n  name: ceph-csi-encryption-kms-config\nEOF",
+    "language": "bash",
+    "context": "t Service (KMS) provider details.  If KMS isn't set up, put\nan empty configuration in a `csi-kms-config-map.yaml` file or refer to examples\nat https://github.com/ceph/ceph-csi/tree/master/examples/kms",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "caf8be145c364121",
+    "code": "$ kubectl apply -f csi-kms-config-map.yaml",
+    "language": "bash",
+    "context": "Once generated, store the new `ConfigMap` object in Kubernetes",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "58f66d4e0a73a384",
+    "code": "$ cat <<EOF > ceph-config-map.yaml\n---\napiVersion: v1\nkind: ConfigMap\ndata:\n  ceph.conf: |\n    [global]\n    auth_cluster_required = cephx\n    auth_service_required = cephx\n    auth_client_required = cephx\n  # keyring is a required key and its value should be empty\n  keyring: |\nmetadata:\n  name: ceph-config\nEOF",
+    "language": "bash",
+    "context": "Recent versions of `ceph-csi` also require yet another `ConfigMap` object\nto define Ceph configuration to add to ceph.conf file inside CSI containers",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f73d700575899b7",
+    "code": "$ kubectl apply -f ceph-config-map.yaml",
+    "language": "bash",
+    "context": "Once generated, store the new `ConfigMap` object in Kubernetes",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c9f656238870ffdc",
+    "code": "$ cat <<EOF > csi-rbd-secret.yaml\n---\napiVersion: v1\nkind: Secret\nmetadata:\n  name: csi-rbd-secret\n  namespace: default\nstringData:\n  userID: kubernetes\n  userKey: AQD9o0Fd6hQRChAAt7fMaSZXduT3NWEqylNpmg==\nEOF",
+    "language": "bash",
+    "context": "si` requires the cephx credentials for communicating with the Ceph\ncluster. Generate a `csi-rbd-secret.yaml` file similar to the example below,\nusing the newly created Kubernetes user id and cephx key",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7bfa131af8135833",
+    "code": "$ kubectl apply -f csi-rbd-secret.yaml",
+    "language": "bash",
+    "context": "Once generated, store the new `Secret` object in Kubernetes",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "68c00f0fb460afe2",
+    "code": "$ kubectl apply -f https://raw.githubusercontent.com/ceph/ceph-csi/master/deploy/rbd/kubernetes/csi-provisioner-rbac.yaml\n$ kubectl apply -f https://raw.githubusercontent.com/ceph/ceph-csi/master/deploy/rbd/kubernetes/csi-nodeplugin-rbac.yaml",
+    "language": "bash",
+    "context": "le`/`ClusterRoleBinding`\nKubernetes objects. These objects do not necessarily need to be customized for\nyour Kubernetes environment and therefore can be used as-is from the `ceph-csi`\ndeployment YAMLs",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c43fbd7210aad598",
+    "code": "$ wget https://raw.githubusercontent.com/ceph/ceph-csi/master/deploy/rbd/kubernetes/csi-rbdplugin-provisioner.yaml\n$ kubectl apply -f csi-rbdplugin-provisioner.yaml\n$ wget https://raw.githubusercontent.com/ceph/ceph-csi/master/deploy/rbd/kubernetes/csi-rbdplugin.yaml\n$ kubectl apply -f csi-rbdplugin.yaml",
+    "language": "bash",
+    "context": "of the `ceph-csi` container release version, these objects do\nnot necessarily need to be customized for your Kubernetes environment and\ntherefore can be used as-is from the `ceph-csi` deployment YAMLs",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4a4058a44b912320",
+    "code": "$ cat <<EOF > csi-rbd-sc.yaml\n---\napiVersion: storage.k8s.io/v1\nkind: StorageClass\nmetadata:\n   name: csi-rbd-sc\nprovisioner: rbd.csi.ceph.com\nparameters:\n   clusterID: b9127830-b0cc-4e34-aa47-9d1a2e9949a8\n   pool: kubernetes\n   imageFeatures: layering\n   csi.storage.k8s.io/provisioner-secret-name: csi-rbd-secret\n   csi.storage.k8s.io/provisioner-secret-namespace: default\n   csi.storage.k8s.io/controller-expand-secret-name: csi-rbd-secret\n   csi.storage.k8s.io/controller-expand-secret-namespace: default\n   csi.storage.k8s.io/node-stage-secret-name: csi-rbd-secret\n   csi.storage.k8s.io/node-stage-secret-namespace: default\nreclaimPolicy: Delete\nallowVolumeExpansion: true\nmountOptions:\n   - discard\nEOF\n$ kubectl apply -f csi-rbd-sc.yaml",
+    "language": "bash",
+    "context": "create a `ceph-csi` `StorageClass` that maps to the `kubernetes`\npool created above, the following YAML file can be used after ensuring that the\n\"clusterID\" property matches your Ceph cluster's `fsid`",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "681ee17c9e6036b2",
+    "code": "$ cat <<EOF > raw-block-pvc.yaml\n---\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: raw-block-pvc\nspec:\n  accessModes:\n    - ReadWriteOnce\n  volumeMode: Block\n  resources:\n    requests:\n      storage: 1Gi\n  storageClassName: csi-rbd-sc\nEOF\n$ kubectl apply -f raw-block-pvc.yaml",
+    "language": "bash",
+    "context": "a block-based `PersistentVolumeClaim` that utilizes\nthe `ceph-csi`-based `StorageClass` created above, the following YAML can be\nused to request raw block storage from the `csi-rbd-sc` `StorageClass`",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "898bf33348e2bbbd",
+    "code": "$ cat <<EOF > raw-block-pod.yaml\n---\napiVersion: v1\nkind: Pod\nmetadata:\n  name: pod-with-raw-block-volume\nspec:\n  containers:\n    - name: fc-container\n      image: fedora:26\n      command: [\"/bin/sh\", \"-c\"]\n      args: [\"tail -f /dev/null\"]\n      volumeDevices:\n        - name: data\n          devicePath: /dev/xvda\n  volumes:\n    - name: data\n      persistentVolumeClaim:\n        claimName: raw-block-pvc\nEOF\n$ kubectl apply -f raw-block-pod.yaml",
+    "language": "bash",
+    "context": "The following demonstrates and example of binding the above\n`PersistentVolumeClaim` to a `Pod` resource as a raw block device",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5810e34bc5214eff",
+    "code": "$ cat <<EOF > pvc.yaml\n---\napiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: rbd-pvc\nspec:\n  accessModes:\n    - ReadWriteOnce\n  volumeMode: Filesystem\n  resources:\n    requests:\n      storage: 1Gi\n  storageClassName: csi-rbd-sc\nEOF\n$ kubectl apply -f pvc.yaml",
+    "language": "bash",
+    "context": "umeClaim` that utilizes the\n`ceph-csi`-based `StorageClass` created above, the following YAML can be used to\nrequest a mounted file system (backed by an RBD image) from the `csi-rbd-sc`\n`StorageClass`",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "be41a019f2ac5c59",
+    "code": "$ cat <<EOF > pod.yaml\n---\napiVersion: v1\nkind: Pod\nmetadata:\n  name: csi-rbd-demo-pod\nspec:\n  containers:\n    - name: web-server\n      image: nginx\n      volumeMounts:\n        - name: mypvc\n          mountPath: /var/lib/www/html\n  volumes:\n    - name: mypvc\n      persistentVolumeClaim:\n        claimName: rbd-pvc\n        readOnly: false\nEOF\n$ kubectl apply -f pod.yaml",
+    "language": "bash",
+    "context": "The following demonstrates and example of binding the above\n`PersistentVolumeClaim` to a `Pod` resource as a mounted file system",
+    "source_file": "rbd/rbd-kubernetes.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "669936f3d4dc9d62",
+    "code": "[osd]\nosd heartbeat grace = 20\nosd heartbeat interval = 5",
+    "language": "text",
+    "context": "Monitors or\nOSDs, but it is important to lower the default heartbeat interval for\ndetecting down OSDs to reduce the possibility of initiator timeouts.\nThe following configuration options are suggested",
+    "source_file": "rbd/iscsi-requirements.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cf325010d99a297e",
+    "code": "ceph tell <daemon_type>.<id> config set <parameter_name> <new_value>",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-requirements.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell"
+    ]
+  },
+  {
+    "entity_id": "150be97604be8d8c",
+    "code": "ceph tell osd.* config set osd_heartbeat_grace 20\nceph tell osd.* config set osd_heartbeat_interval 5",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-requirements.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell osd"
+    ]
+  },
+  {
+    "entity_id": "a9faebb21c051aef",
+    "code": "ceph daemon <daemon_type>.<id> config set osd_client_watch_timeout 15",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-requirements.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemon"
+    ]
+  },
+  {
+    "entity_id": "8c66a421d478726d",
+    "code": "ceph daemon osd.0 config set osd_heartbeat_grace 20\nceph daemon osd.0 config set osd_heartbeat_interval 5",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-requirements.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemon osd"
+    ]
+  },
+  {
+    "entity_id": "4aab009266805cfe",
+    "code": "gwtop  2/2 Gateways   CPU% MIN:  4 MAX:  5    Network Total In:    2M  Out:    3M   10:20:00\nCapacity:   8G    Disks:   8   IOPS:  503   Clients:  1   Ceph: HEALTH_OK          OSDs:   3\nPool.Image       Src    Size     iops     rMB/s     wMB/s   Client\niscsi.t1703             500M        0      0.00      0.00\niscsi.testme1           500M        0      0.00      0.00\niscsi.testme2           500M        0      0.00      0.00\niscsi.testme3           500M        0      0.00      0.00\niscsi.testme5           500M        0      0.00      0.00\nrbd.myhost_1      T       4G      504      1.95      0.00   rh460p(CON)\nrbd.test_2                1G        0      0.00      0.00\nrbd.testme              500M        0      0.00      0.00",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-monitoring.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2c37742a1b87c4a1",
+    "code": "Set-MPIOSetting -NewPDORemovePeriod 120",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8c56e6848b12b71b",
+    "code": "mpclaim.exe -l -m 1",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3cd823566484a03b",
+    "code": "mpclaim -s -m\nMSDSM-wide Load Balance Policy: Fail Over Only",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a61996bf8b0488bd",
+    "code": "mpclaim -s -d $MPIO_DISK_ID",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "52961ff062cc7206",
+    "code": "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\Disk",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5d947556db38eecc",
+    "code": "TimeOutValue = 65",
+    "language": "ini",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a45aecba4f5afb8e",
+    "code": "HKEY_LOCAL_MACHINE\\\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E97B-E325-11CE-BFC1-08002BE10318}\\<Instance_Number>\\Parameters",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eb36e9aa0056bf31",
+    "code": "LinkDownTime = 25\nSRBTimeoutDelta = 15",
+    "language": "ini",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-win.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c41afc77e8e1d0b4",
+    "code": "The iSCSI gateway is in maintenance as of November 2022. This means that\nit is no longer in active development and will not be updated to add\nnew features.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "rbd/iscsi-overview.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0a091b7c768d239f",
+    "code": "sudo rbd device map {pool-name}/{image-name} --id {user-name}",
+    "language": "text",
+    "context": "Use ``rbd`` to map an image name to a kernel module. You must specify the \nimage name, the pool name, and the user name. ``rbd`` will load RBD kernel\nmodule on your behalf if it's not already loaded.",
+    "source_file": "rbd/rbd-ko.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd device map"
+    ]
+  },
+  {
+    "entity_id": "ec2153282f717a82",
+    "code": "sudo rbd device map rbd/myimage --id admin",
+    "language": "text",
+    "context": "For example",
+    "source_file": "rbd/rbd-ko.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd device map rbd"
+    ]
+  },
+  {
+    "entity_id": "dc6ab43e957cafe1",
+    "code": "sudo rbd device map rbd/myimage --id admin --keyring /path/to/keyring\nsudo rbd device map rbd/myimage --id admin --keyfile /path/to/file",
+    "language": "text",
+    "context": "sudo rbd device map rbd/myimage --id admin\n \nIf you use `cephx`_ authentication, you must also specify a secret.  It may come\nfrom a keyring or a file containing the secret.",
+    "source_file": "rbd/rbd-ko.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd device map rbd"
+    ]
+  },
+  {
+    "entity_id": "add4a123380865e9",
+    "code": "rbd device list",
+    "language": "text",
+    "context": "To show block device images mapped to kernel modules with the ``rbd``,\nspecify ``device list`` arguments.",
+    "source_file": "rbd/rbd-ko.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd device list"
+    ]
+  },
+  {
+    "entity_id": "05835c3d93efbeae",
+    "code": "sudo rbd device unmap /dev/rbd/{poolname}/{imagename}",
+    "language": "text",
+    "context": "To unmap a block device image with the ``rbd`` command, specify the\n``device unmap`` arguments and the device name (i.e., by convention the\nsame as the block device image name).",
+    "source_file": "rbd/rbd-ko.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd device unmap"
+    ]
+  },
+  {
+    "entity_id": "2ddfd1519c92b506",
+    "code": "sudo rbd device unmap /dev/rbd/rbd/foo",
+    "language": "text",
+    "context": "For example",
+    "source_file": "rbd/rbd-ko.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd device unmap"
+    ]
+  },
+  {
+    "entity_id": "c647e81116726d65",
+    "code": "* You can move an image to the trash even if it has snapshot(s) or is\n  actively in use by clones. However, you cannot remove it from the trash\n  under those conditions.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "rbd/rados-rbd-cmds.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "23c1b99cfc18b4b0",
+    "code": "Applications that use SCSI persistent group reservations (PGR) and\nSCSI 2 based reservations are not supported when exporting a RBD image\nthrough more than one iSCSI gateway.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "rbd/iscsi-initiators.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dbc0a3fbb74fab27",
+    "code": "+---------------------------------------------------+\n|                    OpenStack                      |\n+---------------------------------------------------+\n|                     libvirt                       |\n+------------------------+--------------------------+\n                         |\n                         | configures\n                         v\n+---------------------------------------------------+\n|                       QEMU                        |\n+---------------------------------------------------+\n|                      librbd                       |\n+---------------------------------------------------+\n|                     librados                      |\n+------------------------+-+------------------------+\n|          OSDs          | |        Monitors        |\n+------------------------+ +------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "43bb0d2d0fda79f3",
+    "code": "ceph osd pool create volumes\nceph osd pool create images\nceph osd pool create backups\nceph osd pool create vms",
+    "language": "text",
+    "context": "the ``rbd`` pool. You may use any\nsuitable pool by specifying it explicitly. We recommend creating a pool for\nCinder and a pool for Glance. Ensure your Ceph cluster is running, then create the pools.",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool create"
+    ]
+  },
+  {
+    "entity_id": "0e1f9bda37c9beb7",
+    "code": "rbd pool init volumes\nrbd pool init images\nrbd pool init backups\nrbd pool init vms",
+    "language": "text",
+    "context": "Newly created pools must be initialized prior to use. Use the ``rbd`` tool\nto initialize the pools",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd pool init volumes"
+    ]
+  },
+  {
+    "entity_id": "75313c6a4a7ed773",
+    "code": "ssh {your-openstack-server} sudo tee /etc/ceph/ceph.conf </etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "The nodes running ``glance-api``, ``cinder-volume``, ``nova-compute`` and\n``cinder-backup`` act as Ceph clients. Each requires the ``ceph.conf`` file",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ebb8dbd9f6d68f35",
+    "code": "sudo apt-get install python-rbd\nsudo yum install python-rbd",
+    "language": "text",
+    "context": "On the ``glance-api`` node, you will need the Python bindings for ``librbd``",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd sudo yum install"
+    ]
+  },
+  {
+    "entity_id": "5b5f204917ee570b",
+    "code": "sudo apt-get install ceph-common\nsudo yum install ceph-common",
+    "language": "text",
+    "context": "On the ``nova-compute``, ``cinder-backup`` and on the ``cinder-volume`` node,\nuse both the Python bindings and the client command line tools",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b596db6e64151f3c",
+    "code": "ceph auth get-or-create client.glance mon 'profile rbd' osd 'profile rbd pool=images' mgr 'profile rbd pool=images'\nceph auth get-or-create client.cinder mon 'profile rbd' osd 'profile rbd pool=volumes, profile rbd pool=vms, profile rbd-read-only pool=images' mgr 'profile rbd pool=volumes, profile rbd pool=vms'\nceph auth get-or-create client.cinder-backup mon 'profile rbd' osd 'profile rbd pool=backups' mgr 'profile rbd pool=backups'",
+    "language": "text",
+    "context": "If you have `cephx authentication`_ enabled, create a new user for Nova/Cinder\nand Glance. Execute the following",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client",
+      "rbd pool"
+    ]
+  },
+  {
+    "entity_id": "5911bd26a30b5018",
+    "code": "ceph auth get-or-create client.glance | ssh {your-glance-api-server} sudo tee /etc/ceph/ceph.client.glance.keyring\nssh {your-glance-api-server} sudo chown glance:glance /etc/ceph/ceph.client.glance.keyring\nceph auth get-or-create client.cinder | ssh {your-volume-server} sudo tee /etc/ceph/ceph.client.cinder.keyring\nssh {your-cinder-volume-server} sudo chown cinder:cinder /etc/ceph/ceph.client.cinder.keyring\nceph auth get-or-create client.cinder-backup | ssh {your-cinder-backup-server} sudo tee /etc/ceph/ceph.client.cinder-backup.keyring\nssh {your-cinder-backup-server} sudo chown cinder:cinder /etc/ceph/ceph.client.cinder-backup.keyring",
+    "language": "text",
+    "context": "Add the keyrings for ``client.cinder``, ``client.glance``, and\n``client.cinder-backup`` to the appropriate nodes and change their ownership",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "e4a2169866aad0bc",
+    "code": "ceph auth get-or-create client.cinder | ssh {your-nova-compute-server} sudo tee /etc/ceph/ceph.client.cinder.keyring",
+    "language": "text",
+    "context": "Nodes running ``nova-compute`` need the keyring file for the ``nova-compute``\nprocess",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "65c8a8577f7bda11",
+    "code": "ceph auth get-key client.cinder | ssh {your-compute-node} tee client.cinder.key",
+    "language": "text",
+    "context": "Create a temporary copy of the secret key on the nodes running\n``nova-compute``",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-key client"
+    ]
+  },
+  {
+    "entity_id": "3adda7618ad667ad",
+    "code": "uuidgen\n457eb676-33da-42ec-9a8c-9293d545c337",
+    "language": "text",
+    "context": "Then, on the compute nodes, add the secret key to ``libvirt`` and remove the\ntemporary copy of the key",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d70f701daf2da7c3",
+    "code": "[glance_store]\nstores = rbd\ndefault_store = rbd\nrbd_store_pool = images\nrbd_store_user = glance\nrbd_store_ceph_conf = /etc/ceph/ceph.conf\nrbd_store_chunk_size = 8",
+    "language": "ini",
+    "context": "Edit ``/etc/glance/glance-api.conf`` and add under the ``[glance_store]`` section",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd default_store",
+      "rbd rbd_store_pool"
+    ]
+  },
+  {
+    "entity_id": "b10b7a0273dfcfa2",
+    "code": "show_image_direct_url = True",
+    "language": "ini",
+    "context": "If you want to enable copy-on-write cloning of images, also add under the ``[DEFAULT]`` section",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0abd18a80226b67b",
+    "code": "[paste_deploy]\nflavor = keystone",
+    "language": "ini",
+    "context": "Disable the Glance cache management to avoid images getting cached under ``/var/lib/glance/image-cache/``,\nassuming your configuration file has ``flavor = keystone+cachemanagement``",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c0ca66af55c7aea9",
+    "code": "[DEFAULT]\n...\nenabled_backends = ceph\nglance_api_version = 2\n...\n[ceph]\nvolume_driver = cinder.volume.drivers.rbd.RBDDriver\nvolume_backend_name = ceph\nrbd_pool = volumes\nrbd_ceph_conf = /etc/ceph/ceph.conf\nrbd_flatten_volume_from_snapshot = false\nrbd_max_clone_depth = 5\nrbd_store_chunk_size = 4\nrados_connect_timeout = -1",
+    "language": "ini",
+    "context": "OpenStack requires a driver to interact with Ceph block devices. You must also\nspecify the pool name for the block device. On your OpenStack node, edit\n``/etc/cinder/cinder.conf`` by adding",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph glance_api_version",
+      "ceph rbd_pool"
+    ]
+  },
+  {
+    "entity_id": "1ad3f9fbf1bb4ffd",
+    "code": "[ceph]\n...\nrbd_user = cinder\nrbd_secret_uuid = 457eb676-33da-42ec-9a8c-9293d545c337",
+    "language": "ini",
+    "context": "If you are using `cephx authentication`_, also configure the user and uuid of\nthe secret you added to ``libvirt`` as documented earlier",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8b3ce24ecbf4eed7",
+    "code": "backup_driver = cinder.backup.drivers.ceph\nbackup_ceph_conf = /etc/ceph/ceph.conf\nbackup_ceph_user = cinder-backup\nbackup_ceph_chunk_size = 134217728\nbackup_ceph_pool = backups\nbackup_ceph_stripe_unit = 0\nbackup_ceph_stripe_count = 0\nrestore_discard_excess_bytes = true",
+    "language": "ini",
+    "context": "OpenStack Cinder Backup requires a specific daemon so don't forget to install it.\nOn your Cinder Backup node, edit ``/etc/cinder/cinder.conf`` and add",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph backup_ceph_conf"
+    ]
+  },
+  {
+    "entity_id": "54ab3b4f20740f52",
+    "code": "[libvirt]\n...\nrbd_user = cinder\nrbd_secret_uuid = 457eb676-33da-42ec-9a8c-9293d545c337",
+    "language": "ini",
+    "context": "oot\nfrom volume), you must tell Nova (and libvirt) which user and UUID to refer to\nwhen attaching the device. libvirt will refer to this user when connecting and\nauthenticating with the Ceph cluster.",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0dbc3fa117602b20",
+    "code": "ceph daemon /var/run/ceph/ceph-client.cinder.19195.32310016.asok help",
+    "language": "text",
+    "context": "This socket can be accessed on the hypervisor (Nova compute) node",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemon"
+    ]
+  },
+  {
+    "entity_id": "ad14caabc5a6a19d",
+    "code": "[client]\n    rbd cache = true\n    rbd cache writethrough until flush = true\n    admin socket = /var/run/ceph/guests/$cluster-$type.$id.$pid.$cctid.asok\n    log file = /var/log/qemu/qemu-guest-$pid.log\n    rbd concurrent management ops = 20",
+    "language": "text",
+    "context": "To enable RBD cache and admin sockets, ensure that on each hypervisor's\n``ceph.conf`` contains",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd cache",
+      "rbd cache writethrough until",
+      "rbd concurrent management ops"
+    ]
+  },
+  {
+    "entity_id": "c89aee6755cd233b",
+    "code": "mkdir -p /var/run/ceph/guests/ /var/log/qemu/\nchown qemu:libvirtd /var/run/ceph/guests /var/log/qemu/",
+    "language": "text",
+    "context": "Configure permissions for these directories",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5ce98a7030d43871",
+    "code": "sudo glance-control api restart\nsudo service nova-compute restart\nsudo service cinder-volume restart\nsudo service cinder-backup restart",
+    "language": "text",
+    "context": "lock device driver and load the block device pool name\ninto the configuration, you must restart the related OpenStack services.\nFor Debian based systems execute these commands on the appropriate nodes",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cd15d038d5b0e981",
+    "code": "sudo service openstack-glance-api restart\nsudo service openstack-nova-compute restart\nsudo service openstack-cinder-volume restart\nsudo service openstack-cinder-backup restart",
+    "language": "text",
+    "context": "For Red Hat based systems execute",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e81c11c4d91a9664",
+    "code": "cinder create --image-id {id of image} --display-name {name of volume} {size of volume}",
+    "language": "text",
+    "context": "You can create a volume from an image using the Cinder command line tool",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c7df84bd791d6f96",
+    "code": "qemu-img convert -f {source-format} -O {output-format} {source-filename} {output-filename}\nqemu-img convert -f qcow2 -O raw precise-cloudimg.img precise-cloudimg.raw",
+    "language": "text",
+    "context": "You can use `qemu-img`_ to convert from one format to another. For example",
+    "source_file": "rbd/rbd-openstack.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8bb712441c3bb166",
+    "code": "CONFIG_TARGET_CORE=m\nCONFIG_TCM_USER2=m\nCONFIG_ISCSI_TARGET=m",
+    "language": "ini",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli-manual-install.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "887044d50ce95f4f",
+    "code": "rbd_persistent_cache_mode = {cache-mode}\nrbd_plugins = pwl_cache",
+    "language": "ini",
+    "context": "To enable the PWL cache, set the following configuration settings",
+    "source_file": "rbd/rbd-persistent-write-log-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d00178eaff13d653",
+    "code": "rbd status {pool-name}/{image-name}",
+    "language": "text",
+    "context": "The PWL cache is enabled when the exclusive lock is acquired,\nand it is closed when the exclusive lock is released. To check the cache status,\nusers may use the command ``rbd status``.",
+    "source_file": "rbd/rbd-persistent-write-log-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd status"
+    ]
+  },
+  {
+    "entity_id": "25bb8ddcb6fd13a8",
+    "code": "$ rbd status rbd/foo\nWatchers:\n        watcher=10.10.0.102:0/1061883624 client.25496 cookie=140338056493088\nPersistent cache state:\n        host: sceph9\n        path: /mnt/nvme0/rbd-pwl.rbd.101e5824ad9a.pool\n        size: 1 GiB\n        mode: ssd\n        stats_timestamp: Sun Apr 10 13:26:32 2022\n        present: true   empty: false    clean: false\n        allocated: 509 MiB\n        cached: 501 MiB\n        dirty: 338 MiB\n        free: 515 MiB\n        hits_full: 1450 / 61%\n        hits_partial: 0 / 0%\n        misses: 924\n        hit_bytes: 192 MiB / 66%\n        miss_bytes: 97 MiB",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-persistent-write-log-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd status rbd"
+    ]
+  },
+  {
+    "entity_id": "355939bbaa26ed84",
+    "code": "rbd persistent-cache flush {pool-name}/{image-name}",
+    "language": "text",
+    "context": "To flush a cache file with ``rbd``, specify the ``persistent-cache flush``\ncommand, the pool name and the image name.",
+    "source_file": "rbd/rbd-persistent-write-log-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd persistent-cache flush"
+    ]
+  },
+  {
+    "entity_id": "9da94ad2a4d971cc",
+    "code": "$ rbd persistent-cache flush rbd/foo",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-persistent-write-log-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd persistent-cache flush rbd"
+    ]
+  },
+  {
+    "entity_id": "b7c20367a6e4a97c",
+    "code": "rbd persistent-cache invalidate {pool-name}/{image-name}",
+    "language": "text",
+    "context": "To invalidate (discard) a cache file with ``rbd``, specify the\n``persistent-cache invalidate`` command, the pool name and the image name.",
+    "source_file": "rbd/rbd-persistent-write-log-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd persistent-cache invalidate"
+    ]
+  },
+  {
+    "entity_id": "24a7f3bd87f5e5fb",
+    "code": "$ rbd persistent-cache invalidate rbd/foo",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rbd/rbd-persistent-write-log-cache.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd persistent-cache invalidate rbd"
+    ]
+  },
+  {
+    "entity_id": "b56a45e355ec0954",
+    "code": "[config]\n# Name of the Ceph storage cluster. A suitable Ceph configuration file allowing\n# access to the Ceph storage cluster from the gateway node is required, if not\n# colocated on an OSD node.\ncluster_name = ceph",
+    "language": "ini",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b0f06c10a3cc6c0d",
+    "code": "> /> cd /iscsi-targets\n> /iscsi-targets>  create iqn.2003-01.com.redhat.iscsi-gw:iscsi-igw",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "58c440a640100d4f",
+    "code": "> /iscsi-targets> cd iqn.2003-01.com.redhat.iscsi-gw:iscsi-igw/gateways\n> /iscsi-target...-igw/gateways>  create ceph-gw-1 10.172.19.21\n> /iscsi-target...-igw/gateways>  create ceph-gw-2 10.172.19.22",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "58c440a640100d4f",
+    "code": "> /iscsi-targets> cd iqn.2003-01.com.redhat.iscsi-gw:iscsi-igw/gateways\n> /iscsi-target...-igw/gateways>  create ceph-gw-1 10.172.19.21 skipchecks=true\n> /iscsi-target...-igw/gateways>  create ceph-gw-2 10.172.19.22 skipchecks=true",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a736cef8cd4e23e3",
+    "code": "> /iscsi-target...-igw/gateways> cd /disks\n> /disks> create pool=rbd image=disk_1 size=90G",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd image"
+    ]
+  },
+  {
+    "entity_id": "a85e4bafd41d99ba",
+    "code": "> /disks> cd /iscsi-targets/iqn.2003-01.com.redhat.iscsi-gw:iscsi-igw/hosts\n> /iscsi-target...eph-igw/hosts>  create iqn.1994-05.com.redhat:rh7-client",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "99753a5f3a3ccff7",
+    "code": "> /iscsi-target...at:rh7-client>  auth username=myusername password=mypassword",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "861e73b28fca04ac",
+    "code": "> /iscsi-target...at:rh7-client>  auth username=myusername password=mypassword mutual_username=mytgtusername mutual_password=mytgtpassword",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7899d28b15e1efd1",
+    "code": "> /iscsi-target...at:rh7-client> disk add rbd/disk_1",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/iscsi-target-cli.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9b335ae404457d64",
+    "code": "devices {\n        device {\n                vendor                 \"LIO-ORG\"\n                product                \"TCMU device\"\n                hardware_handler       \"1 alua\"\n                path_grouping_policy   \"failover\"\n                path_selector          \"queue-length 0\"\n                failback               60\n                path_checker           tur\n                prio                   alua\n                prio_args              exclusive_pref_bit\n                fast_io_fail_tmo       25\n                no_path_retry          queue\n        }\n}",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-linux.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0d3cb5601df08d8f",
+    "code": "node.session.auth.authmethod = CHAP\nnode.session.auth.username = myusername\nnode.session.auth.password = mypassword",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-linux.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "00e373eecdce3c8e",
+    "code": "node.session.auth.username_in = mytgtusername\nnode.session.auth.password_in = mytgtpassword",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-linux.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6d5dc91899187c96",
+    "code": "192.168.56.101:3260,1 iqn.2003-01.org.linux-iscsi.rheln1\n192.168.56.102:3260,2 iqn.2003-01.org.linux-iscsi.rheln1",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-linux.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a712dbe4103987d2",
+    "code": "mpathbt (360014059ca317516a69465c883a29603) dm-1 LIO-ORG ,IBLOCK\nsize=1.0G features='0' hwhandler='1 alua' wp=rw\n|-+- policy='queue-length 0' prio=50 status=active\n| `- 28:0:0:1 sde  8:64  active ready running\n`-+- policy='queue-length 0' prio=10 status=enabled\n  `- 29:0:0:1 sdc  8:32  active ready running",
+    "language": "ini",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-linux.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f167c48af02e1624",
+    "code": "Please see the `OS recommendations`_ regarding client package support.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "rbd/rbd-windows.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f3f04b62af2165f5",
+    "code": "New-Service -Name \"ceph-rbd\" `\n            -Description \"Ceph RBD Mapping Service\" `\n            -BinaryPathName \"c:\\ceph\\rbd-wnbd.exe service\" `\n            -StartupType Automatic",
+    "language": "text",
+    "context": "The following command can be used to configure the service. Please update\nthe ``rbd-wnbd.exe`` path accordingly",
+    "source_file": "rbd/rbd-windows.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b2728e96bd8bfd0b",
+    "code": "# Feel free to use any other image. This one is convenient to use for\n# testing purposes because it's very small (~15MB) and the login prompt\n# prints the pre-configured password.\nwget http://download.cirros-cloud.net/0.5.1/cirros-0.5.1-x86_64-disk.img `\n     -OutFile cirros-0.5.1-x86_64-disk.img",
+    "language": "text",
+    "context": "The following sample imports an RBD image and boots a Hyper-V VM using it",
+    "source_file": "rbd/rbd-windows.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "26152274d2ba551e",
+    "code": "rbd create blank_image --size=1G\nrbd device map blank_image -onon-persistent",
+    "language": "text",
+    "context": "The following sample creates an empty RBD image, attaches it to the host and\ninitializes a partition",
+    "source_file": "rbd/rbd-windows.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd create blank_image --size",
+      "rbd device map blank_image"
+    ]
+  },
+  {
+    "entity_id": "144f4f0d231fd4ff",
+    "code": "Set-Disk -Number $diskNumber -IsOffline $false\nSet-Disk -Number $diskNumber -IsReadOnly $false",
+    "language": "text",
+    "context": "In order to turn a disk online (mounting the disk partitions) and clear the\nread-only flag, use the following commands",
+    "source_file": "rbd/rbd-windows.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2cab21ebcdcae683",
+    "code": "<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>\n\t<qemu:commandline>\n\t\t<qemu:arg value='-set'/>\n\t\t<qemu:arg value='block.scsi0-0-0.discard_granularity=4096'/>\n\t\t<qemu:arg value='-set'/>\n\t\t<qemu:arg value='block.scsi0-0-1.discard_granularity=65536'/>\n\t</qemu:commandline>\n</domain>",
+    "language": "xml",
+    "context": "",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb6f81353e0f2f02",
+    "code": "+---------------------------------------------------+\n|                       QEMU                        |\n+---------------------------------------------------+\n|                      librbd                       |\n+---------------------------------------------------+\n|                     librados                      |\n+------------------------+-+------------------------+\n|          OSDs          | |        Monitors        |\n+------------------------+ +------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5da98e365562ca6f",
+    "code": "qemu-img {command} [options] rbd:{pool-name}/{image-name}[@snapshot-name][:option1=value1][:option2=value2...]",
+    "language": "text",
+    "context": "cify with the ``:id={user}`` option in a keyring file stored in default path\n(i.e., ``/etc/ceph`` or the local directory with appropriate file ownership and\npermissions. Usage takes the following form",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0a59df0078d5c312",
+    "code": "qemu-img {command} [options] rbd:glance-pool/maipo:id=glance:conf=/etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "For example, specifying the ``id`` and ``conf`` options might look like the following",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8e2e4f4fd9713543",
+    "code": "qemu-img create -f raw rbd:{pool-name}/{image-name} {size}",
+    "language": "text",
+    "context": "You can create a block device image from QEMU. You must specify ``rbd``,  the\npool name, and the name of the image you wish to create. You must also specify\nthe size of the image.",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b0c3a4371636d5af",
+    "code": "qemu-img create -f raw rbd:data/foo 10G",
+    "language": "text",
+    "context": "For example",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5edde5bad8467b92",
+    "code": "qemu-img resize rbd:{pool-name}/{image-name} {size}",
+    "language": "text",
+    "context": "You can resize a block device image from QEMU. You must specify ``rbd``, \nthe pool name, and the name of the image you wish to resize. You must also\nspecify the size of the image.",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "06fd87ced29d8ae6",
+    "code": "qemu-img resize rbd:data/foo 10G",
+    "language": "text",
+    "context": "For example",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0e487e98cbb95613",
+    "code": "qemu-img info rbd:{pool-name}/{image-name}",
+    "language": "text",
+    "context": "You can retrieve block device image information from QEMU. You must \nspecify ``rbd``, the pool name, and the name of the image.",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3de9d5eece5fdb43",
+    "code": "qemu-img info rbd:data/foo",
+    "language": "text",
+    "context": "For example",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c64728ed53e46b3",
+    "code": "qemu-img convert -f qcow2 -O raw debian_squeeze.qcow2 rbd:data/squeeze",
+    "language": "text",
+    "context": "You can use ``qemu-img`` to convert existing virtual machine images to Ceph\nblock device images. For example, if you have a qcow2 image, you could run",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9d2487e455393e7e",
+    "code": "qemu -m 1024 -drive format=raw,file=rbd:data/squeeze",
+    "language": "text",
+    "context": "To run a virtual machine booting from that image, you could run",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a0b77e5740137951",
+    "code": "qemu -m 1024 -drive format=rbd,file=rbd:data/squeeze,cache=writeback",
+    "language": "text",
+    "context": "`RBD caching`_ can significantly improve performance.\nSince QEMU 1.2, QEMU's cache options control ``librbd`` caching",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5c034e6e5f763554",
+    "code": "qemu -m 1024 -drive format=raw,file=rbd:data/squeeze:rbd_cache=true,cache=writeback",
+    "language": "text",
+    "context": "If you have an older version of QEMU, you can set the ``librbd`` cache\nconfiguration (like any Ceph configuration option) as part of the\n'file' parameter",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "67c40f3b90bdbc47",
+    "code": "qemu -m 1024 -drive format=raw,file=rbd:data/squeeze,id=drive1,if=none \\\n     -device driver=ide-hd,drive=drive1,discard_granularity=512",
+    "language": "text",
+    "context": "For this to be available to the guest, it must be explicitly enabled\nfor the block device. To do this, you must specify a\n``discard_granularity`` associated with the drive",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "30dc9133e3602ec7",
+    "code": "rbd_cache = true",
+    "language": "ini",
+    "context": "Writeback",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c142b85e0ec5e50e",
+    "code": "rbd_cache = true\nrbd_cache_max_dirty = 0",
+    "language": "ini",
+    "context": "Writethrough",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0dfae1842414ff62",
+    "code": "rbd_cache = false",
+    "language": "ini",
+    "context": "None",
+    "source_file": "rbd/qemu-rbd.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "46cf87c299f2d766",
+    "code": "mkdir -p traces\nlttng create -o traces librbd\nlttng enable-event -u 'librbd:*'\nlttng add-context -u -t pthread_id\nlttng start\n# run RBD workload here\nlttng stop",
+    "language": "text",
+    "context": "#. Capture the trace.  Make sure to capture ``pthread_id`` context",
+    "source_file": "rbd/rbd-replay.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f658751682994690",
+    "code": "rbd-replay-prep traces/ust/uid/*/* replay.bin",
+    "language": "text",
+    "context": "#. Process the trace with `rbd-replay-prep`_",
+    "source_file": "rbd/rbd-replay.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6c6bdae5d396c307",
+    "code": "rbd-replay --read-only replay.bin",
+    "language": "text",
+    "context": "#. Replay the trace with `rbd-replay`_. Use read-only until you know \n   it's doing what you want",
+    "source_file": "rbd/rbd-replay.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "29d1948ba7f2f47e",
+    "code": "> esxcli iscsi adapter list\n> Adapter  Driver     State   UID            Description\n> -------  ---------  ------  -------------  ----------------------\n> vmhba64  iscsi_vmk  online  iscsi.vmhba64  iSCSI Software Adapter",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-esx.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4fd07d6a614b4c42",
+    "code": "> esxcli iscsi adapter set -A vmhba64 -n iqn.1994-05.com.redhat:rh7-client",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-esx.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "381b7df2dc7b4ad3",
+    "code": "> kernel: CHAP user or password not set for Initiator ACL\n> kernel: Security negotiation failed.\n> kernel: iSCSI Login negotiation failed.",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-esx.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ffcf7a52f4ced14f",
+    "code": "> esxcli iscsi adapter auth chap set --direction=uni --authname=myiscsiusername --secret=myiscsipassword --level=discouraged -A vmhba64",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-esx.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fa7a48ca75b6fd66",
+    "code": "> esxcli storage nmp path list -d eui.your_devices_id",
+    "language": "text",
+    "context": "",
+    "source_file": "rbd/iscsi-initiator-esx.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "32a18e04b4645ce8",
+    "code": "$ ceph auth get-or-create client.nomad mon 'profile rbd' osd 'profile rbd pool=nomad' mgr 'profile rbd pool=nomad'\n[client.nomad]\n        key = AQAlh9Rgg2vrDxAARy25T7KHabs6iskSHpAEAQ==",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create client",
+      "rbd pool"
+    ]
+  },
+  {
+    "entity_id": "014174db15d871f6",
+    "code": "$ lsmod | grep rbd\nrbd                    94208  2\nlibceph               364544  1 rbd",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "rbd rbd 94208 2"
+    ]
+  },
+  {
+    "entity_id": "fd54d9dcf4ca726b",
+    "code": "$ ceph mon dump\n<...>\nfsid b9127830-b0cc-4e34-aa47-9d1a2e9949a8\n<...>\n0: [v2:192.168.1.1:3300/0,v1:192.168.1.1:6789/0] mon.a\n1: [v2:192.168.1.2:3300/0,v1:192.168.1.2:6789/0] mon.b\n2: [v2:192.168.1.3:3300/0,v1:192.168.1.3:6789/0] mon.c",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "4a4e1836bf618ebb",
+    "code": "$ nomad plugin status ceph-csi\nID                   = ceph-csi\nProvider             = rbd.csi.ceph.com\nVersion              = 3.3.1\nControllers Healthy  = 1\nControllers Expected = 1\nNodes Healthy        = 1\nNodes Expected       = 1",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "144809e591f56076",
+    "code": "$ nomad job status mysql-server\n...\nStatus        = running\n...\nAllocations\nID        Node ID   Task Group    Version  Desired  Status   Created  Modified\n38070da7  9ad01c63  mysql-server  0        run      running  6s ago   3s ago",
+    "language": "console",
+    "context": "",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "53a67b344820f2ee",
+    "code": "plugin \"docker\" {\n  config {\n    allow_privileged = true\n  }\n}",
+    "language": "text",
+    "context": "privileged mode. We must\nconfigure Nomad so that it allows containers to use privileged mode. Edit the\nNomad configuration file by adding the following configuration block to\n`/etc/nomad.d/nomad.hcl`",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8f77dd88dfeceab0",
+    "code": "job \"ceph-csi-plugin-controller\" {\n  datacenters = [\"dc1\"]\n  group \"controller\" {\n    network {\n      port \"metrics\" {}\n    }\n    task \"ceph-controller\" {\n      template {\n        data        = <<EOF\n[{\n    \"clusterID\": \"b9127830-b0cc-4e34-aa47-9d1a2e9949a8\",\n    \"monitors\": [\n        \"192.168.1.1\",\n        \"192.168.1.2\",\n        \"192.168.1.3\"\n    ]\n}]\nEOF\n        destination = \"local/config.json\"\n        change_mode = \"restart\"\n      }\n      driver = \"docker\"\n      config {\n        image = \"quay.io/cephcsi/cephcsi:v3.3.1\"\n        volumes = [\n          \"./local/config.json:/etc/ceph-csi-config/config.json\"\n        ]\n        mounts = [\n          {\n            type     = \"tmpfs\"\n            target   = \"/tmp/csi/keys\"\n            readonly = false\n            tmpfs_options = {\n              size = 1000000 # size in bytes\n            }\n          }\n        ]\n        args = [\n          \"--type=rbd\",\n          \"--controllerserver=true\",\n          \"--drivername=rbd.csi.ceph.com\",\n          \"--endpoint=unix://csi/csi.sock\",\n          \"--nodeid=${node.unique.name}\",\n          \"--instanceid=${node.unique.name}-controller\",\n          \"--pidlimit=-1\",\n          \"--logtostderr=true\",\n          \"--v=5\",\n          \"--metricsport=$${NOMAD_PORT_metrics}\"\n        ]\n      }\n      resources {\n        cpu    = 500\n        memory = 256\n      }\n      service {\n        name = \"ceph-csi-controller\"\n        port = \"metrics\"\n        tags = [ \"prometheus\" ]\n      }\n      csi_plugin {\n        id        = \"ceph-csi\"\n        type      = \"controller\"\n        mount_dir = \"/csi\"\n      }\n    }\n  }\n}",
+    "language": "text",
+    "context": "Generate a ``ceph-csi-plugin-controller.nomad`` file similar to the example\nbelow. Substitute the `fsid` for \"clusterID\", and the monitor addresses for\n\"monitors\"",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb387206006f55df",
+    "code": "job \"ceph-csi-plugin-nodes\" {\n  datacenters = [\"dc1\"]\n  type        = \"system\"\n  group \"nodes\" {\n    network {\n      port \"metrics\" {}\n    }\n    task \"ceph-node\" {\n      driver = \"docker\"\n      template {\n        data        = <<EOF\n[{\n    \"clusterID\": \"b9127830-b0cc-4e34-aa47-9d1a2e9949a8\",\n    \"monitors\": [\n        \"192.168.1.1\",\n        \"192.168.1.2\",\n        \"192.168.1.3\"\n    ]\n}]\nEOF\n        destination = \"local/config.json\"\n        change_mode = \"restart\"\n      }\n      config {\n        image = \"quay.io/cephcsi/cephcsi:v3.3.1\"\n        volumes = [\n          \"./local/config.json:/etc/ceph-csi-config/config.json\"\n        ]\n        mounts = [\n          {\n            type     = \"tmpfs\"\n            target   = \"/tmp/csi/keys\"\n            readonly = false\n            tmpfs_options = {\n              size = 1000000 # size in bytes\n            }\n          }\n        ]\n        args = [\n          \"--type=rbd\",\n          \"--drivername=rbd.csi.ceph.com\",\n          \"--nodeserver=true\",\n          \"--endpoint=unix://csi/csi.sock\",\n          \"--nodeid=${node.unique.name}\",\n          \"--instanceid=${node.unique.name}-nodes\",\n          \"--pidlimit=-1\",\n          \"--logtostderr=true\",\n          \"--v=5\",\n          \"--metricsport=$${NOMAD_PORT_metrics}\"\n        ]\n        privileged = true\n      }\n      resources {\n        cpu    = 500\n        memory = 256\n      }\n      service {\n        name = \"ceph-csi-nodes\"\n        port = \"metrics\"\n        tags = [ \"prometheus\" ]\n      }\n      csi_plugin {\n        id        = \"ceph-csi\"\n        type      = \"node\"\n        mount_dir = \"/csi\"\n      }\n    }\n  }\n}",
+    "language": "text",
+    "context": "Generate a ``ceph-csi-plugin-nodes.nomad`` file similar to the example below.\nSubstitute the `fsid` for \"clusterID\" and the monitor addresses for\n\"monitors\"",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "846e3e09161141a4",
+    "code": "id = \"ceph-mysql\"\nname = \"ceph-mysql\"\ntype = \"csi\"\nplugin_id = \"ceph-csi\"\ncapacity_max = \"200G\"\ncapacity_min = \"100G\"",
+    "language": "ini",
+    "context": "ceph-csi`` requires the cephx credentials for communicating with the Ceph\ncluster. Generate a ``ceph-volume.hcl`` file similar to the example below,\nusing the newly created nomad user id and cephx key",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "69ba55db9a7c4dbd",
+    "code": "job \"mysql-server\" {\n  datacenters = [\"dc1\"]\n  type        = \"service\"\n  group \"mysql-server\" {\n    count = 1\n    volume \"ceph-mysql\" {\n      type      = \"csi\"\n      attachment_mode = \"file-system\"\n      access_mode     = \"single-node-writer\"\n      read_only = false\n      source    = \"ceph-mysql\"\n    }\n    network {\n      port \"db\" {\n        static = 3306\n      }\n    }\n    restart {\n      attempts = 10\n      interval = \"5m\"\n      delay    = \"25s\"\n      mode     = \"delay\"\n    }\n    task \"mysql-server\" {\n      driver = \"docker\"\n      volume_mount {\n        volume      = \"ceph-mysql\"\n        destination = \"/srv\"\n        read_only   = false\n      }\n      env {\n        MYSQL_ROOT_PASSWORD = \"password\"\n      }\n      config {\n        image = \"hashicorp/mysql-portworx-demo:latest\"\n        args  = [\"--datadir\", \"/srv/mysql\"]\n        ports = [\"db\"]\n      }\n      resources {\n        cpu    = 500\n        memory = 1024\n      }\n      service {\n        name = \"mysql-server\"\n        port = \"db\"\n        check {\n          type     = \"tcp\"\n          interval = \"10s\"\n          timeout  = \"2s\"\n        }\n      }\n    }\n  }\n}",
+    "language": "text",
+    "context": "Generate a ``mysql.nomad`` file similar to the example below",
+    "source_file": "rbd/rbd-nomad.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "59bfb689b95e3503",
+    "code": "cluster = rados.Rados(conffile='my_ceph.conf')\ncluster.connect()\nioctx = cluster.open_ioctx('mypool')",
+    "language": "ini",
+    "context": "To use `rbd`, you must first connect to RADOS and open an IO\ncontext",
+    "source_file": "rbd/api/librbdpy.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ef014ea70c57bcc4",
+    "code": "rbd_inst = rbd.RBD()\nsize = 4 * 1024**3  # 4 GiB\nrbd_inst.create(ioctx, 'myimage', size)",
+    "language": "ini",
+    "context": "Then you instantiate an :class:rbd.RBD object, which you use to create the\nimage",
+    "source_file": "rbd/api/librbdpy.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "28211f3cd0555a80",
+    "code": "image = rbd.Image(ioctx, 'myimage')\ndata = b'foo' * 200\nimage.write(data, 0)",
+    "language": "ini",
+    "context": "To perform I/O on the image, you instantiate an :class:rbd.Image object",
+    "source_file": "rbd/api/librbdpy.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6dfe9a94a3101e14",
+    "code": "image.close()\nioctx.close()\ncluster.shutdown()",
+    "language": "text",
+    "context": "In the end, you will want to close the image, the IO context and the connection to RADOS",
+    "source_file": "rbd/api/librbdpy.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c89054d5dc3ac2e1",
+    "code": "cluster = rados.Rados(conffile='my_ceph_conf')\ntry:\n    cluster.connect()\n    ioctx = cluster.open_ioctx('my_pool')\n    try:\n        rbd_inst = rbd.RBD()\n        size = 4 * 1024**3  # 4 GiB\n        rbd_inst.create(ioctx, 'myimage', size)\n        image = rbd.Image(ioctx, 'myimage')\n        try:\n            data = b'foo' * 200\n            image.write(data, 0)\n        finally:\n            image.close()\n    finally:\n        ioctx.close()\nfinally:\n    cluster.shutdown()",
+    "language": "ini",
+    "context": "To be safe, each of these calls would need to be in a separate :finally\nblock",
+    "source_file": "rbd/api/librbdpy.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "451a7603d488474a",
+    "code": "with rados.Rados(conffile='my_ceph.conf') as cluster:\n    with cluster.open_ioctx('mypool') as ioctx:\n        rbd_inst = rbd.RBD()\n        size = 4 * 1024**3  # 4 GiB\n        rbd_inst.create(ioctx, 'myimage', size)\n        with rbd.Image(ioctx, 'myimage') as image:\n            data = b'foo' * 200\n            image.write(data, 0)",
+    "language": "text",
+    "context": ":class:`Rados`, :class:`Ioctx`, and\n:class:`Image` classes can be used as context managers that close/shutdown\nautomatically (see :pep:`343`). Using them as context managers, the\nabove example becomes",
+    "source_file": "rbd/api/librbdpy.rst",
+    "component": "rbd",
+    "section_title": "",
+    "commands_used": []
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "entity_id": "4056b86ddc266e56",
+    "code": "The Jaeger agent must be running on each host (and not running in all-in-one\nmode). This is because spans are sent to the local Jaeger agent. Spans of\nhosts that do not have active Jaeger agents will be lost.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "jaegertracing/index.rst",
+    "component": "jaegertracing",
+    "section_title": "",
+    "commands_used": []
+  }
+]

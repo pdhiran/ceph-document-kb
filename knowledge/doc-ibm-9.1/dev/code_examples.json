@@ -1,0 +1,739 @@
+[
+  {
+    "entity_id": "f99fe75870c55280",
+    "code": "Accept: application/vnd.ceph.api.vMAJOR.MINOR+json",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-versioning-ceph",
+    "component": "dev",
+    "section_title": "Versioning for the Ceph API",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a54acc803f463a7b",
+    "code": "Accept: application/vnd.ceph.api.v1.0+json",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-versioning-ceph",
+    "component": "dev",
+    "section_title": "Versioning for the Ceph API",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2ac16254d12534be",
+    "code": "[root@mon ~]# curl -X POST \"https://example.com:8443/api/auth\" \\\n  -H  \"Accept: application/vnd.ceph.api.v1.0+json\" \\\n  -H  \"Content-Type: application/json\" \\\n  -d '{\"username\": user1, \"password\": password1}'",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-authentication-authorization-ceph",
+    "component": "dev",
+    "section_title": "Authentication and authorization for the Ceph API",
+    "commands_used": []
+  },
+  {
+    "entity_id": "abea8207aa7bb9bc",
+    "code": "curl -H \"Authorization: Bearer TOKEN\" ...",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-authentication-authorization-ceph",
+    "component": "dev",
+    "section_title": "Authentication and authorization for the Ceph API",
+    "commands_used": []
+  },
+  {
+    "entity_id": "28dadc3241315a3d",
+    "code": "root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "882bc2e88e396a61",
+    "code": "[ceph: root@host01 /]# ceph mgr module enable dashboard",
+    "language": "bash",
+    "context": "Enable the RESTful plug-in:",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "ceph mgr module enable dashboard"
+    ]
+  },
+  {
+    "entity_id": "cc654f6bd8c136bf",
+    "code": "ceph dashboard set-ssl-certificate HOST_NAME -i CERT_FILE\nceph dashboard set-ssl-certificate-key HOST_NAME -i KEY_FILE",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "ceph dashboard set-ssl-certificate HOST_NAME -i",
+      "ceph dashboard set-ssl-certificate-key HOST_NAME -i"
+    ]
+  },
+  {
+    "entity_id": "10480c694ecb3d1f",
+    "code": "[ceph: root@host01 /]# ceph dashboard set-ssl-certificate -i dashboard.crt\n[ceph: root@host01 /]# ceph dashboard set-ssl-certificate-key -i dashboard.key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "ceph dashboard set-ssl-certificate -i dashboard",
+      "ceph dashboard set-ssl-certificate-key -i dashboard"
+    ]
+  },
+  {
+    "entity_id": "bdc2fd663075475e",
+    "code": "[ceph: root@host01 /]# ceph dashboard set-ssl-certificate host01 -i dashboard.crt\n[ceph: root@host01 /]# ceph dashboard set-ssl-certificate-key host01 -i dashboard.key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "ceph dashboard set-ssl-certificate host01 -i",
+      "ceph dashboard set-ssl-certificate-key host01 -i"
+    ]
+  },
+  {
+    "entity_id": "67e0ed693459b581",
+    "code": "[ceph: root@host01 /]# ceph dashboard create-self-signed-cert",
+    "language": "bash",
+    "context": "Alternatively, you can generate a self-signed certificate. However, using a self-signed\ncertificate does not provide full security benefits of the HTTPS protocol:",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "ceph dashboard create-self-signed-cert"
+    ]
+  },
+  {
+    "entity_id": "6d157fa4c6a15670",
+    "code": "echo -n \"PASSWORD\" > PATH_TO_FILE/PASSWORDFILE\nceph dashboard ac-user-create USERNAME -i PASSWORDFILE ROLE",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "ceph dashboard ac-user-create USERNAME -i"
+    ]
+  },
+  {
+    "entity_id": "bc0429f2975e7124",
+    "code": "[ceph: root@host01 /]# echo -n \"p@ssw0rd\" > /root/dash-password.txt\n[ceph: root@host01 /]# ceph dashboard ac-user-create user1 -i /root/dash-password.txt administrator",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": [
+      "ceph dashboard ac-user-create user1 -i"
+    ]
+  },
+  {
+    "entity_id": "6916c9333dd42d40",
+    "code": "https://HOST_NAME:8443",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7609e032318d016e",
+    "code": "https://host01:8443",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-enabling-securing-ceph-module",
+    "component": "dev",
+    "section_title": "Enabling and Securing the Ceph API module",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b43d132eeab5ed32",
+    "code": "curl --silent --user USER 'https://CEPH_MANAGER:CEPH_MANAGER_PORT/api/cluster_conf'",
+    "language": "bash",
+    "context": "Viewing cluster configuration options",
+    "source_file": "ibm-docs/9.1/api-viewing-cluster-configuration-options",
+    "component": "dev",
+    "section_title": "Viewing cluster configuration options",
+    "commands_used": []
+  },
+  {
+    "entity_id": "da95808bfa9c67d9",
+    "code": "curl --silent --insecure --user USER 'https://CEPH_MANAGER:8080/api/cluster_conf'",
+    "language": "bash",
+    "context": "Viewing cluster configuration options",
+    "source_file": "ibm-docs/9.1/api-viewing-cluster-configuration-options",
+    "component": "dev",
+    "section_title": "Viewing cluster configuration options",
+    "commands_used": []
+  },
+  {
+    "entity_id": "107e85e9de8c5e96",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing cluster configuration options",
+    "source_file": "ibm-docs/9.1/api-viewing-cluster-configuration-options",
+    "component": "dev",
+    "section_title": "Viewing cluster configuration options",
+    "commands_used": []
+  },
+  {
+    "entity_id": "107e85e9de8c5e96",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing cluster configuration options",
+    "source_file": "ibm-docs/9.1/api-viewing-cluster-configuration-options",
+    "component": "dev",
+    "section_title": "Viewing cluster configuration options",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bce866dced0c4410",
+    "code": "curl --silent --user USER 'https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT'",
+    "language": "bash",
+    "context": "Viewing a particular cluster configuration option",
+    "source_file": "ibm-docs/9.1/api-viewing-particular-cluster-configuration-option",
+    "component": "dev",
+    "section_title": "Viewing a particular cluster configuration option",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7e6e3acf3f9b5134",
+    "code": "curl --silent --insecure --user USER 'https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT'",
+    "language": "bash",
+    "context": "Viewing a particular cluster configuration option",
+    "source_file": "ibm-docs/9.1/api-viewing-particular-cluster-configuration-option",
+    "component": "dev",
+    "section_title": "Viewing a particular cluster configuration option",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c80c63a710a3f8bf",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing a particular cluster configuration option",
+    "source_file": "ibm-docs/9.1/api-viewing-particular-cluster-configuration-option",
+    "component": "dev",
+    "section_title": "Viewing a particular cluster configuration option",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c80c63a710a3f8bf",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing a particular cluster configuration option",
+    "source_file": "ibm-docs/9.1/api-viewing-particular-cluster-configuration-option",
+    "component": "dev",
+    "section_title": "Viewing a particular cluster configuration option",
+    "commands_used": []
+  },
+  {
+    "entity_id": "99cf20ab65840096",
+    "code": "curl --silent --user USER 'https://CEPH_MANAGER:8080/api/host'",
+    "language": "bash",
+    "context": "Viewing host information",
+    "source_file": "ibm-docs/9.1/api-viewing-host-information",
+    "component": "dev",
+    "section_title": "Viewing host information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b41ebe4998ccdd57",
+    "code": "curl --silent --insecure --user USER 'https://CEPH_MANAGER:8080/api/host'",
+    "language": "bash",
+    "context": "Viewing host information",
+    "source_file": "ibm-docs/9.1/api-viewing-host-information",
+    "component": "dev",
+    "section_title": "Viewing host information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "44a5ff006aa19cf0",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing host information",
+    "source_file": "ibm-docs/9.1/api-viewing-host-information",
+    "component": "dev",
+    "section_title": "Viewing host information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "44a5ff006aa19cf0",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing host information",
+    "source_file": "ibm-docs/9.1/api-viewing-host-information",
+    "component": "dev",
+    "section_title": "Viewing host information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3018787d90270966",
+    "code": "curl --silent --user USER 'https://CEPH_MANAGER:8080/api/host/HOSTNAME'",
+    "language": "bash",
+    "context": "Viewing information about a particular host",
+    "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-host",
+    "component": "dev",
+    "section_title": "Viewing information about a particular host",
+    "commands_used": []
+  },
+  {
+    "entity_id": "63c081fca64f6b59",
+    "code": "curl --silent --insecure --user USER 'https://CEPH_MANAGER:8080/api/host/HOSTNAME'",
+    "language": "bash",
+    "context": "Viewing information about a particular host",
+    "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-host",
+    "component": "dev",
+    "section_title": "Viewing information about a particular host",
+    "commands_used": []
+  },
+  {
+    "entity_id": "be9e6874330bc7c2",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host/HOSTNAME', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing information about a particular host",
+    "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-host",
+    "component": "dev",
+    "section_title": "Viewing information about a particular host",
+    "commands_used": []
+  },
+  {
+    "entity_id": "79f225cf2d57e5a1",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "language": "bash",
+    "context": "Viewing information about a particular host",
+    "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-host",
+    "component": "dev",
+    "section_title": "Viewing information about a particular host",
+    "commands_used": []
+  },
+  {
+    "entity_id": "46f693223d4ffc90",
+    "code": "PUT /admin/user?caps&format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME\nContent-Type: text/plain\nAuthorization: AUTHORIZATION_TOKEN\n\nusage=read",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-administration-operations",
+    "component": "dev",
+    "section_title": "Administration operations",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e9daa55709411537",
+    "code": "Authorization: AWS _ACCESS_KEY_:_HASH_OF_HEADER_AND_SECRET_",
+    "language": "bash",
+    "context": "Once you instantiate a request, add the Date header followed by the\nAuthorization header. Amazon\u2019s S3 authentication uses the standard\nAuthorization header, and has the following structure:",
+    "source_file": "ibm-docs/9.1/api-administration-authentication-requests",
+    "component": "dev",
+    "section_title": "Administration authentication requests",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f3085aa040798887",
+    "code": "httpRequest.addHeader(\"Authorization\", \"AWS \" + this.getAccessKey() + \":\" + base64Sha1Hmac(headerString.toString(), this.getSecretKey()));",
+    "language": "bash",
+    "context": "The CephAdminAPI\nexample class has a base64Sha1Hmac() method, which takes the header string and the\nsecret key for the admin user, and returns a SHA1 HMAC as a base-64 encoded string. Each\nexecute() c",
+    "source_file": "ibm-docs/9.1/api-administration-authentication-requests",
+    "component": "dev",
+    "section_title": "Administration authentication requests",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4dc81e30f8158253",
+    "code": "import java.io.IOException;\nimport java.net.URI;\nimport java.net.URISyntaxException;\nimport java.time.OffsetDateTime;\nimport java.time.format.DateTimeFormatter;\nimport java.time.ZoneId;\n\nimport org.apache.http.HttpEntity;\nimport org.apache.http.NameValuePair;\nimport org.apache.http.Header;\nimport org.apache.http.client.entity.UrlEncodedFormEntity;\nimport org.apache.http.client.methods.CloseableHttpResponse;\nimport org.apache.http.client.methods.HttpRequestBase;\nimport org.apache.http.client.methods.HttpGet;\nimport org.apache.http.client.methods.HttpPost;\nimport org.apache.http.client.methods.HttpPut;\nimport org.apache.http.client.methods.HttpDelete;\nimport org.apache.http.impl.client.CloseableHttpClient;\nimport org.apache.http.impl.client.HttpClients;\nimport org.apache.http.message.BasicNameValuePair;\nimport org.apache.http.util.EntityUtils;\nimport org.apache.http.client.utils.URIBuilder;\n\nimport java.util.Base64;\nimport java.util.Base64.Encoder;\nimport java.security.MessageDigest;\nimport java.security.NoSuchAlgorithmException;\nimport javax.crypto.spec.SecretKeySpec;\nimport javax.crypto.Mac;\n\nimport java.util.Map;\nimport java.util.Iterator;\nimport java.util.Set;\nimport java.util.Map.Entry;\n\npublic class CephAdminAPI {\n\n        /*\n         * Each call must specify an access key, secret key, endpoint and format.\n         */\n        String accessKey;\n        String secretKey;\n        String endpoint;\n        String scheme = \"http\"; //http only.\n        int port = 80;\n\n        /*\n         * A constructor that takes an access key, secret key, endpoint and format.\n         */\n        public CephAdminAPI(String accessKey, String secretKey, String endpoint){\n                this.accessKey = accessKey;\n                this.secretKey = secretKey;\n                this.endpoint = endpoint;\n        }\n\n        /*\n         * Accessor methods for access key, secret key, endpoint and format.\n         */\n        public String getEndpoint(){\n                return this.endpoint;\n        }\n\n        public void setEndpoint(String endpoint){\n                this.endpoint = endpoint;\n        }\n\n        public String getAccessKey(){\n                return this.accessKey;\n        }\n\n        public void setAccessKey(String accessKey){\n                this.accessKey = accessKey;\n        }\n\n        public String getSecretKey(){\n                return this.secretKey;\n        }\n\n        public void setSecretKey(String secretKey){\n                this.secretKey = secretKey;\n        }\n\n        /*\n         * Takes an HTTP Method, a resource and a map of arguments and\n         * returns a CloseableHTTPResponse.\n         */\n        public CloseableHttpResponse execute(String HTTPMethod, String resource,\n                                        String subresource, Map arguments) {\n\n                String httpMethod = HTTPMethod;\n                String requestPath = resource;\n                StringBuffer request = new StringBuffer();\n                StringBuffer headerString = new StringBuffer();\n                HttpRequestBase httpRequest;\n                CloseableHttpClient httpclient;\n                URI uri;\n                CloseableHttpResponse httpResponse = null;\n\n                try {\n\n                        uri = new URIBuilder()\n                                .setScheme(this.scheme)\n                                .setHost(this.getEndpoint())\n                                .setPath(requestPath)\n                                .setPort(this.port)\n                                .build();\n\n\n                        if (subresource != null){\n                                uri = new URIBuilder(uri)\n                                        .setCustomQuery(subresource)\n                                        .build();\n                        }\n\n\n                        for (Iterator iter = arguments.entrySet().iterator();\n                        iter.hasNext();) {\n                                Entry entry = (Entry)iter.next();\n                                uri = new URIBuilder(uri)\n                                        .setParameter(entry.getKey().toString(),\n                                 entry.getValue().toString())\n                                        .build();\n\n                        }\n\n                        request.append(uri);\n\n                        headerString.append(HTTPMethod.toUpperCase().trim() + \"\\n\\n\\n\");\n\n                        OffsetDateTime dateTime = OffsetDateTime.now(ZoneId.of(\"GMT\"));\n                        DateTimeFormatter formatter = DateTimeFormatter.RFC_1123_DATE_TIME;\n                        String date = dateTime.format(formatter);\n\n                        headerString.append(date + \"\\n\");\n                        headerString.append(requestPath);\n\n                        if (HTTPMethod.equalsIgnoreCase(\"PUT\")){\n                                httpRequest = new HttpPut(uri);\n                        } else if (HTTPMethod.equalsIgnoreCase(\"POST\")){\n                                httpRequest = new HttpPost(uri);\n                        } else if (HTTPMethod.equalsIgnoreCase(\"GET\")){\n                                httpRequest = new HttpGet(uri);\n                        } else if (HTTPMethod.equalsIgnoreCase(\"DELETE\")){\n                                httpRequest = new HttpDelete(uri);\n                        } else {\n                                System.err.println(\"The HTTP Method must be PUT,\n                                POST, GET or DELETE.\");\n                                throw new IOException();\n                        }\n\n                        httpRequest.addHeader(\"Date\", date);\n                        httpRequest.addHeader(\"Authorization\", \"AWS \" + this.getAccessKey()\n                        + \":\" + base64Sha1Hmac(headerString.toString(),\n                        this.getSecretKey()));\n\n                        httpclient = HttpClients.createDefault();\n                        httpResponse = httpclient.execute(httpRequest);\n\n                }       catch  (URISyntaxException e){\n                        System.err.println(\"The URI is not formatted properly.\");\n                        e.printStackTrace();\n                }  catch (IOException e){\n                        System.err.println(\"There was an error making the request.\");\n                        e.printStackTrace();\n                }\n                        return httpResponse;\n        }\n\n        /*\n         * Takes a uri and a secret key and returns a base64-encoded\n         * SHA-1 HMAC.\n         */\n        public String base64Sha1Hmac(String uri, String secretKey) {\n                try {\n\n                        byte[] keyBytes = secretKey.getBytes(\"UTF-8\");\n                        SecretKeySpec signingKey = new SecretKeySpec(keyBytes, \"HmacSHA1\");\n\n                        Mac mac = Mac.getInstance(\"HmacSHA1\");\n                        mac.init(signingKey);\n\n                        byte[] rawHmac = mac.doFinal(uri.getBytes(\"UTF-8\"));\n\n                        Encoder base64 = Base64.getEncoder();\n                        return base64.encodeToString(rawHmac);\n\n                } catch (Exception e) {\n                        throw new RuntimeException(e);\n                }\n        }\n\n}",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-administration-authentication-requests",
+    "component": "dev",
+    "section_title": "Administration authentication requests",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cd3712437c8b8c7c",
+    "code": "import java.io.IOException;\nimport org.apache.http.client.methods.CloseableHttpResponse;\nimport org.apache.http.HttpEntity;\nimport org.apache.http.util.EntityUtils;\nimport java.util.*;\n\n\npublic class CephAdminAPIClient {\n\n        public static void main (String[] args){\n\n                CephAdminAPI adminApi = new CephAdminAPI (\"FFC6ZQ6EMIF64194158N\",\n                                            \"Xac39eCAhlTGcCAUreuwe1ZuH5oVQFa51lbEMVoT\",\n                                            \"ceph-client\");\n\n                /*\n                 * Create a user\n                 */\n                Map requestArgs = new HashMap();\n                requestArgs.put(\"access\", \"usage=read, write; users=read, write\");\n                requestArgs.put(\"display-name\", \"New User\");\n                requestArgs.put(\"email\", \"new-user@email.com\");\n                requestArgs.put(\"format\", \"json\");\n                requestArgs.put(\"uid\", \"new-user\");\n\n                CloseableHttpResponse response =\n                        adminApi.execute(\"PUT\", \"/admin/user\", null, requestArgs);\n\n                System.out.println(response.getStatusLine());\n                HttpEntity entity = response.getEntity();\n\n                try {\n                        System.out.println(\"\\nResponse Content is: \"\n                                + EntityUtils.toString(entity, \"UTF-8\") + \"\\n\");\n                        response.close();\n                } catch (IOException e){\n                        System.err.println (\"Encountered an I/O exception.\");\n                        e.printStackTrace();\n                }\n\n                /*\n                 * Get a user\n                 */\n                requestArgs = new HashMap();\n                requestArgs.put(\"format\", \"json\");\n                requestArgs.put(\"uid\", \"new-user\");\n\n                response = adminApi.execute(\"GET\", \"/admin/user\", null, requestArgs);\n\n                System.out.println(response.getStatusLine());\n                entity = response.getEntity();\n\n                try {\n                        System.out.println(\"\\nResponse Content is: \"\n                                + EntityUtils.toString(entity, \"UTF-8\") + \"\\n\");\n                        response.close();\n                } catch (IOException e){\n                        System.err.println (\"Encountered an I/O exception.\");\n                        e.printStackTrace();\n                }\n\n                /*\n                 * Modify a user\n                 */\n                requestArgs = new HashMap();\n                requestArgs.put(\"display-name\", \"John Doe\");\n                requestArgs.put(\"email\", \"johndoe@email.com\");\n                requestArgs.put(\"format\", \"json\");\n                requestArgs.put(\"uid\", \"new-user\");\n                requestArgs.put(\"max-buckets\", \"100\");\n\n                response = adminApi.execute(\"POST\", \"/admin/user\", null, requestArgs);\n\n                System.out.println(response.getStatusLine());\n                entity = response.getEntity();\n\n                try {\n                        System.out.println(\"\\nResponse Content is: \"\n                                + EntityUtils.toString(entity, \"UTF-8\") + \"\\n\");\n                        response.close();\n                } catch (IOException e){\n                        System.err.println (\"Encountered an I/O exception.\");\n                        e.printStackTrace();\n                }\n\n\n                /*\n                 * Create a subuser\n                 */\n                requestArgs = new HashMap();\n                requestArgs.put(\"format\", \"json\");\n                requestArgs.put(\"uid\", \"new-user\");\n                requestArgs.put(\"subuser\", \"foobar\");\n\n                response = adminApi.execute(\"PUT\", \"/admin/user\", \"subuser\", requestArgs);\n                System.out.println(response.getStatusLine());\n                entity = response.getEntity();\n\n                try {\n                        System.out.println(\"\\nResponse Content is: \"\n                                + EntityUtils.toString(entity, \"UTF-8\") + \"\\n\");\n                        response.close();\n                } catch (IOException e){\n                        System.err.println (\"Encountered an I/O exception.\");\n                        e.printStackTrace();\n                }\n\n\n                /*\n                 * Delete a user\n                 */\n                requestArgs = new HashMap();\n                requestArgs.put(\"format\", \"json\");\n                requestArgs.put(\"uid\", \"new-user\");\n\n                response = adminApi.execute(\"DELETE\", \"/admin/user\", null, requestArgs);\n                System.out.println(response.getStatusLine());\n                entity = response.getEntity();\n\n                try {\n                        System.out.println(\"\\nResponse Content is: \"\n                                + EntityUtils.toString(entity, \"UTF-8\") + \"\\n\");\n                        response.close();\n                } catch (IOException e){\n                        System.err.println (\"Encountered an I/O exception.\");\n                        e.printStackTrace();\n                }\n        }\n}",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-administration-authentication-requests",
+    "component": "dev",
+    "section_title": "Administration authentication requests",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c83d8b421408f302",
+    "code": "radosgw-admin user create --uid=\"USER_NAME\" --display-name=\"DISPLAY_NAME\"",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-creating-administrative-user",
+    "component": "dev",
+    "section_title": "Creating an administrative user",
+    "commands_used": [
+      "radosgw-admin user create --uid"
+    ]
+  },
+  {
+    "entity_id": "1e4c5b5a8b96e9ee",
+    "code": "[user@client ~]$ radosgw-admin user create --uid=\"admin-api-user\" --display-name=\"Admin API User\"",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-creating-administrative-user",
+    "component": "dev",
+    "section_title": "Creating an administrative user",
+    "commands_used": [
+      "radosgw-admin user create --uid"
+    ]
+  },
+  {
+    "entity_id": "3f5859e391d4944b",
+    "code": "{\n    \"user_id\": \"admin-api-user\",\n    \"display_name\": \"Admin API User\",\n    \"email\": \"\",\n    \"suspended\": 0,\n    \"max_buckets\": 1000,\n    \"auid\": 0,\n    \"subusers\": [],\n    \"keys\": [\n        {\n            \"user\": \"admin-api-user\",\n            \"access_key\": \"NRWGT19TWMYOB1YDBV1Y\",\n            \"secret_key\": \"gr1VEGIV7rxcP3xvXDFCo4UDwwl2YoNrmtRlIAty\"\n        }\n    ],\n    \"swift_keys\": [],\n    \"caps\": [],\n    \"op_mask\": \"read, write, delete\",\n    \"default_placement\": \"\",\n    \"placement_tags\": [],\n    \"bucket_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    },\n    \"user_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    },\n    \"temp_url_keys\": []\n}",
+    "language": "bash",
+    "context": "Example output",
+    "source_file": "ibm-docs/9.1/api-creating-administrative-user",
+    "component": "dev",
+    "section_title": "Creating an administrative user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ddd934a8b445bfd3",
+    "code": "radosgw-admin caps add --uid=\"USER_NAME\" --caps=\"users=*\"",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-creating-administrative-user",
+    "component": "dev",
+    "section_title": "Creating an administrative user",
+    "commands_used": [
+      "radosgw-admin caps add --uid"
+    ]
+  },
+  {
+    "entity_id": "660c071a11ead7ef",
+    "code": "[user@client ~]$ radosgw-admin caps add --uid=admin-api-user --caps=\"users=*\"",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/api-creating-administrative-user",
+    "component": "dev",
+    "section_title": "Creating an administrative user",
+    "commands_used": [
+      "radosgw-admin caps add --uid"
+    ]
+  },
+  {
+    "entity_id": "3f5859e391d4944b",
+    "code": "{\n    \"user_id\": \"admin-api-user\",\n    \"display_name\": \"Admin API User\",\n    \"email\": \"\",\n    \"suspended\": 0,\n    \"max_buckets\": 1000,\n    \"auid\": 0,\n    \"subusers\": [],\n    \"keys\": [\n        {\n            \"user\": \"admin-api-user\",\n            \"access_key\": \"NRWGT19TWMYOB1YDBV1Y\",\n            \"secret_key\": \"gr1VEGIV7rxcP3xvXDFCo4UDwwl2YoNrmtRlIAty\"\n        }\n    ],\n    \"swift_keys\": [],\n    \"caps\": [\n        {\n            \"type\": \"users\",\n            \"perm\": \"*\"\n        }\n    ],\n    \"op_mask\": \"read, write, delete\",\n    \"default_placement\": \"\",\n    \"placement_tags\": [],\n    \"bucket_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    },\n    \"user_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    },\n    \"temp_url_keys\": []\n}",
+    "language": "bash",
+    "context": "Example output",
+    "source_file": "ibm-docs/9.1/api-creating-administrative-user",
+    "component": "dev",
+    "section_title": "Creating an administrative user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d1be0ce352bf24f",
+    "code": "users=read or user-info-without-keys=read",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-get-user-information",
+    "component": "dev",
+    "section_title": "Get user information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "795ec31db77a797e",
+    "code": "GET /admin/user?format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-get-user-information",
+    "component": "dev",
+    "section_title": "Get user information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "57e0ccdff6742c12",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-create-user",
+    "component": "dev",
+    "section_title": "Create a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "358591e65e21a9e8",
+    "code": "PUT /admin/user?format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-create-user",
+    "component": "dev",
+    "section_title": "Create a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7066da456e601d13",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-modify-user",
+    "component": "dev",
+    "section_title": "Modify a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3e4d5570e3b4788b",
+    "code": "POST /admin/user?format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-modify-user",
+    "component": "dev",
+    "section_title": "Modify a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5d15bdd1a91c191a",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-remove-user",
+    "component": "dev",
+    "section_title": "Remove a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "adbf0a3dceb23630",
+    "code": "DELETE /admin/user?format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-remove-user",
+    "component": "dev",
+    "section_title": "Remove a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5591011ee5957e2d",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-create-subuser",
+    "component": "dev",
+    "section_title": "Create a subuser",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1a4710ebd936f88e",
+    "code": "PUT /admin/user?subuser&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-create-subuser",
+    "component": "dev",
+    "section_title": "Create a subuser",
+    "commands_used": []
+  },
+  {
+    "entity_id": "53bb23b7c1e72641",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-modify-subuser",
+    "component": "dev",
+    "section_title": "Modify a subuser",
+    "commands_used": []
+  },
+  {
+    "entity_id": "65832daf99744339",
+    "code": "POST /admin/user?subuser&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-modify-subuser",
+    "component": "dev",
+    "section_title": "Modify a subuser",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0f8c9f1a1d0069de",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-remove-subuser",
+    "component": "dev",
+    "section_title": "Remove a subuser",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d731488dffad0c9b",
+    "code": "DELETE /admin/user?subuser&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-remove-subuser",
+    "component": "dev",
+    "section_title": "Remove a subuser",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d36abeb07f5402d2",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-add-capabilities-user",
+    "component": "dev",
+    "section_title": "Add capabilities to a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "553baedef3edead6",
+    "code": "PUT /admin/user?caps&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-add-capabilities-user",
+    "component": "dev",
+    "section_title": "Add capabilities to a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f56d8886931f9972",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-remove-capabilities-from-user",
+    "component": "dev",
+    "section_title": "Remove capabilities from a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f30761c92a0ac4f6",
+    "code": "DELETE /admin/user?caps&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-remove-capabilities-from-user",
+    "component": "dev",
+    "section_title": "Remove capabilities from a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9aaffd24389ddecf",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-create-key",
+    "component": "dev",
+    "section_title": "Create a key",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bfaefb85d5529090",
+    "code": "PUT /admin/user?key&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-create-key",
+    "component": "dev",
+    "section_title": "Create a key",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5a57811e07e79b50",
+    "code": "`users=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-remove-key",
+    "component": "dev",
+    "section_title": "Remove a key",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbf6172d5fa15a02",
+    "code": "DELETE /admin/user?key&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-remove-key",
+    "component": "dev",
+    "section_title": "Remove a key",
+    "commands_used": []
+  },
+  {
+    "entity_id": "972afdef8443da28",
+    "code": "`buckets=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-remove-object",
+    "component": "dev",
+    "section_title": "Remove an object",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fce88730370d7c0a",
+    "code": "DELETE /admin/bucket?object&format=json HTTP/1.1\nHost FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-remove-object",
+    "component": "dev",
+    "section_title": "Remove an object",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f7b2d49875502ee5",
+    "code": "`usage=read`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-get-usage-information",
+    "component": "dev",
+    "section_title": "Get usage information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "80fa08a875f88de2",
+    "code": "GET /admin/usage?format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-get-usage-information",
+    "component": "dev",
+    "section_title": "Get usage information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "01ab850e95a5ad5e",
+    "code": "`usage=write`",
+    "language": "bash",
+    "context": "Capabilities",
+    "source_file": "ibm-docs/9.1/api-remove-usage-information",
+    "component": "dev",
+    "section_title": "Remove usage information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f48c5309349d4af2",
+    "code": "DELETE /admin/usage?format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/9.1/api-remove-usage-information",
+    "component": "dev",
+    "section_title": "Remove usage information",
+    "commands_used": []
+  },
+  {
+    "entity_id": "717d7b5a8b9c40af",
+    "code": "import boto3\n\niam_client = boto3.client(iam,\naws_access_key_id=ACCESS_KEY_OF_TESTER1,\naws_secret_access_key=SECRET_KEY_OF_TESTER1,\nendpoint_url=<IAM URL>,\nregion_name='\n)\n\npolicy_document = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"AWS\\\":[\\\"arn:aws:iam:::user/TESTER1\\\"]},\\\"Action\\\":[\\\"sts:AssumeRole\\\"]}]}\"\n\nrole_response = iam_client.create_role(\nAssumeRolePolicyDocument=policy_document,\nPath=/,\nRoleName='S3Access,\n)\n\nrole_policy = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":\\\"Allow\\\",\\\"Action\\\":\\\"s3:*\\\",\\\"Resource\\\":\\\"arn:aws:s3:::*\\\"}}\"\n\nresponse = iam_client.putROLEpolicy(\nRoleName=S3Access,\nPolicyName=Policy1,\nPolicyDocument=role_policy\n)\n\nsts_client = boto3.client(sts,\naws_access_key_id=ACCESS_KEY_OF_TESTER2,\naws_secret_access_key=SECRET_KEY_OF_TESTER2,\nendpoint_url=<STS URL>,\nregion_name=',\n)\n\nresponse = sts_client.assume_role(\nRoleArn=role_response['Role][Arn],\nRoleSessionName=Bob,\nDurationSeconds=3600\n)\n\ns3client = boto3.client(s3,\naws_access_key_id = response[Credentials][AccessKeyId],\naws_secret_access_key = response[Credentials][SecretAccessKey],\naws_session_token = response[Credentials][SessionToken],\nendpoint_url=<S3 URL>,\nregion_name=',)\n\nbucket_name = 'my-bucket\ns3bucket = s3client.create_bucket(Bucket=bucket_name)\nresp = s3client.list_buckets()",
+    "language": "bash",
+    "context": "AssumeRole Example",
+    "source_file": "ibm-docs/9.1/developer-examples-using-secure-token-service-apis",
+    "component": "dev",
+    "section_title": "Examples using the Secure Token Service APIs",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b0e2f9352cbfc6c6",
+    "code": "import boto3\n\niam_client = boto3.client('iam',\naws_access_key_id=ACCESS_KEY_OF_TESTER1,\naws_secret_access_key=SECRET_KEY_OF_TESTER1,\nendpoint_url=<IAM URL>,\nregion_name=''\n)\n\noidc_response = iam_client.create_openIDconnect_provider(\n    Url=<URL of the OpenID Connect Provider>,\n    ClientIDList=[\n        <Client id registered with the IDP>\n    ],\n    ThumbprintList=[\n        <IDP THUMBPRINT>\n ]\n)\n\npolicy_document = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":\\[\\{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":\\{\\\"Federated\\\":\\[\\\"arn:aws:iam:::oidc-provider/localhost:8080/auth/realms/demo\\\"\\]\\},\\\"Action\\\":\\[\\\"sts:AssumeRoleWithWebIdentity\\\"\\],\\\"Condition\\\":\\{\\\"StringEquals\\\":\\{\\\"localhost:8080/auth/realms/demo:app_id\\\":\\\"customer-portal\\\"\\}\\}\\}\\]\\}\"\nrole_response = iam_client.create_role(\nAssumeRolePolicyDocument=policy_document,\nPath='/',\nRoleName='S3Access',\n)\n\nrole_policy = \"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":{\\\"Effect\\\":\\\"Allow\\\",\\\"Action\\\":\\\"s3:*\\\",\\\"Resource\\\":\\\"arn:aws:s3:::*\\\"}}\"\n\nresponse = iam_client.put_role_policy(\n    RoleName='S3Access',\n    PolicyName='Policy1',\n    PolicyDocument=role_policy\n)\n\nsts_client = boto3.client('sts',\naws_access_key_id=ACCESS_KEY_OF_TESTER2,\naws_secret_access_key=SECRET_KEY_OF_TESTER2,\nendpoint_url=<STS URL>,\nregion_name='',\n)\n\nresponse = sts_client.assume_role_with_web_identity(\nRoleArn=role_response['Role']['Arn'],\nRoleSessionName='Bob',\nDurationSeconds=3600,\nWebIdentityToken=<Web Token>\n)\n\ns3client = boto3.client(s3,\naws_access_key_id = response[Credentials][AccessKeyId],\naws_secret_access_key = response[Credentials][SecretAccessKey],\naws_session_token = response[Credentials][SessionToken],\nendpoint_url=<S3 URL>,\nregion_name=',)\n\nbucket_name = 'my-bucket\ns3bucket = s3client.create_bucket(Bucket=bucket_name)\nresp = s3client.list_buckets()",
+    "language": "bash",
+    "context": "AssumeRoleWithWebIdentity Example",
+    "source_file": "ibm-docs/9.1/developer-examples-using-secure-token-service-apis",
+    "component": "dev",
+    "section_title": "Examples using the Secure Token Service APIs",
+    "commands_used": []
+  }
+]

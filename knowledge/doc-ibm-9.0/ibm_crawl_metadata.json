@@ -1,0 +1,8 @@
+{
+  "ibm_version": "9.0",
+  "url_version": "9.9.0",
+  "upstream_equivalent": "squid-19.x",
+  "pages_indexed": 1831,
+  "build_timestamp": "2026-07-17T13:36:22.533485+00:00",
+  "source": "https://www.ibm.com/docs/en/storage-ceph"
+}

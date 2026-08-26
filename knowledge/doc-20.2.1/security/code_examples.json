@@ -1,0 +1,63 @@
+[
+  {
+    "entity_id": "7c83948f55301353",
+    "code": "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM_ALLOWED 1w",
+    "language": "text",
+    "context": "Patched monitors raise the ``AUTH_INSECURE_GLOBAL_ID_RECLAIM_ALLOWED``\n   health alert if ``auth_allow_insecure_global_id_reclaim`` is enabled.\n   This health alert can be muted with",
+    "source_file": "security/CVE-2021-20288.rst",
+    "component": "security",
+    "section_title": "",
+    "commands_used": [
+      "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM_ALLOWED"
+    ]
+  },
+  {
+    "entity_id": "c75c29a93f682a8a",
+    "code": "ceph config set mon mon_warn_on_insecure_global_id_reclaim_allowed false",
+    "language": "text",
+    "context": "Although it is not recommended, the alert can also be disabled with",
+    "source_file": "security/CVE-2021-20288.rst",
+    "component": "security",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "40a1f5effcaf13df",
+    "code": "ceph config set mon auth_expose_insecure_global_id_reclaim false",
+    "language": "text",
+    "context": "iring secure global_id reclaim: most clients will\n   report an authentication error immediately.  This behavior can be\n   disabled by setting ``auth_expose_insecure_global_id_reclaim`` to\n   ``false``",
+    "source_file": "security/CVE-2021-20288.rst",
+    "component": "security",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "4db196bfe7784ff4",
+    "code": "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM 1w  # 1 week\nceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM_ALLOWED 1w  # 1 week",
+    "language": "text",
+    "context": "#. If all clients cannot be upgraded immediately, the health alerts can be\n   temporarily muted with",
+    "source_file": "security/CVE-2021-20288.rst",
+    "component": "security",
+    "section_title": "",
+    "commands_used": [
+      "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM",
+      "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM_ALLOWED"
+    ]
+  },
+  {
+    "entity_id": "d7d9b82bf6d36a2d",
+    "code": "ceph config set mon auth_allow_insecure_global_id_reclaim false",
+    "language": "text",
+    "context": "#. After all clients have been updated and the ``AUTH_INSECURE_GLOBAL_ID_RECLAIM``\n   alert is no longer present, the cluster should be set to prevent insecure\n   global_id reclaim with",
+    "source_file": "security/CVE-2021-20288.rst",
+    "component": "security",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  }
+]

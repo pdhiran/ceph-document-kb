@@ -1,0 +1,748 @@
+[
+  {
+    "entity_id": "d4194c2e298d1207",
+    "code": "cephadm shell",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/8.0/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "3bb2c3e186d30a8a",
+    "code": "[ceph: root@host01 /]# ceph health detail",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/8.0/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "5125bf27151194c6",
+    "code": "[ceph: root@host01 /]# ceph -w cephadm",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/8.0/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph -w cephadm"
+    ]
+  },
+  {
+    "entity_id": "78793452676c5eae",
+    "code": "ceph config set global log_to_file true",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/8.0/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph config set global log_to_file"
+    ]
+  },
+  {
+    "entity_id": "883061fc9137f98d",
+    "code": "ceph config set global mon_cluster_log_to_file true",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/8.0/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph config set global mon_cluster_log_to_file"
+    ]
+  },
+  {
+    "entity_id": "8393cafa96f1b6ca",
+    "code": "cephadm shell",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "85131d11edd50b60",
+    "code": "[ceph: root@host01 /]# ceph health detail\n\n HEALTH_WARN 1 osds down; 1 OSDs or CRUSH {nodes, device-classes} have {NOUP,NODOWN,NOIN,NOOUT} flags set\n [WRN] OSD_DOWN: 1 osds down\n     osd.1 (root=default,host=host01) is down\n [WRN] OSD_FLAGS: 1 OSDs or CRUSH {nodes, device-classes} have {NOUP,NODOWN,NOIN,NOOUT} flags set\n     osd.1 has flags noup",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health detail\n\n HEALTH_WARN 1"
+    ]
+  },
+  {
+    "entity_id": "c84fa09a08b29ae5",
+    "code": "ceph health mute HEALTH_MESSAGE",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute HEALTH_MESSAGE"
+    ]
+  },
+  {
+    "entity_id": "8c64235543e0f339",
+    "code": "[ceph: root@host01 /]# ceph health mute OSD_DOWN",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute OSD_DOWN"
+    ]
+  },
+  {
+    "entity_id": "642d37c7f240a31d",
+    "code": "ceph health mute HEALTH_MESSAGE DURATION",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute HEALTH_MESSAGE DURATION"
+    ]
+  },
+  {
+    "entity_id": "dade6538b54d7d3b",
+    "code": "[ceph: root@host01 /]# ceph health mute OSD_DOWN 10m",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute OSD_DOWN 10m"
+    ]
+  },
+  {
+    "entity_id": "c8af30283e22b37c",
+    "code": "[ceph: root@host01 /]# ceph -s\n   cluster:\n     id:     81a4597a-b711-11eb-8cb8-001a4a000740\n     health: HEALTH_OK\n             (muted: OSD_DOWN(9m) OSD_FLAGS(9m))\n\n   services:\n     mon: 3 daemons, quorum host01,host02,host03 (age 33h)\n     mgr: host01.pzhfuh(active, since 33h), standbys: host02.wsnngf, host03.xwzphg\n     osd: 11 osds: 10 up (since 4m), 11 in (since 5d)\n\n   data:\n     pools:   1 pools, 1 pgs\n     objects: 13 objects, 0 B\n     usage:   85 MiB used, 165 GiB / 165 GiB avail\n     pgs:     1 active+clean",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph -s\n   cluster"
+    ]
+  },
+  {
+    "entity_id": "7633932d6214258d",
+    "code": "ceph health mute HEALTH_MESSAGE DURATION --sticky",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute HEALTH_MESSAGE DURATION"
+    ]
+  },
+  {
+    "entity_id": "9283f64a1b30d29c",
+    "code": "[ceph: root@host01 /]# ceph health mute OSD_DOWN 1h --sticky",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute OSD_DOWN 1h"
+    ]
+  },
+  {
+    "entity_id": "09290ae8609dae53",
+    "code": "ceph health unmute HEALTH_MESSAGE",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health unmute HEALTH_MESSAGE"
+    ]
+  },
+  {
+    "entity_id": "b755ddb742a312ad",
+    "code": "[ceph: root@host01 /]# ceph health unmute OSD_DOWN",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/8.0/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health unmute OSD_DOWN"
+    ]
+  },
+  {
+    "entity_id": "d69724492224baf7",
+    "code": "[root@host01 ~]# dnf install sos",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/8.0/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbce6bbb86daae77",
+    "code": "sos report -a --all-logs",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/8.0/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "228404f2bb1c9251",
+    "code": "[root@host01 ~]# sos report -a --all-logs",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/8.0/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "686be85ebf65231c",
+    "code": "sos report --all-logs -e CEPH_SERVICE1,CEPH_SERVICE2",
+    "language": "bash",
+    "context": "Run the following command for specific Ceph\ndaemon\ninformation.",
+    "source_file": "ibm-docs/8.0/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "918c6991b43555c2",
+    "code": "[root@host01 ~]# sos report --all-logs -e ceph_mgr,ceph_common,ceph_mon,ceph_osd,ceph_ansible,ceph_mds,ceph_rgw",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/8.0/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "96c64849319c6d44",
+    "code": "[root@host01 ~]# dnf install net-tools\n[root@host01 ~]# dnf install telnet",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "252e54c5deb92321",
+    "code": "[ceph: root@host01 /]# cat /etc/ceph/ceph.conf\n# minimal ceph.conf for 57bddb48-ee04-11eb-9962-001a4a000672\n[global]\n        fsid = 57bddb48-ee04-11eb-9962-001a4a000672\n        mon_host = [v2:10.74.249.26:3300/0,v1:10.74.249.26:6789/0] [v2:10.74.249.163:3300/0,v1:10.74.249.163:6789/0] [v2:10.74.254.129:3300/0,v1:10.74.254.129:6789/0]\n[mon.host01]\npublic network = 10.74.248.0/21",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "88e2d6f7ec6a5b59",
+    "code": "[root@host01 ~]# ip link list\n1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n2: ens3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000\n    link/ether 00:1a:4a:00:06:72 brd ff:ff:ff:ff:ff:ff",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d8ff3a238f98d9c",
+    "code": "ping SHORT_HOST_NAME",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "86462e392f97482b",
+    "code": "[root@host01 ~]# ping host02",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d225b40801ab62eb",
+    "code": "firewall-cmd --info-zone=ZONE\ntelnet IP_ADDRESS PORT",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d13aeffa9dc7fbdf",
+    "code": "[root@host01 ~]# firewall-cmd --info-zone=public\npublic (active)\n  target: default\n  icmp-block-inversion: no\n  interfaces: ens3\n  sources:\n  services: ceph ceph-mon cockpit dhcpv6-client ssh\n  ports: 9283/tcp 8443/tcp 9093/tcp 9094/tcp 3000/tcp 9100/tcp 9095/tcp\n  protocols:\n  masquerade: no\n  forward-ports:\n  source-ports:\n  icmp-blocks:\n  rich rules:\n\n[root@host01 ~]# telnet 192.168.0.22 9100",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": [
+      "ceph ceph-mon cockpit dhcpv6-client ssh"
+    ]
+  },
+  {
+    "entity_id": "0d99cce920975e16",
+    "code": "ethtool -S INTERFACE",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8a3757009f151263",
+    "code": "[root@host01 ~]# ethtool -S ens3 | grep errors\nNIC statistics:\n     rx_fcs_errors: 0\n     rx_align_errors: 0\n     rx_frame_too_long_errors: 0\n     rx_in_length_errors: 0\n     rx_out_length_errors: 0\n     tx_mac_errors: 0\n     tx_carrier_sense_errors: 0\n     tx_errors: 0\n     rx_errors: 0",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6dd9e978b4c04985",
+    "code": "[root@host01 ~]# ifconfig\nens3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\n        inet 10.74.249.26  netmask 255.255.248.0  broadcast 10.74.255.255\n        inet6 fe80::21a:4aff:fe00:672  prefixlen 64  scopeid 0x20<link>\n        inet6 2620:52:0:4af8:21a:4aff:fe00:672  prefixlen 64  scopeid 0x0<global>\n        ether 00:1a:4a:00:06:72  txqueuelen 1000  (Ethernet)\n        RX packets 150549316  bytes 56759897541 (52.8 GiB)\n        RX errors 0  dropped 176924  overruns 0  frame 0\n        TX packets 55584046  bytes 62111365424 (57.8 GiB)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\n\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\n        inet 127.0.0.1  netmask 255.0.0.0\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\n        loop  txqueuelen 1000  (Local Loopback)\n        RX packets 9373290  bytes 16044697815 (14.9 GiB)\n        RX errors 0  dropped 0  overruns 0  frame 0\n        TX packets 9373290  bytes 16044697815 (14.9 GiB)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5938399c8a522d56",
+    "code": "[root@host01 ~]# netstat -ai\nKernel Interface table\nIface  MTU    RX-OK      RX-ERR RX-DRP RX-OVR TX-OK      TX-ERR TX-DRP TX-OVR Flg\nens3   1500   311847720  0      364903 0      114341918  0      0      0      BMRU\nlo     65536  19577001   0      0      0      19577001   0      0      0      LRU",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1f37a2412e2f8c7e",
+    "code": "[root@host01 ~]# dnf install iperf3",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c77b448978ed1023",
+    "code": "[root@host01 ~]# iperf3 -s\n Server listening on 5201",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "35b59b17caf59339",
+    "code": "iperf3 -c mon",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bb2536aa129cae24",
+    "code": "[root@host02 ~]# iperf3 -c mon\n Connecting to host mon, port 5201\n [  4] local xx.x.xxx.xx port 52270 connected to xx.x.xxx.xx port 5201\n [ ID] Interval           Transfer     Bandwidth       Retr  Cwnd\n [  4]   0.00-1.00   sec   114 MBytes   954 Mbits/sec    0    409 KBytes\n [  4]   1.00-2.00   sec   113 MBytes   945 Mbits/sec    0    409 KBytes\n [  4]   2.00-3.00   sec   112 MBytes   943 Mbits/sec    0    454 KBytes\n [  4]   3.00-4.00   sec   112 MBytes   941 Mbits/sec    0    471 KBytes\n [  4]   4.00-5.00   sec   112 MBytes   940 Mbits/sec    0    471 KBytes\n [  4]   5.00-6.00   sec   113 MBytes   945 Mbits/sec    0    471 KBytes\n [  4]   6.00-7.00   sec   112 MBytes   937 Mbits/sec    0    488 KBytes\n [  4]   7.00-8.00   sec   113 MBytes   947 Mbits/sec    0    520 KBytes\n [  4]   8.00-9.00   sec   112 MBytes   939 Mbits/sec    0    520 KBytes\n [  4]   9.00-10.00  sec   112 MBytes   939 Mbits/sec    0    520 KBytes\n - - - - - - - - - - - - - - - - - - - - - - - - -\n [ ID] Interval           Transfer     Bandwidth       Retr\n [  4]   0.00-10.00  sec  1.10 GBytes   943 Mbits/sec    0             sender\n [  4]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  receiver\n\n iperf Done.",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b9abf26e14730b86",
+    "code": "ethtool INTERFACE",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7a8692df807d553f",
+    "code": "[root@host01 ~]# ethtool ens3\n Settings for ens3:\n Supported ports: [ TP ]\n Supported link modes:   10baseT/Half 10baseT/Full\n                         100baseT/Half 100baseT/Full\n                         1000baseT/Half 1000baseT/Full\n Supported pause frame use: No\n Supports auto-negotiation: Yes\n Supported FEC modes: Not reported\n Advertised link modes:  10baseT/Half 10baseT/Full\n                         100baseT/Half 100baseT/Full\n                         1000baseT/Half 1000baseT/Full\n Advertised pause frame use: Symmetric\n Advertised auto-negotiation: Yes\n Advertised FEC modes: Not reported\n Link partner advertised link modes:  10baseT/Half 10baseT/Full\n                                         100baseT/Half 100baseT/Full\n                                         1000baseT/Full\n Link partner advertised pause frame use: Symmetric\n Link partner advertised auto-negotiation: Yes\n Link partner advertised FEC modes: Not reported\n Speed: 1000Mb/s \n Duplex: Full \n Port: Twisted Pair\n PHYAD: 1\n Transceiver: internal\n Auto-negotiation: on\n MDI-X: off\n Supports Wake-on: g\n Wake-on: d\n Current message level: 0x000000ff (255)\n         drv probe link timer ifdown ifup rx_err tx_err\n Link detected: yes",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f7bf59933c655848",
+    "code": "[root@mon ~]# systemctl status chrony",
+    "language": "bash",
+    "context": "Basic chrony NTP troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-chrony-ntp-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic chrony NTP troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ea8982c0b23b306e",
+    "code": "[root@mon ~]# systemctl enable chrony\n[root@mon ~]# systemctl start chrony",
+    "language": "bash",
+    "context": "Basic chrony NTP troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-chrony-ntp-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic chrony NTP troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "20fd79b829b33122",
+    "code": "[root@mon ~]# chronyc sources\n[root@mon ~]# chronyc sourcestats\n[root@mon ~]# chronyc tracking",
+    "language": "bash",
+    "context": "Basic chrony NTP troubleshooting",
+    "source_file": "ibm-docs/8.0/issues-basic-chrony-ntp-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic chrony NTP troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "de6823a90121184f",
+    "code": "cephadm logs --name DAEMON_NAME",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/8.0/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --name DAEMON_NAME"
+    ]
+  },
+  {
+    "entity_id": "3362481b14856f86",
+    "code": "[root@host01 ~]# cephadm logs --name cephfs.hostname.ppdhsz",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/8.0/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --name cephfs"
+    ]
+  },
+  {
+    "entity_id": "5d6cb20f0fabf64b",
+    "code": "cephadm logs --fsid FSID --name DAEMON_NAME",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/8.0/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid FSID --name"
+    ]
+  },
+  {
+    "entity_id": "c158b001f83fbd51",
+    "code": "[root@host01 ~]# cephadm logs --fsid 2d2fd136-6df1-11ea-ae74-002590e526e8 --name cephfs.hostname.ppdhsz",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/8.0/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid 2d2fd136-6df1-11ea-ae74-002590e526e8 --name"
+    ]
+  },
+  {
+    "entity_id": "189d4e3152ec8195",
+    "code": "for name in $(cephadm ls | python3 -c \"import sys, json; [print(i[name]) for i in json.load(sys.stdin)]\") ; do cephadm logs --fsid FSID_OF_CLUSTER --name \"$name\" > $name; done",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/8.0/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid FSID_OF_CLUSTER --name"
+    ]
+  },
+  {
+    "entity_id": "bd29d1a35f0fd8d4",
+    "code": "[root@host01 ~]# for name in $(cephadm ls | python3 -c \"import sys, json; [print(i['name']) for i in json.load(sys.stdin)]\") ; do cephadm logs --fsid 57bddb48-ee04-11eb-9962-001a4a000672 --name \"$name\" > $name; done",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/8.0/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid 57bddb48-ee04-11eb-9962-001a4a000672 --name"
+    ]
+  },
+  {
+    "entity_id": "93d9b422e68bb7ca",
+    "code": "[root@host01 ~]$ systemctl status ceph-a538d494-fb2a-48e4-82c8-b91c37bb0684@mon.host01.service",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-collect-systemd-status",
+    "component": "troubleshooting",
+    "section_title": "Collect systemd status",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8b1e290c9dbc2298",
+    "code": "[ceph: root@host01 /]# podman ps -a --format json | jq '.[].Image'\n\"docker.io/library/rhel8\"\n\"cp.icr.io/cp/ibm-ceph/ceph-8-rhel9:latest\"",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-list-all-downloaded-container-images",
+    "component": "troubleshooting",
+    "section_title": "List all downloaded container images",
+    "commands_used": []
+  },
+  {
+    "entity_id": "206794acf4c0b22d",
+    "code": "execnet.gateway_bootstrap.HostNotFound: -F /tmp/cephadm-conf-73z09u6g -i /tmp/cephadm-identity-ky7ahp_5 root@10.10.1.2\n\n    ...\n\n    raise OrchestratorError(msg) from e\n    orchestrator._interface.OrchestratorError: Failed to connect to 10.10.1.2 (10.10.1.2).\n\n    Please make sure that the host is reachable and accepts connections using the cephadm SSH key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "cephadm SSH key"
+    ]
+  },
+  {
+    "entity_id": "1e57b86e54884225",
+    "code": "[ceph: root@host01 /]# ceph config-key get mgr/cephadm/ssh_identity_key > ~/cephadm_private_key\nINFO:cephadm:Inferring fsid f8edc08a-7f17-11ea-8707-000c2915dd98\nINFO:cephadm:Using recent ceph image docker.io/ceph/ceph:v15 obtained 'mgr/cephadm/ssh_identity_key'\n[root@mon1 ~] # chmod 0600 ~/cephadm_private_key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph config-key get mgr",
+      "ceph image docker"
+    ]
+  },
+  {
+    "entity_id": "c82d50542bd30000",
+    "code": "[ceph: root@host01 /]# chmod 0600 ~/cephadm_private_key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9333febb987813b9",
+    "code": "[ceph: root@host01 /]# cat ~/cephadm_private_key | ceph cephadm set-ssk-key -i-",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph cephadm set-ssk-key -i-"
+    ]
+  },
+  {
+    "entity_id": "1ac08359ebe45d28",
+    "code": "[ceph: root@host01 /]# ceph cephadm get-ssh-config",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph cephadm get-ssh-config"
+    ]
+  },
+  {
+    "entity_id": "15f440a0a5e787c9",
+    "code": "[ceph: root@host01 /]# ssh -F config -i ~/cephadm_private_key root@host01",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cde7c149a8eb9994",
+    "code": "[ceph: root@host01 /]# ceph cephadm get-pub-key\n[ceph: root@host01 /]# grep \"`cat ~/ceph.pub`\" /root/.ssh/authorized_keys",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph cephadm get-pub-key"
+    ]
+  },
+  {
+    "entity_id": "04f4e66987b1feda",
+    "code": "[ceph: root@host01 /]# ceph config set host public_network hostnetwork",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-cidr-network-error",
+    "component": "troubleshooting",
+    "section_title": "CIDR network error",
+    "commands_used": [
+      "ceph config set host public_network"
+    ]
+  },
+  {
+    "entity_id": "976de1804bc1e3df",
+    "code": "[ceph: root@host01 /]# cephadm enter --name cephfs.hostname.ppdhsz\n[ceph: root@mon1 /]# ceph --admin-daemon /var/run/ceph/ceph-cephfs.hostname.ppdhsz.asok config show",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-access-admin-socket",
+    "component": "troubleshooting",
+    "section_title": "Access admin socket",
+    "commands_used": [
+      "cephadm enter --name cephfs",
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "d01f610e42ddd7ec",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "40ebbc4cd108beb1",
+    "code": "[ceph: root@host01 /]# ceph config-key set mgr/cephadm/pause true",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "51119133ae6d1a98",
+    "code": "[ceph: root@host01 /]# ceph auth get-or-create mgr.host01.smfvfd1 mon \"profile mgr\" osd \"allow *\" mds \"allow *\"\n[mgr.host01.smfvfd1]\nkey = AQDhcORgW8toCRAAlMzlqWXnh3cGRjqYEa9ikw==",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph auth get-or-create mgr"
+    ]
+  },
+  {
+    "entity_id": "90655801fca4ad5a",
+    "code": "[ceph: root@host01 /]# ceph config generate-minimal-conf\n# minimal ceph.conf for 8c9b0072-67ca-11eb-af06-001a4a0002a0\n[global]\nfsid = 8c9b0072-67ca-11eb-af06-001a4a0002a0\nmon_host = [v2:10.10.200.10:3300/0,v1:10.10.200.10:6789/0] [v2:10.10.10.100:3300/0,v1:10.10.200.100:6789/0]",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph config generate-minimal-conf"
+    ]
+  },
+  {
+    "entity_id": "3e5b94334d405a14",
+    "code": "[ceph: root@host01 /]# ceph config get \"mgr.host01.smfvfd1\" container_image",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph config get"
+    ]
+  },
+  {
+    "entity_id": "e0c93b53f85333d9",
+    "code": "{\n  {\n  \"config\": \"# minimal ceph.conf for 8c9b0072-67ca-11eb-af06-001a4a0002a0\\n[global]\\n\\tfsid = 8c9b0072-67ca-11eb-af06-001a4a0002a0\\n\\tmon_host =  [v2:10.10.200.10:3300/0,v1:10.10.200.10:6789/0] [v2:10.10.10.100:3300/0,v1:10.10.200.100:6789/0]\\n\",\n  \"keyring\": \"[mgr.Ceph5-2.smfvfd1]\\n\\tkey = AQDhcORgW8toCRAAlMzlqWXnh3cGRjqYEa9ikw==\\n\"\n}\n}",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7d50fe6a826c4a21",
+    "code": "[ceph: root@host01 /]# exit",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6fc7f92bfaf8eda2",
+    "code": "[root@host01 ~]# cephadm --image cp.icr.io/cp/ibm-ceph/ceph-8-rhel9:latest deploy --fsid  8c9b0072-67ca-11eb-af06-001a4a0002a0 --name mgr.host01.smfvfd1 --config-json config-json.json",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "cephadm --image cp"
+    ]
+  },
+  {
+    "entity_id": "855ed77be9eb7a53",
+    "code": "[ceph: root@host01 /]# ceph -s",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph -s"
+    ]
+  }
+]

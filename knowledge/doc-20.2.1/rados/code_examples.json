@@ -1,0 +1,2763 @@
+[
+  {
+    "entity_id": "b1a2dad88473df72",
+    "code": "[osd]\n\tosd_journal_size = 5120",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/osd-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "819844097ebfefd3",
+    "code": "osd.0\nosd.1\nosd.2",
+    "language": "text",
+    "context": "Ceph OSD Daemons are numerically identified in incremental fashion, beginning\nwith ``0`` using the following convention.",
+    "source_file": "rados/configuration/osd-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f37e889260c0fcc6",
+    "code": "/var/lib/ceph/osd/$cluster-$id/journal",
+    "language": "text",
+    "context": "By default, Ceph expects that you will provision a Ceph OSD Daemon's journal at\nthe following path, which is usually a symlink to a device or partition",
+    "source_file": "rados/configuration/osd-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3378350560d9150e",
+    "code": "osd_journal_size = 10240",
+    "language": "ini",
+    "context": "The default ``osd_journal_size`` value is 5120 (5 gigabytes), but it can be\nlarger, in which case it will need to be set in the ``ceph.conf`` file.\nA value of 10 gigabytes is common in practice",
+    "source_file": "rados/configuration/osd-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eb70bad509ca8e72",
+    "code": "[global]\n\t# ... elided configuration\n\tpublic_network = {public-network/netmask}",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/network-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "52106a7ff769344f",
+    "code": "[global]\n\t# ... elided configuration\n\tcluster_network = {cluster-network/netmask}",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/network-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "15d5cc929a0e1365",
+    "code": "[global]\n    mon_host = 10.0.0.2, 10.0.0.3, 10.0.0.4",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/network-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1dd07e024dee7a6e",
+    "code": "[osd.0]\n\tpublic_addr = {host-public-ip-address}\n\tcluster_addr = {host-cluster-ip-address}",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/network-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dc28f8df8da5fac8",
+    "code": "REJECT all -- anywhere anywhere reject-with icmp-host-prohibited",
+    "language": "text",
+    "context": "Some Linux distributions include rules that reject all inbound requests\nexcept SSH from all network interfaces. For example",
+    "source_file": "rados/configuration/network-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0f81a4f66b84fbc5",
+    "code": "bluestore_block_path = \"spdk:trtype:PCIe traddr:0000:01:00.0\"",
+    "language": "ini",
+    "context": "Next, supposing that ``0000:01:00.0`` is the device selector found in the\noutput of the ``lspci`` command, you can specify the device selector by running\nthe following command",
+    "source_file": "rados/configuration/bluestore-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "65fdf16c619fe72b",
+    "code": "bluestore_block_path = \"spdk:trtype:TCP traddr:10.67.110.197 trsvcid:4420 subnqn:nqn.2019-02.io.spdk:cnode1\"",
+    "language": "ini",
+    "context": "You may also specify a remote NVMeoF target over the TCP transport, as in the\nfollowing example",
+    "source_file": "rados/configuration/bluestore-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df0b53e37804c23b",
+    "code": "bluestore_block_db_path = \"\"\nbluestore_block_db_size = 0\nbluestore_block_wal_path = \"\"\nbluestore_block_wal_size = 0",
+    "language": "ini",
+    "context": "ases, a single device can be used for data, DB, and WAL. We describe\nthis strategy as *colocating* these components. Be sure to enter the below\nsettings to ensure that all I/Os are issued through SPDK",
+    "source_file": "rados/configuration/bluestore-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "171889c7ffed0e77",
+    "code": "epoch 1\nfsid 50fcf227-be32-4bcb-8b41-34ca8370bd16\nlast_changed 2019-02-25 11:10:46.700821\ncreated 2019-02-25 11:10:46.700821\nmin_mon_release 14 (nautilus)\n0: [v2:10.0.0.10:3300/0,v1:10.0.0.10:6789/0] mon.foo\n1: [v2:10.0.0.11:3300/0,v1:10.0.0.11:6789/0] mon.bar\n2: [v2:10.0.0.12:3300/0,v1:10.0.0.12:6789/0] mon.baz",
+    "language": "text",
+    "context": "use daemons now bind to multiple ports, they are now described by\na vector of addresses instead of a single address.  For example,\ndumping the monitor map on a Nautilus cluster now includes lines\nlike",
+    "source_file": "rados/configuration/msgr2.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c12f03df41d6f14c",
+    "code": "mon_host = 10.0.0.1:6789,10.0.0.2:6789,10.0.0.3:6789",
+    "language": "ini",
+    "context": "s via the ``mon_host`` option in ``/etc/ceph/ceph.conf``.  The\nsyntax for this option has expanded starting with Nautilus to allow\nsupport the new bracketed list format.  For example, an old line\nlike",
+    "source_file": "rados/configuration/msgr2.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3493b90bd8a8832a",
+    "code": "mon_host = [v2:10.0.0.1:3300/0,v1:10.0.0.1:6789/0],[v2:10.0.0.2:3300/0,v1:10.0.0.2:6789/0],[v2:10.0.0.3:3300/0,v1:10.0.0.3:6789/0]",
+    "language": "ini",
+    "context": "Can be changed to",
+    "source_file": "rados/configuration/msgr2.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1ccfa2813d5db632",
+    "code": "mon_host = 10.0.0.1,10.0.0.2,10.0.0.3",
+    "language": "ini",
+    "context": "However, when default ports are used (``3300`` and ``6789``), they can\nbe omitted",
+    "source_file": "rados/configuration/msgr2.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2aa43ef425dc045e",
+    "code": "# ceph config assimilate-conf < /etc/ceph/ceph.conf\n# ceph config generate-minimal-config > /etc/ceph/ceph.conf.new\n# cat /etc/ceph/ceph.conf.new\n# minimal ceph.conf for 0e5a806b-0ce5-4bc6-b949-aa6f68f5c2a3\n[global]\n        fsid = 0e5a806b-0ce5-4bc6-b949-aa6f68f5c2a3\n        mon_host = [v2:10.0.0.1:3300/0,v1:10.0.0.1:6789/0]\n# mv /etc/ceph/ceph.conf.new /etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "le with just enough information to reach the monitors) and the\n``ceph config assimilate-conf`` (which moves config file options into\nthe monitors' configuration database) may be helpful.  For example,",
+    "source_file": "rados/configuration/msgr2.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph config assimilate-conf",
+      "ceph config generate-minimal-config"
+    ]
+  },
+  {
+    "entity_id": "d342f2696dd14de1",
+    "code": "# <--A number (#) sign number sign (#) precedes a comment.\n; A comment may be anything.\n# Comments always follow a semi-colon semicolon (;) or a pound sign (#) on each line.\n# The end of the line terminates a comment.\n# We recommend that you provide comments in your configuration file(s).",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dea2768c36ec65a9",
+    "code": "[global]\ndebug_ms = 0",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d92d3bceaab5842e",
+    "code": "[global]\nfoo = long long ago\\\nlong ago",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f241d0ce10874932",
+    "code": "[global]\nobscure_one = difficult to explain # I will try harder in next release\nsimpler_one = nothing to explain",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d5c310295f868c27",
+    "code": "[global]\nline = \"to be, or not to be\"",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ae7646d3a1e7bb3f",
+    "code": "[global]\nsecret = \"I l0ve \\# and \\[\"",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "22566fbd863c3457",
+    "code": "log_file - path to log file\n (std::string, basic)\n Default (non-daemon):\n Default (daemon): /var/log/ceph/$cluster-$name.log\n Can update at runtime: false\n See also: [log_to_stderr,err_to_stderr,log_to_syslog,err_to_syslog]",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "77854bd37d8d33de",
+    "code": "{\n    \"name\": \"log_file\",\n    \"type\": \"std::string\",\n    \"level\": \"basic\",\n    \"desc\": \"path to log file\",\n    \"long_desc\": \"\",\n    \"default\": \"\",\n    \"daemon_default\": \"/var/log/ceph/$cluster-$name.log\",\n    \"tags\": [],\n    \"services\": [],\n    \"see_also\": [\n        \"log_to_stderr\",\n        \"err_to_stderr\",\n        \"log_to_syslog\",\n        \"err_to_syslog\"\n    ],\n    \"enum_values\": [],\n    \"min\": \"\",\n    \"max\": \"\",\n    \"can_update_at_runtime\": false\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "740091b9273fd15f",
+    "code": "warning line 42: 'foo' in section 'bar' redefined",
+    "language": "text",
+    "context": "value that comes last in the file is the one\n  that takes effect. Prior to this change, Ceph displayed warning messages\n  of the following form when lines containing duplicate options were encountered",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "81e2766cdbe8da22",
+    "code": "bad option ==== bad value",
+    "language": "text",
+    "context": "and the\n  value may be enclosed within single or double quotes. If an invalid\n  configuration is specified, we will treat it as an invalid configuration\n  file and log a message of the following form",
+    "source_file": "rados/configuration/ceph-conf.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7c786db6012a7440",
+    "code": "2022-10-27T15:30:23.270+0000 7f9b5dbe95c0  0 log_channel(cluster) log [WRN]\n: OSD bench result of 39546.479392 IOPS exceeded the threshold limit of\n25000.000000 IOPS for osd.1. IOPS capacity is unchanged at 21500.000000\nIOPS. The recommendation is to establish the osd's IOPS capacity using other\nbenchmark tools (e.g. Fio) and then override\nosd_mclock_max_capacity_iops_[hdd|ssd].",
+    "language": "text",
+    "context": "city_iops_ssd`. The threshold config options\ncan be reconfigured based on the type of drive used. Additionally, a cluster\nwarning is logged in case the measurement exceeds the threshold. For example,",
+    "source_file": "rados/configuration/mclock-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d4334ab57c11d373",
+    "code": "WHO     MASK  LEVEL  OPTION                            VALUE       RO\nosd.0         basic  osd_mclock_max_capacity_iops_hdd  379.197568    \nosd.1         basic  osd_mclock_max_capacity_iops_hdd  400.903575    \nosd.2         basic  osd_mclock_max_capacity_iops_hdd  398.303428    \nosd.3         basic  osd_mclock_max_capacity_iops_hdd  419.035854",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/mclock-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b7b978cc76b56fe9",
+    "code": "global        basic  osd_mclock_max_capacity_iops_hdd  111.000000",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/mclock-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "100183b931d45dfd",
+    "code": "osd_mclock_max_capacity_iops_hdd                 111.000000                               mon",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/mclock-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4924953ca909431f",
+    "code": "+---------+     +---------+      +---------+\n|  OSD 1  |     |  OSD 2  |      | Monitor |\n+---------+     +---------+      +---------+\n     |               |                |\n     | OSD 3 Is Down |                |\n     |---------------+--------------->|\n     |               |                |\n     |               |                |\n     |               | OSD 3 Is Down  |\n     |               |--------------->|\n     |               |                |\n     |               |                |\n     |               |                |---------+ Mark\n     |               |                |         | OSD 3\n     |               |                |<--------+ Down",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rados/configuration/mon-osd-interaction.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "679c513490d25957",
+    "code": "+---------+     +---------+     +-------+     +---------+\n|  OSD 1  |     |  OSD 2  |     | OSD 3 |     | Monitor |\n+---------+     +---------+     +-------+     +---------+\n     |               |              |              |\n     |  Request To   |              |              |\n     |     Peer      |              |              |\n     |-------------->|              |              |\n     |<--------------|              |              |\n     |    Peering                   |              |\n     |                              |              |\n     |  Request To                  |              |\n     |     Peer                     |              |\n     |----------------------------->|              |\n     |                                             |\n     |----+ OSD Monitor                            |\n     |    | Heartbeat                              |\n     |<---+ Interval Exceeded                      |\n     |                                             |\n     |         Failed to Peer with OSD 3           |\n     |-------------------------------------------->|\n     |<--------------------------------------------|\n     |          Receive New Cluster Map            |",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rados/configuration/mon-osd-interaction.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "216e2fbc74c4363c",
+    "code": "+---------+          +---------+\n|  OSD 1  |          | Monitor |\n+---------+          +---------+\n     |                    |\n     |----+ Report Min    |\n     |    | Interval      |\n     |<---+ Exceeded      |\n     |                    |\n     |----+ Reportable    |\n     |    | Event         |\n     |<---+ Occurs        |\n     |                    |\n     |     Report To      |\n     |      Monitor       |\n     |------------------->|\n     |                    |\n     |----+ Report Max    |\n     |    | Interval      |\n     |<---+ Exceeded      |\n     |                    |\n     |     Report To      |\n     |      Monitor       |\n     |------------------->|\n     |                    |\n     |----+ Monitor       |\n     |    | Fails         |\n     |<---+               |\n                          +----+ Monitor OSD\n                          |    | Report Timeout\n                          |<---+ Exceeded\n                          |\n                          +----+ Mark\n                          |    | OSD 1\n                          |<---+ Down",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rados/configuration/mon-osd-interaction.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b72f821dd954bf90",
+    "code": "mon1.example.com. AAAA 2001:db8::100\nmon2.example.com. AAAA 2001:db8::200\nmon3.example.com. AAAA 2001:db8::300",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/mon-lookup-dns.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d9d8e2885e47719d",
+    "code": "mon1.example.com. A 192.168.0.1\nmon2.example.com. A 192.168.0.2\nmon3.example.com. A 192.168.0.3",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/mon-lookup-dns.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "069861185b436677",
+    "code": "_ceph-mon._tcp.example.com. 60 IN SRV 10 20 6789 mon1.example.com.\n_ceph-mon._tcp.example.com. 60 IN SRV 10 30 6789 mon2.example.com.\n_ceph-mon._tcp.example.com. 60 IN SRV 20 50 6789 mon3.example.com.",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/mon-lookup-dns.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "88df6c34a2d0a7d1",
+    "code": "[global]",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/mon-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a1652a00d1156e00",
+    "code": "[global]\n\tmon_host = 10.0.0.2,10.0.0.3,10.0.0.4",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/mon-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c8b5e130117ad177",
+    "code": "[mon.a]\n\thost = hostname1\n\tmon_addr = 10.0.0.10:6789",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/mon-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0e004d64b61b6127",
+    "code": "[mon]\t\t\n\tmon_initial_members = a,b,c",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/mon-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2dcd206078cf3ac4",
+    "code": "[global]\n\tmon_osd_full_ratio = .80\n\tmon_osd_backfillfull_ratio = .75\n\tmon_osd_nearfull_ratio = .70",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/mon-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a89b0f0b4fdad002",
+    "code": "[global]\nmon_initial_members = ceph1\nmon_host = 10.0.0.1",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/common.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d046eff4cf8888ea",
+    "code": "auth_cluster_required = cephx\nauth_service_required = cephx\nauth_client_required = cephx",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/common.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8db864f564f0321b",
+    "code": "/var/lib/ceph/mon/$cluster-$id",
+    "language": "text",
+    "context": "By default, Ceph expects to store monitor data on the following path",
+    "source_file": "rados/configuration/common.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2c8b2e8cc9e6f7a7",
+    "code": "/var/lib/ceph/mon/ceph-a",
+    "language": "text",
+    "context": "deployment tool (for example, ``cephadm``) must create the\ncorresponding directory. With metavariables fully expressed and a cluster named\n\"ceph\", the path specified in the above example evaluates to",
+    "source_file": "rados/configuration/common.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "16e2730e17a83437",
+    "code": "/var/lib/ceph/osd/$cluster-$id",
+    "language": "text",
+    "context": "By default, Ceph expects to store a Ceph OSD Daemon's data on the following\npath",
+    "source_file": "rados/configuration/common.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "760ea986e346e168",
+    "code": "/var/lib/ceph/osd/ceph-0",
+    "language": "text",
+    "context": "deployment tool (for example, ``cephadm``) must create the\ncorresponding directory. With metavariables fully expressed and a cluster named\n\"ceph\", the path specified in the above example evaluates to",
+    "source_file": "rados/configuration/common.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13b0ac5b454667a1",
+    "code": "[global]\n    debug_ms = 1/5",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/troubleshooting/log-and-debug.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf67f2ad016d3be7",
+    "code": "debug {subsystem} = {log-level}/{memory-level}\n#for example\ndebug mds balancer = 1/20",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/troubleshooting/log-and-debug.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8bd5b206ad486dc",
+    "code": "rotate 7\nweekly\ncompress\nsharedscripts",
+    "language": "text",
+    "context": "#. Note the default settings of the ``/etc/logrotate.d/ceph`` file",
+    "source_file": "rados/troubleshooting/log-and-debug.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b1bf21083262d485",
+    "code": "rotate 7\nweekly\nsize 500M\ncompress\nsharedscripts",
+    "language": "text",
+    "context": "#. Modify them by adding a ``size`` setting",
+    "source_file": "rados/troubleshooting/log-and-debug.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cc9298b4b2cd4b05",
+    "code": "30 * * * * /usr/sbin/logrotate /etc/logrotate.d/ceph >/dev/null 2>&1",
+    "language": "text",
+    "context": "#. Add an entry to crontab that instructs cron to check the\n   ``etc/logrotate.d/ceph`` file",
+    "source_file": "rados/troubleshooting/log-and-debug.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "86d544ef538b71a7",
+    "code": "$ ceph tell osd.0 heap start_profiler\n$ ceph tell osd.0 heap dump\nosd.0 tcmalloc heap stats:------------------------------------------------\nMALLOC:        2632288 (    2.5 MiB) Bytes in use by application\nMALLOC: +       499712 (    0.5 MiB) Bytes in page heap freelist\nMALLOC: +       543800 (    0.5 MiB) Bytes in central cache freelist\nMALLOC: +       327680 (    0.3 MiB) Bytes in transfer cache freelist\nMALLOC: +      1239400 (    1.2 MiB) Bytes in thread cache freelists\nMALLOC: +      1142936 (    1.1 MiB) Bytes in malloc metadata\nMALLOC:   ------------\nMALLOC: =      6385816 (    6.1 MiB) Actual memory used (physical + swap)\nMALLOC: +            0 (    0.0 MiB) Bytes released to OS (aka unmapped)\nMALLOC:   ------------\nMALLOC: =      6385816 (    6.1 MiB) Virtual address space used\nMALLOC:\nMALLOC:            231              Spans in use\nMALLOC:             56              Thread heaps in use\nMALLOC:           8192              Tcmalloc page size\n------------------------------------------------\nCall ReleaseFreeMemory() to release freelist memory to the OS (via madvise()).\nBytes released to the OS take up virtual address space but no physical memory.\n$ google-pprof --text \\\n               /usr/bin/ceph-osd  \\\n               /var/log/ceph/ceph-osd.0.profile.0001.heap\n Total: 3.7 MB\n 1.9  51.1%  51.1%      1.9  51.1% ceph::log::Log::create_entry\n 1.8  47.3%  98.4%      1.8  47.3% std::string::_Rep::_S_create\n 0.0   0.4%  98.9%      0.0   0.6% SimpleMessenger::add_accept_pipe\n 0.0   0.4%  99.2%      0.0   0.6% decode_message\n ...",
+    "language": "bash",
+    "context": "For example",
+    "source_file": "rados/troubleshooting/memory-profiling.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell osd"
+    ]
+  },
+  {
+    "entity_id": "c01a88a2fe61cd98",
+    "code": "$ google-pprof --text --base out/osd.0.profile.0001.heap \\\n      ceph-osd out/osd.0.profile.0003.heap\n Total: 0.2 MB\n 0.1  50.3%  50.3%      0.1  50.3% ceph::log::Log::create_entry\n 0.1  46.6%  96.8%      0.1  46.6% std::string::_Rep::_S_create\n 0.0   0.9%  97.7%      0.0  26.1% ReplicatedPG::do_op\n 0.0   0.8%  98.5%      0.0   0.8% __gnu_cxx::new_allocator::allocate",
+    "language": "bash",
+    "context": "orming another heap dump on the same daemon creates another file. It is\nconvenient to compare the new file to a file created by a previous heap dump to\nshow what has grown in the interval. For example",
+    "source_file": "rados/troubleshooting/memory-profiling.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d76697f66678215",
+    "code": "systemctl stop ceph\\*.service ceph\\*.target",
+    "language": "text",
+    "context": "After the flag is set, stop the OSDs and any other colocated\nCeph services within the failure domain that requires maintenance work",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "73df6aece4d9010b",
+    "code": "kernel.pid_max = 4194303",
+    "language": "text",
+    "context": "ves the issue, you must make the increase permanent by\n  including a ``kernel.pid_max`` setting either in a file under\n  ``/etc/sysctl.d`` or within the master ``/etc/sysctl.conf`` file. For\n  example",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "be48c382c56e86e6",
+    "code": "HEALTH_WARN 1/3 in osds are down",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d00cbe69c58e2595",
+    "code": "HEALTH_WARN 1/3 in osds are down\nosd.0 is down since epoch 23, last address 192.168.106.220:6800/11080",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2502eb705bd1a4b8",
+    "code": "HEALTH_WARN 1 nearfull osd(s)",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "855e76c96a936613",
+    "code": "HEALTH_ERR 1 full osd(s); 1 backfillfull osd(s); 1 nearfull osd(s)\nosd.3 is full at 97%\nosd.4 is backfill full at 91%\nosd.2 is near full at 87%",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "20d6945115de8be1",
+    "code": "osd.0 192.168.106.220:6800/18813 312 : [WRN] old request osd_op(client.5099.0:790 fatty_26485_object789 [write 0~4096] 2.5e54f643) v4 received at 2012-03-06 15:42:56.054801 currently waiting for sub ops",
+    "language": "text",
+    "context": "Legacy versions of Ceph complain about ``old requests``",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2de23b0c9d1d27c1",
+    "code": "{date} {osd.num} [WRN] 1 slow requests, 1 included below; oldest blocked for > 30.005692 secs\n{date} {osd.num}  [WRN] slow request 30.005692 seconds old, received at {date-time}: osd_op(client.4240.0:8 benchmark_data_ceph-1_39426_object7 [write 0~4194304] 0.69848840) v4 currently waiting for subops from [610]",
+    "language": "text",
+    "context": "Newer versions of Ceph complain about ``slow requests``",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c38dc4a8d62cb989",
+    "code": "flags no-up,no-down",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-osd.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "81b29f06445ff94f",
+    "code": "ms=/root/mon-store\nmkdir $ms",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb7b527a72ea526a",
+    "code": "{ \"name\": \"c\",\n  \"rank\": 2,\n  \"state\": \"peon\",\n  \"election_epoch\": 38,\n  \"quorum\": [\n        1,\n        2],\n  \"outside_quorum\": [],\n  \"extra_probe_peers\": [],\n  \"sync_provider\": [],\n  \"monmap\": { \"epoch\": 3,\n      \"fsid\": \"5c4e9d53-e2e1-478a-8061-f543f8be4cf8\",\n      \"modified\": \"2013-10-30 04:12:01.945629\",\n      \"created\": \"2013-10-29 14:14:41.914786\",\n      \"mons\": [\n            { \"rank\": 0,\n              \"name\": \"a\",\n              \"addr\": \"127.0.0.1:6789\\/0\"},\n            { \"rank\": 1,\n              \"name\": \"b\",\n              \"addr\": \"127.0.0.1:6790\\/0\"},\n            { \"rank\": 2,\n              \"name\": \"c\",\n              \"addr\": \"127.0.0.1:6795\\/0\"}]}}",
+    "language": "json",
+    "context": "To understand this command's output, let us consider the following example, in\nwhich we see the output of ``ceph tell mon.c mon_status``",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1a6587f5c83f6d60",
+    "code": "$ ceph health detail\n[snip]\nmon.a (rank 0) addr 127.0.0.1:6789/0 is down (out of quorum)",
+    "language": "bash",
+    "context": "When the cluster has quorum but at least one monitor is down, ``ceph health\ndetail`` returns a message similar to the following",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "470c9b19d008a87a",
+    "code": "epoch 3\nfsid 5c4e9d53-e2e1-478a-8061-f543f8be4cf8\nlast_changed 2013-10-30 04:12:01.945629\ncreated 2013-10-29 14:14:41.914786\n0: 127.0.0.1:6789/0 mon.a\n1: 127.0.0.1:6790/0 mon.b\n2: 127.0.0.1:6795/0 mon.c",
+    "language": "text",
+    "context": "Here is an example of a ``monmap``",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "20d22d9eaac89005",
+    "code": "mon.c addr 10.10.0.1:6789/0 clock skew 0.08235s > max 0.05s (latency 0.0045s)",
+    "language": "text",
+    "context": "The monitors will warn you via the cluster status ``HEALTH_WARN``. When clock\n  skew is present, the ``ceph health detail`` and ``ceph status`` commands\n  return an output resembling the following",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e0834513c1fd4021",
+    "code": "REJECT all -- anywhere anywhere reject-with icmp-host-prohibited",
+    "language": "text",
+    "context": "place, clients that connect from a separate node will fail, and this will raise\na timeout error. Look for ``iptables`` rules that reject clients that are\ntrying to connect to Ceph daemons. For example",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "94a436650ce42acb",
+    "code": "iptables -A INPUT -m multiport -p tcp -s {ip-address}/{netmask} --dports 6789,6800:7568 -j ACCEPT",
+    "language": "text",
+    "context": "s to iptables on your Ceph hosts to\nensure that clients are able to access the TCP ports associated with your Ceph\nmonitors (default: port 6789) and Ceph OSDs (default: 6800 through 7568). For\nexample",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e5552457e5b1f183",
+    "code": "Corruption: error in middle of record",
+    "language": "text",
+    "context": "Ceph Monitors maintain the :term:`Cluster Map` in a key-value store. If\nkey-value store corruption causes a Monitor to fail, then the Monitor log might\ncontain one of the following error messages",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bdff92e22a1987ed",
+    "code": "Corruption: 1 missing files; e.g.: /var/lib/ceph/mon/mon.foo/store.db/1234567.ldb",
+    "language": "text",
+    "context": "or",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4902be325c9c507a",
+    "code": "debug_mon = 10\ndebug_ms = 1",
+    "language": "ini",
+    "context": "of the most relevant subsystems. This approach might not be easy for\nbeginners. In most cases, however, enough information to address the issue will\nbe logged if the following debug levels are entered",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ef5c9d0d211cfc71",
+    "code": "ceph tell mon.FOO config set debug_mon 10/10",
+    "language": "text",
+    "context": "Either inject the debug option into the specific monitor that needs to \n  be debugged",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mon"
+    ]
+  },
+  {
+    "entity_id": "d8d43ac670e7c4d9",
+    "code": "ceph tell mon.* config set debug_mon 10/10",
+    "language": "text",
+    "context": "Or inject it into all monitors at once",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mon"
+    ]
+  },
+  {
+    "entity_id": "e01d64744112ccaf",
+    "code": "ceph daemon mon.FOO config set debug_mon 10/10",
+    "language": "text",
+    "context": "Use the admin socket of the specific monitor that needs to be debugged\n  and directly adjust the monitor's configuration options",
+    "source_file": "rados/troubleshooting/troubleshooting-mon.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemon mon"
+    ]
+  },
+  {
+    "entity_id": "2a9afe365eb60dd7",
+    "code": "{ \"state\": \"down+peering\",\n  ...\n  \"recovery_state\": [\n       { \"name\": \"Started\\/Primary\\/Peering\\/GetInfo\",\n         \"enter_time\": \"2012-03-06 14:40:16.169679\",\n         \"requested_info_from\": []},\n       { \"name\": \"Started\\/Primary\\/Peering\",\n         \"enter_time\": \"2012-03-06 14:40:16.169659\",\n         \"probing_osds\": [\n               0,\n               1],\n         \"blocked\": \"peering is blocked due to down osds\",\n         \"down_osds_we_would_probe\": [\n               1],\n         \"peering_blocked_by\": [\n               { \"osd\": 1,\n                 \"current_lost_at\": 0,\n                 \"comment\": \"starting or marking this osd lost may let us proceed\"}]},\n       { \"name\": \"Started\",\n         \"enter_time\": \"2012-03-06 14:40:16.169513\"}\n   ]\n}",
+    "language": "javascript",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d841266f278e9677",
+    "code": "{\n  \"num_missing\": 1,\n  \"num_unfound\": 1,\n  \"objects\": [\n      {\n          \"oid\": {\n              \"oid\": \"object\",\n              \"key\": \"\",\n              \"snapid\": -2,\n              \"hash\": 2249616407,\n              \"max\": 0,\n              \"pool\": 2,\n              \"namespace\": \"\"\n          },\n          \"need\": \"43'251\",\n          \"have\": \"0'0\",\n          \"flags\": \"none\",\n          \"clean_regions\": \"clean_offsets: [], clean_omap: 0, new_object: 1\",\n          \"locations\": [\n              \"0(3)\",\n              \"4(2)\"\n          ]\n      }\n  ],\n  \"state\": \"NotRecovering\",\n  \"available_might_have_unfound\": true,\n  \"might_have_unfound\": [\n      {\n          \"osd\": \"2(4)\",\n          \"status\": \"osd is down\"\n      }\n  ],\n  \"more\": false\n}",
+    "language": "javascript",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a4aa10c36df2f71d",
+    "code": "\"recovery_state\": [\n     { \"name\": \"Started\\/Primary\\/Active\",\n       \"enter_time\": \"2012-03-06 15:15:46.713212\",\n       \"might_have_unfound\": [\n             { \"osd\": 1,\n               \"status\": \"osd is down\"}]},",
+    "language": "javascript",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2d0946503b0c7bbc",
+    "code": "{\n    \"epoch\": 14,\n    \"inconsistents\": [\n        {\n            \"object\": {\n                \"name\": \"foo\",\n                \"nspace\": \"\",\n                \"locator\": \"\",\n                \"snap\": \"head\",\n                \"version\": 1\n            },\n            \"errors\": [\n                \"data_digest_mismatch\",\n                \"size_mismatch\"\n            ],\n            \"union_shard_errors\": [\n                \"data_digest_mismatch_info\",\n                \"size_mismatch_info\"\n            ],\n            \"selected_object_info\": \"0:602f83fe:::foo:head(16'1 client.4110.0:1 dirty|data_digest|omap_digest s 968 uv 1 dd e978e67f od ffffffff alloc_hint [0 0 0])\",\n            \"shards\": [\n                {\n                    \"osd\": 0,\n                    \"errors\": [],\n                    \"size\": 968,\n                    \"omap_digest\": \"0xffffffff\",\n                    \"data_digest\": \"0xe978e67f\"\n                },\n                {\n                    \"osd\": 1,\n                    \"errors\": [],\n                    \"size\": 968,\n                    \"omap_digest\": \"0xffffffff\",\n                    \"data_digest\": \"0xe978e67f\"\n                },\n                {\n                    \"osd\": 2,\n                    \"errors\": [\n                        \"data_digest_mismatch_info\",\n                        \"size_mismatch_info\"\n                    ],\n                    \"size\": 0,\n                    \"omap_digest\": \"0xffffffff\",\n                    \"data_digest\": \"0xffffffff\"\n                }\n            ]\n        }\n    ]\n}",
+    "language": "javascript",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "195b126ad33aecf8",
+    "code": "HEALTH_ERR 7 pgs degraded; 12 pgs down; 12 pgs peering; 1 pgs recovering; 6 pgs stuck unclean; 114/3300 degraded (3.455%); 1/3 in osds are down\n...\npg 0.5 is down+peering\npg 1.4 is down+peering\n...\nosd.1 is down since epoch 69, last address 192.168.106.220:6801/8651",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fc312871ee06cbc",
+    "code": "HEALTH_WARN 1 pgs degraded; 78/3778 unfound (2.065%)\npg 2.4 is active+degraded, 78 unfound",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7d4ef4bcf6e5fecb",
+    "code": "HEALTH_WARN 24 pgs stale; 3/300 in osds are down",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb3035133a0cf933",
+    "code": "HEALTH_WARN 24 pgs stale; 3/300 in osds are down\n...\npg 2.5 is stuck stale+active+remapped, last acting [2,0]\n...\nosd.10 is down since epoch 23, last address 192.168.106.220:6800/11080\nosd.11 is down since epoch 13, last address 192.168.106.220:6803/11539\nosd.12 is down since epoch 24, last address 192.168.106.220:6806/11861",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "702634a717331ea1",
+    "code": "HEALTH_ERR 1 pgs inconsistent; 2 scrub errors\npg 0.6 is active+clean+inconsistent, acting [0,1,2]\n2 scrub errors",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4a6d1ff35ce7771a",
+    "code": "[2,1,6,0,5,8,2147483647,7,4]",
+    "language": "text",
+    "context": "If CRUSH fails to find enough OSDs to map to a PG, it will show as a\n``2147483647`` which is ``ITEM_NONE`` or ``no OSD found``. For example",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cfac76b27cee9e99",
+    "code": "[\n    \"replicated_rule\",\n    \"erasurepool\"]\n$ ceph osd crush rule dump erasurepool\n{ \"rule_id\": 1,\n  \"rule_name\": \"erasurepool\",\n  \"type\": 3,\n  \"steps\": [\n        { \"op\": \"take\",\n          \"item\": -1,\n          \"item_name\": \"default\"},\n        { \"op\": \"chooseleaf_indep\",\n          \"num\": 0,\n          \"type\": \"host\"},\n        { \"op\": \"emit\"}]}",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rule"
+    ]
+  },
+  {
+    "entity_id": "d2ccc9e5adfff81f",
+    "code": "{ \"rule_id\": 1,\n  \"rule_name\": \"erasurepool\",\n  \"type\": 3,\n  \"steps\": [\n        { \"op\": \"take\",\n          \"item\": -1,\n          \"item_name\": \"default\"},\n        { \"op\": \"chooseleaf_indep\",\n          \"num\": 0,\n          \"type\": \"host\"},\n        { \"op\": \"emit\"}]}\n$ ceph osd getcrushmap > crush.map\ngot crush map from osdmap epoch 13\n$ crushtool -i crush.map --test --show-bad-mappings \\\n   --rule 1 \\\n   --num-rep 9 \\\n   --min-x 1 --max-x $((1024 * 1024))\nbad mapping rule 8 x 43 num_rep 9 result [3,2,7,1,2147483647,8,5,6,0]\nbad mapping rule 8 x 79 num_rep 9 result [6,0,2,1,4,7,2147483647,5,8]\nbad mapping rule 8 x 173 num_rep 9 result [0,4,6,8,2,1,3,7,2147483647]",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getcrushmap"
+    ]
+  },
+  {
+    "entity_id": "9b4077d955ccdadc",
+    "code": "step set_choose_tries 100",
+    "language": "text",
+    "context": "#. Add the following line to the rule",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "83dd38fc559134f9",
+    "code": "rule erasurepool {\n        id 1\n        type erasure\n        step set_chooseleaf_tries 5\n        step set_choose_tries 100\n        step take default\n        step chooseleaf indep 0 type host\n        step emit\n}",
+    "language": "text",
+    "context": "The relevant part of the ``crush.txt`` file will resemble this",
+    "source_file": "rados/troubleshooting/troubleshooting-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "247ddec207bfbbdb",
+    "code": "2/543658058 objects unfound (0.000%)\npg 19.12 has 1 unfound objects\npg 19.2d has 1 unfound objects",
+    "language": "text",
+    "context": "Here is an example of unfound objects appearing during an upgrade from Ceph\n14.2.6 to Ceph 14.2.7",
+    "source_file": "rados/operations/cache-tiering.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1e45dda32437150c",
+    "code": "ceph osd erasure-code-profile set {name} \\\n            [{directory=directory}] \\\n            [{plugin=plugin}] \\\n            [{stripe_unit=stripe_unit}] \\\n            [{key=value} ...] \\\n            [--force]",
+    "language": "text",
+    "context": "To create a new erasure code profile",
+    "source_file": "rados/operations/erasure-code-profile.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile set"
+    ]
+  },
+  {
+    "entity_id": "9712ddfbfd9162cb",
+    "code": "ceph osd erasure-code-profile rm {name}",
+    "language": "text",
+    "context": "To remove an erasure code profile",
+    "source_file": "rados/operations/erasure-code-profile.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile rm"
+    ]
+  },
+  {
+    "entity_id": "2f11d1af2fb550a8",
+    "code": "ceph osd erasure-code-profile get {name}",
+    "language": "text",
+    "context": "To display an erasure code profile",
+    "source_file": "rados/operations/erasure-code-profile.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile get"
+    ]
+  },
+  {
+    "entity_id": "41d0ff9272f9dafc",
+    "code": "ceph osd erasure-code-profile ls",
+    "language": "text",
+    "context": "To list the names of all erasure code profiles",
+    "source_file": "rados/operations/erasure-code-profile.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile ls"
+    ]
+  },
+  {
+    "entity_id": "e520009454229b2f",
+    "code": "{commandline} [options] [commands] [daemons]",
+    "language": "text",
+    "context": "and.\nLikewise, each time you start, restart, or stop your entire cluster, you must specify at least one option and one command.\nIn both cases, you can also specify a daemon type or a daemon instance.",
+    "source_file": "rados/operations/operating.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "09aa74343be1403a",
+    "code": "ID=<osd-id-number>\nDEVICE=<disk-device>",
+    "language": "ini",
+    "context": "#. Identify a Filestore OSD to replace",
+    "source_file": "rados/operations/bluestore-migration.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2886f034b8bafca5",
+    "code": "ID CLASS WEIGHT  TYPE NAME     STATUS REWEIGHT PRI-AFF\n-5             0 host oldhost\n10   ssd 1.00000     osd.10        up  1.00000 1.00000\n11   ssd 1.00000     osd.11        up  1.00000 1.00000\n12   ssd 1.00000     osd.12        up  1.00000 1.00000\n-1       3.00000 root default\n-2       3.00000     host foo\n 0   ssd 1.00000         osd.0     up  1.00000 1.00000\n 1   ssd 1.00000         osd.1     up  1.00000 1.00000\n 2   ssd 1.00000         osd.2     up  1.00000 1.00000\n...",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/bluestore-migration.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b3170fd2e02b329e",
+    "code": "$ bin/ceph osd tree\nID CLASS WEIGHT  TYPE NAME     STATUS REWEIGHT PRI-AFF\n-5             0 host newhost\n10   ssd 1.00000     osd.10        up  1.00000 1.00000\n11   ssd 1.00000     osd.11        up  1.00000 1.00000\n12   ssd 1.00000     osd.12        up  1.00000 1.00000\n-1       3.00000 root default\n-2       3.00000     host oldhost1\n 0   ssd 1.00000         osd.0     up  1.00000 1.00000\n 1   ssd 1.00000         osd.1     up  1.00000 1.00000\n 2   ssd 1.00000         osd.2     up  1.00000 1.00000\n...",
+    "language": "bash",
+    "context": "s beneath\n   it, but the host should *not* be nested beneath any other node in the\n   hierarchy (like ``root default``).  For example, if ``newhost`` is\n   the empty host, you might see something like",
+    "source_file": "rados/operations/bluestore-migration.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tree ID"
+    ]
+  },
+  {
+    "entity_id": "9c53dd339f225cae",
+    "code": "+----------------+        +----------------+\n|                |        |                |\n|   OSD #n In    |        |   OSD #n Up    |\n|                |        |                |\n+----------------+        +----------------+\n        ^                         ^\n        |                         |\n        |                         |\n        v                         v\n+----------------+        +----------------+\n|                |        |                |\n|   OSD #n Out   |        |   OSD #n Down  |\n|                |        |                |\n+----------------+        +----------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f36882b8615bc233",
+    "code": "x osds: y up, z in; epoch: eNNNN",
+    "language": "text",
+    "context": "The output provides the following information: the total number of OSDs (x),\nhow many OSDs are ``up`` (y), how many OSDs are ``in`` (z), and the map epoch (eNNNN).",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0b119d55540be0ba",
+    "code": "#ID CLASS WEIGHT  TYPE NAME             STATUS REWEIGHT PRI-AFF\n -1       2.00000 pool openstack\n -3       2.00000 rack dell-2950-rack-A\n -2       2.00000 host dell-2950-A1\n  0   ssd 1.00000      osd.0                up  1.00000 1.00000\n  1   ssd 1.00000      osd.1              down  1.00000 1.00000",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fa980213e5eaf63",
+    "code": "osdmap eNNN pg {raw-pg-num} ({pg-num}) -> up [0,1,2] acting [0,1,2]",
+    "language": "text",
+    "context": "The output provides the following information: the osdmap epoch (eNNN), the PG number\n({pg-num}), the OSDs in the Up Set (up[]), and the OSDs in the Acting Set\n(acting[])",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "11adbb01d14541e6",
+    "code": "+---------+     +---------+     +-------+\n|  OSD 1  |     |  OSD 2  |     | OSD 3 |\n+---------+     +---------+     +-------+\n     |               |              |\n     |  Request To   |              |\n     |     Peer      |              |\n     |-------------->|              |\n     |<--------------|              |\n     |    Peering                   |\n     |                              |\n     |         Request To           |\n     |            Peer              |\n     |----------------------------->|\n     |<-----------------------------|\n     |          Peering             |",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8d9d04aa497a503c",
+    "code": "x pgs: y active+clean; z bytes data, aa MB used, bb GB / cc GB avail",
+    "language": "text",
+    "context": "The output provides the following information: the total number of PGs (x), how many\nPGs are in a particular state such as ``active+clean`` (y), and the\namount of data stored (z).",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "becf2a33bbdc4676",
+    "code": "{pool-num}.{pg-id}",
+    "language": "json",
+    "context": "mbers and their names from\n   in the output of ``ceph osd lspools``. For example, the first pool that was\n   created corresponds to pool number ``1``. A fully qualified PG ID has the\n   following form",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "80839281d02f9825",
+    "code": "/-----------\\       /-----------\\       /-----------\\\n| Creating  |------>|  Peering  |------>|  Active   |\n\\-----------/       \\-----------/       \\-----------/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df0254343278a538",
+    "code": "osdmap e537 pool 'data' (1) object 'test-object-1' -> pg 1.d1743484 (1.4) -> up ([0,1], p0) acting ([0,1], p0)",
+    "language": "text",
+    "context": "Ceph should output the object's location. For example",
+    "source_file": "rados/operations/monitoring-osd-pg.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4bebfe4c00c8d07e",
+    "code": "chunk nr    01234567\nstep 1      _cDD_cDD\nstep 2      cDDD____\nstep 3      ____cDDD",
+    "language": "text",
+    "context": "For instance, when three coding steps are described as",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0bbd8e42aecef879",
+    "code": "$ ceph osd erasure-code-profile set LRCprofile \\\n     plugin=lrc \\\n     mapping=__DD__DD \\\n     layers='[\n               [ \"_cDD_cDD\", \"\" ],\n               [ \"cDDD____\", \"\" ],\n               [ \"____cDDD\", \"\" ],\n             ]'\n$ ceph osd pool create lrcpool erasure LRCprofile",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile set",
+      "ceph osd pool create"
+    ]
+  },
+  {
+    "entity_id": "2e07506c58e428e2",
+    "code": "$ ceph osd erasure-code-profile set LRCprofile \\\n    plugin=lrc \\\n    mapping=__DD__DD \\\n    layers='[\n              [ \"_cDD_cDD\", \"\" ],\n              [ \"cDDD____\", \"\" ],\n              [ \"____cDDD\", \"\" ],\n            ]' \\\n    crush-steps='[\n                    [ \"choose\", \"rack\", 2 ],\n                    [ \"chooseleaf\", \"host\", 4 ],\n                   ]'",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile set"
+    ]
+  },
+  {
+    "entity_id": "0bbd8e42aecef879",
+    "code": "$ ceph osd erasure-code-profile set LRCprofile \\\n     plugin=lrc \\\n     mapping=__DD__DD \\\n     layers='[\n               [ \"_cDD_cDD\", \"plugin=isa technique=cauchy\" ],\n               [ \"cDDD____\", \"plugin=isa\" ],\n               [ \"____cDDD\", \"plugin=jerasure\" ],\n             ]'\n$ ceph osd pool create lrcpool erasure LRCprofile",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile set",
+      "ceph osd pool create"
+    ]
+  },
+  {
+    "entity_id": "fbe5f08a3c05c9db",
+    "code": "chunk nr    01234567",
+    "language": "text",
+    "context": "The steps found in the layers description",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbe5f08a3c05c9db",
+    "code": "chunk nr    01234567",
+    "language": "text",
+    "context": "If chunk *2* is lost",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbe5f08a3c05c9db",
+    "code": "chunk nr    01234567",
+    "language": "text",
+    "context": "If chunk *2, 3, 6* are lost",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbe5f08a3c05c9db",
+    "code": "chunk nr    01234567",
+    "language": "text",
+    "context": "The *step 3* can recover the content of chunk *6*",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbe5f08a3c05c9db",
+    "code": "chunk nr    01234567",
+    "language": "text",
+    "context": "The coding chunk from *step 1*, stored in chunk *1, 5*, allows it to\nrecover the content of chunk *2, 3*",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbe5f08a3c05c9db",
+    "code": "chunk nr    01234567",
+    "language": "text",
+    "context": "The default CRUSH rule provides OSDs that are on different hosts. For instance",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df64209f7bd44783",
+    "code": "crush-steps='[ [ \"choose\", \"rack\", 2 ], [ \"chooseleaf\", \"host\", 4 ] ]'",
+    "language": "text",
+    "context": "For instance",
+    "source_file": "rados/operations/erasure-code-lrc.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "84ea8faa75bceb7a",
+    "code": "#ID CLASS WEIGHT  TYPE NAME             STATUS REWEIGHT PRI-AFF\n -1       3.00000 pool default\n -3       3.00000 rack mainrack\n -2       3.00000 host osd-host\n  0   ssd 1.00000         osd.0             up  1.00000 1.00000\n  1   ssd 1.00000         osd.1             up  1.00000 1.00000\n  2   ssd 1.00000         osd.2             up  1.00000 1.00000",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8f37dbd787df1d17",
+    "code": "{ \"election_epoch\": 10,\n  \"quorum\": [\n        0,\n        1,\n        2],\n  \"quorum_names\": [\n    \"a\",\n    \"b\",\n    \"c\"],\n  \"quorum_leader_name\": \"a\",\n  \"monmap\": { \"epoch\": 1,\n      \"fsid\": \"444b489c-4f16-4b75-83f0-cb8097468898\",\n      \"modified\": \"2011-12-12 13:28:27.505520\",\n      \"created\": \"2011-12-12 13:28:27.505520\",\n      \"features\": {\"persistent\": [\n            \"kraken\",\n            \"luminous\",\n            \"mimic\"],\n    \"optional\": []\n      },\n      \"mons\": [\n            { \"rank\": 0,\n              \"name\": \"a\",\n              \"addr\": \"127.0.0.1:6789/0\",\n          \"public_addr\": \"127.0.0.1:6789/0\"},\n            { \"rank\": 1,\n              \"name\": \"b\",\n              \"addr\": \"127.0.0.1:6790/0\",\n          \"public_addr\": \"127.0.0.1:6790/0\"},\n            { \"rank\": 2,\n              \"name\": \"c\",\n              \"addr\": \"127.0.0.1:6791/0\",\n          \"public_addr\": \"127.0.0.1:6791/0\"}\n           ]\n  }\n}",
+    "language": "javascript",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ba397f89957d2b9",
+    "code": "{\n   \"messengers\": [\n       \"client\",\n       \"cluster\",\n       \"hb_back_client\",\n       \"hb_back_server\",\n       \"hb_front_client\",\n       \"hb_front_server\",\n       \"ms_objecter\",\n       \"temp_mon_client\"\n   ]\n }",
+    "language": "javascript",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "64661fca91b85c7f",
+    "code": "ceph tell osd.0 messenger dump client \\\n   | jq -r '.messenger.connections[].async_connection |\n               [.conn_id, .socket_fd, .worker_id,\n  if .status.connected then \"connected\" else \"disconnected\" end,\n  .state,\n  \"\\(.peer.type).\\(.peer.entity_name.id).\\(.peer.id)\",\n  .protocol.v2.con_mode, .protocol.v2.crypto.rx, .protocol.v2.compression.rx] |\n @tsv'",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell osd"
+    ]
+  },
+  {
+    "entity_id": "20cc81a78ad54231",
+    "code": "249     102     0       connected       STATE_CONNECTION_ESTABLISHED    client.admin.6407       crc    PLAIN   UNCOMPRESSED\n242     99      1       connected       STATE_CONNECTION_ESTABLISHED    client.rgw.8000.4473    crc     PLAIN   UNCOMPRESSED\n248     89      1       connected       STATE_CONNECTION_ESTABLISHED    mgr..-1 secure  AES-128-GCM     UNCOMPRESSED\n32      101     2       connected       STATE_CONNECTION_ESTABLISHED    client.rgw.8000.4483    crc     PLAIN   UNCOMPRESSED\n3       86      2       connected       STATE_CONNECTION_ESTABLISHED    mon..-1 secure  AES-128-GCM     UNCOMPRESSED\n244     102     0       connected       STATE_CONNECTION_ESTABLISHED    client.admin.6383       crc     PLAIN   UNCOMPRESSED",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8293d2c96c26af76",
+    "code": "ceph tell osd.0 messenger dump client --tcp-info \\\n   | jq -r '.messenger.connections[].async_connection |\n               select(.status.connected) |\n select(.peer.type != \"client\") |\n [.conn_id, .socket_fd, .worker_id,\n  \"\\(.peer.type).\\(.peer.global_id)\",\n  .tcp_info.tcpi_rtt_us, .tcp_info.tcpi_rttvar_us, .tcp_info.tcpi_total_retrans] |\n  @tsv'",
+    "language": "bash",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell osd"
+    ]
+  },
+  {
+    "entity_id": "ac6b603e4f183040",
+    "code": "248     89      1       mgr.0   863     1677    0\n3       86      2       mon.0   230     278     0",
+    "language": "bash",
+    "context": "!= \"client\") |\n\t\t\t   [.conn_id, .socket_fd, .worker_id,\n\t\t\t    \"\\(.peer.type).\\(.peer.global_id)\",\n\t\t\t    .tcp_info.tcpi_rtt_us, .tcp_info.tcpi_rttvar_us, .tcp_info.tcpi_total_retrans] |\n\t\t\t    @tsv'",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df05e3ab17d3eab8",
+    "code": "cluster:\n  id:     477e46f1-ae41-4e43-9c8f-72c918ab0a20\n  health: HEALTH_OK",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df05e3ab17d3eab8",
+    "code": "cluster:\n  id:     477e46f1-ae41-4e43-9c8f-72c918ab0a20\n  health: HEALTH_OK",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2f53cc72278cb8dc",
+    "code": "health: HEALTH_WARN\n        1 osds down\n        Degraded data redundancy: 21/63 objects degraded (33.333%), 16 pgs unclean, 16 pgs degraded",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "653d58a25132cbff",
+    "code": "2017-07-25 10:08:58.265945 mon.a mon.0 172.21.9.34:6789/0 91 : cluster [WRN] Health check failed: 1 osds down (OSD_DOWN)\n2017-07-25 10:09:01.302624 mon.a mon.0 172.21.9.34:6789/0 94 : cluster [WRN] Health check failed: Degraded data redundancy: 21/63 objects degraded (33.333%), 16 pgs unclean, 16 pgs degraded (PG_DEGRADED)",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "70c825215b5cab04",
+    "code": "2017-07-25 10:11:11.526841 mon.a mon.0 172.21.9.34:6789/0 109 : cluster [WRN] Health check update: Degraded data redundancy: 2 pgs unclean, 2 pgs degraded, 2 pgs undersized (PG_DEGRADED)\n2017-07-25 10:11:13.535493 mon.a mon.0 172.21.9.34:6789/0 110 : cluster [INF] Health check cleared: PG_DEGRADED (was: Degraded data redundancy: 2 pgs unclean, 2 pgs degraded, 2 pgs undersized)\n2017-07-25 10:11:13.535577 mon.a mon.0 172.21.9.34:6789/0 111 : cluster [INF] Cluster is now healthy",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5b40cb2f6dff88e3",
+    "code": "HEALTH_WARN Slow OSD heartbeats on back (longest 1118.001ms)",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c2c596bbf521ee58",
+    "code": "[WRN] OSD_SLOW_PING_TIME_BACK: Slow OSD heartbeats on back (longest 1118.001ms)\n    Slow OSD heartbeats on back from osd.0 [dc1,rack1] to osd.1 [dc1,rack1] 1118.001 msec possibly improving\n    Slow OSD heartbeats on back from osd.0 [dc1,rack1] to osd.2 [dc1,rack2] 1030.123 msec\n    Slow OSD heartbeats on back from osd.2 [dc1,rack2] to osd.1 [dc1,rack1] 1015.321 msec\n    Slow OSD heartbeats on back from osd.1 [dc1,rack1] to osd.0 [dc1,rack1] 1010.456 msec",
+    "language": "text",
+    "context": "e\nexperiencing delays and how long the delays are. The output of ``ceph health\ndetail`` is limited to ten lines. Here is an example of the output you can\nexpect from the ``ceph health detail`` command",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4937b2339900c96b",
+    "code": "{\n    \"threshold\": 0,\n    \"entries\": [\n        {\n            \"last update\": \"Wed Sep  4 17:04:49 2019\",\n            \"stale\": false,\n            \"from osd\": 2,\n            \"to osd\": 0,\n            \"interface\": \"front\",\n            \"average\": {\n                \"1min\": 1.023,\n                \"5min\": 0.860,\n                \"15min\": 0.883\n            },\n            \"min\": {\n                \"1min\": 0.818,\n                \"5min\": 0.607,\n                \"15min\": 0.607\n            },\n            \"max\": {\n                \"1min\": 1.164,\n                \"5min\": 1.173,\n                \"15min\": 1.544\n            },\n            \"last\": 0.924\n        },\n        {\n            \"last update\": \"Wed Sep  4 17:04:49 2019\",\n            \"stale\": false,\n            \"from osd\": 2,\n            \"to osd\": 0,\n            \"interface\": \"back\",\n            \"average\": {\n                \"1min\": 0.968,\n                \"5min\": 0.897,\n                \"15min\": 0.830\n            },\n            \"min\": {\n                \"1min\": 0.860,\n                \"5min\": 0.563,\n                \"15min\": 0.502\n            },\n            \"max\": {\n                \"1min\": 1.171,\n                \"5min\": 1.216,\n                \"15min\": 1.456\n            },\n            \"last\": 0.845\n        },\n        {\n            \"last update\": \"Wed Sep  4 17:04:48 2019\",\n            \"stale\": false,\n            \"from osd\": 0,\n            \"to osd\": 1,\n            \"interface\": \"front\",\n            \"average\": {\n                \"1min\": 0.965,\n                \"5min\": 0.811,\n                \"15min\": 0.850\n            },\n            \"min\": {\n                \"1min\": 0.650,\n                \"5min\": 0.488,\n                \"15min\": 0.466\n            },\n            \"max\": {\n                \"1min\": 1.252,\n                \"5min\": 1.252,\n                \"15min\": 1.362\n            },\n        \"last\": 0.791\n    },\n    ...",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "84a2237549910279",
+    "code": "HEALTH_OK (muted: OSD_DOWN)",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a8e42014f62f82ae",
+    "code": "HEALTH_OK (muted: OSD_DOWN)\n(MUTED) OSD_DOWN 1 osds down\n    osd.1 is down",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b51a1c04d6a859bb",
+    "code": "CLASS     SIZE    AVAIL     USED  RAW USED  %RAW USED\nssd    202 GiB  200 GiB  2.0 GiB   2.0 GiB       1.00\nTOTAL  202 GiB  200 GiB  2.0 GiB   2.0 GiB       1.00",
+    "language": "text",
+    "context": "The output of ``ceph df`` resembles the following",
+    "source_file": "rados/operations/monitoring.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3d6a2f4486cf34cd",
+    "code": "device light on|off <devid> [ident|fault] [--force]",
+    "language": "text",
+    "context": "To make the replacement of failed disks easier and less error-prone, you can\n(in some cases) \"blink\" the drive's LEDs on hardware enclosures by running a\ncommand of the following form",
+    "source_file": "rados/operations/devices.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ca842ac25a4aef9d",
+    "code": "ceph config-key set mgr/cephadm/blink_device_light_cmd \"<template>\"\nceph config-key set mgr/cephadm/<host>/blink_device_light_cmd \"lsmcli local-disk-{{ ident_fault }}-led-{{'on' if on else 'off'}} --path '{{ path or dev }}'\"",
+    "language": "text",
+    "context": "The command that makes the drive's LEDs blink is `lsmcli`. To customize this\ncommand, configure it via a Jinja2 template by running commands of the\nfollowing forms",
+    "source_file": "rados/operations/devices.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "2f9ded38877fec90",
+    "code": "{\n    \"election_epoch\": 6,\n    \"quorum\": [\n    0,\n    1,\n    2\n    ],\n    \"quorum_names\": [\n    \"a\",\n    \"b\",\n    \"c\"\n    ],\n    \"quorum_leader_name\": \"a\",\n    \"monmap\": {\n    \"epoch\": 2,\n    \"fsid\": \"ba807e74-b64f-4b72-b43f-597dfe60ddbc\",\n    \"modified\": \"2016-12-26 14:42:09.288066\",\n    \"created\": \"2016-12-26 14:42:03.573585\",\n    \"features\": {\n        \"persistent\": [\n        \"kraken\"\n        ],\n        \"optional\": []\n    },\n    \"mons\": [\n        {\n        \"rank\": 0,\n        \"name\": \"a\",\n        \"addr\": \"127.0.0.1:40000\\/0\",\n        \"public_addr\": \"127.0.0.1:40000\\/0\"\n        },\n        {\n        \"rank\": 1,\n        \"name\": \"b\",\n        \"addr\": \"127.0.0.1:40001\\/0\",\n        \"public_addr\": \"127.0.0.1:40001\\/0\"\n        },\n        {\n        \"rank\": 2,\n        \"name\": \"c\",\n        \"addr\": \"127.0.0.1:40002\\/0\",\n        \"public_addr\": \"127.0.0.1:40002\\/0\"\n        }\n    ]\n    }\n}",
+    "language": "javascript",
+    "context": "",
+    "source_file": "rados/operations/control.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "370e900ce04d182b",
+    "code": "e2: 3 mons at {a=127.0.0.1:40000/0,b=127.0.0.1:40001/0,c=127.0.0.1:40002/0}, election epoch 6, quorum 0,1,2 a,b,c",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/control.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e68cdfa9e28b0888",
+    "code": "{\n    \"name\": \"b\",\n    \"rank\": 1,\n    \"state\": \"peon\",\n    \"election_epoch\": 6,\n    \"quorum\": [\n    0,\n    1,\n    2\n    ],\n    \"features\": {\n    \"required_con\": \"9025616074522624\",\n    \"required_mon\": [\n        \"kraken\"\n    ],\n    \"quorum_con\": \"1152921504336314367\",\n    \"quorum_mon\": [\n        \"kraken\"\n    ]\n    },\n    \"outside_quorum\": [],\n    \"extra_probe_peers\": [],\n    \"sync_provider\": [],\n    \"monmap\": {\n    \"epoch\": 2,\n    \"fsid\": \"ba807e74-b64f-4b72-b43f-597dfe60ddbc\",\n    \"modified\": \"2016-12-26 14:42:09.288066\",\n    \"created\": \"2016-12-26 14:42:03.573585\",\n    \"features\": {\n        \"persistent\": [\n        \"kraken\"\n        ],\n        \"optional\": []\n    },\n    \"mons\": [\n        {\n        \"rank\": 0,\n        \"name\": \"a\",\n        \"addr\": \"127.0.0.1:40000\\/0\",\n        \"public_addr\": \"127.0.0.1:40000\\/0\"\n        },\n        {\n        \"rank\": 1,\n        \"name\": \"b\",\n        \"addr\": \"127.0.0.1:40001\\/0\",\n        \"public_addr\": \"127.0.0.1:40001\\/0\"\n        },\n        {\n        \"rank\": 2,\n        \"name\": \"c\",\n        \"addr\": \"127.0.0.1:40002\\/0\",\n        \"public_addr\": \"127.0.0.1:40002\\/0\"\n        }\n    ]\n    }\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "rados/operations/control.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b62a018ca23b4454",
+    "code": "dumped monmap epoch 2\nepoch 2\nfsid ba807e74-b64f-4b72-b43f-597dfe60ddbc\nlast_changed 2016-12-26 14:42:09.288066\ncreated 2016-12-26 14:42:03.573585\n0: 127.0.0.1:40000/0 mon.a\n1: 127.0.0.1:40001/0 mon.b\n2: 127.0.0.1:40002/0 mon.c",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/control.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f0bcbf6be5dc9d8e",
+    "code": "$ dmesg | tail",
+    "language": "console",
+    "context": "",
+    "source_file": "rados/operations/read-balancer.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2217093a7253379f",
+    "code": "Users affected by `#66867 <https://tracker.ceph.com/issues/66867>`_ or `#61948 <https://tracker.ceph.com/issues/61948>`_\nmay find these commands useful when dealing with unexpected ``pg-upmap-primary`` behavior.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "rados/operations/read-balancer.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4618df89c4bb78e5",
+    "code": "root=default row=a rack=a2 chassis=a2a host=a2a1",
+    "language": "ini",
+    "context": "r example, if an OSD is in a particular row, rack,\nchassis, and host, and is also part of the 'default' CRUSH root (which is the\ncase for most clusters), its CRUSH location can be specified as follows",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c72bef1532c5748f",
+    "code": "#. The order of the keys does not matter.\n#. The key name (left of ``=``) must be a valid CRUSH ``type``. By default,\n   valid CRUSH types include ``root``, ``datacenter``, ``room``, ``row``,\n   ``pod``, ``pdu``, ``rack``, ``chassis``, and ``host``. These defined\n   types suffice for nearly all clusters, but can be customized by\n   modifying the CRUSH map.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b096cc7706b8e963",
+    "code": "osd_crush_update_on_start = false",
+    "language": "ini",
+    "context": "the correct location in the CRUSH map and\nmoves itself if it is not. To disable this automatic CRUSH map management, add\nthe following to the ``ceph.conf`` configuration file in the ``[osd]``\nsection",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c80b990b9d71b0a",
+    "code": "crush_location_hook = /path/to/customized-ceph-crush-location",
+    "language": "ini",
+    "context": "The hook hook can be enabled in ``ceph.conf`` by providing a path to an\nexecutable file (often a script), example",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "23b7f3b2431317e9",
+    "code": "--id ID --type TYPE",
+    "language": "text",
+    "context": "This hook is passed several arguments (see below). The hook outputs a single\nline to ``stdout`` that contains the CRUSH location description. The arguments\nresemble the following:",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5d397f8b31cd0b8e",
+    "code": "#!/bin/sh\necho \"root=default rack=$(cat /etc/rack) host=$(hostname -s)\"",
+    "language": "text",
+    "context": "For example, a simple hook that specifies a rack location via a value in the\nfile ``/etc/rack`` (assuming it contains no spaces) might be as follows",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f87745c5a9fb51c",
+    "code": "+-----------------+ \n                     |{o}root default  |\n                     +--------+--------+     \n                              |\n              +---------------+---------------+\n              |                               |\n       +------+------+                 +------+------+\n       |{o}host foo  |                 |{o}host bar  | \n       +------+------+                 +------+------+\n              |                               |\n      +-------+-------+               +-------+-------+\n      |               |               |               |\n+-----+-----+   +-----+-----+   +-----+-----+   +-----+-----+\n|   osd.0   |   |   osd.1   |   |   osd.2   |   |   osd.3   | \n+-----------+   +-----------+   +-----------+   +-----------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ac68a0d369a7f02a",
+    "code": "mon_warn_on_legacy_crush_tunables = false",
+    "language": "ini",
+    "context": "2. To silence the alert without making any changes to CRUSH,\n   add the following option to the ``[mon]`` section of your ceph.conf file",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0a6caca197b0e886",
+    "code": "rule mixed_replicated_rule {\n        id 11\n        type replicated\n        step take default class ssd\n        step chooseleaf firstn 1 type host\n        step emit\n        step take default class hdd\n        step chooseleaf firstn 0 type host\n        step emit\n}",
+    "language": "text",
+    "context": "For example, see the following CRUSH rule",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf98516a9bb41776",
+    "code": "rule mixed_replicated_rule_two {\n       id 1\n       type replicated\n       step take ssd_hosts class ssd\n       step chooseleaf firstn 1 type host\n       step emit\n       step take hdd_hosts class hdd\n       step chooseleaf firstn -1 type host\n       step emit\n}",
+    "language": "text",
+    "context": "tances perform only recovery operations. Here\nthe CRUSH roots ``ssd_hosts`` and ``hdd_hosts`` are under a strict requirement\nnot to contain any of the same servers, as seen in the following CRUSH rule",
+    "source_file": "rados/operations/crush-map.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8fc6973b2573be7",
+    "code": "device {num} {osd.name} [class {class}]",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d934e28f3e460371",
+    "code": "device 0 osd.0 class ssd\ndevice 1 osd.1 class hdd\ndevice 2 osd.2\ndevice 3 osd.3",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a46952d3c89bb8e2",
+    "code": "# types\ntype {num} {bucket-name}",
+    "language": "text",
+    "context": "bucket name.\nBy convention, there is exactly one leaf bucket type and it is ``type 0``;\nhowever, you may give the leaf bucket any name you like (for example: ``osd``,\n``disk``, ``drive``, ``storage``)",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8ba3e85aa1c52d40",
+    "code": "# types\ntype 0 osd\ntype 1 host\ntype 2 chassis\ntype 3 rack\ntype 4 row\ntype 5 pdu\ntype 6 pod\ntype 7 room\ntype 8 datacenter\ntype 9 zone\ntype 10 region\ntype 11 root",
+    "language": "text",
+    "context": "For example",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bd0c3d45d7e5232f",
+    "code": "[bucket-type] [bucket-name] {\n    id [a unique negative numeric ID]\n    weight [the relative capacity/capability of the item(s)]\n    alg [the bucket type: uniform | list | tree | straw | straw2 ]\n    hash [the hash type: 0 by default]\n    item [item-name] weight [weight]\n}",
+    "language": "text",
+    "context": "To declare a node bucket, use the following syntax",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ecec46e5363334d1",
+    "code": "host node1 {\n    id -1\n    alg straw2\n    hash 0\n    item osd.0 weight 1.00\n    item osd.1 weight 1.00\n}",
+    "language": "text",
+    "context": "rred to in the\ndeclaration below as ``node1`` and ``node2``) and one rack bucket (referred to\nin the declaration below as ``rack1``) are defined. The OSDs are declared as\nitems within the host buckets",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b8a3ea7914cc2b35",
+    "code": "rule <rulename> {",
+    "language": "text",
+    "context": "A normal CRUSH rule takes the following form",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b8a3ea7914cc2b35",
+    "code": "rule <rulename> {",
+    "language": "text",
+    "context": "are a distinct type of CRUSH rule which\nsupports retrying steps and provides better support for configurations that\nrequire multiple OSDs within each failure domain. MSR rules take the following\nform",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "71e54dd48bd018cd",
+    "code": "rule replicated_rule {\n   id 0\n   type replicated\n   step take default\n   step chooseleaf firstn 0 type rack\n   step emit\n}",
+    "language": "text",
+    "context": "For example, suppose you have the following as an existing rule",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a69c1e3843633f4e",
+    "code": "rule replicated_rule {\n   id 0\n   type replicated\n   step take default class hdd\n   step chooseleaf firstn 0 type rack\n   step emit\n}",
+    "language": "text",
+    "context": "If the root ``default`` is reclassified as class ``hdd``, the new rule will\n   be as follows",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2258c8b119b74525",
+    "code": "host node1 {\n   id -2           # do not change unnecessarily\n   # weight 109.152\n   alg straw2\n   hash 0  # rjenkins1\n   item osd.0 weight 9.096\n   item osd.1 weight 9.096\n   item osd.2 weight 9.096\n   item osd.3 weight 9.096\n   item osd.4 weight 9.096\n   item osd.5 weight 9.096\n   ...\n}",
+    "language": "text",
+    "context": "This command allows you to merge a parallel type-specific hierarchy with the\n   normal hierarchy. For example, many users have maps that resemble the\n   following",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "72cb6b8c54c89989",
+    "code": "rule 0 had 0/10240 mismatched mappings (0)\nrule 1 had 0/10240 mismatched mappings (0)\nmaps appear equivalent",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/crush-map-edits.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2511e52ec9b72f34",
+    "code": ".rgw.root\ndefault.rgw.log\ndefault.rgw.control\ndefault.rgw.meta",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/pools.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "caedeb4f76e8c165",
+    "code": "1 .rgw.root\n2 default.rgw.log\n3 default.rgw.control\n4 default.rgw.meta",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/pools.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1a67ddcda4aa4eb0",
+    "code": "pool 1 '.rgw.root' replicated size 3 min_size 1 crush_rule 0 object_hash rjenkins pg_num 32 pgp_num 32 autoscale_mode on last_change 19 flags hashpspool stripe_width 0 application rgw read_balance_score 4.00\npool 2 'default.rgw.log' replicated size 3 min_size 1 crush_rule 0 object_hash rjenkins pg_num 32 pgp_num 32 autoscale_mode on last_change 21 flags hashpspool stripe_width 0 application rgw read_balance_score 4.00\npool 3 'default.rgw.control' replicated size 3 min_size 1 crush_rule 0 object_hash rjenkins pg_num 32 pgp_num 32 autoscale_mode on last_change 23 flags hashpspool stripe_width 0 application rgw read_balance_score 4.00\npool 4 'default.rgw.meta' replicated size 3 min_size 1 crush_rule 0 object_hash rjenkins pg_num 128 pgp_num 128 autoscale_mode on last_change 25 flags hashpspool stripe_width 0 pg_autoscale_bias 4 application rgw read_balance_score 4.00",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/pools.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5e6fe0919a8c2dcb",
+    "code": "{daemon-type} '{cap-spec}[, {cap-spec} ...]'",
+    "language": "text",
+    "context": "Capability syntax follows this form",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "daf0c62bfa92abad",
+    "code": "mon 'allow {access-spec} [network {network/prefix}]'",
+    "language": "text",
+    "context": "- **Monitor Caps:** Monitor capabilities include ``r``, ``w``, ``x`` access\n  settings, and can be applied in aggregate from pre-defined profiles with\n  ``profile {name}``. For example",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "42ee47852e2a3dc5",
+    "code": "* | all | [r][w][x]",
+    "language": "text",
+    "context": "The ``{access-spec}`` syntax is as follows:",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2ceef6cf2fd6aed2",
+    "code": "osd 'allow {access-spec} [{match-spec}] [network {network/prefix}]'",
+    "language": "text",
+    "context": "class-write`` access settings. OSD capabilities can be\n  applied in aggregate from pre-defined profiles with ``profile {name}``. In\n  addition, OSD capabilities allow for pool and namespace settings.",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "44799243e82c4e7e",
+    "code": "* | all | [r][w][x] [class-read] [class-write]",
+    "language": "text",
+    "context": "There are two alternative forms of the ``{access-spec}`` syntax:",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f4af4862cb98401",
+    "code": "pool={pool-name} [namespace={namespace-name}] [object_prefix {prefix}]",
+    "language": "ini",
+    "context": "There are four alternative forms of the optional ``{match-spec}`` syntax",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "136eb099925ca393",
+    "code": "mgr 'allow {access-spec} [network {network/prefix}]'",
+    "language": "text",
+    "context": "- **Manager Caps:** Manager (``ceph-mgr``) capabilities include ``r``, ``w``,\n  ``x`` access settings, and can be applied in aggregate from pre-defined\n  profiles with ``profile {name}``. For example",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b01bedd1d4757bcc",
+    "code": "mgr 'allow command \"{command-prefix}\" [with {key1} {match-type} {value1} ...] [network {network/prefix}]'",
+    "language": "text",
+    "context": "Manager capabilities can also be specified for specific commands, for all\n  commands exported by a built-in manager service, or for all commands exported\n  by a specific add-on module. For example",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "42ee47852e2a3dc5",
+    "code": "* | all | [r][w][x]",
+    "language": "text",
+    "context": "The ``{access-spec}`` syntax is as follows:",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0c810893adc500b3",
+    "code": "mgr | osd | pg | py",
+    "language": "text",
+    "context": "The ``{service-name}`` is one of the following:",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "68246782bc6c5ed0",
+    "code": "= | prefix | regex",
+    "language": "text",
+    "context": "The ``{match-type}`` is one of the following:",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c95b800c3e3279b8",
+    "code": "Namespaces are available only when using ``librados``.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "895a45a357f5426c",
+    "code": "installed auth entries:",
+    "language": "text",
+    "context": "Ceph will list all users in your cluster. For example, in a two-node\ncluster, ``ceph auth ls`` will provide an output that resembles the following",
+    "source_file": "rados/operations/user-management.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ad24bcf4fc6fb723",
+    "code": "rule stretch_rule {\n        id 1\n        type replicated\n        step take site1\n        step chooseleaf firstn 2 type host\n        step emit\n        step take site2\n        step chooseleaf firstn 2 type host\n        step emit\n}",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/stretch-mode.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "65eb78c563379146",
+    "code": "rule stretch_rule {\n     id 1\n     type replicated\n     step take DC1\n     step chooseleaf firstn 2 type host\n     step emit\n     step take DC2\n     step chooseleaf firstn 2 type host\n     step emit\n}",
+    "language": "text",
+    "context": "nter, not the available space for\n      the pools associated with the CRUSH rule.\n   \n      For example, consider a cluster with two CRUSH rules, ``stretch_rule`` and\n      ``stretch_replicated_rule``",
+    "source_file": "rados/operations/stretch-mode.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0e8b45660d9119f6",
+    "code": "rule stretch_rule {\n  id 2\n  type replicated\n  step take default\n  step choose firstn 0 type datacenter\n  step chooseleaf firstn 2 type host\n  step emit\n}",
+    "language": "text",
+    "context": "e total available capacity from\n      both ``datacenters``.\n      \n      Here is a workaround. Instead of defining the stretch rule as defined in\n      the ``stretch_rule`` above, define it as follows",
+    "source_file": "rados/operations/stretch-mode.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b8a89f1ccfb6c6f1",
+    "code": "rule stretch_replicated_rule {\n           id 2\n           type replicated class ssd\n           step take default\n           step choose firstn 0 type datacenter\n           step chooseleaf firstn 2 type host\n           step emit\n}",
+    "language": "text",
+    "context": ".. warning:: CRUSH rules that specify a device class are not supported in stretch mode.\n   For example, the following rule specifying the ``ssd`` device class will not work",
+    "source_file": "rados/operations/stretch-mode.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "10f90425776153e7",
+    "code": "[osd.1]\n    host = {hostname}",
+    "language": "text",
+    "context": "#. Remove the OSD entry from your ``ceph.conf`` file (if such an entry\n   exists)",
+    "source_file": "rados/operations/add-or-rm-osds.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0646ce16d903f903",
+    "code": "[mon.a]\n    host = host01\n    addr = 10.0.0.1:6789\n[mon.b]\n    host = host02\n    addr = 10.0.0.2:6789\n[mon.c]\n    host = host03\n    addr = 10.0.0.3:6789",
+    "language": "text",
+    "context": "For example, suppose that there are three monitors in place",
+    "source_file": "rados/operations/add-or-rm-mons.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7386b10789d60590",
+    "code": "monmaptool: monmap file {tmp}/{filename}\nepoch 1\nfsid 224e376d-c5fe-4504-96bb-ea6332a19e61\nlast_changed 2012-12-17 02:46:41.591248\ncreated 2012-12-17 02:46:41.591248\n0: 10.0.0.1:6789/0 mon.a\n1: 10.0.0.2:6789/0 mon.b\n2: 10.0.0.3:6789/0 mon.c",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/add-or-rm-mons.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b5a6401e084e242b",
+    "code": "monmaptool: monmap file {tmp}/{filename}\nmonmaptool: removing a\nmonmaptool: removing b\nmonmaptool: removing c\nmonmaptool: writing epoch 1 to {tmp}/{filename} (0 monitors)",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/add-or-rm-mons.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e8c3961ab0fd8aed",
+    "code": "monmaptool: monmap file {tmp}/{filename}\nmonmaptool: writing epoch 1 to {tmp}/{filename} (3 monitors)",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/add-or-rm-mons.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7386b10789d60590",
+    "code": "monmaptool: monmap file {tmp}/{filename}\nepoch 1\nfsid 224e376d-c5fe-4504-96bb-ea6332a19e61\nlast_changed 2012-12-17 02:46:41.591248\ncreated 2012-12-17 02:46:41.591248\n0: 10.1.0.1:6789/0 mon.a\n1: 10.1.0.2:6789/0 mon.b\n2: 10.1.0.3:6789/0 mon.c",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/add-or-rm-mons.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0e8c51f60c309f65",
+    "code": "monmaptool: monmap file monmap\nepoch 5\nfsid 2851404a-d09a-11ee-9aaa-fa163e2de51a\nlast_changed 2024-02-21T09:32:18.292040+0000\ncreated 2024-02-21T09:18:27.136371+0000\nmin_mon_release 18 (reef)\nelection_strategy: 1\n0: [v2:10.10.10.11:3300/0,v1:10.10.10.11:6789/0] mon.reef1\n1: [v2:10.10.10.12:3300/0,v1:10.10.10.12:6789/0] mon.reef2\n2: [v2:10.10.10.13:3300/0,v1:10.10.10.13:6789/0] mon.reef3",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/add-or-rm-mons.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e211f4695755de81",
+    "code": "monmaptool: monmap file monmap\nepoch 4\nfsid 2851404a-d09a-11ee-9aaa-fa163e2de51a\nlast_changed 2024-02-21T09:32:18.292040+0000\ncreated 2024-02-21T09:18:27.136371+0000\nmin_mon_release 18 (reef)\nelection_strategy: 1\n0: [v2:192.168.160.11:3300/0,v1:192.168.160.11:6789/0] mon.reef1\n1: [v2:192.168.160.12:3300/0,v1:192.168.160.12:6789/0] mon.reef2\n2: [v2:192.168.160.13:3300/0,v1:192.168.160.13:6789/0] mon.reef3",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/add-or-rm-mons.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8c8afe305dd51f57",
+    "code": "POOL    SIZE  TARGET SIZE  RATE  RAW CAPACITY   RATIO  TARGET RATIO  EFFECTIVE RATIO BIAS PG_NUM  NEW PG_NUM  AUTOSCALE BULK\na     12900M                3.0        82431M  0.4695                                          8         128  warn      True\nc         0                 3.0        82431M  0.0000        0.2000           0.9884  1.0      1          64  warn      True\nb         0        953.6M   3.0        82431M  0.0347                                          8              warn      False",
+    "language": "text",
+    "context": "The output will resemble the following",
+    "source_file": "rados/operations/placement-groups.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "08b3fd51d9927942",
+    "code": "If the ``ceph osd pool autoscale-status`` command returns no output at all,\nthere is probably at least one pool that spans multiple CRUSH roots.  This\n'spanning pool' issue can happen in scenarios like the following:\nwhen a new deployment auto-creates the ``.mgr`` pool on the ``default``\nCRUSH root, subsequent pools are created with rules that constrain them to a\nspecific shadow CRUSH tree. For example, if you create an RBD metadata pool\nthat is constrained to ``deviceclass = ssd`` and an RBD data pool that is\nconstrained to ``deviceclass = hdd``, you will encounter this issue. To\nremedy this issue, constrain the spanning pool to only one device class. In\nthe above scenario, there is likely to be a ``replicated-ssd`` CRUSH rule in\neffect, and the ``.mgr`` pool can be constrained to ``ssd`` devices by\nrunning the following commands:",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "rados/operations/placement-groups.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool autoscale-status"
+    ]
+  },
+  {
+    "entity_id": "d141b22a0224902a",
+    "code": "pool 'ecpool' created",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/erasure-code.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "789c2cb6cf86c921",
+    "code": "k=2\nm=2\nplugin=isa\ncrush-failure-domain=host\ntechnique=reed_sol_van",
+    "language": "ini",
+    "context": "ceph osd erasure-code-profile get default",
+    "source_file": "rados/operations/erasure-code.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb65b05c6e30e199",
+    "code": "import rados",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d1cd04603d36c8eb",
+    "code": "import rados, sys",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d1cd04603d36c8eb",
+    "code": "import rados, sys",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "595a57125c360770",
+    "code": "[global]\n# ... elided configuration\nkeyring = /path/to/keyring/ceph.client.admin.keyring",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1996130ddce8cb04",
+    "code": "print(\"\\n\\nPool Operations\")\nprint(\"===============\")",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7a381bfa880b4739",
+    "code": "ioctx = cluster.open_ioctx('data')",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d96c6dccda943d40",
+    "code": "ioctx = cluster.open_ioctx2(pool_id)",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "abeb853cac69a669",
+    "code": "print(\"\\nClosing the connection.\")\nioctx.close()",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4e038945f6353297",
+    "code": "print(\"\\nWriting object 'hw' with contents 'Hello World!' to pool 'data'.\")\nioctx.write_full(\"hw\", \"Hello World!\")",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "14fa947eace11787",
+    "code": "print(\"\\n\\nWriting XATTR 'lang' with value 'en_US' to object 'hw'\")\nioctx.set_xattr(\"hw\", \"lang\", \"en_US\")",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "449657a21cf69c11",
+    "code": "object_iterator = ioctx.list_objects()",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "799719728c94ae38",
+    "code": "keyring = /path/to/ceph.client.admin.keyring",
+    "language": "ini",
+    "context": "y use the ``conf`` argument. Alternatively,\nyou may specify the keyring path in your Ceph configuration file. For example,\nyou may add something like the following line to your Ceph configuration file",
+    "source_file": "rados/api/python.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6f2ee505da2037c4",
+    "code": "file:///<\"*\"poolid|poolname>:[namespace]/<dbname>?vfs=ceph",
+    "language": "text",
+    "context": "A database file is formatted as a SQLite URI",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0dff5a5e5e33dfd1",
+    "code": "cephsqlite_lock_renewal_timeout = 30000",
+    "language": "ini",
+    "context": "he\ndatabase (e.g. a segmentation fault), the lock is not automatically unlocked,\neven if the client connection is blocklisted afterward. Eventually, the lock\nwill timeout subject to the configurations",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "68c7b5939163bc95",
+    "code": "cephsqlite_lock_renewal_interval = 2000",
+    "language": "ini",
+    "context": "cally renew the\nlock so it does not lose the lock. This is necessary for large transactions or\ndatabase connections operating in ``EXCLUSIVE`` locking mode. The lock renewal\ninterval is adjustable via",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ee882824f64bf3fa",
+    "code": "cephsqlite_blocklist_dead_locker = false",
+    "language": "ini",
+    "context": "s no longer possible for the old client to\nresume its work on the database when it returns (subject to blocklist\nexpiration, 3600 seconds by default). To turn off blocklisting the prior client, change",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a68ba96bea34d9c7",
+    "code": "{\"id\":788461300,\"addr\":\"172.21.10.4:0/1472139388\"}",
+    "language": "json",
+    "context": ".. code",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d6e45928eeac0b0a",
+    "code": "172.21.10.4:0/3563721180",
+    "language": "text",
+    "context": ".. code",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f744ddf9ed33219a",
+    "code": "{\"libcephsqlite_vfs\":{\"op_open\":{\"avgcount\":2,\"sum\":0.150001291,\"avgtime\":0.075000645},\"op_delete\":{\"avgcount\":0,\"sum\":0.000000000,\"avgtime\":0.000000000},\"op_access\":{\"avgcount\":1,\"sum\":0.003000026,\"avgtime\":0.003000026},\"op_fullpathname\":{\"avgcount\":1,\"sum\":0.064000551,\"avgtime\":0.064000551},\"op_currenttime\":{\"avgcount\":0,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_close\":{\"avgcount\":1,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_read\":{\"avgcount\":3,\"sum\":0.036000310,\"avgtime\":0.012000103},\"opf_write\":{\"avgcount\":0,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_truncate\":{\"avgcount\":0,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_sync\":{\"avgcount\":0,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_filesize\":{\"avgcount\":2,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_lock\":{\"avgcount\":1,\"sum\":0.158001360,\"avgtime\":0.158001360},\"opf_unlock\":{\"avgcount\":1,\"sum\":0.101000871,\"avgtime\":0.101000871},\"opf_checkreservedlock\":{\"avgcount\":1,\"sum\":0.002000017,\"avgtime\":0.002000017},\"opf_filecontrol\":{\"avgcount\":4,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_sectorsize\":{\"avgcount\":0,\"sum\":0.000000000,\"avgtime\":0.000000000},\"opf_devicecharacteristics\":{\"avgcount\":4,\"sum\":0.000000000,\"avgtime\":0.000000000}},\"libcephsqlite_striper\":{\"update_metadata\":0,\"update_allocated\":0,\"update_size\":0,\"update_version\":0,\"shrink\":0,\"shrink_bytes\":0,\"lock\":1,\"unlock\":1}}",
+    "language": "json",
+    "context": ".. code",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c134c39f10b9fb70",
+    "code": "{\"avgcount\":7873,\"sum\":0.675005797,\"avgtime\":0.000085736}",
+    "language": "json",
+    "context": ".. code",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8d94de2620f4a09f",
+    "code": "{\"avgcount\":776,\"sum\":4.802041199,\"avgtime\":0.006188197}",
+    "language": "json",
+    "context": ".. code",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "032cd551d91b764b",
+    "code": "debug_cephsqlite",
+    "language": "text",
+    "context": "Debugging libcephsqlite can be turned on via",
+    "source_file": "rados/api/libcephsqlite.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "69a7ac9314e4d8ae",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <rados/librados.h>",
+    "language": "c",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a07d7dc2cf1e2096",
+    "code": "import rados",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cdb8d7a0b75f5355",
+    "code": "import com.ceph.rados.Rados;\nimport com.ceph.rados.RadosException;",
+    "language": "java",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e5ebeffe6b5f1963",
+    "code": "<?php",
+    "language": "php",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "69a7ac9314e4d8ae",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <rados/librados.h>",
+    "language": "c",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a88721d5b28254d1",
+    "code": "print(\"\\n\\nI/O Context and Object Operations\")\nprint(\"=================================\")",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cdb8d7a0b75f5355",
+    "code": "import com.ceph.rados.Rados;\nimport com.ceph.rados.RadosException;",
+    "language": "java",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e5ebeffe6b5f1963",
+    "code": "<?php",
+    "language": "php",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9e8e282400ec2cc3",
+    "code": "rados_ioctx_destroy(io);\nrados_shutdown(cluster);",
+    "language": "c",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c9d52911c941ad44",
+    "code": "cluster.ioCtxDestroy(io);\ncluster.shutDown();",
+    "language": "java",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d71798f0d75d8a89",
+    "code": "print(\"\\nClosing the connection.\")\nioctx.close()",
+    "language": "python",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "857fb18f41b5794c",
+    "code": "rados_shutdown($r);",
+    "language": "php",
+    "context": "",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d38e02d6e8cfce99",
+    "code": "extension=rados.so",
+    "language": "ini",
+    "context": "#. Enable ``phprados`` by adding the following line to ``php.ini``",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a26e3471279324f0",
+    "code": "[global]\nmon_host = 192.168.1.1\nkeyring = /etc/ceph/ceph.client.admin.keyring",
+    "language": "ini",
+    "context": "key settings, an easy way to handle them is to ensure\nthat your Ceph configuration file contains a ``keyring`` path to a keyring file\nand at least one monitor address (e.g., ``mon_host``). For example",
+    "source_file": "rados/api/librados-intro.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dff6abfe1716efd6",
+    "code": "ls /usr/local/include/rados",
+    "language": "text",
+    "context": "lopment of object \nclasses resides in ``src/include/rados/`` and gets installed with `Ceph` \ninstallation. After running ``make install``, you should be able to see it \nin ``<prefix>/include/rados``.",
+    "source_file": "rados/api/objclass-sdk.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bb0c52f8d477e137",
+    "code": "int err;\nrados_t cluster;",
+    "language": "text",
+    "context": "To use `Librados`, you instantiate a :c:type:`rados_t` variable (a cluster handle) and\ncall :c:func:`rados_create()` with a pointer to it",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c154c714b7d4512c",
+    "code": "err = rados_conf_read_file(cluster, \"/path/to/myceph.conf\");\nif (err < 0) {\n\tfprintf(stderr, \"%s: cannot read config file: %s\\n\", argv[0], strerror(-err));\n\texit(1);\n}",
+    "language": "ini",
+    "context": "conf_set()`),\nusing a configuration file (:c:func:`rados_conf_read_file()`), using\ncommand line options (:c:func:`rados_conf_parse_argv`), or an\nenvironment variable (:c:func:`rados_conf_parse_env()`)",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5b3fc5fcefeb32df",
+    "code": "err = rados_connect(cluster);\nif (err < 0) {\n\tfprintf(stderr, \"%s: cannot connect to cluster: %s\\n\", argv[0], strerror(-err));\n\texit(1);\n}",
+    "language": "ini",
+    "context": "Once the cluster handle is configured, you can connect to the cluster with :c:func:`rados_connect()`",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ab633e9a3d135331",
+    "code": "rados_ioctx_t io;\nchar *poolname = \"mypool\";",
+    "language": "text",
+    "context": "Then you open an \"IO context\", a :c:type:`rados_ioctx_t`, with :c:func:`rados_ioctx_create()`",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fd2910fac8106b15",
+    "code": "err = rados_write_full(io, \"greeting\", \"hello\", 5);\nif (err < 0) {\n\tfprintf(stderr, \"%s: cannot write pool %s: %s\\n\", argv[0], poolname, strerror(-err));\n\trados_ioctx_destroy(io);\n\trados_shutdown(cluster);\n\texit(1);\n}",
+    "language": "ini",
+    "context": "Then you can use the RADOS data manipulation functions, for example\nwrite into an object called ``greeting`` with\n:c:func:`rados_write_full()`",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5463442835e901ac",
+    "code": "rados_ioctx_destroy(io);\nrados_shutdown(cluster);",
+    "language": "text",
+    "context": "In the end, you will want to close your IO context and connection to RADOS with :c:func:`rados_ioctx_destroy()` and :c:func:`rados_shutdown()`",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7f797ae4b076d066",
+    "code": "rados_completion_t comp;\nerr = rados_aio_create_completion(NULL, NULL, NULL, &comp);\nif (err < 0) {\n\tfprintf(stderr, \"%s: could not create aio completion: %s\\n\", argv[0], strerror(-err));\n\trados_ioctx_destroy(io);\n\trados_shutdown(cluster);\n\texit(1);\n}",
+    "language": "ini",
+    "context": "`rados_completion_t` that represents what to do when the\noperation is safe or complete by calling\n:c:func:`rados_aio_create_completion`. If you don't need anything\nspecial to happen, you can pass NULL",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9b8b9dc16c0daa5a",
+    "code": "err = rados_aio_write(io, \"foo\", comp, \"bar\", 3, 0);\nif (err < 0) {\n\tfprintf(stderr, \"%s: could not schedule aio write: %s\\n\", argv[0], strerror(-err));\n\trados_aio_release(comp);\n\trados_ioctx_destroy(io);\n\trados_shutdown(cluster);\n\texit(1);\n}\nrados_aio_wait_for_complete(comp); // in memory\nrados_aio_wait_for_safe(comp); // on disk",
+    "language": "ini",
+    "context": "Now you can call any of the aio operations, and wait for it to\nbe in memory or on disk on all replicas",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "23f05437d747078d",
+    "code": "rados_aio_release(comp);",
+    "language": "text",
+    "context": "Finally, we need to free the memory used by the completion with :c:func:`rados_aio_release`",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e75190ea3d084067",
+    "code": "typedef struct {\n\tstruct timeval start;\n\tstruct timeval ack_end;\n\tstruct timeval commit_end;\n} req_duration;",
+    "language": "text",
+    "context": "you could schedule several writes and store the ack and\ncommit time in the corresponding callback, then wait for all of them\nto complete using :c:func:`rados_aio_flush` before analyzing the\nlatencies",
+    "source_file": "rados/api/librados.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e66eea2837a6d1d3",
+    "code": "[global]\nauth_cluster_required = cephx\nauth_service_required = cephx\nauth_client_required = cephx",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8881c270ec0f3497",
+    "code": "[global]\nauth_cluster_required = none\nauth_service_required = none\nauth_client_required = none",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2df09fe4cc319ab",
+    "code": "/var/lib/ceph/$type/$cluster-$id",
+    "language": "text",
+    "context": "Each daemon's data-directory locations defaults to a path of the form",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a58b30ee582e717e",
+    "code": "/var/lib/ceph/osd/ceph-12",
+    "language": "text",
+    "context": "For example, ``osd.12`` would have the following data directory",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3a150155a73d1e7a",
+    "code": "aes,aes256k",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "15292c6a49d471fb",
+    "code": "ceph auth wipe-rotating-service-keys",
+    "language": "text",
+    "context": ".. code",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth wipe-rotating-service-keys"
+    ]
+  },
+  {
+    "entity_id": "cddd37f8c499e32c",
+    "code": "wiped rotating service keys!",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "205fca257428b139",
+    "code": "[WRN] AUTH_INSECURE_CLIENT_KEY_TYPE: 2 auth client entities with insecure key types\nentity client.fs using insecure key type: aes\nentity client.fs_a using insecure key type: aes",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0567c1f2efc1bd4c",
+    "code": "ceph health mute AUTH_INSECURE_CLIENT_KEY_TYPE 8w",
+    "language": "text",
+    "context": ".. code",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph health mute AUTH_INSECURE_CLIENT_KEY_TYPE"
+    ]
+  },
+  {
+    "entity_id": "611c6cfae509f40f",
+    "code": "[client.fs]\nkey = \ncaps mds = \"allow rwp\"\ncaps mon = \"allow r\"\ncaps osd = \"allow rw tag cephfs data=*\"",
+    "language": "ini",
+    "context": "",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cae71b6542d77caf",
+    "code": "{\n\"data\": {\n\"version\": 15,\n\"rotating_version\": 1,\n\"secrets\": [\n{\n\"entity\": {\n\"type\": 2,\n\"type_str\": \"mds\",\n\"id\": \"a\"\n},\n\"auth\": {\n\"key\": {\n\"type\": 1,\n\"type_str\": \"aes\",\n\"created\": \"2025-07-29T21:53:30.978646-0400\"\n},\n\"pending_key\": {\n\"type\": 0,\n\"type_str\": \"none\",\n\"created\": \"0.000000\"\n},\n\"caps\": [\n{\n\"service_name\": \"mds\",\n\"access_spec\": \"\\u0005\\u0000\\u0000\\u0000allow\"\n},\n{\n\"service_name\": \"mgr\",\n\"access_spec\": \"\\u0011\\u0000\\u0000\\u0000allow profile mds\"\n},\n{\n\"service_name\": \"mon\",\n\"access_spec\": \"\\u0011\\u0000\\u0000\\u0000allow profile mds\"\n},\n{\n\"service_name\": \"osd\",\n\"access_spec\": \"\\u0017\\u0000\\u0000\\u0000allow rw tag cephfs *=*\"\n}\n]\n}\n},\n...\n],\n\"rotating_secrets\": [\n{\n\"entity\": {\n\"type\": 1,\n\"type_str\": \"mon\",\n\"id\": \"*\"\n},\n\"secrets\": {\n\"max_ver\": 3,\n\"keys\": [\n{\n\"id\": 1,\n\"expiring_key\": {\n\"key\": {\n\"type\": 1,\n\"type_str\": \"aes\",\n\"created\": \"2025-07-29T21:53:04.632712-0400\"\n},\n\"expiration\": \"2025-07-29T22:53:04.632703-0400\"\n}\n},\n{\n\"id\": 2,\n\"expiring_key\": {\n\"key\": {\n\"type\": 1,\n\"type_str\": \"aes\",\n\"created\": \"2025-07-29T21:53:04.632715-0400\"\n},\n\"expiration\": \"2025-07-29T23:53:04.632703-0400\"\n}\n},\n{\n\"id\": 3,\n\"expiring_key\": {\n\"key\": {\n\"type\": 1,\n\"type_str\": \"aes\",\n\"created\": \"2025-07-29T21:53:04.632718-0400\"\n},\n\"expiration\": \"2025-07-30T00:53:04.632703-0400\"\n}\n}\n]\n}\n},\n]\n}\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "rados/configuration/auth-config-ref.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2b5ef5bd897839ce",
+    "code": "HEALTH_ERR 4 mgr modules have failed\n[ERR] MGR_MODULE_ERROR: 14 mgr modules have failed\nModule 'rbd_support' has failed: Module failed to initialize.\nModule 'status' has failed: Module failed to initialize.\nModule 'telemetry' has failed: Module failed to initialize.\nModule 'volumes' has failed: Module failed to initialize.",
+    "language": "console",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "feadf0bc34fe7a17",
+    "code": "[ERR] AUTH_INSECURE_SERVICE_TICKETS: Monitors are configured to issue insecure service tickets",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "26d225679677db39",
+    "code": "[ERR] AUTH_INSECURE_SERVICE_KEY_TYPE: 11 auth service entities with insecure key types\nentity mds.a using insecure key type: aes\nentity mds.b using insecure key type: aes\nentity osd.0 using insecure key type: aes\nentity osd.1 using insecure key type: aes\nentity osd.2 using insecure key type: aes\nentity osd.3 using insecure key type: aes\nentity osd.4 using insecure key type: aes\nentity osd.5 using insecure key type: aes\nentity osd.6 using insecure key type: aes\nentity osd.7 using insecure key type: aes\nentity mgr.x using insecure key type: aes",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3459e111d305cb83",
+    "code": "[WRN] AUTH_INSECURE_ROTATING_SERVICE_KEY_TYPE: 4 rotating auth service keys using insecure key types\nrotating service keys for mon using insecure key type: aes\nrotating service keys for mds using insecure key type: aes\nrotating service keys for osd using insecure key type: aes\nrotating service keys for mgr using insecure key type: aes",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1b75b04d3a66d640",
+    "code": "3600.000000",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df2c997f9a488b81",
+    "code": "wiped rotating service keys!",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d1660d9d322f11f3",
+    "code": "[WRN] AUTH_INSECURE_CLIENT_KEY_TYPE: 3 auth client entities with insecure key types\nentity client.admin using insecure key type: aes\nentity client.fs using insecure key type: aes\nentity client.fs_a using insecure key type: aes",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6deccba0799e45ae",
+    "code": "epoch 2\nfsid 75a36aa4-8702-48ca-9138-efff9fabe6a5\nlast_changed 2025-06-17T17:13:13.884177+0000\ncreated 2025-06-17T17:13:03.344583+0000\nmin_mon_release 20 (tentacle)\nelection_strategy: 1\n0: [v2:172.21.10.4:40440/0,v1:172.21.10.4:40441/0] mon.a\n1: [v2:172.21.10.4:40442/0,v1:172.21.10.4:40443/0] mon.b\n2: [v2:172.21.10.4:40444/0,v1:172.21.10.4:40445/0] mon.c\nauth_epoch 0\nauth_service_cipher aes256k\nauth_allowed_ciphers aes, aes256k\nauth_preferred_cipher aes256k",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb7c1b22b5f2df04",
+    "code": "[WRN] AUTH_INSECURE_SERVICE_KEYS_ALLOWED: Monitors are configured to issue insecure service key types\ninsecure cipher aes allowed for auth",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e2233b4848f44d4d",
+    "code": "epoch 3\nfsid 75a36aa4-8702-48ca-9138-efff9fabe6a5\nlast_changed 2025-06-17T17:13:56.336336+0000\ncreated 2025-06-17T17:13:03.344583+0000\nmin_mon_release 20 (tentacle)\nelection_strategy: 1\n0: [v2:172.21.10.4:40440/0,v1:172.21.10.4:40441/0] mon.a\n1: [v2:172.21.10.4:40442/0,v1:172.21.10.4:40443/0] mon.b\n2: [v2:172.21.10.4:40444/0,v1:172.21.10.4:40445/0] mon.c\nauth_epoch 0\nauth_service_cipher aes256k\nauth_allowed_ciphers aes256k\nauth_preferred_cipher aes256k",
+    "language": "text",
+    "context": "",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "85e4b369a44fc37f",
+    "code": "Wait for this recovery procedure to completely on one OSD before running it\non the next.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fa60d1768d72bc66",
+    "code": "# ceph health detail\nHEALTH_WARN 1161 pgs not deep-scrubbed in time\n[WRN] PG_NOT_DEEP_SCRUBBED: 1161 pgs not deep-scrubbed in time\npg 86.fff not deep-scrubbed since 2024-08-21T02:35:25.733187+0000",
+    "language": "text",
+    "context": "#. Confirm that ``ceph health detail`` returns a ``pgs not deep-scrubbed in\n time`` warning",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph health detail HEALTH_WARN"
+    ]
+  },
+  {
+    "entity_id": "fa60d1768d72bc66",
+    "code": "# ceph health detail\nHEALTH_WARN 1161 pgs not deep-scrubbed in time\n[WRN] PG_NOT_DEEP_SCRUBBED: 1161 pgs not deep-scrubbed in time\npg 86.fff not deep-scrubbed since 2024-08-21T02:35:25.733187+0000",
+    "language": "text",
+    "context": "#. Confirm that ``ceph health detail`` returns a ``pgs not deep-scrubbed in\n time`` warning",
+    "source_file": "rados/operations/health-checks.rst",
+    "component": "rados",
+    "section_title": "",
+    "commands_used": [
+      "ceph health detail HEALTH_WARN"
+    ]
+  }
+]

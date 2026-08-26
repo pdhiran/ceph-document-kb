@@ -17,9 +17,6 @@ env/
 *.swp
 *.swo
 
-# Knowledge base indices (large, built locally or shipped separately)
-knowledge/
-
 # Crawl cache (HTML pages from IBM docs, rebuilt on demand)
 cache/
 

@@ -1,0 +1,97 @@
+[
+  {
+    "entity_id": "4ef88be31ff23365",
+    "code": "# cat host.yml\n---\nservice_type: host\nhostname: node-10\naddr: 10.10.10.10\noob:\n  addr: 20.20.20.10\n  username: admin\n  password: p@ssword",
+    "language": "bash",
+    "context": "",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3287848eef94a647",
+    "code": "# ceph orch apply -i host.yml\nAdded host 'node-10' with addr '10.10.10.10'",
+    "language": "bash",
+    "context": "",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch apply -i"
+    ]
+  },
+  {
+    "entity_id": "30139806db6fd973",
+    "code": "# ceph config set mgr mgr/cephadm/hw_monitoring true",
+    "language": "bash",
+    "context": "",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mgr"
+    ]
+  },
+  {
+    "entity_id": "9f2eb17abe61ce20",
+    "code": "# ceph orch hardware status\n+------------+---------+-----+-----+--------+-------+------+\n|    HOST    | STORAGE | CPU | NET | MEMORY | POWER | FANS |\n+------------+---------+-----+-----+--------+-------+------+\n|   node-10  |    ok   |  ok |  ok |   ok   |   ok  |  ok  |\n+------------+---------+-----+-----+--------+-------+------+",
+    "language": "bash",
+    "context": "",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch hardware status"
+    ]
+  },
+  {
+    "entity_id": "90cbf70056f5b4e3",
+    "code": "# ceph orch hardware status IBM-Ceph-1 --category storage\n+------------+--------------------------------------------------------+------------------+----------------+----------+----------------+--------+---------+\n|    HOST    |                          NAME                          |      MODEL       |      SIZE      | PROTOCOL |       SN       | STATUS |  STATE  |\n+------------+--------------------------------------------------------+------------------+----------------+----------+----------------+--------+---------+\n|   node-10  | Disk 8 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT99QLL    |   OK   | Enabled |\n|   node-10  | Disk 10 in Backplane 1 of Storage Controller in Slot 2 | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT98ZYX    |   OK   | Enabled |\n|   node-10  | Disk 11 in Backplane 1 of Storage Controller in Slot 2 | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT98ZWB    |   OK   | Enabled |\n|   node-10  | Disk 9 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT98ZC9    |   OK   | Enabled |\n|   node-10  | Disk 3 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT9903Y    |   OK   | Enabled |\n|   node-10  | Disk 1 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT9901E    |   OK   | Enabled |\n|   node-10  | Disk 7 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT98ZQJ    |   OK   | Enabled |\n|   node-10  | Disk 2 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT99PA2    |   OK   | Enabled |\n|   node-10  | Disk 4 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT99PFG    |   OK   | Enabled |\n|   node-10  | Disk 0 in Backplane 0 of Storage Controller in Slot 2  | MZ7L33T8HBNAAD3  | 3840755981824  |   SATA   | S6M5NE0T800539 |   OK   | Enabled |\n|   node-10  | Disk 1 in Backplane 0 of Storage Controller in Slot 2  | MZ7L33T8HBNAAD3  | 3840755981824  |   SATA   | S6M5NE0T800554 |   OK   | Enabled |\n|   node-10  | Disk 6 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT98ZER    |   OK   | Enabled |\n|   node-10  | Disk 0 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT98ZEJ    |   OK   | Enabled |\n|   node-10  | Disk 5 in Backplane 1 of Storage Controller in Slot 2  | ST20000NM008D-3D | 20000588955136 |   SATA   |    ZVT99QMH    |   OK   | Enabled |\n|   node-10  |           Disk 0 on AHCI Controller in SL 6            |  MTFDDAV240TDU   |  240057409536  |   SATA   |  22373BB1E0F8  |   OK   | Enabled |\n|   node-10  |           Disk 1 on AHCI Controller in SL 6            |  MTFDDAV240TDU   |  240057409536  |   SATA   |  22373BB1E0D5  |   OK   | Enabled |\n+------------+--------------------------------------------------------+------------------+----------------+----------+----------------+--------+---------+",
+    "language": "bash",
+    "context": "",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch hardware status"
+    ]
+  },
+  {
+    "entity_id": "92e52154fade887e",
+    "code": "# ceph orch hardware status node-10 --category firmwares\n+------------+----------------------------------------------------------------------------+--------------------------------------------------------------+----------------------+-------------+--------+\n|    HOST    |                                 COMPONENT                                  |                             NAME                             |         DATE         |   VERSION   | STATUS |\n+------------+----------------------------------------------------------------------------+--------------------------------------------------------------+----------------------+-------------+--------+\n|   node-10  |               current-107649-7.03__raid.backplane.firmware.0               |                         Backplane 0                          | 2022-12-05T00:00:00Z |     7.03    |   OK   |",
+    "language": "bash",
+    "context": "",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch hardware status"
+    ]
+  },
+  {
+    "entity_id": "c0e8a7bf9a52c8c3",
+    "code": "# ceph orch hardware status --category criticals\n+------------+-----------+------------+----------+-----------------+\n|    HOST    | COMPONENT |    NAME    |  STATUS  |      STATE      |\n+------------+-----------+------------+----------+-----------------+\n|   node-10  |   power   | PS2 Status | critical |    unplugged    |\n+------------+-----------+------------+----------+-----------------+",
+    "language": "bash",
+    "context": "",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch hardware status"
+    ]
+  },
+  {
+    "entity_id": "0e08372f4437ff9e",
+    "code": "digraph G {\n    node [shape=record];\n    mgr [label=\"{<mgr> ceph manager}\"];\n    dashboard [label=\"<dashboard> ceph dashboard\"];\n    agent [label=\"<agent> agent\"];\n    redfish [label=\"<redfish> redfish\"];",
+    "language": "text",
+    "context": ".. graphviz",
+    "source_file": "hardware-monitoring/index.rst",
+    "component": "hardware-monitoring",
+    "section_title": "",
+    "commands_used": [
+      "ceph dashboard",
+      "ceph manager"
+    ]
+  }
+]

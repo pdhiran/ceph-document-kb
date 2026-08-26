@@ -1,0 +1,233 @@
+{
+  "version": "1.0",
+  "ceph_version": "20.2.1",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "embedding_dimensions": 384,
+  "total_chunks": 5941,
+  "total_code_examples": 3351,
+  "components": {
+    "api": {
+      "name": "api",
+      "chunk_count": 7,
+      "code_example_count": 0,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "api/faiss.index",
+      "chunks_path": "api/chunks.json",
+      "code_examples_path": "api/code_examples.json"
+    },
+    "ceph-volume": {
+      "name": "ceph-volume",
+      "chunk_count": 72,
+      "code_example_count": 63,
+      "topics": [
+        "general",
+        "lvm",
+        "simple",
+        "zfs"
+      ],
+      "faiss_index_path": "ceph-volume/faiss.index",
+      "chunks_path": "ceph-volume/chunks.json",
+      "code_examples_path": "ceph-volume/code_examples.json"
+    },
+    "cephadm": {
+      "name": "cephadm",
+      "chunk_count": 305,
+      "code_example_count": 207,
+      "topics": [
+        "general",
+        "services"
+      ],
+      "faiss_index_path": "cephadm/faiss.index",
+      "chunks_path": "cephadm/chunks.json",
+      "code_examples_path": "cephadm/code_examples.json"
+    },
+    "cephfs": {
+      "name": "cephfs",
+      "chunk_count": 352,
+      "code_example_count": 299,
+      "topics": [
+        "api",
+        "general"
+      ],
+      "faiss_index_path": "cephfs/faiss.index",
+      "chunks_path": "cephfs/chunks.json",
+      "code_examples_path": "cephfs/code_examples.json"
+    },
+    "dev": {
+      "name": "dev",
+      "chunk_count": 1123,
+      "code_example_count": 667,
+      "topics": [
+        "ceph-volume",
+        "cephadm",
+        "crimson",
+        "dashboard",
+        "developer_guide",
+        "general",
+        "mds_internals",
+        "osd_internals",
+        "radosgw"
+      ],
+      "faiss_index_path": "dev/faiss.index",
+      "chunks_path": "dev/chunks.json",
+      "code_examples_path": "dev/code_examples.json"
+    },
+    "hardware-monitoring": {
+      "name": "hardware-monitoring",
+      "chunk_count": 9,
+      "code_example_count": 8,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "hardware-monitoring/faiss.index",
+      "chunks_path": "hardware-monitoring/chunks.json",
+      "code_examples_path": "hardware-monitoring/code_examples.json"
+    },
+    "install": {
+      "name": "install",
+      "chunk_count": 102,
+      "code_example_count": 150,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "install/faiss.index",
+      "chunks_path": "install/chunks.json",
+      "code_examples_path": "install/code_examples.json"
+    },
+    "jaegertracing": {
+      "name": "jaegertracing",
+      "chunk_count": 9,
+      "code_example_count": 1,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "jaegertracing/faiss.index",
+      "chunks_path": "jaegertracing/chunks.json",
+      "code_examples_path": "jaegertracing/code_examples.json"
+    },
+    "man": {
+      "name": "man",
+      "chunk_count": 460,
+      "code_example_count": 431,
+      "topics": [
+        "8"
+      ],
+      "faiss_index_path": "man/faiss.index",
+      "chunks_path": "man/chunks.json",
+      "code_examples_path": "man/code_examples.json"
+    },
+    "mgr": {
+      "name": "mgr",
+      "chunk_count": 241,
+      "code_example_count": 99,
+      "topics": [
+        "ceph_api",
+        "dashboard_plugins",
+        "general"
+      ],
+      "faiss_index_path": "mgr/faiss.index",
+      "chunks_path": "mgr/chunks.json",
+      "code_examples_path": "mgr/code_examples.json"
+    },
+    "monitoring": {
+      "name": "monitoring",
+      "chunk_count": 20,
+      "code_example_count": 17,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "monitoring/faiss.index",
+      "chunks_path": "monitoring/chunks.json",
+      "code_examples_path": "monitoring/code_examples.json"
+    },
+    "rados": {
+      "name": "rados",
+      "chunk_count": 779,
+      "code_example_count": 271,
+      "topics": [
+        "api",
+        "configuration",
+        "general",
+        "man",
+        "operations",
+        "troubleshooting"
+      ],
+      "faiss_index_path": "rados/faiss.index",
+      "chunks_path": "rados/chunks.json",
+      "code_examples_path": "rados/code_examples.json"
+    },
+    "radosgw": {
+      "name": "radosgw",
+      "chunk_count": 1003,
+      "code_example_count": 595,
+      "topics": [
+        "general",
+        "s3",
+        "swift"
+      ],
+      "faiss_index_path": "radosgw/faiss.index",
+      "chunks_path": "radosgw/chunks.json",
+      "code_examples_path": "radosgw/code_examples.json"
+    },
+    "rbd": {
+      "name": "rbd",
+      "chunk_count": 204,
+      "code_example_count": 254,
+      "topics": [
+        "api",
+        "general",
+        "man"
+      ],
+      "faiss_index_path": "rbd/faiss.index",
+      "chunks_path": "rbd/chunks.json",
+      "code_examples_path": "rbd/code_examples.json"
+    },
+    "releases": {
+      "name": "releases",
+      "chunk_count": 1088,
+      "code_example_count": 249,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "releases/faiss.index",
+      "chunks_path": "releases/chunks.json",
+      "code_examples_path": "releases/code_examples.json"
+    },
+    "security": {
+      "name": "security",
+      "chunk_count": 35,
+      "code_example_count": 5,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "security/faiss.index",
+      "chunks_path": "security/chunks.json",
+      "code_examples_path": "security/code_examples.json"
+    },
+    "start": {
+      "name": "start",
+      "chunk_count": 70,
+      "code_example_count": 35,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "start/faiss.index",
+      "chunks_path": "start/chunks.json",
+      "code_examples_path": "start/code_examples.json"
+    },
+    "unknown": {
+      "name": "unknown",
+      "chunk_count": 62,
+      "code_example_count": 0,
+      "topics": [
+        "general"
+      ],
+      "faiss_index_path": "unknown/faiss.index",
+      "chunks_path": "unknown/chunks.json",
+      "code_examples_path": "unknown/code_examples.json"
+    }
+  },
+  "build_timestamp": "2026-08-26T04:18:44.159379+00:00"
+}

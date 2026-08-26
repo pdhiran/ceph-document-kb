@@ -1,0 +1,645 @@
+[
+  {
+    "entity_id": "ca0562b173975e96",
+    "code": "/sbin/sgdisk --largest-new=1 --change-name=1:ceph data --partition-guid=1:f0fc39fd-eeb2-49f1-b922-a11939cf8a0f --typecode=1:89c57f98-2fe5-4dc0-89c1-f3ad0ceff2be --mbrtogpt -- /dev/sdb",
+    "language": "text",
+    "context": "not simple by any means. It required a tremendous amount of\nspecial flags in order to get them to work correctly with the device discovery\nworkflow. Here is an example call to create a data partition",
+    "source_file": "ceph-volume/intro.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": [
+      "ceph data --partition-guid"
+    ]
+  },
+  {
+    "entity_id": "740aa37397847976",
+    "code": "/sbin/sgdisk --new=5:0:+10M --change-name=5:ceph lockbox --partition-guid=5:None --typecode=5:fb3aabf9-d25f-47cc-bf5e-721d181642be --mbrtogpt -- /dev/sdad",
+    "language": "text",
+    "context": "contain unencrypted keys.\nThis was ``ceph-disk`` domain knowledge, which would not translate to a \"GPT\npartitions are simple\" understanding. Here is an example of that special\npartition being created",
+    "source_file": "ceph-volume/intro.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": [
+      "ceph lockbox --partition-guid"
+    ]
+  },
+  {
+    "entity_id": "aa51379b505d7c9e",
+    "code": "ceph-volume@{command}-{extra metadata}",
+    "language": "text",
+    "context": "The API for activation is a bit loose, it only requires two parts: the\nsubcommand to use and any extra meta information separated by a dash. This\nconvention makes the units look like",
+    "source_file": "ceph-volume/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "34d7e8a00a0e87a2",
+    "code": "systemctl enable ceph-volume@lvm-0-0A3E1ED2-DA8A-4F0E-AA95-61DEC71768D6",
+    "language": "text",
+    "context": "Both the command and extra metadata gets persisted by systemd as part of the\n*\"instance name\"* of the unit.  For example an OSD with an ID of 0, for the\n``lvm`` sub-command would look like",
+    "source_file": "ceph-volume/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5b4afe7e6b4abd87",
+    "code": "ceph-volume simple activate 0 6cc43680-4f6e-4feb-92ff-9c7ba204120e",
+    "language": "text",
+    "context": "The activation process requires using both the :term:`OSD id` and :term:`OSD uuid`\nTo activate parsed OSDs",
+    "source_file": "ceph-volume/simple/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e3432311170fd190",
+    "code": "/etc/ceph/osd/0-6cc43680-4f6e-4feb-92ff-9c7ba204120e.json",
+    "language": "text",
+    "context": "The above command will assume that a JSON configuration will be found in",
+    "source_file": "ceph-volume/simple/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "767dba88ae91e240",
+    "code": "ceph-volume simple activate --file /etc/ceph/osd/0-6cc43680-4f6e-4feb-92ff-9c7ba204120e.json",
+    "language": "text",
+    "context": "Alternatively, using a path to a JSON file directly is also possible",
+    "source_file": "ceph-volume/simple/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "98e4ad2bd3ad5feb",
+    "code": "systemctl enable ceph-volume@simple-$id-$uuid",
+    "language": "text",
+    "context": "A systemd unit will capture the :term:`OSD id` and :term:`OSD uuid` and\npersist it. Internally, the activation will enable it like",
+    "source_file": "ceph-volume/simple/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d0b242f58a848d5e",
+    "code": "systemctl enable ceph-volume@simple-0-8715BEB4-15C5-49DE-BA6F-401086EC7B41",
+    "language": "text",
+    "context": "For example",
+    "source_file": "ceph-volume/simple/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "655abe59bae82bc4",
+    "code": "/var/lib/ceph/osd/{cluster name}-{osd id}",
+    "language": "text",
+    "context": "After identifying the correct volume it will then proceed to mount it by using\nthe OSD destination conventions, that is",
+    "source_file": "ceph-volume/simple/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "72a80f3dd258ce77",
+    "code": "/var/lib/ceph/osd/ceph-0",
+    "language": "text",
+    "context": "For our example OSD with an id of ``0``, that means the identified device will\nbe mounted at",
+    "source_file": "ceph-volume/simple/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "32c50e6d1dbd4a22",
+    "code": "systemctl start ceph-osd@0",
+    "language": "text",
+    "context": "Once that process is complete, a call will be made to start the OSD",
+    "source_file": "ceph-volume/simple/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5e739c5012ff6353",
+    "code": "/etc/ceph/osd/1-86ebd829-1405-43d3-8fd6-4cbc9b6ecf96.json",
+    "language": "text",
+    "context": "``JSON`` file will use the naming convention\nof: ``{OSD ID}-{OSD FSID}.json``. An OSD with an id of 1, and an FSID like\n``86ebd829-1405-43d3-8fd6-4cbc9b6ecf96`` the absolute path of the file would\nbe",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3d39263fe91c29f7",
+    "code": "ceph-volume simple scan --force {path}",
+    "language": "text",
+    "context": "The ``scan`` subcommand will refuse to write to this file if it already exists.\nIf overwriting the contents is needed, the ``--force`` flag must be used",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "23803e470f0ddbf7",
+    "code": "ceph-volume simple scan --stdout {path}",
+    "language": "text",
+    "context": "If there is no need to persist the ``JSON`` metadata, there is support to send\nthe contents to ``stdout`` (no file will be written)",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6d11c2c1c6f4aab4",
+    "code": "ceph-volume simple scan",
+    "language": "text",
+    "context": "To scan all running ceph-disk OSDs, the command would look like",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4a5993725a26c4dc",
+    "code": "\"whoami\": \"1\",",
+    "language": "text",
+    "context": "ontents are a single line\n(like in the case of the ``whoami``) the contents are trimmed, and the newline\nis dropped. For example with an OSD with an id of 1, this is how the JSON entry\nwould look like",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6c862e0ec90a6790",
+    "code": "[osd.1]\\n\\tkey = AQBBJ/dZp57NIBAAtnuQS9WOS0hnLVe0rZnE6Q==\\n",
+    "language": "text",
+    "context": "For files that may have more than one line, the contents are left as-is, except\nfor keyrings which are treated specially and parsed to extract the keyring. For\nexample, a ``keyring`` that gets read as",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "488946f38e736cb3",
+    "code": "\"keyring\": \"AQBBJ/dZp57NIBAAtnuQS9WOS0hnLVe0rZnE6Q==\",",
+    "language": "text",
+    "context": "Would get stored as",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8b201a812fdd42e",
+    "code": "ceph-volume simple scan /var/lib/ceph/osd/ceph1",
+    "language": "text",
+    "context": "For a directory like ``/var/lib/ceph/osd/ceph-1``, the command could look\nlike",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5e498d048b1c7ff7",
+    "code": "ceph-volume simple scan /dev/sda1",
+    "language": "text",
+    "context": "For a device like ``/dev/sda1`` which **must** be a data partition, the command\ncould look like",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a1ca5895453fd051",
+    "code": "\"block.db\": {\n    \"path\": \"/dev/disk/by-partuuid/6cc43680-4f6e-4feb-92ff-9c7ba204120e\",\n    \"uuid\": \"6cc43680-4f6e-4feb-92ff-9c7ba204120e\"\n},",
+    "language": "text",
+    "context": "For example, a ``block.db`` device would look something like",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4c0dbdc9bfe0cf48",
+    "code": "\"block.db_uuid\": \"6cc43680-4f6e-4feb-92ff-9c7ba204120e\",",
+    "language": "text",
+    "context": "But it will also persist the ``ceph-disk`` special file generated, like so",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7fe87572ba5b6ad2",
+    "code": "{\n    \"active\": \"ok\",\n    \"block\": {\n        \"path\": \"/dev/disk/by-partuuid/40fd0a64-caa5-43a3-9717-1836ac661a12\",\n        \"uuid\": \"40fd0a64-caa5-43a3-9717-1836ac661a12\"\n    },\n    \"block.db\": {\n        \"path\": \"/dev/disk/by-partuuid/6cc43680-4f6e-4feb-92ff-9c7ba204120e\",\n        \"uuid\": \"6cc43680-4f6e-4feb-92ff-9c7ba204120e\"\n    },\n    \"block.db_uuid\": \"6cc43680-4f6e-4feb-92ff-9c7ba204120e\",\n    \"block_uuid\": \"40fd0a64-caa5-43a3-9717-1836ac661a12\",\n    \"bluefs\": \"1\",\n    \"ceph_fsid\": \"c92fc9eb-0610-4363-aafc-81ddf70aaf1b\",\n    \"cluster_name\": \"ceph\",\n    \"data\": {\n        \"path\": \"/dev/sdr1\",\n        \"uuid\": \"86ebd829-1405-43d3-8fd6-4cbc9b6ecf96\"\n    },\n    \"fsid\": \"86ebd829-1405-43d3-8fd6-4cbc9b6ecf96\",\n    \"keyring\": \"AQBBJ/dZp57NIBAAtnuQS9WOS0hnLVe0rZnE6Q==\",\n    \"kv_backend\": \"rocksdb\",\n    \"magic\": \"ceph osd volume v026\",\n    \"mkfs_done\": \"yes\",\n    \"ready\": \"ready\",\n    \"systemd\": \"\",\n    \"type\": \"bluestore\",\n    \"whoami\": \"3\"\n}",
+    "language": "json",
+    "context": "This is a sample ``JSON`` metadata, from an OSD that is using ``bluestore``",
+    "source_file": "ceph-volume/simple/scan.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd volume v026"
+    ]
+  },
+  {
+    "entity_id": "3262d5dc8a428d73",
+    "code": "$ ceph-volume lvm batch --report /dev/sdb /dev/sdc /dev/sdd --db-devices /dev/nvme0n1",
+    "language": "bash",
+    "context": "Consider the following invocation",
+    "source_file": "ceph-volume/lvm/batch.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9d52e36480ba5bfb",
+    "code": "$ ceph-volume lvm batch --report /dev/sdb /dev/sdc /dev/sdd --db-devices /dev/nvme0n1\n--> passed data devices: 3 physical, 0 LVM\n--> relative data size: 1.0\n--> passed block_db devices: 1 physical, 0 LVM",
+    "language": "bash",
+    "context": "The ``pretty`` report format (the default) would\nlook like this",
+    "source_file": "ceph-volume/lvm/batch.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dc10b3157f620a50",
+    "code": "$ ceph-volume lvm batch --report --format json-pretty /dev/sdb /dev/sdc /dev/sdd --db-devices /dev/nvme0n1\n--> passed data devices: 3 physical, 0 LVM\n--> relative data size: 1.0\n--> passed block_db devices: 1 physical, 0 LVM\n[\n    {\n        \"block_db\": \"/dev/nvme0n1\",\n        \"block_db_size\": \"66.67 GB\",\n        \"data\": \"/dev/sdb\",\n        \"data_size\": \"300.00 GB\",\n        \"encryption\": \"None\"\n    },\n    {\n        \"block_db\": \"/dev/nvme0n1\",\n        \"block_db_size\": \"66.67 GB\",\n        \"data\": \"/dev/sdc\",\n        \"data_size\": \"300.00 GB\",\n        \"encryption\": \"None\"\n    },\n    {\n        \"block_db\": \"/dev/nvme0n1\",\n        \"block_db_size\": \"66.67 GB\",\n        \"data\": \"/dev/sdd\",\n        \"data_size\": \"300.00 GB\",\n        \"encryption\": \"None\"\n    }\n]",
+    "language": "bash",
+    "context": "Reporting can produce a structured output with ``--format json`` or\n``--format json-pretty``",
+    "source_file": "ceph-volume/lvm/batch.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "595e3304e7b3124f",
+    "code": "$ ceph-volume lvm batch --report /dev/sdb /dev/sdc /dev/sdd /dev/sde --db-devices /dev/nvme0n1 --block-db-slots 5",
+    "language": "bash",
+    "context": "data devices and\none device for wal/db volumes. However, one data device is currently broken and\nis being replaced. Instead of calculating the explicit sizes for the wal/db\nvolume, one can simply call",
+    "source_file": "ceph-volume/lvm/batch.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3262d5dc8a428d73",
+    "code": "$ ceph-volume lvm batch --report /dev/sdb /dev/sdc /dev/sdd --db-devices /dev/nvme0n1",
+    "language": "bash",
+    "context": "and disk replacements\n=================================\n`ceph-volume lvm batch` intends to be idempotent, i.e. calling the same command\nrepeatedly must result in the same outcome. For example calling",
+    "source_file": "ceph-volume/lvm/batch.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "625d3cd932cfba30",
+    "code": "{\n    \"cephx_secret\": CEPHX_SECRET,\n    \"dmcrypt_key\": DMCRYPT_KEY,\n    \"cephx_lockbox_secret\": LOCKBOX_SECRET,\n}",
+    "language": "json",
+    "context": "The JSON payload looks something like this",
+    "source_file": "ceph-volume/lvm/encryption.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7808cb02082e34fc",
+    "code": "ceph-volume lvm migrate --osd-id 1 --osd-fsid <uuid> --from data --target vgname/db",
+    "language": "text",
+    "context": "Moves BlueFS data from main device to LV already attached as DB",
+    "source_file": "ceph-volume/lvm/migrate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ffa8f3e55ca8abf5",
+    "code": "ceph-volume lvm migrate --osd-id 1 --osd-fsid <uuid> --from data --target vgname/new_db",
+    "language": "text",
+    "context": "Moves BlueFS data from shared main device to LV which will be attached as a\nnew DB",
+    "source_file": "ceph-volume/lvm/migrate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dd06f7293140a069",
+    "code": "ceph-volume lvm migrate --osd-id 1 --osd-fsid <uuid> --from db --target vgname/new_db",
+    "language": "text",
+    "context": "Moves BlueFS data from DB device to new LV, DB is replaced",
+    "source_file": "ceph-volume/lvm/migrate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "04c08be3edb486ac",
+    "code": "ceph-volume lvm migrate --osd-id 1 --osd-fsid <uuid> --from data db --target vgname/new_db",
+    "language": "text",
+    "context": "Moves BlueFS data from main and DB devices to new LV, DB is replaced",
+    "source_file": "ceph-volume/lvm/migrate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3c0e248af5f7b1ea",
+    "code": "ceph-volume lvm migrate --osd-id 1 --osd-fsid <uuid> --from data db wal --target vgname/new_db",
+    "language": "text",
+    "context": "Moves BlueFS data from main, DB and WAL devices to new LV, WAL is  removed and\nDB is replaced",
+    "source_file": "ceph-volume/lvm/migrate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "319b9fca0780f552",
+    "code": "ceph-volume lvm migrate --osd-id 1 --osd-fsid <uuid> --from db wal --target vgname/data",
+    "language": "text",
+    "context": "Moves BlueFS data from main, DB and WAL devices to main device, WAL and DB are\nremoved",
+    "source_file": "ceph-volume/lvm/migrate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7fe40002c5733ebf",
+    "code": "ceph-volume lvm new-db --osd-id 1 --osd-fsid 55BD4219-16A7-4037-BC20-0F158EFCC83D --target vgname/new_db",
+    "language": "text",
+    "context": "Attach vgname/lvname as a DB volume to OSD 1",
+    "source_file": "ceph-volume/lvm/newdb.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8b9318f1855021cb",
+    "code": "osd.76 spilled over 128 KiB metadata from 'db' device (56 GiB used of 60 GiB) to slow device",
+    "language": "text",
+    "context": "spill onto slow storage and\nthe Ceph cluster returns specifics regarding BlueFS spillover warnings. ``ceph\nhealth detail`` returns these spillover warnings.  Here is an example of a\nspillover warning",
+    "source_file": "ceph-volume/lvm/newdb.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a81bceb6069d7a80",
+    "code": "lrwxrwxrwx. 1 ceph ceph 93 Oct 20 13:05 block -> /dev/ceph-be2b6fbd-bcf2-4c51-b35d-a35a162a02f0/osd-block-25cf0a05-2bc6-44ef-9137-79d65bd7ad62\nlrwxrwxrwx. 1 ceph ceph 93 Oct 20 13:05 block.db -> /dev/sda1\nlrwxrwxrwx. 1 ceph ceph 93 Oct 20 13:05 block.wal -> /dev/ceph/osd-wal-0\n-rw-------. 1 ceph ceph 37 Oct 20 13:05 ceph_fsid\n-rw-------. 1 ceph ceph 37 Oct 20 13:05 fsid\n-rw-------. 1 ceph ceph 55 Oct 20 13:05 keyring\n-rw-------. 1 ceph ceph  6 Oct 20 13:05 ready\n-rw-------. 1 ceph ceph 10 Oct 20 13:05 type\n-rw-------. 1 ceph ceph  2 Oct 20 13:05 whoami",
+    "language": "text",
+    "context": "",
+    "source_file": "ceph-volume/lvm/prepare.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph 10 Oct",
+      "ceph ceph 2 Oct",
+      "ceph ceph 37 Oct",
+      "ceph ceph 55 Oct",
+      "ceph ceph 6 Oct",
+      "ceph ceph 93 Oct"
+    ]
+  },
+  {
+    "entity_id": "66e27c49e1505faf",
+    "code": "/var/lib/ceph/osd/<cluster name>-<osd id>",
+    "language": "text",
+    "context": "The OSD data directory is created using the following convention",
+    "source_file": "ceph-volume/lvm/prepare.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "96cbb591c0bd7872",
+    "code": "Model: VBOX HARDDISK (scsi)\nDisk /dev/sdd: 11.5GB\nSector size (logical/physical): 512B/512B\nDisk Flags:",
+    "language": "text",
+    "context": "",
+    "source_file": "ceph-volume/lvm/prepare.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a83090f6ba31ab51",
+    "code": "Model: VBOX HARDDISK (scsi)\nDisk /dev/sdd: 11.5GB\nSector size (logical/physical): 512B/512B\nPartition Table: gpt\nDisk Flags:",
+    "language": "text",
+    "context": "",
+    "source_file": "ceph-volume/lvm/prepare.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ab296147a8b56768",
+    "code": "/dev/sdd1: PARTLABEL=\"primary\" PARTUUID=\"16399d72-1e1f-467d-96ee-6fe371a7d0d4\"",
+    "language": "text",
+    "context": "",
+    "source_file": "ceph-volume/lvm/prepare.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "66e27c49e1505faf",
+    "code": "/var/lib/ceph/osd/<cluster name>-<osd id>",
+    "language": "text",
+    "context": "* OSD paths should follow this convention",
+    "source_file": "ceph-volume/lvm/prepare.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb404415a1fe0268",
+    "code": "====== osd.1 =======",
+    "language": "text",
+    "context": "",
+    "source_file": "ceph-volume/lvm/list.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb404415a1fe0268",
+    "code": "====== osd.1 =======",
+    "language": "text",
+    "context": "",
+    "source_file": "ceph-volume/lvm/list.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c48ec6d54085f4cd",
+    "code": "====== osd.0 =======",
+    "language": "text",
+    "context": "",
+    "source_file": "ceph-volume/lvm/list.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c1887679bc56cb5c",
+    "code": "{\n    \"0\": [\n        {\n            \"devices\": [\"/dev/sda\"],\n            \"lv_name\": \"data-lv1\",\n            \"lv_path\": \"/dev/test_group/data-lv1\",\n            \"lv_tags\": \"ceph.cluster_fsid=ce454d91-d748-4751-a318-ff7f7aa18ffd,ceph.data_device=/dev/test_group/data-lv1,ceph.data_uuid=TUpfel-Q5ZT-eFph-bdGW-SiNW-l0ag-f5kh00,ceph.journal_device=/dev/sdd1,ceph.journal_uuid=cd72bd28-002a-48da-bdf6-d5b993e84f3f,ceph.osd_fsid=943949f0-ce37-47ca-a33c-3413d46ee9ec,ceph.osd_id=0,ceph.type=data\",\n            \"lv_uuid\": \"TUpfel-Q5ZT-eFph-bdGW-SiNW-l0ag-f5kh00\",\n            \"name\": \"data-lv1\",\n            \"path\": \"/dev/test_group/data-lv1\",\n            \"tags\": {\n                \"ceph.cluster_fsid\": \"ce454d91-d748-4751-a318-ff7f7aa18ffd\",\n                \"ceph.data_device\": \"/dev/test_group/data-lv1\",\n                \"ceph.data_uuid\": \"TUpfel-Q5ZT-eFph-bdGW-SiNW-l0ag-f5kh00\",\n                \"ceph.journal_device\": \"/dev/sdd1\",\n                \"ceph.journal_uuid\": \"cd72bd28-002a-48da-bdf6-d5b993e84f3f\",\n                \"ceph.osd_fsid\": \"943949f0-ce37-47ca-a33c-3413d46ee9ec\",\n                \"ceph.osd_id\": \"0\",\n                \"ceph.type\": \"data\"\n            },\n            \"type\": \"data\",\n            \"vg_name\": \"test_group\"\n        }\n    ]\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "ceph-volume/lvm/list.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "905b7a5c1d538c93",
+    "code": "ceph-volume lvm new-wal --osd-id 1 --osd-fsid 55BD4219-16A7-4037-BC20-0F158EFCC83D --target vgname/new_wal",
+    "language": "text",
+    "context": "Attach vgname/lvname as a WAL volume to OSD 1",
+    "source_file": "ceph-volume/lvm/newwal.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a6b1bda957bc3774",
+    "code": "ceph-volume lvm activate --bluestore 0 0263644D-0BF1-4D6D-BC34-28BD98AE3BC8",
+    "language": "text",
+    "context": "New OSDs\n--------\nTo activate newly prepared OSDs both the :term:`OSD id` and :term:`OSD uuid`\nneed to be supplied. For example",
+    "source_file": "ceph-volume/lvm/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ab1ff2daa3bc5353",
+    "code": "ceph-volume lvm activate --all",
+    "language": "text",
+    "context": "It is possible to activate all existing OSDs at once by using the ``--all``\nflag. For example",
+    "source_file": "ceph-volume/lvm/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "544dffedb2566215",
+    "code": "systemctl enable ceph-volume@lvm-$id-$uuid",
+    "language": "text",
+    "context": "The systemd unit will capture the :term:`OSD id` and :term:`OSD uuid` and\npersist it. Internally, the activation will enable it like",
+    "source_file": "ceph-volume/lvm/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e8df9ec9f70914ab",
+    "code": "systemctl enable ceph-volume@lvm-0-8715BEB4-15C5-49DE-BA6F-401086EC7B41",
+    "language": "text",
+    "context": "For example",
+    "source_file": "ceph-volume/lvm/activate.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9d3fb76094c6d749",
+    "code": "ceph-volume lvm zap {vg name/lv name}",
+    "language": "text",
+    "context": "Zapping a logical volume",
+    "source_file": "ceph-volume/lvm/zap.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9ba99ace4650951f",
+    "code": "ceph-volume lvm zap /dev/sdc1",
+    "language": "text",
+    "context": "Zapping a partition",
+    "source_file": "ceph-volume/lvm/zap.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8776bf94d1212ade",
+    "code": "ceph-volume lvm zap /dev/sdc --destroy",
+    "language": "text",
+    "context": "Zapping a raw device and destroying any vgs or lvs present",
+    "source_file": "ceph-volume/lvm/zap.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "914c206defc25a98",
+    "code": "ceph-volume lvm zap /dev/sdc1 --destroy\nceph-volume lvm zap osd-vg/data-lv --destroy",
+    "language": "text",
+    "context": "This action can be performed on partitions, and logical volumes as well",
+    "source_file": "ceph-volume/lvm/zap.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2754fe265ab420e2",
+    "code": "ceph-volume lvm zap --destroy --osd-id 1",
+    "language": "text",
+    "context": "By ID only",
+    "source_file": "ceph-volume/lvm/zap.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fb4b67c7a92a9c45",
+    "code": "ceph-volume lvm zap --destroy --osd-fsid 2E8FBE58-0328-4E3B-BFB7-3CACE4E9A6CE",
+    "language": "text",
+    "context": "By FSID",
+    "source_file": "ceph-volume/lvm/zap.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6c713c737a4e8605",
+    "code": "ceph-volume lvm zap --destroy --osd-fsid 2E8FBE58-0328-4E3B-BFB7-3CACE4E9A6CE --osd-id 1",
+    "language": "text",
+    "context": "By both",
+    "source_file": "ceph-volume/lvm/zap.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "19f07155238c02d6",
+    "code": "/var/lib/ceph/osd/<cluster name>-<osd id>",
+    "language": "text",
+    "context": "After identifying the correct volume it will then proceed to mount it by using\nthe OSD destination conventions, that is",
+    "source_file": "ceph-volume/lvm/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fc6690a65f491027",
+    "code": "/var/lib/ceph/osd/ceph-0",
+    "language": "text",
+    "context": "For our example OSD with an id of ``0``, that means the identified device will\nbe mounted at",
+    "source_file": "ceph-volume/lvm/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "49a42a7a18165d92",
+    "code": "systemctl start ceph-osd@0",
+    "language": "text",
+    "context": "Once that process is complete, a call will be made to start the OSD",
+    "source_file": "ceph-volume/lvm/systemd.rst",
+    "component": "ceph-volume",
+    "section_title": "",
+    "commands_used": []
+  }
+]

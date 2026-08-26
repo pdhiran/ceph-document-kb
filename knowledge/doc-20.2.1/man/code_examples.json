@@ -1,0 +1,4871 @@
+[
+  {
+    "entity_id": "7259a24ec6549d98",
+    "code": "$ cd /mnt/osd.12/current/2.b_head\n$ attr -l foo_bar_head_EFE6384B\nAttribute \"ceph.snapset\" has a 31 byte value for foo_bar_head_EFE6384B\nAttribute \"ceph._\" has a 195 byte value for foo_bar_head_EFE6384B\n$ attr foo_bar_head_EFE6384B -g ceph._ -q > /tmp/a\n$ ceph-dencoder type object_info_t import /tmp/a decode dump_json\n{ \"oid\": { \"oid\": \"foo\",\n      \"key\": \"bar\",\n      \"snapid\": -2,\n      \"hash\": 4024842315,\n      \"max\": 0},\n  \"locator\": { \"pool\": 2,\n      \"preferred\": -1,\n      \"key\": \"bar\"},\n  \"category\": \"\",\n  \"version\": \"9'1\",\n  \"prior_version\": \"0'0\",\n  \"last_reqid\": \"client.4116.0:1\",\n  \"size\": 1681,\n  \"mtime\": \"2012-02-21 08:58:23.666639\",\n  \"lost\": 0,\n  \"wrlock_by\": \"unknown.0.0:0\",\n  \"snaps\": [],\n  \"truncate_seq\": 0,\n  \"truncate_size\": 0,\n  \"watchers\": {}}",
+    "language": "bash",
+    "context": "",
+    "source_file": "man/8/ceph-dencoder.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ec9fd9b91d449c5",
+    "code": "$ rados -p metadata get mds_snaptable mds_snaptable.bin\n$ ceph-dencoder type SnapServer skip 8 import mds_snaptable.bin decode dump_json\n{ \"snapserver\": { \"last_snap\": 1,\n   \"pending_noop\": [],\n   \"snaps\": [],\n   \"need_to_purge\": {},\n   \"pending_create\": [],\n   \"pending_destroy\": []}}",
+    "language": "bash",
+    "context": "",
+    "source_file": "man/8/ceph-dencoder.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados -p metadata get"
+    ]
+  },
+  {
+    "entity_id": "4ac14ec72a080723",
+    "code": "ceph auth add <entity> {<caps> [<caps>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth add"
+    ]
+  },
+  {
+    "entity_id": "6fa8f1f338f06aad",
+    "code": "ceph auth caps <entity> <caps> [<caps>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth caps"
+    ]
+  },
+  {
+    "entity_id": "2769eca0f9479c35",
+    "code": "ceph auth del <entity>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth del"
+    ]
+  },
+  {
+    "entity_id": "0bd3bcede214b9a2",
+    "code": "ceph auth export {<entity>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth export"
+    ]
+  },
+  {
+    "entity_id": "54aee8b261ec2b14",
+    "code": "ceph auth get <entity>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get"
+    ]
+  },
+  {
+    "entity_id": "d5fc059c06d27954",
+    "code": "ceph auth get-key <entity>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-key"
+    ]
+  },
+  {
+    "entity_id": "de5484fa1c194ad9",
+    "code": "ceph auth get-or-create <entity> {<caps> [<caps>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create"
+    ]
+  },
+  {
+    "entity_id": "74adf8ebf07d35f4",
+    "code": "ceph auth get-or-create-key <entity> {<caps> [<caps>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth get-or-create-key"
+    ]
+  },
+  {
+    "entity_id": "72ed20c4d341f577",
+    "code": "ceph auth import",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth import"
+    ]
+  },
+  {
+    "entity_id": "2a22c8aa327386f2",
+    "code": "ceph auth ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth ls"
+    ]
+  },
+  {
+    "entity_id": "d9ac18d91e2e858b",
+    "code": "ceph auth print-key <entity>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth print-key"
+    ]
+  },
+  {
+    "entity_id": "100ba9a4ee1c2825",
+    "code": "ceph auth print_key <entity>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth print_key"
+    ]
+  },
+  {
+    "entity_id": "2e8e6ff3baffcbdd",
+    "code": "ceph compact",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph compact"
+    ]
+  },
+  {
+    "entity_id": "42a22c9c741ac679",
+    "code": "ceph config dump",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config dump"
+    ]
+  },
+  {
+    "entity_id": "8ee7d0d9d73c36d4",
+    "code": "ceph config ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config ls"
+    ]
+  },
+  {
+    "entity_id": "d4dbbdf03a24e3ba",
+    "code": "ceph config help <option>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config help"
+    ]
+  },
+  {
+    "entity_id": "67b0529e682f3ac8",
+    "code": "ceph config get <who> {<option>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config get"
+    ]
+  },
+  {
+    "entity_id": "d339b5cff2e64e3f",
+    "code": "ceph config show {<who>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config show"
+    ]
+  },
+  {
+    "entity_id": "d339b5cff2e64e3f",
+    "code": "ceph config show {<who>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config show"
+    ]
+  },
+  {
+    "entity_id": "1b6432277afb61ef",
+    "code": "ceph config set <who> <option> <value> {--force}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set"
+    ]
+  },
+  {
+    "entity_id": "4aac23b59914a2c5",
+    "code": "ceph config rm <who> <option>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config rm"
+    ]
+  },
+  {
+    "entity_id": "8940067872f7d399",
+    "code": "ceph config log {<count>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config log"
+    ]
+  },
+  {
+    "entity_id": "cbdc2d3dc72a062f",
+    "code": "ceph config reset <version>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config reset"
+    ]
+  },
+  {
+    "entity_id": "cfa41529a08afbc9",
+    "code": "ceph config assimilate-conf -i <input-config-path> > <output-config-path>\nceph config assimilate-conf < <input-config-path>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config assimilate-conf",
+      "ceph config assimilate-conf -i"
+    ]
+  },
+  {
+    "entity_id": "3f098795e5d71ca5",
+    "code": "ceph config generate-minimal-conf > <minimal-config-path>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config generate-minimal-conf"
+    ]
+  },
+  {
+    "entity_id": "c886b6d8c365296e",
+    "code": "ceph config-key rm <key>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key rm"
+    ]
+  },
+  {
+    "entity_id": "89dca81a438af3ac",
+    "code": "ceph config-key exists <key>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key exists"
+    ]
+  },
+  {
+    "entity_id": "1d4b534430490429",
+    "code": "ceph config-key get <key>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key get"
+    ]
+  },
+  {
+    "entity_id": "04ea159a856a13b1",
+    "code": "ceph config-key ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key ls"
+    ]
+  },
+  {
+    "entity_id": "e34405aa1a12a4f4",
+    "code": "ceph config-key dump",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key dump"
+    ]
+  },
+  {
+    "entity_id": "709bd334250ebcf7",
+    "code": "ceph config-key set <key> {<val>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key set"
+    ]
+  },
+  {
+    "entity_id": "81e0a82a450c1c7b",
+    "code": "ceph daemon {daemon_name|socket_path} {command} ...",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemon"
+    ]
+  },
+  {
+    "entity_id": "49d3b3fc67ec7cee",
+    "code": "ceph daemon osd.0 help",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemon osd"
+    ]
+  },
+  {
+    "entity_id": "e1a07056753bc3cf",
+    "code": "ceph daemonperf {daemon_name|socket_path} [{interval} [{count}]]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemonperf"
+    ]
+  },
+  {
+    "entity_id": "840cde47e1023f35",
+    "code": "ceph df {detail}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph df"
+    ]
+  },
+  {
+    "entity_id": "97a349de9fbeaf4c",
+    "code": "ceph features",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph features"
+    ]
+  },
+  {
+    "entity_id": "8cbd709a71a65145",
+    "code": "ceph fs add_data_pool <fs-name> <pool name/id>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs add_data_pool"
+    ]
+  },
+  {
+    "entity_id": "7b197f51fce2a459",
+    "code": "ceph fs authorize <fs_name> client.<client_id> <path> <perms> [<path> <perms>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs authorize"
+    ]
+  },
+  {
+    "entity_id": "e054d990749c9735",
+    "code": "ceph fs dump [epoch]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs dump"
+    ]
+  },
+  {
+    "entity_id": "b3ef50347cfd232c",
+    "code": "ceph fs feature ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs feature ls"
+    ]
+  },
+  {
+    "entity_id": "39b6dccea61ecadf",
+    "code": "ceph fs flag set <flag-name> <flag-val> --yes-i-really-mean-it",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs flag set"
+    ]
+  },
+  {
+    "entity_id": "1814269d638732e0",
+    "code": "ceph fs get <fs-name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs get"
+    ]
+  },
+  {
+    "entity_id": "ebfbc6135bf4ea1c",
+    "code": "ceph fs ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs ls"
+    ]
+  },
+  {
+    "entity_id": "d773bb0f4a0c8ba3",
+    "code": "ceph fs lsflags <fs-name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs lsflags"
+    ]
+  },
+  {
+    "entity_id": "7a9ac57dc88ffbd2",
+    "code": "ceph fs new <fs_name> <metadata> <data>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs new"
+    ]
+  },
+  {
+    "entity_id": "3c83f95ab6a0998a",
+    "code": "ceph fs rename <fs-name> <new-fs-name> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs rename"
+    ]
+  },
+  {
+    "entity_id": "6cbd2ceee66b5d4d",
+    "code": "ceph fs required_client_features <fs name> add <feature-name>\nceph fs required_client_features <fs name> rm <feature-name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs required_client_features"
+    ]
+  },
+  {
+    "entity_id": "3fa42b12f5adc092",
+    "code": "ceph fs reset <fs_name> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs reset"
+    ]
+  },
+  {
+    "entity_id": "498eee3e0c333ca2",
+    "code": "ceph fs rm <fs_name> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs rm"
+    ]
+  },
+  {
+    "entity_id": "420119266474fb4d",
+    "code": "ceph fs rm_data_pool <fs-name> <pool name/id>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs rm_data_pool"
+    ]
+  },
+  {
+    "entity_id": "80eb83498e8de424",
+    "code": "ceph fs set <fs-name> <fs-setting> <value>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "f4b40189953a917b",
+    "code": "ceph fs swap <fs1-name> <fs1-id> <fs2-name> <fs2-id> [--swap-fscids] {--yes-i-really-meant-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs swap"
+    ]
+  },
+  {
+    "entity_id": "14be09481797ba5c",
+    "code": "ceph health {detail}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph health"
+    ]
+  },
+  {
+    "entity_id": "5689fa8155438915",
+    "code": "ceph tell <name (type.id)> heap dump|start_profiler|stop_profiler|stats",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell"
+    ]
+  },
+  {
+    "entity_id": "36568abbc3662830",
+    "code": "ceph tell <name (type.id)> heap release",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell"
+    ]
+  },
+  {
+    "entity_id": "a2f69b7bf9a8a3b0",
+    "code": "ceph tell <name (type.id)> heap get_release_rate|set_release_rate {<val>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell"
+    ]
+  },
+  {
+    "entity_id": "df8e2e71178b297e",
+    "code": "ceph injectargs <injected_args> [<injected_args>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph injectargs"
+    ]
+  },
+  {
+    "entity_id": "d4610a4b23c57e26",
+    "code": "ceph log <logtext> [<logtext>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph log"
+    ]
+  },
+  {
+    "entity_id": "5e76c32add31e163",
+    "code": "ceph mds compat rm_compat <int[0-]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds compat rm_compat"
+    ]
+  },
+  {
+    "entity_id": "1be3bc9836abbfb2",
+    "code": "ceph mds compat rm_incompat <int[0-]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds compat rm_incompat"
+    ]
+  },
+  {
+    "entity_id": "fde0d5c86f7b6ed1",
+    "code": "ceph mds compat show",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds compat show"
+    ]
+  },
+  {
+    "entity_id": "5547eaa2d62c59e3",
+    "code": "ceph mds fail <role|gid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds fail"
+    ]
+  },
+  {
+    "entity_id": "9255b481dcb1bd72",
+    "code": "ceph mds rm <int[0-]> <name> (type.id)>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds rm"
+    ]
+  },
+  {
+    "entity_id": "5bd0cf5f3c680c16",
+    "code": "ceph mds rmfailed <int[0-]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds rmfailed"
+    ]
+  },
+  {
+    "entity_id": "e056f45fc1eb612f",
+    "code": "ceph mds set_state <int[0-]> <int[0-20]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds set_state"
+    ]
+  },
+  {
+    "entity_id": "8ead15463c510f11",
+    "code": "ceph mds stat",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds stat"
+    ]
+  },
+  {
+    "entity_id": "d1682602320f38d7",
+    "code": "ceph mds repaired <role>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mds repaired"
+    ]
+  },
+  {
+    "entity_id": "97665a0a03ad586b",
+    "code": "ceph mon add <name> <IPaddr[:port]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon add"
+    ]
+  },
+  {
+    "entity_id": "6830cd3ad319e92a",
+    "code": "ceph mon dump {<int[0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "4fc116f31eadc905",
+    "code": "ceph mon getmap {<int[0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon getmap"
+    ]
+  },
+  {
+    "entity_id": "d11a1d9e8ac86a80",
+    "code": "ceph mon enable_stretch_mode <tiebreaker_mon> <new_crush_rule> <dividing_bucket>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon enable_stretch_mode"
+    ]
+  },
+  {
+    "entity_id": "bf9c254d179e68ee",
+    "code": "ceph mon remove <name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon remove"
+    ]
+  },
+  {
+    "entity_id": "6ad4d73ee6bfd6d4",
+    "code": "ceph mon stat",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon stat"
+    ]
+  },
+  {
+    "entity_id": "f96d95ee53507a87",
+    "code": "ceph mgr dump",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr dump"
+    ]
+  },
+  {
+    "entity_id": "3179683252b56a8c",
+    "code": "ceph mgr fail <name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr fail"
+    ]
+  },
+  {
+    "entity_id": "82be9fbaf5e08491",
+    "code": "ceph mgr module ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module ls"
+    ]
+  },
+  {
+    "entity_id": "5320c7d46d4c2791",
+    "code": "ceph mgr module enable <module>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable"
+    ]
+  },
+  {
+    "entity_id": "41f07c2e6e270d9d",
+    "code": "ceph mgr module disable <module>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module disable"
+    ]
+  },
+  {
+    "entity_id": "c6ddfceefcd3374a",
+    "code": "ceph mgr metadata [name]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr metadata"
+    ]
+  },
+  {
+    "entity_id": "1def36c5ca93bc9c",
+    "code": "ceph mgr versions",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr versions"
+    ]
+  },
+  {
+    "entity_id": "31d46739fdc07b72",
+    "code": "ceph mgr count-metadata <field>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr count-metadata"
+    ]
+  },
+  {
+    "entity_id": "a481f4f91b24137e",
+    "code": "ceph osd blocklist add <EntityAddr> {<float[0.0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd blocklist add"
+    ]
+  },
+  {
+    "entity_id": "6a69ff4e2a0562e4",
+    "code": "ceph osd blocklist ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd blocklist ls"
+    ]
+  },
+  {
+    "entity_id": "5c0e367fc8f4ea95",
+    "code": "ceph osd blocklist rm <EntityAddr>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd blocklist rm"
+    ]
+  },
+  {
+    "entity_id": "5b55aee330d8e4a9",
+    "code": "ceph osd blocked-by",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd blocked-by"
+    ]
+  },
+  {
+    "entity_id": "c0205c39a2f8d484",
+    "code": "ceph osd create {<uuid>} {<id>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd create"
+    ]
+  },
+  {
+    "entity_id": "3524e5f8a71adacf",
+    "code": "ceph osd new {<uuid>} {<id>} -i {<params.json>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd new"
+    ]
+  },
+  {
+    "entity_id": "75819f53278c8c59",
+    "code": "{\n       \"cephx_secret\": \"AQBWtwhZdBO5ExAAIDyjK2Bh16ZXylmzgYYEjg==\",\n\"crush_device_class\": \"myclass\"\n   }",
+    "language": "json",
+    "context": "The parameters JSON file is optional but if provided, is expected to maintain\na form of the following format",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b00aa32efcc86326",
+    "code": "{\n       \"cephx_secret\": \"AQBWtwhZdBO5ExAAIDyjK2Bh16ZXylmzgYYEjg==\",\n       \"cephx_lockbox_secret\": \"AQDNCglZuaeVCRAAYr76PzR1Anh7A0jswkODIQ==\",\n       \"dmcrypt_key\": \"<dm-crypt key>\",\n\"crush_device_class\": \"myclass\"\n   }",
+    "language": "json",
+    "context": "Or",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9b3b2db96021dbf7",
+    "code": "{\n\"crush_device_class\": \"myclass\"\n   }",
+    "language": "json",
+    "context": "Or",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4eaeec5b8a7e6e34",
+    "code": "ceph osd crush add <osdname (id|osd.id)> <float[0.0-]> <args> [<args>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add"
+    ]
+  },
+  {
+    "entity_id": "a699c01834819a44",
+    "code": "ceph osd crush add-bucket <name> <type>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add-bucket"
+    ]
+  },
+  {
+    "entity_id": "b74a2a4f3731b5b9",
+    "code": "ceph osd crush create-or-move <osdname (id|osd.id)> <float[0.0-]> <args>\n[<args>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush create-or-move"
+    ]
+  },
+  {
+    "entity_id": "a39e54c112b6f1cd",
+    "code": "ceph osd crush dump",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush dump"
+    ]
+  },
+  {
+    "entity_id": "b82e64beefaf4e39",
+    "code": "ceph osd crush get-tunable straw_calc_version",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush get-tunable"
+    ]
+  },
+  {
+    "entity_id": "dad74f722110a49b",
+    "code": "ceph osd crush link <name> <args> [<args>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush link"
+    ]
+  },
+  {
+    "entity_id": "cde40ff0a3927f51",
+    "code": "ceph osd crush move <name> <args> [<args>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush move"
+    ]
+  },
+  {
+    "entity_id": "1007c96917c151bd",
+    "code": "ceph osd crush remove <name> {<ancestor>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush remove"
+    ]
+  },
+  {
+    "entity_id": "335c868ab96d28ef",
+    "code": "ceph osd crush rename-bucket <srcname> <dstname>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rename-bucket"
+    ]
+  },
+  {
+    "entity_id": "448a42af6114b4f6",
+    "code": "ceph osd crush reweight <name> <float[0.0-]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush reweight"
+    ]
+  },
+  {
+    "entity_id": "9b6f9a74289902d9",
+    "code": "ceph osd crush reweight-all",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush reweight-all"
+    ]
+  },
+  {
+    "entity_id": "2f895f1dec337da4",
+    "code": "ceph osd crush reweight-subtree <name> <weight>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush reweight-subtree"
+    ]
+  },
+  {
+    "entity_id": "4ad91b8a46f415de",
+    "code": "ceph osd crush rm <name> {<ancestor>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rm"
+    ]
+  },
+  {
+    "entity_id": "58f135f15fb5109a",
+    "code": "ceph osd crush rule create-erasure <name> {<profile>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rule"
+    ]
+  },
+  {
+    "entity_id": "7a274603f1127a1f",
+    "code": "ceph osd crush rule create-simple <name> <root> <type> {firstn|indep}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rule"
+    ]
+  },
+  {
+    "entity_id": "4ac047e24328b2f1",
+    "code": "ceph osd crush rule dump {<name>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rule"
+    ]
+  },
+  {
+    "entity_id": "651c518b8c13c4b4",
+    "code": "ceph osd crush rule ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rule"
+    ]
+  },
+  {
+    "entity_id": "b7400906da705f8e",
+    "code": "ceph osd crush rule rm <name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rule"
+    ]
+  },
+  {
+    "entity_id": "2c67ccd3e81d7020",
+    "code": "ceph osd crush set",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush set"
+    ]
+  },
+  {
+    "entity_id": "9634fb4e084e888b",
+    "code": "ceph osd crush set <osdname (id|osd.id)> <float[0.0-]> <args> [<args>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush set"
+    ]
+  },
+  {
+    "entity_id": "4ced5438c5b80226",
+    "code": "ceph osd crush set-tunable straw_calc_version <value>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush set-tunable"
+    ]
+  },
+  {
+    "entity_id": "8d63a4c7bd27a16a",
+    "code": "ceph osd crush show-tunables",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush show-tunables"
+    ]
+  },
+  {
+    "entity_id": "ecfada839b5c8e99",
+    "code": "ceph osd crush tree",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush tree"
+    ]
+  },
+  {
+    "entity_id": "0d4e37fa51e00d0a",
+    "code": "ceph osd crush tunables legacy|argonaut|bobtail|firefly|hammer|optimal|default",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush tunables"
+    ]
+  },
+  {
+    "entity_id": "7c9319b5570c8ed4",
+    "code": "ceph osd crush unlink <name> {<ancestor>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush unlink"
+    ]
+  },
+  {
+    "entity_id": "027554d337dfcc0b",
+    "code": "ceph osd df {plain|tree}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd df"
+    ]
+  },
+  {
+    "entity_id": "ce25d5fd64baf4a0",
+    "code": "ceph osd deep-scrub <who>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd deep-scrub"
+    ]
+  },
+  {
+    "entity_id": "b357c8f9a32a30bc",
+    "code": "ceph osd down <ids> [<ids>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd down"
+    ]
+  },
+  {
+    "entity_id": "cd55d0e2a170a90c",
+    "code": "ceph osd dump {<int[0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd dump"
+    ]
+  },
+  {
+    "entity_id": "59039097e04db998",
+    "code": "ceph osd erasure-code-profile get <name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile get"
+    ]
+  },
+  {
+    "entity_id": "795a86c78740b822",
+    "code": "ceph osd erasure-code-profile ls",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile ls"
+    ]
+  },
+  {
+    "entity_id": "e11cafdfffa7564b",
+    "code": "ceph osd erasure-code-profile rm <name>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile rm"
+    ]
+  },
+  {
+    "entity_id": "b61fb793583cb606",
+    "code": "ceph osd erasure-code-profile set <name> {<profile> [<profile>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd erasure-code-profile set"
+    ]
+  },
+  {
+    "entity_id": "71b37ca332a929e3",
+    "code": "ceph osd find <int[0-]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd find"
+    ]
+  },
+  {
+    "entity_id": "df3a7be36bb992df",
+    "code": "ceph osd getcrushmap {<int[0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getcrushmap"
+    ]
+  },
+  {
+    "entity_id": "4adff2c82d2c7f1c",
+    "code": "ceph osd getmap {<int[0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getmap"
+    ]
+  },
+  {
+    "entity_id": "fd6bdde2a85824e7",
+    "code": "ceph osd getmaxosd",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getmaxosd"
+    ]
+  },
+  {
+    "entity_id": "9c7439f1dde9ec0d",
+    "code": "ceph osd in <ids> [<ids>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd in"
+    ]
+  },
+  {
+    "entity_id": "78d1884468d64296",
+    "code": "ceph osd lost <int[0-]> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd lost"
+    ]
+  },
+  {
+    "entity_id": "3a6a0c7cd5b6d1fa",
+    "code": "ceph osd ls {<int[0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd ls"
+    ]
+  },
+  {
+    "entity_id": "138c4f101383dded",
+    "code": "ceph osd lspools {<int>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd lspools"
+    ]
+  },
+  {
+    "entity_id": "06b38d4478aa689b",
+    "code": "ceph osd map <poolname> <objectname>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd map"
+    ]
+  },
+  {
+    "entity_id": "60ece08d0250108c",
+    "code": "ceph osd metadata {int[0-]} (default all)",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd metadata"
+    ]
+  },
+  {
+    "entity_id": "395de9f950a0ac72",
+    "code": "ceph osd out <ids> [<ids>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd out"
+    ]
+  },
+  {
+    "entity_id": "4ba00e42452d1c52",
+    "code": "ceph osd ok-to-stop <id> [<ids>...] [--max <num>]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd ok-to-stop"
+    ]
+  },
+  {
+    "entity_id": "9ee40b0db9a54377",
+    "code": "ceph osd pause",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pause"
+    ]
+  },
+  {
+    "entity_id": "96a1dc34547b6313",
+    "code": "ceph osd perf",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd perf"
+    ]
+  },
+  {
+    "entity_id": "7cb3ee7e44f0693a",
+    "code": "ceph osd pg-temp <pgid> {<id> [<id>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pg-temp"
+    ]
+  },
+  {
+    "entity_id": "e60b8830ddc36109",
+    "code": "ceph osd force-create-pg <pgid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd force-create-pg"
+    ]
+  },
+  {
+    "entity_id": "c42770f57ad7be50",
+    "code": "ceph osd pool create <poolname> {<int[0-]>} {<int[0-]>} {replicated|erasure}\n{<erasure_code_profile>} {<rule>} {<int>} {--autoscale-mode=<on,off,warn>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool create"
+    ]
+  },
+  {
+    "entity_id": "1de2bf2a1af6ee23",
+    "code": "ceph osd pool delete <poolname> {<poolname>} {--yes-i-really-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool delete"
+    ]
+  },
+  {
+    "entity_id": "db3d420dbe2cdb8a",
+    "code": "ceph osd pool get <poolname> size|min_size|pg_num|pgp_num|crush_rule|write_fadvise_dontneed",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool get"
+    ]
+  },
+  {
+    "entity_id": "4074e9ddca5805f0",
+    "code": "ceph osd pool get <poolname> hit_set_type|hit_set_period|hit_set_count|hit_set_fpp|\ntarget_max_objects|target_max_bytes|cache_target_dirty_ratio|cache_target_dirty_high_ratio|\ncache_target_full_ratio|cache_min_flush_age|cache_min_evict_age|\nmin_read_recency_for_promote|hit_set_grade_decay_rate|hit_set_search_last_n",
+    "language": "text",
+    "context": "Only for tiered pools",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool get"
+    ]
+  },
+  {
+    "entity_id": "1cbb2b4e8913b5ce",
+    "code": "ceph osd pool get <poolname> erasure_code_profile",
+    "language": "text",
+    "context": "Only for erasure coded pools",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool get"
+    ]
+  },
+  {
+    "entity_id": "eba98e1d1671bc2b",
+    "code": "ceph osd pool get <poolname> all",
+    "language": "text",
+    "context": "Use ``all`` to get all pool parameters that apply to the pool's type",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool get"
+    ]
+  },
+  {
+    "entity_id": "8ebb11382eaabed2",
+    "code": "ceph osd pool get-quota <poolname>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool get-quota"
+    ]
+  },
+  {
+    "entity_id": "6e7529541ee213d3",
+    "code": "ceph osd pool ls {detail}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool ls"
+    ]
+  },
+  {
+    "entity_id": "5197a511cf09c163",
+    "code": "ceph osd pool mksnap <poolname> <snap>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool mksnap"
+    ]
+  },
+  {
+    "entity_id": "d7e768e9aa7ad8d9",
+    "code": "ceph osd pool rename <poolname> <poolname>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool rename"
+    ]
+  },
+  {
+    "entity_id": "ffeb5ffe287e9639",
+    "code": "ceph osd pool rmsnap <poolname> <snap>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool rmsnap"
+    ]
+  },
+  {
+    "entity_id": "4e857ab9fed4ea05",
+    "code": "ceph osd pool set <poolname> size|min_size|pg_num|\npgp_num|crush_rule|hashpspool|nodelete|nopgchange|nosizechange|\nhit_set_type|hit_set_period|hit_set_count|hit_set_fpp|debug_fake_ec_pool|\ntarget_max_bytes|target_max_objects|cache_target_dirty_ratio|\ncache_target_dirty_high_ratio|\ncache_target_full_ratio|cache_min_flush_age|cache_min_evict_age|\nmin_read_recency_for_promote|write_fadvise_dontneed|hit_set_grade_decay_rate|\nhit_set_search_last_n\n<val> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set"
+    ]
+  },
+  {
+    "entity_id": "87e8e4435a1a1b74",
+    "code": "ceph osd pool set-quota <poolname> max_objects|max_bytes <val>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set-quota"
+    ]
+  },
+  {
+    "entity_id": "bae76666ee6e81e2",
+    "code": "ceph osd pool stats {<name>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool stats"
+    ]
+  },
+  {
+    "entity_id": "607bf37144f4dfff",
+    "code": "ceph osd pool application disable <pool-name> <app> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool application"
+    ]
+  },
+  {
+    "entity_id": "b192a980e29c7be6",
+    "code": "ceph osd pool application enable <pool-name> <app> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool application"
+    ]
+  },
+  {
+    "entity_id": "878f6514e3704056",
+    "code": "ceph osd pool application get {<pool-name>} {<app>} {<key>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool application"
+    ]
+  },
+  {
+    "entity_id": "64c93ccfc7a02bcf",
+    "code": "ceph osd pool application rm <pool-name> <app> <key>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool application"
+    ]
+  },
+  {
+    "entity_id": "f17e9843df28a7d5",
+    "code": "ceph osd pool application set <pool-name> <app> <key> <value>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool application"
+    ]
+  },
+  {
+    "entity_id": "81bec150e1ef057d",
+    "code": "ceph osd primary-affinity <osdname (id|osd.id)> <float[0.0-1.0]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd primary-affinity"
+    ]
+  },
+  {
+    "entity_id": "92b737e35ae88453",
+    "code": "ceph osd primary-temp <pgid> <id>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd primary-temp"
+    ]
+  },
+  {
+    "entity_id": "55fe50965735da5c",
+    "code": "ceph osd repair <who>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd repair"
+    ]
+  },
+  {
+    "entity_id": "140e024149611a92",
+    "code": "osd reweight <int[0-]> <float[0.0-1.0]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9c154218dd8b1f66",
+    "code": "ceph osd reweight-by-pg {<int[100-]>} {<poolname> [<poolname...]}\n{--no-increasing}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd reweight-by-pg"
+    ]
+  },
+  {
+    "entity_id": "f52d14f82a782df1",
+    "code": "ceph osd reweight-by-utilization {<int[100-]> {<float[0.0-]> {<int[0-]>}}}\n{--no-increasing}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd reweight-by-utilization"
+    ]
+  },
+  {
+    "entity_id": "1f9ea61be5a9d277",
+    "code": "ceph osd rm <ids> [<ids>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd rm"
+    ]
+  },
+  {
+    "entity_id": "159d1a7ffaff247a",
+    "code": "ceph osd destroy <id> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd destroy"
+    ]
+  },
+  {
+    "entity_id": "d455576f086764d9",
+    "code": "ceph osd purge <id> {--yes-i-really-mean-it}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd purge"
+    ]
+  },
+  {
+    "entity_id": "9e35556453795d78",
+    "code": "ceph osd safe-to-destroy <id> [<ids>...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd safe-to-destroy"
+    ]
+  },
+  {
+    "entity_id": "15a14f6a30496994",
+    "code": "ceph osd scrub <who>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd scrub"
+    ]
+  },
+  {
+    "entity_id": "c4a29251d66526b1",
+    "code": "ceph osd set pause|noup|nodown|noout|noin|nobackfill|\nnorebalance|norecover|noscrub|nodeep-scrub|notieragent",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set pause"
+    ]
+  },
+  {
+    "entity_id": "2019f21033e7e46a",
+    "code": "ceph osd setcrushmap",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd setcrushmap"
+    ]
+  },
+  {
+    "entity_id": "6e1b7f7b001d6b71",
+    "code": "ceph osd setmaxosd <int[0-]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd setmaxosd"
+    ]
+  },
+  {
+    "entity_id": "79ac255aa37d2165",
+    "code": "ceph osd set-require-min-compat-client <version>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set-require-min-compat-client"
+    ]
+  },
+  {
+    "entity_id": "5951868b52bbae63",
+    "code": "ceph osd stat",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd stat"
+    ]
+  },
+  {
+    "entity_id": "4dcf855d53d2e064",
+    "code": "ceph osd tier add <poolname> <poolname> {--force-nonempty}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tier add"
+    ]
+  },
+  {
+    "entity_id": "3e2dc4379c0fab8b",
+    "code": "ceph osd tier add-cache <poolname> <poolname> <int[0-]>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tier add-cache"
+    ]
+  },
+  {
+    "entity_id": "c0566bf4a333e147",
+    "code": "ceph osd tier cache-mode <poolname> writeback|proxy|readproxy|readonly|none",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tier cache-mode"
+    ]
+  },
+  {
+    "entity_id": "0bf2c42cb6c74eba",
+    "code": "ceph osd tier remove <poolname> <poolname>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tier remove"
+    ]
+  },
+  {
+    "entity_id": "7a9ddbf33e66d60b",
+    "code": "ceph osd tier remove-overlay <poolname>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tier remove-overlay"
+    ]
+  },
+  {
+    "entity_id": "9ac3bc3fa2bcdc51",
+    "code": "ceph osd tier set-overlay <poolname> <poolname>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tier set-overlay"
+    ]
+  },
+  {
+    "entity_id": "e43314fce39cdde5",
+    "code": "ceph osd tree {<int[0-]>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tree"
+    ]
+  },
+  {
+    "entity_id": "38e362d462f7f66e",
+    "code": "ceph osd unpause",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unpause"
+    ]
+  },
+  {
+    "entity_id": "98777905a2e38fcf",
+    "code": "ceph osd unset pause|noup|nodown|noout|noin|nobackfill|\nnorebalance|norecover|noscrub|nodeep-scrub|notieragent",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unset pause"
+    ]
+  },
+  {
+    "entity_id": "64485b833da2531d",
+    "code": "ceph pg debug unfound_objects_exist|degraded_pgs_exist",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg debug unfound_objects_exist"
+    ]
+  },
+  {
+    "entity_id": "3a59ec4519b99022",
+    "code": "ceph pg deep-scrub <pgid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg deep-scrub"
+    ]
+  },
+  {
+    "entity_id": "17d3993d7f254a15",
+    "code": "ceph pg dump {all|summary|sum|delta|pools|osds|pgs|pgs_brief} [{all|summary|sum|delta|pools|osds|pgs|pgs_brief...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg dump"
+    ]
+  },
+  {
+    "entity_id": "6e616fa987253673",
+    "code": "ceph pg dump_json {all|summary|sum|delta|pools|osds|pgs|pgs_brief} [{all|summary|sum|delta|pools|osds|pgs|pgs_brief...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg dump_json"
+    ]
+  },
+  {
+    "entity_id": "7efdb7a1bc5c77a1",
+    "code": "ceph pg dump_pools_json",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg dump_pools_json"
+    ]
+  },
+  {
+    "entity_id": "c7c3d2d079658267",
+    "code": "ceph pg dump_stuck {inactive|unclean|stale|undersized|degraded [inactive|unclean|stale|undersized|degraded...]}\n{<int>}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg dump_stuck"
+    ]
+  },
+  {
+    "entity_id": "c6699fb36f54fc21",
+    "code": "ceph pg getmap",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg getmap"
+    ]
+  },
+  {
+    "entity_id": "a04182003a38e044",
+    "code": "ceph pg ls {<int>} {<pg-state> [<pg-state>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg ls"
+    ]
+  },
+  {
+    "entity_id": "265a48a796f85164",
+    "code": "ceph pg ls-by-osd <osdname (id|osd.id)> {<int>}\n{<pg-state> [<pg-state>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg ls-by-osd"
+    ]
+  },
+  {
+    "entity_id": "2409d4fd28ea3321",
+    "code": "ceph pg ls-by-pool <poolstr> {<int>} {<pg-state> [<pg-state>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg ls-by-pool"
+    ]
+  },
+  {
+    "entity_id": "dc599565a7378e10",
+    "code": "ceph pg ls-by-primary <osdname (id|osd.id)> {<int>}\n{<pg-state> [<pg-state>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg ls-by-primary"
+    ]
+  },
+  {
+    "entity_id": "8c31fb04e691ac13",
+    "code": "ceph pg map <pgid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg map"
+    ]
+  },
+  {
+    "entity_id": "1210b07403007e54",
+    "code": "ceph pg repair <pgid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg repair"
+    ]
+  },
+  {
+    "entity_id": "3bca51a1ee0117ee",
+    "code": "ceph pg scrub <pgid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg scrub"
+    ]
+  },
+  {
+    "entity_id": "b3541d79536afaa2",
+    "code": "ceph pg stat",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg stat"
+    ]
+  },
+  {
+    "entity_id": "eb305d1c03638358",
+    "code": "ceph tell mon.<id> quorum enter|exit",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mon"
+    ]
+  },
+  {
+    "entity_id": "5ec64e492c22d703",
+    "code": "ceph quorum_status",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph quorum_status"
+    ]
+  },
+  {
+    "entity_id": "9fcadd4d748be1d9",
+    "code": "ceph report {<tags> [<tags>...]}",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph report"
+    ]
+  },
+  {
+    "entity_id": "1ceb0b627cf4daf2",
+    "code": "ceph status",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "dccc0b22bb16b8f8",
+    "code": "ceph tell <name (type.id)> <command> [options...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell"
+    ]
+  },
+  {
+    "entity_id": "9b997a3dcb1f4bd6",
+    "code": "ceph tell <name (type.id)> help",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell"
+    ]
+  },
+  {
+    "entity_id": "ab944a1a63c3c746",
+    "code": "ceph version",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph version"
+    ]
+  },
+  {
+    "entity_id": "ce600d8e1285713b",
+    "code": "IMAGESPEC RBDOPTS",
+    "language": "text",
+    "context": "The configuration file format is",
+    "source_file": "man/8/rbdmap.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7852d8dc1eaa9132",
+    "code": "PARAM1=VAL1,PARAM2=VAL2,...,PARAMN=VALN",
+    "language": "ini",
+    "context": "` defaults to \"rbd\". ``RBDOPTS`` is an optional list of\nparameters to be passed to the underlying ``rbd map`` command. These parameters\nand their values should be specified as a comma-separated string",
+    "source_file": "man/8/rbdmap.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ac3ab5a0d580646b",
+    "code": "rbd map POOLNAME/IMAGENAME --PARAM1 VAL1 --PARAM2 VAL2",
+    "language": "text",
+    "context": "This will cause the script to issue an ``rbd map`` command like the following",
+    "source_file": "man/8/rbdmap.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd map POOLNAME"
+    ]
+  },
+  {
+    "entity_id": "c32795a04d8267b3",
+    "code": "foopool/bar1    id=admin,keyring=/etc/ceph/ceph.client.admin.keyring\nfoopool/bar2    id=admin,keyring=/etc/ceph/ceph.client.admin.keyring\nfoopool/bar3    id=admin,keyring=/etc/ceph/ceph.client.admin.keyring,options='lock_on_read,queue_depth=1024'",
+    "language": "text",
+    "context": "Example ``/etc/ceph/rbdmap`` for three RBD images called \"bar1\", \"bar2\" and \"bar3\", \nwhich are in pool \"foopool\"",
+    "source_file": "man/8/rbdmap.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cf0497e192628fbd",
+    "code": "rbd map foopool/bar1 --id admin --keyring /etc/ceph/ceph.client.admin.keyring\nrbd map foopool/bar2 --id admin --keyring /etc/ceph/ceph.client.admin.keyring\nrbd map foopool/bar2 --id admin --keyring /etc/ceph/ceph.client.admin.keyring --options lock_on_read,queue_depth=1024",
+    "language": "text",
+    "context": "Each line in the file contains two strings: the image spec and the options to\nbe passed to ``rbd map``. These two lines get transformed into the following\ncommands",
+    "source_file": "man/8/rbdmap.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd map foopool"
+    ]
+  },
+  {
+    "entity_id": "7364e293777d9f15",
+    "code": "/dev/rbd/foopool/bar1 /mnt/bar1 xfs noauto 0 0\n/dev/rbd/foopool/bar2 /mnt/bar2 xfs noauto 0 0\n/dev/rbd/foopool/bar3 /mnt/bar3 xfs noauto 0 0",
+    "language": "text",
+    "context": "If the images had XFS file systems on them, the corresponding ``/etc/fstab``\nentries might look like this",
+    "source_file": "man/8/rbdmap.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c713c78761ecc8b",
+    "code": "systemctl enable rbdmap.service",
+    "language": "text",
+    "context": "After creating the images and populating the ``/etc/ceph/rbdmap`` file, making\nthe images get automatically mapped and mounted at boot is just a matter of\nenabling that unit",
+    "source_file": "man/8/rbdmap.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "224419aa4d86f37e",
+    "code": "<ceph-volume subcommand>-<extra metadata>",
+    "language": "text",
+    "context": "Examples\n========\nIts input is the ``systemd instance name`` (represented by ``%i`` in a systemd\nunit), and it should be in the following format",
+    "source_file": "man/8/ceph-volume-systemd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fb0654c28383c869",
+    "code": "/usr/bin/ceph-volume-systemd lvm-0-8715BEB4-15C5-49DE-BA6F-401086EC7B41",
+    "language": "text",
+    "context": "In the case of ``lvm`` a call could look like",
+    "source_file": "man/8/ceph-volume-systemd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8575eb90df3cb8af",
+    "code": "ceph-volume lvm trigger  0-8715BEB4-15C5-49DE-BA6F-401086EC7B41",
+    "language": "text",
+    "context": "Which in turn will call ``ceph-volume`` in the following way",
+    "source_file": "man/8/ceph-volume-systemd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "45d4ee10fb922f7a",
+    "code": "ceph auth ls",
+    "language": "text",
+    "context": "To list all users in the cluster",
+    "source_file": "man/8/ceph-create-keys.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth ls"
+    ]
+  },
+  {
+    "entity_id": "1e345f5c9d3f8826",
+    "code": "[cephfs-shell]\nprompt = CephFS:~/>>>\ncontinuation_prompt = >",
+    "language": "ini",
+    "context": "",
+    "source_file": "man/8/cephfs-shell.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6cc7376658edb101",
+    "code": "Latest version of the cmd2 module is required for running cephfs-shell.\nIf CephFS is installed through source, execute cephfs-shell in the build\ndirectory. It can also be executed as following using virtualenv:",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "man/8/cephfs-shell.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4a32f3e143c39544",
+    "code": "Apart from Ceph File System, CephFS Shell commands can also interact\ndirectly with the local file system. To achieve this, ``!`` (an\nexclamation point) must precede the CephFS Shell command.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "man/8/cephfs-shell.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2272219051c01a8",
+    "code": "$ rgw-orphan-list",
+    "language": "bash",
+    "context": "Launch the tool",
+    "source_file": "man/8/rgw-orphan-list.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8bdd71cd07e446e5",
+    "code": "mount.ceph name@07fe3187-00d9-42a3-814b-72a4d5e7d5be.fs_name=/ /mnt/mycephfs -o mon_addr=1.2.3.4",
+    "language": "text",
+    "context": "x host.\nIt serves to resolve monitor hostname(s) into IP addresses and read\nauthentication keys from disk; the Linux kernel client component does most of\nthe real work. To mount a Ceph file system use",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph name"
+    ]
+  },
+  {
+    "entity_id": "e3d059cfb21a9500",
+    "code": "mount -t ceph name@.fs_name=/ /mnt/mycephfs -o mon_addr=1.2.3.4",
+    "language": "text",
+    "context": "Mount helper can fill in the cluster FSID by reading the ceph configuration file.\nIts recommended to call the mount helper via mount(8) as per",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph name"
+    ]
+  },
+  {
+    "entity_id": "8e559b74f7549cb5",
+    "code": "crush_location=rack:myrack|datacenter:mydc|region:myregion",
+    "language": "ini",
+    "context": "tacenter or region with default\n    bucket types) and the value is the bucket name. For example, to indicate\n    that the client is local to rack \"myrack\", data center \"mydc\" and region\n    \"myregion\"",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cc6d496e61b8bdc4",
+    "code": "crush_location=rack:myrack1|rack:myrack2|datacenter:mydc",
+    "language": "ini",
+    "context": "e root of the hierarchy but rather a set of nodes that\n    are matched independently.  \"Multipath\" locations are supported, so it is\n    possible to indicate locality for multiple parallel hierarchies",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9a49b2645bda4014",
+    "code": "mount -t ceph fs_user@.mycephfs2=/ /mnt/mycephfs",
+    "language": "text",
+    "context": "Mount the full file system",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "dd162a3c31c18cbf",
+    "code": "mount.ceph fs_user@.mycephfs2=/some/directory/in/cephfs /mnt/mycephfs",
+    "language": "text",
+    "context": "Mount only part of the namespace/file system",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "1d80e13897f7a4d3",
+    "code": "mount.ceph fs_user@.mycephfs2=/ /mnt/mycephfs -o mon_addr=192.168.0.1",
+    "language": "text",
+    "context": "Pass the monitor host's IP address, optionally",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "6b1ba4ac5472ae23",
+    "code": "mount.ceph fs_user@.mycephfs2=/ /mnt/mycephfs -o mon_addr=192.168.0.1:7000",
+    "language": "text",
+    "context": "Pass the port along with IP address if it's running on a non-standard port",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "cc2025670ecfcf55",
+    "code": "mount.ceph fs_user@.mycephfs2=/ /mnt/mycephfs -o mon_addr=192.168.0.1/192.168.0.2/192.168.0.3",
+    "language": "text",
+    "context": "If there are multiple monitors, pass each address separated by a `/`",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "bfbc2674b4b9b904",
+    "code": "mount.ceph fs_user@.mycephfs2=/ /mnt/mycephfs -o secret=AQATSKdNGBnwLhAAnNDKnH65FmVKpXZJVasUeQ==",
+    "language": "text",
+    "context": "Pass secret key for CephX user optionally",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "1e41f3787bcebcb3",
+    "code": "mount.ceph fs_user@.mycephfs2=/ /mnt/mycephfs -o secretfile=/etc/ceph/fs_username.secret",
+    "language": "text",
+    "context": "Pass file containing secret key to avoid leaving secret key in shell's command\nhistory",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "8b89650d5437ee30",
+    "code": "mount.ceph fs_user@.mycephfs2=/ /mnt/mycephfs",
+    "language": "text",
+    "context": "If authentication is disabled on Ceph cluster, omit the credential related option",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs_user"
+    ]
+  },
+  {
+    "entity_id": "6cab8bb5c886a2fe",
+    "code": "mount -t ceph 192.168.0.1:/ /mnt/mycephfs",
+    "language": "text",
+    "context": "To mount using the old syntax",
+    "source_file": "man/8/mount.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph 192"
+    ]
+  },
+  {
+    "entity_id": "b6114aa77436724f",
+    "code": "http://www.ssrc.ucsc.edu/Papers/weil-sc06.pdf",
+    "language": "text",
+    "context": "ond to Placement\nGroups) across a heterogeneous, hierarchically structured device map.\nThe algorithm was originally described in detail in the following paper\n(although it has evolved some since then)",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "670a0a1f1021db4b",
+    "code": "CEPH_ARGS=\"--debug-crush 0\" crushtool ...",
+    "language": "ini",
+    "context": "ept generic options\nsuch as **--debug-crush** from the command line. They can, however, be\nprovided via the CEPH_ARGS environment variable. For instance, to\nsilence all output from the CRUSH subsystem",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fb0700f5f9ae08a8",
+    "code": "rule 1 (metadata) num_rep 5 result size == 5:\t1024/1024",
+    "language": "text",
+    "context": "Displays a summary of the distribution. For instance",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "58aaa6e9d2e302a7",
+    "code": "rule 1 (metadata) num_rep 10 result size == 8:\t4/1024\nrule 1 (metadata) num_rep 10 result size == 9:\t93/1024\nrule 1 (metadata) num_rep 10 result size == 10:\t927/1024",
+    "language": "text",
+    "context": "hem to **num_rep 5** replicas. When it fails to provide the\n   required mapping, presumably because the number of **tries** must\n   be increased, a breakdown of the failures is displayed. For instance",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "45a12ccf16f45ce1",
+    "code": "CRUSH rule 1 x 24 [11,6]",
+    "language": "text",
+    "context": "Displays the mapping of each value in the range ``[--min-x,--max-x]``.\n   For instance",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "061b3fce7b3914a8",
+    "code": "bad mapping rule 1 x 781 num_rep 7 result [8,10,2,11,6,9]",
+    "language": "text",
+    "context": "Displays which value failed to be mapped to the required number of\n   devices. For instance",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c5ea9256ee32e10b",
+    "code": "device 0: stored : 951      expected : 853.333\ndevice 1: stored : 963      expected : 853.333\n...",
+    "language": "text",
+    "context": "Displays the expected and actual utilization for each device, for\n   each number of replicas. For instance",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4fb00d7d0d72c9b2",
+    "code": "0:     95224\n1:      3745\n2:      2225\n..",
+    "language": "text",
+    "context": "Displays how many attempts were needed to find a device mapping.\n   For instance",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a6ceecaa586b9e4c",
+    "code": "metadata-absolute_weights.csv\nmetadata-device_utilization.csv\n...",
+    "language": "text",
+    "context": "ning information\n   documented by **--help-output**. The files are named after the rule\n   used when collecting the statistics. For instance, if the rule\n   : 'metadata' is used, the CSV files will be",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0f32c5c4f1086539",
+    "code": "metadata-absolute_weights.csv\nDevice ID, Absolute Weight\n0,1\n...",
+    "language": "text",
+    "context": "The first line of the file shortly explains the column layout. For\n   instance",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9925d33c979922be",
+    "code": "FOO-metadata-absolute_weights.csv\nFOO-metadata-device_utilization.csv\n...",
+    "language": "text",
+    "context": "Prepend **NAME** to the file names generated when **--output-csv**\n   is specified. For instance **--output-name FOO** will create\n   files",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f4683fc91fda718b",
+    "code": "$ crushtool -i mymap --test --show-bad-mappings\nbad mapping rule 1 x 781 num_rep 7 result [8,10,2,11,6,9]",
+    "language": "bash",
+    "context": "The **--set-...** options can be used to modify the tunables of the\ninput crush map. The input crush map is modified in\nmemory. For example",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3181b0c2cae00f49",
+    "code": "bucket ( uniform | list | tree | straw | straw2 ) size",
+    "language": "text",
+    "context": "Each layer consists of",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "16c5dbc975bb168d",
+    "code": "$ crushtool -o crushmap --build --num_osds 320 \\\n       node straw 4 \\\n       rack straw 20 \\\n       row straw 2 \\\n       root straw 0\n# id\tweight\ttype name\treweight\n-87\t320\troot root\n-85\t160\t\trow row0\n-81\t80\t\t\track rack0\n-1\t4\t\t\t\tnode node0\n0\t1\t\t\t\t\tosd.0\t1\n1\t1\t\t\t\t\tosd.1\t1\n2\t1\t\t\t\t\tosd.2\t1\n3\t1\t\t\t\t\tosd.3\t1\n-2\t4\t\t\t\tnode node1\n4\t1\t\t\t\t\tosd.4\t1\n5\t1\t\t\t\t\tosd.5\t1\n...",
+    "language": "bash",
+    "context": "To reflect our hierarchy of devices, nodes, racks and rows, we would execute\nthe following",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a969d90bd826c03e",
+    "code": "# decompile\ncrushtool -d crushmap -o map.txt",
+    "language": "text",
+    "context": "CRUSH rules are created so the generated crushmap can be\ntested. They are the same rules as the ones created by default when\ncreating a new Ceph cluster. They can be further edited with",
+    "source_file": "man/8/crushtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0d829c4b95b5b937",
+    "code": "$ rgw-gap-list -p default.rgw.buckets.data -t /home/super_admin/temp_files",
+    "language": "bash",
+    "context": "Launch the tool",
+    "source_file": "man/8/rgw-gap-list.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "644c30c7a43c8b12",
+    "code": "crushdiff export cm.txt",
+    "language": "text",
+    "context": "Get the current crushmap",
+    "source_file": "man/8/crushdiff.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c630cbf437537a08",
+    "code": "$EDITOR cm.txt",
+    "language": "text",
+    "context": "Edit the map",
+    "source_file": "man/8/crushdiff.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "414ded9c8337bbf5",
+    "code": "crushdiff compare cm.txt",
+    "language": "text",
+    "context": "Check the result",
+    "source_file": "man/8/crushdiff.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "541411c0630c6348",
+    "code": "4.3\t[0, 2, 1] -> [1, 4, 2]\n4.b\t[0, 1, 3] -> [2, 1, 3]\n4.c\t[4, 0, 1] -> [4, 1, 2]",
+    "language": "text",
+    "context": "When running with **--verbose** option the output will also contain\ndetailed information about the affected pgs, like below",
+    "source_file": "man/8/crushdiff.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "75deb3e2578c7da8",
+    "code": "crushdiff import cm.txt",
+    "language": "text",
+    "context": "If the result is satisfactory install the updated map",
+    "source_file": "man/8/crushdiff.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "75659daf270573fe",
+    "code": "rbd-replay-many host-0 host-1 --original-image=image -- -c ceph.conf replay.bin",
+    "language": "text",
+    "context": "Typical usage",
+    "source_file": "man/8/rbd-replay-many.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eec1e80b74bba5f4",
+    "code": "ssh host-0 'rbd-replay' --map-image 'image=image-0' -c ceph.conf replay.bin\nssh host-1 'rbd-replay' --map-image 'image=image-1' -c ceph.conf replay.bin",
+    "language": "text",
+    "context": "This results in the following commands being executed",
+    "source_file": "man/8/rbd-replay-many.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "458f8cbbe54dd141",
+    "code": "$ radosgw-admin user create --display-name=\"johnny rotten\" --uid=johnny\n{ \"user_id\": \"johnny\",\n  \"rados_uid\": 0,\n  \"display_name\": \"johnny rotten\",\n  \"email\": \"\",\n  \"suspended\": 0,\n  \"subusers\": [],\n  \"keys\": [\n        { \"user\": \"johnny\",\n          \"access_key\": \"TCICW53D9BQ2VGC46I44\",\n          \"secret_key\": \"tfm9aHMI8X76L3UdgE+ZQaJag1vJQmE6HDb5Lbrz\"}],\n  \"swift_keys\": []}",
+    "language": "bash",
+    "context": "Generate a new user",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin user create --display-name"
+    ]
+  },
+  {
+    "entity_id": "0753a2f72ca56d3a",
+    "code": "$ radosgw-admin user rm --uid=johnny",
+    "language": "bash",
+    "context": "Remove a user",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin user rm --uid"
+    ]
+  },
+  {
+    "entity_id": "1a8a262fa3411b99",
+    "code": "$ radosgw-admin user rename --uid=johnny --new-uid=joe",
+    "language": "bash",
+    "context": "Rename a user",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin user rename --uid"
+    ]
+  },
+  {
+    "entity_id": "73fbfa5c805405a5",
+    "code": "$ radosgw-admin user rm --uid=johnny --purge-data",
+    "language": "bash",
+    "context": "$ radosgw-admin user rename --uid=johnny --new-uid=joe\n        \nRemove a user and all associated buckets with their contents",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin user rm --uid"
+    ]
+  },
+  {
+    "entity_id": "f3890da56a0fa443",
+    "code": "$ radosgw-admin bucket rm --bucket=foo",
+    "language": "bash",
+    "context": "Remove a bucket",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin bucket rm --bucket"
+    ]
+  },
+  {
+    "entity_id": "4c249f1e577a5763",
+    "code": "$ radosgw-admin bucket link --bucket=foo --bucket_id=<bucket id> --uid=johnny",
+    "language": "bash",
+    "context": "Link bucket to specified user",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin bucket link --bucket"
+    ]
+  },
+  {
+    "entity_id": "38ec9f192bdad04f",
+    "code": "$ radosgw-admin bucket unlink --bucket=foo --uid=johnny",
+    "language": "bash",
+    "context": "Unlink bucket from specified user",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin bucket unlink --bucket"
+    ]
+  },
+  {
+    "entity_id": "55775ac2cc635383",
+    "code": "$ radosgw-admin bucket link --bucket=foo --bucket-new-name=bar --uid=johnny",
+    "language": "bash",
+    "context": "Rename a bucket",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin bucket link --bucket"
+    ]
+  },
+  {
+    "entity_id": "bd66c8d6f27ac80a",
+    "code": "$ radosgw-admin bucket link --bucket=foo --uid='12345678$12345678'",
+    "language": "bash",
+    "context": "Move a bucket from the old global tenant space to a specified tenant",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin bucket link --bucket"
+    ]
+  },
+  {
+    "entity_id": "7afebe42c8610b2e",
+    "code": "$ radosgw-admin bucket chown --bucket=foo --uid='12345678$12345678'",
+    "language": "bash",
+    "context": "Link bucket to specified user and change object ACLs",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin bucket chown --bucket"
+    ]
+  },
+  {
+    "entity_id": "74fcdba9a45b5ad7",
+    "code": "$ radosgw-admin log show --bucket=foo --date=2012-04-01-01 --bucket-id=default.14193.1",
+    "language": "bash",
+    "context": "Show the logs of a bucket from April 1st, 2012",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin log show --bucket"
+    ]
+  },
+  {
+    "entity_id": "6c5619280da2ba44",
+    "code": "$ radosgw-admin usage show --uid=johnny \\\n                --start-date=2012-03-01 --end-date=2012-04-01",
+    "language": "bash",
+    "context": "Show usage information for user from March 1st to (but not including) April 1st, 2012",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin usage show --uid"
+    ]
+  },
+  {
+    "entity_id": "679ebf8ae4a7d980",
+    "code": "$ radosgw-admin usage show --show-log-entries=false",
+    "language": "bash",
+    "context": "Show only summary of usage information for all users",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin usage show --show-log-entries"
+    ]
+  },
+  {
+    "entity_id": "c66a76ea84182b65",
+    "code": "$ radosgw-admin usage trim --uid=johnny --end-date=2012-04-01",
+    "language": "bash",
+    "context": "Trim usage information for user until March 1st, 2012",
+    "source_file": "man/8/radosgw-admin.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin usage trim --uid"
+    ]
+  },
+  {
+    "entity_id": "4ae469a89b733213",
+    "code": "$ rgw-restore-bucket-index -b summer-2023-photos",
+    "language": "bash",
+    "context": "Attempt to restore the index for a bucket named *summer-2023-photos*",
+    "source_file": "man/8/rgw-restore-bucket-index.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1daa409f9ae38ad8",
+    "code": "ceph-conf -c foo.conf  --name osd.0 --lookup \"osd data\"",
+    "language": "text",
+    "context": "To find out what value osd 0 will use for the \"osd data\" option",
+    "source_file": "man/8/ceph-conf.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf1695b164c6e5b6",
+    "code": "ceph-conf -c foo.conf  --name mds.a \"log file\"",
+    "language": "text",
+    "context": "To find out what value will mds a use for the \"log file\" option",
+    "source_file": "man/8/ceph-conf.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2a6b07d872867cb5",
+    "code": "ceph-conf -c foo.conf -l osd",
+    "language": "text",
+    "context": "To list all sections that begin with \"osd\"",
+    "source_file": "man/8/ceph-conf.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13c1cbdafddf0c21",
+    "code": "ceph-conf -c foo.conf -L",
+    "language": "text",
+    "context": "To list all sections",
+    "source_file": "man/8/ceph-conf.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9af83c0e3a3dc0e5",
+    "code": "ceph-conf --name client.0 -r -l keyring",
+    "language": "text",
+    "context": "To print the path of the \"keyring\" used by \"client.0\"",
+    "source_file": "man/8/ceph-conf.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dd3430a75d46c14b",
+    "code": "fusermount -u mountpoint",
+    "language": "text",
+    "context": "The file system can be unmounted with",
+    "source_file": "man/8/ceph-fuse.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aca805a250bce5ff",
+    "code": "crush_location=rack:myrack|datacenter:mydc|region:myregion",
+    "language": "ini",
+    "context": "k, datacenter or\n  region with default bucket types) and the value is the bucket name.  For\n  example, to indicate that the client is local to rack \"myrack\", data center\n  \"mydc\" and region \"myregion\"",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "033ea82b40cb6647",
+    "code": "crush_location=rack:myrack1|rack:myrack2|datacenter:mydc",
+    "language": "ini",
+    "context": "ed independently, owning to the fact that bucket names are unique\n  within a CRUSH map.  \"Multipath\" locations are supported, so it is possible\n  to indicate locality for multiple parallel hierarchies",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ad29806c51dbc060",
+    "code": "rbd create mypool/myimage --size 102400",
+    "language": "text",
+    "context": "To create a new rbd image that is 100 GB",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd create mypool"
+    ]
+  },
+  {
+    "entity_id": "a19f88c3bdaf10a4",
+    "code": "rbd create mypool/myimage --size 102400 --object-size 8M",
+    "language": "text",
+    "context": "To use a non-default object size (8 MB)",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd create mypool"
+    ]
+  },
+  {
+    "entity_id": "fb4eec58bf6800c0",
+    "code": "rbd rm mypool/myimage",
+    "language": "text",
+    "context": "To delete an rbd image (be careful!)",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd rm mypool"
+    ]
+  },
+  {
+    "entity_id": "5e0dc5893f460f20",
+    "code": "rbd snap create mypool/myimage@mysnap",
+    "language": "text",
+    "context": "To create a new snapshot",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd snap create mypool"
+    ]
+  },
+  {
+    "entity_id": "465df2bd475859e4",
+    "code": "rbd clone mypool/myimage@mysnap otherpool/cloneimage",
+    "language": "text",
+    "context": "To create a copy-on-write clone of a protected snapshot",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd clone mypool"
+    ]
+  },
+  {
+    "entity_id": "e68c791f67ef875d",
+    "code": "rbd children mypool/myimage@mysnap",
+    "language": "text",
+    "context": "To see which clones of a snapshot exist",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd children mypool"
+    ]
+  },
+  {
+    "entity_id": "bb2338033f43f5f2",
+    "code": "rbd snap rm mypool/myimage@mysnap",
+    "language": "text",
+    "context": "To delete a snapshot",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd snap rm mypool"
+    ]
+  },
+  {
+    "entity_id": "908b3e4ef05b05c6",
+    "code": "rbd device map mypool/myimage --id admin --keyfile secretfile",
+    "language": "text",
+    "context": "To map an image via the kernel with cephx enabled",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd device map mypool"
+    ]
+  },
+  {
+    "entity_id": "ed1fc8db263ee627",
+    "code": "rbd device map mypool/myimage --cluster cluster-name",
+    "language": "text",
+    "context": "To map an image via the kernel with different cluster name other than default *ceph*",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd device map mypool"
+    ]
+  },
+  {
+    "entity_id": "e98c811b0766de51",
+    "code": "rbd device unmap /dev/rbd0",
+    "language": "text",
+    "context": "To unmap an image",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd device unmap"
+    ]
+  },
+  {
+    "entity_id": "939a151375a0ca91",
+    "code": "rbd import --image-format 2 image mypool/parent\nrbd snap create mypool/parent@snap\nrbd snap protect mypool/parent@snap\nrbd clone mypool/parent@snap otherpool/child",
+    "language": "text",
+    "context": "To create an image and a clone from it",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd clone mypool",
+      "rbd import --image-format 2",
+      "rbd snap create mypool",
+      "rbd snap protect mypool"
+    ]
+  },
+  {
+    "entity_id": "cfc1226b14a54617",
+    "code": "rbd create mypool/myimage --size 102400 --stripe-unit 65536B --stripe-count 16",
+    "language": "text",
+    "context": "To create an image with a smaller stripe-unit (to better distribute small writes in some workloads)",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd create mypool"
+    ]
+  },
+  {
+    "entity_id": "a3262e506958ed89",
+    "code": "rbd export mypool/myimage@snap /tmp/img\nrbd import --image-format 2 /tmp/img mypool/myimage2",
+    "language": "text",
+    "context": "To change an image from one image format to another, export it and then\nimport it as the desired image format",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd export mypool",
+      "rbd import --image-format 2"
+    ]
+  },
+  {
+    "entity_id": "bf19793a972d169e",
+    "code": "rbd lock add mypool/myimage mylockid",
+    "language": "text",
+    "context": "To lock an image for exclusive use",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd lock add mypool"
+    ]
+  },
+  {
+    "entity_id": "08bc0b553792415e",
+    "code": "rbd lock remove mypool/myimage mylockid client.2485",
+    "language": "text",
+    "context": "To release a lock",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd lock remove mypool"
+    ]
+  },
+  {
+    "entity_id": "d5e88216acbaf65c",
+    "code": "rbd trash ls mypool",
+    "language": "text",
+    "context": "To list images from trash",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd trash ls mypool"
+    ]
+  },
+  {
+    "entity_id": "8c7591cd929fff4e",
+    "code": "rbd trash mv mypool/myimage --expires-at \"tomorrow\"",
+    "language": "text",
+    "context": "To defer delete an image (use *--expires-at* to set expiration time, default is now)",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd trash mv mypool"
+    ]
+  },
+  {
+    "entity_id": "7f06f8ba79c18c64",
+    "code": "rbd trash rm mypool/myimage-id",
+    "language": "text",
+    "context": "To delete an image from trash (be careful!)",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd trash rm mypool"
+    ]
+  },
+  {
+    "entity_id": "5540ecc5535f8317",
+    "code": "rbd trash rm mypool/myimage-id  --force",
+    "language": "text",
+    "context": "To force delete an image from trash (be careful!)",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd trash rm mypool"
+    ]
+  },
+  {
+    "entity_id": "6ae351460cb35ef3",
+    "code": "rbd trash restore mypool/myimage-id",
+    "language": "text",
+    "context": "To restore an image from trash",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd trash restore mypool"
+    ]
+  },
+  {
+    "entity_id": "2075f877fbdaedfd",
+    "code": "rbd trash restore mypool/myimage-id --image mynewimage",
+    "language": "text",
+    "context": "To restore an image from trash and rename it",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd trash restore mypool"
+    ]
+  },
+  {
+    "entity_id": "e1222d63c0a3a838",
+    "code": "rbd mirror snapshot schedule add --pool mypool --image myimage 12h 14:00:00-05:00",
+    "language": "text",
+    "context": "To create a mirror snapshot schedule for an image",
+    "source_file": "man/8/rbd.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rbd mirror snapshot schedule"
+    ]
+  },
+  {
+    "entity_id": "5f6d7df723ffcdf2",
+    "code": "fusermount -u mountpoint",
+    "language": "text",
+    "context": "The file system can be unmounted with",
+    "source_file": "man/8/rbd-fuse.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fde92b6e1be93f44",
+    "code": "rados -p foo ls -",
+    "language": "text",
+    "context": "To get a list object in pool foo sent to stdout",
+    "source_file": "man/8/rados.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados -p foo ls"
+    ]
+  },
+  {
+    "entity_id": "ae9401cc55e2ea94",
+    "code": "rados --pgid 0.6 ls",
+    "language": "text",
+    "context": "To get a list of objects in PG 0.6",
+    "source_file": "man/8/rados.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados --pgid 0"
+    ]
+  },
+  {
+    "entity_id": "fedd4899ddbd7a19",
+    "code": "rados -p foo put myobject blah.txt",
+    "language": "text",
+    "context": "To write an object",
+    "source_file": "man/8/rados.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados -p foo put"
+    ]
+  },
+  {
+    "entity_id": "7cdd5d5d909ea900",
+    "code": "rados -p foo mksnap mysnap",
+    "language": "text",
+    "context": "To create a snapshot",
+    "source_file": "man/8/rados.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados -p foo mksnap"
+    ]
+  },
+  {
+    "entity_id": "c21a00ddcc7f925c",
+    "code": "rados -p foo rm myobject",
+    "language": "text",
+    "context": "To delete the object",
+    "source_file": "man/8/rados.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados -p foo rm"
+    ]
+  },
+  {
+    "entity_id": "4969fbc41d96d494",
+    "code": "rados -p foo -s mysnap get myobject blah.txt.old",
+    "language": "text",
+    "context": "To read a previously snapshotted version of an object",
+    "source_file": "man/8/rados.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados -p foo -s"
+    ]
+  },
+  {
+    "entity_id": "3c37913a541a9709",
+    "code": "rados list-inconsistent-obj 0.6 --format=json-pretty",
+    "language": "text",
+    "context": "To list inconsistent objects in PG 0.6",
+    "source_file": "man/8/rados.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "rados list-inconsistent-obj 0"
+    ]
+  },
+  {
+    "entity_id": "36a247ca467b325c",
+    "code": "ceph-post-file /var/log/ceph/ceph-mon.`hostname`.log",
+    "language": "text",
+    "context": "To upload a single log",
+    "source_file": "man/8/ceph-post-file.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8de1a3bec6080326",
+    "code": "ceph-post-file -d 'mon data directories' /var/log/ceph/mon/*",
+    "language": "text",
+    "context": "To upload several directories",
+    "source_file": "man/8/ceph-post-file.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2ef4ab2ced4c37c6",
+    "code": "$ ceph-diff-sorted fileA.txt fileB.txt",
+    "language": "bash",
+    "context": "Compare two files",
+    "source_file": "man/8/ceph-diff-sorted.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b749267111f85f5e",
+    "code": "DEVICE    PATH        TYPE        OPTIONS\nnone      /mnt/ceph   fuse.ceph   ceph.id=admin,_netdev,defaults  0 0\nnone      /mnt/ceph   fuse.ceph   ceph.name=client.admin,_netdev,defaults  0 0\nnone      /mnt/ceph   fuse.ceph   ceph.id=myuser,ceph.conf=/etc/ceph/foo.conf,_netdev,defaults  0 0",
+    "language": "text",
+    "context": "To use mount.fuse.ceph, add an entry in ``/etc/fstab`` like",
+    "source_file": "man/8/mount.fuse.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph",
+      "ceph fuse"
+    ]
+  },
+  {
+    "entity_id": "c5bc0f624cdb719a",
+    "code": "DEVICE                              PATH        TYPE        OPTIONS\nid=admin                            /mnt/ceph   fuse.ceph   defaults   0 0\nid=myuser,conf=/etc/ceph/foo.conf   /mnt/ceph   fuse.ceph   defaults   0 0",
+    "language": "ini",
+    "context": "The old format /etc/fstab entries are also supported",
+    "source_file": "man/8/mount.fuse.ceph.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph defaults 0 0",
+      "ceph fuse"
+    ]
+  },
+  {
+    "entity_id": "06b4752673c16704",
+    "code": "[client.radosgw.gateway]\nhost = {hostname}\nkeyring = /etc/ceph/ceph.client.radosgw.keyring\nlog_file = /var/log/ceph/client.radosgw.gateway.log\nrgw_frontends = fastcgi socket_port=9000 socket_host=0.0.0.0\nrgw_print_continue = false",
+    "language": "ini",
+    "context": "#. For distros with Apache 2.2 and early versions of Apache 2.4 that use\n   localhost TCP, append the following contents to ``/etc/ceph/ceph.conf``",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "47da7a8a5753f3ca",
+    "code": "<VirtualHost *:80>\nServerName localhost\nDocumentRoot /var/www/html",
+    "language": "text",
+    "context": "For Debian/Ubuntu add in ``/etc/apache2/conf-available/rgw.conf``",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "47da7a8a5753f3ca",
+    "code": "<VirtualHost *:80>\nServerName localhost\nDocumentRoot /var/www/html",
+    "language": "text",
+    "context": "For CentOS/RHEL add in ``/etc/httpd/conf.d/rgw.conf``",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "47da7a8a5753f3ca",
+    "code": "<VirtualHost *:80>\nServerName localhost\nDocumentRoot /var/www/html",
+    "language": "text",
+    "context": "For CentOS/RHEL add in ``/etc/httpd/conf.d/rgw.conf``",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "316605615adca321",
+    "code": "ceph-authtool -C -n client.radosgw.gateway --gen-key /etc/ceph/keyring.radosgw.gateway\nceph-authtool -n client.radosgw.gateway --cap mon 'allow rw' --cap osd 'allow rwx' /etc/ceph/keyring.radosgw.gateway",
+    "language": "text",
+    "context": "#. Generate a key for radosgw to use for authentication with the cluster.",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a4bba1c6c7aad89a",
+    "code": "ceph auth add client.radosgw.gateway --in-file=keyring.radosgw.gateway",
+    "language": "text",
+    "context": "#. Add the key to the auth entries.",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth add client"
+    ]
+  },
+  {
+    "entity_id": "de729b4f2e06412d",
+    "code": "sudo /etc/init.d/apache2 start\nsudo /etc/init.d/radosgw start",
+    "language": "text",
+    "context": "Debian/Ubuntu",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8e9754c0d5f93e2f",
+    "code": "sudo apachectl start\nsudo /etc/init.d/ceph-radosgw start",
+    "language": "text",
+    "context": "CentOS/RHEL",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d54df5fb81a3c7a7",
+    "code": "[client.radosgw.gateway]\n    rgw_enable_usage_log = true\n    rgw_usage_log_tick_interval = 30\n    rgw_usage_log_flush_threshold = 1024\n    rgw_usage_max_shards = 32\n    rgw_usage_max_user_shards = 1",
+    "language": "text",
+    "context": "Following is an example configuration",
+    "source_file": "man/8/radosgw.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b3a8998fcf2c823e",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT get-omap $KEY > $OBJECT_MAP_FILE_NAME",
+    "language": "ini",
+    "context": "",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7a6566ba81901abe",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT set-omap $KEY < $OBJECT_MAP_FILE_NAME",
+    "language": "ini",
+    "context": "",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6181413c7a01b401",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT rm-omap $KEY",
+    "language": "ini",
+    "context": "",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "128c709649bb5f09",
+    "code": "systemctl status ceph-osd@$OSD_NUMBER",
+    "language": "text",
+    "context": "Make sure that the target OSD is down",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0a774b21931d9cdd",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --op list",
+    "language": "text",
+    "context": "Identify all objects within an OSD",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "33a02e3d68ea91e3",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID --op list",
+    "language": "text",
+    "context": "Identify all objects within a placement group",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c659c682a4706533",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --op list $OBJECT_ID",
+    "language": "text",
+    "context": "Identify the placement group (PG) that an object belongs to",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7ffb04a5116d7f57",
+    "code": "systemctl status ceph-osd@OSD_NUMBER",
+    "language": "text",
+    "context": "Make sure the OSD is down",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c27f2275248b6851",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --op fix-lost",
+    "language": "text",
+    "context": "Fix all lost objects",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "64153750fb990f1e",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID --op fix-lost",
+    "language": "text",
+    "context": "Fix all the lost objects within a specified placement group",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "902a4b57dd682f64",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --op fix-lost $OBJECT_ID",
+    "language": "text",
+    "context": "Fix a lost object by its identifier",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c27f2275248b6851",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --op fix-lost",
+    "language": "text",
+    "context": "Fix legacy lost objects",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "128c709649bb5f09",
+    "code": "systemctl status ceph-osd@$OSD_NUMBER",
+    "language": "text",
+    "context": "1. Make sure that the target OSD is down",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e11f19204420c081",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT get-bytes > $OBJECT_FILE_NAME",
+    "language": "text",
+    "context": "3. Before setting the bytes on the object, make a backup and a working copy of the object. Here is the syntactic form of that command",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' get-bytes > zone_info.default.backup",
+    "language": "text",
+    "context": "For example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9dbfabf5cc75d31b",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT set-bytes < $OBJECT_FILE_NAME",
+    "language": "text",
+    "context": "5. Set the bytes of the object",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' set-bytes < zone_info.default.working-copy",
+    "language": "text",
+    "context": "For example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ddfeb7a762916ca",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT remove",
+    "language": "text",
+    "context": "Remove an object (syntax)",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "128c709649bb5f09",
+    "code": "systemctl status ceph-osd@$OSD_NUMBER",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50a80ae80d82cc84",
+    "code": "[root@osd ~]# systemctl status ceph-osd@1",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e7b38a8024e2d8f4",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT list-omap",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' list-omap",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "128c709649bb5f09",
+    "code": "systemctl status ceph-osd@$OSD_NUMBER",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50a80ae80d82cc84",
+    "code": "[root@osd ~]# systemctl status ceph-osd@1",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "673e7d345e4e5511",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT get-omaphdr > $OBJECT_MAP_FILE_NAME",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}'  get-omaphdr > zone_info.default.omaphdr.txt",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "86b493f1cc5c6e42",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT get-omaphdr < $OBJECT_MAP_FILE_NAME",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}'  set-omaphdr < zone_info.default.omaphdr.txt",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b9d39f8dd3e0ab79",
+    "code": "ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}'  get-omap \"\" > zone_info.default.omap.txt",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b9d39f8dd3e0ab79",
+    "code": "ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' set-omap \"\" < zone_info.default.omap.txt",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b9d39f8dd3e0ab79",
+    "code": "ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' rm-omap \"\"",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "128c709649bb5f09",
+    "code": "systemctl status ceph-osd@$OSD_NUMBER",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50a80ae80d82cc84",
+    "code": "[root@osd ~]# systemctl status ceph-osd@1",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2099f8e28b237667",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT list-attrs",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' list-attrs",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "128c709649bb5f09",
+    "code": "systemctl status ceph-osd@$OSD_NUMBER",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50a80ae80d82cc84",
+    "code": "[root@osd ~]# systemctl status ceph-osd@1",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c666445c93edbde5",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT get-attrs $KEY > $OBJECT_ATTRS_FILE_NAME",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "afde5afd42b425d2",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0  --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' get-attrs \"oid\" > zone_info.default.attr.txt",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "63107c8c15979e8e",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT  set-attrs $KEY < $OBJECT_ATTRS_FILE_NAME",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' set-attrs \"oid\" < zone_info.default.attr.txt",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a76eb575d51a7edf",
+    "code": "ceph-objectstore-tool --data-path $PATH_TO_OSD --pgid $PG_ID $OBJECT rm-attrs $KEY",
+    "language": "text",
+    "context": "Syntax",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0864730fb25b3e29",
+    "code": "[root@osd ~]# ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 --pgid 0.1c '{\"oid\":\"zone_info.default\",\"key\":\"\",\"snapid\":-2,\"hash\":235010478,\"max\":0,\"pool\":11,\"namespace\":\"\"}' rm-attrs \"oid\"",
+    "language": "text",
+    "context": "Example",
+    "source_file": "man/8/ceph-objectstore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "364423d8ff0decc1",
+    "code": "ceph-volume inventory\nceph-volume inventory /dev/sda\nceph-volume inventory --format json-pretty",
+    "language": "text",
+    "context": "Examples",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "695fdaac6cc308e3",
+    "code": "ceph-volume lvm batch --bluestore /dev/sda /dev/sdb /dev/sdc",
+    "language": "text",
+    "context": "Example usage with three devices",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "35a304da359dce1b",
+    "code": "ceph-volume lvm activate --bluestore <osd id> <osd fsid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "81158ad00eb64838",
+    "code": "ceph-volume lvm activate --all",
+    "language": "text",
+    "context": "Multiple OSDs can be activated at once by using the (idempotent) ``--all`` flag",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fa90218cdc55f65f",
+    "code": "ceph-volume lvm prepare --bluestore --data <data lv> --journal <journal device>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fbf32abc67ca9500",
+    "code": "ceph-volume lvm trigger <SYSTEMD-DATA>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "086f78ca51a5f60c",
+    "code": "<OSD ID>-<OSD UUID>",
+    "language": "text",
+    "context": "The systemd \"data\" is expected to be in the format of",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "560744f69e7d45ca",
+    "code": "ceph-volume lvm list",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0ede5fe1799f6e8f",
+    "code": "ceph-volume lvm list /dev/sda1",
+    "language": "text",
+    "context": "List a particular device, reporting all metadata about it",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "80f6987af2e9cebd",
+    "code": "ceph-volume lvm list {vg/lv}",
+    "language": "text",
+    "context": "List a logical volume, along with all its metadata (vg is a volume\ngroup, and lv the logical volume name)",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7bbe01bf81f3a909",
+    "code": "ceph-volume lvm zap {vg/lv}",
+    "language": "text",
+    "context": "Usage, for logical volumes",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "04e30a4dc81d8e88",
+    "code": "ceph-volume lvm zap /dev/sdc1",
+    "language": "text",
+    "context": "Usage, for logical partitions",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eeb3947b3bb5d5ec",
+    "code": "ceph-volume lvm zap --destroy /dev/sdc1",
+    "language": "text",
+    "context": "For full removal of the device use the ``--destroy`` flag (allowed for all\ndevice types)",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f1555ba161745654",
+    "code": "ceph-volume lvm zap --destroy --osd-id 1\nceph-volume lvm zap --destroy --osd-id 1 --osd-fsid C9605912-8395-4D76-AFC0-7DFDAC315D59",
+    "language": "text",
+    "context": "Multiple devices can be removed by specifying the OSD ID and/or the OSD FSID",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2a1f12daf4c2793",
+    "code": "ceph-volume lvm new-wal --osd-id OSD_ID --osd-fsid OSD_FSID --target <target lv>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "93a5036c662e7a79",
+    "code": "ceph-volume lvm new-db --osd-id OSD_ID --osd-fsid OSD_FSID --target <target lv>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9c2df8aa1e5a13c0",
+    "code": "ceph-volume lvm migrate --osd-id OSD_ID --osd-fsid OSD_FSID --target <target lv> --from {data|db|wal} [{data|db|wal} ...]",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f1ea3e2fb61d372",
+    "code": "ceph-volume simple activate --bluestore <osd id> <osd fsid>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "291ae8a3c050b837",
+    "code": "It requires a matching JSON file with the following format::",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ee78e8250b38bb0f",
+    "code": "ceph-volume simple scan",
+    "language": "text",
+    "context": "Usage on all running OSDs",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b67176fc322ce4b0",
+    "code": "ceph-volume simple scan <data device>",
+    "language": "text",
+    "context": "Usage on data devices",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ca1da03f200c4665",
+    "code": "ceph-volume simple scan <path to osd dir>",
+    "language": "text",
+    "context": "Running OSD directories",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c2c64e8b23aad595",
+    "code": "ceph-volume simple trigger <SYSTEMD-DATA>",
+    "language": "text",
+    "context": "Usage",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "086f78ca51a5f60c",
+    "code": "<OSD ID>-<OSD UUID>",
+    "language": "text",
+    "context": "The systemd \"data\" is expected to be in the format of",
+    "source_file": "man/8/ceph-volume.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "976103c70f0ce7c3",
+    "code": "cephadm ceph-volume inventory",
+    "language": "text",
+    "context": "Run ceph-volume inside a container",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm ceph-volume inventory"
+    ]
+  },
+  {
+    "entity_id": "a5b90256943ef949",
+    "code": "cephadm shell -- ceph orch apply <type> ...",
+    "language": "text",
+    "context": "deploy a daemon on the local host. Used by the orchestrator CLI",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell -- ceph"
+    ]
+  },
+  {
+    "entity_id": "f386b1e987029a93",
+    "code": "cephadm enter --name mgr.myhost.ysubfo",
+    "language": "text",
+    "context": "Run an interactive shell inside a running daemon container",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm enter --name mgr"
+    ]
+  },
+  {
+    "entity_id": "7764c54c78789130",
+    "code": "cephadm --image IMAGE_NAME inspect-image",
+    "language": "text",
+    "context": "Inspect local Ceph container image. From Reef onward, requires specifying\nthe image to inspect with ``--image``",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm --image IMAGE_NAME inspect-image"
+    ]
+  },
+  {
+    "entity_id": "06329b3a6565b592",
+    "code": "$ cephadm ls\n[\n    {\n        \"style\": \"cephadm:v1\",\n        \"name\": \"mgr.storage-14b-1.ysubfo\",\n        \"fsid\": \"5110cb22-8332-11ea-9148-0894ef7e8bdc\",\n        \"enabled\": true,\n        \"state\": \"running\",\n        \"container_id\": \"8562de72370a3836473ecfff8a22c9ccdd99815386b4692a2b30924fb5493c44\",\n        \"container_image_name\": \"docker.io/ceph/ceph:v15\",\n        \"container_image_id\": \"bc83a388465f0568dab4501fb7684398dca8b50ca12a342a57f21815721723c2\",\n        \"version\": \"15.2.1\",\n        \"started\": \"2020-04-21T01:16:41.831456\",\n        \"created\": \"2020-04-21T01:16:41.775024\",\n        \"deployed\": \"2020-04-21T01:16:41.415021\",\n        \"configured\": \"2020-04-21T01:16:41.775024\"\n    },\n...",
+    "language": "bash",
+    "context": "list daemon instances known to cephadm on **this** host",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm ls"
+    ]
+  },
+  {
+    "entity_id": "17f0ef6e11245e75",
+    "code": "cephadm logs --name mgr.myhost.ysubfo",
+    "language": "text",
+    "context": "print journald logs for a daemon container",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm logs --name mgr"
+    ]
+  },
+  {
+    "entity_id": "d92dfd89fa760c28",
+    "code": "journalctl -u mgr.myhost.ysubfo",
+    "language": "text",
+    "context": "This is similar to",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5ca9336e5834320a",
+    "code": "cephadm logs --name mgr.myhost.ysubfo -- -n 20 # last 20 lines\ncephadm logs --name mgr.myhost.ysubfo -- -f # follow the log",
+    "language": "text",
+    "context": "Can also specify additional journal arguments",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm logs --name mgr"
+    ]
+  },
+  {
+    "entity_id": "12e7195299c7d783",
+    "code": "cephadm pull",
+    "language": "text",
+    "context": "Pull the ceph image",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm pull"
+    ]
+  },
+  {
+    "entity_id": "0ea739f9aefb761b",
+    "code": "cephadm registry-login --registry-url [REGISTRY_URL] --registry-username [USERNAME]\n                       --registry-password [PASSWORD]",
+    "language": "text",
+    "context": "Give cephadm login information for an authenticated registry (url, username and password).\nCephadm will attempt to log the calling host into that registry",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm registry-login --registry-url"
+    ]
+  },
+  {
+    "entity_id": "10c09ce939f4b9c8",
+    "code": "{\n \"url\":\"REGISTRY_URL\",\n \"username\":\"REGISTRY_USERNAME\",\n \"password\":\"REGISTRY_PASSWORD\"\n}",
+    "language": "json",
+    "context": "Can also use a JSON file containing the login info formatted as",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "95ebd119ff81c5ff",
+    "code": "cephadm registry-login --registry-json [JSON FILE]",
+    "language": "text",
+    "context": "and turn it in with command",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm registry-login --registry-json"
+    ]
+  },
+  {
+    "entity_id": "12db99ef8374973e",
+    "code": "cephadm shell",
+    "language": "text",
+    "context": "Run an interactive shell",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "7ba6465d789d824d",
+    "code": "cephadm shell -- ceph orch ls",
+    "language": "text",
+    "context": "Or one specific command inside a container",
+    "source_file": "man/8/cephadm.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell -- ceph"
+    ]
+  },
+  {
+    "entity_id": "a5f629b43916cf30",
+    "code": "osdmaptool --createsimple 16 osdmap --clobber",
+    "language": "text",
+    "context": "To create a simple map with 16 devices",
+    "source_file": "man/8/osdmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0a00fbdc7ca26962",
+    "code": "osdmaptool --print osdmap",
+    "language": "text",
+    "context": "To view the result",
+    "source_file": "man/8/osdmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e181e9cd38fbadd5",
+    "code": "osdmaptool osdmap --test-map-pgs-dump --pool 1",
+    "language": "text",
+    "context": "To view the mappings of placement groups for pool 1",
+    "source_file": "man/8/osdmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ce880964584edb5a",
+    "code": "#osd    count   first   primary c wt    wt\nosd.0   8       5       5       1       1\nosd.1   8       1       1       1       1\nosd.2   8       2       2       1       1",
+    "language": "text",
+    "context": "In a less-balanced cluster, we could have following output for the statistics of\nplacement group distribution, whose standard deviation is 1.41421",
+    "source_file": "man/8/osdmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a061efb7972508af",
+    "code": "osdmaptool --upmap upmaps.out --upmap-active --upmap-deviation 6 --upmap-max 11 osdmap",
+    "language": "text",
+    "context": "To simulate the active balancer in upmap mode",
+    "source_file": "man/8/osdmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "68a06885ea24d74e",
+    "code": "osdmaptool osdmap --read read.out --read-pool <pool name>",
+    "language": "text",
+    "context": "To simulate the active balancer in read mode, first make sure capacity is balanced\nby running the balancer in upmap mode. Then, balance the reads on a replicated pool with",
+    "source_file": "man/8/osdmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9bc47a328bd4f0b2",
+    "code": "ceph-bluestore-tool show-label --dev *device*",
+    "language": "text",
+    "context": "has a block label at the beginning of the device.\nMain device might optionaly have additional labels at different locations\nfor the sake of OSD robustness.\nYou can dump the contents of the label with",
+    "source_file": "man/8/ceph-bluestore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8cc35c3931a94c9e",
+    "code": "ceph-bluestore-tool repair --dev *device*",
+    "language": "text",
+    "context": "um required\nfields (OSD UUID, size, device type, birth time).\nThe main device contains additional label copies at offsets: 1GiB, 10GiB, 100GiB and 1000GiB.\nCorrupted labels are fixed as part of repair",
+    "source_file": "man/8/ceph-bluestore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d036196af77220f5",
+    "code": "ceph-bluestore-tool prime-osd-dir --dev *main device* --path /var/lib/ceph/osd/ceph-*id*",
+    "language": "text",
+    "context": "You can generate the content for an OSD data directory that can start up a\nBlueStore OSD with the *prime-osd-dir* command",
+    "source_file": "man/8/ceph-bluestore-tool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e88c9d5543f37a87",
+    "code": "rbd-replay --latency-multiplier=0 workload1",
+    "language": "text",
+    "context": "To replay workload1 as fast as possible",
+    "source_file": "man/8/rbd-replay.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "589a7edd3aa2474a",
+    "code": "rbd-replay --map-image=prod_image=test_image workload1",
+    "language": "text",
+    "context": "To replay workload1 but use test_image instead of prod_image",
+    "source_file": "man/8/rbd-replay.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "37ee0cd1e3a030cf",
+    "code": "rbd-replay-prep workload1-trace/ust/uid/1000/64-bit workload1",
+    "language": "text",
+    "context": "To prepare workload1-trace for replay",
+    "source_file": "man/8/rbd-replay-prep.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5a4720c186db22f9",
+    "code": "# can read, write, and execute objects\n       osd = \"allow rwx\"",
+    "language": "text",
+    "context": "For example",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "caab879386205609",
+    "code": "mon = \"allow r\"",
+    "language": "ini",
+    "context": "A librados user restricted to a single pool might look like",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "caab879386205609",
+    "code": "mon = \"allow r\"",
+    "language": "ini",
+    "context": "A client using rbd with read access to one pool and read/write access to another",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b91b1c5fc4174b90",
+    "code": "mds = \"allow\"",
+    "language": "ini",
+    "context": "A client mounting the file system with minimal permissions would need caps like",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0aab2ecced41343b",
+    "code": "osdcap  := grant[,grant...]\ngrant   := allow (match capspec | capspec match)\nmatch   := [ pool[=]<poolname> | object_prefix <prefix>\n            | namespace[=]<rados-namespace>\n            | tag <application-name> <key>=<value> ]\ncapspec := * | [r][w][x] [class-read] [class-write]",
+    "language": "text",
+    "context": "In general, an osd capability follows the grammar",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a870b50dc858d5c8",
+    "code": "r           = read access to objects\nw           = write access to objects\nx           = can call any class method (same as class-read class-write)\nclass-read  = can call class methods that are reads\nclass-write = can call class methods that are writes\n* or \"all\"  = equivalent to rwx, plus the ability to run osd admin commands,\n              i.e. ceph osd tell ...",
+    "language": "ini",
+    "context": "The capspec determines what kind of operations the entity can perform",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tell"
+    ]
+  },
+  {
+    "entity_id": "e5ca9c4ae6405853",
+    "code": "ceph-authtool -C -n client.foo --gen-key keyring --mode 0644",
+    "language": "text",
+    "context": "To create a new keyring containing a key for client.foo with a 0644 file mode",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8c8561f7e71336d6",
+    "code": "ceph-authtool -n client.foo --cap mds 'allow' --cap osd 'allow rw pool=data' --cap mon 'allow r' keyring",
+    "language": "text",
+    "context": "To associate some capabilities with the key (namely, the ability to\nmount a Ceph file system)",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d34db60914762da3",
+    "code": "ceph-authtool -l keyring",
+    "language": "text",
+    "context": "To display the contents of the keyring",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "89b4eae32fed0376",
+    "code": "mount -t ceph serverhost:/ mountpoint -o name=foo,secret=`ceph-authtool -p -n client.foo keyring`",
+    "language": "text",
+    "context": "When mounting a Ceph file system, you can grab the appropriately encoded secret key with",
+    "source_file": "man/8/ceph-authtool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": [
+      "ceph serverhost"
+    ]
+  },
+  {
+    "entity_id": "93545ccc932c2df0",
+    "code": "monmaptool --create --add nodeA 192.168.0.10 --add nodeB 192.168.0.11 \\\n  --add nodeC 192.168.0.12 --enable-all-features --clobber monmap",
+    "language": "text",
+    "context": "To create a new map with three monitors (for a fresh Ceph cluster)",
+    "source_file": "man/8/monmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3ebaeacfe069241a",
+    "code": "monmaptool --print monmap",
+    "language": "text",
+    "context": "To display the contents of the map",
+    "source_file": "man/8/monmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "da42280d5d86fd63",
+    "code": "monmaptool --rm nodeA monmap\nmonmaptool --add nodeA 192.168.0.9 monmap",
+    "language": "text",
+    "context": "To replace one monitor",
+    "source_file": "man/8/monmaptool.rst",
+    "component": "man",
+    "section_title": "",
+    "commands_used": []
+  }
+]

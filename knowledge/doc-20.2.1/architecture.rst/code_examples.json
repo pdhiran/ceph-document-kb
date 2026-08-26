@@ -1,0 +1,242 @@
+[
+  {
+    "entity_id": "bfc172cb0ff2bccd",
+    "code": "/------\\       +-----+       +-----+\n| obj  |------>| {d} |------>| {s} |\n\\------/       +-----+       +-----+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "43c9511ee2ef00a3",
+    "code": "/------+------------------------------+----------------\\\n| ID   | Binary Data                  | Metadata       |\n+------+------------------------------+----------------+\n| 1234 | 0101010101010100110101010010 | name1 = value1 |\n|      | 0101100001010100110101010010 | name2 = value2 |\n|      | 0101100001010100110101010010 | nameN = valueN |\n\\------+------------------------------+----------------/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c8339595968e588d",
+    "code": "+---------+     +---------+\n| Client  |     | Monitor |\n+---------+     +---------+\n     |  request to   |\n     | create a user |\n     |-------------->|----------+ create user\n     |               |          | and\n     |<--------------|<---------+ store key\n     | transmit key  |\n     |               |",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "57b7e0db7e2339db",
+    "code": "+---------+     +---------+\n| Client  |     | Monitor |\n+---------+     +---------+\n     |  authenticate |\n     |-------------->|----------+ generate and\n     |               |          | encrypt\n     |<--------------|<---------+ session key\n     | transmit      |\n     | encrypted     |\n     | session key   |\n     |               |\n     |-----+ decrypt |\n     |     | session |\n     |<----+ key     |\n     |               |\n     |  req. ticket  |\n     |-------------->|----------+ generate and\n     |               |          | encrypt\n     |<--------------|<---------+ ticket\n     | recv. ticket  |\n     |               |\n     |-----+ decrypt |\n     |     | ticket  |\n     |<----+         |",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b1639a6da0d8c14e",
+    "code": "+---------+     +---------+     +-------+     +-------+\n|  Client |     | Monitor |     |  MDS  |     |  OSD  |\n+---------+     +---------+     +-------+     +-------+\n     |  request to   |              |             |\n     | create a user |              |             |\n     |-------------->| mon and      |             |\n     |<--------------| client share |             |\n     |    receive    | a secret.    |             |\n     | shared secret |              |             |\n     |               |<------------>|             |\n     |               |<-------------+------------>|\n     |               | mon, mds,    |             |\n     | authenticate  | and osd      |             |\n     |-------------->| share        |             |\n     |<--------------| a secret     |             |\n     |  session key  |              |             |\n     |               |              |             |\n     |  req. ticket  |              |             |\n     |-------------->|              |             |\n     |<--------------|              |             |\n     | recv. ticket  |              |             |\n     |               |              |             |\n     |   make request (CephFS only) |             |\n     |----------------------------->|             |\n     |<-----------------------------|             |\n     | receive response (CephFS only)             |\n     |                                            |\n     |                make request                |\n     |------------------------------------------->|\n     |<-------------------------------------------|\n                    receive response",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "af8f2ff3237a9901",
+    "code": "+----------+\n            |  Client  |\n            |          |\n            +----------+\n                *  ^\n     Write (1)  |  |  Ack (6)\n                |  |\n                v  *\n           +-------------+\n           | Primary OSD |\n           |             |\n           +-------------+\n             *  ^   ^  *\n   Write (2) |  |   |  |  Write (3)\n      +------+  |   |  +------+\n      |  +------+   +------+  |\n      |  | Ack (4)  Ack (5)|  |\n      v  *                 *  v\n+---------------+   +----------------+\n| Secondary OSD |   | Secondary OSD  |\n|               |   |                |\n+---------------+   +----------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fc7156f5eeabbf37",
+    "code": "+--------+  Retrieves  +---------------+\n| Client |------------>|  Cluster Map  |\n+--------+             +---------------+\n     |\n     v      Writes\n  /-----\\\n  | obj |\n  \\-----/\n     |      To\n     v\n+--------+           +---------------+\n|  Pool  |---------->|  CRUSH Rule   |\n+--------+  Selects  +---------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "449b7fb3f683fc6a",
+    "code": "/-----\\  /-----\\  /-----\\  /-----\\  /-----\\\n        | obj |  | obj |  | obj |  | obj |  | obj |\n        \\-----/  \\-----/  \\-----/  \\-----/  \\-----/\n           |        |        |        |        |\n           +--------+--------+        +---+----+\n           |                              |\n           v                              v\n+-----------------------+      +-----------------------+\n|  Placement Group #1   |      |  Placement Group #2   |\n|                       |      |                       |\n+-----------------------+      +-----------------------+\n            |                              |\n            |      +-----------------------+---+\n     +------+------+-------------+             |\n     |             |             |             |\n     v             v             v             v\n/----------\\  /----------\\  /----------\\  /----------\\\n|          |  |          |  |          |  |          |\n|  OSD #1  |  |  OSD #2  |  |  OSD #3  |  |  OSD #4  |\n|          |  |          |  |          |  |          |\n\\----------/  \\----------/  \\----------/  \\----------/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "da959923d75b45aa",
+    "code": "+--------+     +--------+\nBefore  |  OSD 1 |     |  OSD 2 |\n        +--------+     +--------+\n        |  PG #1 |     | PG #6  |\n        |  PG #2 |     | PG #7  |\n        |  PG #3 |     | PG #8  |\n        |  PG #4 |     | PG #9  |\n        |  PG #5 |     | PG #10 |\n        +--------+     +--------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c444da128a455e97",
+    "code": "+-------------------+\n                     name |       NYAN        |\n                          +-------------------+\n                  content |     ABCDEFGHI     |\n                          +--------+----------+\n                                   |\n                                   |\n                                   v\n                            +------+------+\n            +---------------+ encode(3,2) +-----------+\n            |               +--+--+---+---+           |\n            |                  |  |   |               |\n            |          +-------+  |   +-----+         |\n            |          |          |         |         |\n         +--v---+   +--v---+   +--v---+  +--v---+  +--v---+\n   name  | NYAN |   | NYAN |   | NYAN |  | NYAN |  | NYAN |\n         +------+   +------+   +------+  +------+  +------+\n  shard  |  1   |   |  2   |   |  3   |  |  4   |  |  5   |\n         +------+   +------+   +------+  +------+  +------+\ncontent  | ABC  |   | DEF  |   | GHI  |  | YXY  |  | QGC  |\n         +--+---+   +--+---+   +--+---+  +--+---+  +--+---+\n            |          |          |         |         |\n            |          |          v         |         |\n            |          |       +--+---+     |         |\n            |          |       | OSD1 |     |         |\n            |          |       +------+     |         |\n            |          |                    |         |\n            |          |       +------+     |         |\n            |          +------>| OSD2 |     |         |\n            |                  +------+     |         |\n            |                               |         |\n            |                  +------+     |         |\n            |                  | OSD3 |<----+         |\n            |                  +------+               |\n            |                                         |\n            |                  +------+               |\n            |                  | OSD4 |<--------------+\n            |                  +------+\n            |\n            |                  +------+\n            +----------------->| OSD5 |\n                               +------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0685873b45a06215",
+    "code": "+-------------------+\n                    name |       NYAN        |\n                         +-------------------+\n                 content |     ABCDEFGHI     |\n                         +---------+---------+\n                                   ^\n                                   |\n                                   |\n                           +-------+-------+\n                           |  decode(3,2)  |\n            +------------->+  erasures 2,5 +<-+\n            |              |               |  |\n            |              +-------+-------+  |\n            |                      ^          |\n            |                      |          |\n            |                      |          |\n         +--+---+   +------+   +---+--+   +---+--+\n   name  | NYAN |   | NYAN |   | NYAN |   | NYAN |\n         +------+   +------+   +------+   +------+\n  shard  |  1   |   |  2   |   |  3   |   |  4   |\n         +------+   +------+   +------+   +------+\ncontent  | ABC  |   | DEF  |   | GHI  |   | YXY  |\n         +--+---+   +--+---+   +--+---+   +--+---+\n            ^          .          ^          ^\n            |    TOO   .          |          |\n            |    SLOW  .       +--+---+      |\n            |          ^       | OSD1 |      |\n            |          |       +------+      |\n            |          |                     |\n            |          |       +------+      |\n            |          +-------| OSD2 |      |\n            |                  +------+      |\n            |                                |\n            |                  +------+      |\n            |                  | OSD3 |------+\n            |                  +------+\n            |\n            |                  +------+\n            |                  | OSD4 | OUT\n            |                  +------+\n            |\n            |                  +------+\n            +------------------| OSD5 |\n                               +------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "356b373954fa9290",
+    "code": "Primary OSD",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "356b373954fa9290",
+    "code": "Primary OSD",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "356b373954fa9290",
+    "code": "Primary OSD",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "356b373954fa9290",
+    "code": "Primary OSD",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3d4604c3bed33686",
+    "code": "+-------------+\n|    OSD 1    |\n|   (down)    |\n| c333        |\n+------+------+\n       |\n       |           +-------------+\n       |           |    OSD 2    |\n       |           |         log |\n       |           |  +----+     |\n       +---------->+  |D2v1| 1,1 |\n       |           |  +----+     |\n       |           |             |\n       |           +-------------+\n       |\n       |           +-------------+\n       |           |    OSD 3    |\n       |           |         log |\n       |           |  +----+     |\n       |           |  |C1v2| 1,2 |\n       +---------->+  +----+     |\n                   |             |\n                   |  +----+     |\n                   |  |C1v1| 1,1 |\n                   |  +----+     |\n                   +-------------+\n  Primary OSD\n+-------------+\n|    OSD 4    |\n|         log |\n|             |\n|         1,1 |\n|             |\n+------+------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "356b373954fa9290",
+    "code": "Primary OSD",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7d89b680033d3388",
+    "code": "+-------------+\n       | Ceph Client |\n       +------+------+\n              ^\n Tiering is   |\nTransparent   |              Faster I/O\n    to Ceph   |           +---------------+\n Client Ops   |           |               |\n              |    +----->+   Cache Tier  |\n              |    |      |               |\n              |    |      +-----+---+-----+\n              |    |            |   ^\n              v    v            |   |   Active Data in Cache Tier\n       +------+----+--+         |   |\n       |   Objecter   |         |   |\n       +-----------+--+         |   |\n                   ^            |   |   Inactive Data in Storage Tier\n                   |            v   |\n                   |      +-----+---+-----+\n                   |      |               |\n                   +----->|  Storage Tier |\n                          |               |\n                          +---------------+\n                             Slower I/O",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f3d1a8d0a5f82d28",
+    "code": "+---------------------------------+\n|  Ceph Storage Cluster Protocol  |\n|           (librados)            |\n+---------------------------------+\n+---------------+ +---------------+\n|      OSDs     | |    Monitors   |\n+---------------+ +---------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2aaae30535d5226",
+    "code": "+----------+     +----------+     +----------+     +---------------+\n| Client 1 |     | Client 2 |     | Client 3 |     | OSD:Object ID |\n+----------+     +----------+     +----------+     +---------------+\n      |                |                |                  |\n      |                |                |                  |\n      |                |  Watch Object  |                  |\n      |--------------------------------------------------->|\n      |                |                |                  |\n      |<---------------------------------------------------|\n      |                |   Ack/Commit   |                  |\n      |                |                |                  |\n      |                |  Watch Object  |                  |\n      |                |---------------------------------->|\n      |                |                |                  |\n      |                |<----------------------------------|\n      |                |   Ack/Commit   |                  |\n      |                |                |   Watch Object   |\n      |                |                |----------------->|\n      |                |                |                  |\n      |                |                |<-----------------|\n      |                |                |    Ack/Commit    |\n      |                |     Notify     |                  |\n      |--------------------------------------------------->|\n      |                |                |                  |\n      |<---------------------------------------------------|\n      |                |     Notify     |                  |\n      |                |                |                  |\n      |                |<----------------------------------|\n      |                |     Notify     |                  |\n      |                |                |<-----------------|\n      |                |                |      Notify      |\n      |                |       Ack      |                  |\n      |----------------+---------------------------------->|\n      |                |                |                  |\n      |                |       Ack      |                  |\n      |                +---------------------------------->|\n      |                |                |                  |\n      |                |                |        Ack       |\n      |                |                |----------------->|\n      |                |                |                  |\n      |<---------------+----------------+------------------|\n      |                     Complete",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ccb33ce36c348b3b",
+    "code": "+---------------+\n       |  Client Data  |\n       |     Format    |\n       | cCCC          |\n       +---------------+\n               |\n      +--------+-------+\n      |                |\n      v                v\n/-----------\\    /-----------\\\n| Begin cCCC|    | Begin cCCC|\n| Object  0 |    | Object  1 |\n+-----------+    +-----------+\n|  stripe   |    |  stripe   |\n|  unit 1   |    |  unit 5   |\n+-----------+    +-----------+\n|  stripe   |    |  stripe   |\n|  unit 2   |    |  unit 6   |\n+-----------+    +-----------+\n|  stripe   |    |  stripe   |\n|  unit 3   |    |  unit 7   |\n+-----------+    +-----------+\n|  stripe   |    |  stripe   |\n|  unit 4   |    |  unit 8   |\n+-----------+    +-----------+\n| End cCCC  |    | End cCCC  |\n| Object 0  |    | Object 1  |\n\\-----------/    \\-----------/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f8dac91dab0b1c4f",
+    "code": "+---------------+\n                         |  Client Data  |\n                         |     Format    |\n                         | cCCC          |\n                         +---------------+\n                                 |\n      +-----------------+--------+--------+-----------------+\n      |                 |                 |                 |     +--\\\n      v                 v                 v                 v        |\n/-----------\\     /-----------\\     /-----------\\     /-----------\\  |\n| Begin cCCC|     | Begin cCCC|     | Begin cCCC|     | Begin cCCC|  |\n| Object 0  |     | Object  1 |     | Object  2 |     | Object  3 |  |\n+-----------+     +-----------+     +-----------+     +-----------+  |\n|  stripe   |     |  stripe   |     |  stripe   |     |  stripe   |  |\n|  unit 0   |     |  unit 1   |     |  unit 2   |     |  unit 3   |  |\n+-----------+     +-----------+     +-----------+     +-----------+  |\n|  stripe   |     |  stripe   |     |  stripe   |     |  stripe   |  +-\\\n|  unit 4   |     |  unit 5   |     |  unit 6   |     |  unit 7   |    | Object\n+-----------+     +-----------+     +-----------+     +-----------+    +- Set\n|  stripe   |     |  stripe   |     |  stripe   |     |  stripe   |    |   1\n|  unit 8   |     |  unit 9   |     |  unit 10  |     |  unit 11  |  +-/\n+-----------+     +-----------+     +-----------+     +-----------+  |\n|  stripe   |     |  stripe   |     |  stripe   |     |  stripe   |  |\n|  unit 12  |     |  unit 13  |     |  unit 14  |     |  unit 15  |  |\n+-----------+     +-----------+     +-----------+     +-----------+  |\n| End cCCC  |     | End cCCC  |     | End cCCC  |     | End cCCC  |  |\n| Object 0  |     | Object 1  |     | Object 2  |     | Object 3  |  |\n\\-----------/     \\-----------/     \\-----------/     \\-----------/  |\n                                                                     |\n                                                                  +--/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "91db8c42240fa75f",
+    "code": "+--------------+  +----------------+  +-------------+\n| Block Device |  | Object Storage |  |   CephFS    |\n+--------------+  +----------------+  +-------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "40abbe703fb72670",
+    "code": "+-----------------------+  +------------------------+\n| CephFS Kernel Object  |  |      CephFS FUSE       |\n+-----------------------+  +------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "architecture.rst",
+    "component": "architecture.rst",
+    "section_title": "",
+    "commands_used": []
+  }
+]

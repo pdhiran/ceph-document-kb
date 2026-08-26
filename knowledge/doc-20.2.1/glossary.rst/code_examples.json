@@ -1,0 +1,12 @@
+[
+  {
+    "entity_id": "e83912054ae5bb82",
+    "code": "Application\n        More properly called a :term:`client`, an application is any program\n        external to Ceph that uses a Ceph Cluster to store and\n        replicate data.",
+    "language": "text",
+    "context": ".. glossary",
+    "source_file": "glossary.rst",
+    "component": "glossary.rst",
+    "section_title": "",
+    "commands_used": []
+  }
+]

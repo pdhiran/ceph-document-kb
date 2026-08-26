@@ -1,0 +1,2188 @@
+[
+  {
+    "entity_id": "9e2eb8131c6cc3f7",
+    "code": "name: foo, metadata pool: foo_metadata, data pools: [foo_data ]",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/adoption.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "95d6d5589da3b64d",
+    "code": "/usr/sbin/cephadm",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/install.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2dcbc98ceb8bebbb",
+    "code": "$ cat <<EOF > initial-ceph.conf\n[global]\nosd crush chooseleaf type = 0\nEOF\n$ ./cephadm bootstrap --config initial-ceph.conf ...",
+    "language": "bash",
+    "context": "* You can pass any initial Ceph configuration options to the new\n  cluster by putting them in a standard ini-style configuration file\n  and using the ``--config *<config-file>*`` option.  For example",
+    "source_file": "cephadm/install.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm bootstrap --config initial-ceph"
+    ]
+  },
+  {
+    "entity_id": "4058826b2c85f46f",
+    "code": "{\"url\":\"REGISTRY_URL\", \"username\":\"REGISTRY_USERNAME\", \"password\":\"REGISTRY_PASSWORD\"}",
+    "language": "json",
+    "context": "example contents of JSON file with login info",
+    "source_file": "cephadm/install.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d5b50a46d915c0c5",
+    "code": "global/osd_crush_chooseleaf_type = 0\nglobal/osd_pool_default_size = 2\nmgr/mgr_standby_modules = False",
+    "language": "text",
+    "context": "The ``--single-host-defaults`` flag sets the following configuration options",
+    "source_file": "cephadm/install.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c04f0c066f2f2ab8",
+    "code": "[mgr]\nmgr/cephadm/container_image_prometheus = *<hostname>*:5000/prometheus\nmgr/cephadm/container_image_node_exporter = *<hostname>*:5000/node_exporter\nmgr/cephadm/container_image_grafana = *<hostname>*:5000/grafana\nmgr/cephadm/container_image_alertmanager = *<hostname>*:5000/alertmanger",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/install.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "47f3d36f2f00098e",
+    "code": "ALL cephadm checks are disabled, use 'ceph config set mgr mgr/cephadm/config_checks_enabled true' to enable",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mgr",
+      "cephadm checks are disabled"
+    ]
+  },
+  {
+    "entity_id": "504bd5a0f72b15c3",
+    "code": "CEPHADM 8/8 checks enabled and executed (0 bypassed, 0 disabled). No issues detected",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2b863ba96eead3cd",
+    "code": "# ceph cephadm config-check ls",
+    "language": "console",
+    "context": "",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph cephadm config-check ls"
+    ]
+  },
+  {
+    "entity_id": "aa42d423742fd075",
+    "code": "-rw-r-----. 1 qemu qemu 156 Apr 21 08:47 /etc/ceph/client.client.rbd.keyring",
+    "language": "console",
+    "context": "",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1eaa7dd8000d17ce",
+    "code": "# assuming the cephadm user is named \"ceph\"\nceph ALL=(ALL) NOPASSWD:/usr/bin/chmod,/usr/bin/chown,/usr/bin/ls,/usr/bin/mkdir,/usr/bin/mv,/usr/bin/rm,/usr/sbin/sysctl,/usr/bin/touch,/usr/bin/true,/usr/bin/which,/usr/bin/cephadm,/usr/bin/python3",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph ALL",
+      "cephadm user is named"
+    ]
+  },
+  {
+    "entity_id": "774dffb1a761fa7c",
+    "code": "The debug messages are very verbose!",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c7f1c1126edbcd2c",
+    "code": "You might need to configure SSH access to the remote host\nbefore this will work.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c7f1c1126edbcd2c",
+    "code": "You might need to configure SSH access to the remote host\nbefore this will work.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9d6767c8677b84c2",
+    "code": "This deletes any keyring files for this entity that were previously written\nto cluster nodes.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1eaa7dd8000d17ce",
+    "code": "# assuming the cephadm user is named \"ceph\"\nceph ALL=(ALL) NOPASSWD:/usr/bin/chmod,/usr/bin/chown,/usr/bin/ls,/usr/bin/mkdir,/usr/bin/mv,/usr/bin/rm,/usr/sbin/sysctl,/usr/bin/touch,/usr/bin/true,/usr/bin/which,/usr/bin/cephadm,/usr/bin/python3",
+    "language": "text",
+    "context": ".. code-block",
+    "source_file": "cephadm/operations.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph ALL",
+      "cephadm user is named"
+    ]
+  },
+  {
+    "entity_id": "35281212febc1c92",
+    "code": "service_type: host\nhostname: node-00\naddr: 192.168.0.10\nlabels:\n- example1\n- example2\n---\nservice_type: host\nhostname: node-01\naddr: 192.168.0.11\nlabels:\n- grafana\n---\nservice_type: host\nhostname: node-02\naddr: 192.168.0.12",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ffe49c514e7adcc5",
+    "code": "service_type: host\nhostname: node-00\naddr: 192.168.0.10\nlocation:\n  root: default\n  rack: rack1",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e676bd300988e7b1",
+    "code": "profile_name: 23-mon-host-profile\nplacement:\n  hosts:\n    - mon-host-01\n    - mon-host-02\nsettings:\n  fs.file-max: 1000000\n  vm.swappiness: '13'",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "21818647edd3d85c",
+    "code": "You cannot change the FQDN with hostname or dnsdomainname.",
+    "language": "none",
+    "context": "",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "74d484c431e83b65",
+    "code": "HOSTNAME     ADDRESS         LABELS  STATUS  VENDOR/MODEL                           CPU    HDD      SSD  NIC\nceph-master  192.168.122.73  _admin          QEMU (Standard PC (Q35 + ICH9, 2009))  4C/4T  4/1.6TB  -    1\n1 hosts in cluster",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "558a0403e1c36e33",
+    "code": "Ok. 2 adapters detected: 2 rescanned, 0 skipped, 0 failed (0.32s)",
+    "language": "text",
+    "context": "ceph orch host rescan rh9-ceph1 --with-summary",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a1572ec0f72d6220",
+    "code": "The ``location`` attribute will affect only the initial CRUSH location.\nSubsequent changes to the ``location`` property will be ignored. \nRemoving a host will not remove an associated CRUSH bucket unless the\n``--rm-crush-entry`` flag is provided to the ``orch host rm`` command.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fa7fd9d415c862ac",
+    "code": "Removal from the CRUSH map will fail if there are OSDs deployed on the\nhost. If you would like to remove all the host's OSDs as well, please start\nby using  the ``ceph orch host drain`` command to do so. Once the OSDs\nhave been removed, then you may direct cephadm remove the CRUSH bucket\nalong with the host using the ``--rm-crush-entry`` flag.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch host drain",
+      "cephadm remove the CRUSH"
+    ]
+  },
+  {
+    "entity_id": "97a48fa56cca7335",
+    "code": "The exact filename that the profile is written to within ``/etc/sysctl.d/``\nis ``<profile-name>-cephadm-tuned-profile.conf``, where ``<profile-name>`` is\nthe ``profile_name`` setting that you specify in the YAML spec. We suggest\nnaming these profiles following the usual ``sysctl.d`` `NN-xxxxx` convention. Because\nsysctl settings are applied in lexicographical order (sorted by the filename\nin which the setting is specified), you may want to carefully choose\nthe ``profile_name`` in your spec so that it is applied before or after other\nconf files.  Careful selection ensures that values supplied here override or\ndo not override those in other ``sysctl.d`` files as desired.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ffd0ceb855817946",
+    "code": "These settings are applied only at the host level, and are not specific\nto any particular daemon or container.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "86b0659ff3c229f7",
+    "code": "Applying tuning profiles is idempotent when the ``--no-overwrite`` option is\npassed. Moreover, if the ``--no-overwrite`` option is passed, existing\nprofiles with the same name are not overwritten.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0bfd05e81de5d3ea",
+    "code": "To make modifications and re-apply a profile, pass ``--format yaml`` to the\n``tuned-profile ls`` command. The ``tuned-profile ls --format yaml`` command\npresents the profiles in a format that is easy to copy and re-apply.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "019c5fca778af712",
+    "code": "Modifying the placement requires re-applying a profile with the same name.\nRemember that profiles are tracked by their names, so when a profile with the\nsame name as an existing profile is applied, it overwrites the old profile\nunless the ``--no-overwrite`` flag is passed.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5e018ad8ab290786",
+    "code": "Host *\nUser root\nStrictHostKeyChecking no\nUserKnownHostsFile /dev/null",
+    "language": "text",
+    "context": "Cephadm generates an appropriate ``ssh_config`` file that is\nused for connecting to remote hosts.  This configuration looks\nsomething like this",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4e4ae2d8284f9d30",
+    "code": "cephadm demands that the name of the host given via ``ceph orch host add`` \nequals the output of ``hostname`` on remote hosts.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/host-management.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch host add",
+      "cephadm demands that the"
+    ]
+  },
+  {
+    "entity_id": "e9e00dd326bc502d",
+    "code": "# ceph -s",
+    "language": "console",
+    "context": "",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph -s"
+    ]
+  },
+  {
+    "entity_id": "a6ae28cfdbeb74fc",
+    "code": "The Ceph cluster health status is likely to switch to\n``HEALTH_WARNING`` during the upgrade.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e70a09eaca6d9bee",
+    "code": "If a cluster host is or becomes unavailable the upgrade will be paused\nuntil it is restored.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4f2f751a41915eab",
+    "code": "When the PG autoscaler mode for **any** pool is set to ``on``, we recommend\ndisabling the autoscaler for the duration of the upgrade.  This is so that\nPG splitting or merging in the middle of an upgrade does not unduly delay\nupgrade progress.  In a very large cluster this could easily increase the\ntime to complete by a day or more, especially if the upgrade happens to\nchange PG autoscaler behavior by e.g. changing the default value\nof :confval:`mon_target_pg_per_osd`.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "97d59fda148579dc",
+    "code": "From version v16.2.6 the Docker Hub registry is no longer used, so if you use Docker you have to point it to the image in the quay.io registry:",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d3cb002e7e92f773",
+    "code": "Error ENOENT: Module not found",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f7847ce147013ca3",
+    "code": "Cephadm strictly enforces an order to the upgrade of daemons that is still present\nin staggered upgrade scenarios. The current upgrade ordering is\n``mgr -> mon -> crash -> osd -> mds -> rgw -> rbd-mirror -> cephfs-mirror -> iscsi -> nfs``.\nIf you specify parameters that would upgrade daemons out of order, the upgrade\ncommand will block and note which daemons will be missed if you proceed.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ab1a07304a7a2d57",
+    "code": "Upgrade commands with limiting parameters will validate the options before beginning the\nupgrade, which may require pulling the new container image. Do not be surprised\nif the upgrade start command takes a while to return when limiting parameters are provided.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f7b86eecc21272f9",
+    "code": "In staggered upgrade scenarios (when a limiting parameter is provided) monitoring\nstack daemons including Prometheus and node-exporter are refreshed after the Manager\ndaemons have been upgraded. Do not be surprised if Manager upgrades thus take longer\nthan expected. Note that the versions of monitoring stack daemons may not change between\nCeph releases, in which case they are only redeployed.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2eb95a70f08c557",
+    "code": "If you are on a very early version of cephadm (early Octopus) the ``orch daemon redeploy``\ncommand may not have the ``--image`` flag. In that case, you must manually set the\nManager container image ``ceph config set mgr container_image <new-image-name>`` and then\nredeploy the Manager ``ceph orch daemon redeploy mgr.example1.abcdef``",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/upgrade.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mgr",
+      "ceph orch daemon redeploy"
+    ]
+  },
+  {
+    "entity_id": "af6a478596ddf1f6",
+    "code": "service_type: alertmanager\nservice_name: alertmanager\nplacement:\n  hosts:\n  - unknown_host\nstatus:\n  ...\n  running: 1\n  size: 1\nevents:\n- 2021-02-01T08:58:02.741162 service:alertmanager [INFO] \"service was created\"\n- '2021-02-01T12:09:25.264584 service:alertmanager [ERROR] \"Failed to apply: Cannot\n  place <AlertManagerSpec for service_name=alertmanager> on unknown_host: Unknown hosts\"'",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dd743973d198b80d",
+    "code": "daemon_type: mds\ndaemon_id: cephfs.hostname.ppdhsz\nhostname: hostname\nstatus_desc: running\n...\nevents:\n- 2021-02-01T08:59:43.845866 daemon:mds.cephfs.hostname.ppdhsz [INFO] \"Reconfigured\n  mds.cephfs.hostname.ppdhsz on host 'hostname'\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e8d34cefb35a0e94",
+    "code": "{\n  \"config\": \"# minimal ceph.conf for 8255263a-a97e-4934-822c-00bfe029b28f\\n[global]\\n\\tfsid = 8255263a-a97e-4934-822c-00bfe029b28f\\n\\tmon_host = [v2:192.168.0.1:40483/0,v1:192.168.0.1:40484/0]\\n\",\n  \"keyring\": \"[mgr.hostname.smfvfd]\\n\\tkey = V2VyIGRhcyBsaWVzdCBpc3QgZG9vZi4=\\n\"\n}",
+    "language": "json",
+    "context": "",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7000460d541aba92",
+    "code": "for name in $(cephadm ls | jq -r '.[].name') ; do\n  cephadm logs --fsid <fsid> --name \"$name\" > $name;\ndone",
+    "language": "text",
+    "context": "To fetch all log files of all daemons on a given host, run the following\nfor-loop",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm logs --fsid",
+      "cephadm ls"
+    ]
+  },
+  {
+    "entity_id": "24fa31c6dd48f69c",
+    "code": "fsid=\"$(cephadm shell ceph fsid)\"\nfor name in $(cephadm ls | jq -r '.[].name') ; do\n  systemctl status \"ceph-$fsid@$name.service\" > $name;\ndone",
+    "language": "ini",
+    "context": "To fetch the state of all daemons of a given host, run the following shell\nscript",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm ls",
+      "cephadm shell ceph fsid"
+    ]
+  },
+  {
+    "entity_id": "05a5e119fe2d9717",
+    "code": "execnet.gateway_bootstrap.HostNotFound: -F /tmp/cephadm-conf-73z09u6g -i /tmp/cephadm-identity-ky7ahp_5 root@10.10.1.2\n...\nraise OrchestratorError(msg) from e\norchestrator._interface.OrchestratorError: Failed to connect to 10.10.1.2 (10.10.1.2).\nPlease make sure that the host is reachable and accepts connections using the cephadm SSH key\n...",
+    "language": "text",
+    "context": "Error message",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm SSH key"
+    ]
+  },
+  {
+    "entity_id": "ad20d9a6fdfb5395",
+    "code": "[root@mon1~]# cephadm shell -- ceph config-key get mgr/cephadm/ssh_identity_key > ~/cephadm_private_key\nINFO:cephadm:Inferring fsid f8edc08a-7f17-11ea-8707-000c2915dd98\nINFO:cephadm:Using recent ceph image docker.io/ceph/ceph:v15 obtained 'mgr/cephadm/ssh_identity_key'\n[root@mon1 ~] # chmod 0600 ~/cephadm_private_key",
+    "language": "text",
+    "context": "1. Ensure that ``cephadm`` has an SSH identity key",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph image docker",
+      "cephadm shell -- ceph"
+    ]
+  },
+  {
+    "entity_id": "38a207a05ae0b18a",
+    "code": "[root@mon1 ~]# cephadm shell -- ceph cephadm generate-ssh-key",
+    "language": "text",
+    "context": "If this fails, cephadm doesn't have a key. Fix this by running the following command",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell -- ceph"
+    ]
+  },
+  {
+    "entity_id": "232f06e6c698b4d1",
+    "code": "[root@mon1 ~]# cat ~/cephadm_private_key | cephadm shell -- ceph cephadm set-ssh-key -i -",
+    "language": "text",
+    "context": "or",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell -- ceph"
+    ]
+  },
+  {
+    "entity_id": "5673a871ebbc370a",
+    "code": "[root@mon1 ~]# cephadm shell -- ceph cephadm get-ssh-config > config",
+    "language": "text",
+    "context": "2. Ensure that the SSH config is correct",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell -- ceph"
+    ]
+  },
+  {
+    "entity_id": "bec0d10f2312d7a9",
+    "code": "[root@mon1 ~]# ssh -F config -i ~/cephadm_private_key root@mon1",
+    "language": "text",
+    "context": "3. Verify that it is possible to connect to the host",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "29ec7fbaf90d18f7",
+    "code": "[root@mon1 ~]# cephadm shell -- ceph cephadm get-pub-key > ~/ceph.pub\n[root@mon1 ~]# grep \"`cat ~/ceph.pub`\"  /root/.ssh/authorized_keys",
+    "language": "text",
+    "context": "To verify that the public key is in the ``authorized_keys`` file, run the\nfollowing commands",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell -- ceph"
+    ]
+  },
+  {
+    "entity_id": "a973d904ce8662d6",
+    "code": "ERROR: Failed to infer CIDR network for mon ip ***; pass --skip-mon-network to configure it later",
+    "language": "text",
+    "context": "If you see this error",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5ba1611422d47fb5",
+    "code": "Must set public_network config option or specify a CIDR network, ceph addrvec, or plain IP",
+    "language": "text",
+    "context": "Or this error",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph addrvec"
+    ]
+  },
+  {
+    "entity_id": "202c8c1bc0d328fd",
+    "code": "[root@mon1 ~]# cephadm enter --name <daemon-name>",
+    "language": "text",
+    "context": "#. To access the admin socket, enter the daemon container on the host",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm enter --name"
+    ]
+  },
+  {
+    "entity_id": "083c307717c38b17",
+    "code": "[ceph: root@mon1 /]# ceph --admin-daemon /var/run/ceph/ceph-<daemon-name>.asok config show\n[ceph: root@mon1 /]# ceph --admin-daemon /var/run/ceph/ceph-<daemon-name>.asok help",
+    "language": "text",
+    "context": "#. Run a command of the following forms to see the admin socket's configuration and other available actions",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "45f7ef41281b86d3",
+    "code": "root@myhostname # cephadm unit --name mon.myhostname stop\nroot@myhostname # cephadm shell --name mon.myhostname\n[ceph: root@myhostname /]# ceph-monstore-tool /var/lib/ceph/mon/ceph-myhostname get monmap > monmap         \n[ceph: root@myhostname /]# monmaptool --print monmap\nmonmaptool: monmap file monmap\nepoch 1\nfsid 28596f44-3b56-11ec-9034-482ae35a5fbb\nlast_changed 2021-11-01T20:57:19.755111+0000\ncreated 2021-11-01T20:57:19.755111+0000\nmin_mon_release 17 (quincy)\nelection_strategy: 1\n0: [v2:127.0.0.1:3300/0,v1:127.0.0.1:6789/0] mon.myhostname",
+    "language": "text",
+    "context": "To run Ceph tools such as ``ceph-objectstore-tool`` or \n``ceph-monstore-tool``, invoke the cephadm CLI with\n``cephadm shell --name <daemon-name>``.  For example",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm shell --name mon",
+      "cephadm unit --name mon"
+    ]
+  },
+  {
+    "entity_id": "1921da2af26bc244",
+    "code": "Core dumps are not namespaced by the kernel. This means that core dumps are\nwritten to ``/var/lib/systemd/coredump`` on the container host. The ``ulimit\n-c unlimited`` setting  will persist  only until the system is rebooted.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "847fc2b5a7a8eb1a",
+    "code": "#0  0x00007fa9117383fc in pthread_cond_wait@@GLIBC_2.3.2 () from /lib64/libpthread.so.0\n#1  0x00007fa910d7f8f0 in std::condition_variable::wait(std::unique_lock<std::mutex>&) () from /lib64/libstdc++.so.6\n#2  0x00007fa913d3f48f in AsyncMessenger::wait() () from /usr/lib64/ceph/libceph-common.so.2\n#3  0x0000563085ca3d7e in main ()",
+    "language": "text",
+    "context": "bt",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bff67036ac371971",
+    "code": "cat >Containerfile <<EOF\nARG BASE_IMG=quay.io/ceph/ceph:v18\nFROM \\${BASE_IMG}\n# install ceph debuginfo packages, gdb and other potentially useful packages\nRUN dnf install --enablerepo='*debug*' -y ceph-debuginfo gdb zstd strace python3-debuginfo\nEOF\npodman build -t ceph:debugging -f Containerfile .\n# pass --build-arg=BASE_IMG=<your image> to customize the base image",
+    "language": "text",
+    "context": "In the following example, we create a simple file that constructs the\ncontainer image. The command below uses podman but it is expected to work\ncorrectly even if ``podman`` is replaced with ``docker``",
+    "source_file": "cephadm/troubleshooting.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph debuginfo packages"
+    ]
+  },
+  {
+    "entity_id": "77ea2c16855a4c01",
+    "code": "While not all Podman versions have been actively tested against\nall Ceph versions, there are no known issues with using Podman\nversion 3.0 or greater with Ceph Quincy and later releases.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/compatibility.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "01e98ac5babebd8d",
+    "code": "To use Podman with Ceph Pacific, you must use **a version of Podman that\nis 2.0.0 or higher**. However, **Podman version 2.2.1 does not work with\nCeph Pacific**.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephadm/compatibility.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ab616d739c60762",
+    "code": "service_type: osd\nservice_id: default_drive_group  # custom name of the osd spec\nplacement:\n  host_pattern: '*'              # which hosts to target\nspec:\n  data_devices:                  # the type of devices you are applying specs to\n    all: true                    # a filter, check below for a full list",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5c29bbb68361914f",
+    "code": "ceph-volume inventory </path/to/drive>",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5675e7e7229a65c2",
+    "code": "model: drive_model_name",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3e06eb66f5d3fbed",
+    "code": "vendor: drive_vendor_name",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "95000cbcd0167508",
+    "code": "size: size_spec",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e12153abe05b80d6",
+    "code": "size: '10T'",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3947034c68e8d6af",
+    "code": "size: '10T:40T'",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9472f51f9b33c983",
+    "code": "size: ':1701G'",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9ce607cfb651a12f",
+    "code": "size: '666G:'",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ec89fadf514a4ba3",
+    "code": "ACTION==\"add|change\", KERNEL==\"sd[a-z]*\", ATTR{queue/rotational}=\"0\"\nACTION==\"add|change\", KERNEL==\"dm*\", ATTR{queue/rotational}=\"0\"\nACTION==\"add|change\", KERNEL==\"nbd*\", ATTR{queue/rotational}=\"0\"",
+    "language": "none",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2882b387861a02cd",
+    "code": "rotational: 0 | 1",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "178ae13d2ec67548",
+    "code": "all: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "74ce5d015183bdc7",
+    "code": "limit: 2",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5f77c5172b529ddd",
+    "code": "data_devices:\n  vendor: VendorA\n  limit: 2",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dc91c9b77734fdb1",
+    "code": "service_type: osd\nservice_id: example_osd_spec\nplacement:\n  host_pattern: '*'\nspec:\n  data_devices:\n    all: true\n  encrypted: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "95c48b86a07c8bc8",
+    "code": "service_type: osd\nservice_id: example_osd_spec_with_tpm2\nplacement:\n  host_pattern: '*'\nspec:\n  data_devices:\n    all: true\n  encrypted: true\n  tpm2: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3e57d92508b37b4b",
+    "code": "10 HDDs\nVendor: VendorA\nModel: HDD-123-foo\nSize: 4TB",
+    "language": "none",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5f0cd0bbda2560b7",
+    "code": "service_type: osd\nservice_id: osd_spec_default\nplacement:\n  host_pattern: '*'\nspec:\n  data_devices:\n    model: HDD-123-foo       # Note, HDD-123 would also be valid\n  db_devices:\n    model: MC-55-44-XZ       # Same here, MC-55-44 is valid",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5f0cd0bbda2560b7",
+    "code": "service_type: osd\nservice_id: osd_spec_default\nplacement:\n  host_pattern: '*'\nspec:\n  data_devices:\n    rotational: 1            # The kernel flags as HDD\n  db_devices:\n    rotational: 0            # The kernel flags as SSD (SAS/SATA/NVMe)",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5f0cd0bbda2560b7",
+    "code": "service_type: osd\nservice_id: osd_spec_default\nplacement:\n  host_pattern: '*'\nspec:\n  data_devices:\n    size: '2TB:'           # Drives larger than 2 TB\n  db_devices:\n    size: ':2TB'           # Drives smaller than 2TB",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3e57d92508b37b4b",
+    "code": "10 HDDs\nVendor: VendorA\nModel: HDD-123-foo\nSize: 4TB",
+    "language": "none",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "67a63beeccb76037",
+    "code": "service_type: osd\nservice_id: osd_spec_hdd\nplacement:\n  host_pattern: '*'\nspec:\n  data_devices:             # Select all drives the kernel identifies as HDDs\n    rotational: 1           #  for OSD data\n  db_devices:\n    model: MC-55-44-XZ      # Select only this model for WAL+DB offload\n    limit: 2                # Select at most two for this purpose\n  db_slots: 5               # Chop the DB device into this many slices and\n                            #  use one for each of this many HDD OSDs\n---\nservice_type: osd\nservice_id: osd_spec_ssd    # Unique so it doesn't overwrite the above\nplacement:\n  host_pattern: '*'\nspec:                       # This scenario is uncommon\n  data_devices:\n    model: MC-55-44-XZ      # Select drives of this model for OSD data\n  db_devices:               # Select drives of this brand for WAL+DB. Since the\n    vendor: VendorC         #   data devices are SAS/SATA SSDs this would make sense for NVMe SSDs\n  db_slots: 2               # Back two slower SAS/SATA SSD data devices with each NVMe slice",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e69d25dcc20f040b",
+    "code": "20 HDDs\nVendor: VendorA\nModel: SSD-123-foo\nSize: 4TB\n2 SSDs\nVendor: VendorB\nModel: MC-55-44-ZX\nSize: 512GB",
+    "language": "none",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "52bfec1e7ab9e007",
+    "code": "5 NVMEs\nVendor: VendorA\nModel: SSD-123-foo\nSize: 4TB\n20 SSDs\nVendor: VendorB\nModel: MC-55-44-ZX\nSize: 512GB",
+    "language": "none",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2226de9cc454f5bf",
+    "code": "service_type: osd\nservice_id: disk_layout_a\nplacement:\n  label: disk_layout_a\nspec:\n  data_devices:\n    rotational: 1           # All drives identified as HDDs\n  db_devices:\n    rotational: 0           # All drives identified as SSDs\n---\nservice_type: osd\nservice_id: disk_layout_b\nplacement:\n  label: disk_layout_b\nspec:\n  data_devices:\n    model: MC-55-44-XZ      # Only this model\n  db_devices:\n    model: SSD-123-foo      # Only this model",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a82a158d284408b9",
+    "code": "20 HDDs\nVendor: VendorA\nModel: SSD-123-foo\nSize: 4TB",
+    "language": "none",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5f0cd0bbda2560b7",
+    "code": "service_type: osd\nservice_id: osd_spec_default\nplacement:\n  host_pattern: '*'\nspec:\n  data_devices:\n    model: MC-55-44-XZ\n  db_devices:\n    model: SSD-123-foo\n  wal_devices:\n    model: NVME-QQQQ-987",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d50707ddb5e7b190",
+    "code": "service_type: osd\nservice_id: osd_using_paths\nplacement:\n  hosts:\n    - node01\n    - node02\nspec:\n  data_devices:\n    paths:\n    - /dev/sdb\n  db_devices:\n    paths:\n    - /dev/sdc\n  wal_devices:\n    paths:\n    - /dev/sdd",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13356256b049af64",
+    "code": "service_type: osd\nservice_id: osd_using_paths\nplacement:\n  hosts:\n    - node01\n    - node02\ncrush_device_class: ssd\nspec:\n  data_devices:\n    paths:\n    - /dev/sdb\n    - /dev/sdc\n  db_devices:\n    paths:\n    - /dev/sdd\n  wal_devices:\n    paths:\n    - /dev/sde",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13356256b049af64",
+    "code": "service_type: osd\nservice_id: osd_using_paths\nplacement:\n  hosts:\n    - node01\n    - node02\ncrush_device_class: ssd\nspec:\n  data_devices:\n    paths:\n    - path: /dev/sdb\n      crush_device_class: ssd\n    - path: /dev/sdc\n      crush_device_class: nvme\n  db_devices:\n    paths:\n    - /dev/sdd\n  wal_devices:\n    paths:\n    - /dev/sde",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3a5b5f8c5b33b929",
+    "code": "Hostname  Path      Type  Serial              Size   Health   Ident  Fault  Available\nsrv-01    /dev/sdb  hdd   15P0A0YFFRD6         300G  Unknown  N/A    N/A    No\nsrv-01    /dev/sdc  hdd   15R0A08WFRD6         300G  Unknown  N/A    N/A    No\nsrv-01    /dev/sdd  hdd   15R0A07DFRD6         300G  Unknown  N/A    N/A    No\nsrv-01    /dev/sde  hdd   15P0A0QDFRD6         300G  Unknown  N/A    N/A    No\nsrv-02    /dev/sdb  hdd   15R0A033FRD6         300G  Unknown  N/A    N/A    No\nsrv-02    /dev/sdc  hdd   15R0A05XFRD6         300G  Unknown  N/A    N/A    No\nsrv-02    /dev/sde  hdd   15R0A0ANFRD6         300G  Unknown  N/A    N/A    No\nsrv-02    /dev/sdf  hdd   15R0A06EFRD6         300G  Unknown  N/A    N/A    No\nsrv-03    /dev/sdb  hdd   15R0A0OGFRD6         300G  Unknown  N/A    N/A    No\nsrv-03    /dev/sdc  hdd   15R0A0P7FRD6         300G  Unknown  N/A    N/A    No\nsrv-03    /dev/sdd  hdd   15R0A0O7FRD6         300G  Unknown  N/A    N/A    No",
+    "language": "text",
+    "context": "Example",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3fb8e4277fdc02ec",
+    "code": "HOST               PATH          TYPE  DEVICE ID                                      SIZE  AVAILABLE  REFRESHED  REJECT REASONS\ndavidsthubbins    /dev/sdc       hdd   SEAGATE_ST20000NM002D_ZVTBJNGC17010W339UW25    18.1T  No         22m ago    Has a FileSystem, Insufficient space (<10 extents) on vgs, LVM detected\nnigeltufnel       /dev/sdd       hdd   SEAGATE_ST20000NM002D_ZVTBJNGC17010C3442787    18.1T  No         22m ago    Has a FileSystem, Insufficient space (<10 extents) on vgs, LVM detected",
+    "language": "text",
+    "context": "The ``--wide`` option shows device details,\nincluding any reasons that the device might not be eligible for use as an OSD.\nExample (Reef)",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a7a69156d3c45f16",
+    "code": "Path     | SCSI VPD 0x83    | Link Type | Serial Number      | Health Status\n----------------------------------------------------------------------------\n/dev/sda | 50000396082ba631 | SAS       | 15P0A0R0FRD6       | Good\n/dev/sdb | 50000396082bbbf9 | SAS       | 15P0A0YFFRD6       | Good",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "164d4d249f636c22",
+    "code": "# ceph orch device ls\nHostname   Path      Type  Serial              Size   Health   Ident  Fault  Available\nsrv-01     /dev/sdb  hdd   15P0A0YFFRD6         300G  Good     Off    Off    No\nsrv-01     /dev/sdc  hdd   15R0A08WFRD6         300G  Good     Off    Off    No\n:",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch device ls"
+    ]
+  },
+  {
+    "entity_id": "6b83413ab60d5c14",
+    "code": "NAME                  HOST  DATA      DB  WAL\nall-available-devices node1 /dev/vdb  -   -\nall-available-devices node2 /dev/vdc  -   -\nall-available-devices node3 /dev/vdd  -   -",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "51b0b729bf0f161f",
+    "code": "Keep these three facts in mind:",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5e030a2af3b65816",
+    "code": "Scheduled OSD(s) for removal",
+    "language": "text",
+    "context": "Expected output",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c2189fdc1cf4f9ce",
+    "code": "OSD_ID  HOST         STATE                    PG_COUNT  REPLACE  FORCE  STARTED_AT\n2       cephadm-dev  done, waiting for purge  0         True     False  2020-07-17 13:01:43.147684\n3       cephadm-dev  draining                 17        False    True   2020-07-17 13:01:45.162158\n4       cephadm-dev  started                  42        False    True   2020-07-17 13:01:45.162158",
+    "language": "text",
+    "context": "Expected output",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6f6c48083cc11b1e",
+    "code": "Stopped OSD(s) removal",
+    "language": "text",
+    "context": "Expected output",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df01121e034f70af",
+    "code": "Scheduled OSD(s) for replacement",
+    "language": "text",
+    "context": "Expected output",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "434ed49f109edd1f",
+    "code": "The name of your OSDSpec can be retrieved with the command ``ceph orch ls``",
+    "language": "text",
+    "context": ".. tip",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch ls"
+    ]
+  },
+  {
+    "entity_id": "e56348fbb38aeace",
+    "code": "NAME                  HOST  DATA     DB WAL\n<name_of_osd_spec>    node1 /dev/vdb -  -",
+    "language": "text",
+    "context": "Expected output",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "248e96673955129d",
+    "code": "WHO   MASK      LEVEL   OPTION              VALUE\nosd   host:foo  basic   osd_memory_target   126092301926\nosd   host:bar  basic   osd_memory_target   6442450944",
+    "language": "text",
+    "context": "The final targets are reflected in the config database with options like the below",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7113719940bce6fd",
+    "code": "NAME        HOST  PORTS  STATUS         REFRESHED  AGE  MEM USED  MEM LIMIT  VERSION                IMAGE ID      CONTAINER ID  \nosd.1       dael         running (3h)     10s ago   3h    72857k     117.4G  17.0.0-3781-gafaed750  7015fda3cd67  9e183363d39c  \nosd.2       dael         running (81m)    10s ago  81m    63989k     117.4G  17.0.0-3781-gafaed750  7015fda3cd67  1f0cc479b051  \nosd.3       dael         running (62m)    10s ago  62m    64071k     117.4G  17.0.0-3781-gafaed750  7015fda3cd67  ac5537492f27",
+    "language": "text",
+    "context": "Both the limits and the current memory consumed by each daemon are visible from\nthe ``ceph orch ps`` output in the ``MEM LIMIT`` column",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b511ade32f2fdd5b",
+    "code": "Assuming each host has a unique disk layout, each OSD \nspec must have a unique ``service_id``.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/osd.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bcbe25da2733c55b",
+    "code": "service_type: rgw\nservice_id: realm.zone\nplacement:\n  hosts:\n    - host1\n    - host2\n    - host3\nconfig:\n  param_1: val_1\n  ...\n  param_N: val_N\nunmanaged: false\nnetworks:\n- 192.169.142.0/24\nspec:\n  # Additional service specific attributes.",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f28828ed94f95d84",
+    "code": "service_type: mon\nplacement:\n  hosts:\n   - host1\n   - host2\n   - host3",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fce158f4a88ec1a1",
+    "code": "service_type: prometheus\nplacement:\n  hosts:\n    - host1\n    - host2\n    - host3",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0bb88e1a116f440c",
+    "code": "HOST   ADDR   LABELS  STATUS\nhost1         mylabel\nhost2         mylabel\nhost3         mylabel\nhost4\nhost5",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0c6a967709d713e3",
+    "code": "service_type: prometheus\nplacement:\n  label: \"mylabel\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "442b635d281c07f2",
+    "code": "service_type: prometheus\nplacement:\n  host_pattern: \"myhost[1-3]\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "26c461ab6232872a",
+    "code": "service_type: node-exporter\nplacement:\n  host_pattern: \"*\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6104e131292bd39c",
+    "code": "service_type: prometheus\nplacement:\n  host_pattern:\n    pattern: 'FOO[0-9]|BAR[0-9]'\n    pattern_type: regex",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "de51260421147d73",
+    "code": "service_type: prometheus\nplacement:\n  count: 3",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "550d89898eb0b4fa",
+    "code": "service_type: prometheus\nplacement:\n  count: 2\n  hosts:\n    - host1\n    - host2\n    - host3",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "43e67365dd4bbe53",
+    "code": "service_type: rgw\nplacement:\n  label: rgw\n  count_per_host: 2",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "07ea343740776d0d",
+    "code": "service_type: mds\nservice_name: myfs\nplacement:\n  count: 3\n  label: myfs",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "435ca53c5530b758",
+    "code": "service_type: mon\nservice_name: mon\nplacement:\n  hosts:\n    - host1\n    - host2\n    - host3\nextra_container_args:\n  - \"--cpus=2\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "435ca53c5530b758",
+    "code": "service_type: mon\nservice_name: mon\nplacement:\n  hosts:\n    - host1\n    - host2\n    - host3\nextra_container_args:\n  - \"--cpus 2\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dae84211c75eb6d9",
+    "code": "service_type: mon\nservice_name: mon\nplacement:\n  hosts:\n    - tiebreaker\nextra_container_args:\n  # No spaces, always treated as a single argument\n  - argument: \"--timout=3000\"\n  # Splitting explicitly disabled, one single argument\n  - argument: \"--annotation=com.example.name=my favorite mon\"\n    split: false\n  # Splitting explicitly enabled, will become two arguments\n  - argument: \"--cpuset-cpus 1-3,7-11\"\n    split: true\n  # Splitting implicitly disabled, one single argument\n  - argument: \"--annotation=com.example.note=a simple example\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aa81e234b88d8ae5",
+    "code": "extra_container_args:\n  - \"-v\"\n  - \"/absolute/file/path/on/host:/absolute/file/path/in/container\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f51dd32b30751947",
+    "code": "extra_container_args:\n  - \"-v\"\n  - \"/opt/ceph_cert/host.cert:/etc/grafana/certs/cert_file:ro\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf54b572bb66d07d",
+    "code": "service_type: node-exporter\nservice_name: node-exporter\nplacement:\n  host_pattern: '*'\nextra_entrypoint_args:\n  - \"--collector.textfile.directory=/var/lib/node_exporter/textfile_collector2\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e63edca860a7fe24",
+    "code": "service_type: mon\nservice_name: mon\nplacement:\n  hosts:\n    - host1\n    - host2\n    - host3\nextra_entrypoint_args:\n  - \"--debug_ms 2\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b0a117473f4af143",
+    "code": "# An theoretical data migration service\nservice_type: pretend\nservice_name: imagine1\nplacement:\n  hosts:\n    - host1\nextra_entrypoint_args:\n  # No spaces, always treated as a single argument\n  - argument: \"--timout=30m\"\n  # Splitting explicitly disabled, one single argument\n  - argument: \"--import=/mnt/usb/My Documents\"\n    split: false\n  # Splitting explicitly enabled, will become two arguments\n  - argument: \"--tag documents\"\n    split: true\n  # Splitting implicitly disabled, one single argument\n  - argument: \"--title=Imported Documents\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ce029e493bc2da59",
+    "code": "service_type: grafana\nservice_name: grafana\ncustom_configs:\n  - mount_path: /etc/example.conf\n    content: |\n      setting1 = value1\n      setting2 = value2\n  - mount_path: /usr/share/grafana/example.cert\n    content: |\n      -----BEGIN PRIVATE KEY-----\n      V2VyIGRhcyBsaWVzdCBpc3QgZG9vZi4gTG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFt\n      ZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15\n      IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWdu\n      YSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3Mg\n      ZXQgYWNjdXNhbSBldCBqdXN0byBkdW8=\n      -----END PRIVATE KEY-----\n      -----BEGIN CERTIFICATE-----\n      V2VyIGRhcyBsaWVzdCBpc3QgZG9vZi4gTG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFt\n      ZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15\n      IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWdu\n      YSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3Mg\n      ZXQgYWNjdXNhbSBldCBqdXN0byBkdW8=\n      -----END CERTIFICATE-----",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b97461aff22ab9b4",
+    "code": "service_type: mgr\nunmanaged: true\nplacement:\n  label: mgr",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "03c2895586182699",
+    "code": "cat <<EOF | ceph orch apply -i -\nservice_type: mon\nplacement:\n  host_pattern: \"mon*\"\n---\nservice_type: mgr\nplacement:\n  host_pattern: \"mgr*\"\n---\nservice_type: osd\nservice_id: default_drive_group\nplacement:\n  host_pattern: \"osd*\"\ndata_devices:\n  all: true\nEOF",
+    "language": "text",
+    "context": "Many service specifications can be applied at once using ``ceph orch apply -i``\nby submitting a multi-document YAML file",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch apply -i"
+    ]
+  },
+  {
+    "entity_id": "f8652400c32173fe",
+    "code": "cephadm will not deploy daemons on hosts with the ``_no_schedule`` label; see :ref:`cephadm-special-host-labels`.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm will not deploy"
+    ]
+  },
+  {
+    "entity_id": "baddebff5a27aae5",
+    "code": "There is a special case that cephadm must consider.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm must consider"
+    ]
+  },
+  {
+    "entity_id": "63918dbf1753e1f6",
+    "code": "For arguments passed to the process running inside the container rather than the for\nthe container runtime itself, see :ref:`cephadm-extra-entrypoint-args`",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "46c5518f65478560",
+    "code": "For arguments intended for the container runtime rather than the process inside\nit, see :ref:`cephadm-extra-container-args`",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "133ab7ace797f7c5",
+    "code": "After you apply this change in the Service Specification, cephadm will no\nlonger deploy any new daemons (even if the placement specification matches\nadditional hosts).",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm will no longer"
+    ]
+  },
+  {
+    "entity_id": "754b4358bf0dcde9",
+    "code": "The \"osd\" service used to track OSDs that are not tied to any specific\nservice spec is special and will always be marked unmanaged. Attempting\nto modify it with ``ceph orch set-unmanaged`` or ``ceph orch set-managed``\nwill result in a message ``No service of name osd found. Check \"ceph orch ls\" for all known services``",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch ls",
+      "ceph orch set-managed",
+      "ceph orch set-unmanaged"
+    ]
+  },
+  {
+    "entity_id": "f3765735903143bb",
+    "code": "This workflow has a very limited use case and should only be used\nin rare circumstances.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8e1df90ca593b8a8",
+    "code": "Removing ``unmanaged: true`` from the service spec will\nenable the reconciliation loop for this service and will\npotentially lead to the removal of the daemon, depending\non the placement spec.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eb848b1b3cda30e8",
+    "code": "For managed services (``unmanaged=False``), cephadm will automatically\ndeploy a new daemon a few seconds later.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/index.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm will automatically deploy"
+    ]
+  },
+  {
+    "entity_id": "e7685faebfb424b5",
+    "code": "service_type: container\nservice_id: foo\nplacement:\n    ...\nspec:\n  image: docker.io/library/foo:latest\n  entrypoint: /usr/bin/foo\n  uid: 1000\n  gid: 1000\n  args:\n    - \"--net=host\"\n    - \"--cpus=2\"\n  ports:\n    - 8080\n    - 8443\n  envs:\n    - SECRET=mypassword\n    - PORT=8080\n    - PUID=1000\n    - PGID=1000\n  volume_mounts:\n    CONFIG_DIR: /etc/foo\n  bind_mounts:\n    - ['type=bind', 'source=lib/modules', 'destination=/lib/modules', 'ro=true']\n  dirs:\n    - CONFIG_DIR\n  files:\n    CONFIG_DIR/foo.conf:\n      - refresh=true\n      - username=xyz\n      - \"port: 1234\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/custom-container.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cdd26954a909276c",
+    "code": "service_type: container\nservice_id: foo\nplacement:\n    ...\nspec:\n  image: quay.io/example/foosystem:latest\n  entrypoint: /usr/bin/foo\n  uid: 1000\n  gid: 1000\n  ports:\n    - 8889\n  dirs:\n    - CONFIG_DIR\n    - DATA_DIR\n  volume_mounts:\n    CONFIG_DIR: /etc/foo\n    DATA_DIR: /var/lib/foo\n  files:\n    CONFIG_DIR/foo.conf:\n      - db_path=/var/lib/foo/db\n  init_containers:\n    - image: quay.io/example/curly:howard\n      entrypoint: bash\n      entrypoint_args:\n        - argument: \"-c\"\n        - argument: \"[ -f /var/lib/foo/db ] || curl -o /var/lib/foo/sample.dat https://foo.example.com/samples/1.dat\"\n      volume_mounts:\n        DATA_DIR: /var/lib/foo\n    - entrypoint: /usr/bin/foo-initialize-db\n      entrypoint_args:\n        - \"--option=threads=8\"\n    - entrypoint: /usr/local/bin/import-sample-datasets.sh\n      entrypoint_args:\n        - \"/var/lib/foo/sample.dat\"\n      envs:\n        - FOO_SOURCE_MISSING=ignore\n        - FOO_CLEANUP=yes",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/custom-container.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "85328c398ea0e472",
+    "code": "service_type: mgr\nnetworks:\n- 192.169.142.0/24",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/mgr.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "24756cd003da9a6e",
+    "code": "service_type: smb\nservice_id: tango\nplacement:\n  hosts:\n    - ceph0\nspec:\n  cluster_id: tango\n  features:\n    - domain\n  config_uri: rados://.smb/tango/scc.toml\n  custom_dns:\n    - \"192.168.76.204\"\n  join_sources:\n    - \"rados:mon-config-key:smb/config/tango/join1.json\"\n  include_ceph_users:\n    - client.smb.fs.cluster.tango",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/smb.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "77a4e7bb26695cf8",
+    "code": "SMB support is under active development and many features may be\nmissing or immature. A Ceph MGR module, named smb, is available to help\norganize and manage SMB related featues. Unless the smb module\nhas been determined to be unsuitable for your needs we recommend using that\nmodule over directly using the smb service spec.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephadm/services/smb.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "132641d5b886d47f",
+    "code": "If one desires clustering between smbd instances (also known as\nHigh-Availability or \"transparent state migration\") the feature flag\n``clustered`` is needed. If this flag is not specified cephadm may deploy\nmultiple smb servers but they will lack the coordination needed of an actual\nHighly-Avaiable cluster. When the ``clustered`` flag is specified cephadm\nwill deploy additional containers that manage this coordination.\nAdditionally, the cluster_meta_uri and cluster_lock_uri values must be\nspecified. The former is used by cephadm to describe the smb cluster layout\nto the samba containers. The latter is used by Samba's CTDB component to\nmanage an internal cluster lock.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/smb.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm may deploy multiple",
+      "cephadm to describe the",
+      "cephadm will deploy additional"
+    ]
+  },
+  {
+    "entity_id": "26d4a4125cd1a0eb",
+    "code": "A Manager module for SMB is under active development. Once that module\nis available it will be the preferred method for managing Samba on Ceph\nin an end-to-end manner. The following discussion is provided for the sake\nof completeness and to explain how the software layers interact.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephadm/services/smb.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "142569222a5c117d",
+    "code": "service_type: rgw\nservice_id: foo\nplacement:\n  label: rgw\n  count_per_host: 2\nnetworks:\n- 192.169.142.0/24\nspec:\n  rgw_frontend_port: 8080",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dadc0975ba25cb59",
+    "code": "service_type: rgw\nservice_id: foo\nplacement:\n  label: rgw\n  count_per_host: 2\nspec:\n  rgw_realm: myrealm\n  rgw_zone: myzone\n  rgw_frontend_type: \"beast\"\n  rgw_frontend_port: 5000\n  rgw_frontend_extra_args:\n  - \"tcp_nodelay=1\"\n  - \"max_header_size=65536\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c983bc80627a5c7c",
+    "code": "service_type: rgw\nservice_id: myrgw\nspec:\n  rgw_frontend_ssl_certificate: | \n    -----BEGIN PRIVATE KEY-----\n    V2VyIGRhcyBsaWVzdCBpc3QgZG9vZi4gTG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFt\n    ZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15\n    IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWdu\n    YSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3Mg\n    ZXQgYWNjdXNhbSBldCBqdXN0byBkdW8=\n    -----END PRIVATE KEY-----\n    -----BEGIN CERTIFICATE-----\n    V2VyIGRhcyBsaWVzdCBpc3QgZG9vZi4gTG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFt\n    ZXQsIGNvbnNldGV0dXIgc2FkaXBzY2luZyBlbGl0ciwgc2VkIGRpYW0gbm9udW15\n    IGVpcm1vZCB0ZW1wb3IgaW52aWR1bnQgdXQgbGFib3JlIGV0IGRvbG9yZSBtYWdu\n    YSBhbGlxdXlhbSBlcmF0LCBzZWQgZGlhbSB2b2x1cHR1YS4gQXQgdmVybyBlb3Mg\n    ZXQgYWNjdXNhbSBldCBqdXN0byBkdW8=\n    -----END CERTIFICATE-----\n  ssl: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ded7d255a8cf9b81",
+    "code": "service_type: rgw\nservice_id: foo\nplacement:\n  label: rgw\n  count_per_host: 1\nspec:\n  ssl: true\n  generate_cert: true  \n  rgw_frontend_port: 8080\n  wildcard_enabled: true  # Enables wildcard SANs in the certificate\n  zonegroup_hostnames:\n  - s3.cephlab.com",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b10be53dab2262a0",
+    "code": "service_type: rgw\nservice_id: foo\nplacement:\n  label: rgw\nspec:\n  rgw_realm: myrealm\n  rgw_zone: myzone\n  rgw_zonegroup: myzg\n  disable_multisite_sync_traffic: True",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b10be53dab2262a0",
+    "code": "service_type: rgw\nservice_id: foo\nplacement:\n  label: rgw\nspec:\n  rgw_realm: myrealm\n  rgw_zone: myzone\n  rgw_zonegroup: myzg\n  rgw_exit_timeout_secs: 120",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "49ba1ad6c1412ffa",
+    "code": "service_type: ingress\nservice_id: rgw.something    # adjust to match your existing RGW service\nplacement:\n  hosts:\n    - host1\n    - host2\n    - host3\nspec:\n  backend_service: rgw.something            # adjust to match your existing RGW service\n  virtual_ip: <string>/<string>             # ex: 192.168.20.1/24\n  frontend_port: <integer>                  # ex: 8080\n  monitor_port: <integer>                   # ex: 1967, used by haproxy for load balancer status\n  virtual_interface_networks: [ ... ]       # optional: list of CIDR networks\n  use_keepalived_multicast: <bool>          # optional: Default is False.\n  vrrp_interface_network: <string>/<string> # optional: ex: 192.168.20.0/24\n  health_check_interval: <string>           # optional: Default is 2s.\n  ssl_cert: |                               # optional: SSL certificate and key\n    -----BEGIN CERTIFICATE-----\n    ...\n    -----END CERTIFICATE-----\n    -----BEGIN PRIVATE KEY-----\n    ...\n    -----END PRIVATE KEY-----",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "49ba1ad6c1412ffa",
+    "code": "service_type: ingress\nservice_id: rgw.something    # adjust to match your existing RGW service\nplacement:\n  hosts:\n    - host1\n    - host2\n    - host3\nspec:\n  backend_service: rgw.something      # adjust to match your existing RGW service\n  virtual_ips_list:\n  - <string>/<string>                 # ex: 192.168.20.1/24\n  - <string>/<string>                 # ex: 192.168.20.2/24\n  - <string>/<string>                 # ex: 192.168.20.3/24\n  frontend_port: <integer>            # ex: 8080\n  monitor_port: <integer>             # ex: 1967, used by haproxy for load balancer status\n  virtual_interface_networks: [ ... ] # optional: list of CIDR networks\n  first_virtual_router_id: <integer>  # optional: default 50\n  health_check_interval: <string>     # optional: Default is 2s.\n  ssl_cert: |                         # optional: SSL certificate and key\n    -----BEGIN CERTIFICATE-----\n    ...\n    -----END CERTIFICATE-----\n    -----BEGIN PRIVATE KEY-----\n    ...\n    -----END PRIVATE KEY-----",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "112ef98fac81c1a1",
+    "code": "ceph orch apply -i <ingress_spec_file>",
+    "language": "text",
+    "context": "Use the command",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch apply -i"
+    ]
+  },
+  {
+    "entity_id": "faabcfbc442fff05",
+    "code": "service_type: ingress\nservice_id: rgw.something\nspec:\n  virtual_ip: 192.168.0.80/24\n  virtual_interface_networks:\n    - 10.10.0.0/16\n  ...",
+    "language": "text",
+    "context": "IP on the first network interface to match.  For example,\nif the virtual IP is 192.168.0.80/24 and we want it on the same interface as the machine's\nstatic IP in 10.10.0.0/16, you can use a spec like",
+    "source_file": "cephadm/services/rgw.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3448e0d1873a4866",
+    "code": "service_type: mgmt-gateway\nplacement:\n  label: mgmt\nspec:\n  enable_auth: true\n  virtual_ip: 192.168.100.220",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/mgmt-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "de2b1258d2a5a3ac",
+    "code": "service_type: ingress\nservice_id: ingress-mgmt-gw\nplacement:\n  label: mgmt\nvirtual_ip: 192.168.100.220\nbackend_service: mgmt-gateway\nkeepalive_only: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/mgmt-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f1472b0e3fe3a445",
+    "code": "service_type: mgmt-gateway\nservice_id: gateway\nplacement:\n  hosts:\n    - ceph0\nspec:\n port: 5000\n ssl: True\n ssl_protocols:\n   - TLSv1.2\n   - TLSv1.3\n   - ...\n ssl_ciphers:\n   - AES128-SHA\n   - AES256-SHA\n   - ...\n ssl_cert: |\n   -----BEGIN CERTIFICATE-----\n   MIIDtTCCAp2gAwIBAgIYMC4xNzc1NDQxNjEzMzc2MjMyXzxvQ7EcMA0GCSqGSIb3\n   DQEBCwUAMG0xCzAJBgNVBAYTAlVTMQ0wCwYDVQQIDARVdGFoMRcwFQYDVQQHDA5T\n   [...]\n   -----END CERTIFICATE-----\n ssl_key: |\n   -----BEGIN PRIVATE KEY-----\n   MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5jdYbjtNTAKW4\n   /CwQr/7wOiLGzVxChn3mmCIF3DwbL/qvTFTX2d8bDf6LjGwLYloXHscRfxszX/4h\n   [...]\n   -----END PRIVATE KEY-----",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/mgmt-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3ad97598a8dafc65",
+    "code": "ceph config set mgr mgr/cephadm/container_image_nginx <new-nginx-image>\nceph orch redeploy ``mgmt-gateway``",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/mgmt-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mgr",
+      "ceph orch redeploy"
+    ]
+  },
+  {
+    "entity_id": "a7342d9129e1bb30",
+    "code": "The ``virtual_ip`` parameter must be identical in both the ingress and ``mgmt-gateway`` specifications.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/mgmt-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aa873edb6898fbbf",
+    "code": "TLSv1.3 is considered safe at this moment and includes a set of secure ciphers by default.\nWhen configuring SSL/TLS ciphers for older versions, especially TLSv1.2, it is crucial to\nuse only a subset of secure ciphers. Using weak or outdated ciphers can significantly\ncompromise the security of your system.",
+    "language": "text",
+    "context": ".. warning",
+    "source_file": "cephadm/services/mgmt-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6d12306f6da63435",
+    "code": "mgr/cephadm/container_image_nginx = 'quay.io/ceph/nginx:sclorg-nginx-126'",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/services/mgmt-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cbcbd7811176ed93",
+    "code": "service_type: grafana\nservice_name: grafana\nplacement:\n  count: 1\nnetworks:\n- 192.169.142.0/24\nspec:\n  port: 4200\n  protocol: http",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8fef11604b0cbdaf",
+    "code": "ceph config-key set mgr/cephadm/<option_name> <value>",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "f2ca47978416c10b",
+    "code": "ceph config-key set mgr/cephadm/<option_name> -i $PWD/<filename>",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "f5bcf8d020a2838c",
+    "code": "# set the contents of ./prometheus.yml.j2 as template\nceph config-key set mgr/cephadm/services/prometheus/prometheus.yml \\\n  -i $PWD/prometheus.yml.j2",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "cf1d5387cea2abe8",
+    "code": "# set additional custom alerting rules for Prometheus\nceph config-key set mgr/cephadm/services/prometheus/alerting/custom_alerts.yml \\\n  -i $PWD/custom_alerts.yml",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "46f6adec71f9ea6e",
+    "code": "ceph mgr module enable prometheus",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable"
+    ]
+  },
+  {
+    "entity_id": "6a8b5c7c5a26c81c",
+    "code": "- job_name: 'ceph-exporter'  \n  http_sd_configs:  \n  - url: http://<mgr-ip>:8765/sd/prometheus/sd-config?service=ceph-exporter",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5d5cbcfdfa4e9e62",
+    "code": "$ ceph orch rm grafana\n$ ceph orch rm prometheus --force   # this will delete metrics data collected so far\n$ ceph orch rm node-exporter\n$ ceph orch rm alertmanager\n$ ceph mgr module disable prometheus",
+    "language": "console",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module disable",
+      "ceph orch rm alertmanager",
+      "ceph orch rm grafana",
+      "ceph orch rm node-exporter",
+      "ceph orch rm prometheus"
+    ]
+  },
+  {
+    "entity_id": "161d36b2c292ce52",
+    "code": "service_type: prometheus\nplacement:\n  count: 1\nspec:\n  retention_time: \"1y\"\n  retention_size: \"1GB\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "32d35b6cadfb347a",
+    "code": "$ ceph orch ls\nNAME           RUNNING  REFRESHED  IMAGE NAME                                      IMAGE ID        SPEC\nalertmanager       1/1  6s ago     docker.io/prom/alertmanager:latest              0881eb8f169f  present\ncrash              2/2  6s ago     docker.io/ceph/daemon-base:latest-master-devel  mix           present\ngrafana            1/1  0s ago     docker.io/pcuzner/ceph-grafana-el8:latest       f77afcf0bcf6   absent\nnode-exporter      2/2  6s ago     docker.io/prom/node-exporter:latest             e5a616e4b9cf  present\nprometheus         1/1  6s ago     docker.io/prom/prometheus:latest                e935122ab143  present",
+    "language": "console",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch ls NAME"
+    ]
+  },
+  {
+    "entity_id": "bebcb447dbc1b635",
+    "code": "service_type: grafana\nspec:\n  initial_admin_password: mypassword",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e1b7ce7823e70bbe",
+    "code": "ceph orch apply -i grafana.yaml\nceph orch redeploy grafana",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch apply -i",
+      "ceph orch redeploy grafana"
+    ]
+  },
+  {
+    "entity_id": "e730e58d6515659c",
+    "code": "service_type: grafana\nplacement:\n  hosts:\n  - host1\nspec:\n  anonymous_access: False\n  initial_admin_password: \"mypassword\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e2ab1e7775ddfaed",
+    "code": "service_type: alertmanager\nspec:\n  user_data:\n    default_webhook_urls:\n    - \"https://foo\"\n    - \"https://bar\"",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ca6e0e01a6d99e42",
+    "code": "service_type: alertmanager\nspec:\n  secure: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "42676dd2a6966356",
+    "code": "Prometheus' security model presumes that untrusted users have access to the\nPrometheus HTTP endpoint and logs. Untrusted users have access to all the\n(meta)data Prometheus collects that is contained in the database, plus a\nvariety of operational and debugging information.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "de9ffc58082d7128",
+    "code": "By setting a custom image, the default value will be overridden (but not\noverwritten). The default value will change when an update becomes\navailable. If you set a custom image, you will not be able automatically\nto update the component you have modified with the custom image. You will\nneed to manually update the configuration (that includes the image name\nand the tag) to be able to install updates.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bb7f828bf133725a",
+    "code": "The configuration of the custom template is also preserved when the default\nconfiguration of cephadm changes. If the updated configuration is to be used,\nthe custom template needs to be migrated *manually* after each upgrade of Ceph.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm changes"
+    ]
+  },
+  {
+    "entity_id": "828287d44cf7823c",
+    "code": "When using files as input to ``config-key`` an absolute path to the file must\nbe used.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d437168270bf83d6",
+    "code": "If you already had Prometheus daemon(s) deployed before and are updating an\nexistent spec as opposed to doing a fresh Prometheus deployment, you must also\ntell cephadm to redeploy the Prometheus daemon(s) to put this change into effect.\nThis can be done with a ``ceph orch redeploy prometheus`` command.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/monitoring.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch redeploy prometheus",
+      "cephadm to redeploy the"
+    ]
+  },
+  {
+    "entity_id": "a703117223e4fbf1",
+    "code": "service_type: iscsi\nservice_id: iscsi\nplacement:\n  hosts:\n    - host1\n    - host2\nspec:\n  pool: mypool  # RADOS pool where ceph-iscsi config data is stored.\n  trusted_ip_list: \"IP_ADDRESS_1,IP_ADDRESS_2\"\n  api_port: ... # optional\n  api_user: ... # optional\n  api_password: ... # optional\n  api_secure: true/false # optional\n  ssl_cert: | # optional\n    ...\n  ssl_key: | # optional\n    ...",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/iscsi.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f9ebc666162e6c13",
+    "code": "service_type: iscsi\nservice_id: iscsi\nplacement:\n  hosts:\n  - [...]\nspec:\n  pool: iscsi_pool\n  trusted_ip_list: \"IP_ADDRESS_1,IP_ADDRESS_2,IP_ADDRESS_3,...\"\n  api_user: API_USERNAME\n  api_password: API_PASSWORD\n  ssl_cert: |\n    -----BEGIN CERTIFICATE-----\n    MIIDtTCCAp2gAwIBAgIYMC4xNzc1NDQxNjEzMzc2MjMyXzxvQ7EcMA0GCSqGSIb3\n    DQEBCwUAMG0xCzAJBgNVBAYTAlVTMQ0wCwYDVQQIDARVdGFoMRcwFQYDVQQHDA5T\n    [...]\n    -----END CERTIFICATE-----\n  ssl_key: |\n    -----BEGIN PRIVATE KEY-----\n    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5jdYbjtNTAKW4\n    /CwQr/7wOiLGzVxChn3mmCIF3DwbL/qvTFTX2d8bDf6LjGwLYloXHscRfxszX/4h\n    [...]\n    -----END PRIVATE KEY-----",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/iscsi.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "74ce29f1f8226611",
+    "code": "service_type: nfs\nservice_id: mynfs\nplacement:\n  hosts:\n    - host1\n    - host2\nspec:\n  port: 12345",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/nfs.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "294c17284408b6af",
+    "code": "service_type: ingress\nservice_id: nfs.mynfs\nplacement:\n  count: 2\nspec:\n  backend_service: nfs.mynfs\n  frontend_port: 2049\n  monitor_port: 9000\n  virtual_ip: 10.0.0.123/24",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/nfs.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "54fab22a869b492d",
+    "code": "service_type: ingress\nservice_id: nfs.foo\nplacement:\n  count: 1\n  hosts:\n  - host1\n  - host2\n  - host3\nspec:\n  backend_service: nfs.foo\n  monitor_port: 9049\n  virtual_ip: 192.168.122.100/24\n  keepalive_only: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/nfs.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c91beff576bf67eb",
+    "code": "service_type: nfs\nservice_id: foo\nplacement:\n  count: 1\n  hosts:\n  - host1\n  - host2\n  - host3\nspec:\n  port: 2049\n  virtual_ip: 192.168.122.100",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/nfs.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "54fab22a869b492d",
+    "code": "service_type: ingress\nservice_id: nfs.foo\nplacement:\n  count: 1\n  hosts:\n  - host1\n  - host2\n  - host3\nspec:\n  backend_service: nfs.foo\n  monitor_port: 9049\n  virtual_ip: 192.168.122.100/24\n  enable_haproxy_protocol: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/nfs.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c91beff576bf67eb",
+    "code": "service_type: nfs\nservice_id: foo\nplacement:\n  count: 1\n  hosts:\n  - host1\n  - host2\n  - host3\nspec:\n  port: 2049\n  enable_haproxy_protocol: true",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/nfs.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4ba5d58b126b6be2",
+    "code": "service_type: oauth2-proxy\nservice_id: auth-proxy\nplacement:\n  label: mgmt\nspec:\n https_address: \"0.0.0.0:4180\"\n provider_display_name: \"My OIDC Provider\"\n client_id: \"your-client-id\"\n oidc_issuer_url: \"http://192.168.100.1:5556/dex\"\n client_secret: \"your-client-secret\"\n cookie_secret: \"your-cookie-secret\"\n ssl_certificate: |\n   -----BEGIN CERTIFICATE-----\n   MIIDtTCCAp2gAwIBAgIYMC4xNzc1NDQxNjEzMzc2MjMyXzxvQ7EcMA0GCSqGSIb3\n   DQEBCwUAMG0xCzAJBgNVBAYTAlVTMQ0wCwYDVQQIDARVdGFoMRcwFQYDVQQHDA5T\n   [...]\n   -----END CERTIFICATE-----\nssl_certificate_key: |\n   -----BEGIN PRIVATE KEY-----\n   MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5jdYbjtNTAKW4\n   /CwQr/7wOiLGzVxChn3mmCIF3DwbL/qvTFTX2d8bDf6LjGwLYloXHscRfxszX/4h\n   [...]\n   -----END PRIVATE KEY-----",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/oauth2-proxy.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ba268a6f0ad35f60",
+    "code": "ceph config set mgr mgr/cephadm/container_image_oauth2_proxy <new-oauth2-proxy-image>\nceph orch redeploy oauth2-proxy",
+    "language": "bash",
+    "context": "",
+    "source_file": "cephadm/services/oauth2-proxy.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mgr",
+      "ceph orch redeploy oauth2-proxy"
+    ]
+  },
+  {
+    "entity_id": "79bfc3f9b09c98df",
+    "code": "ceph config get mgr mgr/cephadm/container_image_oauth2_proxy",
+    "language": "text",
+    "context": "",
+    "source_file": "cephadm/services/oauth2-proxy.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "ceph config get mgr"
+    ]
+  },
+  {
+    "entity_id": "0b03ad5a90fb42c5",
+    "code": "service_type: mon\nservice_name: mon\nplacement:\n  count: 5\nspec:\n  crush_locations:\n    host1:\n    - datacenter=a\n    host2:\n    - datacenter=b\n    - rack=2\n    host3:\n    - datacenter=a",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/mon.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "adbbb1b85479faaa",
+    "code": "Setting the CRUSH location in the spec is the recommended way of\nreplacing tiebreaker mon daemons, as they require having a location\nset when they are added.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/mon.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3fa7327eeeb51fcb",
+    "code": "Tiebreaker mon daemons are a part of stretch mode clusters. For more\ninfo on stretch mode clusters see :ref:`stretch_mode`",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/mon.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2a649b10e9d3834f",
+    "code": "Sometimes, based on the timing of mon daemons being admitted to the mon\nquorum, cephadm may fail to set the CRUSH location for some mon daemons\nwhen multiple locations are specified. In this case, the recommended\naction is to re-apply the same mon spec to retrigger the service action.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/mon.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm may fail to"
+    ]
+  },
+  {
+    "entity_id": "fae7dd3bfbd71b35",
+    "code": "Mon daemons will only get the ``--set-crush-location`` flag set when cephadm\nactually deploys them. This means if a spec is applied that includes a CRUSH\nlocation for a mon that is already deployed, the flag may not be set until\na redeploy command is issued for that mon daemon.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/mon.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": [
+      "cephadm actually deploys them"
+    ]
+  },
+  {
+    "entity_id": "f7eee7d5fa03022f",
+    "code": "---\nsnmp_community: public",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/snmp-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d4e05fa8e9566cb3",
+    "code": "service_type: snmp-gateway\nservice_name: snmp-gateway\nplacement:\n  count: 1\nspec:\n  credentials:\n    snmp_community: public\n  port: 9464\n  snmp_destination: 192.168.122.73:162\n  snmp_version: V2c",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/snmp-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1170f74b8a8b41f7",
+    "code": "---\nsnmp_v3_auth_username: myuser\nsnmp_v3_auth_password: mypassword",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/snmp-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d4e05fa8e9566cb3",
+    "code": "service_type: snmp-gateway\nservice_name: snmp-gateway\nplacement:\n  count: 1\nspec:\n  credentials:\n    snmp_v3_auth_password: mypassword\n    snmp_v3_auth_username: myuser\n  engine_id: 800C53F000000\n  port: 9464\n  snmp_destination: 192.168.122.1:162\n  snmp_version: V3",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/snmp-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "35f2d953f1ee2423",
+    "code": "---\nsnmp_v3_auth_username: myuser\nsnmp_v3_auth_password: mypassword\nsnmp_v3_priv_password: mysecret",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/snmp-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c171a7f60695e3ad",
+    "code": "The credentials are stored on the host, restricted to the ``root`` user and passed to the ``snmp_notifier`` daemon as\nan environment file (``--env-file``), to limit exposure.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "cephadm/services/snmp-gateway.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a23082c3604a9a27",
+    "code": "service_type: mds\nservice_id: fs_name\nplacement:\n  count: 3\n  label: mds",
+    "language": "yaml",
+    "context": "",
+    "source_file": "cephadm/services/mds.rst",
+    "component": "cephadm",
+    "section_title": "",
+    "commands_used": []
+  }
+]

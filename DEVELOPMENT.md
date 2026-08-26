@@ -64,7 +64,7 @@ ceph-doc-kb/
 │   ├── test_search.py
 │   └── test_mcp_server.py
 │
-├── knowledge/                  # Built indices (gitignored)
+├── knowledge/                  # Built indices (committed so MCP auto-update can ship them)
 │   └── doc-20.2.1/
 │       ├── metadata.json
 │       ├── command_xref.json

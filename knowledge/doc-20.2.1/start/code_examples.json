@@ -1,0 +1,358 @@
+[
+  {
+    "entity_id": "9449dada565ba433",
+    "code": "It is a best practice to have a Ceph Manager for each Monitor, but it is not\nnecessary.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "start/index.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6d92593442a7c0e6",
+    "code": "+------+ +----------+ +----------+ +-------+ +------+\n| OSDs | | Monitors | | Managers | | MDSes | | RGWs |\n+------+ +----------+ +----------+ +-------+ +------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "start/index.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "51f35483b29e691c",
+    "code": "[user]\n   email = {your-email-address}\n   name = {your-name}",
+    "language": "ini",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "684b2d3dfdde2d29",
+    "code": "doc: Fixes a spelling error and a broken hyperlink.",
+    "language": "text",
+    "context": "The following is a common commit comment (preferred)",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "684b2d3dfdde2d29",
+    "code": "doc: Fixes a spelling error and a broken hyperlink.",
+    "language": "text",
+    "context": "The following comment includes a reference to a bug.",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "74bc93be2be7dc69",
+    "code": "doc: Added mon setting to monitor config reference",
+    "language": "text",
+    "context": "The following comment includes a terse sentence following the comment summary.\nThere is a carriage return between the summary line and the description",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4352d31dd93bfc5a",
+    "code": "doc/glossary: improve \"CephX\" entry",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "60c8518c983cdb0f",
+    "code": "doc/glossary: add link to architecture doc",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3b5e9bb9ccd44768",
+    "code": "doc/glossary: link to Arch doc in \"CephX\" glossary",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "59e74be699d048e3",
+    "code": "pick d395e500883 doc/glossary: improve \"CephX\" entry\npick b34986e2922 doc/glossary: add link to architecture doc\npick 74d0719735c doc/glossary: link to Arch doc in \"CephX\" glossary",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5df6a926ddf5e13e",
+    "code": "pick d395e500883 doc/glossary: improve \"CephX\" entry\nsquash b34986e2922 doc/glossary: add link to architecture doc\nsquash 74d0719735c doc/glossary: link to Arch doc in \"CephX\" glossary",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0803f58594dfba1c",
+    "code": "# This is a combination of 3 commits.\n# This is the 1st commit message:",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4352d31dd93bfc5a",
+    "code": "doc/glossary: improve \"CephX\" entry",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1a5416de03e56ce9",
+    "code": "Enumerating objects: 9, done.\nCounting objects: 100% (9/9), done.\nDelta compression using up to 8 threads\nCompressing objects: 100% (5/5), done.\nWriting objects: 100% (5/5), 722 bytes | 722.00 KiB/s, done.\nTotal 5 (delta 4), reused 0 (delta 0), pack-reused 0\nremote: Resolving deltas: 100% (4/4), completed with 4 local objects.\nTo github.com:zdover23/ceph.git\n + b34986e2922...02e3a5cb763 wip-doc-2023-03-28-glossary-cephx -> wip-doc-2023-03-28-glossary-cephx (forced update)",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "25233bc64737eb14",
+    "code": "``Click `here <https://www.sphinx-doc.org>`_ to learn more about Python\nSphinx.``",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e3166439ed08836b",
+    "code": "`inline text <http:www.foo.com>`_",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "560ff5c36cf8c564",
+    "code": ".. _target:",
+    "language": "text",
+    "context": "Target",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "072f4deafc92ff1f",
+    "code": ":ref:`target`",
+    "language": "text",
+    "context": "Link to target",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "62190e6dfb1e3384",
+    "code": ":ref:`inline text<target>`",
+    "language": "text",
+    "context": "Link to target with inline text",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "89e4f9332fdcc343",
+    "code": "There is no space between \"inline text\" and the angle bracket that\nimmediately follows it. This is precisely the opposite of :ref:`the\nconvention for inline text that links to a location outside of the Ceph\ndocumentation<external_link_with_inline_text>`. If this seems inconsistent\nand confusing to you, then you're right. It is inconsistent and confusing.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e335eb43ac0a6ba4",
+    "code": "**C**eph **F**ile **S**ystem",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "be4eae2d08b4a0df",
+    "code": "**C**\\eph **F**\\ile **S**\\ystem",
+    "language": "text",
+    "context": "",
+    "source_file": "start/documenting-ceph.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "214a97603ce2d466",
+    "code": "# fio --name=/dev/sdX --ioengine=libaio --direct=1 --fsync=1 --readwrite=randwrite --blocksize=4k --runtime=300",
+    "language": "console",
+    "context": "",
+    "source_file": "start/hardware-recommendations.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cdd5ab3cb9ca8039",
+    "code": "# hdparm -W /dev/sda",
+    "language": "console",
+    "context": "",
+    "source_file": "start/hardware-recommendations.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4c61e8543ea081eb",
+    "code": "# hdparm -W0 /dev/sda",
+    "language": "console",
+    "context": "",
+    "source_file": "start/hardware-recommendations.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f0eca546904e7d0f",
+    "code": "# echo \"write through\" > /sys/class/scsi_disk/0\\:0\\:0\\:0/cache_type",
+    "language": "console",
+    "context": "",
+    "source_file": "start/hardware-recommendations.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d19a7eb37b11c03c",
+    "code": "# cat /etc/udev/rules.d/99-ceph-write-through.rules\nACTION==\"add\", SUBSYSTEM==\"scsi_disk\", ATTR{cache_type}:=\"write through\"",
+    "language": "console",
+    "context": "",
+    "source_file": "start/hardware-recommendations.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4b080023c14798d3",
+    "code": "# cat /etc/udev/rules.d/99-ceph-write-through-el7.rules\nACTION==\"add\", SUBSYSTEM==\"scsi_disk\", RUN+=\"/bin/sh -c 'echo write through > /sys/class/scsi_disk/$kernel/cache_type'\"",
+    "language": "console",
+    "context": "",
+    "source_file": "start/hardware-recommendations.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "90532cb7d5e97c9f",
+    "code": "# sdparm --get WCE /dev/sd*\n    /dev/sda: ATA       TOSHIBA MG07ACA1  0101\nWCE           0  [cha: y]\n    /dev/sdb: ATA       TOSHIBA MG07ACA1  0101\nWCE           0  [cha: y]\n# sdparm --clear WCE /dev/sd*\n    /dev/sda: ATA       TOSHIBA MG07ACA1  0101\n    /dev/sdb: ATA       TOSHIBA MG07ACA1  0101",
+    "language": "console",
+    "context": "",
+    "source_file": "start/hardware-recommendations.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5a21e25f0d4fdbae",
+    "code": "/------------------\\         /----------------\\\n|    Admin Node    |         |   ceph-client  |\n|                  +-------->+ cCCC           |\n|    ceph-deploy   |         |      ceph      |\n\\------------------/         \\----------------/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "start/quick-rbd.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ad5deb14b3c5bcbb",
+    "code": "rbd pool init <pool-name>",
+    "language": "text",
+    "context": "#. On the admin node, use the ``rbd`` tool to initialize the pool for use by RBD",
+    "source_file": "start/quick-rbd.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": [
+      "rbd pool init"
+    ]
+  },
+  {
+    "entity_id": "1d85200a23019e46",
+    "code": "rbd create foo --size 4096 --image-feature layering [-m {mon-IP}] [-k /path/to/ceph.client.admin.keyring] [-p {pool-name}]",
+    "language": "text",
+    "context": "#. On the ``ceph-client`` node, create a block device image.",
+    "source_file": "start/quick-rbd.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": [
+      "rbd create foo --size"
+    ]
+  },
+  {
+    "entity_id": "87914368c70a9c90",
+    "code": "sudo rbd map foo --name client.admin [-m {mon-IP}] [-k /path/to/ceph.client.admin.keyring] [-p {pool-name}]",
+    "language": "text",
+    "context": "#. On the ``ceph-client`` node, map the image to a block device.",
+    "source_file": "start/quick-rbd.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": [
+      "rbd map foo --name"
+    ]
+  },
+  {
+    "entity_id": "fbc2b831916702fb",
+    "code": "sudo mkfs.ext4 -m0 /dev/rbd/{pool-name}/foo",
+    "language": "text",
+    "context": "sudo rbd map foo --name client.admin [-m {mon-IP}] [-k /path/to/ceph.client.admin.keyring] [-p {pool-name}]\n\t\n#. Use the block device by creating a file system on the ``ceph-client`` \n   node.",
+    "source_file": "start/quick-rbd.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "be1deb3afcd55865",
+    "code": "sudo mkdir /mnt/ceph-block-device\nsudo mount /dev/rbd/{pool-name}/foo /mnt/ceph-block-device\ncd /mnt/ceph-block-device",
+    "language": "text",
+    "context": "sudo mkfs.ext4 -m0 /dev/rbd/{pool-name}/foo\n\t\n\tThis may take a few moments.\n\t\n#. Mount the file system on the ``ceph-client`` node.",
+    "source_file": "start/quick-rbd.rst",
+    "component": "start",
+    "section_title": "",
+    "commands_used": []
+  }
+]

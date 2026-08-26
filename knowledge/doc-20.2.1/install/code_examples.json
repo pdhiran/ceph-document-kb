@@ -1,0 +1,1556 @@
+[
+  {
+    "entity_id": "8b8c2aeb59dfa6af",
+    "code": "Please see the `OS recommendations`_ regarding client package support.",
+    "language": "text",
+    "context": "Supported platforms\n-------------------\n.. note",
+    "source_file": "install/windows-install.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3d8577e12fb753b4",
+    "code": "+---------------------------------------------------+\n|                     libvirt                       |\n+------------------------+--------------------------+\n                         |\n                         | configures\n                         v\n+---------------------------------------------------+\n|                       QEMU                        |\n+---------------------------------------------------+\n|                      librbd                       |\n+---------------------------------------------------+\n|                     librados                      |\n+------------------------+-+------------------------+\n|          OSDs          | |        Monitors        |\n+------------------------+ +------------------------+",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "154d0d2184f38509",
+    "code": "sudo apt-get install qemu",
+    "language": "text",
+    "context": "QEMU packages are incorporated into Ubuntu 12.04 Precise Pangolin and later\nversions. To  install QEMU, execute the following",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "da8502f4e1c23ab6",
+    "code": "sudo yum update",
+    "language": "text",
+    "context": "#. Update your repositories.",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2120386aec55b5d2",
+    "code": "sudo yum install qemu-kvm qemu-kvm-tools qemu-img",
+    "language": "text",
+    "context": "#. Install QEMU for Ceph.",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "41c5f23677ebf3ed",
+    "code": "sudo yum install qemu-guest-agent qemu-guest-agent-win32",
+    "language": "text",
+    "context": "#. Install additional QEMU packages (optional)",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8af08f7271ff2562",
+    "code": "cd {your-development-directory}\ngit clone git://git.qemu.org/qemu.git\ncd qemu\n./configure --enable-rbd\nmake; make install",
+    "language": "text",
+    "context": "To build QEMU from source, use the following procedure",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "rbd make"
+    ]
+  },
+  {
+    "entity_id": "88777b97dcfaa0d8",
+    "code": "sudo apt-get update && sudo apt-get install libvirt-bin",
+    "language": "text",
+    "context": "``libvirt`` packages are incorporated into Ubuntu 12.04 Precise Pangolin and\nlater versions of Ubuntu. To install ``libvirt`` on these distributions,\nexecute the following",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c3544f401fb1571e",
+    "code": "sudo yum install libvirt",
+    "language": "text",
+    "context": "``libvirt`` packages are incorporated into the recent CentOS/RHEL distributions.\nTo install ``libvirt``, execute the following",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2d53e4ef35a92c81",
+    "code": "git clone git://libvirt.org/libvirt.git\ncd libvirt\n./autogen.sh\nmake\nsudo make install",
+    "language": "text",
+    "context": "To build ``libvirt`` from source, clone the ``libvirt`` repository and use\n`AutoGen`_ to generate the build. Then, execute ``make`` and ``make install`` to\ncomplete the installation. For example",
+    "source_file": "install/install-vm-cloud.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e59aed9cbf0e5a84",
+    "code": "ceph-deploy is not actively maintained. It is not tested on versions of Ceph\nnewer than Nautilus. It does not support RHEL8, CentOS 8, or newer operating\nsystems.",
+    "language": "text",
+    "context": ".. IMPORTANT",
+    "source_file": "install/index.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cb38b2f1363e377c",
+    "code": "/------------------\\         /----------------\\\n|    Admin Node    |         |     node1      |\n|                  +-------->+                |\n|                  |         | cCCC           |\n\\---------+--------/         \\----------------/\n          |\n          |                  /----------------\\\n          |                  |     node2      |\n          +----------------->+                |\n          |                  | cCCC           |\n          |                  \\----------------/\n          |\n          |                  /----------------\\\n          |                  |     node3      |\n          +----------------->|                |\n                             | cCCC           |\n                             \\----------------/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2592b4ac699c3f1f",
+    "code": "gpart create -s GPT ada1\ngpart add -t freebsd-zfs -l osd.1 ada1\nzpool create -m /var/lib/ceph/osd/osd.1 osd.1 gpt/osd.1",
+    "language": "text",
+    "context": "* All Ceph data is created in /var/lib/ceph\n* Log files go into /var/log/ceph\n* PID files go into /var/log/run\n* One ZFS pool is allocated per OSD, like",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf7cf7120b40ea90",
+    "code": "gpart create -s GPT ada2\ngpart add -t freebsd-zfs -l osd.1-log -s 1G ada2\nzpool add osd.1 log gpt/osd.1-log\ngpart add -t freebsd-zfs -l osd.1-cache -s 10G ada2\nzpool add osd.1 log gpt/osd.1-cache",
+    "language": "text",
+    "context": "his is different from the Ceph journals. Cache and log are\n  totally transparent for Ceph, and help the file system to keep the system\n  consistent and help performance.\n  Assuming that ada2 is an SSD",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3072e5065a3ff52b",
+    "code": "ln -s /usr/local/etc/ceph /etc/ceph",
+    "language": "text",
+    "context": "/local/``. Which\nmeans that for ``/etc/ceph.conf`` the default location is\n``/usr/local/etc/ceph/ceph.conf``. Smartest thing to do is to create a softlink\nfrom ``/etc/ceph`` to ``/usr/local/etc/ceph``",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5959631f079bf2b1",
+    "code": "ssh {hostname}",
+    "language": "text",
+    "context": "#. Log in to the initial monitor node(s)",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e789b4f996bedc78",
+    "code": "ls /etc/ceph",
+    "language": "text",
+    "context": "Ensure you have a directory for the Ceph configuration file. By default,\n   Ceph uses ``/etc/ceph``. When you install ``ceph``, the installer will\n   create the ``/etc/ceph`` directory automatically.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "269b884f93c586af",
+    "code": "sudo vim /etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "#. Create a Ceph configuration file. By default, Ceph uses\n   ``ceph.conf``, where ``ceph`` reflects the cluster name.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f8de888f76b2bafa",
+    "code": "fsid = {UUID}",
+    "language": "ini",
+    "context": "#. Add the unique ID to your Ceph configuration file.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d32215a71516e401",
+    "code": "fsid = a7f64266-0894-4f1e-a635-d0aeaca0e993",
+    "language": "ini",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f7bc3e2f8e3b504e",
+    "code": "mon initial members = {hostname}[,{hostname}]",
+    "language": "text",
+    "context": "#. Add the initial monitor(s) to your Ceph configuration file.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "35932ed7cc903281",
+    "code": "mon initial members = node1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50bf6c057f6df538",
+    "code": "mon host = {ip-address}[,{ip-address}]",
+    "language": "text",
+    "context": "#. Add the IP address(es) of the initial monitor(s) to your Ceph configuration\n   file and save the file.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13fee66738fbc098",
+    "code": "mon host = 192.168.0.1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "874c40a3bf4d5f46",
+    "code": "ceph-authtool --create-keyring /tmp/ceph.mon.keyring --gen-key -n mon. --cap mon 'allow *'",
+    "language": "text",
+    "context": "#. Create a keyring for your cluster and generate a monitor secret key.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "499e4821137d7618",
+    "code": "sudo ceph-authtool --create-keyring /etc/ceph/ceph.client.admin.keyring --gen-key -n client.admin --cap mon 'allow *' --cap osd 'allow *' --cap mds 'allow *' --cap mgr 'allow *'",
+    "language": "text",
+    "context": "#. Generate an administrator keyring, generate a ``client.admin`` user and add\n   the user to the keyring.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "24e0aa349ee4c03b",
+    "code": "ceph-authtool /tmp/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.admin.keyring",
+    "language": "text",
+    "context": "#. Add the ``client.admin`` key to the ``ceph.mon.keyring``.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "403d7122aa12f712",
+    "code": "monmaptool --create --add {hostname} {ip-address} --fsid {uuid} /tmp/monmap",
+    "language": "text",
+    "context": "#. Generate a monitor map using the hostname(s), host IP address(es) and the FSID.\n   Save it as ``/tmp/monmap``",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d3d9dea44e119dae",
+    "code": "monmaptool --create --add node1 192.168.0.1 --fsid a7f64266-0894-4f1e-a635-d0aeaca0e993 /tmp/monmap",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7a60bcac1112d666",
+    "code": "sudo mkdir /var/lib/ceph/mon/{cluster-name}-{hostname}",
+    "language": "text",
+    "context": "#. Create a default data directory (or directories) on the monitor host(s).",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c3a421664ef5713",
+    "code": "sudo mkdir /var/lib/ceph/mon/ceph-node1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6f1b5e95d3b37914",
+    "code": "sudo -u ceph ceph-mon [--cluster {cluster-name}] --mkfs -i {hostname} --monmap /tmp/monmap --keyring /tmp/ceph.mon.keyring",
+    "language": "text",
+    "context": "#. Populate the monitor daemon(s) with the monitor map and keyring.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph-mon"
+    ]
+  },
+  {
+    "entity_id": "b8871b9107a0c56e",
+    "code": "sudo -u ceph ceph-mon --mkfs -i node1 --monmap /tmp/monmap --keyring /tmp/ceph.mon.keyring",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph-mon --mkfs -i"
+    ]
+  },
+  {
+    "entity_id": "bf82f85b79a1e68d",
+    "code": "[global]\nfsid = {cluster-id}\nmon initial members = {hostname}[, {hostname}]\nmon host = {ip-address}[, {ip-address}]\npublic network = {network}[, {network}]\ncluster network = {network}[, {network}]\nauth cluster required = cephx\nauth service required = cephx\nauth client required = cephx\nosd journal size = {n}\nosd pool default size = {n}  # Write an object n times.\nosd pool default min size = {n} # Allow writing n copy in a degraded state.\nosd pool default pg num = {n}\nosd pool default pgp num = {n}\nosd crush chooseleaf type = {n}",
+    "language": "ini",
+    "context": "#. Consider settings for a Ceph configuration file. Common settings include\n   the following",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c6441d2f1f8265aa",
+    "code": "[global]\nfsid = a7f64266-0894-4f1e-a635-d0aeaca0e993\nmon initial members = node1\nmon host = 192.168.0.1\npublic network = 192.168.0.0/24\nauth cluster required = cephx\nauth service required = cephx\nauth client required = cephx\nosd journal size = 1024\nosd pool default size = 3\nosd pool default min size = 2\nosd pool default pg num = 333\nosd pool default pgp num = 333\nosd crush chooseleaf type = 1",
+    "language": "ini",
+    "context": "In the foregoing example, the ``[global]`` section of the configuration might\n   look like this",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ce89fdf4f5892016",
+    "code": "sudo touch /var/lib/ceph/mon/ceph-node1/done",
+    "language": "text",
+    "context": "Mark that the monitor is created and ready to be started",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d05354e87a4ac063",
+    "code": "[mon]\n    [mon.node1]\n        host = node1    # this name can be resolve",
+    "language": "text",
+    "context": "The entry should look like",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a1f1bc9193b080a6",
+    "code": "sudo service ceph start start mon.node1",
+    "language": "text",
+    "context": "For FreeBSD we use the rc.d init scripts (called bsdrc in Ceph)",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph start start mon"
+    ]
+  },
+  {
+    "entity_id": "3c43c570b93119de",
+    "code": "ceph osd lspools",
+    "language": "text",
+    "context": "#. Verify that Ceph created the default pools.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd lspools"
+    ]
+  },
+  {
+    "entity_id": "a1a62fef7c132ebb",
+    "code": "0 data\n1 metadata\n2 rbd",
+    "language": "text",
+    "context": "You should see output like this",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8d3feb0dd94f1d9e",
+    "code": "cluster a7f64266-0894-4f1e-a635-d0aeaca0e993\n  health HEALTH_ERR 192 pgs stuck inactive; 192 pgs stuck unclean; no osds\n  monmap e1: 1 mons at {node1=192.168.0.1:6789/0}, election epoch 1, quorum 0 node1\n  osdmap e1: 0 osds: 0 up, 0 in\n  pgmap v2: 192 pgs, 3 pools, 0 bytes data, 0 objects\n     0 kB used, 0 kB / 0 kB avail\n     192 creating",
+    "language": "text",
+    "context": "You should see output that the monitor you started is up and running, and\n   you should see a health error indicating that placement groups are stuck\n   inactive. It should look something like this",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1819afb5cef2c838",
+    "code": "ssh {node-name}",
+    "language": "text",
+    "context": "#. Connect to the OSD host.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "33575f45b5cd5210",
+    "code": "ceph osd create [{uuid} [{id}]]",
+    "language": "text",
+    "context": "#. Create the OSD. If no UUID is given, it will be set automatically when the\n   OSD starts up. The following command will output the OSD number, which you\n   will need for subsequent steps.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd create"
+    ]
+  },
+  {
+    "entity_id": "9e667bb9385c9f8e",
+    "code": "ssh {new-osd-host}\nsudo mkdir /var/lib/ceph/osd/{cluster-name}-{osd-number}",
+    "language": "text",
+    "context": "#. Create the default directory on your new OSD.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dcac5d680396e5d8",
+    "code": "ssh {new-osd-host}\nsudo ceph-osd -i {osd-num} --mkfs --mkkey --osd-uuid [{uuid}]",
+    "language": "text",
+    "context": "#. Initialize the OSD data directory.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "357e66d66af125f0",
+    "code": "sudo ceph auth add osd.{osd-num} osd 'allow *' mon 'allow profile osd' -i /var/lib/ceph/osd/{cluster-name}-{osd-num}/keyring",
+    "language": "text",
+    "context": "Register the OSD authentication key. The value of ``ceph`` for\n   ``ceph-{osd-num}`` in the path is the ``$cluster-$id``.  If your\n   cluster name differs from ``ceph``, use your cluster name instead.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth add osd"
+    ]
+  },
+  {
+    "entity_id": "eb37c8c2e37eb33f",
+    "code": "ceph [--cluster {cluster-name}] osd crush add-bucket {hostname} host",
+    "language": "text",
+    "context": "#. Add your Ceph Node to the CRUSH map.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e1ca87012dc17054",
+    "code": "ceph osd crush add-bucket node1 host",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add-bucket"
+    ]
+  },
+  {
+    "entity_id": "086203489f43c414",
+    "code": "ceph osd crush move node1 root=default",
+    "language": "text",
+    "context": "#. Place the Ceph Node under the root ``default``.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush move"
+    ]
+  },
+  {
+    "entity_id": "8a9a20ee824a5c58",
+    "code": "ceph [--cluster {cluster-name}] osd crush add {id-or-name} {weight} [{bucket-type}={bucket-name} ...]",
+    "language": "text",
+    "context": "e CRUSH map, add the OSD to the device list, add the host as a\n   bucket (if it's not already in the CRUSH map), add the device as an item in the\n   host, assign it a weight, recompile it and set it.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "868e11ba091ca2fc",
+    "code": "ceph osd crush add osd.0 1.0 host=node1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add"
+    ]
+  },
+  {
+    "entity_id": "0922767b3278cb50",
+    "code": "sudo service ceph start osd.{osd-num}",
+    "language": "text",
+    "context": "After adding the OSD to ``ceph.conf``",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph start osd"
+    ]
+  },
+  {
+    "entity_id": "2310967f331e09c2",
+    "code": "sudo service ceph start osd.0\nsudo service ceph start osd.1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph start osd"
+    ]
+  },
+  {
+    "entity_id": "ef477f25665885b4",
+    "code": "sudo touch /var/lib/ceph/osd/{cluster-name}-{osd-num}/bsdrc",
+    "language": "text",
+    "context": "In this case, to allow the start of the daemon at each reboot you\n   must create an empty file like this",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7f4b31c5a2a70bba",
+    "code": "sudo touch /var/lib/ceph/osd/ceph-0/bsdrc\nsudo touch /var/lib/ceph/osd/ceph-1/bsdrc",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6abe86e69d66b49e",
+    "code": "mkdir -p /var/lib/ceph/mds/{cluster-name}-{id}",
+    "language": "text",
+    "context": "#. Create the mds data directory.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cbf51004f38339ca",
+    "code": "ceph-authtool --create-keyring /var/lib/ceph/mds/{cluster-name}-{id}/keyring --gen-key -n mds.{id}",
+    "language": "text",
+    "context": "#. Create a keyring.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aaaf67e042256160",
+    "code": "ceph auth add mds.{id} osd \"allow rwx\" mds \"allow *\" mon \"allow profile mds\" -i /var/lib/ceph/mds/{cluster}-{id}/keyring",
+    "language": "text",
+    "context": "#. Import the keyring and set caps.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth add mds"
+    ]
+  },
+  {
+    "entity_id": "6b3186ef1f328c72",
+    "code": "[mds.{id}]\nhost = {id}",
+    "language": "ini",
+    "context": "#. Add to ceph.conf.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3f01264dc02f866b",
+    "code": "ceph-mds --cluster {cluster-name} -i {id} -m {mon-hostname}:{mon-port} [-f]",
+    "language": "text",
+    "context": "#. Start the daemon the manual way.",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4bf49b8588e982f0",
+    "code": "service ceph start",
+    "language": "text",
+    "context": "#. Start the daemon the right way (using ceph.conf entry).",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph start"
+    ]
+  },
+  {
+    "entity_id": "b03ec3469daf02b5",
+    "code": "mds.-1.0 ERROR: failed to authenticate: (22) Invalid argument",
+    "language": "text",
+    "context": "#. If starting the daemon fails with this error",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d6d091845ce2a22",
+    "code": "ceph osd tree",
+    "language": "text",
+    "context": "To view the tree, execute the following",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tree"
+    ]
+  },
+  {
+    "entity_id": "420bb64816c9ef10",
+    "code": "# id\tweight\ttype name\tup/down\treweight\n-1\t2\troot default\n-2\t2\t\thost node1\n0\t1\t\t\tosd.0\tup\t1\n-3\t1\t\thost node2\n1\t1\t\t\tosd.1\tup\t1",
+    "language": "text",
+    "context": "You should see output that looks something like this",
+    "source_file": "install/manual-freebsd-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "71dc9c2f14b40301",
+    "code": "git checkout main",
+    "language": "text",
+    "context": "",
+    "source_file": "install/clone-source.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d03ecc3473d6a76c",
+    "code": "/------------------\\         /----------------\\\n|    Admin Node    |         |    mon-node1   |\n|                  +-------->+                |\n|                  |         | cCCC           |\n\\---------+--------/         \\----------------/\n          |\n          |                  /----------------\\\n          |                  |    osd-node1   |\n          +----------------->+                |\n          |                  | cCCC           |\n          |                  \\----------------/\n          |\n          |                  /----------------\\\n          |                  |    osd-node2   |\n          +----------------->|                |\n                             | cCCC           |\n                             \\----------------/",
+    "language": "text",
+    "context": ".. ditaa",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3243548c3e62bbb3",
+    "code": "ssh {hostname}",
+    "language": "text",
+    "context": "#. Log in to the initial monitor node(s)",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ea7f333959b6fe94",
+    "code": "ssh mon-node1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4270bd6e82663a54",
+    "code": "ls /etc/ceph",
+    "language": "text",
+    "context": "Ensure you have a directory for the Ceph configuration file. By default,\n   Ceph uses ``/etc/ceph``. When you install ``ceph``, the installer will\n   create the ``/etc/ceph`` directory automatically.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b52b8965ba97871d",
+    "code": "sudo vim /etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "#. Create a Ceph configuration file. By default, Ceph uses\n   ``ceph.conf``, where ``ceph`` reflects the cluster name. Add a line\n   containing \"[global]\" to the configuration file.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ae93065f1df74b4d",
+    "code": "fsid = {UUID}",
+    "language": "ini",
+    "context": "#. Add the unique ID to your Ceph configuration file.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "da15d6cb304952ba",
+    "code": "fsid = a7f64266-0894-4f1e-a635-d0aeaca0e993",
+    "language": "ini",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b31a9b5d7670f0f8",
+    "code": "mon_initial_members = {hostname}[,{hostname}]",
+    "language": "ini",
+    "context": "#. Add the initial monitor(s) to your Ceph configuration file.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "89f4e28a65b3d93f",
+    "code": "mon_initial_members = mon-node1",
+    "language": "ini",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "031fff3936b59638",
+    "code": "mon_host = {ip-address}[,{ip-address}]",
+    "language": "ini",
+    "context": "#. Add the IP address(es) of the initial monitor(s) to your Ceph configuration\n   file and save the file.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c1d812a43efc94d3",
+    "code": "mon_host = 192.168.0.1",
+    "language": "ini",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a677a068e43da41a",
+    "code": "sudo ceph-authtool --create-keyring /tmp/ceph.mon.keyring --gen-key -n mon. --cap mon 'allow *'",
+    "language": "text",
+    "context": "#. Create a keyring for your cluster and generate a monitor secret key.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7937e99cdc9777a5",
+    "code": "sudo ceph-authtool --create-keyring /etc/ceph/ceph.client.admin.keyring --gen-key -n client.admin --cap mon 'allow *' --cap osd 'allow *' --cap mds 'allow *' --cap mgr 'allow *'",
+    "language": "text",
+    "context": "#. Generate an administrator keyring, generate a ``client.admin`` user and add\n   the user to the keyring.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5a2d3d063832a0b5",
+    "code": "sudo ceph-authtool --create-keyring /var/lib/ceph/bootstrap-osd/ceph.keyring --gen-key -n client.bootstrap-osd --cap mon 'profile bootstrap-osd' --cap mgr 'allow r'",
+    "language": "text",
+    "context": "#. Generate a bootstrap-osd keyring, generate a ``client.bootstrap-osd`` user and add\n   the user to the keyring.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "342f776e4de47cb7",
+    "code": "sudo ceph-authtool /tmp/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.admin.keyring\nsudo ceph-authtool /tmp/ceph.mon.keyring --import-keyring /var/lib/ceph/bootstrap-osd/ceph.keyring",
+    "language": "text",
+    "context": "#. Add the generated keys to the ``ceph.mon.keyring``.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0d9bd99394192b52",
+    "code": "sudo chown ceph:ceph /tmp/ceph.mon.keyring",
+    "language": "text",
+    "context": "#. Change the owner for ``ceph.mon.keyring``.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6bbb7153ed35bbe7",
+    "code": "monmaptool --create --add {hostname} {ip-address} --fsid {uuid} /tmp/monmap",
+    "language": "text",
+    "context": "#. Generate a monitor map using the hostname(s), host IP address(es) and the FSID.\n   Save it as ``/tmp/monmap``",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "96a362235a54c746",
+    "code": "monmaptool --create --add mon-node1 192.168.0.1 --fsid a7f64266-0894-4f1e-a635-d0aeaca0e993 /tmp/monmap",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d99d2e801545d200",
+    "code": "sudo mkdir /var/lib/ceph/mon/{cluster-name}-{hostname}",
+    "language": "text",
+    "context": "#. Create a default data directory (or directories) on the monitor host(s).",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "68b749fac6a7013f",
+    "code": "sudo -u ceph mkdir /var/lib/ceph/mon/ceph-mon-node1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph mkdir"
+    ]
+  },
+  {
+    "entity_id": "2827ff723c984fd7",
+    "code": "sudo -u ceph ceph-mon [--cluster {cluster-name}] --mkfs -i {hostname} --monmap /tmp/monmap --keyring /tmp/ceph.mon.keyring",
+    "language": "text",
+    "context": "#. Populate the monitor daemon(s) with the monitor map and keyring.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph-mon"
+    ]
+  },
+  {
+    "entity_id": "064f3b599243bcb3",
+    "code": "sudo -u ceph ceph-mon --mkfs -i mon-node1 --monmap /tmp/monmap --keyring /tmp/ceph.mon.keyring",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph ceph-mon --mkfs -i"
+    ]
+  },
+  {
+    "entity_id": "8a1ed1f7bf0ea70a",
+    "code": "[global]\nfsid = {cluster-id}\nmon_initial_members = {hostname}[, {hostname}]\nmon_host = {ip-address}[, {ip-address}]\npublic_network = {network}[, {network}]\ncluster_network = {network}[, {network}]\nauth_cluster required = cephx\nauth_service required = cephx\nauth_client required = cephx\nosd_pool_default_size = {n}  # Write an object n times.\nosd_pool_default_min_size = {n} # Allow writing n copies in a degraded state.\nosd_pool_default_pg_num = {n}\nosd_crush_chooseleaf_type = {n}",
+    "language": "ini",
+    "context": "#. Consider settings for a Ceph configuration file. Common settings include\n   the following",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "283ab1d5c3a7a2a4",
+    "code": "[global]\nfsid = a7f64266-0894-4f1e-a635-d0aeaca0e993\nmon_initial_members = mon-node1\nmon_host = 192.168.0.1\npublic_network = 192.168.0.0/24\nauth_cluster_required = cephx\nauth_service_required = cephx\nauth_client_required = cephx\nosd_pool_default_size = 3\nosd_pool_default_min_size = 2\nosd_pool_default_pg_num = 333\nosd_crush_chooseleaf_type = 1",
+    "language": "ini",
+    "context": "In the foregoing example, the ``[global]`` section of the configuration might\n   look like this",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50c5665c82af13d2",
+    "code": "sudo systemctl start ceph-mon@mon-node1",
+    "language": "text",
+    "context": "Start the service with systemd",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9910dcee2f237be2",
+    "code": "sudo firewall-cmd --zone=public --add-service=ceph-mon\nsudo firewall-cmd --zone=public --add-service=ceph-mon --permanent",
+    "language": "text",
+    "context": "Open the ports with firewalld",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "72812a8e23daadf8",
+    "code": "sudo ceph -s",
+    "language": "text",
+    "context": "#. Verify that the monitor is running.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph -s"
+    ]
+  },
+  {
+    "entity_id": "d30093278b54b0d1",
+    "code": "cluster:\n  id:     a7f64266-0894-4f1e-a635-d0aeaca0e993\n  health: HEALTH_OK",
+    "language": "text",
+    "context": "You should see output that the monitor you started is up and running, and\n   you should see a health error indicating that placement groups are stuck\n   inactive. It should look something like this",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "76257e3a370b2d8c",
+    "code": "copy /var/lib/ceph/bootstrap-osd/ceph.keyring from monitor node (mon-node1) to /var/lib/ceph/bootstrap-osd/ceph.keyring on osd node (osd-node1)\nssh {osd node}\nsudo ceph-volume lvm create --data {data-path}",
+    "language": "text",
+    "context": "#. Create the OSD.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b969af5da0f08431",
+    "code": "scp -3 root@mon-node1:/var/lib/ceph/bootstrap-osd/ceph.keyring root@osd-node1:/var/lib/ceph/bootstrap-osd/ceph.keyring",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "81e70ccccfed2610",
+    "code": "ssh {osd node}\nsudo ceph-volume lvm prepare --data {data-path} {data-path}",
+    "language": "text",
+    "context": "#. Prepare the OSD.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ca92713ddd25834e",
+    "code": "ssh osd-node1\nsudo ceph-volume lvm prepare --data /dev/hdd1",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c5969bc3411b6b4b",
+    "code": "sudo ceph-volume lvm list",
+    "language": "text",
+    "context": "Once prepared, the ``ID`` and ``FSID`` of the prepared OSD are required for\n   activation. These can be obtained by listing OSDs in the current server",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "14612014d9412c4b",
+    "code": "sudo ceph-volume lvm activate {ID} {FSID}",
+    "language": "text",
+    "context": "#. Activate the OSD",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6f88fecfe74cc13b",
+    "code": "sudo ceph-volume lvm activate 0 a7f64266-0894-4f1e-a635-d0aeaca0e993",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d209a2c4f3e5fb2b",
+    "code": "ssh {node-name}\nsudo bash",
+    "language": "text",
+    "context": "#. Connect to the OSD host and become root.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0317e1008e9e53db",
+    "code": "UUID=$(uuidgen)",
+    "language": "ini",
+    "context": "#. Generate a UUID for the OSD.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dce92e94414e9374",
+    "code": "OSD_SECRET=$(ceph-authtool --gen-print-key)",
+    "language": "ini",
+    "context": "#. Generate a cephx key for the OSD.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ea067202ae134b4",
+    "code": "ID=$(echo \"{\\\"cephx_secret\\\": \\\"$OSD_SECRET\\\"}\" | \\\nceph osd new $UUID -i - \\\n-n client.bootstrap-osd -k /var/lib/ceph/bootstrap-osd/ceph.keyring)",
+    "language": "text",
+    "context": "D id. We assume that the\n   ``client.bootstrap-osd`` key is present on the machine.  You may\n   alternatively execute this command as ``client.admin`` on a\n   different host where that key is present.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd new"
+    ]
+  },
+  {
+    "entity_id": "35426d05bd4fc4e6",
+    "code": "mkdir /var/lib/ceph/osd/ceph-$ID",
+    "language": "text",
+    "context": "#. Create the default directory on your new OSD.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "744a01708a98a28c",
+    "code": "mkfs.xfs /dev/{DEV}\nmount /dev/{DEV} /var/lib/ceph/osd/ceph-$ID",
+    "language": "text",
+    "context": "#. If the OSD is for a drive other than the OS drive, prepare it\n   for use with Ceph, and mount it to the directory you just created.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "80086b644635c53a",
+    "code": "ceph-authtool --create-keyring /var/lib/ceph/osd/ceph-$ID/keyring \\\n     --name osd.$ID --add-key $OSD_SECRET",
+    "language": "text",
+    "context": "#. Write the secret to the OSD keyring file.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bb8d4e74b1482508",
+    "code": "ceph-osd -i $ID --mkfs --osd-uuid $UUID",
+    "language": "text",
+    "context": "#. Initialize the OSD data directory.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c9dbbe58f1f1daa7",
+    "code": "chown -R ceph:ceph /var/lib/ceph/osd/ceph-$ID",
+    "language": "text",
+    "context": "#. Fix ownership.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1494fba3e1f9145a",
+    "code": "systemctl enable ceph-osd@$ID\nsystemctl start ceph-osd@$ID",
+    "language": "text",
+    "context": "For modern systemd distributions",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f56d8420639fe4b3",
+    "code": "systemctl enable ceph-osd@12\nsystemctl start ceph-osd@12",
+    "language": "text",
+    "context": "For example",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8fdca36b2c8ed62",
+    "code": "mkdir -p /var/lib/ceph/mds/{cluster-name}-{id}",
+    "language": "text",
+    "context": "#. Create the mds data directory.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "573d5e3aab3ece1a",
+    "code": "ceph-authtool --create-keyring /var/lib/ceph/mds/{cluster-name}-{id}/keyring --gen-key -n mds.{id}",
+    "language": "text",
+    "context": "#. Create a keyring.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c6ac2de558a0b993",
+    "code": "ceph auth add mds.{id} osd \"allow rwx\" mds \"allow *\" mon \"allow profile mds\" -i /var/lib/ceph/mds/{cluster}-{id}/keyring",
+    "language": "text",
+    "context": "#. Import the keyring and set caps.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth add mds"
+    ]
+  },
+  {
+    "entity_id": "b410453e4d547769",
+    "code": "[mds.{id}]\nhost = {id}",
+    "language": "ini",
+    "context": "#. Add to ceph.conf.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "53a3b791be64619c",
+    "code": "ceph-mds --cluster {cluster-name} -i {id} -m {mon-hostname}:{mon-port} [-f]",
+    "language": "text",
+    "context": "#. Start the daemon the manual way.",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "045b4282ac419b6f",
+    "code": "service ceph start",
+    "language": "text",
+    "context": "#. Start the daemon the right way (using ceph.conf entry).",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph start"
+    ]
+  },
+  {
+    "entity_id": "1c1ff1302ab42884",
+    "code": "mds.-1.0 ERROR: failed to authenticate: (22) Invalid argument",
+    "language": "text",
+    "context": "#. If starting the daemon fails with this error",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a20beb7bab7de217",
+    "code": "ceph osd tree",
+    "language": "text",
+    "context": "To view the tree, execute the following",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd tree"
+    ]
+  },
+  {
+    "entity_id": "08e1fd65c21c6479",
+    "code": "# id\tweight\ttype name\tup/down\treweight\n-1\t2\troot default\n-2\t2\t\thost osd-node1\n0\t1\t\t\tosd.0\tup\t1\n-3\t1\t\thost osd-node2\n1\t1\t\t\tosd.1\tup\t1",
+    "language": "text",
+    "context": "You should see output that looks something like this",
+    "source_file": "install/manual-deployment.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "457847b0ea724cdb",
+    "code": "[ceph]\nname=Ceph packages for $basearch\nbaseurl=https://download.ceph.com/rpm-{ceph-release}/{distro}/$basearch\nenabled=1\npriority=2\ngpgcheck=1\ngpgkey=https://download.ceph.com/keys/release.asc",
+    "language": "ini",
+    "context": "",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "47de6d517deb6435",
+    "code": "https://download.ceph.com/rpm-testing",
+    "language": "none",
+    "context": "",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e35d4c8b2415047e",
+    "code": "zypper ar https://download.opensuse.org/repositories/filesystems:/ceph/openSUSE_Leap_15.1/filesystems:ceph.repo",
+    "language": "bash",
+    "context": "",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "30bc99de6bb75fd9",
+    "code": "https://download.ceph.com/rpm-|stable-release|",
+    "language": "none",
+    "context": "",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f2b7cc10a11be298",
+    "code": "./cephadm add-repo --release |stable-release|",
+    "language": "text",
+    "context": "#. Configure the Ceph repository based on the release name",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "cephadm add-repo --release"
+    ]
+  },
+  {
+    "entity_id": "a8076e0c6d44feb9",
+    "code": "./cephadm add-repo --version 15.2.1",
+    "language": "text",
+    "context": "For Octopus (15.2.0) and later releases, you can also specify a specific\n   version",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "cephadm add-repo --version 15"
+    ]
+  },
+  {
+    "entity_id": "6f29286954350e02",
+    "code": "./cephadm add-repo --dev my-branch",
+    "language": "text",
+    "context": "For development packages, you can specify a specific branch name",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "cephadm add-repo --dev my-branch"
+    ]
+  },
+  {
+    "entity_id": "179c8edb7e84c313",
+    "code": "./cephadm install ceph-common",
+    "language": "text",
+    "context": "#. Install the appropriate packages.  You can install them using your\n   package management tool (e.g., APT, Yum) directly, or you can\n   use the cephadm wrapper command.  For example",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": [
+      "cephadm install ceph-common"
+    ]
+  },
+  {
+    "entity_id": "14a391901f32b402",
+    "code": "wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo tee /etc/apt/trusted.gpg.d/ceph.asc",
+    "language": "text",
+    "context": "To install the ``release.asc`` key, execute the following",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5c198cafcfedeb2b",
+    "code": "sudo rpm --import 'https://download.ceph.com/keys/release.asc'",
+    "language": "text",
+    "context": "To install the ``release.asc`` key, execute the following",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7a27b5e08445caa0",
+    "code": "https://download.ceph.com/debian-{release-name}",
+    "language": "text",
+    "context": "You may find releases for Debian/Ubuntu (installed with APT) at",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4a5d73d00e1963b0",
+    "code": "https://download.ceph.com/rpm-{release-name}",
+    "language": "text",
+    "context": "You may find releases for CentOS/RHEL and others (installed with YUM) at",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7333ea63f60a3475",
+    "code": "https://download.ceph.com/debian-{version}",
+    "language": "text",
+    "context": "For Octopus and later releases, you can also configure a repository for a\nspecific version ``x.y.z``.  For Debian/Ubuntu packages",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6e298d7d52639233",
+    "code": "https://download.ceph.com/rpm-{version}",
+    "language": "text",
+    "context": "For RPMs",
+    "source_file": "install/get-packages.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6bbc5808f892596d",
+    "code": "./install-deps.sh",
+    "language": "text",
+    "context": "Before you can build Ceph source code, you need to install several libraries\nand tools",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d7161f6cd1acf65",
+    "code": "cd ceph\n./do_cmake.sh\ncd build\nninja",
+    "language": "text",
+    "context": "Ceph is built using cmake. To build Ceph, navigate to your cloned Ceph\nrepository and execute the following",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "230104a727ea2a8f",
+    "code": "sudo apt-get install debhelper",
+    "language": "text",
+    "context": "To create ``.deb`` packages for Debian/Ubuntu, ensure that you have cloned the \n`Ceph`_ repository, installed the `Build Prerequisites`_ and installed \n``debhelper``",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "93ed8233737f1fbb",
+    "code": "sudo dpkg-buildpackage",
+    "language": "text",
+    "context": "Once you have installed debhelper, you can build the packages",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "29c5f78a30896f96",
+    "code": "yum install rpm-build rpmdevtools",
+    "language": "text",
+    "context": "To create ``.rpm`` packages, ensure that you have cloned the `Ceph`_ repository,\ninstalled the `Build Prerequisites`_ and installed ``rpm-build`` and \n``rpmdevtools``",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5f4d2eb0318d43af",
+    "code": "rpmdev-setuptree",
+    "language": "text",
+    "context": "Once you have installed the tools, setup an RPM compilation environment",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ad29a2157b9de180",
+    "code": "wget -P ~/rpmbuild/SOURCES/ https://download.ceph.com/tarballs/ceph-<version>.tar.bz2",
+    "language": "text",
+    "context": "Fetch the source tarball for the RPM compilation environment",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1af025bd89fe4961",
+    "code": "wget -P ~/rpmbuild/SOURCES/ http://eu.ceph.com/tarballs/ceph-<version>.tar.bz2",
+    "language": "text",
+    "context": "Or from the EU mirror",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "af09d7d0a89e409f",
+    "code": "tar --strip-components=1 -C ~/rpmbuild/SPECS/ --no-anchored -xvjf ~/rpmbuild/SOURCES/ceph-<version>.tar.bz2 \"ceph.spec\"",
+    "language": "text",
+    "context": "Extract the specfile",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9da7e4c7e81e36c8",
+    "code": "rpmbuild -ba ~/rpmbuild/SPECS/ceph.spec",
+    "language": "text",
+    "context": "Build the RPM packages",
+    "source_file": "install/build-ceph.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9866c7e9a7a7f907",
+    "code": "Using the ``:latest`` tag is discouraged. If you use the ``:latest`` \ntag, there is no guarantee that the same image will be on each of \nyour hosts.  Under these conditions, upgrades might not work \nproperly. Remember that ``:latest`` is a relative tag, and a moving\ntarget.",
+    "language": "text",
+    "context": ".. important",
+    "source_file": "install/containers.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8da1c053e9aa4675",
+    "code": "https://hub.docker.com/r/ceph",
+    "language": "text",
+    "context": "Legacy container images are available from Docker Hub at",
+    "source_file": "install/containers.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13318906462d38eb",
+    "code": "https://quay.ceph.io/organization/ceph-ci",
+    "language": "text",
+    "context": "We automatically build container images for development ``wip-*``\nbranches in the ceph-ci.git repositories and push them to Quay at",
+    "source_file": "install/containers.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9f45e3c64cce98f3",
+    "code": "Manual Deployment <manual-deployment>\nManual Deployment on FreeBSD <manual-freebsd-deployment>",
+    "language": "text",
+    "context": ".. toctree",
+    "source_file": "install/index_manual.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ac4b70bdcc61dee4",
+    "code": "[main]\nenabled = 1",
+    "language": "ini",
+    "context": "#. Ensure ``priorities.conf`` enables the plugin",
+    "source_file": "install/install-storage-cluster.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6e881416eefc657b",
+    "code": "[ceph]\nname=Ceph packages for $basearch\nbaseurl=https://download.ceph.com/rpm-{ceph-release}/{distro}/$basearch\nenabled=1\npriority=2\ngpgcheck=1\ngpgkey=https://download.ceph.com/keys/release.asc",
+    "language": "ini",
+    "context": "#. Ensure your YUM ``ceph.repo`` entry includes ``priority=2``. See\n   `Get Packages`_ for details",
+    "source_file": "install/install-storage-cluster.rst",
+    "component": "install",
+    "section_title": "",
+    "commands_used": []
+  }
+]

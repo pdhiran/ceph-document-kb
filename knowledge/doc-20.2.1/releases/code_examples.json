@@ -1,0 +1,2824 @@
+[
+  {
+    "entity_id": "d6800ec19c8e338d",
+    "code": "ceph osd crush rm osd.123",
+    "language": "text",
+    "context": "s the same risk because the behavior may vary between\n  clients and OSDs.  To avoid problems, please ensure that all OSDs are removed\n  from the CRUSH map before deleting them.  That is, be sure to do",
+    "source_file": "releases/kraken.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rm"
+    ]
+  },
+  {
+    "entity_id": "f0a81d5e813bd3ad",
+    "code": "ceph osd rm osd.123",
+    "language": "text",
+    "context": "before",
+    "source_file": "releases/kraken.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd rm osd"
+    ]
+  },
+  {
+    "entity_id": "172295c3823466d5",
+    "code": "enable experimental unrecoverable data corrupting features = bluestore",
+    "language": "text",
+    "context": "In order to enable BlueStore, add the following to ceph.conf",
+    "source_file": "releases/kraken.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2f615a9927479031",
+    "code": "osd scrub during recovery = true",
+    "language": "text",
+    "context": "The OSDs now avoid starting new scrubs while recovery is in progress.  To\n  revert to the old behavior (and do not let recovery activity affect the\n  scrub scheduling) you can set the following option",
+    "source_file": "releases/kraken.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b86ce240b336006d",
+    "code": "\"stats\": {\n            \"TotalBytes\": 516,\n            \"TotalBytesRounded\": 1024,\n            \"TotalEntries\": 1\n         }",
+    "language": "text",
+    "context": "nfig option allows you to dump\n  (or not dump) the description of user stats in the S3 GetUsage\n  API. This option defaults to false.  If the value is true, the\n  response data for GetUsage looks like",
+    "source_file": "releases/kraken.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6cc675bb3d13aafe",
+    "code": "{\n     516,\n     1024,\n     1\n}",
+    "language": "json",
+    "context": "If the value is false, the response for GetUsage looks as it did before",
+    "source_file": "releases/kraken.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9f9e66d1c2b15cd2",
+    "code": "echo rocksdb > /var/lib/ceph/mon/ceph-`hostname`/kv_backend",
+    "language": "text",
+    "context": "* If you have manually specified the monitor user rocksdb via the\n  ``mon keyvaluedb = rocksdb`` option, you will need to manually add a\n  file to the mon data directory to preserve this option",
+    "source_file": "releases/kraken.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "734f4e9eef8dd7eb",
+    "code": "You can monitor the progress of your upgrade at each stage with the\n``ceph versions`` command, which will tell you what ceph version(s) are\nrunning for each type of daemon.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "releases/quincy.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph version",
+      "ceph versions"
+    ]
+  },
+  {
+    "entity_id": "6ef2995444ac9c31",
+    "code": "min_mon_release 17 (quincy)",
+    "language": "text",
+    "context": "should report",
+    "source_file": "releases/quincy.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "54c07a5d7c2b7bd9",
+    "code": "...\n  services:\n   mon: 3 daemons, quorum foo,bar,baz\n   mgr: foo(active), standbys: bar, baz\n...",
+    "language": "text",
+    "context": "",
+    "source_file": "releases/quincy.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7fb7fec7796013c3",
+    "code": "ceph config set mon mon_warn_on_insecure_global_id_reclaim false\nceph config set mon mon_warn_on_insecure_global_id_reclaim_allowed false",
+    "language": "text",
+    "context": "It is possible to disable the health alerts around insecure clients",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "67243f299d75a26b",
+    "code": "ceph osd pool set <pool-name> pg_autoscale_mode warn",
+    "language": "text",
+    "context": "atio. For details, see :ref:`pg-autoscaler`.\n  If you have set target size ratios on any pools, you may want to set\n  these pools to autoscale ``warn`` mode to avoid data movement during\n  the upgrade",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set"
+    ]
+  },
+  {
+    "entity_id": "bcc738a7c2e353cf",
+    "code": "ceph osd pool set <pool-name> size <num-replicas>",
+    "language": "text",
+    "context": "ealth warning if a RADOS pool's ``size`` is set to 1\n  or in other words the pool is configured with no redundancy. This can\n  be fixed by setting the pool size to the minimum recommended value\n  with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set"
+    ]
+  },
+  {
+    "entity_id": "04c7bec615517ace",
+    "code": "ceph config set global mon_warn_on_pool_no_redundancy false",
+    "language": "text",
+    "context": "The warning can be silenced with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set global"
+    ]
+  },
+  {
+    "entity_id": "759e4a8eb9406f72",
+    "code": "ceph config set osd <option> <value>",
+    "language": "text",
+    "context": "The above options can be set with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set osd"
+    ]
+  },
+  {
+    "entity_id": "774d85d058f730d9",
+    "code": "ceph osd pool set <pool-name> pg_num <new-pg-num>",
+    "language": "text",
+    "context": "* Ceph will now issue a health warning if a RADOS pool has a ``pg_num``\n  value that is not a power of two. This can be fixed by adjusting\n  the pool to a nearby power of two",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set"
+    ]
+  },
+  {
+    "entity_id": "1d5339401e614b2f",
+    "code": "ceph config set global mon_warn_on_pool_pg_num_not_power_of_two false",
+    "language": "text",
+    "context": "Alternatively, the warning can be silenced with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set global"
+    ]
+  },
+  {
+    "entity_id": "c6913416ba232b35",
+    "code": "ceph crash ls-new",
+    "language": "text",
+    "context": "ons have recently crashed. Ceph\n  has been collecting crash reports since the initial Nautilus release, but the\n  health alerts are new. To view new crashes (or all crashes, if you've just\n  upgraded)",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph crash ls-new"
+    ]
+  },
+  {
+    "entity_id": "4208b9e0c952a452",
+    "code": "ceph crash archive <crash-id>\nceph crash archive-all",
+    "language": "text",
+    "context": "To acknowledge a particular crash (or all crashes) and silence the health warning",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph crash archive",
+      "ceph crash archive-all"
+    ]
+  },
+  {
+    "entity_id": "bcc738a7c2e353cf",
+    "code": "ceph osd pool set <pool-name> size <num-replicas>",
+    "language": "text",
+    "context": "a RADOS pool's ``size`` is set to 1\n  or, in other words, if the pool is configured with no redundancy. Ceph will\n  stop issuing the warning if the pool size is set to the minimum\n  recommended value",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set"
+    ]
+  },
+  {
+    "entity_id": "04c7bec615517ace",
+    "code": "ceph config set global mon_warn_on_pool_no_redundancy false",
+    "language": "text",
+    "context": "The warning can be silenced with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set global"
+    ]
+  },
+  {
+    "entity_id": "650060eb4b1a343f",
+    "code": "ceph config set mgr mgr/telemetry/channel_device false",
+    "language": "text",
+    "context": "telemetry.ceph.com in order to build and improve device failure\n  prediction algorithms.  If you are not comfortable sharing device\n  metrics, you can disable that channel first before re-opting-in",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mgr"
+    ]
+  },
+  {
+    "entity_id": "774055338871a8bd",
+    "code": "ceph telemetry on",
+    "language": "text",
+    "context": "If you had telemetry enabled, you will need to re-opt-in with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry on"
+    ]
+  },
+  {
+    "entity_id": "1e9827205b42a288",
+    "code": "ceph telemetry show        # see everything\nceph telemetry show basic  # basic cluster info (including all of the new info)",
+    "language": "text",
+    "context": "You can view exactly what information will be reported first with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry show",
+      "ceph telemetry show basic"
+    ]
+  },
+  {
+    "entity_id": "e4921e8e3351e8fb",
+    "code": "ceph osd dump | grep min_compat_client",
+    "language": "text",
+    "context": "If possible, we recommend that you set the oldest allowed client to `hammer`\n  or later.  You can tell what the current oldest allowed client is with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd dump"
+    ]
+  },
+  {
+    "entity_id": "1384d21bf0993988",
+    "code": "ceph features",
+    "language": "text",
+    "context": "If the current value is older than hammer, you can tell whether it\n  is safe to make this change by verifying that there are no clients\n  older than hammer current connected to the cluster with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph features"
+    ]
+  },
+  {
+    "entity_id": "8202883f780c95db",
+    "code": "# ceph osd dump | grep ^flags",
+    "language": "text",
+    "context": "If you are unsure whether or not your Luminous cluster has\n   completed a full scrub of all PGs, you can check your cluster's\n   state by running",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd dump"
+    ]
+  },
+  {
+    "entity_id": "533b51b39b70a773",
+    "code": "# ceph pg dump pgs_brief | cut -d \" \" -f 1 | xargs -n1 ceph pg scrub",
+    "language": "text",
+    "context": "However, if you have just completed an upgrade to Luminous and want\n   to proceed to Mimic in short order, you can force a scrub on all\n   placement groups with a one-line shell command, like",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg dump pgs_brief",
+      "ceph pg scrub"
+    ]
+  },
+  {
+    "entity_id": "cbab5bd8ed7160a1",
+    "code": "# ceph osd set noout",
+    "language": "text",
+    "context": "#. Set the ``noout`` flag for the duration of the upgrade. (Optional,\n   but recommended.)",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set noout"
+    ]
+  },
+  {
+    "entity_id": "b4c16dd876816308",
+    "code": "# systemctl restart ceph-mon.target",
+    "language": "text",
+    "context": "#. Upgrade monitors by installing the new packages and restarting the\n   monitor daemons.  For example, on each monitor host,",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2fd457c833a99345",
+    "code": "# ceph mon dump | grep min_mon_release",
+    "language": "text",
+    "context": "Once all monitors are up, verify that the monitor upgrade is\n   complete by looking for the ``nautilus`` string in the mon\n   map.  The command",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "e244c796e8693a31",
+    "code": "min_mon_release 14 (nautilus)",
+    "language": "text",
+    "context": "should report",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "55e2eb1f412e40f6",
+    "code": "# systemctl restart ceph-mgr.target",
+    "language": "text",
+    "context": "#. Upgrade ``ceph-mgr`` daemons by installing the new packages and\n   restarting all manager daemons.  For example, on each manager host,",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "216490c8c599dea1",
+    "code": "# systemctl restart ceph-osd.target",
+    "language": "text",
+    "context": "mon: 3 daemons, quorum foo,bar,baz\n        mgr: foo(active), standbys: bar, baz\n     ...\n  \n#. Upgrade all OSDs by installing the new packages and restarting the\n   ceph-osd daemons on all OSD hosts",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "62c3865acd54b5d1",
+    "code": "# ceph osd versions\n{\n   \"ceph version 13.2.5 (...) mimic (stable)\": 12,\n   \"ceph version 14.2.0 (...) nautilus (stable)\": 22,\n}",
+    "language": "text",
+    "context": "You can monitor the progress of the OSD upgrades with the\n   ``ceph versions`` or ``ceph osd versions`` commands",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd versions",
+      "ceph version 13",
+      "ceph version 14"
+    ]
+  },
+  {
+    "entity_id": "4fe21facc9fb847a",
+    "code": "# ceph-volume simple scan\n# ceph-volume simple activate --all",
+    "language": "text",
+    "context": "reated before the Mimic release), you\n   need to tell ceph-volume to adopt responsibility for starting the\n   daemons.  On each host containing OSDs, ensure the OSDs are\n   currently running, and then",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a194a2a06cc333b3",
+    "code": "# ceph-volume simple scan /dev/sdb1",
+    "language": "text",
+    "context": "moved to\n   a new host, or the host OSD is reinstalled, or the\n   ``/etc/ceph/osd`` directory is lost, you will need to scan the main\n   data partition for each ceph-disk OSD explicitly.  For example,",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5915725de643e6db",
+    "code": "# ceph status\n# ceph fs set <fs_name> max_mds 1",
+    "language": "text",
+    "context": "#. Reduce the number of ranks to 1.  (Make note of the original\n      number of MDS daemons first if you plan to restore it later.)",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set",
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "e18ae43d86a34ea2",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Wait for the cluster to deactivate any non-zero ranks by\n      periodically checking the status",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "4c6a451c969103a5",
+    "code": "# systemctl stop ceph-mds@<daemon_name>",
+    "language": "text",
+    "context": "#. Take all standby MDS daemons offline on the appropriate hosts with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e18ae43d86a34ea2",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Confirm that only one MDS is online and is rank 0 for your FS",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "c140205fbfad8c02",
+    "code": "# systemctl restart ceph-mds.target",
+    "language": "text",
+    "context": "#. Upgrade the last remaining MDS daemon by installing the new\n      packages and restarting the daemon",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ed6a17e5c42a5cf4",
+    "code": "# systemctl start ceph-mds.target",
+    "language": "text",
+    "context": "#. Restart all standby MDS daemons that were taken offline",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6cb8813eba75217f",
+    "code": "# ceph fs set <fs_name> max_mds <original_max_mds>",
+    "language": "text",
+    "context": "#. Restore the original value of ``max_mds`` for the volume",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "a88976493133d494",
+    "code": "# systemctl restart ceph-radosgw.target",
+    "language": "text",
+    "context": "#. Upgrade all radosgw daemons by upgrading packages and restarting\n   daemons on all hosts",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "84777e4850962171",
+    "code": "# ceph osd require-osd-release nautilus",
+    "language": "text",
+    "context": "#. Complete the upgrade by disallowing pre-Nautilus OSDs and enabling\n   all new Nautilus-only functionality",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd require-osd-release nautilus"
+    ]
+  },
+  {
+    "entity_id": "95b333d1bc27d978",
+    "code": "# ceph osd unset noout",
+    "language": "text",
+    "context": "#. If you set ``noout`` at the beginning, be sure to clear it with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unset noout"
+    ]
+  },
+  {
+    "entity_id": "fa8d64bd24dd7cf9",
+    "code": "ceph config set mon mon_crush_min_required_version firefly",
+    "language": "text",
+    "context": "If your CRUSH tunables are older than Hammer, Ceph will now issue a\n   health warning.  If you see a health alert to that effect, you can\n   revert this change with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "5580d5a018936071",
+    "code": "ceph osd getcrushmap -o backup-crushmap\nceph osd crush set-all-straw-buckets-to-straw2",
+    "language": "text",
+    "context": "CRUSH buckets to straw2, which was added back\n   in the Hammer release.  If you have any 'straw' buckets, this will\n   result in a modest amount of data movement, but generally nothing\n   too severe.",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getcrushmap -o"
+    ]
+  },
+  {
+    "entity_id": "32eae452d4e5982a",
+    "code": "ceph osd setcrushmap -i backup-crushmap",
+    "language": "text",
+    "context": "If there are problems, you can easily revert with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd setcrushmap -i"
+    ]
+  },
+  {
+    "entity_id": "1a761a65536a9712",
+    "code": "ceph mon enable-msgr2",
+    "language": "text",
+    "context": "#. To enable the new :ref:`v2 network protocol <msgr2>`, issue the\n   following command",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon enable-msgr2"
+    ]
+  },
+  {
+    "entity_id": "6363a6805b3c2dc4",
+    "code": "ceph mon dump",
+    "language": "text",
+    "context": "This will instruct all monitors that bind to the old default port\n   6789 for the legacy v1 protocol to also bind to the new 3300 v2\n   protocol port.  To see if all monitors have been updated,",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "df15155b963f493a",
+    "code": "ceph config assimilate-conf -i /etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "o fully transition any config options in\n   ``ceph.conf`` into the cluster's configuration database.  On each host,\n   you can use the following command to import any options into the\n   monitors with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config assimilate-conf -i"
+    ]
+  },
+  {
+    "entity_id": "1b5091f923720e32",
+    "code": "ceph config dump",
+    "language": "text",
+    "context": "You can see the cluster's configuration database with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config dump"
+    ]
+  },
+  {
+    "entity_id": "cbc1ecc2ac3f5e50",
+    "code": "ceph config generate-minimal-conf > /etc/ceph/ceph.conf.new\nmv /etc/ceph/ceph.conf.new /etc/ceph/ceph.conf",
+    "language": "text",
+    "context": "ceph config dump\n     \n   To create a minimal but sufficient ``ceph.conf`` for each host,",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config generate-minimal-conf"
+    ]
+  },
+  {
+    "entity_id": "b62e2452d7c39eef",
+    "code": "ceph mgr module enable telemetry\nceph telemetry show",
+    "language": "text",
+    "context": "le <telemetry>` to send\n   anonymized usage statistics and crash information to the Ceph\n   upstream developers.  To see what would be reported (without actually\n   sending any information to anyone),",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable"
+    ]
+  },
+  {
+    "entity_id": "774055338871a8bd",
+    "code": "ceph telemetry on",
+    "language": "text",
+    "context": "If you are comfortable with the data that is reported, you can opt-in to\n   automatically report the high-level cluster metadata with",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry on"
+    ]
+  },
+  {
+    "entity_id": "57bc8c365ee510b7",
+    "code": "ceph tell mds.* cache drop <timeout>",
+    "language": "text",
+    "context": "* The MDS now supports dropping its cache for the purposes of benchmarking.",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "22a3be0e50717979",
+    "code": "AUTH_BAD_CAPS 1 auth entities have invalid capabilities\n    client.bad osd capability parse failed, stopped at 'allow rwx auid 123' of 'allow rwx auid 123'",
+    "language": "text",
+    "context": "users we have removed\n  this support.  If any cephx capabilities exist in the cluster that\n  restrict based on auid then they will no longer parse, and the\n  cluster will report a health warning like",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8dffd7a58308f250",
+    "code": "ceph auth caps client.bad osd 'allow rwx pool foo'",
+    "language": "text",
+    "context": "The capability can be adjusted with the ``ceph auth caps``\n  command. For example,",
+    "source_file": "releases/nautilus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth caps client"
+    ]
+  },
+  {
+    "entity_id": "ffed71da700a4bb9",
+    "code": "We are unable to build Ceph on Debian stable (bookworm) for the 18.2.0\nrelease because of Debian bug\nhttps://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1030129. We will build as\nsoon as this bug is resolved in Debian stable.",
+    "language": "text",
+    "context": ".. important",
+    "source_file": "releases/reef.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a036605b7915675b",
+    "code": "You can monitor the progress of your upgrade at each stage with the ``ceph versions`` command, which will tell you what ceph version(s) are running for each type of daemon.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "releases/reef.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph version",
+      "ceph versions"
+    ]
+  },
+  {
+    "entity_id": "4f58b0e59ceea8d9",
+    "code": "1. If your cluster is running Pacific (16.2.x) or later, you might choose to first convert it to use cephadm so that the upgrade to Reef is automated (see above).\n   For more information, see https://docs.ceph.com/en/reef/cephadm/adoption/.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "releases/reef.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "cephadm so that the"
+    ]
+  },
+  {
+    "entity_id": "1fea754933c9d2d4",
+    "code": "systemctl -l | grep <daemon type>",
+    "language": "text",
+    "context": "",
+    "source_file": "releases/reef.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f03747ddf236cdb7",
+    "code": "ceph-6ce0347c-314a-11ee-9b52-000af7995d6c@mon.f28-h21-000-r630.service                                           loaded active running   Ceph mon.f28-h21-000-r630 for 6ce0347c-314a-11ee-9b52-000af7995d6c",
+    "language": "text",
+    "context": "",
+    "source_file": "releases/reef.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d5fc37edb572063",
+    "code": "...\n  services:\n   mon: 3 daemons, quorum foo,bar,baz\n   mgr: foo(active), standbys: bar, baz\n...",
+    "language": "text",
+    "context": "",
+    "source_file": "releases/reef.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3b299d614a8fc431",
+    "code": "ceph osd crush rm osd.123",
+    "language": "text",
+    "context": "duces the same risk because the behavior may vary between\nclients and OSDs.  To avoid problems, please ensure that all OSDs are removed\nfrom the CRUSH map before deleting them.  That is, be sure to do",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush rm"
+    ]
+  },
+  {
+    "entity_id": "ef5514aae25b3fa7",
+    "code": "ceph osd rm osd.123",
+    "language": "text",
+    "context": "before",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd rm osd"
+    ]
+  },
+  {
+    "entity_id": "4a442ba93ba95935",
+    "code": "osd max object name len = 256\nosd max object namespace len = 64",
+    "language": "text",
+    "context": "at uses ext4 for the OSDs but uses only\n  RBD and/or CephFS, then the ext4 limitations will not affect you.  Before\n  upgrading, be sure add the following to ``ceph.conf`` to allow the OSDs to\n  start",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bec1eaed927ac3a0",
+    "code": "osd check max object name len on startup = false",
+    "language": "text",
+    "context": "r decide to use RGW on this cluster, it will have problems\n  storing S3/Swift objects with long names.  This startup check can also be\n  disabled via the below option, although this is not recommended",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8a6bab425874c685",
+    "code": "rbd default features = 1",
+    "language": "text",
+    "context": "can be disabled on a per-image\n  basis via the RBD CLI, or the default features can be updated to the\n  pre-Jewel setting by adding the following to the client section of the Ceph\n  configuration file",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "rbd default features"
+    ]
+  },
+  {
+    "entity_id": "cd097de011de9ba9",
+    "code": "ceph osd set sortbitwise",
+    "language": "text",
+    "context": "* After upgrading, users should set the 'sortbitwise' flag to enable the new\n  internal object sort order",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set sortbitwise"
+    ]
+  },
+  {
+    "entity_id": "791fcea8f73dbe82",
+    "code": "rbd validate names = false",
+    "language": "text",
+    "context": "abled by adding \"--rbd-validate-names=false\"\n  to the rbd CLI when creating an image or snapshot. It can also be disabled\n  by adding the following to the client section of the Ceph configuration file",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "rbd validate names"
+    ]
+  },
+  {
+    "entity_id": "45e326260fee8fe1",
+    "code": "systemctl start ceph.target       # start all daemons\nsystemctl status ceph-osd@12      # check status of osd.12",
+    "language": "text",
+    "context": "all distributions that support systemd (CentOS 7, Fedora, Debian\n  Jessie 8.x, OpenSUSE), ceph daemons are now managed using native systemd\n  files instead of the legacy sysvinit scripts.  For example",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "08459b545b40e970",
+    "code": "setuser match path = /var/lib/ceph/$type/$cluster-$id",
+    "language": "text",
+    "context": "#. Add the following line to ``ceph.conf`` on all hosts",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7228b919f11a0867",
+    "code": "ceph-deploy install --stable jewel HOST",
+    "language": "text",
+    "context": "#. Upgrade the ceph package.  This creates the ceph user and group.  For\n         example",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ceb9b37b277e7862",
+    "code": "service ceph stop           # fedora, centos, rhel, debian\nstop ceph-all               # ubuntu",
+    "language": "text",
+    "context": "#. Stop the daemon(s)",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph stop"
+    ]
+  },
+  {
+    "entity_id": "d5a0ccb7faeab522",
+    "code": "chown -R ceph:ceph /var/lib/ceph\nchown -R ceph:ceph /var/log/ceph",
+    "language": "text",
+    "context": "#. Fix the ownership",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph chown -R ceph"
+    ]
+  },
+  {
+    "entity_id": "d646e5365e171ac5",
+    "code": "start ceph-all                # ubuntu\nsystemctl start ceph.target   # debian, centos, fedora, rhel",
+    "language": "text",
+    "context": "#. Restart the daemon(s)",
+    "source_file": "releases/jewel.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d367c31ec4d712d2",
+    "code": "rados bench 10 write -t 1 -b 4096 -p {POOLNAME}",
+    "language": "text",
+    "context": "hen the daemon restarts.  This process\n  can take a while if there are a lot of maps.  A workaround is to\n  'touch' any idle pools with IO prior to restarting the daemons after\n  packages are upgraded",
+    "source_file": "releases/bobtail.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "rados bench 10 write"
+    ]
+  },
+  {
+    "entity_id": "e2297c317d1d0ecf",
+    "code": "auth client required = none\nauth service required = none\nauth cluster required = none",
+    "language": "text",
+    "context": "likely prevent the system from starting up on its own.  We recommend\n  first modifying the configuration to indicate that authentication is\n  disabled, and only then upgrading to the latest version",
+    "source_file": "releases/bobtail.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9b661a5740c737f6",
+    "code": "rgw enable ops log = true",
+    "language": "text",
+    "context": "by default.  If\n  you need these logs (e.g., for billing purposes), you must enable\n  them explicitly.  For logging of all operations to objects in the\n  ``.log`` pool (see ``radosgw-admin log ...``)",
+    "source_file": "releases/bobtail.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "641efe5ef4fea2c5",
+    "code": "rgw enable usage log = true",
+    "language": "text",
+    "context": "For usage logging of aggregated bandwidth usage (see ``radosgw-admin\n  usage ...``)",
+    "source_file": "releases/bobtail.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cf7c07c3e94e8066",
+    "code": "for i in $(ceph osd ls); do\n    ceph tell osd.${i} version\ndone",
+    "language": "text",
+    "context": "doublecheck your cluster.\n  ``ceph osd ls`` will give a list of all OSD IDs that are part of the\n  cluster, and you can use that to write a simple shell loop to display\n  all the OSD version strings:",
+    "source_file": "releases/bobtail.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd ls",
+      "ceph tell osd"
+    ]
+  },
+  {
+    "entity_id": "aa6705db9546f7f0",
+    "code": "[global]\n        max open files = 32768",
+    "language": "text",
+    "context": "has a\n  higher initial value, however, this change will lower the limit.\n  The value can be adjusted explicitly by adding an entry to the\n  ``ceph.conf`` file in the appropriate section.  For example",
+    "source_file": "releases/bobtail.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a5a3d74ad3f18d43",
+    "code": "ceph osd crush set-tunable straw_calc_version 1",
+    "language": "text",
+    "context": "In order to set the new tunable to correct the behavior",
+    "source_file": "releases/firefly.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush set-tunable"
+    ]
+  },
+  {
+    "entity_id": "7dcd0f0c70914135",
+    "code": "ceph osd getcrushmap -o /tmp/cm\ncrushtool -i /tmp/cm --num-rep 3 --test --show-mappings > /tmp/a 2>&1\ncrushtool -i /tmp/cm --set-straw-calc-version 1 -o /tmp/cm2\ncrushtool -i /tmp/cm2 --reweight -o /tmp/cm2\ncrushtool -i /tmp/cm2 --num-rep 3 --test --show-mappings > /tmp/b 2>&1\nwc -l /tmp/a                          # num total mappings\ndiff -u /tmp/a /tmp/b | grep -c ^+    # num changed mappings",
+    "language": "text",
+    "context": "You can estimate how much rebalancing will eventually be necessary\n  on your cluster with",
+    "source_file": "releases/firefly.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getcrushmap -o"
+    ]
+  },
+  {
+    "entity_id": "791d66d1c513d426",
+    "code": "ceph osd crush reweight-all",
+    "language": "text",
+    "context": "You can force all of this rebalancing to happen at once with",
+    "source_file": "releases/firefly.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush reweight-all"
+    ]
+  },
+  {
+    "entity_id": "a245c505368fe802",
+    "code": "mon warn on legacy crush tunables = false",
+    "language": "text",
+    "context": "* We recommend adding the following to the [mon] section of your\n  ceph.conf prior to upgrade",
+    "source_file": "releases/firefly.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "90d21bd8679b142a",
+    "code": "ceph auth export\nceph auth get\nceph auth get-key\nceph auth print-key\nceph auth list",
+    "language": "text",
+    "context": "ect the user to have 'rx' caps.\n  This is the same behavior that was present in dumpling, but in emperor\n  and more recent development releases the 'r' cap was sufficient.  The\n  affected commands are",
+    "source_file": "releases/firefly.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth export ceph"
+    ]
+  },
+  {
+    "entity_id": "5d71c15aa161ea73",
+    "code": "leveldb write buffer size = 0\nleveldb cache size = 0",
+    "language": "text",
+    "context": "of that process but tends to increase performance of omap\n  (key/value) objects (used for CephFS and the radosgw).  If memory in your\n  deployment is tight, you can preserve the old behavior by adding",
+    "source_file": "releases/firefly.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9ab6c7ce2854005d",
+    "code": "v0.75 291 files changed, 82713 insertions(+), 33495 deletions(-)\nv0.74 192 files changed, 17980 insertions(+), 1062 deletions(-)\nv0.73 148 files changed, 4464 insertions(+), 2129 deletions(-)",
+    "language": "text",
+    "context": "For comparison, here are the diff stats for the last few versions",
+    "source_file": "releases/firefly.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "56b07e04f28b14eb",
+    "code": "You can monitor the progress of your upgrade at each stage with the ``ceph versions`` command, which will tell you what ceph version(s) are running for each type of daemon.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "releases/squid.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph version",
+      "ceph versions"
+    ]
+  },
+  {
+    "entity_id": "1b9ca61bfd170440",
+    "code": "1. If your cluster is running Quincy (17.2.x) or later, you might choose to first convert it to use cephadm so that the upgrade to Squid is automated (see above).\n   For more information, see https://docs.ceph.com/en/squid/cephadm/adoption/.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "releases/squid.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "cephadm so that the"
+    ]
+  },
+  {
+    "entity_id": "c4d3d2b4e5dfc183",
+    "code": "systemctl -l | grep <daemon type>",
+    "language": "text",
+    "context": "",
+    "source_file": "releases/squid.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1ad312a40e0d136c",
+    "code": "ceph-6ce0347c-314a-11ee-9b52-000af7995d6c@mon.f28-h21-000-r630.service                                           loaded active running   Ceph mon.f28-h21-000-r630 for 6ce0347c-314a-11ee-9b52-000af7995d6c",
+    "language": "text",
+    "context": "",
+    "source_file": "releases/squid.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1cda7c5bd5d9163c",
+    "code": "...\n  services:\n   mon: 3 daemons, quorum foo,bar,baz\n   mgr: foo(active), standbys: bar, baz\n...",
+    "language": "text",
+    "context": "",
+    "source_file": "releases/squid.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "53c52fb392a45b2c",
+    "code": "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM 1h\nceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM_ALLOWED 1h",
+    "language": "text",
+    "context": "To temporarily mute the health alerts around insecure clients for the duration of the\n  upgrade, you may want to",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM"
+    ]
+  },
+  {
+    "entity_id": "e608229700b3487e",
+    "code": "ceph orch redeploy nfs\nceph orch redeploy iscsi\nceph orch redeploy node-exporter\nceph orch redeploy prometheus\nceph orch redeploy grafana\nceph orch redeploy alertmanager",
+    "language": "text",
+    "context": "s cephadm release, systemctl may hang when trying to start or restart the monitoring containers. (This is caused by a change in the systemd unit to use ``type=forking``.) After the upgrade, please run",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch redeploy nfs"
+    ]
+  },
+  {
+    "entity_id": "523966664b832c9b",
+    "code": "ceph orch apply nfs mynfs nfs-ganesha nfs-ns",
+    "language": "text",
+    "context": "* Cephadm can now deploy NFS Ganesha services. For example, to deploy NFS with\n  a service id of mynfs, that will use the RADOS pool nfs-ganesha and namespace\n  nfs-ns",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph orch apply nfs"
+    ]
+  },
+  {
+    "entity_id": "35f5b6dcafd09314",
+    "code": "rados -p <pool-name> [-N namespace] cp rbd_trash_trash_purge_schedule rbd_trash_purge_schedule\nrados -p <pool-name> [-N namespace] rm rbd_trash_trash_purge_schedule",
+    "language": "text",
+    "context": "trash_purge_schedule\" before the upgrade and remove\n  \"rbd_trash_purge_schedule\" using the following commands in every RBD\n  pool and namespace where a trash purge schedule was previously\n  configured",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "rados -p"
+    ]
+  },
+  {
+    "entity_id": "e37b3ab8038fa78c",
+    "code": "ceph config set osd bluefs_preextend_wal_files false",
+    "language": "text",
+    "context": "le release series.\nThis release mainly is a workaround for a potential OSD corruption in v15.2.2.\nWe advise users to upgrade to v15.2.3 directly. For users running v15.2.2 please\nexecute the following",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set osd"
+    ]
+  },
+  {
+    "entity_id": "425a6f1e4c0d8ace",
+    "code": "You can monitor the progress of your upgrade at each stage with the\n``ceph versions`` command, which will tell you what ceph version(s) are\nrunning for each type of daemon.",
+    "language": "text",
+    "context": ".. note",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph version",
+      "ceph versions"
+    ]
+  },
+  {
+    "entity_id": "6b885117f4042da2",
+    "code": "# ceph osd set noout",
+    "language": "text",
+    "context": "#. Set the ``noout`` flag for the duration of the upgrade. (Optional,\n   but recommended.)",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set noout"
+    ]
+  },
+  {
+    "entity_id": "308e6a40264f3846",
+    "code": "# systemctl restart ceph-mon.target",
+    "language": "text",
+    "context": "#. Upgrade monitors by installing the new packages and restarting the\n   monitor daemons.  For example, on each monitor host,",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2350b27fdfb76457",
+    "code": "# ceph mon dump | grep min_mon_release",
+    "language": "text",
+    "context": "Once all monitors are up, verify that the monitor upgrade is\n   complete by looking for the ``octopus`` string in the mon\n   map.  The command",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "2190fb11cc8269f7",
+    "code": "min_mon_release 15 (octopus)",
+    "language": "text",
+    "context": "should report",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e9f0c957d6e5b160",
+    "code": "# systemctl restart ceph-mgr.target",
+    "language": "text",
+    "context": "#. Upgrade ``ceph-mgr`` daemons by installing the new packages and\n   restarting all manager daemons.  For example, on each manager host,",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c2b3167a237e2e8c",
+    "code": "# systemctl restart ceph-osd.target",
+    "language": "text",
+    "context": "#. Upgrade all OSDs by installing the new packages and restarting the\n   ceph-osd daemons on all OSD hosts",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e72b80f123a57d83",
+    "code": "# ceph config set osd bluestore_fsck_quick_fix_on_mount false",
+    "language": "text",
+    "context": "conversion to improve the accounting for \"omap\" data.  This may\n   take a few minutes to as much as a few hours (for an HDD with lots\n   of omap data).  You can disable this automatic conversion with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set osd"
+    ]
+  },
+  {
+    "entity_id": "3737af6016e7cff1",
+    "code": "# ceph osd versions\n{\n   \"ceph version 13.2.5 (...) mimic (stable)\": 12,\n   \"ceph version 15.2.0 (...) octopus (stable)\": 22,\n}",
+    "language": "text",
+    "context": "You can monitor the progress of the OSD upgrades with the\n   ``ceph versions`` or ``ceph osd versions`` commands",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd versions",
+      "ceph version 13",
+      "ceph version 15"
+    ]
+  },
+  {
+    "entity_id": "7dc801584adde2ed",
+    "code": "# ceph status\n# ceph fs set <fs_name> max_mds 1",
+    "language": "text",
+    "context": "#. Reduce the number of ranks to 1.  (Make note of the original\n      number of MDS daemons first if you plan to restore it later.)",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set",
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "7e0a91a1a402632c",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Wait for the cluster to deactivate any non-zero ranks by\n      periodically checking the status",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "3453d645e47efc5d",
+    "code": "# systemctl stop ceph-mds@<daemon_name>",
+    "language": "text",
+    "context": "#. Take all standby MDS daemons offline on the appropriate hosts with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7e0a91a1a402632c",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Confirm that only one MDS is online and is rank 0 for your FS",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "3ec24638f0a2e6b4",
+    "code": "# systemctl restart ceph-mds.target",
+    "language": "text",
+    "context": "#. Upgrade the last remaining MDS daemon by installing the new\n      packages and restarting the daemon",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "542b2ae3e34f4c92",
+    "code": "# systemctl start ceph-mds.target",
+    "language": "text",
+    "context": "#. Restart all standby MDS daemons that were taken offline",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "afa3baa63c5fca51",
+    "code": "# ceph fs set <fs_name> max_mds <original_max_mds>",
+    "language": "text",
+    "context": "#. Restore the original value of ``max_mds`` for the volume",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "5509c8466afd7537",
+    "code": "# systemctl restart ceph-radosgw.target",
+    "language": "text",
+    "context": "#. Upgrade all radosgw daemons by upgrading packages and restarting\n   daemons on all hosts",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "399ae130761836d2",
+    "code": "# ceph osd require-osd-release octopus",
+    "language": "text",
+    "context": "#. Complete the upgrade by disallowing pre-Octopus OSDs and enabling\n   all new Octopus-only functionality",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd require-osd-release octopus"
+    ]
+  },
+  {
+    "entity_id": "cb62ca96941f0767",
+    "code": "# ceph osd unset noout",
+    "language": "text",
+    "context": "#. If you set ``noout`` at the beginning, be sure to clear it with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unset noout"
+    ]
+  },
+  {
+    "entity_id": "31837dec760c73e1",
+    "code": "ceph config set mon mon_crush_min_required_version firefly",
+    "language": "text",
+    "context": "If your CRUSH tunables are older than Hammer, Ceph will now issue a\n   health warning.  If you see a health alert to that effect, you can\n   revert this change with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "f179e4c42d3db634",
+    "code": "ceph osd getcrushmap -o backup-crushmap\nceph osd crush set-all-straw-buckets-to-straw2",
+    "language": "text",
+    "context": "CRUSH buckets to straw2, which was added back\n   in the Hammer release.  If you have any 'straw' buckets, this will\n   result in a modest amount of data movement, but generally nothing\n   too severe.",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getcrushmap -o"
+    ]
+  },
+  {
+    "entity_id": "1f2ff002fcf71dc3",
+    "code": "ceph osd setcrushmap -i backup-crushmap",
+    "language": "text",
+    "context": "If there are problems, you can easily revert with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd setcrushmap -i"
+    ]
+  },
+  {
+    "entity_id": "a51f333cebf70bc0",
+    "code": "ceph mon enable-msgr2",
+    "language": "text",
+    "context": "#. If you are upgrading from Mimic, or did not already do so when you\n   upgraded to Nautlius, we recommended you enable the new :ref:`v2\n   network protocol <msgr2>`, issue the following command",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon enable-msgr2"
+    ]
+  },
+  {
+    "entity_id": "27e6c8214c1869f5",
+    "code": "ceph mon dump",
+    "language": "text",
+    "context": "This will instruct all monitors that bind to the old default port\n   6789 for the legacy v1 protocol to also bind to the new 3300 v2\n   protocol port.  To see if all monitors have been updated,",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "906bb7e8fa5a5152",
+    "code": "ceph mgr module enable telemetry\nceph telemetry show",
+    "language": "text",
+    "context": "le <telemetry>` to send\n   anonymized usage statistics and crash information to the Ceph\n   upstream developers.  To see what would be reported (without actually\n   sending any information to anyone),",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable"
+    ]
+  },
+  {
+    "entity_id": "42ecebfe6c6bb05c",
+    "code": "ceph telemetry on",
+    "language": "text",
+    "context": "If you are comfortable with the data that is reported, you can opt-in to\n   automatically report the high-level cluster metadata with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry on"
+    ]
+  },
+  {
+    "entity_id": "ab1beeaed872d179",
+    "code": "ceph config set mgr mgr/telemetry/channel_device false",
+    "language": "text",
+    "context": "telemetry.ceph.com in order to build and improve device failure\n  prediction algorithms.  If you are not comfortable sharing device\n  metrics, you can disable that channel first before re-opting-in",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mgr"
+    ]
+  },
+  {
+    "entity_id": "42ecebfe6c6bb05c",
+    "code": "ceph telemetry on",
+    "language": "text",
+    "context": "If you had telemetry enabled, you will need to re-opt-in with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry on"
+    ]
+  },
+  {
+    "entity_id": "22910f7818b06998",
+    "code": "$ ceph telemetry show        # see everything\n$ ceph telemetry show basic  # basic cluster info (including all of the new info)",
+    "language": "bash",
+    "context": "You can view exactly what information will be reported first with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry show",
+      "ceph telemetry show basic"
+    ]
+  },
+  {
+    "entity_id": "1c0ad69048291d1a",
+    "code": "ceph osd pool set <pool-name> pg_num <new-pg-num>",
+    "language": "text",
+    "context": "* Ceph will now issue a health warning if a RADOS pool as a ``pg_num``\n  value that is not a power of two.  This can be fixed by adjusting\n  the pool to a nearby power of two",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set"
+    ]
+  },
+  {
+    "entity_id": "ba81197173fe7930",
+    "code": "ceph config set global mon_warn_on_pool_pg_num_not_power_of_two false",
+    "language": "text",
+    "context": "Alternatively, the warning can be silenced with",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set global"
+    ]
+  },
+  {
+    "entity_id": "8e9c07f5e5a74bd3",
+    "code": "ceph osd pool set <pool-name> pg_autoscale_mode warn",
+    "language": "text",
+    "context": "atio. For details, see :ref:`pg-autoscaler`.\n  If you have set target size ratios on any pools, you may want to set\n  these pools to autoscale ``warn`` mode to avoid data movement during\n  the upgrade",
+    "source_file": "releases/octopus.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pool set"
+    ]
+  },
+  {
+    "entity_id": "f4205469de285050",
+    "code": "# ceph osd dump | grep ^flags",
+    "language": "text",
+    "context": "If you are unsure whether or not your Luminous cluster has\n   completed a full scrub of all PGs, you can check your cluster's\n   state by running",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd dump"
+    ]
+  },
+  {
+    "entity_id": "cd588298ac8ccd5a",
+    "code": "# ceph pg dump pgs_brief | cut -d \" \" -f 1 | xargs -n1 ceph pg scrub",
+    "language": "text",
+    "context": "However, if you have just completed an upgrade to Luminous and want\n   to proceed to Mimic in short order, you can force a scrub on all\n   placement groups with a one-line shell command, like",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph pg dump pgs_brief",
+      "ceph pg scrub"
+    ]
+  },
+  {
+    "entity_id": "3dc81f7c4fd05c2b",
+    "code": "# ceph osd set noout",
+    "language": "text",
+    "context": "#. Set the ``noout`` flag for the duration of the upgrade. (Optional,\n   but recommended.)",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set noout"
+    ]
+  },
+  {
+    "entity_id": "fcb7bc20a6e1e3a6",
+    "code": "# systemctl restart ceph-mon.target",
+    "language": "text",
+    "context": "#. Upgrade monitors by installing the new packages and restarting the\n   monitor daemons.",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ed6e84db6cf5f5d1",
+    "code": "# ceph mon feature ls",
+    "language": "text",
+    "context": "Once all monitors are up, verify that the monitor upgrade is\n   complete by looking for the ``mimic`` feature string in the mon\n   map.  For example",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon feature ls"
+    ]
+  },
+  {
+    "entity_id": "979ad2fd7f9dea75",
+    "code": "on current monmap (epoch NNN)\n   persistent: [kraken,luminous,mimic]\n   required: [kraken,luminous,mimic]",
+    "language": "text",
+    "context": "should include `mimic` under persistent features",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4eb9338b293353c6",
+    "code": "# systemctl restart ceph-mgr.target",
+    "language": "text",
+    "context": "#. Upgrade ``ceph-mgr`` daemons by installing the new packages and\n   restarting with",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "496e59a152374006",
+    "code": "# systemctl restart ceph-osd.target",
+    "language": "text",
+    "context": "#. Upgrade all OSDs by installing the new packages and restarting the\n   ceph-osd daemons on all hosts",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a99f44a5672ca2e7",
+    "code": "# ceph osd versions\n{\n   \"ceph version 12.2.5 (...) luminous (stable)\": 12,\n   \"ceph version 13.2.0 (...) mimic (stable)\": 22,\n}",
+    "language": "text",
+    "context": "You can monitor the progress of the OSD upgrades with the new\n   ``ceph versions`` or ``ceph osd versions`` command",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd versions",
+      "ceph version 12",
+      "ceph version 13"
+    ]
+  },
+  {
+    "entity_id": "7309f72b24e72aa7",
+    "code": "# ceph status\n# ceph fs set <fs_name> max_mds 1",
+    "language": "text",
+    "context": "#. Reduce the number of ranks to 1.  (Make note of the original\n      number of MDS daemons first if you plan to restore it later.)",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set",
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "545be55fb18f353d",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Wait for the cluster to deactivate any non-zero ranks by\n      periodically checking the status",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "369c1a7620bf073f",
+    "code": "# systemctl stop ceph-mds@<daemon_name>",
+    "language": "text",
+    "context": "#. Take all standby MDS daemons offline on the appropriate hosts with",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "545be55fb18f353d",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Confirm that only one MDS is online and is rank 0 for your FS",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "9ed67f3ff5c2f367",
+    "code": "# systemctl restart ceph-mds.target",
+    "language": "text",
+    "context": "#. Upgrade the last remaining MDS daemon by installing the new\n      packages and restarting the daemon",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1a328b4e429f9e06",
+    "code": "# systemctl start ceph-mds.target",
+    "language": "text",
+    "context": "#. Restart all standby MDS daemons that were taken offline",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d252caaa106bc42e",
+    "code": "# ceph fs set <fs_name> max_mds <original_max_mds>",
+    "language": "text",
+    "context": "#. Restore the original value of ``max_mds`` for the volume",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "50f93cd7d9b09072",
+    "code": "# systemctl restart radosgw.target",
+    "language": "text",
+    "context": "#. Upgrade all radosgw daemons by upgrading packages and restarting\n   daemons on all hosts",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1c8a2af4027e7cdc",
+    "code": "# ceph osd require-osd-release mimic",
+    "language": "text",
+    "context": "#. Complete the upgrade by disallowing pre-Mimic OSDs and enabling\n   all new Mimic-only functionality",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd require-osd-release mimic"
+    ]
+  },
+  {
+    "entity_id": "3c5d06c394b8ef81",
+    "code": "# ceph osd unset noout",
+    "language": "text",
+    "context": "#. If you set ``noout`` at the beginning, be sure to clear it with",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unset noout"
+    ]
+  },
+  {
+    "entity_id": "9b543a7c187d48f5",
+    "code": "ceph fs set <fs_name> allow_new_snaps",
+    "language": "text",
+    "context": "- CephFS snapshot is now stable and enabled by default on new filesystems.\n    To enable snapshot on existing filesystems, use the command",
+    "source_file": "releases/mimic.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "92c7d5d9e1eeb5f8",
+    "code": "sudo find /mnt/cephfs -type f -links +1 -exec touch \\{\\} \\;",
+    "language": "text",
+    "context": "ers with file systems created before firefly should ensure that inodes\n  with multiple hard links are modified *prior* to the upgrade to ensure that\n  the backtraces are written properly.  For example",
+    "source_file": "releases/giant.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "92c7d5d9e1eeb5f8",
+    "code": "sudo find /mnt/cephfs -type f -links +1 -exec touch \\{\\} \\;",
+    "language": "text",
+    "context": "ers with file systems created before firefly should ensure that inodes\n  with multiple hard links are modified *prior* to the upgrade to ensure that\n  the backtraces are written properly.  For example",
+    "source_file": "releases/giant.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f903a9bd5b4a33ff",
+    "code": "ceph config set mon mon_mds_skip_sanity true",
+    "language": "text",
+    "context": "* CephFS:  If you are not using cephadm, you must disable FSMap sanity checks *before starting the upgrade*",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "ea59391e613c4dfc",
+    "code": "ceph config rm mon mon_mds_skip_sanity",
+    "language": "text",
+    "context": "After the upgrade has finished and the cluster is stable, please remove that setting",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config rm mon"
+    ]
+  },
+  {
+    "entity_id": "3dd5d192b5707dba",
+    "code": "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM 1h\nceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM_ALLOWED 1h",
+    "language": "text",
+    "context": "To temporarily mute the health alerts around insecure clients for the duration of the\n  upgrade, you may want to",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph health mute AUTH_INSECURE_GLOBAL_ID_RECLAIM"
+    ]
+  },
+  {
+    "entity_id": "9011da43fa25ef26",
+    "code": "# for idx in {0..9}; do ceph tell mds.<rank> dump tree ~mdsdir/stray$idx| jq '.[] | select (.nlink == 0 and .dir_layout.dir_hash > 0) | .stray_prior_path' | wc -l; done",
+    "language": "text",
+    "context": "nks except rank 0 as\n   starting an upgrade (which sets `max_mds` to 1) could crash the Ceph\n   Metadata Server. The following command should return zero (0) stray entries\n   for all stray directories",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mds"
+    ]
+  },
+  {
+    "entity_id": "2c95931a2319afa4",
+    "code": "# ceph osd set noout",
+    "language": "text",
+    "context": "#. Set the ``noout`` flag for the duration of the upgrade. (Optional,\n   but recommended.)",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set noout"
+    ]
+  },
+  {
+    "entity_id": "8cc666ef54f14d9f",
+    "code": "# systemctl restart ceph-mon.target",
+    "language": "text",
+    "context": "#. Upgrade monitors by installing the new packages and restarting the\n   monitor daemons.  For example, on each monitor host,",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f073a8ff85e5c253",
+    "code": "# ceph mon dump | grep min_mon_release",
+    "language": "text",
+    "context": "Once all monitors are up, verify that the monitor upgrade is\n   complete by looking for the ``octopus`` string in the mon\n   map.  The command",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "55a708a38aa7bf00",
+    "code": "min_mon_release 16 (pacific)",
+    "language": "text",
+    "context": "should report",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eb75f3f730fb8dac",
+    "code": "# systemctl restart ceph-mgr.target",
+    "language": "text",
+    "context": "#. Upgrade ``ceph-mgr`` daemons by installing the new packages and\n   restarting all manager daemons.  For example, on each manager host,",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b914372e02cc6a86",
+    "code": "# systemctl restart ceph-osd.target",
+    "language": "text",
+    "context": "#. Upgrade all OSDs by installing the new packages and restarting the\n   ceph-osd daemons on all OSD hosts",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1110895c0fb25852",
+    "code": "# ceph config set osd bluestore_fsck_quick_fix_on_mount false",
+    "language": "text",
+    "context": "nversion to improve the\n   accounting for \"omap\" data.  This may take a few minutes to as much\n   as a few hours (for an HDD with lots of omap data).  You can\n   disable this automatic conversion with",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set osd"
+    ]
+  },
+  {
+    "entity_id": "4b92a8c878d356c9",
+    "code": "# ceph osd versions\n{\n   \"ceph version 14.2.5 (...) nautilus (stable)\": 12,\n   \"ceph version 16.2.0 (...) pacific (stable)\": 22,\n}",
+    "language": "text",
+    "context": "You can monitor the progress of the OSD upgrades with the\n   ``ceph versions`` or ``ceph osd versions`` commands",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd versions",
+      "ceph version 14",
+      "ceph version 16"
+    ]
+  },
+  {
+    "entity_id": "e121da1683030193",
+    "code": "# ceph config set mon mon_mds_skip_sanity true",
+    "language": "text",
+    "context": "#. Disable FSMap sanity checks",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "1005918745b36cce",
+    "code": "# ceph fs set <fs_name> allow_standby_replay false",
+    "language": "text",
+    "context": "#. Disable standby_replay",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "cf3644e3c0520897",
+    "code": "# ceph status\n# ceph fs set <fs_name> max_mds 1",
+    "language": "text",
+    "context": "#. Reduce the number of ranks to 1.  (Make note of the original\n      number of MDS daemons first if you plan to restore it later.)",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set",
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "0dcbcfbc7c4a5759",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Wait for the cluster to deactivate any non-zero ranks by\n      periodically checking the status",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "57e0f070457ee278",
+    "code": "# systemctl stop ceph-mds@<daemon_name>",
+    "language": "text",
+    "context": "#. Take all standby MDS daemons offline on the appropriate hosts with",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0dcbcfbc7c4a5759",
+    "code": "# ceph status",
+    "language": "text",
+    "context": "#. Confirm that only one MDS is online and is rank 0 for your FS",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph status"
+    ]
+  },
+  {
+    "entity_id": "e2b767c1613acebd",
+    "code": "# systemctl restart ceph-mds.target",
+    "language": "text",
+    "context": "#. Upgrade the last remaining MDS daemon by installing the new\n      packages and restarting the daemon",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "60bfeea51bfe9805",
+    "code": "# systemctl start ceph-mds.target",
+    "language": "text",
+    "context": "#. Restart all standby MDS daemons that were taken offline",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eae2b835edd18103",
+    "code": "# ceph fs set <fs_name> max_mds <original_max_mds>",
+    "language": "text",
+    "context": "#. Restore the original value of ``max_mds`` for the volume",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph fs set"
+    ]
+  },
+  {
+    "entity_id": "83c8a58c765835ac",
+    "code": "# ceph config rm mon mon_mds_skip_sanity",
+    "language": "text",
+    "context": "#. Remove `mon_mds_skip_sanity` setting",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config rm mon"
+    ]
+  },
+  {
+    "entity_id": "85fef53cbe4ca263",
+    "code": "# systemctl restart ceph-radosgw.target",
+    "language": "text",
+    "context": "#. Upgrade all radosgw daemons by upgrading packages and restarting\n   daemons on all hosts",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ff0279edd19dd4ea",
+    "code": "# ceph osd require-osd-release pacific",
+    "language": "text",
+    "context": "#. Complete the upgrade by disallowing pre-Pacific OSDs and enabling\n   all new Pacific-only functionality",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd require-osd-release pacific"
+    ]
+  },
+  {
+    "entity_id": "89ee3f1e048508e3",
+    "code": "# ceph osd unset noout",
+    "language": "text",
+    "context": "#. If you set ``noout`` at the beginning, be sure to clear it with",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unset noout"
+    ]
+  },
+  {
+    "entity_id": "862e9609958bcd2c",
+    "code": "ceph config set mon mon_crush_min_required_version firefly",
+    "language": "text",
+    "context": "If your CRUSH tunables are older than Hammer, Ceph will now issue a\n   health warning.  If you see a health alert to that effect, you can\n   revert this change with",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph config set mon"
+    ]
+  },
+  {
+    "entity_id": "dc94246d2938d5c8",
+    "code": "ceph osd getcrushmap -o backup-crushmap\nceph osd crush set-all-straw-buckets-to-straw2",
+    "language": "text",
+    "context": "CRUSH buckets to straw2, which was added back\n   in the Hammer release.  If you have any 'straw' buckets, this will\n   result in a modest amount of data movement, but generally nothing\n   too severe.",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd getcrushmap -o"
+    ]
+  },
+  {
+    "entity_id": "8aad2c4de2149ad7",
+    "code": "ceph osd setcrushmap -i backup-crushmap",
+    "language": "text",
+    "context": "If there are problems, you can easily revert with",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd setcrushmap -i"
+    ]
+  },
+  {
+    "entity_id": "488fa41bf13d8f30",
+    "code": "ceph mon enable-msgr2",
+    "language": "text",
+    "context": "#. If you did not already do so when upgrading from Mimic, we\n   recommended you enable the new :ref:`v2 network protocol <msgr2>`,\n   issue the following command",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon enable-msgr2"
+    ]
+  },
+  {
+    "entity_id": "a30ed588593a2020",
+    "code": "ceph mon dump",
+    "language": "text",
+    "context": "This will instruct all monitors that bind to the old default port\n   6789 for the legacy v1 protocol to also bind to the new 3300 v2\n   protocol port.  To see if all monitors have been updated,",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "98f862b0d38ec4b4",
+    "code": "ceph mgr module enable telemetry\nceph telemetry show",
+    "language": "text",
+    "context": "le <telemetry>` to send\n   anonymized usage statistics and crash information to the Ceph\n   upstream developers.  To see what would be reported (without actually\n   sending any information to anyone),",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mgr module enable"
+    ]
+  },
+  {
+    "entity_id": "31703810734ecc96",
+    "code": "ceph telemetry on",
+    "language": "text",
+    "context": "If you are comfortable with the data that is reported, you can opt-in to\n   automatically report the high-level cluster metadata with",
+    "source_file": "releases/pacific.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry on"
+    ]
+  },
+  {
+    "entity_id": "bf2a9cfd5b599dec",
+    "code": "ceph auth export\nceph auth get\nceph auth get-key\nceph auth print-key\nceph auth list",
+    "language": "text",
+    "context": "development releases the 'r' cap was sufficient.  Note that\n  this backported security fix will break mon keys that are using the following\n  commands but do not have the 'x' bit in the mon capability",
+    "source_file": "releases/emperor.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth export ceph"
+    ]
+  },
+  {
+    "entity_id": "a11ab6c823271fa7",
+    "code": "ceph_filestore_tool --list-lost-objects=true --filestore-path=<path-to-osd-filestore> --journal-path=<path-to-osd-journal>",
+    "language": "text",
+    "context": "st package on each osd machine to get ceph_filestore_tool\n#. Stop all osd processes\n#. To see all lost objects, run the following on each osd with the osd stopped and\n   the osd data directory mounted",
+    "source_file": "releases/emperor.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4151316de48e9b2e",
+    "code": "ceph_filestore_tool --fix-lost-objects=true --list-lost-objects=true --filestore-path=<path-to-osd-filestore> --journal-path=<path-to-osd-journal>",
+    "language": "text",
+    "context": "#. To fix all lost objects, run the following on each osd with the\n   osd stopped and the osd data directory mounted",
+    "source_file": "releases/emperor.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "67fe196c6ac1c795",
+    "code": "ceph telemetry config-set url '<your url>'",
+    "language": "text",
+    "context": "n and push it to a central endpoint. By default, we're pushing it\n  to a project endpoint at https://telemetry.ceph.com/report, but this is\n  customizable using by setting the 'url' config option with",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry config-set url"
+    ]
+  },
+  {
+    "entity_id": "482c43a6cc9a8dc2",
+    "code": "ceph telemetry on",
+    "language": "text",
+    "context": "You will have to opt-in on sharing your information with",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry on"
+    ]
+  },
+  {
+    "entity_id": "43785470da23840d",
+    "code": "ceph telemetry show",
+    "language": "text",
+    "context": "You can view exactly what information will be reported first with",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph telemetry show"
+    ]
+  },
+  {
+    "entity_id": "58fb0007f6600356",
+    "code": "[ERR] 11.288 shard 207: soid  11:1155c332:::rbd_data.207dce238e1f29.0000000000000527:head data_digest 0xc8997a5b != data_digest 0x2ca15853",
+    "language": "text",
+    "context": "er that installed the broken 12.2.6 release, 12.2.7 fixed the\nregression and introduced a workaround option `osd distrust data digest = true`,\nbut 12.2.7 clusters still generated health warnings like",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b440f02f043b67a5",
+    "code": "osd skip data digest = true",
+    "language": "text",
+    "context": "#. If your cluster has only BlueStore OSDs (no FileStore), then you\n   should enable the following OSD option",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "da5a17e2a4b0c068",
+    "code": "osd distrust data digest = true",
+    "language": "text",
+    "context": "#. If you have a mix of BlueStore and FileStore OSDs, then you should\n   enable the following OSD option",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "810ba13a62326186",
+    "code": "ceph osd pause",
+    "language": "text",
+    "context": "#. Install the v12.2.7 packages.\n#. Temporarily quiesce IO to cluster",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd pause"
+    ]
+  },
+  {
+    "entity_id": "050d6626c0e3e521",
+    "code": "ceph osd unpause",
+    "language": "text",
+    "context": "#. Restart all OSDs and wait for all PGs to become active.\n#. Resume IO",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unpause"
+    ]
+  },
+  {
+    "entity_id": "c4df02f5f9aafe90",
+    "code": "# ceph osd set sortbitwise",
+    "language": "text",
+    "context": "#. Ensure that the ``sortbitwise`` flag is enabled",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set sortbitwise"
+    ]
+  },
+  {
+    "entity_id": "439a9b6bf307ed8c",
+    "code": "# ceph osd set noout",
+    "language": "text",
+    "context": "#. Set the ``noout`` flag for the duration of the upgrade. (Optional\n   but recommended.)",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set noout"
+    ]
+  },
+  {
+    "entity_id": "98462fc4412d11b0",
+    "code": "# ceph auth caps client.<ID> mon 'allow r, allow command \"osd blacklist\"' osd '<existing OSD caps for user>'",
+    "language": "text",
+    "context": "#. Verify that all RBD client users have sufficient caps to blacklist\n   other client users. RBD client users with only ``\"allow r\"``\n   monitor caps should be updated as follows",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph auth caps client"
+    ]
+  },
+  {
+    "entity_id": "3e6a99791932c796",
+    "code": "# systemctl restart ceph-mon.target",
+    "language": "text",
+    "context": "#. Upgrade monitors by installing the new packages and restarting the\n   monitor daemons.  Note that, unlike prior releases, the ceph-mon\n   daemons *must* be upgraded first",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ba51719c956524de",
+    "code": "# ceph mon feature ls",
+    "language": "text",
+    "context": "Verify the monitor upgrade is complete once all monitors are up by\n   looking for the ``luminous`` feature string in the mon map.  For\n   example",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph mon feature ls"
+    ]
+  },
+  {
+    "entity_id": "165d2299dafb5c5d",
+    "code": "on current monmap (epoch NNN)\n   persistent: [kraken,luminous]\n   required: [kraken,luminous]",
+    "language": "text",
+    "context": "should include `luminous` under persistent features",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ddb283d98b686492",
+    "code": "# systemctl restart ceph-mgr.target",
+    "language": "text",
+    "context": "#. Add or restart ``ceph-mgr`` daemons.  If you are upgrading from\n   kraken, upgrade packages and restart ceph-mgr daemons with",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2f999402b8a47c21",
+    "code": "# ceph-deploy mgr create HOST",
+    "language": "text",
+    "context": "g from kraken, you may already have ceph-mgr\n   daemons deployed.  If not, or if you are upgrading from jewel, you\n   can deploy new daemons with tools like ceph-deploy or ceph-ansible.\n   For example",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d74f676b3f94485",
+    "code": "# systemctl restart ceph-osd.target",
+    "language": "text",
+    "context": "#. Upgrade all OSDs by installing the new packages and restarting the\n   ceph-osd daemons on all hosts",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ba3ce7e310541e64",
+    "code": "# ceph osd versions\n{\n   \"ceph version 12.2.0 (...) luminous (stable)\": 12,\n   \"ceph version 10.2.6 (...)\": 3,\n}",
+    "language": "text",
+    "context": "You can monitor the progress of the OSD upgrades with the new\n   ``ceph versions`` or ``ceph osd versions`` command",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd versions",
+      "ceph version 10",
+      "ceph version 12"
+    ]
+  },
+  {
+    "entity_id": "8665e0a171cca226",
+    "code": "# systemctl restart ceph-mds.target",
+    "language": "text",
+    "context": "#. Upgrade all CephFS daemons by upgrading packages and restarting\n   daemons on all hosts",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "32517bb33902f90a",
+    "code": "# systemctl restart radosgw.target",
+    "language": "text",
+    "context": "#. Upgrade all radosgw daemons by upgrading packages and restarting\n   daemons on all hosts",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1d97c4e3b0f9b6f5",
+    "code": "# ceph osd require-osd-release luminous",
+    "language": "text",
+    "context": "#. Complete the upgrade by disallowing pre-luminous OSDs and enabling\n   all new Luminous-only functionality",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd require-osd-release luminous"
+    ]
+  },
+  {
+    "entity_id": "d31c829c1b0f204f",
+    "code": "# ceph osd unset noout",
+    "language": "text",
+    "context": "If you set ``noout`` at the beginning, be sure to clear it with",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unset noout"
+    ]
+  },
+  {
+    "entity_id": "594a8687935c86a6",
+    "code": "osd scrub during recovery = true",
+    "language": "text",
+    "context": "The OSDs now avoid starting new scrubs while recovery is in progress.  To\n  revert to the old behavior (and do not let recovery activity affect the\n  scrub scheduling) you can set the following option",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "27c3c2fe0bd9a4cd",
+    "code": "\"stats\": {\n            \"TotalBytes\": 516,\n            \"TotalBytesRounded\": 1024,\n            \"TotalEntries\": 1\n         }",
+    "language": "text",
+    "context": "nfig option allows you to dump\n  (or not dump) the description of user stats in the S3 GetUsage\n  API. This option defaults to false.  If the value is true, the\n  response data for GetUsage looks like",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8991db4983e8b63f",
+    "code": "{\n     516,\n     1024,\n     1\n}",
+    "language": "json",
+    "context": "If the value is false, the response for GetUsage looks as it did before",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fa8fc15471410610",
+    "code": "echo rocksdb > /var/lib/ceph/mon/ceph-`hostname`/kv_backend",
+    "language": "text",
+    "context": "* If you have manually specified the monitor user rocksdb via the\n  ``mon keyvaluedb = rocksdb`` option, you will need to manually add a\n  file to the mon data directory to preserve this option",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4ce21236677c5bcd",
+    "code": "enable experimental unrecoverable data corrupting features = btrfs",
+    "language": "text",
+    "context": "-osd backend in combination with\n  btrfs.  We recommend against using btrfs.  If you are using\n  btrfs-based OSDs and want to upgrade to luminous you will need to\n  add the following to your ceph.conf",
+    "source_file": "releases/luminous.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0eef47435be675ab",
+    "code": "ceph osd down `seq 0 1000`",
+    "language": "text",
+    "context": "#. Upgrade Ceph on monitor hosts\n#. Restart all ceph-mon daemons\n#. Upgrade Ceph on all OSD hosts\n#. Stop all ceph-osd daemons\n#. Mark all OSDs down with something like",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd down"
+    ]
+  },
+  {
+    "entity_id": "38d0ccb629437af0",
+    "code": "systemctl start ceph.target       # start all daemons\nsystemctl status ceph-osd@12      # check status of osd.12",
+    "language": "text",
+    "context": "all distributions that support systemd (CentOS 7, Fedora, Debian\n  Jessie 8.x, OpenSUSE), ceph daemons are now managed using native systemd\n  files instead of the legacy sysvinit scripts.  For example",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b19de232bff43d52",
+    "code": "setuser match path = /var/lib/ceph/$type/$cluster-$id",
+    "language": "text",
+    "context": "#. Add the following line to ``ceph.conf`` on all hosts",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d70eefc33dbe0284",
+    "code": "ceph-deploy install --stable infernalis HOST",
+    "language": "text",
+    "context": "#. Upgrade the ceph package.  This creates the ceph user and group.  For\n      example",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6029ab1144a6c122",
+    "code": "service ceph stop           # fedora, centos, rhel, debian\nstop ceph-all               # ubuntu",
+    "language": "text",
+    "context": "#. Stop the daemon(s)",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph stop"
+    ]
+  },
+  {
+    "entity_id": "7aa45e84a18e59da",
+    "code": "chown -R ceph:ceph /var/lib/ceph\nchown -R ceph:ceph /var/log/ceph",
+    "language": "text",
+    "context": "#. Fix the ownership",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph chown -R ceph"
+    ]
+  },
+  {
+    "entity_id": "dd219348cdf048f0",
+    "code": "start ceph-all                # ubuntu\nsystemctl start ceph.target   # debian, centos, fedora, rhel",
+    "language": "text",
+    "context": "#. Restart the daemon(s)",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "512069398073e38f",
+    "code": "http://download.ceph.com/rpm-testing\nhttp://download.ceph.com/debian-testing",
+    "language": "text",
+    "context": "The v9.1.0 packages are pushed to the development release repositories",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "cd3e978e4a9e2936",
+    "code": "http://docs.ceph.com/docs/master/install/get-packages/",
+    "language": "text",
+    "context": "For for info, see",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "81ab1d8f0634a3ca",
+    "code": "ceph-deploy install --testing HOST",
+    "language": "text",
+    "context": "Or install with ceph-deploy via",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "43cad06646ec1091",
+    "code": "ceph-deploy install --release hammer HOST",
+    "language": "text",
+    "context": "User can upgrade to latest hammer v0.94.z\nfrom gitbuilder with(also refer the hammer release notes for more details)",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "38d0ccb629437af0",
+    "code": "systemctl start ceph.target       # start all daemons\nsystemctl status ceph-osd@12      # check status of osd.12",
+    "language": "text",
+    "context": "all distributions that support systemd (CentOS 7, Fedora, Debian\n  Jessie 8.x, OpenSUSE), ceph daemons are now managed using native systemd\n  files instead of the legacy sysvinit scripts.  For example",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b19de232bff43d52",
+    "code": "setuser match path = /var/lib/ceph/$type/$cluster-$id",
+    "language": "text",
+    "context": "#. Add the following line to ``ceph.conf`` on all hosts",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d70eefc33dbe0284",
+    "code": "ceph-deploy install --stable infernalis HOST",
+    "language": "text",
+    "context": "#. Upgrade the ceph package.  This creates the ceph user and group.  For\n         example",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6029ab1144a6c122",
+    "code": "service ceph stop           # fedora, centos, rhel, debian\nstop ceph-all               # ubuntu",
+    "language": "text",
+    "context": "#. Stop the daemon(s)",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph stop"
+    ]
+  },
+  {
+    "entity_id": "7aa45e84a18e59da",
+    "code": "chown -R ceph:ceph /var/lib/ceph\nchown -R ceph:ceph /var/log/ceph",
+    "language": "text",
+    "context": "#. Fix the ownership",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph chown -R ceph"
+    ]
+  },
+  {
+    "entity_id": "dd219348cdf048f0",
+    "code": "start ceph-all                # ubuntu\nsystemctl start ceph.target   # debian, centos, fedora, rhel",
+    "language": "text",
+    "context": "#. Restart the daemon(s)",
+    "source_file": "releases/infernalis.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e3fa9463afa2aa4d",
+    "code": "ceph osd set noout",
+    "language": "text",
+    "context": "e node or rack at a time, and wait for the cluster to recover each time.  To prevent the cluster from moving data around in response to the OSD daemons being down for minutes or hours, you may want to",
+    "source_file": "releases/argonaut.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd set noout"
+    ]
+  },
+  {
+    "entity_id": "04ebf29f3aa42881",
+    "code": "ceph osd unset noout",
+    "language": "text",
+    "context": "This will prevent the cluster from marking down OSDs as \"out\" and re-replicating the data elsewhere. If you do this, be sure to clear the flag when the upgrade is complete",
+    "source_file": "releases/argonaut.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd unset noout"
+    ]
+  },
+  {
+    "entity_id": "4c52edb532682735",
+    "code": "ceph --admin-daemon /var/run/ceph/ceph-osd.0.asok 'config set debug_ms 1'",
+    "language": "text",
+    "context": "and and arguments as either a single string or as separate\n  arguments.  It will now only accept the command spread across\n  multiple arguments.  This means that any script which does something\n  like",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "d11a48ac4be85120",
+    "code": "ceph daemon osd.0 config set debug_ms 1",
+    "language": "text",
+    "context": "needs to remove the quotes.  Also, note that the above can now be\n  shortened to",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph daemon osd"
+    ]
+  },
+  {
+    "entity_id": "1cc54e8e11f7e486",
+    "code": "ceph tell osd.<id or *> ...\nceph tell mon.<id or name or *> ...",
+    "language": "text",
+    "context": "* The 'ceph osd tell ...' and 'ceph mon tell ...' commands are no\n  longer supported.  Any callers should use",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mon",
+      "ceph tell osd"
+    ]
+  },
+  {
+    "entity_id": "356cd2b8970d6ce0",
+    "code": "ceph osd crush add 123 osd.123 <weight> <location ...>\nceph osd crush add osd.123 <weight> <location ...>",
+    "language": "text",
+    "context": "* The 'ceph osd crush add ...' command used to take one of two forms",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add"
+    ]
+  },
+  {
+    "entity_id": "62546d3e9f58b6dd",
+    "code": "ceph osd crush add osd.123 <weight> <location ...>\nceph osd crush add 123 <weight> <location ...>",
+    "language": "text",
+    "context": "This is because the id and crush name are redundant.  Now only the\n  simple form is supported, where the osd name/id can either be a bare\n  id (integer) or name (osd.<id>)",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add"
+    ]
+  },
+  {
+    "entity_id": "1cc54e8e11f7e486",
+    "code": "ceph tell osd.<id or *> ...\nceph tell mon.<id or name or *> ...",
+    "language": "text",
+    "context": "* The 'ceph osd tell ...' and 'ceph mon tell ...' commands are no\n  longer supported.  Any callers should use",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph tell mon",
+      "ceph tell osd"
+    ]
+  },
+  {
+    "entity_id": "356cd2b8970d6ce0",
+    "code": "ceph osd crush add 123 osd.123 <weight> <location ...>\nceph osd crush add osd.123 <weight> <location ...>",
+    "language": "text",
+    "context": "* The 'ceph osd crush add ...' command used to take one of two forms",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add"
+    ]
+  },
+  {
+    "entity_id": "62546d3e9f58b6dd",
+    "code": "ceph osd crush add osd.123 <weight> <location ...>\nceph osd crush add 123 <weight> <location ...>",
+    "language": "text",
+    "context": "This is because the id and crush name are redundant.  Now only the\n  simple form is supported, where the osd name/id can either be a bare\n  id (integer) or name (osd.<id>)",
+    "source_file": "releases/dumpling.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "ceph osd crush add"
+    ]
+  },
+  {
+    "entity_id": "8a8b41d28132c369",
+    "code": "$ radosgw-admin bucket check --check-head-obj-locator \\\n                             --bucket=<bucket> [--fix]",
+    "language": "bash",
+    "context": "previous behavior. In order to be able to access objects that start with an\nunderscore and were created in prior Hammer releases, following the upgrade it\nis required to run (for each affected bucket)",
+    "source_file": "releases/hammer.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": [
+      "radosgw-admin bucket check --check-head-obj-locator"
+    ]
+  },
+  {
+    "entity_id": "13fc553f0048e6db",
+    "code": "enable experimental unrecoverable data corrupting features = keyvaluestore",
+    "language": "text",
+    "context": "licity) and marked as experimental.  To\n  enable this untested feature and acknowledge that you understand\n  that it is untested and may destroy data, you need to add the\n  following to your ceph.conf",
+    "source_file": "releases/hammer.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "44e9808ca36633aa",
+    "code": "sudo find /mnt/cephfs -type f -links +1 -exec touch \\{\\} \\;",
+    "language": "text",
+    "context": "ers with file systems created before firefly should ensure that inodes\n  with multiple hard links are modified *prior* to the upgrade to ensure that\n  the backtraces are written properly.  For example",
+    "source_file": "releases/hammer.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  },
+  {
+    "entity_id": "13fc553f0048e6db",
+    "code": "enable experimental unrecoverable data corrupting features = keyvaluestore",
+    "language": "text",
+    "context": "licity) and marked as experimental.  To\n  enable this untested feature and acknowledge that you understand\n  that it is untested and may destroy data, you need to add the\n  following to your ceph.conf",
+    "source_file": "releases/hammer.rst",
+    "component": "releases",
+    "section_title": "",
+    "commands_used": []
+  }
+]

@@ -1,0 +1,1704 @@
+[
+  {
+    "entity_id": "8947b17ff8110c7d",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "ac8d6478213917c6",
+    "code": "ceph mgr module enable call_home_agent",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph mgr module enable call_home_agent"
+    ]
+  },
+  {
+    "entity_id": "109d10aa249c7896",
+    "code": "[ceph: root@host01 /] # ceph mgr module enable call_home_agent",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph mgr module enable call_home_agent"
+    ]
+  },
+  {
+    "entity_id": "ab0c1da3c6e3df9a",
+    "code": "ceph config set mgr mgr/call_home_agent/icn ICN",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "d2cfe59ad1531ca0",
+    "code": "[ceph: root@host01 /] # ceph config set mgr mgr/call_home_agent/icn ABCD123",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "0de8eb6c7302e4f2",
+    "code": "ceph config set mgr mgr/call_home_agent/customer_email customer_email",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "0b434f5eb412ccdc",
+    "code": "ceph config set mgr mgr/call_home_agent/customer_phone customer_phone",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "94d327a092bac241",
+    "code": "ceph config set mgr mgr/call_home_agent/customer_first_name customer_first_name",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "1dd455094a256deb",
+    "code": "ceph config set mgr mgr/call_home_agent/customer_last_name customer_last_name",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "cb9bf054649c53dc",
+    "code": "ceph config set mgr mgr/call_home_agent/customer_country_code customer_country_code",
+    "language": "bash",
+    "context": "Enabling Call Home",
+    "source_file": "ibm-docs/8.1/interface-enabling-call-home",
+    "component": "mgr",
+    "section_title": "Enabling Call Home",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "2b15a6b259423eba",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Enabling IBM Storage Insights support",
+    "source_file": "ibm-docs/8.1/interface-enabling-storage-insights-support",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Insights support",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "caba85af94230261",
+    "code": "ceph callhome list-tenants owner_ibm_id owner_company_name owner_first_name owner_last_name owner_email",
+    "language": "bash",
+    "context": "Enabling IBM Storage Insights support",
+    "source_file": "ibm-docs/8.1/interface-enabling-storage-insights-support",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Insights support",
+    "commands_used": [
+      "ceph callhome list-tenants owner_ibm_id owner_company_name"
+    ]
+  },
+  {
+    "entity_id": "a643d68874e9991c",
+    "code": "[ceph: root@host01 /] #  ceph callhome list-tenants testuser@ibm.com abc Test User testuser@ibm.com\n\n{\"response-status\": 2, \"response-message\": \"Multiple SI instances exist for supplied IBM ID\",  \n    \"si-instances\": [ \n      {\"external_url\": \"https://stag.insights.ibm.com/gui/01ed5c3b-830f-1578-9729-d2cfeda265c4\", \"company-name\": \"Test company\", \"instance-type\": \"spectrum_control\", \"user-role\": \"ADMIN\"},  \n      {\"external_url\": \"https://stag.insights.ibm.com/gui/01ec3c4b-a049-1c88-afdc-d2cfe1d3c651\", \"company-name\": \"Other company\", \"instance-type\": \"purchased\", \"user-role\": \"ADMIN\"},  \n      {\"external_url\": \"https://stag.insights.ibm.com/gui/01cdd9e5-bd98-1cf8-b208-8c6e23baa049\", \"company-name\": \"Another company\", \"instance-type\": \"purchased\", \"user-role\": \"ADMIN\"},  \n    ]}",
+    "language": "bash",
+    "context": "Enabling IBM Storage Insights support",
+    "source_file": "ibm-docs/8.1/interface-enabling-storage-insights-support",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Insights support",
+    "commands_used": [
+      "ceph callhome list-tenants testuser"
+    ]
+  },
+  {
+    "entity_id": "1a0bec0d0ec7d102",
+    "code": "ceph callhome set tenant IBM_TENANT_ID owner_tenant_name owner_ibm_id owner_company_name owner_first_name owner_last_name owner_email",
+    "language": "bash",
+    "context": "Enabling IBM Storage Insights support",
+    "source_file": "ibm-docs/8.1/interface-enabling-storage-insights-support",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Insights support",
+    "commands_used": [
+      "ceph callhome set tenant IBM_TENANT_ID"
+    ]
+  },
+  {
+    "entity_id": "11e14ce67462b81b",
+    "code": "[ceph: root@host01 /] # ceph callhome set tenant 01ec3c4b-a049-1c88-afdc-d2cfe1d3c651 testuser@ibm.com IBM test user testuser@ibm.com",
+    "language": "bash",
+    "context": "Enabling IBM Storage Insights support",
+    "source_file": "ibm-docs/8.1/interface-enabling-storage-insights-support",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Insights support",
+    "commands_used": [
+      "ceph callhome set tenant 01ec3c4b-a049-1c88-afdc-d2cfe1d3c651"
+    ]
+  },
+  {
+    "entity_id": "0079830921f966f4",
+    "code": "ceph mgr module disable call_home_agent",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.1/interface-disabling-call-home",
+    "component": "mgr",
+    "section_title": "Disabling Call Home",
+    "commands_used": [
+      "ceph mgr module disable call_home_agent"
+    ]
+  },
+  {
+    "entity_id": "63939d15fce570a1",
+    "code": "[ceph: root@host01 /]# ceph mgr module disable call_home_agent",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/interface-disabling-call-home",
+    "component": "mgr",
+    "section_title": "Disabling Call Home",
+    "commands_used": [
+      "ceph mgr module disable call_home_agent"
+    ]
+  },
+  {
+    "entity_id": "20b39fa12e49fe08",
+    "code": "ceph callhome show inventory",
+    "language": "bash",
+    "context": "Using Call Home",
+    "source_file": "ibm-docs/8.1/interface-using-call-home",
+    "component": "mgr",
+    "section_title": "Using Call Home",
+    "commands_used": [
+      "ceph callhome show inventory"
+    ]
+  },
+  {
+    "entity_id": "c27f6ec7bc7b10f9",
+    "code": "ceph callhome send inventory",
+    "language": "bash",
+    "context": "Using Call Home",
+    "source_file": "ibm-docs/8.1/interface-using-call-home",
+    "component": "mgr",
+    "section_title": "Using Call Home",
+    "commands_used": [
+      "ceph callhome send inventory"
+    ]
+  },
+  {
+    "entity_id": "03552e47aa984064",
+    "code": "ceph callhome list-tenants owner_ibm_id, owner_company_name, owner_first_name, owner_last_name, owner_email",
+    "language": "bash",
+    "context": "Using Call Home",
+    "source_file": "ibm-docs/8.1/interface-using-call-home",
+    "component": "mgr",
+    "section_title": "Using Call Home",
+    "commands_used": [
+      "ceph callhome list-tenants owner_ibm_id"
+    ]
+  },
+  {
+    "entity_id": "3d3b9a64a5c8dea3",
+    "code": "ceph callhome list-tenants owner_tenant_id, owner_ibm_id, owner_company_name, owner_first_name, owner_last_name, owner_email",
+    "language": "bash",
+    "context": "Using Call Home",
+    "source_file": "ibm-docs/8.1/interface-using-call-home",
+    "component": "mgr",
+    "section_title": "Using Call Home",
+    "commands_used": [
+      "ceph callhome list-tenants owner_tenant_id"
+    ]
+  },
+  {
+    "entity_id": "2e91c0ef8643d0c3",
+    "code": "ceph callhome get user info",
+    "language": "bash",
+    "context": "Using Call Home",
+    "source_file": "ibm-docs/8.1/interface-using-call-home",
+    "component": "mgr",
+    "section_title": "Using Call Home",
+    "commands_used": [
+      "ceph callhome get user info"
+    ]
+  },
+  {
+    "entity_id": "e791d35afd10235a",
+    "code": "export CHA_INTERVAL_INVENTORY_REPORT_SECONDS= 86400",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "64f1e235b102c72e",
+    "code": "ceph config set mgr mgr/call_home_agent/interval_inventory_report_seconds 86400",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "a448f608e42f162a",
+    "code": "export CHA_INTERVAL_STATUS_REPORT_SECONDS=1800",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "75d2514a989cf4e7",
+    "code": "ceph config set mgr mgr/call_home_agent/interval_status_report_seconds 1800",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "3c0f1e88371c988e",
+    "code": "export CHA_INTERVAL_LAST_CONTACT_REPORT_SECONDS=1800",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a92e5577033c9856",
+    "code": "ceph config set mgr mgr/call_home_agent/interval_last_contact_report_seconds 1800",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "2fa8da9d9771c00f",
+    "code": "export CHA_INTERVAL_PERFORMANCE_REPORT_SECONDS=300",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bfac10986fddb13c",
+    "code": "ceph config set mgr mgr/call_home_agent/interval_performance_report_seconds 300",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "5674ad97e6598c61",
+    "code": "export CHA_PROXY=http://128.64.64.12:8090",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2ce96f37c1828a11",
+    "code": "ceph config set mgr mgr/call_home_agent/proxy http://128.64.64.12:8090",
+    "language": "bash",
+    "context": "Modifying the Call Home agent configuration",
+    "source_file": "ibm-docs/8.1/interface-modifying-call-home-agent-configuration",
+    "component": "mgr",
+    "section_title": "Modifying the Call Home agent configuration",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "52c03bfe821274bf",
+    "code": "ceph telemetry on",
+    "language": "bash",
+    "context": "Enable telemetry.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry on"
+    ]
+  },
+  {
+    "entity_id": "be8bf510da38bca4",
+    "code": "ceph telemetry enable channel basic\nceph telemetry enable channel crash\nceph telemetry enable channel device\nceph telemetry enable channel ident\nceph telemetry enable channel perf\n\nceph telemetry disable channel basic\nceph telemetry disable channel crash\nceph telemetry disable channel device\nceph telemetry disable channel ident\nceph telemetry disable channel perf",
+    "language": "bash",
+    "context": "Enable or disable individual channels.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry enable channel basic",
+      "ceph telemetry enable channel crash",
+      "ceph telemetry enable channel device",
+      "ceph telemetry enable channel ident",
+      "ceph telemetry enable channel perf",
+      "ceph telemetry disable channel basic",
+      "ceph telemetry disable channel crash",
+      "ceph telemetry disable channel device",
+      "ceph telemetry disable channel ident",
+      "ceph telemetry disable channel perf"
+    ]
+  },
+  {
+    "entity_id": "8c3c50075ce14f64",
+    "code": "ceph telemetry enable channel basic crash device ident perf\nceph telemetry disable channel basic crash device ident perf",
+    "language": "bash",
+    "context": "Enable or disable multiple channels.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry enable channel basic",
+      "ceph telemetry disable channel basic"
+    ]
+  },
+  {
+    "entity_id": "fc567e6d8de8e60d",
+    "code": "ceph telemetry enable channel all\nceph telemetry disable channel all",
+    "language": "bash",
+    "context": "Enable or disable all channels together:",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry enable channel all",
+      "ceph telemetry disable channel all"
+    ]
+  },
+  {
+    "entity_id": "b67cc974a9a7f0df",
+    "code": "ceph telemetry show",
+    "language": "bash",
+    "context": "To review the data reported at any time, generate a sample report.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry show"
+    ]
+  },
+  {
+    "entity_id": "f22b889384f0b4e5",
+    "code": "ceph telemetry preview",
+    "language": "bash",
+    "context": "If telemetry is off, preview the sample report.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry preview"
+    ]
+  },
+  {
+    "entity_id": "f8042133fe02de11",
+    "code": "ceph telemetry show-device",
+    "language": "bash",
+    "context": "To protect your privacy, device reports are generated separately, and data such as hostname and\ndevice serial number are anonymized. The device telemetry is sent to a different endpoint and does\nnot a",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry show-device"
+    ]
+  },
+  {
+    "entity_id": "2a951089132e8cfe",
+    "code": "ceph telemetry preview-device",
+    "language": "bash",
+    "context": "If telemetry is off, preview the sample device report.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry preview-device"
+    ]
+  },
+  {
+    "entity_id": "73615e7a380aabfe",
+    "code": "ceph telemetry show-all",
+    "language": "bash",
+    "context": "Get a single output of both the reports with telemetry on.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry show-all"
+    ]
+  },
+  {
+    "entity_id": "f7904b1273781d1b",
+    "code": "ceph telemetry preview-all",
+    "language": "bash",
+    "context": "Get a single output of both the reports with telemetry off.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry preview-all"
+    ]
+  },
+  {
+    "entity_id": "7fb837ff8e6a18d9",
+    "code": "ceph telemetry show CHANNEL_NAME",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry show CHANNEL_NAME"
+    ]
+  },
+  {
+    "entity_id": "03989e28a0bb9cbb",
+    "code": "ceph telemetry preview CHANNEL_NAME",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry preview CHANNEL_NAME"
+    ]
+  },
+  {
+    "entity_id": "7df7c90e18ebf5ac",
+    "code": "ceph telemetry collection ls",
+    "language": "bash",
+    "context": "List the collections.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry collection ls"
+    ]
+  },
+  {
+    "entity_id": "2563eb669c9d2a54",
+    "code": "ceph telemetry diff",
+    "language": "bash",
+    "context": "See the difference between the collections that you are enrolled in, and the new, available\ncollections.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry diff"
+    ]
+  },
+  {
+    "entity_id": "d5936db571a68cbd",
+    "code": "ceph telemetry on\nceph telemetry enable channel CHANNEL_NAME",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry on\nceph telemetry"
+    ]
+  },
+  {
+    "entity_id": "1a8796ae913530b7",
+    "code": "ceph config set mgr mgr/telemetry/interval INTERVAL",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "720b2c620f11eb3d",
+    "code": "[ceph: root@host01 /]# ceph config set mgr mgr/telemetry/interval 72",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "17671e398cfb1c99",
+    "code": "ceph telemetry status",
+    "language": "bash",
+    "context": "View the current configuration.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry status"
+    ]
+  },
+  {
+    "entity_id": "dbe1852ad82ebeb5",
+    "code": "ceph telemetry send",
+    "language": "bash",
+    "context": "Send telemetry data on an ad hoc basis.",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph telemetry send"
+    ]
+  },
+  {
+    "entity_id": "1a09d3c7966a240b",
+    "code": "ceph config set mgr mgr/telemetry/proxy PROXY_URL",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "7f2362a4dcc12cf8",
+    "code": "[ceph: root@host01 /]# ceph config set mgr mgr/telemetry/proxy https://10.0.0.1:8080",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "7f2362a4dcc12cf8",
+    "code": "[ceph: root@host01 /]# ceph config set mgr mgr/telemetry/proxy https://10.0.0.1:8080",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "f416b7e5c2f804d1",
+    "code": "ceph config set mgr mgr/telemetry/contact 'CONTACT_NAME'\nceph config set mgr mgr/telemetry/description 'DESCRIPTION'\nceph config set mgr mgr/telemetry/channel_ident true",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr",
+      "ceph config set mgr mgr",
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "829661cef34d6d80",
+    "code": "[ceph: root@host01 /]# ceph config set mgr mgr/telemetry/contact 'John Doe <john.doe@example.com>'\n[ceph: root@host01 /]# ceph config set mgr mgr/telemetry/description 'My first Ceph cluster'\n[ceph: root@host01 /]# ceph config set mgr mgr/telemetry/channel_ident true",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr",
+      "ceph config set mgr mgr",
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "e7b6db0cafb7957f",
+    "code": "[ceph: root@host01 /]# ceph config set mgr mgr/telemetry/leaderboard true",
+    "language": "bash",
+    "context": "Telemetry module",
+    "source_file": "ibm-docs/8.1/daemons-telemetry-module",
+    "component": "mgr",
+    "section_title": "Telemetry module",
+    "commands_used": [
+      "ceph config set mgr mgr"
+    ]
+  },
+  {
+    "entity_id": "d60bbb1636c5f407",
+    "code": "https://HOST_NAME:PORT",
+    "language": "bash",
+    "context": "Accessing the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/access-accessing-ceph-dashboard",
+    "component": "mgr",
+    "section_title": "Accessing the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9735e30ae6d0d486",
+    "code": "https://host01:8443",
+    "language": "bash",
+    "context": "Accessing the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/access-accessing-ceph-dashboard",
+    "component": "mgr",
+    "section_title": "Accessing the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ac35c2a8eee50c10",
+    "code": "[ceph: root@host01 /]# ceph mgr services",
+    "language": "bash",
+    "context": "Accessing the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/access-accessing-ceph-dashboard",
+    "component": "mgr",
+    "section_title": "Accessing the Ceph dashboard",
+    "commands_used": [
+      "ceph mgr services"
+    ]
+  },
+  {
+    "entity_id": "a6f28c36311e6cbb",
+    "code": "cephadm shell",
+    "language": "bash",
+    "context": "Toggling Ceph dashboard features",
+    "source_file": "ibm-docs/8.1/access-toggling-ceph-dashboard-features",
+    "component": "mgr",
+    "section_title": "Toggling Ceph dashboard features",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "04362e98ac0e5ab6",
+    "code": "ceph dashboard feature status",
+    "language": "bash",
+    "context": "Toggling Ceph dashboard features",
+    "source_file": "ibm-docs/8.1/access-toggling-ceph-dashboard-features",
+    "component": "mgr",
+    "section_title": "Toggling Ceph dashboard features",
+    "commands_used": [
+      "ceph dashboard feature status"
+    ]
+  },
+  {
+    "entity_id": "52672aa4ca01c6e3",
+    "code": "[ceph: root@host01 /]# ceph dashboard feature status",
+    "language": "bash",
+    "context": "Toggling Ceph dashboard features",
+    "source_file": "ibm-docs/8.1/access-toggling-ceph-dashboard-features",
+    "component": "mgr",
+    "section_title": "Toggling Ceph dashboard features",
+    "commands_used": [
+      "ceph dashboard feature status"
+    ]
+  },
+  {
+    "entity_id": "47ad1fb80855d9ac",
+    "code": "ceph dashboard feature disable FEATURE",
+    "language": "bash",
+    "context": "Toggling Ceph dashboard features",
+    "source_file": "ibm-docs/8.1/access-toggling-ceph-dashboard-features",
+    "component": "mgr",
+    "section_title": "Toggling Ceph dashboard features",
+    "commands_used": [
+      "ceph dashboard feature disable FEATURE"
+    ]
+  },
+  {
+    "entity_id": "78bab20433fc0bff",
+    "code": "[ceph: root@host01 /]# ceph dashboard feature disable rgw",
+    "language": "bash",
+    "context": "Toggling Ceph dashboard features",
+    "source_file": "ibm-docs/8.1/access-toggling-ceph-dashboard-features",
+    "component": "mgr",
+    "section_title": "Toggling Ceph dashboard features",
+    "commands_used": [
+      "ceph dashboard feature disable rgw"
+    ]
+  },
+  {
+    "entity_id": "f1623bb961c387c5",
+    "code": "ceph dashboard feature enable FEATURE",
+    "language": "bash",
+    "context": "Toggling Ceph dashboard features",
+    "source_file": "ibm-docs/8.1/access-toggling-ceph-dashboard-features",
+    "component": "mgr",
+    "section_title": "Toggling Ceph dashboard features",
+    "commands_used": [
+      "ceph dashboard feature enable FEATURE"
+    ]
+  },
+  {
+    "entity_id": "81951e2c58709507",
+    "code": "[ceph: root@host01 /]# ceph dashboard feature enable cephfs",
+    "language": "bash",
+    "context": "Toggling Ceph dashboard features",
+    "source_file": "ibm-docs/8.1/access-toggling-ceph-dashboard-features",
+    "component": "mgr",
+    "section_title": "Toggling Ceph dashboard features",
+    "commands_used": [
+      "ceph dashboard feature enable cephfs"
+    ]
+  },
+  {
+    "entity_id": "123be0f6584a4963",
+    "code": "https://HOST_NAME:8443",
+    "language": "bash",
+    "context": "Log in to the dashboard:",
+    "source_file": "ibm-docs/8.1/access-changing-dashboard-password",
+    "component": "mgr",
+    "section_title": "Changing the dashboard password",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0aaca248db0b8ab2",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/ia-changing-ceph-dashboard-password-using-command-line-interface",
+    "component": "mgr",
+    "section_title": "Changing the Ceph dashboard password using the command line interface",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "206816f5763bc7bd",
+    "code": "[ceph: root@host01 /]# touch dashboard_password.yml",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/ia-changing-ceph-dashboard-password-using-command-line-interface",
+    "component": "mgr",
+    "section_title": "Changing the Ceph dashboard password using the command line interface",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7ee6b45dd3f56434",
+    "code": "[ceph: root@host01 /]# vi dashboard_password.yml",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/ia-changing-ceph-dashboard-password-using-command-line-interface",
+    "component": "mgr",
+    "section_title": "Changing the Ceph dashboard password using the command line interface",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c1cd1e5a703f880c",
+    "code": "ceph dashboard ac-user-set-password DASHBOARD_USERNAME -i PASSWORD_FILE",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.1/ia-changing-ceph-dashboard-password-using-command-line-interface",
+    "component": "mgr",
+    "section_title": "Changing the Ceph dashboard password using the command line interface",
+    "commands_used": [
+      "ceph dashboard ac-user-set-password DASHBOARD_USERNAME -i"
+    ]
+  },
+  {
+    "entity_id": "0216ad1ec22239b9",
+    "code": "[ceph: root@host01 /]# ceph dashboard ac-user-set-password admin -i dashboard_password.yml\n{\"username\": \"admin\", \"password\": \"$2b$12$i5RmvN1PolR61Fay0mPgt.GDpcga1QpYsaHUbJfoqaHd1rfFFx7XS\", \"roles\": [\"administrator\"], \"name\": null, \"email\": null, \"lastUpdate\": , \"enabled\": true, \"pwdExpirationDate\": null, \"pwdUpdateRequired\": false}",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/ia-changing-ceph-dashboard-password-using-command-line-interface",
+    "component": "mgr",
+    "section_title": "Changing the Ceph dashboard password using the command line interface",
+    "commands_used": [
+      "ceph dashboard ac-user-set-password admin -i"
+    ]
+  },
+  {
+    "entity_id": "71f4b825eff5959d",
+    "code": "service_type: grafana\nspec:\n  initial_admin_password: PASSWORD",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b248028fc00e99ff",
+    "code": "service_type: grafana\nspec:\n  initial_admin_password: mypassword",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ef672aa1b2f3a622",
+    "code": "[root@host01 ~]# cephadm shell --mount grafana.yml:/var/lib/ceph/grafana.yml",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": [
+      "cephadm shell --mount grafana"
+    ]
+  },
+  {
+    "entity_id": "742d48e474c8b151",
+    "code": "[ceph: root@host01 /]# ceph mgr module ls",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": [
+      "ceph mgr module ls"
+    ]
+  },
+  {
+    "entity_id": "4c019c8224920f12",
+    "code": "[ceph: root@host01 /]# ceph mgr module enable dashboard",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": [
+      "ceph mgr module enable dashboard"
+    ]
+  },
+  {
+    "entity_id": "ccea822145249706",
+    "code": "ceph orch apply -i FILE_NAME.yml",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": [
+      "ceph orch apply -i FILE_NAME"
+    ]
+  },
+  {
+    "entity_id": "a0802f4edfeb67a5",
+    "code": "[ceph: root@host01 /]# ceph orch apply -i /var/lib/ceph/grafana.yml",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": [
+      "ceph orch apply -i"
+    ]
+  },
+  {
+    "entity_id": "7ac086aa68309694",
+    "code": "[ceph: root@host01 /]# ceph orch redeploy grafana",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": [
+      "ceph orch redeploy grafana"
+    ]
+  },
+  {
+    "entity_id": "23f3791e6951d4f5",
+    "code": "https://HOST_NAME: PORT",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5398108625b81e33",
+    "code": "https://host01:3000/",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-setting-admin-user-password-grafana",
+    "component": "mgr",
+    "section_title": "Setting admin user password for Grafana",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c32d60ca63865ca6",
+    "code": "ceph orch ls | grep prometheus",
+    "language": "bash",
+    "context": "Configuring Prometheus data retention",
+    "source_file": "ibm-docs/8.1/access-configuring-prometheus-data-retention",
+    "component": "mgr",
+    "section_title": "Configuring Prometheus data retention",
+    "commands_used": [
+      "ceph orch ls"
+    ]
+  },
+  {
+    "entity_id": "1d833cc5b4ef8a1c",
+    "code": "service_type: prometheus\nservice_name: prometheus\nplacement:\n  count: 1\nspec:\n  retention_time: \"30d\"     # Retain data for 30 days\n  retention_size: \"50GB\"    # Limit storage to 50 GB",
+    "language": "bash",
+    "context": "Configuring Prometheus data retention",
+    "source_file": "ibm-docs/8.1/access-configuring-prometheus-data-retention",
+    "component": "mgr",
+    "section_title": "Configuring Prometheus data retention",
+    "commands_used": []
+  },
+  {
+    "entity_id": "60392f4a4a2297a7",
+    "code": "ceph orch apply -i prometheus.yaml",
+    "language": "bash",
+    "context": "Configuring Prometheus data retention",
+    "source_file": "ibm-docs/8.1/access-configuring-prometheus-data-retention",
+    "component": "mgr",
+    "section_title": "Configuring Prometheus data retention",
+    "commands_used": [
+      "ceph orch apply -i prometheus"
+    ]
+  },
+  {
+    "entity_id": "fd1f309397d0e227",
+    "code": "ceph orch redeploy prometheus",
+    "language": "bash",
+    "context": "Configuring Prometheus data retention",
+    "source_file": "ibm-docs/8.1/access-configuring-prometheus-data-retention",
+    "component": "mgr",
+    "section_title": "Configuring Prometheus data retention",
+    "commands_used": [
+      "ceph orch redeploy prometheus"
+    ]
+  },
+  {
+    "entity_id": "e59fb8aac34b6d2a",
+    "code": "ceph orch ps | grep prometheus",
+    "language": "bash",
+    "context": "Configuring Prometheus data retention",
+    "source_file": "ibm-docs/8.1/access-configuring-prometheus-data-retention",
+    "component": "mgr",
+    "section_title": "Configuring Prometheus data retention",
+    "commands_used": [
+      "ceph orch ps"
+    ]
+  },
+  {
+    "entity_id": "7360361702d699fa",
+    "code": "service_type: prometheus\nservice_name: prometheus\nplacement:\n  count: 1\nspec:\n  retention_time: \"1y\"\n  retention_size: \"100GB\"",
+    "language": "bash",
+    "context": "Configuring Prometheus data retention",
+    "source_file": "ibm-docs/8.1/access-configuring-prometheus-data-retention",
+    "component": "mgr",
+    "section_title": "Configuring Prometheus data retention",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c70c50a39d113f6c",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-enabling-storage-ceph-dashboard-manually",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Ceph Dashboard manually",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "b268a76902fc8a44",
+    "code": "[ceph: root@host01 /]# ceph mgr services\n\n{\n    \"prometheus\": \"http://10.8.0.101:9283/\"\n}",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-enabling-storage-ceph-dashboard-manually",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Ceph Dashboard manually",
+    "commands_used": [
+      "ceph mgr services"
+    ]
+  },
+  {
+    "entity_id": "ea67295a4a69fbc1",
+    "code": "[ceph: root@host01 /]# ceph mgr module enable dashboard",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-enabling-storage-ceph-dashboard-manually",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Ceph Dashboard manually",
+    "commands_used": [
+      "ceph mgr module enable dashboard"
+    ]
+  },
+  {
+    "entity_id": "0fc490494b69cfca",
+    "code": "[ceph: root@host01 /]# ceph dashboard create-self-signed-cert",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-enabling-storage-ceph-dashboard-manually",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Ceph Dashboard manually",
+    "commands_used": [
+      "ceph dashboard create-self-signed-cert"
+    ]
+  },
+  {
+    "entity_id": "9cdf8e8fc426341f",
+    "code": "[ceph: root@host01 /]# ceph mgr services\n\n{\n    \"dashboard\": \"https://10.8.0.101:8443/\",\n    \"prometheus\": \"http://10.8.0.101:9283/\"\n}",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-enabling-storage-ceph-dashboard-manually",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Ceph Dashboard manually",
+    "commands_used": [
+      "ceph mgr services"
+    ]
+  },
+  {
+    "entity_id": "77bc7b404795e2b7",
+    "code": "echo -n \"PASSWORD\" > PASSWORD_FILE\nceph dashboard ac-user-create admin -i PASSWORD_FILE administrator",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.1/access-enabling-storage-ceph-dashboard-manually",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Ceph Dashboard manually",
+    "commands_used": [
+      "ceph dashboard ac-user-create admin -i"
+    ]
+  },
+  {
+    "entity_id": "0bc8a22f09203a0f",
+    "code": "[ceph: root@host01 /]# echo -n \"p@ssw0rd\" > password.txt\n[ceph: root@host01 /]# ceph dashboard ac-user-create admin -i password.txt administrator",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/access-enabling-storage-ceph-dashboard-manually",
+    "component": "mgr",
+    "section_title": "Enabling IBM Storage Ceph Dashboard manually",
+    "commands_used": [
+      "ceph dashboard ac-user-create admin -i"
+    ]
+  },
+  {
+    "entity_id": "2f3562b837063ce2",
+    "code": "unzip rhsso-7.4.0.zip",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5792291428a1c57a",
+    "code": "[root@host01 ~]# unzip rhsso-7.4.0.zip",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eaccf50140ef61d0",
+    "code": "[root@host01 ~]# cd standalone/configuration\n[root@host01 configuration]# vi standalone.xml",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ab977cb82c328db",
+    "code": "./add-user-keycloak.sh -u admin",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d20ff2d4685ab273",
+    "code": "[root@host01 bin]# add-user-keycloak.sh -u admin",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "599ba10c230142f9",
+    "code": "keytool -import -noprompt -trustcacerts -alias ca -file ../ca.cer -keystore /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.272.b10-3.el8_3.x86_64/lib/security/cacert",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e6d1566c525f18b7",
+    "code": "[root@host01 ~]# keytool -import -noprompt -trustcacerts -alias ca -file ../ca.cer -keystore /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.272.b10-3.el8_3.x86_64/lib/security/cacert",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "15f0e13e6930d72b",
+    "code": "./standalone.sh",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1549d82751d88a13",
+    "code": "[root@host01 bin]# ./standalone.sh",
+    "language": "bash",
+    "context": "Creating an admin account for syncing users to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
+    "component": "mgr",
+    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "75ea0f9e7ece87c4",
+    "code": "https://example.ceph.redhat.com:8443/auth/saml2/metadata ..\nClient Protocol - saml",
+    "language": "bash",
+    "context": "Syncing users from Red Hat Sign-On to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/ussd-syncing-users-from-red-hat-sign-ceph-dashboard",
+    "component": "mgr",
+    "section_title": "Syncing users from Red Hat Sign-On to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1f1ecf5a48e672e9",
+    "code": "- LDAP Attribute - uid",
+    "language": "bash",
+    "context": "Syncing users from Red Hat Sign-On to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/ussd-syncing-users-from-red-hat-sign-ceph-dashboard",
+    "component": "mgr",
+    "section_title": "Syncing users from Red Hat Sign-On to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e1caabfd0026e40b",
+    "code": "https://example.ceph.redhat.com:8443",
+    "language": "bash",
+    "context": "Syncing users from Red Hat Sign-On to the Ceph dashboard",
+    "source_file": "ibm-docs/8.1/ussd-syncing-users-from-red-hat-sign-ceph-dashboard",
+    "component": "mgr",
+    "section_title": "Syncing users from Red Hat Sign-On to the Ceph dashboard",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4e2b1b20769b6397",
+    "code": "ceph dashboard sso setup saml2 CEPH_DASHBOARD_BASE_URL IDP_METADATA IDP_USERNAME_ATTRIBUTE IDP_ENTITY_ID SP_X_509_CERT SP_PRIVATE_KEY",
+    "language": "bash",
+    "context": "Enabling single sign-on with SAML 2.0",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-single-sign-saml-20",
+    "component": "mgr",
+    "section_title": "Enabling single sign-on with SAML 2.0",
+    "commands_used": [
+      "ceph dashboard sso setup saml2"
+    ]
+  },
+  {
+    "entity_id": "d015163975ecedbf",
+    "code": "[ceph: root@host01 /]# ceph dashboard ceph dashboard sso setup saml2 https://dashboard_hostname.ceph.redhat.com:8443 idp-metadata.xml username https://10.70.59.125:8080/auth/realms/realm_name /home/certificate.txt /home/private-key.txt",
+    "language": "bash",
+    "context": "Enabling single sign-on with SAML 2.0",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-single-sign-saml-20",
+    "component": "mgr",
+    "section_title": "Enabling single sign-on with SAML 2.0",
+    "commands_used": [
+      "ceph dashboard ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "82d895b6b692b45e",
+    "code": "cephadm shell ceph dashboard sso show saml2",
+    "language": "bash",
+    "context": "Enabling single sign-on with SAML 2.0",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-single-sign-saml-20",
+    "component": "mgr",
+    "section_title": "Enabling single sign-on with SAML 2.0",
+    "commands_used": [
+      "cephadm shell ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "9a8f66a891eb5b0f",
+    "code": "[ceph: root@host01 /]# ceph dashboard ceph dashboard sso show saml2",
+    "language": "bash",
+    "context": "Enabling single sign-on with SAML 2.0",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-single-sign-saml-20",
+    "component": "mgr",
+    "section_title": "Enabling single sign-on with SAML 2.0",
+    "commands_used": [
+      "ceph dashboard ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "73018770f4c5b4bf",
+    "code": "cephadm shell ceph dashboard sso enable saml2",
+    "language": "bash",
+    "context": "Enabling single sign-on with SAML 2.0",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-single-sign-saml-20",
+    "component": "mgr",
+    "section_title": "Enabling single sign-on with SAML 2.0",
+    "commands_used": [
+      "cephadm shell ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "a31c5e293df8f451",
+    "code": "[ceph: root@host01 /]# ceph dashboard ceph dashboard sso enable saml2\nSSO is \"enabled\" with \"SAML2\" protocol.",
+    "language": "bash",
+    "context": "Enabling single sign-on with SAML 2.0",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-single-sign-saml-20",
+    "component": "mgr",
+    "section_title": "Enabling single sign-on with SAML 2.0",
+    "commands_used": [
+      "ceph dashboard ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "efe02bf98c815d0d",
+    "code": "[ceph: root@host01 /]# ceph dashboard ceph dashboard sso status\nSSO is \"enabled\" with \"SAML2\" protocol.",
+    "language": "bash",
+    "context": "Enabling single sign-on with SAML 2.0",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-single-sign-saml-20",
+    "component": "mgr",
+    "section_title": "Enabling single sign-on with SAML 2.0",
+    "commands_used": [
+      "ceph dashboard ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "34951947b7903af9",
+    "code": "ceph dashboard sso enable oauth2",
+    "language": "bash",
+    "context": "Enabling OAuth2 single sign-on",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-oauth2-single-sign",
+    "component": "mgr",
+    "section_title": "Enabling OAuth2 single sign-on",
+    "commands_used": [
+      "ceph dashboard sso enable oauth2"
+    ]
+  },
+  {
+    "entity_id": "a5b37ea98a100cbc",
+    "code": "[ceph: root@host01 /]# ceph dashboard sso enable oauth2\nSSO is \"enabled\" with \"oauth2\" protocol.",
+    "language": "bash",
+    "context": "Enabling OAuth2 single sign-on",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-oauth2-single-sign",
+    "component": "mgr",
+    "section_title": "Enabling OAuth2 single sign-on",
+    "commands_used": [
+      "ceph dashboard sso enable oauth2"
+    ]
+  },
+  {
+    "entity_id": "5e1085ac15958fc2",
+    "code": "[root@host01 ~]# cephadm shell ceph dashboard sso status\nSSO is \"enabled\" with \"oauth2\" protocol.",
+    "language": "bash",
+    "context": "Enabling OAuth2 single sign-on",
+    "source_file": "ibm-docs/8.1/dashboard-enabling-oauth2-single-sign",
+    "component": "mgr",
+    "section_title": "Enabling OAuth2 single sign-on",
+    "commands_used": [
+      "cephadm shell ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "6ec14fb2c240bb1a",
+    "code": "cephadm shell ceph dashboard sso status",
+    "language": "bash",
+    "context": "Disabling single sign-on for the Ceph Dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-disabling-single-sign-ceph",
+    "component": "mgr",
+    "section_title": "Disabling single sign-on for the Ceph Dashboard",
+    "commands_used": [
+      "cephadm shell ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "c7d9d00e3683fe62",
+    "code": "[ceph: root@host01 /]# ceph dashboard ceph dashboard sso status\nSSO is \"enabled\" with \"SAML2\" protocol.",
+    "language": "bash",
+    "context": "Disabling single sign-on for the Ceph Dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-disabling-single-sign-ceph",
+    "component": "mgr",
+    "section_title": "Disabling single sign-on for the Ceph Dashboard",
+    "commands_used": [
+      "ceph dashboard ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "825783428aea302f",
+    "code": "cephadm shell ceph dashboard sso disable",
+    "language": "bash",
+    "context": "Disabling single sign-on for the Ceph Dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-disabling-single-sign-ceph",
+    "component": "mgr",
+    "section_title": "Disabling single sign-on for the Ceph Dashboard",
+    "commands_used": [
+      "cephadm shell ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "80facf88c3d855c8",
+    "code": "[ceph: root@host01 /]# ceph dashboard ceph dashboard sso disable\nSSO is \"disabled\".",
+    "language": "bash",
+    "context": "Disabling single sign-on for the Ceph Dashboard",
+    "source_file": "ibm-docs/8.1/dashboard-disabling-single-sign-ceph",
+    "component": "mgr",
+    "section_title": "Disabling single sign-on for the Ceph Dashboard",
+    "commands_used": [
+      "ceph dashboard ceph dashboard sso"
+    ]
+  },
+  {
+    "entity_id": "12edc6f71e9ca753",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "c43d33d7b306516f",
+    "code": "[ceph: root@host01 /]# ceph config-key set mgr/cephadm/grafana_key -i $PWD/key.pem\n [ceph: root@host01 /]# ceph config-key set mgr/cephadm/grafana_crt -i $PWD/certificate.pem",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": [
+      "ceph config-key set mgr",
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "cc72442560eaf3c5",
+    "code": "[ceph: root@host01 /]# ceph orch reconfig grafana",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": [
+      "ceph orch reconfig grafana"
+    ]
+  },
+  {
+    "entity_id": "f23c172aba295ee9",
+    "code": "[root@host01 ~]# mkdir /root/internalca\n [root@host01 ~]# cd /root/internalca",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dbe19419962cde41",
+    "code": "[root@host01 internalca]# openssl ecparam -genkey -name secp384r1 -out $(date +%F).key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d536592542060bca",
+    "code": "[root@host01 internalca]# openssl ec -text -in $(date +%F).key | less",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2ca513235994f512",
+    "code": "[root@host01 internalca]# umask 077; openssl req -config openssl-san.cnf -new -sha256 -key $(date +%F).key -out $(date +%F).csr",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ad9ebf545eabeccb",
+    "code": "[root@host01 internalca]# openssl req -text -in $(date +%F).csr | less",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "92415e25fe7eee06",
+    "code": "[root@host01 internalca]#  openssl ca -extensions v3_req -in $(date +%F).csr -out $(date +%F).crt -extfile openssl-san.cnf",
+    "language": "bash",
+    "context": "Configuring a Grafana certificate",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "449037a1695bd66e",
+    "code": "[root@host01 internalca]#  openssl x509 -text -in $(date +%F).crt -noout | less",
+    "language": "bash",
+    "context": "Configuring a Grafana certificate",
+    "source_file": "ibm-docs/8.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a9a62ef8552918c9",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-adding-alertmanager-webhooks",
+    "component": "mgr",
+    "section_title": "Adding Alertmanager webhooks",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "dcb8ec061ef7a666",
+    "code": "service_type: alertmanager\nspec:\n  user_data:\n    default_webhook_urls:\n    - \"_URLS_\"",
+    "language": "bash",
+    "context": "Syntax",
+    "source_file": "ibm-docs/8.1/alerts-adding-alertmanager-webhooks",
+    "component": "mgr",
+    "section_title": "Adding Alertmanager webhooks",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a1959753fbce4632",
+    "code": "service_type: alertmanager\nspec:\n  user_data:\n    webhook_configs:\n    - url: 'http:127.0.0.10:8080'",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-adding-alertmanager-webhooks",
+    "component": "mgr",
+    "section_title": "Adding Alertmanager webhooks",
+    "commands_used": []
+  },
+  {
+    "entity_id": "66eccdfbd999627a",
+    "code": "[ceph: root@host01 /]#  ceph orch reconfig alertmanager",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-adding-alertmanager-webhooks",
+    "component": "mgr",
+    "section_title": "Adding Alertmanager webhooks",
+    "commands_used": [
+      "ceph orch reconfig alertmanager"
+    ]
+  },
+  {
+    "entity_id": "91b68671191ac746",
+    "code": "using: https://chat.googleapis.com/v1/spaces/(xx- space identifyer -xx)/messages\nposting: {'status': 'resolved', 'labels': {'alertname': 'PrometheusTargetMissing', 'instance': 'postgres-exporter.host03.chest\nresponse: 200\nresponse: {\n\"name\": \"spaces/(xx- space identifyer -xx)/messages/3PYDBOsIofE.3PYDBOsIofE\",\n\"sender\": {\n\"name\": \"users/114022495153014004089\",\n\"displayName\": \"monitoring\",\n\"avatarUrl\": \"\",\n\"email\": \"\",\n\"domainId\": \"\",\n\"type\": \"BOT\",\n\"isAnonymous\": false,\n\"caaEnabled\": false\n},\n\"text\": \"Prometheus target missing (instance postgres-exporter.cluster.local:9187)\\n\\nA Prometheus target has disappeared. An e\n\"cards\": [],\n\"annotations\": [],\n\"thread\": {\n\"name\": \"spaces/(xx- space identifyer -xx)/threads/3PYDBOsIofE\"\n},\n\"space\": {\n\"name\": \"spaces/(xx- space identifyer -xx)\",\n\"type\": \"ROOM\",\n\"singleUserBotDm\": false,\n\"threaded\": false,\n\"displayName\": \"_privmon\",\n\"legacyGroupChat\": false\n},\n\"fallbackText\": \"\",\n\"argumentText\": \"Prometheus target missing (instance postgres-exporter.cluster.local:9187)\\n\\nA Prometheus target has disappea\n\"attachment\": [],\n\"createTime\": \"2022-06-06T06:17:33.805375Z\",\n\"lastUpdateTime\": \"2022-06-06T06:17:33.805375Z\"",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.1/alerts-adding-alertmanager-webhooks",
+    "component": "mgr",
+    "section_title": "Adding Alertmanager webhooks",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d5779fba0ea9014a",
+    "code": "telemetry.ceph.com",
+    "language": "bash",
+    "context": "Activating and deactivating telemetry",
+    "source_file": "ibm-docs/8.1/dashboard-activating-deactivating-telemetry",
+    "component": "mgr",
+    "section_title": "Activating and deactivating telemetry",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7000d8438a17faf4",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "91d1142bbdbf794f",
+    "code": "[ceph: root@host01 /]# ceph -s",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": [
+      "ceph -s"
+    ]
+  },
+  {
+    "entity_id": "76bbad650783ea02",
+    "code": "[ceph: root@host01 /]# exit\n[root@host01 ~]#",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1893863ed8a0c216",
+    "code": "systemctl list-units | grep @mgr",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": []
+  },
+  {
+    "entity_id": "672485290ead65d4",
+    "code": "[ceph: root@host01 /]# systemctl list-units | grep @mgr",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": []
+  },
+  {
+    "entity_id": "510835ec0b378d2c",
+    "code": "journalctl -f -u CLUSTER_ID@MANAGER_SERVICE | greg call_home_agent",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d1a6445f14b0a7db",
+    "code": "[ceph: root@host01 /]# journalctl -f -u ceph-c549a36a-b377-11ed-b55e-525400bfa136@mgr.ceph-node-00.doxgmi.service | grep call_home_agent",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7000d8438a17faf4",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "eaeeda48edcbb56b",
+    "code": "[ceph: root@host01 /]# ceph callhome send inventory",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": [
+      "ceph callhome send inventory"
+    ]
+  },
+  {
+    "entity_id": "aafb396f71472768",
+    "code": "# journalctl -f -u ceph-aa091236-b135-11ee-8bb7-525400ee9df3@mgr.chatest-node-00.anxrcb.service\n...\nJan 12 12:34:42 chatest-node-00.cephlab.com ceph-mgr[68305]: [call_home_agent INFO root] Sending <inventory> report to <https://esupport.ibm.com/connect/api/v1>\n...\nJan 12 12:34:45 chatest-node-00.cephlab.com ceph-mgr[68305]: [call_home_agent INFO root] Successfully sent <inventory> report(1705062882183) to <https://esupport.ibm.com/connect/api/v1>\n....",
+    "language": "bash",
+    "context": "Troubleshooting for Call Home",
+    "source_file": "ibm-docs/8.1/troubleshooting-call-home",
+    "component": "mgr",
+    "section_title": "Troubleshooting for Call Home",
+    "commands_used": []
+  }
+]
