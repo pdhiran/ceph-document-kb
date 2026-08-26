@@ -178,8 +178,12 @@ def _should_skip_topic(entry: TocEntry) -> bool:
     """Determine if a topic should be skipped."""
     if entry.topic_id in _SKIP_TOPIC_IDS:
         return True
-    # Skip release notes sub-pages (bug fixes, known issues per z-stream)
+    # Skip z-stream bug-fix / known-issue dumps. Keep enhancement pages
+    # (e.g. 9.1z1 CephX aes256k) so they land in the index.
     if "release-notes" in entry.href and entry.depth >= 2:
+        href = entry.href.lower()
+        if "enhancement" in href:
+            return False
         return True
     return False
 
