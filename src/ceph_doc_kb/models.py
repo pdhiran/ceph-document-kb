@@ -102,6 +102,7 @@ class IndexMetadata:
     total_code_examples: int = 0
     components: dict[str, ComponentIndex] = field(default_factory=dict)
     build_timestamp: str = ""
+    last_incremental_since: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -121,6 +122,7 @@ class IndexMetadata:
             total_code_examples=data.get("total_code_examples", 0),
             components=components,
             build_timestamp=data.get("build_timestamp", ""),
+            last_incremental_since=data.get("last_incremental_since", ""),
         )
 
     def save(self, path: Path) -> None:

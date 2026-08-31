@@ -1,36 +1,61 @@
 # ceph-doc-kb
 
-Version-aware, component-scoped Ceph documentation knowledge base. Indexes Ceph RST docs into per-component vector indices with two-tier search (BM25 + semantic via fastembed/FAISS).
+Version-aware, component-scoped Ceph **documentation** knowledge base. Indexes upstream RST and IBM Storage Ceph HTML into per-component FAISS indices. Search is two-tier: BM25 keywords + fastembed semantic, then quality re-rank.
 
-## Quick Start
+Use this MCP for **how-to, architecture, IBM-only procedures, and copy-paste examples**. Use **ceph-cmd-kb** to verify that a command in those docs is still valid for the target release.
+
+## For agents (read this first)
+
+This KB contains **multiple versions**. If the user did not name one, **ask** before searching. `list_versions()` lists what is loaded.
+
+| Version filter | Content |
+|----------------|---------|
+| `upstream` | Upstream Ceph RST (currently `doc-20.2.1`) |
+| `ibm-8.0` | IBM Storage Ceph 8.0 (Reef-era product docs) |
+| `ibm-8.1` | IBM Storage Ceph 8.1 |
+| `ibm-9.0` | IBM Storage Ceph 9.0 |
+| `ibm-9.1` | IBM Storage Ceph 9.1 (Tentacle-era product docs) |
+
+IBM docs cover content that is **not** in upstream: container registry, licensing, crossgrade, staggered upgrade, IBM Dashboard, Call Home, Storage Insights, etc.
+
+| Do | Do not |
+|---|---|
+| `find_docs_for_command` when the query is a known CLI name (instant xref) | Treat doc examples as verified CLI — still `verify_command` on **ceph-cmd-kb** |
+| `search_docs` for conceptual / “how do I” questions | Search here for JIRA/crashes — **ceph-issue-kb** |
+| `search_examples` when the user needs a snippet | Scope globally when a component is obvious — pass `component` |
+| Pass `version` (`ibm-9.1`, `upstream`, …) | Mix 8.1 IBM procedure with 9.1 CLI without saying so |
+
+**Typical first calls**
+
+1. Ask / infer version → `list_versions()` if unsure.
+2. If the user named a command: `find_docs_for_command(command="ceph fs volume create", version="ibm-9.1")`.
+3. Else: `search_docs(query="...", component="cephfs", version="ibm-9.1")`.
+4. For snippets: `search_examples(query="...", language="bash", component="cephadm")`.
+5. `get_doc_page` / `get_doc_chunk` to read the full section.
+
+## Ceph Engineering Intelligence Platform
+
+| MCP | Cursor key | Use when | SSE | REST |
+|-----|------------|----------|-----|------|
+| **ceph-cmd-kb** | `ceph-cmd-kb` | Verify CLI, flags, configs | 8081 | 9090 |
+| **ceph-doc-kb** | `ceph-doc-kb` | How-to, architecture, IBM procedures | 8082 | 8100 |
+| **ceph-issue-kb** | `ceph-issue-kb` | Known bugs, workarounds, stacktraces | 8083 | 8200 |
+| **ceph-prio-hub** | `ceph-prio-hub` | Customer prio-list / L3 tracking | 8080 | — |
+| **cephci-kb** | `cephci-kb` | CephCI code, tests, workflows | 8084 | — |
+
+## Setup
 
 ```bash
-# Install
+git clone https://github.com/pdhiran/ceph-document-kb.git
+cd ceph-doc-kb
 pip install -e .
-
-# Build index from upstream Ceph docs
-git clone --depth 1 --branch v20.2.1 --sparse https://github.com/ceph/ceph.git /tmp/ceph-docs
-cd /tmp/ceph-docs && git sparse-checkout set doc
-cd /path/to/ceph-doc-kb
-python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
-
-# Build index from IBM Storage Ceph docs (downstream)
-python3 index_ibm_docs.py --version 8.1 --verbose
-python3 index_ibm_docs.py --version 8.0 --verbose
 ```
 
-## Architecture
+Indices under `knowledge/` are committed so the MCP can serve immediately. Rebuild only when docs change (see [Updating the knowledge base](#updating-the-knowledge-base)).
 
-- **Component-scoped indices**: Each Ceph component (rados, rbd, rgw, cephfs, cephadm) gets its own FAISS index for fast, targeted search
-- **Two-tier search**: BM25 keyword match for exact terms, fastembed semantic search for conceptual queries
-- **Multi-source**: Indexes both upstream Ceph RST docs and IBM Storage Ceph downstream docs (HTML via API)
-- **Command cross-reference**: Instant lookup from any `ceph`/`rbd`/`rados` command to relevant docs
-- **Quality scoring**: Chunks with code examples, commands, and explanations rank higher
-- **Version-aware**: Supports multiple Ceph release indices side by side (upstream + IBM)
+## Incorporate into an agent
 
-## Connect Your Agent
-
-**Cursor** — add to `~/.cursor/mcp.json`:
+### Cursor (stdio)
 
 ```json
 {
@@ -44,41 +69,13 @@ python3 index_ibm_docs.py --version 8.0 --verbose
 }
 ```
 
----
+The server discovers every `knowledge/doc-*/` directory that has `metadata.json` (upstream + IBM) and merges search. Restart Cursor after editing `mcp.json`.
 
-**Claude Desktop** — start the server, then add to `claude_desktop_config.json`:
-
-```bash
-python -m ceph_doc_kb.server.mcp_server --transport sse --port 8082
-```
-
-```json
-{
-  "mcpServers": {
-    "ceph-doc-kb": { "url": "http://localhost:8082/sse" }
-  }
-}
-```
-
----
-
-**Continue / Cline / Windsurf** — start the server and point to the SSE endpoint:
+### SSE
 
 ```bash
-python -m ceph_doc_kb.server.mcp_server --transport sse --port 8082
+python3 -m ceph_doc_kb.server.mcp_server --transport sse --host 0.0.0.0 --port 8082
 ```
-
-Connect to `http://localhost:8082/sse` in the tool's MCP settings.
-
----
-
-**IBM Bob** — Bob supports MCP over SSE natively:
-
-```bash
-python -m ceph_doc_kb.server.mcp_server --transport sse --host 0.0.0.0 --port 8082
-```
-
-Add to Bob's `.bob/mcp.json`:
 
 ```json
 {
@@ -91,141 +88,132 @@ Add to Bob's `.bob/mcp.json`:
 }
 ```
 
-If running on a shared server, replace `localhost` with the hostname.
-
----
-
-**LangChain / CrewAI / CI pipelines** — use the REST API:
+### REST
 
 ```bash
-python -m ceph_doc_kb.server.rest_api --host 0.0.0.0 --port 8100
+python3 -m ceph_doc_kb.server.rest_api --host 0.0.0.0 --port 8100
 ```
-
-### Tools
-
-| Tool | Description |
-|------|-------------|
-| `search_docs` | Search docs with optional component scoping |
-| `search_examples` | Search code examples and configs |
-| `get_doc_page` | Get full doc page content |
-| `find_docs_for_command` | Instant command-to-doc lookup |
-| `list_components` | List available components |
-| `list_topics` | List topics within a component |
-| `capabilities` | Server capabilities |
-| `health` | Index health status |
-
-## REST API
 
 ```bash
-python3 -m ceph_doc_kb.server.rest_api
-# http://127.0.0.1:8100/api/search?query=erasure+coding&component=rados
+curl "http://127.0.0.1:8100/api/search?query=erasure+coding&component=rados"
 ```
 
-See [BOB_INTEGRATION_GUIDE.md](BOB_INTEGRATION_GUIDE.md) for full endpoint reference with curl examples.
+Endpoint reference and agent wrappers: [BOB_INTEGRATION_GUIDE.md](BOB_INTEGRATION_GUIDE.md), [examples/agent_integration.py](examples/agent_integration.py). VS Code: [vscode-extension/README.md](vscode-extension/README.md).
 
-## VS Code Extension
+## Tool catalog
 
-A VS Code extension is available for interactive documentation search:
+| Tool | Args | When to call |
+|------|------|----------------|
+| `search_docs` | `query`, optional `component`, `version`, `limit=10` | Conceptual / keyword search. Scope with `component` when known. |
+| `search_examples` | `query`, optional `component`, `version`, `language`, `limit=10` | Code/config snippets. `language`: `bash`, `yaml`, `json`, `python`. |
+| `find_docs_for_command` | `command`, optional `version` | Instant command → doc xref (no vector search). |
+| `get_doc_page` | `source_file` | Full page text |
+| `get_doc_chunk` | `entity_id` (16-char hex from search/xref) | One section, not the whole page |
+| `list_versions` | (none) | Upstream + IBM indices loaded |
+| `list_components` | (none) | `rados`, `cephfs`, `rbd`, `radosgw`, `cephadm`, `mgr`, … |
+| `list_topics` | `component` | Topics inside a component |
+| `capabilities` | (none) | Server contract |
+| `health` | (none) | Index health |
+
+### Component map
+
+| Component | Topics |
+|-----------|--------|
+| `rados` | pools, PGs, EC, CRUSH, recovery, OSDs, MONs |
+| `rbd` | images, snapshots, mirroring, NVMe, iSCSI |
+| `radosgw` / `rgw` | S3/Swift, multisite, users, buckets |
+| `cephfs` | MDS, mount, NFS/SMB, quotas, snapshots |
+| `cephadm` | bootstrap, services, upgrade, install |
+| `mgr` | dashboard, monitoring, Call Home (IBM) |
+| `troubleshooting` | IBM troubleshooting books |
+| `general` | planning, overview, hardening |
+
+Results include `source_file` so you can tell IBM (`ibm-docs/9.1/...`) from upstream (`rados/operations/pools.rst`).
+
+### Agent workflow: IBM upgrade procedure
+
+1. Confirm IBM version (`8.1` vs `9.1`) → `version="ibm-9.1"`.
+2. `search_docs(query="staggered upgrade", component="cephadm", version="ibm-9.1")`
+3. `get_doc_page` / `get_doc_chunk` on the best hit.
+4. Any CLI in the answer → **ceph-cmd-kb** `verify_command(..., version="tentacle")`.
+
+### Agent workflow: command → docs → verify
+
+1. **ceph-cmd-kb** `verify_command` (existence).
+2. `find_docs_for_command` (procedure and caveats).
+3. **ceph-issue-kb** `search_issues` if the user is debugging a failure of that command.
+
+## Updating the knowledge base
+
+Same `--since YYYY-MM-DD` contract as `python index_issues.py --since DATE`.
+
+### Upstream RST
+
+Needs a Ceph git checkout with `doc/`. Re-parses only RST files touched since the date and **merges** into the existing FAISS index.
 
 ```bash
-cd vscode-extension && npm install
-# Install via "Developer: Install Extension from Location..."
-```
+# First-time full build
+git clone --depth 1 --branch v20.2.1 --sparse https://github.com/ceph/ceph.git /tmp/ceph-docs
+cd /tmp/ceph-docs && git sparse-checkout set doc
+cd /path/to/ceph-doc-kb
+python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
 
-Features: search docs (`Cmd+Alt+D`), search examples (`Cmd+Alt+E`), find docs for command (`Cmd+Alt+F`), insert code at cursor.
+# Date delta (git log --since)
+python3 index_docs.py --since 2026-08-01 \
+    --docs-path /tmp/ceph-docs/doc \
+    --repo-path /tmp/ceph-docs \
+    --version 20.2.1 --verbose
 
-See [vscode-extension/README.md](vscode-extension/README.md) for details.
-
-## Agent Integration
-
-Python client for LLM agents (no external dependencies):
-
-```python
-from examples.agent_integration import CephDocKBClient
-
-client = CephDocKBClient("http://localhost:8100")
-results = client.search_docs("erasure coding", component="rados")
-```
-
-LangChain and CrewAI wrappers included. See [BOB_INTEGRATION_GUIDE.md](BOB_INTEGRATION_GUIDE.md).
-
-## Incremental Updates
-
-```bash
+# Tag-to-tag delta (unchanged)
 python3 index_docs.py --update --docs-path /tmp/ceph-docs/doc \
     --repo-path /tmp/ceph-docs --from-version v20.2.1 --to-version v20.2.2
 ```
 
-## IBM Storage Ceph (Downstream) Docs
+Requires an existing `knowledge/doc-{version}/` for `--since`. Deleted RST files drop out of the index.
 
-The KB also indexes IBM's product documentation from `ibm.com/docs/en/storage-ceph`.
-This covers IBM-specific content not in upstream: registry procedures, licensing,
-crossgrade paths, staggered upgrades, IBM Dashboard, Call Home, Storage Insights, etc.
+### IBM HTML
 
-```bash
-# Full index build (crawls ~1700 pages via IBM docs API, takes ~10-15 min)
-python3 index_ibm_docs.py --version 8.1 --verbose
-
-# With caching (saves HTML locally for fast re-indexing)
-python3 index_ibm_docs.py --version 8.1 --cache-dir ./cache/ibm-8.1 --verbose
-
-# Re-index from cache (no network needed)
-python3 index_ibm_docs.py --version 8.1 --cache-dir ./cache/ibm-8.1 --verbose
-
-# Quick test (5 pages only)
-python3 index_ibm_docs.py --version 8.1 --max-pages 5 --verbose
-```
-
-**Supported IBM versions:**
-
-| IBM Version | Upstream Equivalent | Output Directory |
-|---|---|---|
-| 8.0 | Ceph Reef (18.x) | `knowledge/doc-ibm-8.0` |
-| 8.1 | Ceph Reef (18.x) | `knowledge/doc-ibm-8.1` |
-
-The MCP server automatically discovers and loads all indices under `knowledge/`,
-merging results from upstream and IBM docs transparently. Search results include
-a `source_file` field indicating the origin (e.g., `ibm-docs/8.1/installing` vs
-`rados/operations/pools.rst`).
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [SPEC.md](SPEC.md) | MCP platform contract and entity schema |
-| [DEVELOPMENT.md](DEVELOPMENT.md) | Architecture, source tree, maintainer guide |
-| [BOB_INTEGRATION_GUIDE.md](BOB_INTEGRATION_GUIDE.md) | REST API reference, agent integration, deployment |
-| [vscode-extension/README.md](vscode-extension/README.md) | VS Code extension install and usage |
-
-## Running All Ceph MCPs Together
-
-Three specialized MCPs work together as the Ceph Engineering Intelligence Platform:
-
-| MCP | Purpose | SSE Port | Repo |
-|-----|---------|----------|------|
-| **ceph-cmd-kb** | Commands, configs, test validation | 8081 | [ceph-command-kb](https://github.com/pdhiran/ceph-command-kb) |
-| **ceph-doc-kb** | Documentation search, code examples | 8082 | [ceph-doc-kb](https://github.com/pdhiran/ceph-document-kb) |
-| **ceph-issue-kb** | Known issues, workarounds, fixes | 8083 | [ceph-issue-kb](https://github.com/pdhiran/ceph-issue-kb) |
-
-Start all three for SSE clients (Bob, Claude Desktop, etc.):
+IBM has no git history. `--since` **recrawls** the IBM docs API, hash-compares against `--cache-dir`, and skips the FAISS rebuild when HTML is unchanged. If pages changed, the IBM index is rebuilt from the current snapshot.
 
 ```bash
-python -m ceph_command_kb.server.mcp_server --transport sse --port 8081 &
-python -m ceph_doc_kb.server.mcp_server --transport sse --port 8082 &
-python -m ceph_issue_kb.server.mcp_server --transport sse --port 8083 &
+python3 index_ibm_docs.py --version 9.1 --since 2026-08-01 \
+    --cache-dir ./cache/ibm-9.1 --verbose
+
+python3 index_ibm_docs.py --version 8.1 --verbose          # full
+python3 index_ibm_docs.py --version 8.1 --max-pages 5      # smoke test
 ```
 
-Combined agent config (`.bob/mcp.json`, `claude_desktop_config.json`, etc.):
+Supported IBM versions: `8.0`, `8.1`, `9.0`, `9.1` (see `IBM_VERSIONS` in `src/ceph_doc_kb/constants.py`). Output: `knowledge/doc-ibm-{version}/`.
 
-```json
-{
-  "mcpServers": {
-    "ceph-cmd-kb": { "url": "http://localhost:8081/sse", "transport": "sse" },
-    "ceph-doc-kb": { "url": "http://localhost:8082/sse", "transport": "sse" },
-    "ceph-issue-kb": { "url": "http://localhost:8083/sse", "transport": "sse" }
-  }
-}
+### Maintainer wrapper
+
+```bash
+./update_index.sh                 # last run, or last 1 day
+./update_index.sh 7
+./update_index.sh 2026-08-01
+./update_index.sh --reset
 ```
+
+Environment: `CEPH_DOCS_REPO` (default `/tmp/ceph-docs`), `CEPH_VERSION` (default `20.2.1`), `IBM_VERSIONS` (default `9.1`), `SKIP_UPSTREAM=1`, `SKIP_IBM=1`.
+
+Metadata fields: `last_incremental_since` on `metadata.json`; IBM also writes `updated_since` on `ibm_crawl_metadata.json`.
+
+The MCP auto-pulls this git repo on a timer and hot-reloads every `knowledge/doc-*/` index (Cursor stays open; only a `.py` pull respawns the MCP subprocess). `./update_index.sh` touches `.reload_trigger` for the same in-process reload. `--no-auto-update` disables git pull (the trigger watcher still starts unless that flag is set).
+
+Full maintainer help: [UPDATING.md](UPDATING.md).
+
+## Architecture
+
+```
+Upstream RST  → parser → scorer → embedder → knowledge/doc-20.2.1/<component>/
+IBM HTML API  → crawler → ibm_parser ──────→ knowledge/doc-ibm-9.1/<component>/
+                                              command_xref.json
+                                                      │
+                                                      ▼
+                         search router (BM25 + FAISS + quality rank)
+```
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) and [SPEC.md](SPEC.md).
 
 ## Development
 
@@ -233,5 +221,3 @@ Combined agent config (`.bob/mcp.json`, `claude_desktop_config.json`, etc.):
 pip install -e ".[dev]"
 pytest
 ```
-
-See [DEVELOPMENT.md](DEVELOPMENT.md) for architecture details and contributing.

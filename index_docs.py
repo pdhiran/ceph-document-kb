@@ -20,9 +20,13 @@ Examples:
   # Full build
   python index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1
 
-  # Incremental update
+  # Incremental update between git tags
   python index_docs.py --update --docs-path /tmp/ceph-docs/doc \\
       --repo-path /tmp/ceph-docs --from-version v20.2.1 --to-version v20.2.2
+
+  # Incremental update since a date (same contract as issue-KB --since)
+  python index_docs.py --since 2026-08-01 --docs-path /tmp/ceph-docs/doc \\
+      --repo-path /tmp/ceph-docs --version 20.2.1
 
   # Custom output directory
   python index_docs.py --docs-path ./doc --version 20.2.1 --output ./my-index
@@ -79,6 +83,16 @@ Examples:
         default=None,
         help="New version tag (for incremental updates)",
     )
+    parser.add_argument(
+        "--since",
+        metavar="YYYY-MM-DD",
+        default=None,
+        help=(
+            "Re-index RST files changed in git since this ISO date and merge "
+            "into the existing index. Implies incremental update. Same contract "
+            "as ceph-issue-kb: python index_issues.py --since DATE"
+        ),
+    )
 
     args = parser.parse_args()
 
@@ -94,21 +108,45 @@ Examples:
 
     output = args.output or Path(f"knowledge/doc-{args.version}")
 
-    if args.update:
-        if not args.repo_path or not args.from_version or not args.to_version:
-            logger.error("--update requires --repo-path, --from-version, and --to-version")
+    if args.since or args.update:
+        from ceph_doc_kb.indexer.incremental import incremental_update, parse_since_date
+
+        if not args.repo_path:
+            logger.error("Incremental update requires --repo-path (path to the ceph git repo)")
             return 1
 
-        from ceph_doc_kb.indexer.incremental import incremental_update
-
-        metadata = incremental_update(
-            docs_path=args.docs_path,
-            repo_path=args.repo_path,
-            index_path=output,
-            from_version=args.from_version,
-            to_version=args.to_version,
-            model_name=args.model,
-        )
+        if args.since:
+            try:
+                parse_since_date(args.since)
+            except ValueError as exc:
+                logger.error("%s", exc)
+                return 1
+            if not output.exists():
+                logger.error(
+                    "No existing index at %s — run a full build before --since",
+                    output,
+                )
+                return 1
+            metadata = incremental_update(
+                docs_path=args.docs_path,
+                repo_path=args.repo_path,
+                index_path=output,
+                to_version=args.version,
+                model_name=args.model,
+                since=args.since,
+            )
+        else:
+            if not args.from_version or not args.to_version:
+                logger.error("--update requires --from-version and --to-version")
+                return 1
+            metadata = incremental_update(
+                docs_path=args.docs_path,
+                repo_path=args.repo_path,
+                index_path=output,
+                from_version=args.from_version,
+                to_version=args.to_version,
+                model_name=args.model,
+            )
     else:
         from ceph_doc_kb.indexer.builder import build_index
 

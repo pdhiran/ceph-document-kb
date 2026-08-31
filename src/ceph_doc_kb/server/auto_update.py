@@ -33,6 +33,9 @@ logger = logging.getLogger(__name__)
 
 _periodic_stop: threading.Event | None = None
 
+TRIGGER_NAME = ".reload_trigger"
+TRIGGER_POLL_SECONDS = 5.0
+
 
 def _find_repo_root(start: Path) -> Path | None:
     current = start.resolve()
@@ -141,13 +144,13 @@ def _do_update(
         files = _changed_files(repo_root, old_sha, new_sha) if old_sha and new_sha else []
 
         if _has_code_changes(files):
-            logger.info("Code changes detected, restarting server")
+            logger.info("Code changes detected, restarting MCP process (Cursor respawns it)")
             os._exit(0)
+            return
 
-        if _has_kb_changes(files):
-            logger.info("Knowledge base updated, hot-reloading")
-            doc_server._router = None
-            doc_server._load()
+        if _has_kb_changes(files) or not files:
+            logger.info("Knowledge base updated, hot-reloading (no Cursor restart)")
+            doc_server.reload_from_disk()
 
     except Exception as exc:
         logger.warning("Auto-update failed, continuing with existing data: %s", exc)
@@ -163,45 +166,75 @@ def _periodic_loop(
         _do_update(doc_server, repo_root)
 
 
+def _trigger_mtime(repo_root: Path) -> float:
+    try:
+        return (repo_root / TRIGGER_NAME).stat().st_mtime
+    except OSError:
+        return 0.0
+
+
+def _trigger_loop(
+    doc_server: CephDocMCPServer,
+    repo_root: Path,
+    stop_event: threading.Event,
+) -> None:
+    last = _trigger_mtime(repo_root)
+    while not stop_event.wait(timeout=TRIGGER_POLL_SECONDS):
+        now = _trigger_mtime(repo_root)
+        if now > last + 0.01:
+            last = now
+            logger.info("Reload trigger detected, hot-reloading documentation indices")
+            try:
+                doc_server.reload_from_disk()
+            except Exception as exc:
+                logger.warning("Trigger reload failed: %s", exc)
+
+
 def start_auto_update(
     doc_server: CephDocMCPServer,
     *,
     update_interval_hours: float = 1,
 ) -> None:
-    """Pull latest changes from git now and schedule periodic re-checks.
-
-    Safe to call unconditionally — silently skips if the repo directory
-    has no git remote configured.
-    """
+    """Pull git, watch ``.reload_trigger``, hot-reload indices in-process."""
     global _periodic_stop  # noqa: PLW0603
 
     if _periodic_stop is not None and not _periodic_stop.is_set():
         return
 
     repo_root = _find_repo_root(doc_server.kb_path)
-    if repo_root is None or not _has_remote(repo_root):
+    if repo_root is None:
         return
 
-    thread = threading.Thread(
-        target=_do_update,
-        args=(doc_server, repo_root),
-        kwargs={"is_startup": True},
-        daemon=True,
-        name="auto-update-startup",
-    )
-    thread.start()
+    stop_event = threading.Event()
+    _periodic_stop = stop_event
 
-    if update_interval_hours > 0:
-        interval_seconds = update_interval_hours * 3600
-        stop_event = threading.Event()
-        _periodic_stop = stop_event
-        periodic = threading.Thread(
-            target=_periodic_loop,
-            args=(doc_server, repo_root, interval_seconds, stop_event),
+    if _has_remote(repo_root):
+        thread = threading.Thread(
+            target=_do_update,
+            args=(doc_server, repo_root),
+            kwargs={"is_startup": True},
             daemon=True,
-            name="auto-update-periodic",
+            name="auto-update-startup",
         )
-        periodic.start()
+        thread.start()
+
+        if update_interval_hours > 0:
+            interval_seconds = update_interval_hours * 3600
+            periodic = threading.Thread(
+                target=_periodic_loop,
+                args=(doc_server, repo_root, interval_seconds, stop_event),
+                daemon=True,
+                name="auto-update-periodic",
+            )
+            periodic.start()
+
+    trigger = threading.Thread(
+        target=_trigger_loop,
+        args=(doc_server, repo_root, stop_event),
+        daemon=True,
+        name="kb-reload-trigger",
+    )
+    trigger.start()
 
 
 def stop_auto_update() -> None:

@@ -28,3 +28,6 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+.reload_trigger
+.last_index_update

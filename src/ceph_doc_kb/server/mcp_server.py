@@ -318,6 +318,28 @@ class CephDocMCPServer:
             self.metadata = IndexMetadata.load(metadata_file)
         self.command_xref = _load_command_xref(self.kb_path)
 
+    def reload_from_disk(self) -> None:
+        """Hot-reload primary + additional (IBM) indices from disk.
+
+        Called by auto-update after ``git pull`` or ``.reload_trigger``.
+        Cursor does not need to restart.
+        """
+        self._router = None
+        self._additional_routers.clear()
+        self._additional_metadata.clear()
+        self._additional_xrefs.clear()
+        self.command_xref = {}
+        self._load()
+        knowledge_root = self.kb_path.parent
+        if not knowledge_root.is_dir():
+            return
+        for kb in sorted(knowledge_root.iterdir()):
+            if not kb.is_dir() or not (kb / "metadata.json").exists():
+                continue
+            if kb.resolve() == self.kb_path.resolve():
+                continue
+            self.load_additional_kb(kb)
+
     def load_additional_kb(self, kb_path: Path) -> None:
         """Load an additional knowledge base (e.g., IBM docs) alongside the primary."""
         metadata_file = kb_path / "metadata.json"

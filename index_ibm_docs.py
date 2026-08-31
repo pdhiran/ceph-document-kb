@@ -21,6 +21,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import logging
 import sys
@@ -49,6 +50,10 @@ Examples:
   # Index both 8.0 and 8.1
   python index_ibm_docs.py --version 8.0 --verbose
   python index_ibm_docs.py --version 8.1 --verbose
+
+  # Incremental: recrawl, skip rebuild if HTML hashes match the cache
+  python index_ibm_docs.py --version 9.1 --since 2026-08-01 \\
+      --cache-dir ./cache/ibm-9.1 --verbose
         """,
     )
 
@@ -91,6 +96,17 @@ Examples:
         action="store_true",
         help="Enable verbose logging",
     )
+    parser.add_argument(
+        "--since",
+        metavar="YYYY-MM-DD",
+        default=None,
+        help=(
+            "Delta update: recrawl IBM docs and rebuild only if page HTML "
+            "changed since the last cached crawl. Records this date in "
+            "ibm_crawl_metadata.json. Same CLI contract as "
+            "python index_issues.py --since DATE"
+        ),
+    )
 
     args = parser.parse_args()
 
@@ -101,6 +117,14 @@ Examples:
     )
 
     from ceph_doc_kb.constants import IBM_VERSIONS
+    from ceph_doc_kb.indexer.incremental import parse_since_date
+
+    if args.since:
+        try:
+            parse_since_date(args.since)
+        except ValueError as exc:
+            print(f"Error: {exc}", file=sys.stderr)
+            return 1
 
     if args.version not in IBM_VERSIONS:
         print(f"Error: Unknown IBM version '{args.version}'. "
@@ -110,10 +134,31 @@ Examples:
     output = args.output or Path(f"knowledge/doc-ibm-{args.version}")
 
     # Phase 1: Crawl or load from cache
-    pages = _get_pages(args)
-    if not pages:
-        print("Error: No pages to index.", file=sys.stderr)
-        return 1
+    if args.since:
+        pages = _crawl_live(args)
+        if not pages:
+            print("Error: No pages to index.", file=sys.stderr)
+            return 1
+        if args.cache_dir:
+            changed = _changed_pages_vs_cache(pages, args.cache_dir)
+            _save_to_cache(pages, args.cache_dir)
+            if (
+                not changed
+                and (output / "metadata.json").exists()
+            ):
+                print(
+                    f"No IBM pages changed since last crawl "
+                    f"({len(pages)} pages identical) — skipping rebuild"
+                )
+                _stamp_ibm_since(output, args)
+                return 0
+            if changed:
+                print(f"  {len(changed)} of {len(pages)} pages changed since last crawl")
+    else:
+        pages = _get_pages(args)
+        if not pages:
+            print("Error: No pages to index.", file=sys.stderr)
+            return 1
 
     print(f"\nPhase 1 complete: {len(pages)} pages available")
 
@@ -209,6 +254,7 @@ Examples:
         total_code_examples=len(all_code_examples),
         components=components,
         build_timestamp=datetime.now(timezone.utc).isoformat(),
+        last_incremental_since=args.since or "",
     )
     metadata.save(output / "metadata.json")
 
@@ -220,6 +266,7 @@ Examples:
         "pages_indexed": len(pages),
         "build_timestamp": datetime.now(timezone.utc).isoformat(),
         "source": "https://www.ibm.com/docs/en/storage-ceph",
+        "updated_since": args.since or "",
     }
     (output / "ibm_crawl_metadata.json").write_text(json.dumps(crawl_meta, indent=2))
 
@@ -241,10 +288,17 @@ def _get_pages(args) -> list[dict]:
     """Get pages from cache or by crawling."""
     cache_dir = args.cache_dir
 
-    if cache_dir and cache_dir.exists():
+    if cache_dir and cache_dir.exists() and (cache_dir / "manifest.json").exists():
         return _load_from_cache(cache_dir)
 
-    # Crawl from IBM docs
+    pages = _crawl_live(args)
+    if cache_dir and pages:
+        _save_to_cache(pages, cache_dir)
+    return pages
+
+
+def _crawl_live(args) -> list[dict]:
+    """Crawl IBM docs API (always hits the network)."""
     from ceph_doc_kb.indexer.ibm_crawler import crawl_version
 
     print(f"Crawling IBM Storage Ceph {args.version} documentation...")
@@ -270,16 +324,70 @@ def _get_pages(args) -> list[dict]:
         for p in result.pages
     ]
 
-    # Save to cache if specified
-    if cache_dir:
-        _save_to_cache(pages, cache_dir)
-
     print(f"  Total topics in TOC: {result.total_topics}")
     print(f"  Skipped (release notes details, etc.): {result.skipped_topics}")
     if result.failed_hrefs:
         print(f"  Failed to fetch: {len(result.failed_hrefs)}")
 
     return pages
+
+
+def _page_hash(html: str) -> str:
+    return hashlib.sha256(html.encode("utf-8", errors="replace")).hexdigest()
+
+
+def _changed_pages_vs_cache(pages: list[dict], cache_dir: Path) -> list[dict]:
+    """Return pages whose HTML hash differs from the existing cache."""
+    if not cache_dir.exists() or not (cache_dir / "manifest.json").exists():
+        return pages
+
+    old_hashes: dict[str, str] = {}
+    try:
+        manifest = json.loads((cache_dir / "manifest.json").read_text())
+    except (json.JSONDecodeError, OSError):
+        return pages
+
+    for entry in manifest:
+        html_path = cache_dir / entry.get("filename", "")
+        if not html_path.exists():
+            continue
+        try:
+            old_hashes[entry["topic_slug"]] = _page_hash(
+                html_path.read_text(encoding="utf-8")
+            )
+        except OSError:
+            continue
+
+    changed = []
+    for page in pages:
+        slug = page["topic_slug"]
+        if old_hashes.get(slug) != _page_hash(page["html"]):
+            changed.append(page)
+    return changed
+
+
+def _stamp_ibm_since(output: Path, args) -> None:
+    """Record a no-op delta run on existing crawl metadata."""
+    meta_path = output / "ibm_crawl_metadata.json"
+    data = {}
+    if meta_path.exists():
+        try:
+            data = json.loads(meta_path.read_text())
+        except (json.JSONDecodeError, OSError):
+            data = {}
+    data["updated_since"] = args.since or ""
+    data["last_delta_check"] = datetime.now(timezone.utc).isoformat()
+    meta_path.write_text(json.dumps(data, indent=2))
+
+    idx_meta = output / "metadata.json"
+    if idx_meta.exists():
+        try:
+            from ceph_doc_kb.models import IndexMetadata
+            metadata = IndexMetadata.load(idx_meta)
+            metadata.last_incremental_since = args.since or ""
+            metadata.save(idx_meta)
+        except Exception:
+            logger.warning("Could not stamp last_incremental_since on %s", idx_meta)
 
 
 def _load_from_cache(cache_dir: Path) -> list[dict]:

@@ -1,4 +1,4 @@
-"""Incremental re-indexing via git diff between version tags."""
+"""Incremental re-indexing via git diff between version tags or since a date."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ import json
 import logging
 import subprocess
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 
 from ceph_doc_kb.models import DocChunk, IndexMetadata, ComponentIndex
@@ -16,6 +17,15 @@ from ceph_doc_kb.indexer.xref import build_xref, save_xref
 from ceph_doc_kb.indexer.embedder import Embedder, IndexBuilder
 
 logger = logging.getLogger(__name__)
+
+
+def parse_since_date(value: str) -> str:
+    """Validate an ISO date (YYYY-MM-DD) and return it unchanged."""
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+    except ValueError as exc:
+        raise ValueError(f"Invalid date {value!r}; expected YYYY-MM-DD") from exc
+    return value
 
 
 def get_changed_files(
@@ -41,23 +51,85 @@ def get_changed_files(
     return files
 
 
+def get_changed_files_since(
+    repo_path: Path,
+    since: str,
+    pathspec: str = "doc/",
+) -> list[str]:
+    """Return unique RST files touched by git commits since *since* (YYYY-MM-DD).
+
+    Same delta contract as ``index_issues.py --since``: only content that
+    changed on or after that date is re-indexed and merged into the existing
+    knowledge base.
+    """
+    parse_since_date(since)
+    try:
+        result = subprocess.run(
+            [
+                "git", "log",
+                f"--since={since}",
+                "--name-only",
+                "--pretty=format:",
+                "--",
+                pathspec,
+            ],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(f"git log timed out after 60s for --since={since}")
+    if result.returncode != 0:
+        raise RuntimeError(f"git log failed: {result.stderr}")
+
+    files: list[str] = []
+    seen: set[str] = set()
+    for line in result.stdout.splitlines():
+        f = line.strip()
+        if f.endswith(".rst") and f not in seen:
+            seen.add(f)
+            files.append(f)
+    return files
+
+
 def incremental_update(
     docs_path: Path,
     repo_path: Path,
     index_path: Path,
-    from_version: str,
-    to_version: str,
+    from_version: str | None = None,
+    to_version: str | None = None,
     model_name: str = "BAAI/bge-small-en-v1.5",
+    since: str | None = None,
 ) -> IndexMetadata:
-    """Update index incrementally based on changed files between versions.
+    """Update index incrementally based on changed RST files.
+
+    Two delta modes (exactly one is required):
+
+    * Tag range: *from_version* / *to_version* (``git diff tagA..tagB``).
+    * Date: *since* as ``YYYY-MM-DD`` (``git log --since``), matching
+      the issue-KB ``--since`` contract.
 
     Only re-parses and re-embeds chunks from files that changed.
-    Preserves unchanged component indices.
+    Preserves unchanged component indices. Deleted RST files drop out of
+    the index because their old chunks are excluded and no new ones are added.
     """
-    changed_files = get_changed_files(repo_path, from_version, to_version)
+    if since:
+        changed_files = get_changed_files_since(repo_path, since)
+        if not to_version:
+            existing = IndexMetadata.load(index_path / "metadata.json")
+            to_version = existing.ceph_version
+    elif from_version and to_version:
+        changed_files = get_changed_files(repo_path, from_version, to_version)
+    else:
+        raise ValueError("incremental_update requires --since DATE or --from-version/--to-version")
+
     if not changed_files:
-        logger.info("No RST files changed between versions.")
+        logger.info("No RST files changed in the requested delta.")
         existing = IndexMetadata.load(index_path / "metadata.json")
+        if since:
+            existing.last_incremental_since = since
+            existing.save(index_path / "metadata.json")
         return existing
 
     logger.info(f"Found {len(changed_files)} changed RST files")
@@ -191,6 +263,8 @@ def incremental_update(
     existing_metadata.total_code_examples = sum(
         c.code_example_count for c in existing_metadata.components.values()
     )
+    if since:
+        existing_metadata.last_incremental_since = since
     existing_metadata.save(index_path / "metadata.json")
 
     logger.info(f"Incremental update complete: {len(changed_files)} files, "
