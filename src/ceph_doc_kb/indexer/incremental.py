@@ -10,13 +10,15 @@ from datetime import datetime
 from pathlib import Path
 
 from ceph_doc_kb.models import DocChunk, IndexMetadata, ComponentIndex
-from ceph_doc_kb.indexer.parser import parse_rst_file
+from ceph_doc_kb.indexer.parser import _detect_component_and_topic, parse_rst_file
 from ceph_doc_kb.indexer.scorer import score_chunks
 from ceph_doc_kb.indexer.code_extractor import extract_code_blocks
 from ceph_doc_kb.indexer.xref import build_xref, save_xref
 from ceph_doc_kb.indexer.embedder import Embedder, IndexBuilder
 
 logger = logging.getLogger(__name__)
+
+_COMPONENT_INDEX_FILES = ("faiss.index", "chunks.json", "code_examples.json")
 
 
 def parse_since_date(value: str) -> str:
@@ -93,6 +95,26 @@ def get_changed_files_since(
     return files
 
 
+def _component_for_rel(rel: str) -> str:
+    """FAISS component directory for a path relative to ``doc/``.
+
+    Must match ``parse_rst_file`` / ``_detect_component_and_topic`` so
+    top-level RST (``glossary.rst`` → ``unknown``) is not indexed under
+    a bogus directory named after the filename.
+    """
+    return _detect_component_and_topic(rel)[0]
+
+
+def _purge_component_dir(comp_dir: Path) -> None:
+    """Remove FAISS/chunk artifacts left behind when a component is empty."""
+    for name in _COMPONENT_INDEX_FILES:
+        path = comp_dir / name
+        try:
+            path.unlink(missing_ok=True)
+        except OSError:
+            logger.warning("Could not remove stale index file %s", path)
+
+
 def incremental_update(
     docs_path: Path,
     repo_path: Path,
@@ -113,6 +135,8 @@ def incremental_update(
     Only re-parses and re-embeds chunks from files that changed.
     Preserves unchanged component indices. Deleted RST files drop out of
     the index because their old chunks are excluded and no new ones are added.
+    If that leaves a component with zero chunks, its FAISS artifacts are
+    removed and it is dropped from metadata.
     """
     if since:
         changed_files = get_changed_files_since(repo_path, since)
@@ -139,8 +163,7 @@ def incremental_update(
     for f in changed_files:
         # Strip leading "doc/" prefix if present
         rel = f.removeprefix("doc/")
-        parts = rel.split('/')
-        component = parts[0] if parts else "other"
+        component = _component_for_rel(rel)
         affected_components[component].append(rel)
 
     logger.info(f"Affected components: {list(affected_components.keys())}")
@@ -181,43 +204,57 @@ def incremental_update(
 
         # Combine existing + new chunks
         all_component_chunks = existing_chunks + new_chunks_by_component[component]
-        score_chunks(all_component_chunks)
+        if all_component_chunks:
+            score_chunks(all_component_chunks)
         new_chunks_by_component[component] = all_component_chunks
 
-    # Enrich all chunks with command cross-references before persisting
-    all_new_chunks = [c for cs in new_chunks_by_component.values() for c in cs]
-    build_xref(all_new_chunks)
+    empty_components = [c for c, ch in new_chunks_by_component.items() if not ch]
+    nonempty = {c: ch for c, ch in new_chunks_by_component.items() if ch}
 
-    # Rebuild indices only for affected components
-    embedder = Embedder(model_name)
-    builder = IndexBuilder(embedder, model_name)
+    for component in empty_components:
+        _purge_component_dir(index_path / component)
 
-    for component, chunks in new_chunks_by_component.items():
-        comp_dir = index_path / component
-        builder.build_component_index(chunks, comp_dir)
+    if nonempty:
+        # Enrich surviving chunks before they are written to chunks.json
+        all_new_chunks = [c for cs in nonempty.values() for c in cs]
+        build_xref(all_new_chunks)
 
-        # Merge code examples: keep existing examples from unchanged files
-        code_path = comp_dir / "code_examples.json"
-        existing_examples = []
-        if code_path.exists():
-            try:
-                existing_data = json.loads(code_path.read_text())
-                changed_set = set(affected_components.get(component, []))
-                existing_examples = [
-                    e for e in existing_data
-                    if e.get("source_file") not in changed_set
-                ]
-            except (json.JSONDecodeError, OSError):
-                logger.warning("Failed to load existing code examples for %s", component)
+        embedder = Embedder(model_name)
+        builder = IndexBuilder(embedder, model_name)
 
-        merged_examples = existing_examples + [
-            e.to_dict() for e in new_code_by_component[component]
-        ]
-        if merged_examples:
-            code_path.write_text(json.dumps(merged_examples, indent=2))
+        for component, chunks in nonempty.items():
+            comp_dir = index_path / component
+            builder.build_component_index(chunks, comp_dir)
+
+            code_path = comp_dir / "code_examples.json"
+            existing_examples = []
+            if code_path.exists():
+                try:
+                    existing_data = json.loads(code_path.read_text())
+                    changed_set = set(affected_components.get(component, []))
+                    existing_examples = [
+                        e for e in existing_data
+                        if e.get("source_file") not in changed_set
+                    ]
+                except (json.JSONDecodeError, OSError):
+                    logger.warning("Failed to load existing code examples for %s", component)
+
+            merged_examples = existing_examples + [
+                e.to_dict() for e in new_code_by_component[component]
+            ]
+            if merged_examples:
+                code_path.write_text(json.dumps(merged_examples, indent=2))
+            elif code_path.exists():
+                try:
+                    code_path.unlink()
+                except OSError:
+                    logger.warning("Could not remove stale code examples %s", code_path)
 
     # Rebuild xref from all chunks (including newly added components)
-    all_component_names = set(existing_metadata.components) | set(affected_components)
+    all_component_names = (
+        (set(existing_metadata.components) | set(affected_components))
+        - set(empty_components)
+    )
     all_chunks = []
     for comp_name in all_component_names:
         chunks_path = index_path / comp_name / "chunks.json"
@@ -230,6 +267,10 @@ def incremental_update(
 
     # Update metadata
     for component in affected_components:
+        if component in empty_components:
+            existing_metadata.components.pop(component, None)
+            continue
+
         chunks_path = index_path / component / "chunks.json"
         if chunks_path.exists():
             data = json.loads(chunks_path.read_text())

@@ -45,7 +45,7 @@ IBM has no git history. `--since` recrawls the IBM docs API, hash-compares again
 | `git pull` of any `*.py` | MCP `os._exit(0)`; Cursor respawns the subprocess | Stays open |
 | No git remote | Pull skipped; trigger watcher still runs | Stays open |
 
-Disable with `--no-auto-update`. Interval: `--update-interval HOURS` (default 1).
+Disable with `--no-auto-update` (also stops the trigger watcher). Interval: `--update-interval HOURS` (default 1).
 
 ### Cursor MCP config
 

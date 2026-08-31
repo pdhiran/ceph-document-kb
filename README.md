@@ -47,7 +47,7 @@ IBM docs cover content that is **not** in upstream: container registry, licensin
 
 ```bash
 git clone https://github.com/pdhiran/ceph-document-kb.git
-cd ceph-doc-kb
+cd ceph-document-kb
 pip install -e .
 ```
 
@@ -173,7 +173,7 @@ Requires an existing `knowledge/doc-{version}/` for `--since`. Deleted RST files
 
 ### IBM HTML
 
-IBM has no git history. `--since` **recrawls** the IBM docs API, hash-compares against `--cache-dir`, and skips the FAISS rebuild when HTML is unchanged. If pages changed, the IBM index is rebuilt from the current snapshot.
+IBM has no git history. `--since` **recrawls** the IBM docs API, hash-compares against `--cache-dir`, and skips the FAISS rebuild when HTML is unchanged. If pages changed, the IBM index is rebuilt from the current snapshot. Without `--cache-dir`, `--since` still recrawls and **always full-rebuilds** (no hash-diff).
 
 ```bash
 python3 index_ibm_docs.py --version 9.1 --since 2026-08-01 \
@@ -198,7 +198,7 @@ Environment: `CEPH_DOCS_REPO` (default `/tmp/ceph-docs`), `CEPH_VERSION` (defaul
 
 Metadata fields: `last_incremental_since` on `metadata.json`; IBM also writes `updated_since` on `ibm_crawl_metadata.json`.
 
-The MCP auto-pulls this git repo on a timer and hot-reloads every `knowledge/doc-*/` index (Cursor stays open; only a `.py` pull respawns the MCP subprocess). `./update_index.sh` touches `.reload_trigger` for the same in-process reload. `--no-auto-update` disables git pull (the trigger watcher still starts unless that flag is set).
+The MCP auto-pulls this git repo on a timer and hot-reloads every `knowledge/doc-*/` index (Cursor stays open; only a `.py` pull respawns the MCP subprocess). `./update_index.sh` touches `.reload_trigger` for the same in-process reload. A missing git remote skips pull but still watches the trigger. `--no-auto-update` disables both git pull and the trigger watcher.
 
 Full maintainer help: [UPDATING.md](UPDATING.md).
 

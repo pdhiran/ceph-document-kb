@@ -96,6 +96,14 @@ Examples:
 
     args = parser.parse_args()
 
+    if args.since:
+        from ceph_doc_kb.indexer.incremental import parse_since_date
+        try:
+            parse_since_date(args.since)
+        except ValueError as exc:
+            print(f"Error: {exc}", file=sys.stderr)
+            return 1
+
     if args.verbose:
         logging.basicConfig(
             level=logging.INFO,
@@ -109,18 +117,13 @@ Examples:
     output = args.output or Path(f"knowledge/doc-{args.version}")
 
     if args.since or args.update:
-        from ceph_doc_kb.indexer.incremental import incremental_update, parse_since_date
+        from ceph_doc_kb.indexer.incremental import incremental_update
 
         if not args.repo_path:
             logger.error("Incremental update requires --repo-path (path to the ceph git repo)")
             return 1
 
         if args.since:
-            try:
-                parse_since_date(args.since)
-            except ValueError as exc:
-                logger.error("%s", exc)
-                return 1
             if not output.exists():
                 logger.error(
                     "No existing index at %s — run a full build before --since",

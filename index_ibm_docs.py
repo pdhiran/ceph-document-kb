@@ -101,9 +101,10 @@ Examples:
         metavar="YYYY-MM-DD",
         default=None,
         help=(
-            "Delta update: recrawl IBM docs and rebuild only if page HTML "
-            "changed since the last cached crawl. Records this date in "
-            "ibm_crawl_metadata.json. Same CLI contract as "
+            "Delta update: recrawl IBM docs and rebuild if page HTML "
+            "differs from --cache-dir (or if cached topics disappeared). "
+            "Without --cache-dir this always full-rebuilds. Records the "
+            "date in ibm_crawl_metadata.json. Same CLI contract as "
             "python index_issues.py --since DATE"
         ),
     )
@@ -131,6 +132,13 @@ Examples:
               f"Available: {list(IBM_VERSIONS.keys())}", file=sys.stderr)
         return 1
 
+    if args.since and not args.cache_dir:
+        print(
+            "Warning: --since without --cache-dir cannot hash-diff; "
+            "performing a full IBM rebuild.",
+            file=sys.stderr,
+        )
+
     output = args.output or Path(f"knowledge/doc-ibm-{args.version}")
 
     # Phase 1: Crawl or load from cache
@@ -141,7 +149,6 @@ Examples:
             return 1
         if args.cache_dir:
             changed = _changed_pages_vs_cache(pages, args.cache_dir)
-            _save_to_cache(pages, args.cache_dir)
             if (
                 not changed
                 and (output / "metadata.json").exists()
@@ -270,6 +277,11 @@ Examples:
     }
     (output / "ibm_crawl_metadata.json").write_text(json.dumps(crawl_meta, indent=2))
 
+    # Write cache only after a successful build so a failed rebuild
+    # cannot poison --since into skipping the next run.
+    if args.cache_dir:
+        _save_to_cache(pages, args.cache_dir)
+
     print(f"\nIndex built successfully!")
     print(f"  Output: {output}")
     print(f"  IBM version: {args.version}")
@@ -291,10 +303,7 @@ def _get_pages(args) -> list[dict]:
     if cache_dir and cache_dir.exists() and (cache_dir / "manifest.json").exists():
         return _load_from_cache(cache_dir)
 
-    pages = _crawl_live(args)
-    if cache_dir and pages:
-        _save_to_cache(pages, cache_dir)
-    return pages
+    return _crawl_live(args)
 
 
 def _crawl_live(args) -> list[dict]:
@@ -337,7 +346,12 @@ def _page_hash(html: str) -> str:
 
 
 def _changed_pages_vs_cache(pages: list[dict], cache_dir: Path) -> list[dict]:
-    """Return pages whose HTML hash differs from the existing cache."""
+    """Return pages whose HTML hash differs from the existing cache.
+
+    A non-empty return means the IBM index must be rebuilt. Topics that
+    vanished from the crawl (present in cache, absent now) count as a
+    change so deleted pages do not linger in FAISS.
+    """
     if not cache_dir.exists() or not (cache_dir / "manifest.json").exists():
         return pages
 
@@ -357,6 +371,10 @@ def _changed_pages_vs_cache(pages: list[dict], cache_dir: Path) -> list[dict]:
             )
         except OSError:
             continue
+
+    new_slugs = {page["topic_slug"] for page in pages}
+    if any(slug not in new_slugs for slug in old_hashes):
+        return pages
 
     changed = []
     for page in pages:

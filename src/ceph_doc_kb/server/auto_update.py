@@ -5,11 +5,13 @@ Runs ``git pull --ff-only origin <branch>`` in a daemon thread so the
 server starts instantly with whatever is on disk, then:
 
 - If only knowledge base files changed → hot-reload the search engine.
-- If source code (.py) changed → ``sys.exit(0)`` so Cursor restarts
+- If source code (.py) changed → ``os._exit(0)`` so Cursor restarts
   the MCP server process with the updated code.
 
-A second daemon thread wakes up every *update_interval_hours* (default 12)
-to repeat the check.
+A second daemon thread wakes up every *update_interval_hours* (default 1)
+to repeat the check. A third thread watches ``.reload_trigger``.
+
+No git remote: pull is skipped; the trigger watcher still runs.
 
 Every failure path logs a warning and returns — the server is never
 blocked or crashed by this.
@@ -20,7 +22,6 @@ from __future__ import annotations
 import logging
 import os
 import subprocess
-import sys
 import threading
 import time
 from pathlib import Path
@@ -201,17 +202,24 @@ def start_auto_update(
     if _periodic_stop is not None and not _periodic_stop.is_set():
         return
 
-    repo_root = _find_repo_root(doc_server.kb_path)
+    git_root = _find_repo_root(doc_server.kb_path)
+    repo_root = git_root
     if repo_root is None:
-        return
+        path = doc_server.kb_path.resolve()
+        if path.parent.name == "knowledge":
+            repo_root = path.parent.parent
+        elif path.name == "knowledge":
+            repo_root = path.parent
+        else:
+            repo_root = path
 
     stop_event = threading.Event()
     _periodic_stop = stop_event
 
-    if _has_remote(repo_root):
+    if git_root is not None and _has_remote(git_root):
         thread = threading.Thread(
             target=_do_update,
-            args=(doc_server, repo_root),
+            args=(doc_server, git_root),
             kwargs={"is_startup": True},
             daemon=True,
             name="auto-update-startup",
@@ -222,7 +230,7 @@ def start_auto_update(
             interval_seconds = update_interval_hours * 3600
             periodic = threading.Thread(
                 target=_periodic_loop,
-                args=(doc_server, repo_root, interval_seconds, stop_event),
+                args=(doc_server, git_root, interval_seconds, stop_event),
                 daemon=True,
                 name="auto-update-periodic",
             )

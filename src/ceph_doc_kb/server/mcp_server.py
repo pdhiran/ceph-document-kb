@@ -761,7 +761,7 @@ def _silence_stderr_logging() -> None:
     warnings.filterwarnings("ignore")
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Ceph Documentation KB — MCP Server")
     parser.add_argument(
         "--kb-path",
@@ -776,10 +776,30 @@ def main() -> None:
         help="Index version to load (default: latest)",
     )
     parser.add_argument(
+        "--transport",
+        default="stdio",
+        choices=["stdio", "sse"],
+        help="MCP transport (default: stdio). SSE listens on --host/--port.",
+    )
+    parser.add_argument(
+        "--host",
+        default="0.0.0.0",
+        help="Bind address for SSE (default: 0.0.0.0)",
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=8082,
+        help="Port for SSE transport (default: 8082)",
+    )
+    parser.add_argument(
         "--auto-update",
         action=argparse.BooleanOptionalAction,
         default=True,
-        help="Auto-pull latest changes from git on startup (default: enabled)",
+        help=(
+            "Git pull on a timer and watch .reload_trigger (default: enabled). "
+            "--no-auto-update disables both. No git remote still watches the trigger."
+        ),
     )
     parser.add_argument(
         "--update-interval",
@@ -788,9 +808,10 @@ def main() -> None:
         metavar="HOURS",
         help="Hours between periodic update checks (default: 1, 0=disable periodic)",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
-    _silence_stderr_logging()
+    if args.transport == "stdio":
+        _silence_stderr_logging()
 
     server, doc_server = create_server(kb_path=args.kb_path, version=args.version)
 
@@ -798,11 +819,43 @@ def main() -> None:
         from ceph_doc_kb.server.auto_update import start_auto_update
         start_auto_update(doc_server, update_interval_hours=args.update_interval)
 
+    if args.transport == "sse":
+        _run_sse(server, host=args.host, port=args.port)
+        return
+
     async def _run():
         async with stdio_server() as (read_stream, write_stream):
             await server.run(read_stream, write_stream, server.create_initialization_options())
 
     asyncio.run(_run())
+
+
+def _run_sse(server: Server, *, host: str, port: int) -> None:
+    import uvicorn
+    from mcp.server.sse import SseServerTransport
+    from starlette.applications import Starlette
+    from starlette.responses import Response
+    from starlette.routing import Mount, Route
+
+    sse = SseServerTransport("/messages/")
+
+    async def handle_sse(request):
+        async with sse.connect_sse(
+            request.scope, request.receive, request._send,
+        ) as streams:
+            await server.run(
+                streams[0], streams[1], server.create_initialization_options(),
+            )
+        return Response()
+
+    app = Starlette(
+        routes=[
+            Route("/sse", endpoint=handle_sse, methods=["GET"]),
+            Mount("/messages/", app=sse.handle_post_message),
+        ],
+    )
+    logger.info("Starting MCP server (SSE transport) on %s:%d", host, port)
+    uvicorn.run(app, host=host, port=port)
 
 
 if __name__ == "__main__":

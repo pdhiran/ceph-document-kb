@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 import threading
 import time
@@ -167,3 +168,17 @@ class TestUpdateIndexScript:
         text = (REPO / "UPDATING.md").read_text()
         assert "./update_index.sh" in text
         assert "reload_from_disk" in text
+        assert "Without `--cache-dir`" in text
+
+    def test_touch_is_after_skip_blocks(self):
+        text = (REPO / "update_index.sh").read_text()
+        assert text.index("touch .reload_trigger") > text.index("SKIP_IBM")
+        assert text.index("touch .reload_trigger") > text.index("SKIP_UPSTREAM")
+
+    def test_skip_upstream_and_ibm_still_touches_trigger(self, tmp_path):
+        script = tmp_path / "update_index.sh"
+        script.write_text((REPO / "update_index.sh").read_text())
+        script.chmod(0o755)
+        env = {**os.environ, "SKIP_UPSTREAM": "1", "SKIP_IBM": "1"}
+        subprocess.run([str(script)], cwd=tmp_path, check=True, env=env)
+        assert (tmp_path / ".reload_trigger").exists()
