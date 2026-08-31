@@ -21,31 +21,35 @@ The system has two distinct phases:
 │                                                          │
 │  Query → BM25 Search → Semantic Search → Re-rank        │
 │                                                          │
-│  MCP Server (stdio) / REST API (HTTP)                    │
+│  MCP Server (stdio or SSE :8082) / REST API (HTTP :8100) │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ## Source Tree
 
 ```
-ceph-doc-kb/
+ceph-document-kb/
 ├── pyproject.toml              # Package config, dependencies
 ├── config.yaml                 # Search weights, embedding model, server config
-├── index_docs.py               # CLI: full/incremental index builds
+├── index_docs.py               # CLI: full / tag-delta / --since date merge
+├── index_ibm_docs.py           # CLI: IBM HTML crawl + --since hash-diff
+├── update_index.sh             # Maintainer wrapper (touches .reload_trigger)
 │
 ├── src/ceph_doc_kb/
 │   ├── __init__.py
 │   ├── models.py               # DocChunk, CodeExample, IndexMetadata, SearchResult
-│   ├── constants.py            # Shared regex, tokenizer, stopwords
+│   ├── constants.py            # Shared regex, tokenizer, IBM_VERSIONS
 │   │
 │   ├── indexer/
 │   │   ├── parser.py           # RST → DocChunks (docutils, directive handling)
+│   │   ├── ibm_crawler.py      # IBM docs API crawl
+│   │   ├── ibm_parser.py       # IBM HTML → DocChunks
 │   │   ├── scorer.py           # Quality scoring (code, commands, length)
 │   │   ├── code_extractor.py   # Code block extraction + command detection
 │   │   ├── xref.py             # Command → doc cross-reference builder
 │   │   ├── embedder.py         # fastembed ONNX + FAISS index builder
 │   │   ├── builder.py          # Full pipeline orchestrator
-│   │   └── incremental.py      # Git-diff based incremental updates
+│   │   └── incremental.py      # Tag git-diff + --since git-log merge
 │   │
 │   ├── search/
 │   │   ├── keyword_search.py   # Tier 1: BM25 (rank-bm25)
@@ -53,32 +57,29 @@ ceph-doc-kb/
 │   │   └── router.py           # Two-tier merge + quality re-ranking
 │   │
 │   └── server/
-│       ├── mcp_server.py       # MCP server (8 tools, stdio transport)
+│       ├── mcp_server.py       # MCP server (10 tools, stdio or SSE)
+│       ├── auto_update.py      # git pull + .reload_trigger watcher
 │       └── rest_api.py         # REST API (Starlette, 8 endpoints)
 │
 ├── tests/
 │   ├── fixtures/               # Sample RST files
 │   ├── test_parser.py
+│   ├── test_ibm_parser.py
 │   ├── test_code_extractor.py
 │   ├── test_scorer.py
 │   ├── test_search.py
+│   ├── test_incremental.py     # --since date merge + IBM hash-diff
+│   ├── test_auto_update.py     # git pull / trigger / update_index.sh
 │   └── test_mcp_server.py
 │
 ├── knowledge/                  # Built indices (committed so MCP auto-update can ship them)
-│   └── doc-20.2.1/
-│       ├── metadata.json
-│       ├── command_xref.json
-│       ├── rados/
-│       │   ├── faiss.index
-│       │   ├── chunks.json
-│       │   └── code_examples.json
-│       ├── cephfs/
-│       ├── rbd/
-│       └── ...
+│   ├── doc-20.2.1/             # Upstream RST
+│   └── doc-ibm-{8.0,8.1,9.0,9.1}/
 │
 ├── vscode-extension/           # VS Code extension
 ├── examples/                   # Integration examples
 ├── SPEC.md                     # MCP contract documentation
+├── UPDATING.md                 # Maintainer rebuild / --since / hot-reload
 ├── DEVELOPMENT.md              # This file
 ├── BOB_INTEGRATION_GUIDE.md    # Agent integration guide
 └── .cursor/rules/              # Cursor AI rules
@@ -87,14 +88,18 @@ ceph-doc-kb/
 ## Knowledge Base On-Disk Layout
 
 ```
-knowledge/doc-{version}/
-├── metadata.json           # IndexMetadata: version, model, stats, components
-├── command_xref.json       # {command: [{chunk_id, title, source, component}]}
-├── {component}/
-│   ├── faiss.index         # FAISS IndexFlatIP (cosine on L2-normalized vectors)
-│   ├── chunks.json         # [{entity_id, title, content, ...}]
-│   └── code_examples.json  # [{entity_id, code, language, context, ...}]
+knowledge/doc-{version}/            # upstream, e.g. doc-20.2.1
+knowledge/doc-ibm-{version}/        # IBM HTML, e.g. doc-ibm-9.1
+    metadata.json                   # IndexMetadata + last_incremental_since
+    command_xref.json
+    ibm_crawl_metadata.json         # IBM only: updated_since
+    {component}/
+        faiss.index
+        chunks.json
+        code_examples.json
 ```
+
+The MCP loads the numerically latest `knowledge/doc-*/` as primary and every sibling with `metadata.json` as additional (IBM). `reload_from_disk()` rediscovers those siblings after `git pull` or `.reload_trigger`.
 
 ## REST API Endpoints
 
@@ -120,14 +125,18 @@ python3 -m ceph_doc_kb.server.rest_api
 
 | Tool | Arguments | Description |
 |------|-----------|-------------|
-| `search_docs` | query, component?, limit? | Two-tier search (BM25 + semantic) |
-| `search_examples` | query, component?, language?, limit? | Code example search |
+| `search_docs` | query, component?, version?, limit? | Two-tier search (BM25 + semantic) |
+| `search_examples` | query, component?, version?, language?, limit? | Code example search |
 | `get_doc_page` | source_file | Full page content |
-| `find_docs_for_command` | command | Instant command→doc lookup |
+| `get_doc_chunk` | entity_id | One section by 16-char hex id |
+| `find_docs_for_command` | command, version? | Instant command→doc lookup |
+| `list_versions` | — | Upstream + IBM indices loaded |
 | `list_components` | — | Component list with counts |
-| `list_topics` | component | Topics within component |
+| `list_topics` | component | Topics within a component |
 | `capabilities` | — | Server capabilities |
 | `health` | — | Index status |
+
+SSE: `python3 -m ceph_doc_kb.server.mcp_server --transport sse --port 8082`. `--no-auto-update` disables git pull and the `.reload_trigger` watcher. See [UPDATING.md](UPDATING.md).
 
 ## Building the Index
 
@@ -139,11 +148,22 @@ git clone --depth 1 --branch v20.2.1 --sparse https://github.com/ceph/ceph.git /
 cd /tmp/ceph-docs && git sparse-checkout set doc
 
 # 2. Build the index
-cd /path/to/ceph-doc-kb
+cd /path/to/ceph-document-kb
 python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
 ```
 
-### Incremental Update (patch release)
+### Incremental update (date delta)
+
+Re-parses RST files from `git log --since` and **merges** into the existing FAISS index. Requires git history (not `--depth 1`) and an existing `knowledge/doc-{version}/`.
+
+```bash
+python3 index_docs.py --since 2026-08-01 \
+    --docs-path /tmp/ceph-docs/doc \
+    --repo-path /tmp/ceph-docs \
+    --version 20.2.1 --verbose
+```
+
+### Incremental update (patch release tags)
 
 ```bash
 python3 index_docs.py --update \
@@ -152,12 +172,21 @@ python3 index_docs.py --update \
     --from-version v20.2.1 --to-version v20.2.2
 ```
 
+### IBM HTML
+
+```bash
+python3 index_ibm_docs.py --version 9.1 --since 2026-08-01 \
+    --cache-dir ./cache/ibm-9.1 --verbose
+```
+
+`--since` recrawls the IBM API and hash-diffs against `--cache-dir`. Unchanged HTML skips the FAISS rebuild. Without `--cache-dir`, `--since` always full-rebuilds. Wrapper: `./update_index.sh` (see [UPDATING.md](UPDATING.md)).
+
 ### Adding a New Ceph Version
 
-1. Sparse-clone the new tag
+1. Sparse-clone the new tag (full history if you will use `--since` later)
 2. Run `index_docs.py` with the new `--version`
 3. The new index is stored alongside existing ones in `knowledge/`
-4. The server auto-selects the latest version
+4. The server loads every `knowledge/doc-*/` with `metadata.json` (latest numerically is primary)
 
 ## Running Tests
 
@@ -174,7 +203,7 @@ pytest tests/ -v
 - **fastembed (ONNX)** — ~100MB total, no PyTorch dependency, CPU-optimized
 - **Command cross-reference** — instant O(1) lookup from any command to its docs
 - **RST directive awareness** — deprecated/versionadded/warning metadata preserved
-- **Incremental updates** — git diff between tags, re-index only changed files
+- **Incremental updates** — git diff between tags, or `git log --since` date merge; IBM `--since` is recrawl + HTML hash-diff
 
 ## Dependencies
 

@@ -7,8 +7,8 @@ Cursor does **not** need a restart after an index update. The MCP process hot-re
 ## Canonical command
 
 ```bash
-cd /path/to/ceph-doc-kb
-./update_index.sh                 # since last successful run, or last 1 day
+cd /path/to/ceph-document-kb
+./update_index.sh                 # since yesterday of last success (1-day overlap), or last 1 day if first run
 ./update_index.sh 7               # last 7 days
 ./update_index.sh 2026-08-01      # explicit ISO date
 ./update_index.sh --reset         # clear .last_index_update
@@ -30,9 +30,9 @@ cd /path/to/ceph-doc-kb
 2. Upstream: `python3 index_docs.py --since DATE --docs-path $CEPH_DOCS_REPO/doc --repo-path $CEPH_DOCS_REPO --version $CEPH_VERSION`.
 3. IBM: `python3 index_ibm_docs.py --version VER --since DATE --cache-dir ./cache/ibm-VER` for each `IBM_VERSIONS` entry.
 4. Touches `.reload_trigger`.
-5. Writes `.last_index_update`.
+5. Writes `.last_index_update` to **yesterday of the run date** (1-day overlap), not the ISO `--since` you passed.
 
-Upstream `--since` uses `git log --since` on RST under `doc/` and **merges** into the existing FAISS index.
+Upstream `--since` uses `git log --since` on RST under `doc/` and **merges** into the existing FAISS index. The Ceph checkout must contain history covering that date (not a `--depth 1` clone).
 
 IBM has no git history. `--since` recrawls the IBM docs API, hash-compares against `--cache-dir`, and **skips** the FAISS rebuild when HTML is unchanged. Without `--cache-dir`, IBM always full-rebuilds.
 
@@ -45,14 +45,15 @@ IBM has no git history. `--since` recrawls the IBM docs API, hash-compares again
 | `git pull` of any `*.py` | MCP `os._exit(0)`; Cursor respawns the subprocess | Stays open |
 | No git remote | Pull skipped; trigger watcher still runs | Stays open |
 
-Disable with `--no-auto-update` (also stops the trigger watcher). Interval: `--update-interval HOURS` (default 1).
+Disable with `--no-auto-update` (stops git pull **and** the trigger watcher). Interval: `--update-interval HOURS` (default 1; `0` = no periodic pull; startup pull still runs if a remote exists; trigger still watched unless `--no-auto-update`).
 
 ### Cursor MCP config
 
 ```json
 {
-  "command": "python",
-  "args": ["-m", "ceph_doc_kb.server.mcp_server", "--auto-update", "--update-interval", "1"]
+  "command": "python3",
+  "args": ["-m", "ceph_doc_kb.server.mcp_server", "--auto-update", "--update-interval", "1"],
+  "cwd": "/path/to/ceph-document-kb"
 }
 ```
 

@@ -27,7 +27,7 @@ def _create_doc_server(kb_path: str | None, version: str | None) -> CephDocMCPSe
     config = _load_config()
     resolved = _resolve_kb_path(kb_path, version)
     server = CephDocMCPServer(resolved, config)
-    server._load()
+    server.reload_from_disk()
     return server
 
 

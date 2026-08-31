@@ -215,8 +215,8 @@ After=network.target
 [Service]
 Type=simple
 User=ceph-kb
-WorkingDirectory=/opt/ceph-doc-kb
-ExecStart=/opt/ceph-doc-kb/.venv/bin/python3 -m ceph_doc_kb.server.rest_api
+WorkingDirectory=/opt/ceph-document-kb
+ExecStart=/opt/ceph-document-kb/.venv/bin/python3 -m ceph_doc_kb.server.rest_api
 Restart=always
 RestartSec=5
 

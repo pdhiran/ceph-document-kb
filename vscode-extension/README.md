@@ -7,7 +7,7 @@ Search and browse Ceph documentation directly from VS Code, powered by the ceph-
 The ceph-doc-kb REST API server must be running:
 
 ```bash
-cd /path/to/ceph-doc-kb
+cd /path/to/ceph-document-kb
 python3 -m ceph_doc_kb.server.rest_api
 # Server starts on http://localhost:8100
 ```

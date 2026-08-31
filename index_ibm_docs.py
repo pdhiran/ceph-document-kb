@@ -9,10 +9,13 @@ Usage:
     python index_ibm_docs.py --version 8.1
 
     # Index with custom output directory
-    python index_ibm_docs.py --version 8.1 --output ./knowledge/ibm-8.1
+    python index_ibm_docs.py --version 8.1 --output ./knowledge/doc-ibm-8.1
 
-    # Index from previously saved HTML (offline mode)
+    # Index from previously saved HTML (offline mode, no --since)
     python index_ibm_docs.py --version 8.1 --cache-dir ./ibm-docs-cache
+
+    # Delta: recrawl, hash-diff vs cache, skip FAISS if HTML unchanged
+    python index_ibm_docs.py --version 9.1 --since 2026-08-01 --cache-dir ./cache/ibm-9.1
 
     # Limit pages for testing
     python index_ibm_docs.py --version 8.1 --max-pages 5 --verbose
@@ -77,7 +80,12 @@ Examples:
         "--cache-dir",
         type=Path,
         default=None,
-        help="Directory to cache/load raw HTML pages (enables offline re-indexing)",
+        help=(
+            "Directory to cache/load raw HTML. Without --since, enables "
+            "offline re-index from saved HTML. With --since, used for "
+            "hash-diff (skip FAISS rebuild if unchanged). Omit with "
+            "--since to always full-rebuild."
+        ),
     )
     parser.add_argument(
         "--max-pages",

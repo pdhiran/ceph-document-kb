@@ -51,6 +51,8 @@ cd ceph-document-kb
 pip install -e .
 ```
 
+GitHub repository name is `ceph-document-kb`. The Python package and Cursor MCP key are `ceph-doc-kb`. Point `cwd` at this clone.
+
 Indices under `knowledge/` are committed so the MCP can serve immediately. Rebuild only when docs change (see [Updating the knowledge base](#updating-the-knowledge-base)).
 
 ## Incorporate into an agent
@@ -63,7 +65,7 @@ Indices under `knowledge/` are committed so the MCP can serve immediately. Rebui
     "ceph-doc-kb": {
       "command": "python3",
       "args": ["-m", "ceph_doc_kb.server.mcp_server"],
-      "cwd": "/path/to/ceph-doc-kb"
+      "cwd": "/path/to/ceph-document-kb"
     }
   }
 }
@@ -155,16 +157,17 @@ Needs a Ceph git checkout with `doc/`. Re-parses only RST files touched since th
 # First-time full build
 git clone --depth 1 --branch v20.2.1 --sparse https://github.com/ceph/ceph.git /tmp/ceph-docs
 cd /tmp/ceph-docs && git sparse-checkout set doc
-cd /path/to/ceph-doc-kb
+cd /path/to/ceph-document-kb
 python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
 
-# Date delta (git log --since)
+# Date delta (git log --since). Needs git history covering the date —
+# a `--depth 1` clone from the full-build step above is not enough.
 python3 index_docs.py --since 2026-08-01 \
     --docs-path /tmp/ceph-docs/doc \
     --repo-path /tmp/ceph-docs \
     --version 20.2.1 --verbose
 
-# Tag-to-tag delta (unchanged)
+# Tag-to-tag delta (git diff between tags)
 python3 index_docs.py --update --docs-path /tmp/ceph-docs/doc \
     --repo-path /tmp/ceph-docs --from-version v20.2.1 --to-version v20.2.2
 ```
@@ -198,7 +201,7 @@ Environment: `CEPH_DOCS_REPO` (default `/tmp/ceph-docs`), `CEPH_VERSION` (defaul
 
 Metadata fields: `last_incremental_since` on `metadata.json`; IBM also writes `updated_since` on `ibm_crawl_metadata.json`.
 
-The MCP auto-pulls this git repo on a timer and hot-reloads every `knowledge/doc-*/` index (Cursor stays open; only a `.py` pull respawns the MCP subprocess). `./update_index.sh` touches `.reload_trigger` for the same in-process reload. A missing git remote skips pull but still watches the trigger. `--no-auto-update` disables both git pull and the trigger watcher.
+The MCP auto-pulls this git repo on a timer and hot-reloads every `knowledge/doc-*/` index (Cursor stays open; only a `.py` pull respawns the MCP subprocess). `./update_index.sh` touches `.reload_trigger` for the same in-process reload. A missing git remote skips pull but still watches the trigger. `--no-auto-update` disables both git pull and the trigger watcher (no pull, no trigger).
 
 Full maintainer help: [UPDATING.md](UPDATING.md).
 

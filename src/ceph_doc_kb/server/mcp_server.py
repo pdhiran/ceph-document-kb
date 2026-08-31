@@ -45,18 +45,6 @@ def _resolve_kb_path(kb_path: str | None, version: str | None) -> Path:
     return base
 
 
-def _discover_all_kb_paths(kb_path: str | None) -> list[Path]:
-    """Discover all versioned knowledge bases (upstream + IBM)."""
-    base = Path(kb_path) if kb_path else PROJECT_ROOT / "knowledge"
-    if not base.exists():
-        return []
-    paths = sorted(
-        [d for d in base.iterdir() if d.is_dir() and (d / "metadata.json").exists()],
-        key=_version_sort_key,
-    )
-    return paths
-
-
 def _load_config(config_path: Path | None = None) -> dict:
     import yaml
 
@@ -510,40 +498,44 @@ class CephDocMCPServer:
             if CephDocMCPServer._matches_version(r.chunk.source_file, version)
         ]
 
+    @staticmethod
+    def _version_entry(meta: IndexMetadata) -> dict:
+        """Build a list_versions row. IBM indices are never labeled upstream."""
+        cv = meta.ceph_version
+        ibm = str(cv).startswith("ibm-")
+        return {
+            "version_id": cv if ibm else "upstream",
+            "label": (
+                f"IBM Storage Ceph {str(cv).replace('ibm-', '')}"
+                if ibm
+                else f"Upstream Ceph ({cv})"
+            ),
+            "type": "ibm-downstream" if ibm else "upstream",
+            "ceph_version": cv,
+            "total_chunks": meta.total_chunks,
+            "total_code_examples": meta.total_code_examples,
+        }
+
     def _list_versions(self) -> list[dict]:
         """List all available documentation versions."""
         versions = []
         if self.metadata:
-            versions.append({
-                "version_id": "upstream",
-                "label": f"Upstream Ceph ({self.metadata.ceph_version})",
-                "type": "upstream",
-                "ceph_version": self.metadata.ceph_version,
-                "total_chunks": self.metadata.total_chunks,
-                "total_code_examples": self.metadata.total_code_examples,
-            })
+            versions.append(self._version_entry(self.metadata))
         for meta in self._additional_metadata:
-            ver = meta.ceph_version
-            versions.append({
-                "version_id": ver,
-                "label": f"IBM Storage Ceph {ver.replace('ibm-', '')}",
-                "type": "ibm-downstream",
-                "ceph_version": ver,
-                "total_chunks": meta.total_chunks,
-                "total_code_examples": meta.total_code_examples,
-            })
+            versions.append(self._version_entry(meta))
         return versions
 
     def _list_components(self) -> list[dict]:
         components: dict[str, dict] = {}
         if self.metadata:
+            primary_label = self._version_entry(self.metadata)["version_id"]
             for name, comp in self.metadata.components.items():
                 components[name] = {
                     "name": name,
                     "chunk_count": comp.chunk_count,
                     "code_example_count": comp.code_example_count,
                     "topic_count": len(comp.topics),
-                    "sources": ["upstream"],
+                    "sources": [primary_label],
                 }
         for meta in self._additional_metadata:
             for name, comp in meta.components.items():
@@ -599,8 +591,11 @@ class CephDocMCPServer:
                 "get_doc_page",
                 "get_doc_chunk",
                 "find_docs_for_command",
+                "list_versions",
                 "list_components",
                 "list_topics",
+                "capabilities",
+                "health",
             ],
             "sources": ["upstream (ceph.io)", "ibm-downstream (ibm.com/docs)"],
             "versions": versions,
@@ -614,7 +609,7 @@ class CephDocMCPServer:
 
         if self.metadata:
             health["knowledge_bases"].append({
-                "type": "upstream",
+                "type": self._version_entry(self.metadata)["type"],
                 "ceph_version": self.metadata.ceph_version,
                 "total_chunks": self.metadata.total_chunks,
                 "total_code_examples": self.metadata.total_code_examples,
@@ -625,7 +620,7 @@ class CephDocMCPServer:
 
         for meta in self._additional_metadata:
             health["knowledge_bases"].append({
-                "type": "ibm-downstream",
+                "type": self._version_entry(meta)["type"],
                 "ceph_version": meta.ceph_version,
                 "total_chunks": meta.total_chunks,
                 "total_code_examples": meta.total_code_examples,
@@ -707,14 +702,9 @@ def create_server(
     config = _load_config()
     resolved_path = _resolve_kb_path(kb_path, version)
     doc_server = CephDocMCPServer(resolved_path, config)
-    doc_server._load()
-
-    # Auto-discover and load additional KBs (IBM docs, other versions)
-    all_kbs = _discover_all_kb_paths(kb_path)
-    for kb in all_kbs:
-        if kb.resolve() == resolved_path.resolve():
-            continue
-        doc_server.load_additional_kb(kb)
+    # Same discovery as the trigger/.py-pull path: siblings of the primary
+    # (knowledge/doc-* including doc-ibm-*).
+    doc_server.reload_from_disk()
 
     from mcp.types import Icon
 
@@ -798,7 +788,9 @@ def main(argv: list[str] | None = None) -> None:
         default=True,
         help=(
             "Git pull on a timer and watch .reload_trigger (default: enabled). "
-            "--no-auto-update disables both. No git remote still watches the trigger."
+            "--no-auto-update disables both git pull and the trigger watcher. "
+            "A missing git remote skips pull but still watches the trigger "
+            "(unless --no-auto-update)."
         ),
     )
     parser.add_argument(

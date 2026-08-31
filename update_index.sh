@@ -33,8 +33,11 @@ if [[ -n "${1:-}" ]]; then
     ARG="$1"
     if [[ "$ARG" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
         SINCE="$ARG"
-    else
+    elif [[ "$ARG" =~ ^[0-9]+$ ]]; then
         SINCE=$(date -v-"${ARG}"d +%Y-%m-%d 2>/dev/null || date -d "${ARG} days ago" +%Y-%m-%d)
+    else
+        echo "error: invalid date '$ARG'; expected YYYY-MM-DD or a day count" >&2
+        exit 1
     fi
 elif [[ -f "$LAST_RUN_FILE" ]]; then
     SINCE=$(cat "$LAST_RUN_FILE")
@@ -42,6 +45,11 @@ elif [[ -f "$LAST_RUN_FILE" ]]; then
 else
     SINCE=$(date -v-1d +%Y-%m-%d 2>/dev/null || date -d "1 day ago" +%Y-%m-%d)
     echo "(First run — fetching last 1 day)"
+fi
+
+if ! SINCE="$SINCE" python3 -c "from datetime import datetime; import os; datetime.strptime(os.environ['SINCE'], '%Y-%m-%d')" 2>/dev/null; then
+    echo "error: invalid date '$SINCE'; expected YYYY-MM-DD" >&2
+    exit 1
 fi
 
 echo "=== Ceph Doc KB Index Update ==="

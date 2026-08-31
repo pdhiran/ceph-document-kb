@@ -56,8 +56,8 @@ Each Ceph release gets its own index directory:
 
 ```
 knowledge/
-  doc-20.2.1/     # Tentacle release
-  doc-19.2.0/     # Squid release
+  doc-20.2.1/     # Tentacle upstream RST
+  doc-ibm-9.1/    # IBM Storage Ceph 9.1 HTML (also 8.0, 8.1, 9.0)
 ```
 
 The MCP server loads the latest available version by default, or a specific version via `--version` argument.
@@ -66,12 +66,16 @@ The MCP server loads the latest available version by default, or a specific vers
 
 | Tool | Purpose | Complement to cmd-kb |
 |------|---------|---------------------|
-| `search_docs(query, component, limit)` | Semantic + keyword doc search | Provides context for commands |
-| `search_examples(query, component, language, limit)` | Find code/config snippets | Provides usage examples |
+| `search_docs(query, component, version, limit)` | Semantic + keyword doc search | Provides context for commands |
+| `search_examples(query, component, version, language, limit)` | Find code/config snippets | Provides usage examples |
 | `get_doc_page(source_file)` | Full page content | Deep-dive after search |
-| `find_docs_for_command(command)` | Instant command→doc lookup | Bridges cmd-kb → doc-kb |
+| `get_doc_chunk(entity_id)` | One section by 16-char hex id | Deep-dive after search/xref |
+| `find_docs_for_command(command, version)` | Instant command→doc lookup | Bridges cmd-kb → doc-kb |
+| `list_versions()` | Upstream + IBM indices loaded | Pick version before search |
 | `list_components()` | Discover available doc sections | Scoping for targeted search |
 | `list_topics(component)` | Topics within a component | Navigate doc hierarchy |
+| `capabilities()` | Server contract | Orchestration |
+| `health()` | Index status | Orchestration |
 
 ## Response Format
 
