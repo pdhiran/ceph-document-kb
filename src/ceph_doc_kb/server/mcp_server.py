@@ -73,14 +73,14 @@ def _build_tools() -> list[Tool]:
                 "BM25 keyword match for exact terms, semantic search for conceptual queries.\n"
                 "Results are ranked by relevance and documentation quality.\n\n"
                 "IMPORTANT: This KB contains multiple versions (upstream Ceph + IBM Storage Ceph\n"
-                "8.0, 8.1, 9.0, 9.1). If the user hasn't specified which version they need,\n"
+                "8.0, 8.1, 9.0, 9.1, 9.2). If the user hasn't specified which version they need,\n"
                 "ASK them before searching. Use list_versions to see available versions.\n\n"
                 "Args:\n"
                 "    query: Natural language query or keywords, e.g. 'how to set up erasure coding'\n"
                 "    component: Optional component to scope search (rados, cephfs, rbd, radosgw,\n"
                 "        cephadm, mgr, mon, install, start). Omit for global search.\n"
                 "    version: Optional version filter. Use 'ibm-8.0', 'ibm-8.1', 'ibm-9.0',\n"
-                "        'ibm-9.1' for IBM docs, or 'upstream' for upstream Ceph docs.\n"
+                "        'ibm-9.1', 'ibm-9.2' for IBM docs, or 'upstream' for upstream Ceph docs.\n"
                 "        Omit to search all versions.\n"
                 "    limit: Maximum number of results to return (default 10)\n"
             ),
@@ -94,7 +94,7 @@ def _build_tools() -> list[Tool]:
                     },
                     "version": {
                         "type": "string",
-                        "description": "Version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0', 'ibm-9.1', or 'upstream'. Omit for all.",
+                        "description": "Version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0', 'ibm-9.1', 'ibm-9.2', or 'upstream'. Omit for all.",
                     },
                     "limit": {
                         "type": "integer",
@@ -118,7 +118,7 @@ def _build_tools() -> list[Tool]:
                 "    query: What kind of example you're looking for, e.g. 'create erasure coded pool'\n"
                 "    component: Optional component scope (e.g. 'rados', 'rbd', 'cephadm')\n"
                 "    version: Optional version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0',\n"
-                "        'ibm-9.1', or 'upstream'. Omit to search all.\n"
+                "        'ibm-9.1', 'ibm-9.2', or 'upstream'. Omit to search all.\n"
                 "    language: Optional language filter (e.g. 'bash', 'yaml', 'json', 'python')\n"
                 "    limit: Maximum number of results to return (default 10)\n"
             ),
@@ -132,7 +132,7 @@ def _build_tools() -> list[Tool]:
                     },
                     "version": {
                         "type": "string",
-                        "description": "Version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0', 'ibm-9.1', or 'upstream'. Omit for all.",
+                        "description": "Version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0', 'ibm-9.1', 'ibm-9.2', or 'upstream'. Omit for all.",
                     },
                     "language": {
                         "type": "string",
@@ -205,7 +205,7 @@ def _build_tools() -> list[Tool]:
                 "    command: The Ceph command to look up, e.g. 'ceph osd pool create',\n"
                 "        'rbd mirror pool enable', 'radosgw-admin user create'\n"
                 "    version: Optional version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0',\n"
-                "        'ibm-9.1', or 'upstream'. Omit to search all.\n"
+                "        'ibm-9.1', 'ibm-9.2', or 'upstream'. Omit to search all.\n"
             ),
             inputSchema={
                 "type": "object",
@@ -216,7 +216,7 @@ def _build_tools() -> list[Tool]:
                     },
                     "version": {
                         "type": "string",
-                        "description": "Version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0', 'ibm-9.1', or 'upstream'. Omit for all.",
+                        "description": "Version filter: 'ibm-8.0', 'ibm-8.1', 'ibm-9.0', 'ibm-9.1', 'ibm-9.2', or 'upstream'. Omit for all.",
                     },
                 },
                 "required": ["command"],

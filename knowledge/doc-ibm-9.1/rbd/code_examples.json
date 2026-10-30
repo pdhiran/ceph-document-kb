@@ -2748,6 +2748,181 @@
     ]
   },
   {
+    "entity_id": "b5baa1813c76da49",
+    "code": "dnf install ktls-utils -y",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eded20757773d393",
+    "code": "[authenticate]\nkeyrings = .nvme",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9f85b15450bcc97a",
+    "code": "systemctl enable --now tlshd",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "07f6bc7e4130a863",
+    "code": "cat /etc/nvme/hostnqn",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8cb61d77b6a7ecf1",
+    "code": "nvme gen-tls-key",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c81ceb83d6b79200",
+    "code": "modprobe nvme-tcp",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "16083b1b5d9d0933",
+    "code": "nvme check-tls-key --insert --hostnqn=HOST_NQN --subsysnqn=SUBSYSTEM_NQN --keydata=KEY_DATA --identity=0",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6422c7ce534685d8",
+    "code": "nvme check-tls-key --insert --hostnqn=nqn.example --subsysnqn=nqn.target --keydata=abc123 --identity=0",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b30247a3289382a9",
+    "code": "ceph nvmeof subsystem add SUBSYSTEM_NQN --secure_listeners",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": [
+      "ceph nvmeof subsystem add SUBSYSTEM_NQN"
+    ]
+  },
+  {
+    "entity_id": "e056b67eacae108b",
+    "code": "ceph nvmeof namespace add --nqn SUBSYSTEM_NQN --rbd_pool POOL --rbd_image_name IMAGE --size SIZE --create_image",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": [
+      "ceph nvmeof namespace add --nqn"
+    ]
+  },
+  {
+    "entity_id": "40af307cdc834508",
+    "code": "ceph nvmeof listener add --nqn SUBSYSTEM_NQN --secure",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": [
+      "ceph nvmeof listener add --nqn"
+    ]
+  },
+  {
+    "entity_id": "488d4293217d7065",
+    "code": "[ceph: root@host01 ~]# ceph nvmeof subsystem add nqn.2016-06.io.spdk:cnode1.mygroup1 --secure_listeners\n[ceph: root@host01 ~]# ceph nvmeof namespace add --nqn nqn.2016-06.io.spdk:cnode1.mygroup1 --rbd_pool rbd --rbd_image_name img01 --size 100M --create_image\n[ceph: root@host01 ~]# ceph nvmeof listener add --nqn nqn.2016-06.io.spdk:cnode1.mygroup1 --secure",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": [
+      "ceph nvmeof subsystem add nqn",
+      "ceph nvmeof namespace add --nqn",
+      "rbd --rbd_image_name img01 --size 100M",
+      "ceph nvmeof listener add --nqn"
+    ]
+  },
+  {
+    "entity_id": "dc75895e1858dba3",
+    "code": "ceph nvmeof host add --nqn SUBSYSTEM_NQN --host_nqn HOST_NQN --psk TLS_PSK_KEY",
+    "language": "bash",
+    "context": "Register the initiator with the subsystem and assign the TLS key.",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": [
+      "ceph nvmeof host add --nqn"
+    ]
+  },
+  {
+    "entity_id": "daef1e3c79da2220",
+    "code": "[ceph: root@host01 ~]# ceph nvmeof host add --nqn nqn.2016-06.io.spdk:cnode1.mygroup1 --host_nqn nqn.host.example --psk secret123",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": [
+      "ceph nvmeof host add --nqn"
+    ]
+  },
+  {
+    "entity_id": "9828b654062ce89e",
+    "code": "nvme connect --transport tcp --traddr GATEWAY_IP --trsvcid 4420 --nqn SUBSYSTEM_NQN --tls",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d8ebfdccc63c5653",
+    "code": "[ceph: root@host01 ~]# nvme connect --transport tcp --traddr 10.0.0.10 --trsvcid 4420 --nqn nqn.2016-06.io.spdk:cnode1.mygroup1 --tls",
+    "language": "bash",
+    "context": "Configuring TLS-PSK authentication for NVMe-oF",
+    "source_file": "ibm-docs/9.1/gateways-configuring-tls-psk-authentication-nvme",
+    "component": "rbd",
+    "section_title": "Configuring TLS-PSK authentication for NVMe-oF",
+    "commands_used": []
+  },
+  {
     "entity_id": "1703023207ca97d5",
     "code": "esxcli nvme controller list\nName                                                                                        Controller Number  Adapter  Transport Type  Is Online\n------------------------------------------------------------------------------------------  -----------------  -------  --------------  ---------\nnqn.2014-08.org.nvmexpress_8086_INTEL_SSDPE2KX010T7_____________________PHLF733300LH1P0GGN                256  vmhba2   PCIe                 true\nnqn.2016-06.io.spdk:cnode2#vmhba64#10.0.210.14:4420                                                       282  vmhba64  TCP                 false\nnqn.2016-06.io.spdk:cnode1.group1 #vmhba64#10.0.210.14:4420                                                       278  vmhba64  TCP                 false",
     "language": "bash",
@@ -2824,15 +2999,15 @@
     ]
   },
   {
-    "entity_id": "8092578395ff9e98",
-    "code": "[ceph: root@host01 /]# ceph orch rm nqn.2016-06.io.spdk:cnode1.group1",
+    "entity_id": "3a658ec85dc282eb",
+    "code": "[ceph: root@host01 /]# ceph orch rm nvmeof.nvmeof.pool1",
     "language": "bash",
     "context": "Removing the NVMe-oF service",
     "source_file": "ibm-docs/9.1/gateway-removing-nvme-service",
     "component": "rbd",
     "section_title": "Removing the NVMe-oF service",
     "commands_used": [
-      "ceph orch rm nqn"
+      "ceph orch rm nvmeof"
     ]
   },
   {

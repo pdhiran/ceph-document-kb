@@ -13,8 +13,6 @@ import logging
 import time
 from dataclasses import dataclass, field
 
-import httpx
-
 from ceph_doc_kb.constants import IBM_DOCS_BASE_URL, IBM_VERSIONS
 
 logger = logging.getLogger(__name__)
@@ -23,15 +21,8 @@ IBM_DOCS_API_BASE = "https://www.ibm.com/docs/api/v1"
 REQUEST_TIMEOUT = 30.0
 THROTTLE_SECONDS = 0.5
 MAX_RETRIES = 3
-
-_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/json,*/*",
-    "Accept-Language": "en-US,en;q=0.5",
-}
+# Akamai blocks plain httpx/curl TLS fingerprints; chrome impersonation works.
+_IMPERSONATE = "chrome131"
 
 # Topic categories to skip (not useful for technical KB)
 _SKIP_TOPIC_IDS = frozenset({
@@ -89,13 +80,18 @@ def _get_product_id(version: str) -> str:
     return ver_info["product_id"]
 
 
-def _fetch_with_retry(
-    client: httpx.Client, url: str, retries: int = MAX_RETRIES
-) -> tuple[str, int]:
-    """Fetch a URL with retries and backoff."""
+def _fetch_with_retry(url: str, retries: int = MAX_RETRIES) -> tuple[str, int]:
+    """Fetch a URL with retries and backoff (curl_cffi chrome TLS impersonation)."""
+    from curl_cffi import requests as cf_requests
+
     for attempt in range(retries):
         try:
-            resp = client.get(url, follow_redirects=True)
+            resp = cf_requests.get(
+                url,
+                impersonate=_IMPERSONATE,
+                timeout=REQUEST_TIMEOUT,
+                allow_redirects=True,
+            )
             if resp.status_code == 200:
                 return resp.text, 200
             if resp.status_code == 429:
@@ -107,11 +103,11 @@ def _fetch_with_retry(
                 time.sleep(2)
                 continue
             return "", resp.status_code
-        except httpx.TimeoutException:
-            logger.warning("Timeout (attempt %d/%d): %s", attempt + 1, retries, url)
+        except cf_requests.RequestsError as exc:
+            logger.warning("HTTP error (attempt %d/%d): %s - %s", attempt + 1, retries, url, exc)
             time.sleep(2)
-        except httpx.HTTPError as exc:
-            logger.warning("HTTP error: %s - %s", url, exc)
+        except Exception as exc:
+            logger.warning("Fetch error (attempt %d/%d): %s - %s", attempt + 1, retries, url, exc)
             time.sleep(2)
     return "", 0
 
@@ -156,10 +152,7 @@ def fetch_toc(version: str) -> list[TocEntry]:
     toc_url = f"{IBM_DOCS_API_BASE}/toc/{product_id}"
     logger.info("Fetching TOC from %s", toc_url)
 
-    with httpx.Client(
-        timeout=REQUEST_TIMEOUT, headers=_HEADERS, follow_redirects=True
-    ) as client:
-        text, status = _fetch_with_retry(client, toc_url)
+    text, status = _fetch_with_retry(toc_url)
 
     if not text:
         raise RuntimeError(f"Failed to fetch TOC: {toc_url} (status={status})")
@@ -242,34 +235,31 @@ def crawl_version(
         len(filtered), version, skipped,
     )
 
-    with httpx.Client(
-        timeout=REQUEST_TIMEOUT, headers=_HEADERS, follow_redirects=True
-    ) as client:
-        for i, entry in enumerate(filtered, 1):
-            content_url = f"{IBM_DOCS_API_BASE}/content/{entry.href}"
+    for i, entry in enumerate(filtered, 1):
+        content_url = f"{IBM_DOCS_API_BASE}/content/{entry.href}"
 
-            if i % 50 == 0 or i == 1:
-                logger.info("[%d/%d] Fetching: %s", i, len(filtered), entry.label)
+        if i % 50 == 0 or i == 1:
+            logger.info("[%d/%d] Fetching: %s", i, len(filtered), entry.label)
 
-            html, status = _fetch_with_retry(client, content_url)
+        html, status = _fetch_with_retry(content_url)
 
-            if html and status == 200:
-                page = CrawledPage(
-                    url=_make_topic_url(entry.topic_id, version),
-                    topic_id=entry.topic_id,
-                    label=entry.label,
-                    href=entry.href,
-                    html=html,
-                    status_code=status,
-                    parent_section=entry.parent_label,
-                )
-                result.pages.append(page)
-            else:
-                logger.debug("Failed (%d): %s", status, entry.href)
-                result.failed_hrefs.append(entry.href)
+        if html and status == 200:
+            page = CrawledPage(
+                url=_make_topic_url(entry.topic_id, version),
+                topic_id=entry.topic_id,
+                label=entry.label,
+                href=entry.href,
+                html=html,
+                status_code=status,
+                parent_section=entry.parent_label,
+            )
+            result.pages.append(page)
+        else:
+            logger.debug("Failed (%d): %s", status, entry.href)
+            result.failed_hrefs.append(entry.href)
 
-            if i < len(filtered):
-                time.sleep(throttle)
+        if i < len(filtered):
+            time.sleep(throttle)
 
     logger.info(
         "Crawl complete: %d fetched, %d failed out of %d topics",

@@ -250,6 +250,26 @@
     "commands_used": []
   },
   {
+    "entity_id": "a88ee229bef3968f",
+    "code": "rule rgw-service {\n type replicated\n min_size 1\n max_size 10\n step take default class hdd\n step chooseleaf firstn 0 type rack\n step emit\n}",
+    "language": "bash",
+    "context": "CRUSH rules",
+    "source_file": "ibm-docs/9.1/overview-crush-rules",
+    "component": "rados",
+    "section_title": "CRUSH rules",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1b1d27bc5f639602",
+    "code": "rule rgw-service {\n    type replicated\n    min_size 1\n    max_size 10\n    step take default class ssd\n    step chooseleaf firstn 0 type rack\n    step emit\n}",
+    "language": "bash",
+    "context": "CRUSH rules",
+    "source_file": "ibm-docs/9.1/overview-crush-rules",
+    "component": "rados",
+    "section_title": "CRUSH rules",
+    "commands_used": []
+  },
+  {
     "entity_id": "88d8fb9bf475b5d7",
     "code": "ceph osd crush rule list\nceph osd crush rule ls",
     "language": "bash",
@@ -2108,24 +2128,188 @@
     ]
   },
   {
+    "entity_id": "6493b95b730ba9f6",
+    "code": "/var/lib/ceph/FSID/DAEMON-TYPE.DAEMON-ID/keyring",
+    "language": "bash",
+    "context": "In deployments that use the cephadm orchestrator, the daemon data directory defaults to the following path on the host where the daemon runs:",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2c44d1245a0171fa",
+    "code": "/var/lib/ceph/a7f3b1c2-4d5e-6f78-.../osd.2/keyring",
+    "language": "bash",
+    "context": "For example, the keyring for osd.2 in a cluster with FSID a7f3b1c2-4d5e-6f78-... is stored at:",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
     "entity_id": "75d42e96feda1b66",
     "code": "/var/lib/ceph/$type/CLUSTER-ID",
     "language": "bash",
-    "context": "Cephx daemon keyrings",
+    "context": "In legacy (non-cephadm) deployments, the data directory defaults to directories of the form:",
     "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
     "component": "rados",
-    "section_title": "Cephx daemon keyrings",
+    "section_title": "CephX daemon keyrings",
     "commands_used": []
   },
   {
     "entity_id": "42d97474f6678035",
     "code": "/var/lib/ceph/osd/ceph-12",
     "language": "bash",
-    "context": "Cephx daemon keyrings",
+    "context": "For example:",
     "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
     "component": "rados",
-    "section_title": "Cephx daemon keyrings",
+    "section_title": "CephX daemon keyrings",
     "commands_used": []
+  },
+  {
+    "entity_id": "d4bef56a91992ab4",
+    "code": "[osd.0]\n        key = AQCvCKRkAAAAABAAX1mxBEDDMnHkubu0hJPk2A==\n        caps mgr = \"allow profile osd\"\n        caps mon = \"allow profile osd\"\n        caps osd = \"allow *\"",
+    "language": "bash",
+    "context": "A keyring file is a plain-text file in INI format. Each section corresponds to a CephX entity. The following example shows the keyring for osd.0:",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eda75566e8f4a70b",
+    "code": "caps mon = \"allow *\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d45c7a96072d0dcc",
+    "code": "caps mgr = \"allow profile osd\"\ncaps mon = \"allow profile osd\"\ncaps osd = \"allow *\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c68972ff046f58e9",
+    "code": "caps mds = \"allow *\"\ncaps mon = \"allow profile mgr\"\ncaps osd = \"allow *\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8e007623e7b5b285",
+    "code": "caps mds = \"allow\"\ncaps mon = \"allow profile mds\"\ncaps osd = \"allow rwx pool=CEPHFS-POOLS\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9188ba4250952bf8",
+    "code": "ceph orch daemon rotate-key DAEMON-TYPE.DAEMON-ID",
+    "language": "bash",
+    "context": "To rotate a daemon key without redeploying the daemon, run:",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph orch daemon rotate-key DAEMON-TYPE"
+    ]
+  },
+  {
+    "entity_id": "e0b6e48d4347aed2",
+    "code": "ceph auth ls",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth ls"
+    ]
+  },
+  {
+    "entity_id": "8334949947e8b2d6",
+    "code": "ceph auth get ENTITY",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth get ENTITY"
+    ]
+  },
+  {
+    "entity_id": "3d940e27c1caafd7",
+    "code": "ceph auth get osd.0",
+    "language": "bash",
+    "context": "For example, to inspect the credentials for osd.0:",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth get osd"
+    ]
+  },
+  {
+    "entity_id": "d4bef56a91992ab4",
+    "code": "[osd.0]\n        key = AQCvCKRkAAAAABAAX1mxBEDDMnHkubu0hJPk2A==\n        caps mgr = \"allow profile osd\"\n        caps mon = \"allow profile osd\"\n        caps osd = \"allow *\"",
+    "language": "bash",
+    "context": "Example output:",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ef258ea41e0b098c",
+    "code": "ceph auth get ENTITY -o /path/to/keyring",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth get ENTITY -o"
+    ]
+  },
+  {
+    "entity_id": "7c3062245edb998b",
+    "code": "ceph orch ps",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph orch ps"
+    ]
+  },
+  {
+    "entity_id": "dbf130e9eebef937",
+    "code": "ceph orch daemon logs DAEMON-TYPE.DAEMON-ID",
+    "language": "bash",
+    "context": "If a daemon fails to authenticate, its status in ceph orch ps shows as error or the daemon restarts repeatedly. Check the daemon log for authentication errors:",
+    "source_file": "ibm-docs/9.1/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph orch daemon logs DAEMON-TYPE"
+    ]
   },
   {
     "entity_id": "2aa23e28ab78527e",
@@ -7044,193 +7228,215 @@
     ]
   },
   {
-    "entity_id": "fa2a075cc3d345e6",
+    "entity_id": "f155eb81d8ac10cd",
+    "code": "[ceph: root@host01 /]# ceph orch device ls --wide --refresh",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
+    "component": "rados",
+    "section_title": "Deploying Ceph OSDs using service specifications",
+    "commands_used": [
+      "ceph orch device ls --wide"
+    ]
+  },
+  {
+    "entity_id": "926becf134b222c4",
     "code": "[root@host01 ~]# touch osd_spec.yaml",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "0b0bf7901d627cfd",
-    "code": "service_type: osd\nservice_id: SERVICE_ID\nplacement:\n  host_pattern: * # optional\ndata_devices: # optional\n  model: DISK_MODEL_NAME # optional\n  paths:\n  - /DEVICE_PATH\nosds_per_device: NUMBER_OF_DEVICES # optional\ndb_devices: # optional\n  size: # optional\n  all: true # optional\n  paths:\n   - /DEVICE_PATH\nencrypted: true",
+    "entity_id": "499f5f74b2d755d3",
+    "code": "service_type: osd\nservice_id: SERVICE_ID\nplacement:\n  host_pattern: '*'\ndata_devices:\n  paths:\n    - /DEVICE_PATH",
     "language": "bash",
-    "context": "Deploying Ceph OSDs using advanced service specifications",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "context": "Deploying Ceph OSDs using service specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "ad615606833e0b4a",
-    "code": "service_type: osd\nservice_id: osd_spec_default\nplacement:\n  host_pattern: '*'\ndata_devices:\n  all: true\n  paths:\n  - /dev/sdb\nencrypted: true",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
-    "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
-    "commands_used": []
-  },
-  {
-    "entity_id": "61390512f35c6b20",
-    "code": "service_type: osd\nservice_id: osd_spec_default\nplacement:\n  host_pattern: '*'\ndata_devices:\n  size: '80G'\ndb_devices:\n  size: '40G:'\n  paths:\n   - /dev/sdc",
+    "entity_id": "06392929e5dc71a3",
+    "code": "service_type: osd\nservice_id: all-available-devices\nplacement:\n  host_pattern: '*'\ndata_devices:\n  all: true",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "d607d9e3d46cde26",
-    "code": "service_type: osd\nservice_id: all-available-devices\nencrypted: \"true\"\nmethod: raw\nplacement:\n  host_pattern: \"*\"\ndata_devices:\n  all: \"true\"",
+    "entity_id": "70dde9f0ab3efee3",
+    "code": "service_type: osd\nservice_id: osd_spec_host01\nplacement:\n  hosts:\n    - host01\ndata_devices:\n  paths:\n    - /dev/sdb",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "1e0104ff2f5e330d",
-    "code": "service_type: osd\nservice_id: osd_spec_hdd\nplacement:\n  host_pattern: '*'\ndata_devices:\n  rotational: 0\ndb_devices:\n  model: Model-name\n  limit: 2\n---\nservice_type: osd\nservice_id: osd_spec_ssd\nplacement:\n  host_pattern: '*'\ndata_devices:\n  model: Model-name\ndb_devices:\n  vendor: Vendor-name",
+    "entity_id": "6c498859935ad907",
+    "code": "service_type: osd\nservice_id: hdd_with_ssd_db\nplacement:\n  host_pattern: '*'\ndata_devices:\n  rotational: 1\ndb_devices:\n  rotational: 0",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "0521b6188bb1cf17",
+    "entity_id": "3fb6ecdde661723a",
+    "code": "service_type: osd\nservice_id: osd_spec_size\nplacement:\n  host_pattern: '*'\ndata_devices:\n  size: '2TB:'\ndb_devices:\n  size: ':2TB'",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
+    "component": "rados",
+    "section_title": "Deploying Ceph OSDs using service specifications",
+    "commands_used": []
+  },
+  {
+    "entity_id": "87ccf90bc7e76fae",
+    "code": "service_type: osd\nservice_id: osd_spec_hdd\nplacement:\n  host_pattern: '*'\ndata_devices:\n  rotational: 1\ndb_devices:\n  model: Model-name\n  limit: 2\n---\nservice_type: osd\nservice_id: osd_spec_ssd\nplacement:\n  host_pattern: '*'\ndata_devices:\n  model: Model-name\ndb_devices:\n  vendor: Vendor-name",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
+    "component": "rados",
+    "section_title": "Deploying Ceph OSDs using service specifications",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9821d5982165fc6e",
     "code": "service_type: osd\nservice_id: osd_spec_node_one_to_five\nplacement:\n  host_pattern: 'node[1-5]'\ndata_devices:\n  rotational: 1\ndb_devices:\n  rotational: 0\n---\nservice_type: osd\nservice_id: osd_spec_six_to_ten\nplacement:\n  host_pattern: 'node[6-10]'\ndata_devices:\n  model: Model-name\ndb_devices:\n  model: Model-name",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "a043ced23b28693b",
+    "entity_id": "7fc9d64f9692d700",
     "code": "service_type: osd\nservice_id: osd_using_paths\nplacement:\n  hosts:\n    - host01\n    - host02\ndata_devices:\n  paths:\n    - /dev/sdb\ndb_devices:\n  paths:\n    - /dev/sdc\nwal_devices:\n  paths:\n    - /dev/sdd",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "9a66b1850f6ce3bd",
+    "entity_id": "14161fa3193145c6",
     "code": "service_type: osd\nservice_id: multiple_osds\nplacement:\n  hosts:\n    - host01\n    - host02\nosds_per_device: 4\ndata_devices:\n  paths:\n    - /dev/sdb",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "02d18fadb722782c",
-    "code": "service_type: osd\n service_id: SERVICE_ID\n placement:\n   hosts:\n     - HOSTNAME\n data_devices: # optional\n   model: DISK_MODEL_NAME # optional\n   paths:\n   - /DEVICE_PATH\n db_devices: # optional\n   size: # optional\n   all: true # optional\n   paths:\n   - /DEVICE_PATH",
+    "entity_id": "e8c4b4015a2bc15b",
+    "code": "service_type: osd\nservice_id: SERVICE_ID\nplacement:\n  hosts:\n    - HOSTNAME\ndata_devices:\n  paths:\n    - /DEVICE_PATH\ndb_devices:\n  paths:\n    - /DEVICE_PATH",
     "language": "bash",
-    "context": "Deploying Ceph OSDs using advanced service specifications",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "context": "Deploying Ceph OSDs using service specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "af19ae9994703ae7",
-    "code": "service_type: osd\n service_id: osd_spec\n placement:\n   hosts:\n     - machine1\n data_devices:\n   paths:\n     - /dev/vg_hdd/lv_hdd\n db_devices:\n   paths:\n     - /dev/vg_nvme/lv_nvmes",
+    "entity_id": "2606926a2726e949",
+    "code": "service_type: osd\nservice_id: osd_spec\nplacement:\n  hosts:\n    - machine1\ndata_devices:\n  paths:\n    - /dev/vg_hdd/lv_hdd\ndb_devices:\n  paths:\n    - /dev/vg_nvme/lv_nvmes",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "fa17b7102000a9fb",
+    "entity_id": "e4049034058da12d",
     "code": "[root@host01 ~]# cephadm shell --mount osd_spec.yaml:/var/lib/ceph/osd/osd_spec.yaml",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": [
       "cephadm shell --mount osd_spec"
     ]
   },
   {
-    "entity_id": "14f66e8968a6c842",
+    "entity_id": "412c706729469332",
     "code": "[ceph: root@host01 /]# cd /var/lib/ceph/osd/",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": []
   },
   {
-    "entity_id": "f7ef41e24dadd3f6",
+    "entity_id": "441b260e19797176",
     "code": "[ceph: root@host01 osd]# ceph orch apply -i osd_spec.yaml --dry-run",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": [
       "ceph orch apply -i osd_spec"
     ]
   },
   {
-    "entity_id": "12c52900f61b2839",
+    "entity_id": "406c5ff041aa3aa1",
     "code": "ceph orch apply -i _FILE_NAME_.yml",
     "language": "bash",
-    "context": "Deploying Ceph OSDs using advanced service specifications",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "context": "Deploying Ceph OSDs using service specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": [
       "ceph orch apply -i _FILE_NAME_"
     ]
   },
   {
-    "entity_id": "77e867c2ebe132ab",
+    "entity_id": "82f1d054c6ab652e",
     "code": "[ceph: root@host01 osd]# ceph orch apply -i osd_spec.yaml",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": [
       "ceph orch apply -i osd_spec"
     ]
   },
   {
-    "entity_id": "93e34229e9b335ec",
+    "entity_id": "60d13bb7393107d5",
     "code": "[ceph: root@host01 /]# ceph orch ls osd",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": [
       "ceph orch ls osd"
     ]
   },
   {
-    "entity_id": "f1720b289dc313ce",
+    "entity_id": "2f11cc637e9081f0",
     "code": "[ceph: root@host01 /]# ceph osd tree",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-advanced-service-specifications",
+    "source_file": "ibm-docs/9.1/osds-deploying-ceph-using-service-specifications",
     "component": "rados",
-    "section_title": "Deploying Ceph OSDs using advanced service specifications",
+    "section_title": "Deploying Ceph OSDs using service specifications",
     "commands_used": [
       "ceph osd tree"
     ]
@@ -9219,7 +9425,7 @@
   },
   {
     "entity_id": "569b6b60068cd36e",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/flags', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/flags', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing all configuration options for OSDs",
     "source_file": "ibm-docs/9.1/api-viewing-all-configuration-options-osds",
@@ -9229,7 +9435,7 @@
   },
   {
     "entity_id": "569b6b60068cd36e",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/flags', auth=(\"USER\", \"PASSWORD\"), verify=False))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/flags', auth=(\"USER\", \"PASSWORD\"), verify=False))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing all configuration options for OSDs",
     "source_file": "ibm-docs/9.1/api-viewing-all-configuration-options-osds",
@@ -9259,7 +9465,7 @@
   },
   {
     "entity_id": "ac485399d82c7437",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/crush_rule', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/crush_rule', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing CRUSH rules",
     "source_file": "ibm-docs/9.1/api-viewing-crush-rules",
@@ -9269,7 +9475,7 @@
   },
   {
     "entity_id": "ac485399d82c7437",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/crush_rule', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/crush_rule', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing CRUSH rules",
     "source_file": "ibm-docs/9.1/api-viewing-crush-rules",
@@ -9299,7 +9505,7 @@
   },
   {
     "entity_id": "c5e063498da2c308",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing Monitor information",
     "source_file": "ibm-docs/9.1/api-viewing-monitor-information",
@@ -9309,7 +9515,7 @@
   },
   {
     "entity_id": "c5e063498da2c308",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing Monitor information",
     "source_file": "ibm-docs/9.1/api-viewing-monitor-information",
@@ -9339,7 +9545,7 @@
   },
   {
     "entity_id": "50b86bc615cc9d8e",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor/MON_NAME', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor/MON_NAME', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular Monitor",
     "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-monitor",
@@ -9349,7 +9555,7 @@
   },
   {
     "entity_id": "50b86bc615cc9d8e",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor/MON_NAME', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/monitor/MON_NAME', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular Monitor",
     "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-monitor",
@@ -9379,7 +9585,7 @@
   },
   {
     "entity_id": "fff95fb21f4c008f",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing OSD information",
     "source_file": "ibm-docs/9.1/api-viewing-osd-information",
@@ -9389,7 +9595,7 @@
   },
   {
     "entity_id": "fff95fb21f4c008f",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing OSD information",
     "source_file": "ibm-docs/9.1/api-viewing-osd-information",
@@ -9419,7 +9625,7 @@
   },
   {
     "entity_id": "43cfffc88b54271d",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular OSD",
     "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-osd",
@@ -9429,7 +9635,7 @@
   },
   {
     "entity_id": "43cfffc88b54271d",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular OSD",
     "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-osd",
@@ -9459,7 +9665,7 @@
   },
   {
     "entity_id": "4a013abc4ef2fefd",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID/command', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID/command', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Determining processes that can be scheduled on an OSD",
     "source_file": "ibm-docs/9.1/api-determining-processes-that-can-be-scheduled-osd",
@@ -9469,7 +9675,7 @@
   },
   {
     "entity_id": "4a013abc4ef2fefd",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID/command', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID/command', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Determining processes that can be scheduled on an OSD",
     "source_file": "ibm-docs/9.1/api-determining-processes-that-can-be-scheduled-osd",
@@ -9499,7 +9705,7 @@
   },
   {
     "entity_id": "e843a288561cbb6f",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing pool information",
     "source_file": "ibm-docs/9.1/api-viewing-pool-information",
@@ -9509,7 +9715,7 @@
   },
   {
     "entity_id": "e843a288561cbb6f",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing pool information",
     "source_file": "ibm-docs/9.1/api-viewing-pool-information",
@@ -9539,7 +9745,7 @@
   },
   {
     "entity_id": "f14eeb8f6ea329c2",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular pool",
     "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-pool",
@@ -9549,7 +9755,7 @@
   },
   {
     "entity_id": "f14eeb8f6ea329c2",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular pool",
     "source_file": "ibm-docs/9.1/api-viewing-information-about-particular-pool",
@@ -9578,8 +9784,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "3960f1c50a3c74c7",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/flags', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "entity_id": "305114a622dce170",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/osd/flags', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Changing OSD configuration options",
     "source_file": "ibm-docs/9.1/configurations-changing-osd-configuration-options",
@@ -9588,8 +9794,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "3960f1c50a3c74c7",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/flags', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "entity_id": "305114a622dce170",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/osd/flags', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Changing OSD configuration options",
     "source_file": "ibm-docs/9.1/configurations-changing-osd-configuration-options",
@@ -9618,8 +9824,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "6614b717b3b6f4d6",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', json={\"STATE\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "entity_id": "0aa515b0ae638d9d",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/osd/ID', json={\"STATE\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Changing an OSD state",
     "source_file": "ibm-docs/9.1/configurations-changing-osd-state",
@@ -9628,8 +9834,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "6614b717b3b6f4d6",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', json={\"STATE\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "entity_id": "0aa515b0ae638d9d",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/osd/ID', json={\"STATE\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Changing an OSD state",
     "source_file": "ibm-docs/9.1/configurations-changing-osd-state",
@@ -9658,8 +9864,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "02330a334f63e063",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', json={\"reweight\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "entity_id": "44639834c99272f4",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/osd/ID', json={\"reweight\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Changing the weight of an OSD",
     "source_file": "ibm-docs/9.1/configurations-changing-weight-osd",
@@ -9668,8 +9874,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "02330a334f63e063",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/osd/ID', json={\"reweight\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "entity_id": "44639834c99272f4",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/osd/ID', json={\"reweight\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Changing the weight of an OSD",
     "source_file": "ibm-docs/9.1/configurations-changing-weight-osd",
@@ -9699,7 +9905,7 @@
   },
   {
     "entity_id": "e789e4b8a1bc7ba8",
-    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/pool/ID', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/pool/ID', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Changing pool information",
     "source_file": "ibm-docs/9.1/configurations-changing-pool-information",
@@ -9709,7 +9915,7 @@
   },
   {
     "entity_id": "e789e4b8a1bc7ba8",
-    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/pool/ID', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.patch('https://CEPH_MANAGER:8080/api/pool/ID', json={\"OPTION\": VALUE}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Changing pool information",
     "source_file": "ibm-docs/9.1/configurations-changing-pool-information",
@@ -9739,7 +9945,7 @@
   },
   {
     "entity_id": "b648fafce4d10c48",
-    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/osd/ID/command', json={\"command\": \"COMMAND\"}, auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/osd/ID/command', json={\"command\": \"COMMAND\"}, auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Running a scheduled process on an OSD",
     "source_file": "ibm-docs/9.1/cluster-running-scheduled-process-osd",
@@ -9749,7 +9955,7 @@
   },
   {
     "entity_id": "b648fafce4d10c48",
-    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/osd/ID/command', json={\"command\": \"COMMAND\"}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/osd/ID/command', json={\"command\": \"COMMAND\"}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Running a scheduled process on an OSD",
     "source_file": "ibm-docs/9.1/cluster-running-scheduled-process-osd",
@@ -9779,7 +9985,7 @@
   },
   {
     "entity_id": "196b6673cc22da7e",
-    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/pool', json={\"NAME\": NUMBER}, auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/pool', json={\"NAME\": NUMBER}, auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Creating a pool",
     "source_file": "ibm-docs/9.1/cluster-creating-pool",
@@ -9789,7 +9995,7 @@
   },
   {
     "entity_id": "196b6673cc22da7e",
-    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/pool', json={\"NAME\": NUMBER}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.post('https://CEPH_MANAGER:8080/api/pool', json={\"NAME\": NUMBER}, auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Creating a pool",
     "source_file": "ibm-docs/9.1/cluster-creating-pool",
@@ -9829,7 +10035,7 @@
   },
   {
     "entity_id": "2a2803f944463cba",
-    "code": "$ python\n>> import requests\n>> result = requests.delete('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.delete('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Removing a pool",
     "source_file": "ibm-docs/9.1/cluster-removing-pool",
@@ -9839,7 +10045,7 @@
   },
   {
     "entity_id": "2a2803f944463cba",
-    "code": "$ python\n>> import requests\n>> result = requests.delete('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.delete('https://CEPH_MANAGER:8080/api/pool/ID', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Removing a pool",
     "source_file": "ibm-docs/9.1/cluster-removing-pool",
@@ -10130,27 +10336,27 @@
     "commands_used": []
   },
   {
-    "entity_id": "ea3984ab5255372a",
-    "code": "ceph mon remove SHORT_HOST_NAME --cluster CLUSTER_NAME",
+    "entity_id": "8d6e0d04b1238508",
+    "code": "ceph mon remove SHORT_HOST_NAME",
     "language": "bash",
     "context": "Replacing a failed Monitor",
     "source_file": "ibm-docs/9.1/monitors-replacing-failed-monitor",
     "component": "rados",
     "section_title": "Replacing a failed Monitor",
     "commands_used": [
-      "ceph mon remove SHORT_HOST_NAME --cluster"
+      "ceph mon remove SHORT_HOST_NAME"
     ]
   },
   {
-    "entity_id": "b55019e9fc23f90f",
-    "code": "[ceph: root@host01 /]# ceph mon remove host01 --cluster remote",
+    "entity_id": "c3bba538fba59281",
+    "code": "[ceph: root@host01 /]# ceph mon remove host01",
     "language": "bash",
     "context": "Replacing a failed Monitor",
     "source_file": "ibm-docs/9.1/monitors-replacing-failed-monitor",
     "component": "rados",
     "section_title": "Replacing a failed Monitor",
     "commands_used": [
-      "ceph mon remove host01 --cluster"
+      "ceph mon remove host01"
     ]
   },
   {
@@ -10322,184 +10528,6 @@
     "commands_used": []
   },
   {
-    "entity_id": "a04631d485ac9a2c",
-    "code": "[ceph: root@host01 /]# ceph-volume lvm list",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": [
-      "ceph-volume lvm list"
-    ]
-  },
-  {
-    "entity_id": "c7f76ab6cae46ff4",
-    "code": "mount -t tmpfs tmpfs /var/lib/ceph/osd/ceph-$i",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "00387b688230c40b",
-    "code": "for i in {OSD_ID}; do restorecon /var/lib/ceph/osd/ceph-$i; done",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "7efb879d07764af9",
-    "code": "for i in {OSD_ID}; do chown -R ceph:ceph /var/lib/ceph/osd/ceph-$i; done",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "a18d44881d8b624e",
-    "code": "ceph-bluestore-tool --cluster=ceph prime-osd-dir --dev OSD_DATA --path /var/lib/ceph/osd/ceph-OSD_ID",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": [
-      "ceph-bluestore-tool --cluster"
-    ]
-  },
-  {
-    "entity_id": "8c204f649ff87d61",
-    "code": "ln -snf BLUESTORE_DATABASE /var/lib/ceph/osd/ceph-OSD_ID/block.db",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "4260cbaf15d73dd6",
-    "code": "[root@host01 ~]# cd /root/\n[root@host01 ~]# ms=/tmp/monstore/\n[root@host01 ~]# db=/root/db/\n[root@host01 ~]# db_slow=/root/db.slow/\n\n[root@host01 ~]# mkdir $ms\n[root@host01 ~]# for host in $osd_nodes; do\n                echo \"$host\"\n                rsync -avz $ms $host:$ms\n                rsync -avz $db $host:$db\n                rsync -avz $db_slow $host:$db_slow\n\n                rm -rf $ms\n                rm -rf $db\n                rm -rf $db_slow\n\n                sh -t $host <<EOF\n                    for osd in /var/lib/ceph/osd/ceph-*; do\n                    ceph-objectstore-tool --type bluestore --data-path \\$osd --op update-mon-db --mon-store-path $ms\n\n                    done\n                EOF\n\n                        rsync -avz $host:$ms $ms\n                        rsync -avz $host:$db $db\n                        rsync -avz $host:$db_slow $db_slow\n                done",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "695513c2aeaf158c",
-    "code": "[ceph: root@host01 /]# ceph-authtool /etc/ceph/ceph.client.admin.keyring -n mon. --cap mon 'allow *' --gen-key\n[ceph: root@host01 /]# cat /etc/ceph/ceph.client.admin.keyring\n    [mon.]\n    key = AQCleqldWqm5IhAAgZQbEzoShkZV42RiQVffnA==\n    caps mon = \"allow *\"\n    [client.admin]\n    key = AQCmAKld8J05KxAArOWeRAw63gAwwZO5o75ZNQ==\n    auid = 0\n    caps mds = \"allow *\"\n    caps mgr = \"allow *\"\n    caps mon = \"allow *\"\n    caps osd = \"allow *\"",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "1f3f77e32dff54eb",
-    "code": "mv /root/db/*.sst /root/db.slow/*.sst /tmp/monstore/store.db",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "2a064f3a073af838",
-    "code": "[ceph: root@host01 /]# ceph-monstore-tool /tmp/monstore rebuild -- --keyring /etc/ceph/ceph.client.admin",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "496d384f05933709",
-    "code": "mv /var/lib/ceph/mon/ceph-HOST_NAME/store.db /var/lib/ceph/mon/ceph-HOST_NAME/store.db.corrupted",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "2a1f0be23ab8df4b",
-    "code": "scp -r /tmp/monstore/store.db HOST_NAME:/var/lib/ceph/mon/ceph-HOST_NAME/",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "4bfc7c9f20446e5a",
-    "code": "[root@host01 ~]# umount /var/lib/ceph/osd/ceph-*",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "8c9c76bff026d00c",
-    "code": "[root@host01 ~]# systemctl start ceph-mon *",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "7e595403f84102e3",
-    "code": "ceph auth import -i /etc/ceph/ceph.mgr.HOST_NAME.keyring\nsystemctl start ceph-mgr@HOST_NAME",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": [
-      "ceph auth import -i"
-    ]
-  },
-  {
-    "entity_id": "8f496870e278e081",
-    "code": "[root@host01 ~]# systemctl start ceph-osd *",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": []
-  },
-  {
-    "entity_id": "12f994571aaaaa6e",
-    "code": "[ceph: root@host01 /]# ceph -s",
-    "language": "bash",
-    "context": "Recovering Ceph Monitor store when using BlueStore",
-    "source_file": "ibm-docs/9.1/store-recovering-ceph-monitor-when-using-bluestore",
-    "component": "rados",
-    "section_title": "Recovering Ceph Monitor store when using BlueStore",
-    "commands_used": [
-      "ceph -s"
-    ]
-  },
-  {
     "entity_id": "aeed9a947e2f95d2",
     "code": "HEALTH_ERR 1 full osds\nosd.3 is full at 95%",
     "language": "bash",
@@ -10648,8 +10676,32 @@
     ]
   },
   {
-    "entity_id": "330e5512b1d7f65c",
-    "code": "systemctl restart ceph-osd@OSD_NUMBER",
+    "entity_id": "fe4b3855dbe9a249",
+    "code": "ceph orch daemon restart osd.ID",
+    "language": "bash",
+    "context": "Down OSDs",
+    "source_file": "ibm-docs/9.1/errors-down-osds",
+    "component": "rados",
+    "section_title": "Down OSDs",
+    "commands_used": [
+      "ceph orch daemon restart osd"
+    ]
+  },
+  {
+    "entity_id": "edeb1515db5f375f",
+    "code": "[root@host01 ~]# ceph orch daemon restart osd.0",
+    "language": "bash",
+    "context": "Down OSDs",
+    "source_file": "ibm-docs/9.1/errors-down-osds",
+    "component": "rados",
+    "section_title": "Down OSDs",
+    "commands_used": [
+      "ceph orch daemon restart osd"
+    ]
+  },
+  {
+    "entity_id": "2e3941d62b6efd45",
+    "code": "systemctl restart ceph-FSID@osd.ID.service",
     "language": "bash",
     "context": "Down OSDs",
     "source_file": "ibm-docs/9.1/errors-down-osds",
@@ -10658,18 +10710,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "79505d5c79491fb7",
-    "code": "[root@host01 ~]# systemctl restart ceph-osd@OSD_NUMBER",
-    "language": "bash",
-    "context": "Down OSDs",
-    "source_file": "ibm-docs/9.1/errors-down-osds",
-    "component": "rados",
-    "section_title": "Down OSDs",
-    "commands_used": []
-  },
-  {
-    "entity_id": "2ad229066adba375",
-    "code": "[root@host01 ~]# systemctl restart ceph-osd@0",
+    "entity_id": "59aedaefe1e65ed5",
+    "code": "[root@host01 ~]# systemctl restart ceph-b1f94d70-6a2e-4893-a1c3-d5e8b9f74261@osd.0.service",
     "language": "bash",
     "context": "Down OSDs",
     "source_file": "ibm-docs/9.1/errors-down-osds",

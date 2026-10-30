@@ -3,13 +3,13 @@
   "ceph_version": "ibm-8.1",
   "embedding_model": "BAAI/bge-small-en-v1.5",
   "embedding_dimensions": 384,
-  "total_chunks": 5287,
-  "total_code_examples": 5869,
+  "total_chunks": 5359,
+  "total_code_examples": 5920,
   "components": {
     "cephadm": {
       "name": "cephadm",
-      "chunk_count": 264,
-      "code_example_count": 590,
+      "chunk_count": 294,
+      "code_example_count": 613,
       "topics": [
         "access",
         "administration",
@@ -20,6 +20,7 @@
         "configuration",
         "daemons",
         "dashboard",
+        "faqs",
         "gateway",
         "general",
         "installation",
@@ -43,8 +44,8 @@
     },
     "cephfs": {
       "name": "cephfs",
-      "chunk_count": 639,
-      "code_example_count": 629,
+      "chunk_count": 641,
+      "code_example_count": 633,
       "topics": [
         "ac",
         "benchmark",
@@ -94,8 +95,8 @@
     },
     "dev": {
       "name": "dev",
-      "chunk_count": 61,
-      "code_example_count": 71,
+      "chunk_count": 62,
+      "code_example_count": 72,
       "topics": [
         "api",
         "developer",
@@ -108,10 +109,14 @@
     },
     "general": {
       "name": "general",
-      "chunk_count": 2661,
-      "code_example_count": 2450,
+      "chunk_count": 2686,
+      "code_example_count": 2454,
       "topics": [
         "81",
+        "81z3",
+        "81z6",
+        "81z8",
+        "81z9",
         "access",
         "adi",
         "adjustments",
@@ -205,6 +210,7 @@
         "resharding",
         "retention",
         "roles",
+        "rotation",
         "scheduler",
         "security",
         "server",
@@ -245,7 +251,7 @@
     "mgr": {
       "name": "mgr",
       "chunk_count": 119,
-      "code_example_count": 148,
+      "code_example_count": 146,
       "topics": [
         "access",
         "alerts",
@@ -269,8 +275,8 @@
     },
     "rados": {
       "name": "rados",
-      "chunk_count": 777,
-      "code_example_count": 942,
+      "chunk_count": 784,
+      "code_example_count": 957,
       "topics": [
         "ac",
         "administration",
@@ -351,8 +357,8 @@
     },
     "radosgw": {
       "name": "radosgw",
-      "chunk_count": 552,
-      "code_example_count": 778,
+      "chunk_count": 555,
+      "code_example_count": 781,
       "topics": [
         "acog",
         "acogsa",
@@ -410,8 +416,8 @@
     },
     "rbd": {
       "name": "rbd",
-      "chunk_count": 161,
-      "code_example_count": 194,
+      "chunk_count": 165,
+      "code_example_count": 197,
       "topics": [
         "ccbduiflkmc",
         "ceph",
@@ -451,5 +457,6 @@
       "code_examples_path": "troubleshooting/code_examples.json"
     }
   },
-  "build_timestamp": "2026-07-17T09:41:52.558563+00:00"
+  "build_timestamp": "2026-10-29T18:20:12.778240+00:00",
+  "last_incremental_since": "2026-07-01"
 }

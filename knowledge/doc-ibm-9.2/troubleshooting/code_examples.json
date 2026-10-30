@@ -1,0 +1,1794 @@
+[
+  {
+    "entity_id": "ea9fa9e5934de583",
+    "code": "ceph health detail\nceph -s\nceph -w",
+    "language": "bash",
+    "context": "Cluster health",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph health detail\nceph -s",
+      "ceph -w"
+    ]
+  },
+  {
+    "entity_id": "9677909344ee92aa",
+    "code": "ceph orch ps --daemon-type nfs.ganesha\nceph orch ls --service-name nfs.CLUSTER_ID",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch ps --daemon-type nfs",
+      "ceph orch ls --service-name nfs"
+    ]
+  },
+  {
+    "entity_id": "089491ea47b5f2da",
+    "code": "ceph orch ps --daemon-type smb\nceph orch ls --service-name smb.CLUSTER_ID",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch ps --daemon-type smb",
+      "ceph orch ls --service-name smb"
+    ]
+  },
+  {
+    "entity_id": "65c914fb2f69fce3",
+    "code": "ceph nfs cluster ls\nceph nfs cluster info CLUSTER_ID\nceph nfs export ls CLUSTER_ID",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs cluster ls\nceph",
+      "ceph nfs export ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "f6d7f7a5ebb81616",
+    "code": "ceph smb cluster ls\nceph smb share ls CLUSTER_ID",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb cluster ls\nceph"
+    ]
+  },
+  {
+    "entity_id": "334cfb067032a309",
+    "code": "ceph log last 100\nceph cephadm logs",
+    "language": "bash",
+    "context": "Log files",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph log last 100\nceph",
+      "cephadm logs"
+    ]
+  },
+  {
+    "entity_id": "06fd8734c19f09ed",
+    "code": "journalctl -u ceph-FSID@nfs.CLUSTER_ID.DAEMON_ID",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2973f9f07da7b9f6",
+    "code": "journalctl -u ceph-FSID@smb.CLUSTER_ID.DAEMON_ID",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d372b89f1d684939",
+    "code": "Error: Cluster 'CLUSTER_ID' already exists\nError: Insufficient resources on target hosts\nError: MGR module not enabled\nError: Invalid placement specification\nError: Port PORT already in use",
+    "language": "bash",
+    "context": "Common error messages",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9d014e67cd31cfba",
+    "code": "ceph nfs cluster ls",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs cluster ls"
+    ]
+  },
+  {
+    "entity_id": "b533654ef0aac859",
+    "code": "ceph smb cluster ls",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb cluster ls"
+    ]
+  },
+  {
+    "entity_id": "21f9837599131e85",
+    "code": "ceph mgr module ls | grep -E \"nfs|smb\"",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph mgr module ls"
+    ]
+  },
+  {
+    "entity_id": "f19ebc0b1fc623cb",
+    "code": "ceph mgr module enable nfs",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph mgr module enable nfs"
+    ]
+  },
+  {
+    "entity_id": "e457d24e6e53857f",
+    "code": "ceph mgr module enable smb",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph mgr module enable smb"
+    ]
+  },
+  {
+    "entity_id": "7167c570af65f6d8",
+    "code": "ceph orch host ls\nceph orch ps",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch host ls\nceph"
+    ]
+  },
+  {
+    "entity_id": "cef61798da954096",
+    "code": "netstat -tuln | grep PORT\nss -tuln | grep PORT",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9cd2cf55fe693485",
+    "code": "ceph log last 50",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph log last 50"
+    ]
+  },
+  {
+    "entity_id": "8e1b5c4f5b821dab",
+    "code": "nslookup DOMAIN_CONTROLLER\nping DOMAIN_CONTROLLER",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7e038e55767fcd03",
+    "code": "Error: Cluster has active shares\nError: Daemons not responding\nError: Orchestrator error",
+    "language": "bash",
+    "context": "Common error messages",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bc2ccf0c75876587",
+    "code": "ceph nfs export ls CLUSTER_ID",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs export ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "fae0ab79d1272134",
+    "code": "ceph smb share ls CLUSTER_ID",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "b9781d53c2d45111",
+    "code": "ceph nfs export delete CLUSTER_ID PSEUDO_PATH",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs export delete CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "6c9299d5db471ffb",
+    "code": "ceph smb share delete CLUSTER_ID SHARE_ID",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share delete CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "ff9705260dabe3b2",
+    "code": "ceph smb cluster delete CLUSTER_ID --recursive",
+    "language": "bash",
+    "context": "Alternatively, use the --recursive flag to remove the cluster and all shares together.",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb cluster delete CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "b069e32f43c01a7b",
+    "code": "ceph orch ps --daemon-type nfs.ganesha",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch ps --daemon-type nfs"
+    ]
+  },
+  {
+    "entity_id": "2d9c98bd93d48d75",
+    "code": "ceph orch ps --daemon-type smb",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch ps --daemon-type smb"
+    ]
+  },
+  {
+    "entity_id": "64807dd8628ad7d8",
+    "code": "ceph orch daemon restart DAEMON_ID\nceph orch daemon rm DAEMON_ID --force",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch daemon restart DAEMON_ID",
+      "ceph orch daemon rm DAEMON_ID"
+    ]
+  },
+  {
+    "entity_id": "1c908c975146da32",
+    "code": "ceph orch status\nceph cephadm logs",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch status\nceph cephadm"
+    ]
+  },
+  {
+    "entity_id": "b069e32f43c01a7b",
+    "code": "ceph orch ps --daemon-type nfs.ganesha",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch ps --daemon-type nfs"
+    ]
+  },
+  {
+    "entity_id": "2d9c98bd93d48d75",
+    "code": "ceph orch ps --daemon-type smb",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch ps --daemon-type smb"
+    ]
+  },
+  {
+    "entity_id": "cac4d95a43463eb3",
+    "code": "ceph orch daemon restart DAEMON_ID",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch daemon restart DAEMON_ID"
+    ]
+  },
+  {
+    "entity_id": "f964765db6c41652",
+    "code": "ceph orch host ls\nssh HOSTNAME\nping HOSTNAME",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch host ls\nssh"
+    ]
+  },
+  {
+    "entity_id": "65107ed92993cd71",
+    "code": "top\ndf -h\nfree -h",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eacc7ea8e8059646",
+    "code": "journalctl -u ceph-FSID@nfs.CLUSTER_ID.DAEMON_ID -n 100",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b4ec9ad9e45fd49a",
+    "code": "journalctl -u ceph-FSID@smb.CLUSTER_ID.DAEMON_ID -n 100",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "46805b3ec66cfb74",
+    "code": "ceph orch apply nfs CLUSTER_ID --placement=\"count:5\"",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch apply nfs CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "93b8e20cb89b8f8f",
+    "code": "ceph orch apply smb CLUSTER_ID --placement=\"count:5\"",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch apply smb CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "912291feb52a3876",
+    "code": "Error: Cluster 'CLUSTER_ID' does not exist\nError: Pseudo-path 'PATH' already in use\nError: CephFS volume 'VOLUME' does not exist\nError: Subvolume 'SUBVOLUME' does not exist\nError: Bucket 'BUCKET' does not exist\nError: Invalid path",
+    "language": "bash",
+    "context": "Common error messages",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3b9a6341d3b46c31",
+    "code": "ceph nfs cluster ls\nceph nfs cluster info CLUSTER_ID",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs cluster ls\nceph"
+    ]
+  },
+  {
+    "entity_id": "b533654ef0aac859",
+    "code": "ceph smb cluster ls",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb cluster ls"
+    ]
+  },
+  {
+    "entity_id": "bc2ccf0c75876587",
+    "code": "ceph nfs export ls CLUSTER_ID",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs export ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "fae0ab79d1272134",
+    "code": "ceph smb share ls CLUSTER_ID",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "5d2ad801d3d6691e",
+    "code": "ceph fs ls\nceph fs status FSNAME",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph fs ls\nceph fs"
+    ]
+  },
+  {
+    "entity_id": "cff969f8ba403eda",
+    "code": "ceph fs volume create FSNAME",
+    "language": "bash",
+    "context": "If the volume does not exist, create it.",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph fs volume create FSNAME"
+    ]
+  },
+  {
+    "entity_id": "aa86168fed5cdbbc",
+    "code": "ceph fs subvolume ls VOL_NAME [--group_name GROUP]\nceph fs subvolume info VOL_NAME SUBVOL_NAME",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph fs subvolume ls VOL_NAME",
+      "ceph fs subvolume info VOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "85ecf0dd2ae69e49",
+    "code": "ceph fs subvolume create VOL_NAME SUBVOL_NAME",
+    "language": "bash",
+    "context": "If the subvolume does not exist, create it.",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph fs subvolume create VOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "a261fe684d3ae244",
+    "code": "radosgw-admin bucket list\nradosgw-admin bucket stats --bucket=BUCKET_NAME",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "radosgw-admin bucket list\nradosgw-admin bucket"
+    ]
+  },
+  {
+    "entity_id": "34fb44f06d9efda2",
+    "code": "radosgw-admin bucket create --bucket=BUCKET_NAME --uid=USER_ID",
+    "language": "bash",
+    "context": "If the bucket does not exist, create it.",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "radosgw-admin bucket create --bucket"
+    ]
+  },
+  {
+    "entity_id": "53b9858a0a45b286",
+    "code": "ceph nfs export info CLUSTER_ID PSEUDO_PATH",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs export info CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "fae0ab79d1272134",
+    "code": "ceph smb share ls CLUSTER_ID",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "e244cf6b6e635fb6",
+    "code": "ceph nfs export info CLUSTER_ID PSEUDO_PATH | grep client_addr",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs export info CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "94ecbacfcc68db8d",
+    "code": "ping CLUSTER_IP\ntelnet CLUSTER_IP PORT",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "86650ecbcfc2905e",
+    "code": "firewall-cmd --list-all\niptables -L -n",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "927eece93cf0269e",
+    "code": "firewall-cmd --add-service=nfs --permanent\nfirewall-cmd --reload",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "a105855c72db130f",
+    "code": "firewall-cmd --add-service=samba --permanent\nfirewall-cmd --reload",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bfada1eb39a04828",
+    "code": "showmount -e CLUSTER_IP\nmount -t nfs CLUSTER_IP:PSEUDO_PATH /mnt/test",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f7a678f28c16a167",
+    "code": "smbclient -L //CLUSTER_IP -U USERNAME",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "730fcb9246c4fe60",
+    "code": "ceph nfs export info CLUSTER_ID PSEUDO_PATH > export.json\nceph nfs export apply CLUSTER_ID -i export.json",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs export info CLUSTER_ID",
+      "ceph nfs export apply CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "b0e34222b580b98f",
+    "code": "ceph smb share ls CLUSTER_ID --format json-pretty",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "35d2e56f56940eaf",
+    "code": "ceph smb share ls CLUSTER_ID --format json | jq '.[] | select(.share_id==\"SHARE_ID\")'",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "8090d14e2dc27740",
+    "code": "ceph smb share update cephfs qos CLUSTER_ID SHARE_ID \\\n  --read-iops-limit 1000 \\\n  --write-iops-limit 500",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share update cephfs"
+    ]
+  },
+  {
+    "entity_id": "303e7bbc5dc07460",
+    "code": "ceph smb share update cephfs qos CLUSTER_ID SHARE_ID \\\n  --read-iops-limit 100 \\\n  --write-iops-limit 50",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share update cephfs"
+    ]
+  },
+  {
+    "entity_id": "ff7ef78e0ad963fa",
+    "code": "ceph osd pool stats",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph osd pool stats"
+    ]
+  },
+  {
+    "entity_id": "734797bd70e6bb67",
+    "code": "ceph health detail\nceph -s",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph health detail\nceph -s"
+    ]
+  },
+  {
+    "entity_id": "9d3aace7f0181292",
+    "code": "ceph osd perf\nceph osd pool stats",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph osd perf\nceph osd"
+    ]
+  },
+  {
+    "entity_id": "e7ebb93890fe2e5f",
+    "code": "ping CLUSTER_IP\niperf3 -c CLUSTER_IP",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b0e34222b580b98f",
+    "code": "ceph smb share ls CLUSTER_ID --format json-pretty",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "97101b6780e5331a",
+    "code": "ceph smb share update cephfs qos CLUSTER_ID SHARE_ID \\\n  --read-iops-limit 0 \\\n  --write-iops-limit 0",
+    "language": "bash",
+    "context": "To remove limits, set them to 0.",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share update cephfs"
+    ]
+  },
+  {
+    "entity_id": "abaf5bc088a24bc4",
+    "code": "top\niostat -x 1",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "46805b3ec66cfb74",
+    "code": "ceph orch apply nfs CLUSTER_ID --placement=\"count:5\"",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch apply nfs CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "93b8e20cb89b8f8f",
+    "code": "ceph orch apply smb CLUSTER_ID --placement=\"count:5\"",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch apply smb CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "84ec0dbf408773a6",
+    "code": "ceph health detail > health.txt\nceph -s > status.txt\nceph version > version.txt",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph health detail",
+      "ceph -s",
+      "ceph version"
+    ]
+  },
+  {
+    "entity_id": "471df70cbb75341c",
+    "code": "ceph orch ps > services.txt",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch ps"
+    ]
+  },
+  {
+    "entity_id": "0681f86ecba86bd2",
+    "code": "ceph nfs cluster ls > nfs-clusters.txt",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs cluster ls"
+    ]
+  },
+  {
+    "entity_id": "7790ca2d250a55d7",
+    "code": "ceph smb cluster ls > smb-clusters.txt",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb cluster ls"
+    ]
+  },
+  {
+    "entity_id": "b6b42e969a8e8c0f",
+    "code": "ceph nfs cluster config dump CLUSTER_ID > nfs-config.json",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph nfs cluster config dump"
+    ]
+  },
+  {
+    "entity_id": "22b6852c75c64c9e",
+    "code": "ceph smb cluster config dump CLUSTER_ID > smb-config.json",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb cluster config dump"
+    ]
+  },
+  {
+    "entity_id": "84efdc5f1831eac7",
+    "code": "ceph log last 500 > ceph-log.txt",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph log last 500"
+    ]
+  },
+  {
+    "entity_id": "872c3c60a1538cad",
+    "code": "journalctl -u ceph-FSID@nfs.* > nfs-logs.txt",
+    "language": "bash",
+    "context": "For NFS:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "adaf89c1f6785fc9",
+    "code": "journalctl -u ceph-FSID@smb.* > smb-logs.txt",
+    "language": "bash",
+    "context": "For SMB:",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ab186f86b5e25413",
+    "code": "No such file or directory",
+    "language": "bash",
+    "context": "Common error messages",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "99129137a5664670",
+    "code": "ceph orch redeploy smb.CLUSTER_ID",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph orch redeploy smb"
+    ]
+  },
+  {
+    "entity_id": "f7c97ef31ecdf265",
+    "code": "ctdb leader",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "eadf52fc9f68c045",
+    "code": "samba-container update-config",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fae0ab79d1272134",
+    "code": "ceph smb share ls CLUSTER_ID",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": [
+      "ceph smb share ls CLUSTER_ID"
+    ]
+  },
+  {
+    "entity_id": "f7a678f28c16a167",
+    "code": "smbclient -L //CLUSTER_IP -U USERNAME",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "40cef81beeda4ea3",
+    "code": "smbclient //CLUSTER_IP/SHARE_NAME -U USERNAME",
+    "language": "bash",
+    "context": "Troubleshooting common issues with unified file protocol commands",
+    "source_file": "ibm-docs/9.2/management-troubleshooting-cluster-issues",
+    "component": "troubleshooting",
+    "section_title": "Troubleshooting common issues with unified file protocol commands",
+    "commands_used": []
+  },
+  {
+    "entity_id": "814889bdb2aa611d",
+    "code": "cephadm shell",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/9.2/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "eca7316ee9ec0f29",
+    "code": "[ceph: root@host01 /]# ceph health detail",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/9.2/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "ca226077edd16bef",
+    "code": "[ceph: root@host01 /]# ceph -w cephadm",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/9.2/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph -w cephadm"
+    ]
+  },
+  {
+    "entity_id": "a2b9132b53e01cd1",
+    "code": "ceph config set global log_to_file true",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/9.2/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph config set global log_to_file"
+    ]
+  },
+  {
+    "entity_id": "2001e5e03129bda7",
+    "code": "ceph config set global mon_cluster_log_to_file true",
+    "language": "bash",
+    "context": "Diagnosing health",
+    "source_file": "ibm-docs/9.2/troubleshooting-diagnosing-health",
+    "component": "troubleshooting",
+    "section_title": "Diagnosing health",
+    "commands_used": [
+      "ceph config set global mon_cluster_log_to_file"
+    ]
+  },
+  {
+    "entity_id": "3809143b4844c239",
+    "code": "cephadm shell",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "4ea98c6cf2940bb8",
+    "code": "[ceph: root@host01 /]# ceph health detail\n\n HEALTH_WARN 1 osds down; 1 OSDs or CRUSH {nodes, device-classes} have {NOUP,NODOWN,NOIN,NOOUT} flags set\n [WRN] OSD_DOWN: 1 osds down\n     osd.1 (root=default,host=host01) is down\n [WRN] OSD_FLAGS: 1 OSDs or CRUSH {nodes, device-classes} have {NOUP,NODOWN,NOIN,NOOUT} flags set\n     osd.1 has flags noup",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health detail\n\n HEALTH_WARN 1"
+    ]
+  },
+  {
+    "entity_id": "46fe250d1fa11fdf",
+    "code": "ceph health mute HEALTH_MESSAGE",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute HEALTH_MESSAGE"
+    ]
+  },
+  {
+    "entity_id": "2fa8537fbc19cb5c",
+    "code": "[ceph: root@host01 /]# ceph health mute OSD_DOWN",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute OSD_DOWN"
+    ]
+  },
+  {
+    "entity_id": "8a59a3e1fd043206",
+    "code": "ceph health mute HEALTH_MESSAGE DURATION",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute HEALTH_MESSAGE DURATION"
+    ]
+  },
+  {
+    "entity_id": "b9808bc8c6e2a415",
+    "code": "[ceph: root@host01 /]# ceph health mute OSD_DOWN 10m",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute OSD_DOWN 10m"
+    ]
+  },
+  {
+    "entity_id": "62353d436f4bc1ca",
+    "code": "[ceph: root@host01 /]# ceph -s\n   cluster:\n     id:     81a4597a-b711-11eb-8cb8-001a4a000740\n     health: HEALTH_OK\n             (muted: OSD_DOWN(9m) OSD_FLAGS(9m))\n\n   services:\n     mon: 3 daemons, quorum host01,host02,host03 (age 33h)\n     mgr: host01.pzhfuh(active, since 33h), standbys: host02.wsnngf, host03.xwzphg\n     osd: 11 osds: 10 up (since 4m), 11 in (since 5d)\n\n   data:\n     pools:   1 pools, 1 pgs\n     objects: 13 objects, 0 B\n     usage:   85 MiB used, 165 GiB / 165 GiB avail\n     pgs:     1 active+clean",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph -s\n   cluster"
+    ]
+  },
+  {
+    "entity_id": "3a71a7cbd15b6963",
+    "code": "ceph health mute HEALTH_MESSAGE DURATION --sticky",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute HEALTH_MESSAGE DURATION"
+    ]
+  },
+  {
+    "entity_id": "3d05ca1b7679f639",
+    "code": "[ceph: root@host01 /]# ceph health mute OSD_DOWN 1h --sticky",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health mute OSD_DOWN 1h"
+    ]
+  },
+  {
+    "entity_id": "1252eb6d3d823929",
+    "code": "ceph health unmute HEALTH_MESSAGE",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health unmute HEALTH_MESSAGE"
+    ]
+  },
+  {
+    "entity_id": "63a9b92e8721bab8",
+    "code": "[ceph: root@host01 /]# ceph health unmute OSD_DOWN",
+    "language": "bash",
+    "context": "Muting health alerts",
+    "source_file": "ibm-docs/9.2/troubleshooting-muting-health-alerts",
+    "component": "troubleshooting",
+    "section_title": "Muting health alerts",
+    "commands_used": [
+      "ceph health unmute OSD_DOWN"
+    ]
+  },
+  {
+    "entity_id": "3e12478e3999b715",
+    "code": "[root@host01 ~]# dnf install sos",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/9.2/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aaa35ab0a99cfa17",
+    "code": "sos report -a --all-logs",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/9.2/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c9b7a3e6d51ecb7a",
+    "code": "[root@host01 ~]# sos report -a --all-logs",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/9.2/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1fbd7a37ca310bd3",
+    "code": "sos report --all-logs -e CEPH_SERVICE1,CEPH_SERVICE2",
+    "language": "bash",
+    "context": "Run the following command for specific Ceph\ndaemon\ninformation.",
+    "source_file": "ibm-docs/9.2/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2bf61d47b34a3c88",
+    "code": "[root@host01 ~]# sos report --all-logs -e ceph_mgr,ceph_common,ceph_mon,ceph_osd,ceph_ansible,ceph_mds,ceph_rgw",
+    "language": "bash",
+    "context": "Generating an sos report",
+    "source_file": "ibm-docs/9.2/troubleshooting-generating-sos-report",
+    "component": "troubleshooting",
+    "section_title": "Generating an sos report",
+    "commands_used": []
+  },
+  {
+    "entity_id": "31fba79dfc5dac0d",
+    "code": "[root@host01 ~]# dnf install net-tools\n[root@host01 ~]# dnf install telnet",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9743dc55e94c12ad",
+    "code": "[ceph: root@host01 /]# cat /etc/ceph/ceph.conf\n# minimal ceph.conf for 57bddb48-ee04-11eb-9962-001a4a000672\n[global]\n        fsid = 57bddb48-ee04-11eb-9962-001a4a000672\n        mon_host = [v2:10.74.249.26:3300/0,v1:10.74.249.26:6789/0] [v2:10.74.249.163:3300/0,v1:10.74.249.163:6789/0] [v2:10.74.254.129:3300/0,v1:10.74.254.129:6789/0]\n[mon.host01]\npublic network = 10.74.248.0/21",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8bec10f4b022466b",
+    "code": "[root@host01 ~]# ip link list\n1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n2: ens3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000\n    link/ether 00:1a:4a:00:06:72 brd ff:ff:ff:ff:ff:ff",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f8dc895049f84851",
+    "code": "ping SHORT_HOST_NAME",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "5f5cd4644f142dd1",
+    "code": "[root@host01 ~]# ping host02",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "77121ba92b15c7b8",
+    "code": "firewall-cmd --info-zone=ZONE\ntelnet IP_ADDRESS PORT",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ae03f65e0c0a88bf",
+    "code": "[root@host01 ~]# firewall-cmd --info-zone=public\npublic (active)\n  target: default\n  icmp-block-inversion: no\n  interfaces: ens3\n  sources:\n  services: ceph ceph-mon cockpit dhcpv6-client ssh\n  ports: 9283/tcp 8443/tcp 9093/tcp 9094/tcp 3000/tcp 9100/tcp 9095/tcp\n  protocols:\n  masquerade: no\n  forward-ports:\n  source-ports:\n  icmp-blocks:\n  rich rules:\n\n[root@host01 ~]# telnet 192.168.0.22 9100",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": [
+      "ceph ceph-mon cockpit dhcpv6-client ssh"
+    ]
+  },
+  {
+    "entity_id": "b08d5158e57e6973",
+    "code": "ethtool -S INTERFACE",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "49a92aa94fc5ff8c",
+    "code": "[root@host01 ~]# ethtool -S ens3 | grep errors\nNIC statistics:\n     rx_fcs_errors: 0\n     rx_align_errors: 0\n     rx_frame_too_long_errors: 0\n     rx_in_length_errors: 0\n     rx_out_length_errors: 0\n     tx_mac_errors: 0\n     tx_carrier_sense_errors: 0\n     tx_errors: 0\n     rx_errors: 0",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bf4ed3545f9f0942",
+    "code": "[root@host01 ~]# ifconfig\nens3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\n        inet 10.74.249.26  netmask 255.255.248.0  broadcast 10.74.255.255\n        inet6 fe80::21a:4aff:fe00:672  prefixlen 64  scopeid 0x20<link>\n        inet6 2620:52:0:4af8:21a:4aff:fe00:672  prefixlen 64  scopeid 0x0<global>\n        ether 00:1a:4a:00:06:72  txqueuelen 1000  (Ethernet)\n        RX packets 150549316  bytes 56759897541 (52.8 GiB)\n        RX errors 0  dropped 176924  overruns 0  frame 0\n        TX packets 55584046  bytes 62111365424 (57.8 GiB)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\n\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\n        inet 127.0.0.1  netmask 255.0.0.0\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\n        loop  txqueuelen 1000  (Local Loopback)\n        RX packets 9373290  bytes 16044697815 (14.9 GiB)\n        RX errors 0  dropped 0  overruns 0  frame 0\n        TX packets 9373290  bytes 16044697815 (14.9 GiB)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b46e1921f1863112",
+    "code": "[root@host01 ~]# netstat -ai\nKernel Interface table\nIface  MTU    RX-OK      RX-ERR RX-DRP RX-OVR TX-OK      TX-ERR TX-DRP TX-OVR Flg\nens3   1500   311847720  0      364903 0      114341918  0      0      0      BMRU\nlo     65536  19577001   0      0      0      19577001   0      0      0      LRU",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "17736af65e017b52",
+    "code": "[root@host01 ~]# dnf install iperf3",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "9f3c8a7b646c3d10",
+    "code": "[root@host01 ~]# iperf3 -s\n Server listening on 5201",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "81f35372d37c541c",
+    "code": "iperf3 -c mon",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "aa519f287ebf9394",
+    "code": "[root@host02 ~]# iperf3 -c mon\n Connecting to host mon, port 5201\n [  4] local xx.x.xxx.xx port 52270 connected to xx.x.xxx.xx port 5201\n [ ID] Interval           Transfer     Bandwidth       Retr  Cwnd\n [  4]   0.00-1.00   sec   114 MBytes   954 Mbits/sec    0    409 KBytes\n [  4]   1.00-2.00   sec   113 MBytes   945 Mbits/sec    0    409 KBytes\n [  4]   2.00-3.00   sec   112 MBytes   943 Mbits/sec    0    454 KBytes\n [  4]   3.00-4.00   sec   112 MBytes   941 Mbits/sec    0    471 KBytes\n [  4]   4.00-5.00   sec   112 MBytes   940 Mbits/sec    0    471 KBytes\n [  4]   5.00-6.00   sec   113 MBytes   945 Mbits/sec    0    471 KBytes\n [  4]   6.00-7.00   sec   112 MBytes   937 Mbits/sec    0    488 KBytes\n [  4]   7.00-8.00   sec   113 MBytes   947 Mbits/sec    0    520 KBytes\n [  4]   8.00-9.00   sec   112 MBytes   939 Mbits/sec    0    520 KBytes\n [  4]   9.00-10.00  sec   112 MBytes   939 Mbits/sec    0    520 KBytes\n - - - - - - - - - - - - - - - - - - - - - - - - -\n [ ID] Interval           Transfer     Bandwidth       Retr\n [  4]   0.00-10.00  sec  1.10 GBytes   943 Mbits/sec    0             sender\n [  4]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  receiver\n\n iperf Done.",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "765f8af2bdf5e55f",
+    "code": "ethtool INTERFACE",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "20598c6703c6cfa0",
+    "code": "[root@host01 ~]# ethtool ens3\n Settings for ens3:\n Supported ports: [ TP ]\n Supported link modes:   10baseT/Half 10baseT/Full\n                         100baseT/Half 100baseT/Full\n                         1000baseT/Half 1000baseT/Full\n Supported pause frame use: No\n Supports auto-negotiation: Yes\n Supported FEC modes: Not reported\n Advertised link modes:  10baseT/Half 10baseT/Full\n                         100baseT/Half 100baseT/Full\n                         1000baseT/Half 1000baseT/Full\n Advertised pause frame use: Symmetric\n Advertised auto-negotiation: Yes\n Advertised FEC modes: Not reported\n Link partner advertised link modes:  10baseT/Half 10baseT/Full\n                                         100baseT/Half 100baseT/Full\n                                         1000baseT/Full\n Link partner advertised pause frame use: Symmetric\n Link partner advertised auto-negotiation: Yes\n Link partner advertised FEC modes: Not reported\n Speed: 1000Mb/s \n Duplex: Full \n Port: Twisted Pair\n PHYAD: 1\n Transceiver: internal\n Auto-negotiation: on\n MDI-X: off\n Supports Wake-on: g\n Wake-on: d\n Current message level: 0x000000ff (255)\n         drv probe link timer ifdown ifup rx_err tx_err\n Link detected: yes",
+    "language": "bash",
+    "context": "Basic networking troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-networking-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic networking troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6227ac170e417336",
+    "code": "[root@mon ~]# systemctl status chrony",
+    "language": "bash",
+    "context": "Basic chrony NTP troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-chrony-ntp-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic chrony NTP troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "77a8b6cc33a3f164",
+    "code": "[root@mon ~]# systemctl enable chrony\n[root@mon ~]# systemctl start chrony",
+    "language": "bash",
+    "context": "Basic chrony NTP troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-chrony-ntp-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic chrony NTP troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ebbfbc8afd2156a4",
+    "code": "[root@mon ~]# chronyc sources\n[root@mon ~]# chronyc sourcestats\n[root@mon ~]# chronyc tracking",
+    "language": "bash",
+    "context": "Basic chrony NTP troubleshooting",
+    "source_file": "ibm-docs/9.2/issues-basic-chrony-ntp-troubleshooting",
+    "component": "troubleshooting",
+    "section_title": "Basic chrony NTP troubleshooting",
+    "commands_used": []
+  },
+  {
+    "entity_id": "450301ff72fbb87f",
+    "code": "mv /var/lib/ceph/<fsid>/cluster-shutdown-state.json /var/lib/ceph/<fsid>/cluster-shutdown-state.json.bak",
+    "language": "bash",
+    "context": "Rename or remove the state file, and then retry the operation.",
+    "source_file": "ibm-docs/9.2/troubleshooting-powering-down-starting-cluster",
+    "component": "troubleshooting",
+    "section_title": "Powering down and starting the cluster",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fc8e9f2170b199bf",
+    "code": "journalctl -u ceph.target",
+    "language": "bash",
+    "context": "If one or more hosts fail to start during cluster startup:",
+    "source_file": "ibm-docs/9.2/troubleshooting-powering-down-starting-cluster",
+    "component": "troubleshooting",
+    "section_title": "Powering down and starting the cluster",
+    "commands_used": []
+  },
+  {
+    "entity_id": "1734345e659b754f",
+    "code": "ceph osd tree",
+    "language": "bash",
+    "context": "If the cluster does not reach a healthy state after startup:",
+    "source_file": "ibm-docs/9.2/troubleshooting-powering-down-starting-cluster",
+    "component": "troubleshooting",
+    "section_title": "Powering down and starting the cluster",
+    "commands_used": [
+      "ceph osd tree"
+    ]
+  },
+  {
+    "entity_id": "8497ec47be4fc34b",
+    "code": "journalctl -u ceph-<fsid>@osd.*",
+    "language": "bash",
+    "context": "If the cluster does not reach a healthy state after startup:",
+    "source_file": "ibm-docs/9.2/troubleshooting-powering-down-starting-cluster",
+    "component": "troubleshooting",
+    "section_title": "Powering down and starting the cluster",
+    "commands_used": []
+  },
+  {
+    "entity_id": "847fefbc5830f43f",
+    "code": "cephadm logs --name DAEMON_NAME",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/9.2/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --name DAEMON_NAME"
+    ]
+  },
+  {
+    "entity_id": "e135962f8859ade5",
+    "code": "[root@host01 ~]# cephadm logs --name cephfs.hostname.ppdhsz",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/9.2/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --name cephfs"
+    ]
+  },
+  {
+    "entity_id": "3921512b3af6c05a",
+    "code": "cephadm logs --fsid FSID --name DAEMON_NAME",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/9.2/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid FSID --name"
+    ]
+  },
+  {
+    "entity_id": "4298a35eb3ebf269",
+    "code": "[root@host01 ~]# cephadm logs --fsid 2d2fd136-6df1-11ea-ae74-002590e526e8 --name cephfs.hostname.ppdhsz",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/9.2/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid 2d2fd136-6df1-11ea-ae74-002590e526e8 --name"
+    ]
+  },
+  {
+    "entity_id": "00b361b748d6d179",
+    "code": "for name in $(cephadm ls | python3 -c \"import sys, json; [print(i[name]) for i in json.load(sys.stdin)]\") ; do cephadm logs --fsid FSID_OF_CLUSTER --name \"$name\" > $name; done",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/9.2/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid FSID_OF_CLUSTER --name"
+    ]
+  },
+  {
+    "entity_id": "9800e818e103ef80",
+    "code": "[root@host01 ~]# for name in $(cephadm ls | python3 -c \"import sys, json; [print(i['name']) for i in json.load(sys.stdin)]\") ; do cephadm logs --fsid 57bddb48-ee04-11eb-9962-001a4a000672 --name \"$name\" > $name; done",
+    "language": "bash",
+    "context": "Gather log files",
+    "source_file": "ibm-docs/9.2/troubleshooting-gather-log-files",
+    "component": "troubleshooting",
+    "section_title": "Gather log files",
+    "commands_used": [
+      "cephadm logs --fsid 57bddb48-ee04-11eb-9962-001a4a000672 --name"
+    ]
+  },
+  {
+    "entity_id": "7adfc52cf4099538",
+    "code": "[root@host01 ~]$ systemctl status ceph-a538d494-fb2a-48e4-82c8-b91c37bb0684@mon.host01.service",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-collect-systemd-status",
+    "component": "troubleshooting",
+    "section_title": "Collect systemd status",
+    "commands_used": []
+  },
+  {
+    "entity_id": "98eb098fe5865900",
+    "code": "[ceph: root@host01 /]# podman ps -a --format json | jq '.[].Image'\n\"docker.io/library/rhel8\"\n\"cp.icr.io/cp/ibm-ceph/ceph-9-rhel9:latest\"",
+    "language": "bash",
+    "context": "To list all the container images that are downloaded on a host, run the following command:",
+    "source_file": "ibm-docs/9.2/troubleshooting-list-all-downloaded-container-images",
+    "component": "troubleshooting",
+    "section_title": "List all downloaded container images",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3dc6eb4c310400fe",
+    "code": "execnet.gateway_bootstrap.HostNotFound: -F /tmp/cephadm-conf-73z09u6g -i /tmp/cephadm-identity-ky7ahp_5 root@10.10.1.2\n\n    ...\n\n    raise OrchestratorError(msg) from e\n    orchestrator._interface.OrchestratorError: Failed to connect to 10.10.1.2 (10.10.1.2).\n\n    Please make sure that the host is reachable and accepts connections using the cephadm SSH key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "cephadm SSH key"
+    ]
+  },
+  {
+    "entity_id": "774b599556daa872",
+    "code": "[ceph: root@host01 /]# ceph config-key get mgr/cephadm/ssh_identity_key > ~/cephadm_private_key\nINFO:cephadm:Inferring fsid f8edc08a-7f17-11ea-8707-000c2915dd98\nINFO:cephadm:Using recent ceph image docker.io/ceph/ceph:v15 obtained 'mgr/cephadm/ssh_identity_key'\n[root@mon1 ~] # chmod 0600 ~/cephadm_private_key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph config-key get mgr",
+      "ceph image docker"
+    ]
+  },
+  {
+    "entity_id": "6cf923168da061a1",
+    "code": "[ceph: root@host01 /]# chmod 0600 ~/cephadm_private_key",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": []
+  },
+  {
+    "entity_id": "890d57d6453f20ac",
+    "code": "[ceph: root@host01 /]# cat ~/cephadm_private_key | ceph cephadm set-ssk-key -i-",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph cephadm set-ssk-key -i-"
+    ]
+  },
+  {
+    "entity_id": "dc0cf60ce1ded9cf",
+    "code": "[ceph: root@host01 /]# ceph cephadm get-ssh-config",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph cephadm get-ssh-config"
+    ]
+  },
+  {
+    "entity_id": "d6592d5146a54b7c",
+    "code": "[ceph: root@host01 /]# ssh -F config -i ~/cephadm_private_key root@host01",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c2a260caef320314",
+    "code": "[ceph: root@host01 /]# ceph cephadm get-pub-key\n[ceph: root@host01 /]# grep \"`cat ~/ceph.pub`\" /root/.ssh/authorized_keys",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-run-containers",
+    "component": "troubleshooting",
+    "section_title": "Manually run containers",
+    "commands_used": [
+      "ceph cephadm get-pub-key"
+    ]
+  },
+  {
+    "entity_id": "0ef40cf5d9ed4d67",
+    "code": "[ceph: root@host01 /]# ceph config set host public_network hostnetwork",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-cidr-network-error",
+    "component": "troubleshooting",
+    "section_title": "CIDR network error",
+    "commands_used": [
+      "ceph config set host public_network"
+    ]
+  },
+  {
+    "entity_id": "92e169f0b533e791",
+    "code": "[ceph: root@host01 /]# cephadm enter --name cephfs.hostname.ppdhsz\n[ceph: root@mon1 /]# ceph --admin-daemon /var/run/ceph/ceph-cephfs.hostname.ppdhsz.asok config show",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-access-admin-socket",
+    "component": "troubleshooting",
+    "section_title": "Access admin socket",
+    "commands_used": [
+      "cephadm enter --name cephfs",
+      "ceph --admin-daemon"
+    ]
+  },
+  {
+    "entity_id": "bacc50beda650d2e",
+    "code": "[root@host01 ~]# cephadm shell",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "0966e645bf2343a9",
+    "code": "[ceph: root@host01 /]# ceph config-key set mgr/cephadm/pause true",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph config-key set mgr"
+    ]
+  },
+  {
+    "entity_id": "4e12e01ed9e7c87f",
+    "code": "[ceph: root@host01 /]# ceph auth get-or-create mgr.host01.smfvfd1 mon \"profile mgr\" osd \"allow *\" mds \"allow *\"\n[mgr.host01.smfvfd1]\nkey = AQDhcORgW8toCRAAlMzlqWXnh3cGRjqYEa9ikw==",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph auth get-or-create mgr"
+    ]
+  },
+  {
+    "entity_id": "7b8bba73a139950f",
+    "code": "[ceph: root@host01 /]# ceph config generate-minimal-conf\n# minimal ceph.conf for 8c9b0072-67ca-11eb-af06-001a4a0002a0\n[global]\nfsid = 8c9b0072-67ca-11eb-af06-001a4a0002a0\nmon_host = [v2:10.10.200.10:3300/0,v1:10.10.200.10:6789/0] [v2:10.10.10.100:3300/0,v1:10.10.200.100:6789/0]",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph config generate-minimal-conf"
+    ]
+  },
+  {
+    "entity_id": "4aec17bcafa59343",
+    "code": "[ceph: root@host01 /]# ceph config get \"mgr.host01.smfvfd1\" container_image",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph config get"
+    ]
+  },
+  {
+    "entity_id": "e351d3dc38a70165",
+    "code": "{\n  {\n  \"config\": \"# minimal ceph.conf for 8c9b0072-67ca-11eb-af06-001a4a0002a0\\n[global]\\n\\tfsid = 8c9b0072-67ca-11eb-af06-001a4a0002a0\\n\\tmon_host =  [v2:10.10.200.10:3300/0,v1:10.10.200.10:6789/0] [v2:10.10.10.100:3300/0,v1:10.10.200.100:6789/0]\\n\",\n  \"keyring\": \"[mgr.Ceph5-2.smfvfd1]\\n\\tkey = AQDhcORgW8toCRAAlMzlqWXnh3cGRjqYEa9ikw==\\n\"\n}\n}",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ff2eb5f518da81b5",
+    "code": "[ceph: root@host01 /]# exit",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d902809f7ebadf47",
+    "code": "[root@host01 ~]# cephadm --image cp.icr.io/cp/ibm-ceph/ceph-9-rhel9:latest deploy --fsid  8c9b0072-67ca-11eb-af06-001a4a0002a0 --name mgr.host01.smfvfd1 --config-json config-json.json",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "cephadm --image cp"
+    ]
+  },
+  {
+    "entity_id": "eac6b23ed54d4238",
+    "code": "[ceph: root@host01 /]# ceph -s",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/9.2/troubleshooting-manually-deploying-mgr-daemon",
+    "component": "troubleshooting",
+    "section_title": "Manually deploying a mgr daemon",
+    "commands_used": [
+      "ceph -s"
+    ]
+  }
+]

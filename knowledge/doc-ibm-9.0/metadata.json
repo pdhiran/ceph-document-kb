@@ -3,13 +3,13 @@
   "ceph_version": "ibm-9.0",
   "embedding_model": "BAAI/bge-small-en-v1.5",
   "embedding_dimensions": 384,
-  "total_chunks": 5761,
-  "total_code_examples": 6253,
+  "total_chunks": 5861,
+  "total_code_examples": 6341,
   "components": {
     "cephadm": {
       "name": "cephadm",
-      "chunk_count": 246,
-      "code_example_count": 498,
+      "chunk_count": 258,
+      "code_example_count": 526,
       "topics": [
         "administration",
         "bootstrap",
@@ -28,6 +28,7 @@
         "integration",
         "modules",
         "operations",
+        "pdrc",
         "planning",
         "setup",
         "troubleshooting",
@@ -44,8 +45,8 @@
     },
     "cephfs": {
       "name": "cephfs",
-      "chunk_count": 734,
-      "code_example_count": 678,
+      "chunk_count": 738,
+      "code_example_count": 680,
       "topics": [
         "ac",
         "benchmark",
@@ -98,8 +99,8 @@
     },
     "dev": {
       "name": "dev",
-      "chunk_count": 61,
-      "code_example_count": 71,
+      "chunk_count": 74,
+      "code_example_count": 77,
       "topics": [
         "api",
         "developer",
@@ -112,10 +113,12 @@
     },
     "general": {
       "name": "general",
-      "chunk_count": 2771,
-      "code_example_count": 2534,
+      "chunk_count": 2785,
+      "code_example_count": 2552,
       "topics": [
         "990",
+        "9902",
+        "9903",
         "accounts",
         "adi",
         "adjustments",
@@ -212,6 +215,7 @@
         "red",
         "reference",
         "release",
+        "requests",
         "resharding",
         "retention",
         "roles",
@@ -252,8 +256,8 @@
     },
     "mgr": {
       "name": "mgr",
-      "chunk_count": 198,
-      "code_example_count": 218,
+      "chunk_count": 221,
+      "code_example_count": 215,
       "topics": [
         "alerts",
         "cd",
@@ -277,8 +281,8 @@
     },
     "rados": {
       "name": "rados",
-      "chunk_count": 819,
-      "code_example_count": 997,
+      "chunk_count": 835,
+      "code_example_count": 1024,
       "topics": [
         "ac",
         "administration",
@@ -364,8 +368,8 @@
     },
     "radosgw": {
       "name": "radosgw",
-      "chunk_count": 624,
-      "code_example_count": 811,
+      "chunk_count": 637,
+      "code_example_count": 816,
       "topics": [
         "accounts",
         "acog",
@@ -424,8 +428,8 @@
     },
     "rbd": {
       "name": "rbd",
-      "chunk_count": 255,
-      "code_example_count": 379,
+      "chunk_count": 260,
+      "code_example_count": 384,
       "topics": [
         "ccbduiflkmc",
         "ceph",
@@ -467,5 +471,6 @@
       "code_examples_path": "troubleshooting/code_examples.json"
     }
   },
-  "build_timestamp": "2026-07-17T13:36:22.531005+00:00"
+  "build_timestamp": "2026-10-29T17:26:00.547733+00:00",
+  "last_incremental_since": "2026-07-01"
 }

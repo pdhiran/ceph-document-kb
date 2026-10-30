@@ -6888,8 +6888,8 @@
     ]
   },
   {
-    "entity_id": "e946e81a4410eca2",
-    "code": "ceph smb cluster create CLUSTER_ID {user} [--domain-realm=DOMAIN_REALM] \n[--domain-join-user-pass=<domain_join_user_pass>] \n[--define-user-pass=<define_user_pass>] [--custom-dns=<custom_dns>] \n[--placement=<placement>] [--clustering=<clustering>]",
+    "entity_id": "b38ab068148d97fc",
+    "code": "ceph smb cluster create CLUSTER_ID {user} [--domain-realm=DOMAIN_REALM] \n[--domain-join-user-pass=DOMAIN_JOIN_USER_PASS] \n[--define-user-pass=DEFINE_USER_PASS] [--custom-dns=CUSTOM_DNS] \n[--placement=PLACEMENT] [--clustering=CLUSTERING]",
     "language": "bash",
     "context": "Managing SMB clusters by using imperative method",
     "source_file": "ibm-docs/8.0/shares-managing-smb-clusters-by-using-imperative-method",

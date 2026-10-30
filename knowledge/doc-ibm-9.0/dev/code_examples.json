@@ -1,5 +1,15 @@
 [
   {
+    "entity_id": "fb692a2259a89b54",
+    "code": "https://<dashboard-hostname>:<dashboard-port>/#/api-docs",
+    "language": "bash",
+    "context": "You can access the interactive OpenAPI (Swagger) documentation at:",
+    "source_file": "ibm-docs/9.0/developer-ceph-restful-api",
+    "component": "dev",
+    "section_title": "Ceph RESTful API",
+    "commands_used": []
+  },
+  {
     "entity_id": "005a91c14fc0fcf3",
     "code": "Accept: application/vnd.ceph.api.vMAJOR.MINOR+json",
     "language": "bash",
@@ -20,147 +30,189 @@
     "commands_used": []
   },
   {
-    "entity_id": "c79e6b3126dc6c59",
-    "code": "[root@mon ~]# curl -X POST \"https://example.com:8443/api/auth\" \\\n  -H  \"Accept: application/vnd.ceph.api.v1.0+json\" \\\n  -H  \"Content-Type: application/json\" \\\n  -d '{\"username\": user1, \"password\": password1}'",
+    "entity_id": "6275a2be82bf883b",
+    "code": "Accept: application/vnd.ceph.api.v1.0+json",
     "language": "bash",
-    "context": "Example",
+    "context": "When accessing API endpoints directly, you must specify the API version in the Accept header. All endpoints require an explicit API version, beginning with version 1.0.",
     "source_file": "ibm-docs/9.0/api-authentication-authorization-ceph",
     "component": "dev",
     "section_title": "Authentication and authorization for the Ceph API",
     "commands_used": []
   },
   {
-    "entity_id": "e6a86abff3bd43cd",
-    "code": "curl -H \"Authorization: Bearer TOKEN\" ...",
+    "entity_id": "6237e50264963bcb",
+    "code": "application/vnd.ceph.api.vMAJOR.MINOR+json",
     "language": "bash",
-    "context": "Syntax",
+    "context": "The API version is specified in the Accept header using the following format.",
     "source_file": "ibm-docs/9.0/api-authentication-authorization-ceph",
     "component": "dev",
     "section_title": "Authentication and authorization for the Ceph API",
     "commands_used": []
   },
   {
-    "entity_id": "d8ac951aa0abd0ce",
+    "entity_id": "8021d549d392d2aa",
+    "code": "curl -X GET \"https://example.com:8443/api/osd\" \\\n-H \"Accept: application/vnd.ceph.api.v1.0+json\" \\\n-H \"Authorization: Bearer JWT\"",
+    "language": "bash",
+    "context": "For example,",
+    "source_file": "ibm-docs/9.0/api-authentication-authorization-ceph",
+    "component": "dev",
+    "section_title": "Authentication and authorization for the Ceph API",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ad2226b66a6da51",
+    "code": "curl -X POST \"https://example.com:8443/api/auth\" \\\n-H \"Accept: application/vnd.ceph.api.v1.0+json\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\"username\":\"user1\",\"password\":\"password1\"}'",
+    "language": "bash",
+    "context": "For example,",
+    "source_file": "ibm-docs/9.0/api-authentication-authorization-ceph",
+    "component": "dev",
+    "section_title": "Authentication and authorization for the Ceph API",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6ad2226b66a6da51",
+    "code": "curl -X POST \"https://example.com:8443/api/auth\" \\\n-H \"Accept: application/vnd.ceph.api.v1.0+json\" \\\n-H \"Content-Type: application/json\" \\\n-d '{\"username\":\"user1\",\"password\":\"password1\",\"ttl\":24}'",
+    "language": "bash",
+    "context": "You can specify a custom token lifetime when requesting a token.",
+    "source_file": "ibm-docs/9.0/api-authentication-authorization-ceph",
+    "component": "dev",
+    "section_title": "Authentication and authorization for the Ceph API",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7fa993c5a49ba4db",
+    "code": "ceph dashboard set-jwt-token-ttl SECONDS",
+    "language": "bash",
+    "context": "You can also configure the default token lifetime for the dashboard.",
+    "source_file": "ibm-docs/9.0/api-authentication-authorization-ceph",
+    "component": "dev",
+    "section_title": "Authentication and authorization for the Ceph API",
+    "commands_used": [
+      "ceph dashboard set-jwt-token-ttl SECONDS"
+    ]
+  },
+  {
+    "entity_id": "569d63a4fe7652ec",
     "code": "root@host01 ~]# cephadm shell",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "cephadm shell"
     ]
   },
   {
-    "entity_id": "f31ded36f8101eb8",
+    "entity_id": "6c67342523259c3d",
     "code": "[ceph: root@host01 /]# ceph mgr module enable dashboard",
     "language": "bash",
     "context": "Enable the RESTful plug-in:",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "ceph mgr module enable dashboard"
     ]
   },
   {
-    "entity_id": "765a2f38b06d0065",
+    "entity_id": "ba6850eda1f15651",
     "code": "ceph dashboard set-ssl-certificate HOST_NAME -i CERT_FILE\nceph dashboard set-ssl-certificate-key HOST_NAME -i KEY_FILE",
     "language": "bash",
     "context": "Syntax",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "ceph dashboard set-ssl-certificate HOST_NAME -i",
       "ceph dashboard set-ssl-certificate-key HOST_NAME -i"
     ]
   },
   {
-    "entity_id": "268ec2cec93f7163",
+    "entity_id": "a70ccaa47b2ade1b",
     "code": "[ceph: root@host01 /]# ceph dashboard set-ssl-certificate -i dashboard.crt\n[ceph: root@host01 /]# ceph dashboard set-ssl-certificate-key -i dashboard.key",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "ceph dashboard set-ssl-certificate -i dashboard",
       "ceph dashboard set-ssl-certificate-key -i dashboard"
     ]
   },
   {
-    "entity_id": "5011e917b24e5ae1",
+    "entity_id": "1da3f6bae5ff9171",
     "code": "[ceph: root@host01 /]# ceph dashboard set-ssl-certificate host01 -i dashboard.crt\n[ceph: root@host01 /]# ceph dashboard set-ssl-certificate-key host01 -i dashboard.key",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "ceph dashboard set-ssl-certificate host01 -i",
       "ceph dashboard set-ssl-certificate-key host01 -i"
     ]
   },
   {
-    "entity_id": "ddde27dbb61dad24",
+    "entity_id": "01e38783523ae7db",
     "code": "[ceph: root@host01 /]# ceph dashboard create-self-signed-cert",
     "language": "bash",
-    "context": "Alternatively, you can generate a self-signed certificate. However, using a self-signed\ncertificate does not provide full security benefits of the HTTPS protocol:",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "context": "Alternatively, you can generate a self-signed certificate. However, using a self-signed certificate does not provide full security benefits of the HTTPS protocol:",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "ceph dashboard create-self-signed-cert"
     ]
   },
   {
-    "entity_id": "31fcb9c3d294b4f5",
+    "entity_id": "91b572e94c4865d7",
     "code": "echo -n \"PASSWORD\" > PATH_TO_FILE/PASSWORDFILE\nceph dashboard ac-user-create USERNAME -i PASSWORDFILE ROLE",
     "language": "bash",
     "context": "Syntax",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "ceph dashboard ac-user-create USERNAME -i"
     ]
   },
   {
-    "entity_id": "e97d1bb1d36dc2a9",
+    "entity_id": "c5e6f4651cb418a6",
     "code": "[ceph: root@host01 /]# echo -n \"p@ssw0rd\" > /root/dash-password.txt\n[ceph: root@host01 /]# ceph dashboard ac-user-create user1 -i /root/dash-password.txt administrator",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": [
       "ceph dashboard ac-user-create user1 -i"
     ]
   },
   {
-    "entity_id": "1bae16ed10442f8f",
+    "entity_id": "e58da16ef1e20386",
     "code": "https://HOST_NAME:8443",
     "language": "bash",
     "context": "Syntax",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": []
   },
   {
-    "entity_id": "aa3bbba8fd98c2b6",
+    "entity_id": "498d64876a91ce2d",
     "code": "https://host01:8443",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+    "source_file": "ibm-docs/9.0/api-enabling-securing-ceph",
     "component": "dev",
-    "section_title": "Enabling and Securing the Ceph API module",
+    "section_title": "Enabling and Securing the Ceph API",
     "commands_used": []
   },
   {
-    "entity_id": "00e6ed9b6429889c",
-    "code": "curl --silent --user USER 'https://CEPH_MANAGER:CEPH_MANAGER_PORT/api/cluster_conf'",
+    "entity_id": "b3ce77c303ac7e77",
+    "code": "curl -X GET \\\n\"https://CEPH_MANAGER:CEPH_MANAGER_PORT/api/cluster_conf\" \\\n-H \"Accept: application/vnd.ceph.api.v1.0+json\" \\\n-H \"Authorization: Bearer <JWT_TOKEN>\"",
     "language": "bash",
     "context": "Viewing cluster configuration options",
     "source_file": "ibm-docs/9.0/api-viewing-cluster-configuration-options",
@@ -169,8 +221,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "81978fbe76dcbcd2",
-    "code": "curl --silent --insecure --user USER 'https://CEPH_MANAGER:8080/api/cluster_conf'",
+    "entity_id": "1afbc143626b8603",
+    "code": "curl --silent --insecure --user USER 'https://CEPH_MANAGER:8443/api/cluster_conf'",
     "language": "bash",
     "context": "Viewing cluster configuration options",
     "source_file": "ibm-docs/9.0/api-viewing-cluster-configuration-options",
@@ -179,8 +231,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "ed2e56724cd6613e",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "entity_id": "5e21a28fbec58cb9",
+    "code": "import requests\n\nheaders = {\n    \"Accept\": \"application/vnd.ceph.api.v1.0+json\",\n    \"Authorization\": \"Bearer <JWT_TOKEN>\"\n}\n\nresult = requests.get(\n    \"https://CEPH_MANAGER:8080/api/cluster_conf\",\n    headers=headers\n)\n\nprint(result.json())",
     "language": "bash",
     "context": "Viewing cluster configuration options",
     "source_file": "ibm-docs/9.0/api-viewing-cluster-configuration-options",
@@ -189,8 +241,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "ed2e56724cd6613e",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "entity_id": "093f73624fc9439a",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8443/api/cluster_conf', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing cluster configuration options",
     "source_file": "ibm-docs/9.0/api-viewing-cluster-configuration-options",
@@ -220,7 +272,7 @@
   },
   {
     "entity_id": "20055f9060d91bd2",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing a particular cluster configuration option",
     "source_file": "ibm-docs/9.0/api-viewing-particular-cluster-configuration-option",
@@ -230,7 +282,7 @@
   },
   {
     "entity_id": "20055f9060d91bd2",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/cluster_conf/ARGUMENT', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing a particular cluster configuration option",
     "source_file": "ibm-docs/9.0/api-viewing-particular-cluster-configuration-option",
@@ -260,7 +312,7 @@
   },
   {
     "entity_id": "d3c9e256a979d478",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing host information",
     "source_file": "ibm-docs/9.0/api-viewing-host-information",
@@ -270,7 +322,7 @@
   },
   {
     "entity_id": "d3c9e256a979d478",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing host information",
     "source_file": "ibm-docs/9.0/api-viewing-host-information",
@@ -300,7 +352,7 @@
   },
   {
     "entity_id": "8c8ab6761c2b6433",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host/HOSTNAME', auth=(\"USER\", \"PASSWORD\"))\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host/HOSTNAME', auth=(\"USER\", \"PASSWORD\"))\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular host",
     "source_file": "ibm-docs/9.0/api-viewing-information-about-particular-host",
@@ -310,7 +362,7 @@
   },
   {
     "entity_id": "90f7ef1dce109fd4",
-    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print result.json()",
+    "code": "$ python\n>> import requests\n>> result = requests.get('https://CEPH_MANAGER:8080/api/host', auth=(\"USER\", \"PASSWORD\"), verify=False)\n>> print(result.json())",
     "language": "bash",
     "context": "Viewing information about a particular host",
     "source_file": "ibm-docs/9.0/api-viewing-information-about-particular-host",
@@ -471,6 +523,16 @@
     "code": "PUT /admin/user?format=json HTTP/1.1\nHost: FULLY_QUALIFIED_DOMAIN_NAME",
     "language": "bash",
     "context": "Syntax",
+    "source_file": "ibm-docs/9.0/api-create-user",
+    "component": "dev",
+    "section_title": "Create a user",
+    "commands_used": []
+  },
+  {
+    "entity_id": "f8ae586e0e8c0bc1",
+    "code": "$ curl --ipv4 --http1.1 --aws-sigv4 aws:amz:us-east-1:s3 \\\n-u 'ACCESS_KEY:SECRET_KEY' \\\n-H x-amz-content-sha256:UNSIGNED-PAYLOAD \\\n-X PUT \\\n\"http://HOSTNAME/admin/user?default-placement=default-placement&default-storage-class=cold&display-name=test4&uid=curl4\"",
+    "language": "bash",
+    "context": "Example: Create a user with a default storage class and placement target.",
     "source_file": "ibm-docs/9.0/api-create-user",
     "component": "dev",
     "section_title": "Create a user",

@@ -905,7 +905,7 @@
   {
     "entity_id": "6a715de9d98b7a32",
     "title": "Deploying the NFS service gateway using the command line interface",
-    "content": "You can use the Ceph Orchestrator with Cephadm in the backend to deploy the NFS service\ngateway using the placement specification. In this case, you have to create a RADOS pool and create\na namespace before deploying the gateway.",
+    "content": "You can use the Ceph Orchestrator with Cephadm in the backend to deploy the NFS service gateway using the placement specification. In this case, you have to create a RADOS pool and create a namespace before deploying the gateway.",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.1/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -924,7 +924,7 @@
   {
     "entity_id": "3492922038c45feb",
     "title": "Before you begin",
-    "content": "Before you begin, make sure that you have the following prerequisites in place:\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.\n- All manager, monitor and OSD daemons are deployed.",
+    "content": "Before you begin, make sure that you have the following prerequisites in place:\n\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.\n- All manager, monitor and OSD daemons are deployed.",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.1/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -943,16 +943,21 @@
   {
     "entity_id": "8e95a59d61fda32c",
     "title": "About this task",
-    "content": "**Note:** **Note:** Note:\n IBM supports CephFS exports only over the NFS v4.0+ protocol.",
+    "content": "**Note:** **Note:** Note:\n IBM supports CephFS exports only over the NFS v4.0+ protocol.\n\n**Note:** **Note:** Note:\n Deploying the NFS service gateway with persistent idmap configuration must be done through the service specification file. To get the specification file, use the following command:\n \n```bash\nceph orch ls --service-type nfs --export\n```\n\n After exporting the file, follow the procedure in Deploying NFS with idmap settings.",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.1/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
     "section_path": "Deploying the NFS service gateway using the command line interface > About this task",
     "doc_url": "https://www.ibm.com/docs/en/storage-ceph/8.1.0?topic=mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
-    "commands_referenced": [],
+    "commands_referenced": [
+      "ceph orch",
+      "ceph orch ls",
+      "ceph orch ls --service-type",
+      "ceph orch ls --service-type nfs"
+    ],
     "keywords": [],
     "version": "ibm-8.1",
-    "quality_score": 0.39999999999999997,
+    "quality_score": 1.0,
     "deprecated": false,
     "version_added": "",
     "version_changed": "",
@@ -962,7 +967,7 @@
   {
     "entity_id": "f176c6a87c147d2a",
     "title": "Procedure",
-    "content": "1. Log into the Cephadm shell.For\nexample,\n```\n[root@host01 ~]# cephadm shell\n```\n2. Create the RADOS pool namespace, and enable the application.For Ceph Block\nDevice (`rbd`) pools, enable\n`rbd`.\n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME freeform/rgw/rbd/cephfs/nfs\nrbd pool init -p POOL_NAME\n```\nFor\nexample,\n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool nfs\n[ceph: root@host01 /]# rbd pool init -p nfs-service\n```\n3. Deploy NFS service gateway using placement specification in the command line\ninterface.\n\n```bash\nceph orch apply nfs SERVICE_ID --placement=\"NUMBER_OF_DAEMONS HOST_NAME_1 HOST_NAME_2 HOST_NAME_3\"\n```\n\nThe following example deploys an NFS service cluster `nfsservice`\nwith one daemon on `host01` and\n`host02`.\n```\n[ceph: root@host01 /]# ceph orch apply nfs foo --placement=\"2 host01 host02\"\n```",
+    "content": "1. Log into the Cephadm shell.\nFor example,\n \n```\n[root@host01 ~]# cephadm shell\n```\n2. Create the RADOS pool namespace, and enable the application.\nFor Ceph Block Device (`rbd`) pools, enable `rbd`.\n \n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME freeform/rgw/rbd/cephfs/nfs\nrbd pool init -p POOL_NAME\n```\n\nFor example,\n \n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool nfs\n[ceph: root@host01 /]# rbd pool init -p nfs-service\n```\n3. Deploy NFS service gateway using placement specification in the command line interface.\n\n```bash\nceph orch apply nfs SERVICE_ID --placement=\"NUMBER_OF_DAEMONS HOST_NAME_1 HOST_NAME_2 HOST_NAME_3\"\n```\n\nThe following example deploys an NFS service cluster `nfsservice` with one daemon on `host01` and `host02`.\n \n```\n[ceph: root@host01 /]# ceph orch apply nfs foo --placement=\"2 host01 host02\"\n```",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.1/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -1000,7 +1005,7 @@
   {
     "entity_id": "152e5a4782081635",
     "title": "What to do next",
-    "content": "- List the service.For example,\n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and\nprocesses.\n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\nFor\nexample,\n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
+    "content": "- List the service.\n For example,\n \n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and processes.\n \n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\n\nFor example,\n \n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.1/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -1024,7 +1029,7 @@
   {
     "entity_id": "fb9da06fa275475a",
     "title": "Deploying the NFS service gateway using the service specification",
-    "content": "You can use the Ceph Orchestrator with Cephadm in the backend to deploy the NFS service\ngateway using the service specification. In this case, you have to create a RADOS pool and create a\nnamespace before deploying the gateway.",
+    "content": "You can use the Ceph Orchestrator with `cephadm` in the backend to deploy the NFS service gateway using the service specification. In this case, you have to create a RADOS pool and create a namespace before deploying the gateway.",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -1043,7 +1048,7 @@
   {
     "entity_id": "08951a6b1d3d7c6b",
     "title": "Before you begin",
-    "content": "Before you begin, make sure that you have the following prerequisites in place:\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.",
+    "content": "Before you begin, make sure that you have the following prerequisites in place:\n\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -1062,7 +1067,7 @@
   {
     "entity_id": "bdabf27e7731ee41",
     "title": "Procedure",
-    "content": "1. Create the `nfs.yaml` file.For\nexample,\n```\n[root@host01 ~]# touch nfs.yaml\n```\n2. Edit the nfs.yaml specification file.\n\n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\n```\n\nFor example,\n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\n```\n\n- Optional: Enable the NLM to support locking for NFS protocol v3 support by adding\n`enable_nlm: true` in the NFS.yaml specification\nfile.\n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\nspec:\n enable_nlm: true\n```\nFor example,\n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\nspec:\n enable_nlm: true\n```\n3. Mount the YAML file under a directory in the container.\n\n```bash\ncephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n\nFor\nexample,\n```\n[root@host01 ~]# cephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n4. Create the RADOS pool, namespace, and enable RBD.\n\n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME rbd\nrbd pool init -p POOL_NAME\n```\n\nFor example,\n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool rbd\n[ceph: root@host01 /]# rbd pool init -p nfs-pool\n```\n5. Navigate to the directory.For\nexample,\n```\n[ceph: root@host01 /]# cd /var/lib/ceph/\n```\n6. Deploy NFS service gateway using service specification.\n\n```bash\nceph orch apply -i FILE_NAME.yaml\n```\n\nFor\nexample,\n```\n[ceph: root@host01 ceph]# ceph orch apply -i nfs.yaml\n```",
+    "content": "1. Create the `nfs.yaml` file.\nFor example,\n \n```\n[root@host01 ~]# touch nfs.yaml\n```\n2. Edit the nfs.yaml specification file.\n\n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\n```\n\nFor example,\n \n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\n```\n\n- Optional: Enable the NLM to support locking for NFS protocol v3 support by adding `enable_nlm: true` in the NFS.yaml specification file.\n \n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\nspec:\n enable_nlm: true\n```\n\n For example,\n \n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\nspec:\n enable_nlm: true\n```\n3. Mount the YAML file under a directory in the container.\n\n```bash\ncephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n\nFor example,\n \n```\n[root@host01 ~]# cephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n4. Create the RADOS pool, namespace, and enable RBD.\n\n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME rbd\nrbd pool init -p POOL_NAME\n```\n\nFor example,\n \n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool rbd\n[ceph: root@host01 /]# rbd pool init -p nfs-pool\n```\n5. Navigate to the directory.\nFor example,\n \n```\n[ceph: root@host01 /]# cd /var/lib/ceph/\n```\n6. Deploy NFS service gateway using service specification.\n\n```bash\nceph orch apply -i FILE_NAME.yaml\n```\n\nFor example,\n \n```\n[ceph: root@host01 ceph]# ceph orch apply -i nfs.yaml\n```",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -1105,7 +1110,7 @@
   {
     "entity_id": "953ff073fa2f525a",
     "title": "What to do next",
-    "content": "- List the service, by using the ceph orch ls\ncommand.\n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and\nprocesses.\n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\nFor\nexample,\n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
+    "content": "- List the service, by using the ceph orch ls command.\n \n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and processes.\n \n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\n\n For example,\n \n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -1117,6 +1122,51 @@
       "ceph orch ls command",
       "ceph orch ps",
       "ceph orch ps --daemon_type"
+    ],
+    "keywords": [],
+    "version": "ibm-8.1",
+    "quality_score": 1.0,
+    "deprecated": false,
+    "version_added": "",
+    "version_changed": "",
+    "warnings": [],
+    "see_also": []
+  },
+  {
+    "entity_id": "8201e7ce99586006",
+    "title": "About this task",
+    "content": "idmap.conf settings can be updated manually under /var/lib/ceph/FSID/NFS-Daemon/etc/ganesha/idmap.conf but when the cluster is upgraded, the file contents get deleted.\n\nUse this procedure to keep the NFS `idmap` settings persistent across upgrades.",
+    "component": "cephfs",
+    "topic": "orchestrator",
+    "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "section_path": "Deploying the NFS service gateway using the service specification > About this task",
+    "doc_url": "https://www.ibm.com/docs/en/storage-ceph/8.1.0?topic=orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "commands_referenced": [],
+    "keywords": [],
+    "version": "ibm-8.1",
+    "quality_score": 0.6,
+    "deprecated": false,
+    "version_added": "",
+    "version_changed": "",
+    "warnings": [],
+    "see_also": []
+  },
+  {
+    "entity_id": "bdabf27e7731ee41",
+    "title": "Procedure",
+    "content": "1. Edit the nfs.yaml specification file.\nAdd `idmap_conf` information to the specification file.\n \n```bash\nservice_type: nfs\nservice_id: nfsganesha\nplacement:\n hosts:\n - example0\n - example1\n - example2\nspec:\n idmap_conf:\n general:\n Domain: domain.org\n mapping:\n Nobody-Group: nfsnobody\n Nobody-User: nfsnobody\n```\n2. Apply the specification file.\n\n```bash\nceph orch apply -i FILE_NAME.yaml\n```\n3. Redeploy the NFS daemons.\n\n```bash\nceph orch redeploy nfs.nfsganesha\n```",
+    "component": "cephfs",
+    "topic": "orchestrator",
+    "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "section_path": "Deploying the NFS service gateway using the service specification > Procedure",
+    "doc_url": "https://www.ibm.com/docs/en/storage-ceph/8.1.0?topic=orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "commands_referenced": [
+      "ceph orch",
+      "ceph orch apply",
+      "ceph orch apply -i",
+      "ceph orch apply -i file_name",
+      "ceph orch redeploy",
+      "ceph orch redeploy nfs"
     ],
     "keywords": [],
     "version": "ibm-8.1",
@@ -6962,7 +7012,7 @@
   {
     "entity_id": "f19409d88c7ef667",
     "title": "Mounting the Ceph File System as a kernel client",
-    "content": "The Ceph File System (CephFS) can be mounted as a kernel client, either manually or\nautomatically on system start.",
+    "content": "The Ceph File System (CephFS) can be mounted as a kernel client, either manually or automatically on system start.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-kernel-client",
@@ -6981,7 +7031,7 @@
   {
     "entity_id": "d3c7d316a08686c6",
     "title": "Before you begin",
-    "content": "Before mounting a Ceph File System as a kernel client, be sure that you have:\n- Root-level access to a Linux-based client node.\n- Root-level access to a Ceph Monitor node.\n- An existing Ceph File System.",
+    "content": "Before mounting a Ceph File System as a kernel client, be sure that you have:\n \n- Root-level access to a Linux-based client node.\n- Root-level access to a Ceph Monitor node.\n- An existing Ceph File System.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-kernel-client",
@@ -7000,7 +7050,7 @@
   {
     "entity_id": "d65fb597d2a146e6",
     "title": "About this task",
-    "content": "**Important:** **Note:** Important:\n Clients running on other Linux distributions, aside from Red Hat Enterprise\nLinux, are permitted but not supported. If issues are found in the CephFS Metadata Server or other\nparts of the storage cluster when using these clients, IBM will address them. If the cause is found\nto be on the client side, the kernel vendor of the Linux distribution must address the\nissue..\n\n- See the `mount(8)` manual page.\n- For more information about creating a Ceph user, see Ceph user management.\n- For more information about creating Ceph File Systems, see Creating Ceph File Systems.",
+    "content": "**Important:** **Note:** Important:\n Clients running on other Linux distributions, aside from Red Hat Enterprise Linux, are permitted but not supported. If issues are found in the CephFS Metadata Server or other parts of the storage cluster when using these clients, IBM will address them. If the cause is found to be on the client side, the kernel vendor of the Linux distribution must address the issue..\n\n- See the `mount(8)` manual page.\n- For more information about creating a Ceph user, see Ceph user management.\n- For more information about creating Ceph File Systems, see Creating Ceph File Systems.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-kernel-client",
@@ -7019,7 +7069,7 @@
   {
     "entity_id": "d2b73ac648d2391f",
     "title": "Procedure",
-    "content": "Configure the client node to use the Ceph storage cluster.\n1. Enable the IBM Storage Ceph\n8.0 Tools repository.\n\n```bash\ncurl\u00a0https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-8-rhel-9.repo\u00a0| sudo tee /etc/yum.repos.d/ibm-storage-ceph-8-rhel-9.repo\n```\n\nRepeat on all client nodes of the IBM Storage Ceph storage\ncluster.\n2. Install the `ceph-common` package.\n\n```bash\ndnf install ceph-common\n```\n3. Copy the Ceph client keyring from the Ceph Monitor node to the client node.\n\n**Note:** **Note:** Note:\n The client user should already be created for the keyring file to exist. For information about\ncreating client users for Ceph File Systems, see Creating client users for a Ceph File System.\n\n```bash\nscp /etc/ceph/ceph.client.admin.keyring root@CLIENT_NODE_NAME:/etc/ceph/ceph.client.admin.keyring\n```\nReplace\nCLIENT_NODE_NAME with the Ceph client host name or IP address.For\nexample,\n```bash\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.client.admin.keyring root@ceph.client.admin.keyring:/etc/ceph/ceph.client.admin.keyring\n```\n4. Copy the Ceph configuration file from a Ceph Monitor node to the client\nnode.\n```bash\nscp /etc/ceph/ceph.conf root@CLIENT_NODE_NAME:/etc/ceph/ceph.conf\n```\nReplace\nCLIENT_NODE_NAME with the Ceph client host name or IP address.For\nexample,\n```bash\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.conf root@client01:/etc/ceph/ceph.conf\n```\n5. Configure the client node to use the Ceph storage cluster.\n\n```bash\nchmod 644 /etc/ceph/ceph.conf\n```\n6. Choose either `automatically` or `manually`.\n\n- For automatic mounting, continue to Mounting automatically.\n- For manual mounting, continue to Mounting manually .",
+    "content": "Configure the client node to use the Ceph storage cluster.\n1. Enable the IBM Storage Ceph 8.0 Tools repository.\n\n```bash\ncurl\u00a0https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-8-rhel-9.repo\u00a0| sudo tee /etc/yum.repos.d/ibm-storage-ceph-8-rhel-9.repo\n```\n\nRepeat on all client nodes of the IBM Storage Ceph storage cluster.\n2. Install the `ceph-common` package.\n\n```bash\ndnf install ceph-common\n```\n3. Copy the Ceph client keyring from the Ceph Monitor node to the client node.\n\n**Note:** **Note:** Note:\n The client user should already be created for the keyring file to exist. For information about creating client users for Ceph File Systems, see Creating client users for a Ceph File System.\n\n```bash\nscp /etc/ceph/ceph.client.admin.keyring root@CLIENT_NODE_NAME:/etc/ceph/ceph.client.admin.keyring\n```\n\n Replace CLIENT_NODE_NAME with the Ceph client host name or IP address.\nFor example,\n \n```bash\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.client.admin.keyring root@ceph.client.admin.keyring:/etc/ceph/ceph.client.admin.keyring\n```\n4. Copy the Ceph configuration file from a Ceph Monitor node to the client node.\n\n```bash\nscp /etc/ceph/ceph.conf root@CLIENT_NODE_NAME:/etc/ceph/ceph.conf\n```\n\n Replace CLIENT_NODE_NAME with the Ceph client host name or IP address.\nFor example,\n \n```bash\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.conf root@client01:/etc/ceph/ceph.conf\n```\n5. Configure the client node to use the Ceph storage cluster.\n\n```bash\nchmod 644 /etc/ceph/ceph.conf\n```\n6. Choose either `automatically` or `manually`.\n\n- For automatic mounting, continue to Mounting automatically.\n- For manual mounting, continue to Mounting manually .",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-kernel-client",
@@ -7038,7 +7088,7 @@
   {
     "entity_id": "d2b73ac648d2391f",
     "title": "Procedure",
-    "content": "1. On the client host, create a new directory for mounting the Ceph File System.\n\n```bash\nmkdir -p MOUNT_POINT\n```\n\nFor\nexample:\n```bash\n[root@client01 ~]# mkdir -p /mnt/cephfs\n```\n2. Edit the /etc/fstab\nfile.\n```bash\n#DEVICE PATH TYPE OPTIONS \nMON_0_HOST:PORT, MOUNT_POINT ceph name=CLIENT_ID, \nMON_1_HOST:PORT, ceph.client_mountpoint=/VOL/SUB_VOL_GROUP/SUB_VOL/UID_SUB_VOL, fs=FILE_SYSTEM_NAME, [ADDITIONAL_OPTIONS]\nMON_2_HOST:PORT:/VOL/SUB_VOL/UID_SUB_VOL\n```\nIn the /etc/fstab file,\n- The first column (`#DEVICE`) sets the Ceph Monitor host names and the port\nnumber.\n- The second column (`PATH`) set the mount point.\n- The third column (`TYPE`) sets the file system type. In this case,\n`ceph`, for CephFS.\n- The fourth column (`OPTIONS`) sets the various options. These include the user\nname and the secret file that use the `name` and `secretfile` options.\nYou can also set specific volumes, subvolume groups, and subvolumes that use the\n`ceph.client_mountpoint` option.\nSet the `_netdev` option to ensure\nthat the file system is mounted after the networking subsystem starts to prevent hanging and\nnetworking issues. If you do not need access time information, then setting the\n`noatime` option can increase performance.\n- Set the fifth and sixth columns (`DUMP` and `FSCK`) to\n0.\nFor\nexample,\n```\n#DEVICE PATH TYPE OPTIONS DUMP FSCK\nmon1:6789, /mnt/cephfs ceph name=1, 0 0\nmon2:6789, ceph.client_mountpoint=/my_vol/my_sub_vol_group/my_sub_vol/0,\nmon3:6789:/ fs=cephfs01,\n _netdev,noatime\n```\nThe Ceph File\nSystem is mounted on the next system start.\n**Note:** **Note:** Note:\n\n- `mount.ceph` can read keyring files directly. As such, a secret file is no longer\nnecessary. Specify the client ID with `name=CLIENT_ID`, and\n`mount.ceph` will find the correct keyring file.\n- You can replace the Monitor host names with the string `:/` and\n`mount.ceph` will read the Ceph configuration file to determine which Monitors to\nconnect to.",
+    "content": "1. On the client host, create a new directory for mounting the Ceph File System.\n\n```bash\nmkdir -p MOUNT_POINT\n```\n\nFor example:\n \n```bash\n[root@client01 ~]# mkdir -p /mnt/cephfs\n```\n2. Edit the /etc/fstab file.\n\n```bash\n#DEVICE PATH TYPE OPTIONS \nMON_0_HOST:PORT, MOUNT_POINT ceph name=CLIENT_ID, \nMON_1_HOST:PORT, ceph.client_mountpoint=/VOL/SUB_VOL_GROUP/SUB_VOL/UID_SUB_VOL, fs=FILE_SYSTEM_NAME, [ADDITIONAL_OPTIONS]\nMON_2_HOST:PORT:/VOL/SUB_VOL/UID_SUB_VOL\n```\n\n In the /etc/fstab file,\n \n- The first column (`#DEVICE`) sets the Ceph Monitor host names and the port number.\n- The second column (`PATH`) set the mount point.\n- The third column (`TYPE`) sets the file system type. In this case, `ceph`, for CephFS.\n- The fourth column (`OPTIONS`) sets the various options. These include the user name and the secret file that use the `name` and `secretfile` options. You can also set specific volumes, subvolume groups, and subvolumes that use the `ceph.client_mountpoint` option.\n \nSet the `_netdev` option to ensure that the file system is mounted after the networking subsystem starts to prevent hanging and networking issues. If you do not need access time information, then setting the `noatime` option can increase performance.\n- Set the fifth and sixth columns (`DUMP` and `FSCK`) to 0.\n\nFor example,\n \n```\n#DEVICE PATH TYPE OPTIONS DUMP FSCK\nmon1:6789, /mnt/cephfs ceph name=1, 0 0\nmon2:6789, ceph.client_mountpoint=/my_vol/my_sub_vol_group/my_sub_vol/0,\nmon3:6789:/ fs=cephfs01,\n _netdev,noatime\n```\n\nThe Ceph File System is mounted on the next system start.\n \n**Note:** **Note:** Note:\n\n- `mount.ceph` can read keyring files directly. As such, a secret file is no longer necessary. Specify the client ID with `name=CLIENT_ID`, and `mount.ceph` will find the correct keyring file.\n- You can replace the Monitor host names with the string `:/` and `mount.ceph` will read the Ceph configuration file to determine which Monitors to connect to.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-kernel-client",
@@ -7059,7 +7109,7 @@
   {
     "entity_id": "d2b73ac648d2391f",
     "title": "Procedure",
-    "content": "1. Create a mount directory on the client node.\n\n```bash\nmkdir -p MOUNT_POINT\n```\n\nFor\nexample,\n```bash\n[root@client01 ~]# mkdir -p /mnt/cephfs\n```\n2. Mount the Ceph File System.To specify multiple Ceph Monitor addresses, in the mount command:\n1. Separate them with commas.\n2. Specify the mount point.\n3. Set the client name.\n\n**Note:** **Note:** Note:\n `mount.ceph` can read keyring files directly, therefore a secret file is\nnot necessary. It is enough to specify the client ID with\n`name=CLIENT_ID`, and `mount.ceph` finds the\ncorrect keyring file.\n\n```bash\nmount -t ceph MONITOR-1_NAME:6789,MONITOR-2_NAME:6789,MONITOR-3_NAME:6789:/ MOUNT_POINT -o name=CLIENT_ID,fs=FILE_SYSTEM_NAME\n```\n\nFor\nexample:\n```bash\n[root@client01 ~]# mount -t ceph mon1:6789,mon2:6789,mon3:6789:/ /mnt/cephfs -o name=1,fs=cephfs01\n```\n\n**Note:** **Note:** Note:\n\n- Configure a DNS server so that a single host name resolves to multiple IP addresses. That single\nhost name can then be used with the mount command, instead of supplying a\ncomma-separated list.\n- You can also replace the Monitor host names with the string `:/` and\n`mount.ceph` reads the Ceph configuration file to determine which Monitors to connect\nto.\n- Set the `nowsync` option to asynchronously run file creation and removal on the\nIBM Storage Ceph clusters. This improves the performance of some\nworkloads by avoiding round-trip latency for these system calls without impacting consistency. The\n`nowsync` option requires kernel clients with Red Hat Enterprise Linux 9.2 or\nlater.For\nexample,\n```\n[root@client01 ~]# mount -t ceph mon1:6789,mon2:6789,mon3:6789:/ /mnt/cephfs -o nowsync,name=1,fs=cephfs01\n```\n3. Verify that the file system is successfully mounted.\n\n```bash\nstat -f MOUNT_POINT\n```\n\nFor\nexample,\n```bash\n[root@client01 ~]# stat -f /mnt/cephfs\n```",
+    "content": "1. Create a mount directory on the client node.\n\n```bash\nmkdir -p MOUNT_POINT\n```\n\nFor example,\n \n```bash\n[root@client01 ~]# mkdir -p /mnt/cephfs\n```\n2. Mount the Ceph File System.\nTo specify multiple Ceph Monitor addresses, in the mount command:\n \n1. Separate them with commas.\n2. Specify the mount point.\n3. Set the client name.\n\n**Note:** **Note:** Note:\n `mount.ceph` can read keyring files directly, therefore a secret file is not necessary. It is enough to specify the client ID with `name=CLIENT_ID`, and `mount.ceph` finds the correct keyring file.\n\n```bash\nmount -t ceph MONITOR-1_NAME:6789,MONITOR-2_NAME:6789,MONITOR-3_NAME:6789:/ MOUNT_POINT -o name=CLIENT_ID,fs=FILE_SYSTEM_NAME\n```\n\nFor example:\n \n```bash\n[root@client01 ~]# mount -t ceph mon1:6789,mon2:6789,mon3:6789:/ /mnt/cephfs -o name=1,fs=cephfs01\n```\n\n**Note:** **Note:** Note:\n\n- Configure a DNS server so that a single host name resolves to multiple IP addresses. That single host name can then be used with the mount command, instead of supplying a comma-separated list.\n- You can also replace the Monitor host names with the string `:/` and `mount.ceph` reads the Ceph configuration file to determine which Monitors to connect to.\n- Set the `nowsync` option to asynchronously run file creation and removal on the IBM Storage Ceph clusters. This improves the performance of some workloads by avoiding round-trip latency for these system calls without impacting consistency. The `nowsync` option requires kernel clients with Red Hat Enterprise Linux 9.2 or later.\n For example,\n \n```\n[root@client01 ~]# mount -t ceph mon1:6789,mon2:6789,mon3:6789:/ /mnt/cephfs -o nowsync,name=1,fs=cephfs01\n```\n3. Verify that the file system is successfully mounted.\n\n```bash\nstat -f MOUNT_POINT\n```\n\nFor example,\n \n```bash\n[root@client01 ~]# stat -f /mnt/cephfs\n```",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-kernel-client",
@@ -7081,7 +7131,7 @@
   {
     "entity_id": "9c6b630c54d44300",
     "title": "Mounting the Ceph File System as a FUSE client",
-    "content": "The Ceph File System (CephFS) can be mounted as a FUSE client, either manually or\nautomatically on system start.",
+    "content": "The Ceph File System (CephFS) can be mounted as a FUSE client, either manually or automatically on system start.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-fuse-client",
@@ -7100,7 +7150,7 @@
   {
     "entity_id": "004dc93b253834b0",
     "title": "Before you begin",
-    "content": "Before mounting a Ceph File System as a FUSE client, be sure that you have:\n- Root-level access to a Linux-based client node.\n- Root-level access to a Ceph Monitor node.\n- An existing Ceph File System.",
+    "content": "Before mounting a Ceph File System as a FUSE client, be sure that you have:\n \n- Root-level access to a Linux-based client node.\n- Root-level access to a Ceph Monitor node.\n- An existing Ceph File System.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-fuse-client",
@@ -7138,7 +7188,7 @@
   {
     "entity_id": "7bfdda196ac59969",
     "title": "Procedure",
-    "content": "Configure the client node to use the Ceph storage cluster.\n1. Enable the IBM Storage Ceph\n8.0 Tools repository.\n\n```bash\ncurl\u00a0https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-8-rhel-9.repo\u00a0| sudo tee /etc/yum.repos.d/ibm-storage-ceph-8-rhel-9.repo\n```\n\nRepeat on client nodes of the IBM Storage Ceph storage\ncluster.\n2. Install the `ceph-fuse` package.\n\n```bash\ndnf install ceph-fuse\n```\n3. Copy the Ceph client keyring from the Ceph Monitor node to the client node.\n\n**Note:** **Note:** Note:\n The client user must already be created.\n\n```bash\nscp /etc/ceph/ceph.client.admin.keyring root@CLIENT_NODE_NAME:/etc/ceph/ceph.client.admin.keyring\n```\n\nReplace CLIENT_NODE_NAME with the Ceph client host name or IP address.\n\nFor\nexample,\n```\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.client.admin.keyring root@client01:/etc/ceph/ceph.client.admin.keyring\n```\n4. Copy the Ceph configuration file from a Ceph Monitor node to the client node.\n\n```bash\nscp /etc/ceph/ceph.conf root@CLIENT_NODE_NAME:/etc/ceph/ceph.conf\n```\n\nReplace CLIENT_NODE_NAME with the Ceph client host name or IP address.\n\nFor\nexample,\n```\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.conf root@client01:/etc/ceph/ceph.conf\n```\n5. From the client node, set the appropriate permissions for the configuration file.\n\n```bash\nchmod 644 /etc/ceph/ceph.conf\n```\n6. Choose either `automatically` or `manually`.\n\n- For automatic mounting, continue to Mounting automatically.\n- For manual mounting, continue to Mounting manually.",
+    "content": "Configure the client node to use the Ceph storage cluster.\n1. Enable the IBM Storage Ceph 8.0 Tools repository.\n\n```bash\ncurl\u00a0https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-8-rhel-9.repo\u00a0| sudo tee /etc/yum.repos.d/ibm-storage-ceph-8-rhel-9.repo\n```\n\nRepeat on client nodes of the IBM Storage Ceph storage cluster.\n2. Install the `ceph-fuse` package.\n\n```bash\ndnf install ceph-fuse\n```\n3. Copy the Ceph client keyring from the Ceph Monitor node to the client node.\n\n**Note:** **Note:** Note:\n The client user must already be created.\n\n```bash\nscp /etc/ceph/ceph.client.admin.keyring root@CLIENT_NODE_NAME:/etc/ceph/ceph.client.admin.keyring\n```\n\nReplace CLIENT_NODE_NAME with the Ceph client host name or IP address.\n\nFor example,\n \n```\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.client.admin.keyring root@client01:/etc/ceph/ceph.client.admin.keyring\n```\n4. Copy the Ceph configuration file from a Ceph Monitor node to the client node.\n\n```bash\nscp /etc/ceph/ceph.conf root@CLIENT_NODE_NAME:/etc/ceph/ceph.conf\n```\n\nReplace CLIENT_NODE_NAME with the Ceph client host name or IP address.\n\nFor example,\n \n```\n[ceph: root@host01 ~]# scp /etc/ceph/ceph.conf root@client01:/etc/ceph/ceph.conf\n```\n5. From the client node, set the appropriate permissions for the configuration file.\n\n```bash\nchmod 644 /etc/ceph/ceph.conf\n```\n6. Choose either `automatically` or `manually`.\n\n- For automatic mounting, continue to Mounting automatically.\n- For manual mounting, continue to Mounting manually.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-fuse-client",
@@ -7157,7 +7207,7 @@
   {
     "entity_id": "7bfdda196ac59969",
     "title": "Procedure",
-    "content": "1. On the client node, create a directory for the mount point.\n\n**Note:** **Note:** Note:\n If you used the `path` option with MDS capabilities, then the mount point must\nbe within what is specified by the `path`.\n\n```bash\nmkdir PATH_TO_MOUNT_POINT\n```\n\nFor example,\n```\n[root@client01 ~]# mkdir /mnt/mycephfs\n```\n2. Edit the /etc/fstab\nfile.\n```bash\nDEVICE PATH TYPE OPTIONS DUMP FSCK\nHOST_NAME:PORT, MOUNT_POINT fuse.ceph ceph.id=CLIENT_ID, 0 0\nHOST_NAME:PORT, ceph.client_mountpoint=/VOL/SUB_VOL_GROUP/SUB_VOL/UID_SUB_VOL,\nHOST_NAME:PORT:/ ceph.client_fs=FILE_SYSTEM_NAME,ceph.name=USERNAME,ceph.keyring=/etc/ceph/KEYRING_FILE,\n [ADDITIONAL_OPTIONS]\n```\nIn the\n/etc/fstab file,\n- The first column (`#DEVICE`) sets the Ceph Monitor host names and the port\nnumber.\n- The second column (`PATH`) set the mount point.\n- The third column (`TYPE`) sets the file system type. In this case,\n`fuse.ceph`, for CephFS.\n- The fourth column (`OPTIONS`) sets the various options. These include the user\nname and the keyring that use the `ceph.name` and `ceph.keyring`\noptions. You can also set specific volumes, subvolume groups, and subvolumes that use the\n`ceph.client_mountpoint` option.\nTo specify which Ceph File System to access, use\nthe `ceph.client_fs` option. Set the `_netdev` option to ensure that\nthe file system is mounted after the networking subsystem starts to prevent hanging and networking\nissues. If you do not need access time information, then setting the `noatime` option\ncan increase performance. If you want to automatically reconnect after an eviction, then set the\n`client_reconnect_stale=true` option.\n- Set the fifth and sixth columns (`DUMP` and `FSCK`) to\n0.\nFor\nexample,\n```\n# DEVICE PATH TYPE OPTIONS DUMP FSCK\n mon1:6789, /mnt/mycephfs fuse.ceph ceph.id=1, 0 0\n mon2:6789, ceph.client_mountpoint=/my_vol/my_sub_vol_group/my_sub_vol/0,\n mon3:6789:/ ceph.client_fs=cephfs01,ceph.name=client.1,ceph.keyring=/etc/ceph/client1.keyring,\n _netdev,defaults\n```\nThe Ceph\nFile System is mounted on the next system start.",
+    "content": "1. On the client node, create a directory for the mount point.\n\n**Note:** **Note:** Note:\n If you used the `path` option with MDS capabilities, then the mount point must be within what is specified by the `path`.\n\n```bash\nmkdir PATH_TO_MOUNT_POINT\n```\n\nFor example,\n \n```\n[root@client01 ~]# mkdir /mnt/mycephfs\n```\n2. Edit the /etc/fstab file.\n\n```bash\nDEVICE PATH TYPE OPTIONS DUMP FSCK\nHOST_NAME:PORT, MOUNT_POINT fuse.ceph ceph.id=CLIENT_ID, 0 0\nHOST_NAME:PORT, ceph.client_mountpoint=/VOL/SUB_VOL_GROUP/SUB_VOL/UID_SUB_VOL,\nHOST_NAME:PORT:/ ceph.client_fs=FILE_SYSTEM_NAME,ceph.name=USERNAME,ceph.keyring=/etc/ceph/KEYRING_FILE,\n [ADDITIONAL_OPTIONS]\n```\n\n In the /etc/fstab file,\n \n- The first column (`#DEVICE`) sets the Ceph Monitor host names and the port number.\n- The second column (`PATH`) set the mount point.\n- The third column (`TYPE`) sets the file system type. In this case, `fuse.ceph`, for CephFS.\n- The fourth column (`OPTIONS`) sets the various options. These include the user name and the keyring that use the `ceph.name` and `ceph.keyring` options. You can also set specific volumes, subvolume groups, and subvolumes that use the `ceph.client_mountpoint` option.\n \nTo specify which Ceph File System to access, use the `ceph.client_fs` option. Set the `_netdev` option to ensure that the file system is mounted after the networking subsystem starts to prevent hanging and networking issues. If you do not need access time information, then setting the `noatime` option can increase performance. If you want to automatically reconnect after an eviction, then set the `client_reconnect_stale=true` option.\n- Set the fifth and sixth columns (`DUMP` and `FSCK`) to 0.\n\nFor example,\n \n```\n# DEVICE PATH TYPE OPTIONS DUMP FSCK\n mon1:6789, /mnt/mycephfs fuse.ceph ceph.id=1, 0 0\n mon2:6789, ceph.client_mountpoint=/my_vol/my_sub_vol_group/my_sub_vol/0,\n mon3:6789:/ ceph.client_fs=cephfs01,ceph.name=client.1,ceph.keyring=/etc/ceph/client1.keyring,\n _netdev,defaults\n```\n\nThe Ceph File System is mounted on the next system start.",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-fuse-client",
@@ -7176,7 +7226,7 @@
   {
     "entity_id": "7bfdda196ac59969",
     "title": "Procedure",
-    "content": "1. On the client node, create a directory for the mount point.\n\n**Note:** **Note:** Note:\n If you used the `path` option with MDS capabilities, then the mount point must\nbe within what is specified by the `path`.\n\n```bash\nmkdir PATH_TO_MOUNT_POINT\n```\n\nFor example,\n```\n[root@client01 ~]# mkdir /mnt/mycephfs\n```\n2. Use the `ceph-fuse` utility to mount the Ceph File System.\n\n```bash\nceph-fuse -n client.CLIENT_ID --client_fs FILE_SYSTEM_NAME MOUNT_POINT\n```\n\nFor\nexample,\n```\n[root@client01 ~]# ceph-fuse -n client.1 --client_fs cephfs01 /mnt/mycephfs\n```\n\n**Note:** **Note:** Note:\n\n- If you do not use the default name and location of the user keyring\n(`/etc/ceph/ceph.client.CLIENT_ID.keyring`) then use the\n--keyring option to specify the path to the user keyring. For\nexample,\n```\n[root@client01 ~]# ceph-fuse -n client.1 --keyring=/etc/ceph/client.1.keyring /mnt/mycephfs\n```\n- Use the -r option to instruct the client to treat that path as its\nroot.\n```bash\nceph-fuse -n client.CLIENT_ID MOUNT_POINT -r PATH\n```\nFor\nexample,\n```\n[root@client01 ~]# ceph-fuse -n client.1 /mnt/cephfs -r /home/cephfs\n```\n- If you want to automatically reconnect an evicted Ceph client, then add the\n--client_reconnect_stale=true option.For\nexample,\n```\n[root@client01 ~]# ceph-fuse -n client.1 /mnt/cephfs --client_reconnect_stale=true\n```\n3. Verify that the file system is successfully mounted.\n\n```bash\nstat -f MOUNT_POINT\n```\n\nFor example,\n```\n[root@client01 ~]# stat -f /mnt/cephfs\n```",
+    "content": "1. On the client node, create a directory for the mount point.\n\n**Note:** **Note:** Note:\n If you used the `path` option with MDS capabilities, then the mount point must be within what is specified by the `path`.\n\n```bash\nmkdir PATH_TO_MOUNT_POINT\n```\n\nFor example,\n \n```\n[root@client01 ~]# mkdir /mnt/mycephfs\n```\n2. Use the `ceph-fuse` utility to mount the Ceph File System.\n\n```bash\nceph-fuse -n client.CLIENT_ID --client_fs FILE_SYSTEM_NAME MOUNT_POINT\n```\n\nFor example,\n \n```\n[root@client01 ~]# ceph-fuse -n client.1 --client_fs cephfs01 /mnt/mycephfs\n```\n\n**Note:** **Note:** Note:\n\n- If you do not use the default name and location of the user keyring (`/etc/ceph/ceph.client.CLIENT_ID.keyring`) then use the --keyring option to specify the path to the user keyring. For example,\n \n```\n[root@client01 ~]# ceph-fuse -n client.1 --keyring=/etc/ceph/client.1.keyring /mnt/mycephfs\n```\n- Use the -r option to instruct the client to treat that path as its root.\n \n```bash\nceph-fuse -n client.CLIENT_ID MOUNT_POINT -r PATH\n```\n\n For example,\n \n```\n[root@client01 ~]# ceph-fuse -n client.1 /mnt/cephfs -r /home/cephfs\n```\n- If you want to automatically reconnect an evicted Ceph client, then add the --client_reconnect_stale=true option.\n For example,\n \n```\n[root@client01 ~]# ceph-fuse -n client.1 /mnt/cephfs --client_reconnect_stale=true\n```\n3. Verify that the file system is successfully mounted.\n\n```bash\nstat -f MOUNT_POINT\n```\n\nFor example,\n \n```\n[root@client01 ~]# stat -f /mnt/cephfs\n```",
     "component": "cephfs",
     "topic": "cephfs",
     "source_file": "ibm-docs/8.1/cephfs-mounting-ceph-file-system-as-fuse-client",

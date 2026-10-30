@@ -225,6 +225,46 @@
       "title": "Verification"
     }
   ],
+  "ceph --endpoint-url": [
+    {
+      "chunk_id": "3fe295d9c5c66813",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/operations-bucket-tagging",
+      "title": "Procedure"
+    }
+  ],
+  "ceph --endpoint-url https": [
+    {
+      "chunk_id": "3fe295d9c5c66813",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/operations-bucket-tagging",
+      "title": "Procedure"
+    }
+  ],
+  "ceph --name": [
+    {
+      "chunk_id": "ddab0f5a07406261",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Procedure"
+    }
+  ],
+  "ceph --name client": [
+    {
+      "chunk_id": "ddab0f5a07406261",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Procedure"
+    }
+  ],
+  "ceph --name mon": [
+    {
+      "chunk_id": "ddab0f5a07406261",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Procedure"
+    }
+  ],
   "ceph --version": [
     {
       "chunk_id": "c000662f28794935",
@@ -281,6 +321,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/cluster-powering-down-rebooting-by-using-systemctl-commands",
       "title": "What to do next"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     },
     {
       "chunk_id": "0487c79e9695cad1",
@@ -467,12 +513,6 @@
       "component": "troubleshooting",
       "source": "ibm-docs/9.0/troubleshooting-manually-deploying-mgr-daemon",
       "title": "Verification"
-    },
-    {
-      "chunk_id": "2764f4b4a9121148",
-      "component": "rados",
-      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
-      "title": "Procedure"
     },
     {
       "chunk_id": "e80a3b5a6c210e8d",
@@ -983,6 +1023,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    },
+    {
       "chunk_id": "b0a075f0492b3919",
       "component": "general",
       "source": "ibm-docs/9.0/users-listing-ceph",
@@ -1091,7 +1137,13 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "2764f4b4a9121148",
+      "chunk_id": "e03b1a5d268495ce",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "What to do next"
+    },
+    {
+      "chunk_id": "bf179d0bbc0bc463",
       "component": "rados",
       "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
       "title": "Procedure"
@@ -1253,6 +1305,12 @@
       "title": "Example workflow for using Ceph File System"
     },
     {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    },
+    {
       "chunk_id": "eb5983d70c7fd608",
       "component": "rados",
       "source": "ibm-docs/9.0/utility-preparing-osds",
@@ -1359,6 +1417,30 @@
       "title": "Before you begin"
     }
   ],
+  "ceph auth get entity": [
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    }
+  ],
+  "ceph auth get entity -o": [
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    }
+  ],
+  "ceph auth get osd": [
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    }
+  ],
   "ceph auth get-key": [
     {
       "chunk_id": "1f55df453d7e5e42",
@@ -1417,6 +1499,18 @@
       "component": "troubleshooting",
       "source": "ibm-docs/9.0/troubleshooting-manually-deploying-mgr-daemon",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "e03b1a5d268495ce",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "What to do next"
+    },
+    {
+      "chunk_id": "bf179d0bbc0bc463",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Procedure"
     }
   ],
   "ceph auth get-or-create client": [
@@ -1455,6 +1549,18 @@
       "component": "general",
       "source": "ibm-docs/9.0/daemons-configuration",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "e03b1a5d268495ce",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "What to do next"
+    },
+    {
+      "chunk_id": "bf179d0bbc0bc463",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Procedure"
     }
   ],
   "ceph auth get-or-create mgr": [
@@ -1489,22 +1595,6 @@
       "title": "Adding a Ceph user"
     }
   ],
-  "ceph auth import": [
-    {
-      "chunk_id": "2764f4b4a9121148",
-      "component": "rados",
-      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
-      "title": "Procedure"
-    }
-  ],
-  "ceph auth import -i": [
-    {
-      "chunk_id": "2764f4b4a9121148",
-      "component": "rados",
-      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
-      "title": "Procedure"
-    }
-  ],
   "ceph auth list": [
     {
       "chunk_id": "b0a075f0492b3919",
@@ -1527,6 +1617,14 @@
       "component": "general",
       "source": "ibm-docs/9.0/users-listing-ceph",
       "title": "Procedure"
+    }
+  ],
+  "ceph auth ls": [
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
     }
   ],
   "ceph auth print-key": [
@@ -3347,9 +3445,9 @@
       "title": "Server side encryption"
     },
     {
-      "chunk_id": "1d221cd02bc4dccf",
+      "chunk_id": "3c099d25fc0e6613",
       "component": "general",
-      "source": "ibm-docs/9.0/encryption-configuring-server-side",
+      "source": "ibm-docs/9.0/requests-configuring-server-side-encryption",
       "title": "Procedure"
     },
     {
@@ -4641,9 +4739,9 @@
       "title": "Server side encryption"
     },
     {
-      "chunk_id": "1d221cd02bc4dccf",
+      "chunk_id": "3c099d25fc0e6613",
       "component": "general",
-      "source": "ibm-docs/9.0/encryption-configuring-server-side",
+      "source": "ibm-docs/9.0/requests-configuring-server-side-encryption",
       "title": "Procedure"
     },
     {
@@ -4975,9 +5073,9 @@
       "title": "Server side encryption"
     },
     {
-      "chunk_id": "1d221cd02bc4dccf",
+      "chunk_id": "3c099d25fc0e6613",
       "component": "general",
-      "source": "ibm-docs/9.0/encryption-configuring-server-side",
+      "source": "ibm-docs/9.0/requests-configuring-server-side-encryption",
       "title": "Procedure"
     },
     {
@@ -5180,6 +5278,12 @@
       "chunk_id": "389758bb8167ccb4",
       "component": "general",
       "source": "ibm-docs/9.0/configuration-configuring-private-network",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "cc38f8edcf5e75a4",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-multiple-public-networks-cluster",
       "title": "Procedure"
     },
     {
@@ -5468,6 +5572,12 @@
       "chunk_id": "6676523ac610eab1",
       "component": "general",
       "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "cc38f8edcf5e75a4",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-multiple-public-networks-cluster",
       "title": "Procedure"
     },
     {
@@ -5835,12 +5945,6 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "cc38f8edcf5e75a4",
-      "component": "general",
-      "source": "ibm-docs/9.0/configuration-configuring-multiple-public-networks-cluster",
-      "title": "Procedure"
-    },
-    {
       "chunk_id": "7a5ebe43d9bd1ee3",
       "component": "rados",
       "source": "ibm-docs/9.0/configuration-ceph-monitor-options",
@@ -5999,14 +6103,6 @@
       "component": "rados",
       "source": "ibm-docs/9.0/monitoring-track-data-availability-score-cluster-technology-preview",
       "title": "Update interval control"
-    }
-  ],
-  "ceph config set mon public_network": [
-    {
-      "chunk_id": "cc38f8edcf5e75a4",
-      "component": "general",
-      "source": "ibm-docs/9.0/configuration-configuring-multiple-public-networks-cluster",
-      "title": "Procedure"
     }
   ],
   "ceph config set mon_max_pg_per_osd": [
@@ -6657,9 +6753,9 @@
       "title": "Managing the monitoring stack"
     },
     {
-      "chunk_id": "f923dac97d9a6930",
-      "component": "mgr",
-      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "chunk_id": "b39f48962601f840",
+      "component": "general",
+      "source": "ibm-docs/9.0/images-preparing-import-only-migration",
       "title": "Procedure"
     },
     {
@@ -6705,9 +6801,9 @@
       "title": "Managing the monitoring stack"
     },
     {
-      "chunk_id": "f923dac97d9a6930",
-      "component": "mgr",
-      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "chunk_id": "b39f48962601f840",
+      "component": "general",
+      "source": "ibm-docs/9.0/images-preparing-import-only-migration",
       "title": "Procedure"
     },
     {
@@ -6731,12 +6827,6 @@
       "title": "Managing the monitoring stack"
     },
     {
-      "chunk_id": "f923dac97d9a6930",
-      "component": "mgr",
-      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
-      "title": "Procedure"
-    },
-    {
       "chunk_id": "07bc1ae62c4d5d6c",
       "component": "troubleshooting",
       "source": "ibm-docs/9.0/troubleshooting-manually-deploying-mgr-daemon",
@@ -6749,6 +6839,14 @@
       "component": "general",
       "source": "ibm-docs/9.0/balancer-throttling",
       "title": "Throttling"
+    }
+  ],
+  "ceph config-key set rbd": [
+    {
+      "chunk_id": "b39f48962601f840",
+      "component": "general",
+      "source": "ibm-docs/9.0/images-preparing-import-only-migration",
+      "title": "Procedure"
     }
   ],
   "ceph crash": [
@@ -7663,15 +7761,21 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "a3d08353fcffd636",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-authentication-authorization-ceph",
+      "title": "Obtaining a JSON Web Token (JWT)"
+    },
+    {
+      "chunk_id": "e0a836dc7e1b465f",
+      "component": "dev",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     },
     {
-      "chunk_id": "f0bdb622e749928d",
+      "chunk_id": "e36c91655734034d",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Reference"
     },
     {
@@ -7683,17 +7787,17 @@
   ],
   "ceph dashboard --help": [
     {
-      "chunk_id": "f0bdb622e749928d",
+      "chunk_id": "e36c91655734034d",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Reference"
     }
   ],
   "ceph dashboard --help command": [
     {
-      "chunk_id": "f0bdb622e749928d",
+      "chunk_id": "e36c91655734034d",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Reference"
     }
   ],
@@ -7705,9 +7809,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -7729,33 +7833,33 @@
   ],
   "ceph dashboard ac-user-create user1": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard ac-user-create user1 -i": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard ac-user-create username": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard ac-user-create username -i": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -7867,9 +7971,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -8159,6 +8263,22 @@
       "title": "Procedure"
     }
   ],
+  "ceph dashboard set-jwt-token-ttl": [
+    {
+      "chunk_id": "a3d08353fcffd636",
+      "component": "dev",
+      "source": "ibm-docs/9.0/api-authentication-authorization-ceph",
+      "title": "Obtaining a JSON Web Token (JWT)"
+    }
+  ],
+  "ceph dashboard set-jwt-token-ttl seconds": [
+    {
+      "chunk_id": "a3d08353fcffd636",
+      "component": "dev",
+      "source": "ibm-docs/9.0/api-authentication-authorization-ceph",
+      "title": "Obtaining a JSON Web Token (JWT)"
+    }
+  ],
   "ceph dashboard set-prometheus-api-host": [
     {
       "chunk_id": "ef7124c916d93772",
@@ -8325,9 +8445,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -8345,9 +8465,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -8365,41 +8485,41 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate host01": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate host01 -i": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate host_name": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate host_name -i": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -8417,9 +8537,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -8437,9 +8557,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -8457,41 +8577,41 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate-key host01": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate-key host01 -i": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate-key host_name": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
   "ceph dashboard set-ssl-certificate-key host_name -i": [
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -9567,28 +9687,6 @@
       "component": "cephfs",
       "source": "ibm-docs/9.0/cephfs-mapping-directory-trees-metadata-server-daemon-ranks",
       "title": "Procedure"
-    },
-    {
-      "chunk_id": "271dc66f4a1870b0",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
-      "title": "Procedure"
-    }
-  ],
-  "ceph fs authorize cephfs": [
-    {
-      "chunk_id": "271dc66f4a1870b0",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
-      "title": "Procedure"
-    }
-  ],
-  "ceph fs authorize cephfs client": [
-    {
-      "chunk_id": "271dc66f4a1870b0",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
-      "title": "Procedure"
     }
   ],
   "ceph fs authorize cephfs01": [
@@ -9665,12 +9763,6 @@
       "component": "cephfs",
       "source": "ibm-docs/9.0/cephfs-mapping-directory-trees-metadata-server-daemon-ranks",
       "title": "Procedure"
-    },
-    {
-      "chunk_id": "271dc66f4a1870b0",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
-      "title": "Procedure"
     }
   ],
   "ceph fs authorize file_system_name client": [
@@ -9692,12 +9784,6 @@
       "chunk_id": "a948776b66880d5e",
       "component": "cephfs",
       "source": "ibm-docs/9.0/cephfs-creating-ceph-file-systems",
-      "title": "Procedure"
-    },
-    {
-      "chunk_id": "271dc66f4a1870b0",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
       "title": "Procedure"
     }
   ],
@@ -11066,12 +11152,6 @@
   "ceph fs snapshot mirror peer_list": [
     {
       "chunk_id": "271dc66f4a1870b0",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
-      "title": "Procedure"
-    },
-    {
-      "chunk_id": "91ce99f5faaa052e",
       "component": "cephfs",
       "source": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
       "title": "Procedure"
@@ -12941,6 +13021,12 @@
       "component": "cephadm",
       "source": "ibm-docs/9.0/zones-bootstrapping-ceph-cluster-specification-file",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "f32ed262d7c444ea",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Before you begin"
     }
   ],
   "ceph fsid command": [
@@ -12955,6 +13041,30 @@
       "component": "cephadm",
       "source": "ibm-docs/9.0/zones-bootstrapping-ceph-cluster-specification-file",
       "title": "Procedure"
+    }
+  ],
+  "ceph fsid or": [
+    {
+      "chunk_id": "f32ed262d7c444ea",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Before you begin"
+    }
+  ],
+  "ceph fsid or use": [
+    {
+      "chunk_id": "f32ed262d7c444ea",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Before you begin"
+    }
+  ],
+  "ceph fsid or use the": [
+    {
+      "chunk_id": "f32ed262d7c444ea",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "Before you begin"
     }
   ],
   "ceph health": [
@@ -14571,9 +14681,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     },
     {
@@ -14829,9 +14939,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     },
     {
@@ -15115,9 +15225,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     },
     {
@@ -15203,9 +15313,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     }
   ],
@@ -16087,23 +16197,7 @@
       "title": "Procedure"
     }
   ],
-  "ceph mon remove host01 --cluster": [
-    {
-      "chunk_id": "d760f09e28be1765",
-      "component": "rados",
-      "source": "ibm-docs/9.0/monitors-replacing-failed-monitor",
-      "title": "Procedure"
-    }
-  ],
   "ceph mon remove short_host_name": [
-    {
-      "chunk_id": "d760f09e28be1765",
-      "component": "rados",
-      "source": "ibm-docs/9.0/monitors-replacing-failed-monitor",
-      "title": "Procedure"
-    }
-  ],
-  "ceph mon remove short_host_name --cluster": [
     {
       "chunk_id": "d760f09e28be1765",
       "component": "rados",
@@ -17909,6 +18003,12 @@
   ],
   "ceph nvme-gw": [
     {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "d667189919e76cb3",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-verifying-deployment",
@@ -17924,11 +18024,55 @@
       "chunk_id": "0a78fe76d133d531",
       "component": "rbd",
       "source": "ibm-docs/9.0/mngnc-using-load-balancing-scale-up-scale-down-nvmeof-cli",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "17156a0401080230",
+      "component": "troubleshooting",
+      "source": "ibm-docs/9.0/troubleshooting-health-messages-ceph-cluster",
+      "title": "Health messages of a Ceph cluster"
+    }
+  ],
+  "ceph nvme-gw delete": [
+    {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
+      "title": "Procedure"
+    }
+  ],
+  "ceph nvme-gw delete client": [
+    {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
+      "title": "Procedure"
+    }
+  ],
+  "ceph nvme-gw delete gateway_id": [
+    {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
+      "title": "Procedure"
+    }
+  ],
+  "ceph nvme-gw delete gateway_id nvme-of_pool_name": [
+    {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
       "title": "Procedure"
     }
   ],
   "ceph nvme-gw show": [
     {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "d667189919e76cb3",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-verifying-deployment",
@@ -17945,6 +18089,28 @@
       "component": "rbd",
       "source": "ibm-docs/9.0/mngnc-using-load-balancing-scale-up-scale-down-nvmeof-cli",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "17156a0401080230",
+      "component": "troubleshooting",
+      "source": "ibm-docs/9.0/troubleshooting-health-messages-ceph-cluster",
+      "title": "Health messages of a Ceph cluster"
+    }
+  ],
+  "ceph nvme-gw show command": [
+    {
+      "chunk_id": "17156a0401080230",
+      "component": "troubleshooting",
+      "source": "ibm-docs/9.0/troubleshooting-health-messages-ceph-cluster",
+      "title": "Health messages of a Ceph cluster"
+    }
+  ],
+  "ceph nvme-gw show command and": [
+    {
+      "chunk_id": "17156a0401080230",
+      "component": "troubleshooting",
+      "source": "ibm-docs/9.0/troubleshooting-health-messages-ceph-cluster",
+      "title": "Health messages of a Ceph cluster"
     }
   ],
   "ceph nvme-gw show mypool": [
@@ -17976,6 +18142,12 @@
     }
   ],
   "ceph nvme-gw show nvme-of_pool_name": [
+    {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
+      "title": "Procedure"
+    },
     {
       "chunk_id": "d667189919e76cb3",
       "component": "general",
@@ -18018,6 +18190,12 @@
     }
   ],
   "ceph nvme-gw show nvmeof_pool01": [
+    {
+      "chunk_id": "5d74f36c21e9c554",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/cephadm-updating-nvme-service-gateway-group-name",
+      "title": "Procedure"
+    },
     {
       "chunk_id": "d667189919e76cb3",
       "component": "general",
@@ -18191,10 +18369,10 @@
       "title": "Listing namespaces for all NVMe-oF subsystems"
     },
     {
-      "chunk_id": "c8524b2bdd1a950b",
+      "chunk_id": "953db5a357c6781d",
       "component": "general",
       "source": "ibm-docs/9.0/target-managing-namespaces",
-      "title": "Deleting a namespace"
+      "title": "Updating a namespace"
     },
     {
       "chunk_id": "26c77fa99a474346",
@@ -18209,10 +18387,10 @@
       "title": "Setting namespace automatic resizing"
     },
     {
-      "chunk_id": "953db5a357c6781d",
+      "chunk_id": "6aa2e92fb98efb02",
       "component": "general",
       "source": "ibm-docs/9.0/target-managing-namespaces",
-      "title": "Updating a namespace"
+      "title": "Changing the Ceph Block Device image delete policy for during a namespace deletion"
     },
     {
       "chunk_id": "ce8fcef89f87e9e7",
@@ -18221,10 +18399,10 @@
       "title": "Getting I/O statistics"
     },
     {
-      "chunk_id": "6aa2e92fb98efb02",
+      "chunk_id": "c8524b2bdd1a950b",
       "component": "general",
       "source": "ibm-docs/9.0/target-managing-namespaces",
-      "title": "Changing the Ceph Block Device image delete policy for during a namespace deletion"
+      "title": "Deleting a namespace"
     },
     {
       "chunk_id": "afc08a03f7592409",
@@ -18877,10 +19055,10 @@
       "title": "Listing namespaces for all NVMe-oF subsystems"
     },
     {
-      "chunk_id": "c8524b2bdd1a950b",
+      "chunk_id": "953db5a357c6781d",
       "component": "general",
       "source": "ibm-docs/9.0/target-managing-namespaces",
-      "title": "Deleting a namespace"
+      "title": "Updating a namespace"
     },
     {
       "chunk_id": "26c77fa99a474346",
@@ -18895,10 +19073,10 @@
       "title": "Setting namespace automatic resizing"
     },
     {
-      "chunk_id": "953db5a357c6781d",
+      "chunk_id": "6aa2e92fb98efb02",
       "component": "general",
       "source": "ibm-docs/9.0/target-managing-namespaces",
-      "title": "Updating a namespace"
+      "title": "Changing the Ceph Block Device image delete policy for during a namespace deletion"
     },
     {
       "chunk_id": "ce8fcef89f87e9e7",
@@ -18907,10 +19085,10 @@
       "title": "Getting I/O statistics"
     },
     {
-      "chunk_id": "6aa2e92fb98efb02",
+      "chunk_id": "c8524b2bdd1a950b",
       "component": "general",
       "source": "ibm-docs/9.0/target-managing-namespaces",
-      "title": "Changing the Ceph Block Device image delete policy for during a namespace deletion"
+      "title": "Deleting a namespace"
     },
     {
       "chunk_id": "afc08a03f7592409",
@@ -19467,14 +19645,6 @@
       "title": "Listing subsystems"
     }
   ],
-  "ceph nvmeof subsystem list --gw_group": [
-    {
-      "chunk_id": "f42687539d40932d",
-      "component": "general",
-      "source": "ibm-docs/9.0/target-managing-subsystems",
-      "title": "Listing subsystems"
-    }
-  ],
   "ceph orch": [
     {
       "chunk_id": "ce640f595aa69a32",
@@ -19871,6 +20041,18 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-configuring-multiple-public-networks-cluster",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "8de75351e5659405",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Keyring lifecycle in cephadm deployments"
+    },
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
     },
     {
       "chunk_id": "754e950b770ef593",
@@ -20281,15 +20463,21 @@
       "title": "Advanced service specifications and filters for deploying OSDs"
     },
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "40c2c40845f13031",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     },
     {
-      "chunk_id": "62e12231ca10fc6c",
+      "chunk_id": "391a5a8fc25e3d26",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "78e0cddc847b1c3a",
+      "component": "rados",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Verification"
     },
     {
@@ -20437,10 +20625,16 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "7f058020dac907e3",
+      "chunk_id": "c2f919c60692bf86",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
-      "title": "Verification"
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "db1ad99f2c9f5bc0",
+      "component": "general",
+      "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
+      "title": "Results"
     },
     {
       "chunk_id": "51c0ae8e14e971dc",
@@ -20465,6 +20659,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/gateway-removing-ceph-object",
       "title": "Verification"
+    },
+    {
+      "chunk_id": "5643657cba712b72",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
+      "title": "About this task"
     },
     {
       "chunk_id": "7fa04487d6cb0eee",
@@ -20713,10 +20913,16 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "48882d344ea4cddb",
+      "chunk_id": "6b731b6c46859d82",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
-      "title": "Verification"
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "c841b5b7a2051534",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+      "title": "Results"
     },
     {
       "chunk_id": "3f6158c2c0f4f1d2",
@@ -21079,6 +21285,12 @@
       "title": "Per service and per daemon event"
     },
     {
+      "chunk_id": "a2b3b60817908cc7",
+      "component": "rados",
+      "source": "ibm-docs/9.0/errors-down-osds",
+      "title": "Troubleshooting this problem"
+    },
+    {
       "chunk_id": "b2f711c0c2e741cb",
       "component": "rados",
       "source": "ibm-docs/9.0/osds-replacing-osd-drive",
@@ -21351,9 +21563,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "391a5a8fc25e3d26",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     },
     {
@@ -21417,7 +21629,7 @@
       "title": "Using an arbitrary service name on a labeled set of hosts"
     },
     {
-      "chunk_id": "6bbe475bec7cf9ae",
+      "chunk_id": "c2f919c60692bf86",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
       "title": "Procedure"
@@ -21519,7 +21731,7 @@
       "title": "Using an arbitrary service name on a labeled set of hosts"
     },
     {
-      "chunk_id": "d18bf58c8ab31a87",
+      "chunk_id": "6b731b6c46859d82",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
       "title": "Procedure"
@@ -21761,9 +21973,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "391a5a8fc25e3d26",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     },
     {
@@ -21803,7 +22015,7 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "6bbe475bec7cf9ae",
+      "chunk_id": "c2f919c60692bf86",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
       "title": "Procedure"
@@ -21863,7 +22075,7 @@
       "title": "Advantages of colocating Ceph daemons"
     },
     {
-      "chunk_id": "d18bf58c8ab31a87",
+      "chunk_id": "6b731b6c46859d82",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
       "title": "Procedure"
@@ -21949,9 +22161,9 @@
   ],
   "ceph orch apply -i _file_name_": [
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "391a5a8fc25e3d26",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     }
   ],
@@ -22003,7 +22215,7 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "6bbe475bec7cf9ae",
+      "chunk_id": "c2f919c60692bf86",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
       "title": "Procedure"
@@ -22021,7 +22233,7 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "d18bf58c8ab31a87",
+      "chunk_id": "6b731b6c46859d82",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
       "title": "Procedure"
@@ -22255,9 +22467,9 @@
   ],
   "ceph orch apply -i osd_spec": [
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "391a5a8fc25e3d26",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     }
   ],
@@ -23523,6 +23735,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "f923dac97d9a6930",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "faec2dd560ae1b22",
       "component": "general",
       "source": "ibm-docs/9.0/server-configuring-https",
@@ -23592,6 +23810,12 @@
       "chunk_id": "adeb1ffb8ca663e6",
       "component": "general",
       "source": "ibm-docs/9.0/management-manage-certificates-certmgr",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "f923dac97d9a6930",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
       "title": "Procedure"
     },
     {
@@ -23689,6 +23913,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "f923dac97d9a6930",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "faec2dd560ae1b22",
       "component": "general",
       "source": "ibm-docs/9.0/server-configuring-https",
@@ -23755,6 +23985,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "f923dac97d9a6930",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "faec2dd560ae1b22",
       "component": "general",
       "source": "ibm-docs/9.0/server-configuring-https",
@@ -23796,6 +24032,12 @@
       "chunk_id": "adeb1ffb8ca663e6",
       "component": "general",
       "source": "ibm-docs/9.0/management-manage-certificates-certmgr",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "f923dac97d9a6930",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
       "title": "Procedure"
     },
     {
@@ -23983,6 +24225,24 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "8de75351e5659405",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Keyring lifecycle in cephadm deployments"
+    },
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    },
+    {
       "chunk_id": "927dd2613ede2868",
       "component": "general",
       "source": "ibm-docs/9.0/cluster-powering-down-rebooting-ceph-orchestrator",
@@ -24059,6 +24319,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/platforms-transitioning-data-azure-cloud-service",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "a2b3b60817908cc7",
+      "component": "rados",
+      "source": "ibm-docs/9.0/errors-down-osds",
+      "title": "Troubleshooting this problem"
     },
     {
       "chunk_id": "b2f711c0c2e741cb",
@@ -24219,12 +24485,72 @@
       "title": "Procedure"
     }
   ],
+  "ceph orch daemon logs": [
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    }
+  ],
+  "ceph orch daemon logs daemon-type": [
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    }
+  ],
+  "ceph orch daemon reconfig": [
+    {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
+    }
+  ],
+  "ceph orch daemon reconfig mon": [
+    {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
+    }
+  ],
   "ceph orch daemon restart": [
+    {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
+    },
     {
       "chunk_id": "91b9abe1a5f67920",
       "component": "general",
       "source": "ibm-docs/9.0/platforms-transitioning-data-azure-cloud-service",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "a2b3b60817908cc7",
+      "component": "rados",
+      "source": "ibm-docs/9.0/errors-down-osds",
+      "title": "Troubleshooting this problem"
+    }
+  ],
+  "ceph orch daemon restart mon": [
+    {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
+    }
+  ],
+  "ceph orch daemon restart osd": [
+    {
+      "chunk_id": "a2b3b60817908cc7",
+      "component": "rados",
+      "source": "ibm-docs/9.0/errors-down-osds",
+      "title": "Troubleshooting this problem"
     }
   ],
   "ceph orch daemon restart rgw": [
@@ -24283,6 +24609,20 @@
       "component": "general",
       "source": "ibm-docs/9.0/management-enabling-key-rotation",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "8de75351e5659405",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Keyring lifecycle in cephadm deployments"
+    }
+  ],
+  "ceph orch daemon rotate-key daemon-type": [
+    {
+      "chunk_id": "8de75351e5659405",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Keyring lifecycle in cephadm deployments"
     }
   ],
   "ceph orch daemon rotate-key mgr": [
@@ -24489,6 +24829,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "40c2c40845f13031",
+      "component": "rados",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "fc5b8a1bc2837399",
       "component": "rados",
       "source": "ibm-docs/9.0/osds-replacing-failed",
@@ -24557,6 +24903,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "40c2c40845f13031",
+      "component": "rados",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "f648a930f67fc650",
       "component": "cephadm",
       "source": "ibm-docs/9.0/faqs-installation-questions",
@@ -24592,6 +24944,12 @@
       "chunk_id": "7fef697cb822ba0b",
       "component": "rados",
       "source": "ibm-docs/9.0/osds-deploying-ceph-specific-devices-hosts",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "40c2c40845f13031",
+      "component": "rados",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     }
   ],
@@ -26081,12 +26439,6 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "6676523ac610eab1",
-      "component": "general",
-      "source": "ibm-docs/9.0/configuration-configuring-public-network",
-      "title": "Procedure"
-    },
-    {
       "chunk_id": "389758bb8167ccb4",
       "component": "general",
       "source": "ibm-docs/9.0/configuration-configuring-private-network",
@@ -26201,9 +26553,9 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "62e12231ca10fc6c",
+      "chunk_id": "78e0cddc847b1c3a",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Verification"
     },
     {
@@ -26255,16 +26607,22 @@
       "title": "What to do next"
     },
     {
-      "chunk_id": "7f058020dac907e3",
+      "chunk_id": "db1ad99f2c9f5bc0",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
-      "title": "Verification"
+      "title": "Results"
     },
     {
       "chunk_id": "57345696568099a5",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-removing-ceph-object",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "5643657cba712b72",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
+      "title": "About this task"
     },
     {
       "chunk_id": "887e9da3afd9ee37",
@@ -26333,10 +26691,10 @@
       "title": "What to do next"
     },
     {
-      "chunk_id": "48882d344ea4cddb",
+      "chunk_id": "c841b5b7a2051534",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
-      "title": "Verification"
+      "title": "Results"
     },
     {
       "chunk_id": "7ffb5f5cf71503b0",
@@ -26467,6 +26825,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "5643657cba712b72",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
+      "title": "About this task"
+    },
+    {
       "chunk_id": "0a0f4e9471a569dc",
       "component": "cephfs",
       "source": "ibm-docs/9.0/integration-nfs-service-container-settings",
@@ -26522,6 +26886,12 @@
     }
   ],
   "ceph orch ls --service-type nfs": [
+    {
+      "chunk_id": "5643657cba712b72",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
+      "title": "About this task"
+    },
     {
       "chunk_id": "0a0f4e9471a569dc",
       "component": "cephfs",
@@ -26633,12 +27003,6 @@
       "component": "general",
       "source": "ibm-docs/9.0/gateway-enabling-high-availability-ceph-management",
       "title": "What to do next"
-    },
-    {
-      "chunk_id": "6676523ac610eab1",
-      "component": "general",
-      "source": "ibm-docs/9.0/configuration-configuring-public-network",
-      "title": "Procedure"
     },
     {
       "chunk_id": "389758bb8167ccb4",
@@ -26875,9 +27239,9 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "62e12231ca10fc6c",
+      "chunk_id": "78e0cddc847b1c3a",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Verification"
     }
   ],
@@ -27159,6 +27523,18 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "3068071faee8e490",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Inspecting daemon keyrings"
+    },
+    {
       "chunk_id": "927dd2613ede2868",
       "component": "general",
       "source": "ibm-docs/9.0/cluster-powering-down-rebooting-ceph-orchestrator",
@@ -27303,10 +27679,10 @@
       "title": "What to do next"
     },
     {
-      "chunk_id": "7f058020dac907e3",
+      "chunk_id": "db1ad99f2c9f5bc0",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
-      "title": "Verification"
+      "title": "Results"
     },
     {
       "chunk_id": "71fc29832d57087b",
@@ -27375,10 +27751,10 @@
       "title": "What to do next"
     },
     {
-      "chunk_id": "48882d344ea4cddb",
+      "chunk_id": "c841b5b7a2051534",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
-      "title": "Verification"
+      "title": "Results"
     },
     {
       "chunk_id": "b8719ef5a92fef67",
@@ -27447,6 +27823,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/hosts-using-host-labels-deploy-daemons-specific",
       "title": "What to do next"
+    },
+    {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
     },
     {
       "chunk_id": "eaca1a43b875b693",
@@ -27521,10 +27903,10 @@
       "title": "What to do next"
     },
     {
-      "chunk_id": "7f058020dac907e3",
+      "chunk_id": "db1ad99f2c9f5bc0",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
-      "title": "Verification"
+      "title": "Results"
     },
     {
       "chunk_id": "887e9da3afd9ee37",
@@ -27563,10 +27945,10 @@
       "title": "What to do next"
     },
     {
-      "chunk_id": "48882d344ea4cddb",
+      "chunk_id": "c841b5b7a2051534",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
-      "title": "Verification"
+      "title": "Results"
     },
     {
       "chunk_id": "11b4294760a49ab2",
@@ -27579,6 +27961,14 @@
       "component": "cephfs",
       "source": "ibm-docs/9.0/mmsuco-deploying-mds-service-using-service-specification",
       "title": "What to do next"
+    }
+  ],
+  "ceph orch ps --daemon_type mon": [
+    {
+      "chunk_id": "6676523ac610eab1",
+      "component": "general",
+      "source": "ibm-docs/9.0/configuration-configuring-public-network",
+      "title": "Procedure"
     }
   ],
   "ceph orch ps --daemon_type osd": [
@@ -27889,6 +28279,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "a6e26c3c9ffe58e8",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "0a0f4e9471a569dc",
       "component": "cephfs",
       "source": "ibm-docs/9.0/integration-nfs-service-container-settings",
@@ -27986,6 +28382,12 @@
     }
   ],
   "ceph orch redeploy nfs": [
+    {
+      "chunk_id": "a6e26c3c9ffe58e8",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+      "title": "Procedure"
+    },
     {
       "chunk_id": "0a0f4e9471a569dc",
       "component": "cephfs",
@@ -28100,12 +28502,6 @@
       "chunk_id": "e7afad45b75d4fb5",
       "component": "general",
       "source": "ibm-docs/9.0/management-enabling-key-rotation",
-      "title": "Procedure"
-    },
-    {
-      "chunk_id": "6676523ac610eab1",
-      "component": "general",
-      "source": "ibm-docs/9.0/configuration-configuring-public-network",
       "title": "Procedure"
     },
     {
@@ -28282,12 +28678,6 @@
     }
   ],
   "ceph orch restart mon": [
-    {
-      "chunk_id": "6676523ac610eab1",
-      "component": "general",
-      "source": "ibm-docs/9.0/configuration-configuring-public-network",
-      "title": "Procedure"
-    },
     {
       "chunk_id": "389758bb8167ccb4",
       "component": "general",
@@ -28813,12 +29203,6 @@
   ],
   "ceph orch rm nqn": [
     {
-      "chunk_id": "716514736833b94d",
-      "component": "rbd",
-      "source": "ibm-docs/9.0/gateway-removing-nvme-service",
-      "title": "Procedure"
-    },
-    {
       "chunk_id": "d5f7048e3ec9cb6f",
       "component": "rbd",
       "source": "ibm-docs/9.0/gateways-removing-nvme-service-nvmeof-cli",
@@ -29083,6 +29467,18 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "6bbe475bec7cf9ae",
+      "component": "general",
+      "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "d18bf58c8ab31a87",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "cdb77025b393899c",
       "component": "general",
       "source": "ibm-docs/9.0/mirroring-managing-consistency-group",
@@ -29140,6 +29536,34 @@
       "chunk_id": "927dd2613ede2868",
       "component": "general",
       "source": "ibm-docs/9.0/cluster-powering-down-rebooting-ceph-orchestrator",
+      "title": "Procedure"
+    }
+  ],
+  "ceph orch stop or": [
+    {
+      "chunk_id": "6bbe475bec7cf9ae",
+      "component": "general",
+      "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "d18bf58c8ab31a87",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+      "title": "Procedure"
+    }
+  ],
+  "ceph orch stop or ceph": [
+    {
+      "chunk_id": "6bbe475bec7cf9ae",
+      "component": "general",
+      "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "d18bf58c8ab31a87",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
       "title": "Procedure"
     }
   ],
@@ -30259,6 +30683,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "cdac5004fccbc1b8",
       "component": "rados",
       "source": "ibm-docs/9.0/monitoring-understanding-storage-clusters-usage-stats",
@@ -30469,9 +30899,9 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "62e12231ca10fc6c",
+      "chunk_id": "78e0cddc847b1c3a",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Verification"
     },
     {
@@ -30755,6 +31185,12 @@
       "component": "rbd",
       "source": "ibm-docs/9.0/gateways-removing-nvme-service-nvmeof-cli",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "e03b1a5d268495ce",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "What to do next"
     },
     {
       "chunk_id": "a933042b50e33b8b",
@@ -35137,6 +35573,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "e38a810b87fcd0fa",
       "component": "general",
       "source": "ibm-docs/9.0/behavior-setting-unsetting-override-options",
@@ -35243,6 +35685,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     }
   ],
   "ceph osd set nodeep-scrub": [
@@ -35313,6 +35761,20 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "ceph osd set nodown ceph": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     }
   ],
   "ceph osd set noout": [
@@ -35362,6 +35824,12 @@
       "chunk_id": "9ce4b60816f47279",
       "component": "general",
       "source": "ibm-docs/9.0/cluster-powering-down-rebooting-by-using-systemctl-commands",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
       "title": "Procedure"
     },
     {
@@ -35415,6 +35883,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "eaa675ba2eb8c525",
       "component": "rados",
       "source": "ibm-docs/9.0/wrn-replacing-node-by-using-root-ceph-osd-disks-from-failed-node",
@@ -35445,6 +35919,20 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "ceph osd set norebalance ceph": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     }
   ],
   "ceph osd set norecover": [
@@ -35452,6 +35940,12 @@
       "chunk_id": "bd9c9f132ec5b9fa",
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
       "title": "Procedure"
     }
   ],
@@ -35558,6 +36052,12 @@
       "chunk_id": "bd9c9f132ec5b9fa",
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
       "title": "Procedure"
     }
   ],
@@ -36023,9 +36523,9 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "62e12231ca10fc6c",
+      "chunk_id": "78e0cddc847b1c3a",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Verification"
     },
     {
@@ -36087,6 +36587,12 @@
       "component": "mgr",
       "source": "ibm-docs/9.0/dashboard-managing-alerts",
       "title": "CephOSDDownHigh"
+    },
+    {
+      "chunk_id": "e03b1a5d268495ce",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "What to do next"
     },
     {
       "chunk_id": "61cd4698e08586ea",
@@ -36367,6 +36873,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "e38a810b87fcd0fa",
       "component": "general",
       "source": "ibm-docs/9.0/behavior-setting-unsetting-override-options",
@@ -36455,6 +36967,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     }
   ],
   "ceph osd unset nodeep-scrub": [
@@ -36519,6 +37037,20 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "ceph osd unset nodown ceph": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     }
   ],
   "ceph osd unset noout": [
@@ -36562,6 +37094,12 @@
       "chunk_id": "9ce4b60816f47279",
       "component": "general",
       "source": "ibm-docs/9.0/cluster-powering-down-rebooting-by-using-systemctl-commands",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
       "title": "Procedure"
     },
     {
@@ -36621,6 +37159,12 @@
       "title": "What to do next"
     },
     {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "eaa675ba2eb8c525",
       "component": "rados",
       "source": "ibm-docs/9.0/wrn-replacing-node-by-using-root-ceph-osd-disks-from-failed-node",
@@ -36651,6 +37195,20 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "ceph osd unset norebalance ceph": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     }
   ],
   "ceph osd unset norecover": [
@@ -36658,6 +37216,12 @@
       "chunk_id": "bd9c9f132ec5b9fa",
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
       "title": "Procedure"
     }
   ],
@@ -36730,6 +37294,12 @@
       "chunk_id": "bd9c9f132ec5b9fa",
       "component": "general",
       "source": "ibm-docs/9.0/configuration-enabling-cephx",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
       "title": "Procedure"
     }
   ],
@@ -37595,7 +38165,7 @@
       "title": "About this task"
     },
     {
-      "chunk_id": "aef33da7f5936752",
+      "chunk_id": "9c607ed3947c14d6",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-imperative-method",
       "title": "Creating SMB clusters"
@@ -37637,13 +38207,13 @@
       "title": "Composing resource specifications for declarative method"
     },
     {
-      "chunk_id": "9d243cd391e0f03b",
+      "chunk_id": "9fea26ac6357f3fd",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "About this task"
     },
     {
-      "chunk_id": "8e3a6b3ce7935e1c",
+      "chunk_id": "a69563aca0555c07",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "Procedure"
@@ -37661,22 +38231,16 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "57f96c810d6e4258",
-      "component": "general",
-      "source": "ibm-docs/9.0/shares-declarative-method-configuration-example",
-      "title": "Declarative method configuration example"
-    },
-    {
-      "chunk_id": "cb726f1ff4f5e816",
+      "chunk_id": "12cc9622780ab0b7",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Rate-limiting behaviour"
+      "title": "Rate-limiting behavior"
     },
     {
-      "chunk_id": "9d2e873258cd9e1a",
+      "chunk_id": "712cec161c128c12",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Cluster-wide rate-limiting behaviour"
+      "title": "Cluster-wide rate-limiting behavior"
     },
     {
       "chunk_id": "156b415fe00d88eb",
@@ -37711,13 +38275,13 @@
       "title": "Composing resource specifications for declarative method"
     },
     {
-      "chunk_id": "9d243cd391e0f03b",
+      "chunk_id": "9fea26ac6357f3fd",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "About this task"
     },
     {
-      "chunk_id": "8e3a6b3ce7935e1c",
+      "chunk_id": "a69563aca0555c07",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "Procedure"
@@ -37733,12 +38297,6 @@
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-by-using-declarative-method",
       "title": "Procedure"
-    },
-    {
-      "chunk_id": "57f96c810d6e4258",
-      "component": "general",
-      "source": "ibm-docs/9.0/shares-declarative-method-configuration-example",
-      "title": "Declarative method configuration example"
     }
   ],
   "ceph smb apply -i": [
@@ -37755,7 +38313,7 @@
       "title": "Basic SMB CLI commands"
     },
     {
-      "chunk_id": "8e3a6b3ce7935e1c",
+      "chunk_id": "a69563aca0555c07",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "Procedure"
@@ -37765,20 +38323,6 @@
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-by-using-declarative-method",
       "title": "Procedure"
-    },
-    {
-      "chunk_id": "57f96c810d6e4258",
-      "component": "general",
-      "source": "ibm-docs/9.0/shares-declarative-method-configuration-example",
-      "title": "Declarative method configuration example"
-    }
-  ],
-  "ceph smb apply -i removed": [
-    {
-      "chunk_id": "57f96c810d6e4258",
-      "component": "general",
-      "source": "ibm-docs/9.0/shares-declarative-method-configuration-example",
-      "title": "Declarative method configuration example"
     }
   ],
   "ceph smb apply -i resources": [
@@ -37787,12 +38331,6 @@
       "component": "general",
       "source": "ibm-docs/9.0/storage-getting-started-file",
       "title": "Basic SMB CLI commands"
-    },
-    {
-      "chunk_id": "57f96c810d6e4258",
-      "component": "general",
-      "source": "ibm-docs/9.0/shares-declarative-method-configuration-example",
-      "title": "Declarative method configuration example"
     }
   ],
   "ceph smb apply -i smb": [
@@ -37813,10 +38351,24 @@
   ],
   "ceph smb apply command": [
     {
-      "chunk_id": "8e3a6b3ce7935e1c",
+      "chunk_id": "9fea26ac6357f3fd",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
+      "title": "About this task"
+    },
+    {
+      "chunk_id": "a69563aca0555c07",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "Procedure"
+    }
+  ],
+  "ceph smb apply command to": [
+    {
+      "chunk_id": "9fea26ac6357f3fd",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
+      "title": "About this task"
     }
   ],
   "ceph smb apply to": [
@@ -37825,12 +38377,6 @@
       "component": "general",
       "source": "ibm-docs/9.0/shares-composing-resource-specifications-declarative-method",
       "title": "Composing resource specifications for declarative method"
-    },
-    {
-      "chunk_id": "9d243cd391e0f03b",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
-      "title": "About this task"
     },
     {
       "chunk_id": "9004bdf03c48a1cf",
@@ -37845,12 +38391,6 @@
       "component": "general",
       "source": "ibm-docs/9.0/shares-composing-resource-specifications-declarative-method",
       "title": "Composing resource specifications for declarative method"
-    },
-    {
-      "chunk_id": "9d243cd391e0f03b",
-      "component": "cephfs",
-      "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
-      "title": "About this task"
     },
     {
       "chunk_id": "9004bdf03c48a1cf",
@@ -37873,7 +38413,7 @@
       "title": "About this task"
     },
     {
-      "chunk_id": "aef33da7f5936752",
+      "chunk_id": "9c607ed3947c14d6",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-imperative-method",
       "title": "Creating SMB clusters"
@@ -37911,7 +38451,7 @@
       "title": "About this task"
     },
     {
-      "chunk_id": "aef33da7f5936752",
+      "chunk_id": "9c607ed3947c14d6",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-imperative-method",
       "title": "Creating SMB clusters"
@@ -37939,7 +38479,7 @@
       "title": "Basic SMB CLI commands"
     },
     {
-      "chunk_id": "aef33da7f5936752",
+      "chunk_id": "9c607ed3947c14d6",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-imperative-method",
       "title": "Creating SMB clusters"
@@ -37953,7 +38493,7 @@
       "title": "Basic SMB CLI commands"
     },
     {
-      "chunk_id": "aef33da7f5936752",
+      "chunk_id": "9c607ed3947c14d6",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-imperative-method",
       "title": "Creating SMB clusters"
@@ -38051,16 +38591,16 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "cb726f1ff4f5e816",
+      "chunk_id": "12cc9622780ab0b7",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Rate-limiting behaviour"
+      "title": "Rate-limiting behavior"
     },
     {
-      "chunk_id": "9d2e873258cd9e1a",
+      "chunk_id": "712cec161c128c12",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Cluster-wide rate-limiting behaviour"
+      "title": "Cluster-wide rate-limiting behavior"
     },
     {
       "chunk_id": "156b415fe00d88eb",
@@ -38199,16 +38739,16 @@
   ],
   "ceph smb share update": [
     {
-      "chunk_id": "cb726f1ff4f5e816",
+      "chunk_id": "12cc9622780ab0b7",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Rate-limiting behaviour"
+      "title": "Rate-limiting behavior"
     },
     {
-      "chunk_id": "9d2e873258cd9e1a",
+      "chunk_id": "712cec161c128c12",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Cluster-wide rate-limiting behaviour"
+      "title": "Cluster-wide rate-limiting behavior"
     },
     {
       "chunk_id": "156b415fe00d88eb",
@@ -38225,16 +38765,16 @@
   ],
   "ceph smb share update cephfs": [
     {
-      "chunk_id": "cb726f1ff4f5e816",
+      "chunk_id": "12cc9622780ab0b7",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Rate-limiting behaviour"
+      "title": "Rate-limiting behavior"
     },
     {
-      "chunk_id": "9d2e873258cd9e1a",
+      "chunk_id": "712cec161c128c12",
       "component": "cephfs",
       "source": "ibm-docs/9.0/management-rate-limiting-qos-in-smb",
-      "title": "Cluster-wide rate-limiting behaviour"
+      "title": "Cluster-wide rate-limiting behavior"
     },
     {
       "chunk_id": "156b415fe00d88eb",
@@ -38257,7 +38797,7 @@
       "title": "Basic SMB CLI commands"
     },
     {
-      "chunk_id": "8e3a6b3ce7935e1c",
+      "chunk_id": "a69563aca0555c07",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "Procedure"
@@ -38271,7 +38811,7 @@
       "title": "Basic SMB CLI commands"
     },
     {
-      "chunk_id": "8e3a6b3ce7935e1c",
+      "chunk_id": "a69563aca0555c07",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "Procedure"
@@ -38279,7 +38819,15 @@
   ],
   "ceph smb show command": [
     {
-      "chunk_id": "8e3a6b3ce7935e1c",
+      "chunk_id": "a69563aca0555c07",
+      "component": "cephfs",
+      "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
+      "title": "Procedure"
+    }
+  ],
+  "ceph smb show command shows": [
+    {
+      "chunk_id": "a69563aca0555c07",
       "component": "cephfs",
       "source": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
       "title": "Procedure"
@@ -38357,6 +38905,12 @@
       "component": "troubleshooting",
       "source": "ibm-docs/9.0/troubleshooting-gather-log-files",
       "title": "Gather log files"
+    },
+    {
+      "chunk_id": "e03b1a5d268495ce",
+      "component": "rados",
+      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
+      "title": "What to do next"
     }
   ],
   "ceph status ceph": [
@@ -39393,14 +39947,6 @@
       "title": "Procedure"
     }
   ],
-  "ceph-bluestore-tool --cluster": [
-    {
-      "chunk_id": "866e9598a34ee97e",
-      "component": "rados",
-      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
-      "title": "Procedure"
-    }
-  ],
   "ceph-bluestore-tool --log-level": [
     {
       "chunk_id": "062a8af50e8fd27f",
@@ -39997,6 +40543,38 @@
       "title": "Hardware requirements"
     }
   ],
+  "ceph-mgr balancer": [
+    {
+      "chunk_id": "89b4c88cf36f7fc2",
+      "component": "general",
+      "source": "ibm-docs/9.0/9903-new-features-enhancements",
+      "title": "ceph-mgr"
+    }
+  ],
+  "ceph-mgr balancer logs": [
+    {
+      "chunk_id": "89b4c88cf36f7fc2",
+      "component": "general",
+      "source": "ibm-docs/9.0/9903-new-features-enhancements",
+      "title": "ceph-mgr"
+    }
+  ],
+  "ceph-mgr balancer logs are": [
+    {
+      "chunk_id": "89b4c88cf36f7fc2",
+      "component": "general",
+      "source": "ibm-docs/9.0/9903-new-features-enhancements",
+      "title": "ceph-mgr"
+    }
+  ],
+  "ceph-mgr balancer logs are reduced": [
+    {
+      "chunk_id": "89b4c88cf36f7fc2",
+      "component": "general",
+      "source": "ibm-docs/9.0/9903-new-features-enhancements",
+      "title": "ceph-mgr"
+    }
+  ],
   "ceph-mon -i": [
     {
       "chunk_id": "3782509d04756235",
@@ -40427,12 +41005,6 @@
       "component": "cephadm",
       "source": "ibm-docs/9.0/setup-cephadm-commands",
       "title": "cephadm commands"
-    },
-    {
-      "chunk_id": "866e9598a34ee97e",
-      "component": "rados",
-      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
-      "title": "Procedure"
     }
   ],
   "ceph-volume command inside": [
@@ -40587,12 +41159,6 @@
       "component": "rados",
       "source": "ibm-docs/9.0/osds-replacing-in-non-colocated-scenario",
       "title": "Verification"
-    },
-    {
-      "chunk_id": "866e9598a34ee97e",
-      "component": "rados",
-      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
-      "title": "Procedure"
     },
     {
       "chunk_id": "8769a90247d0375b",
@@ -40761,12 +41327,6 @@
       "component": "rados",
       "source": "ibm-docs/9.0/osds-replacing-in-non-colocated-scenario",
       "title": "Verification"
-    },
-    {
-      "chunk_id": "866e9598a34ee97e",
-      "component": "rados",
-      "source": "ibm-docs/9.0/store-recovering-ceph-monitor-when-using-bluestore",
-      "title": "Procedure"
     },
     {
       "chunk_id": "8769a90247d0375b",
@@ -42311,6 +42871,22 @@
       "title": "cephadm commands"
     }
   ],
+  "cephadm certificate": [
+    {
+      "chunk_id": "e43f3cb5a0e5ec70",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate management"
+    }
+  ],
+  "cephadm certificate manager": [
+    {
+      "chunk_id": "e43f3cb5a0e5ec70",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate management"
+    }
+  ],
   "cephadm certificates": [
     {
       "chunk_id": "10b5cbb91deaf1a0",
@@ -42415,10 +42991,40 @@
   ],
   "cephadm cluster": [
     {
+      "chunk_id": "1695440840052ad6",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Powering down and rebooting by using cephadm cluster commands"
+    },
+    {
       "chunk_id": "21bc01b793ea158c",
       "component": "general",
       "source": "ibm-docs/9.0/home-call-events",
       "title": "Critical events sent to IBM Call Home"
+    }
+  ],
+  "cephadm cluster commands": [
+    {
+      "chunk_id": "1695440840052ad6",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Powering down and rebooting by using cephadm cluster commands"
+    }
+  ],
+  "cephadm cluster commands power": [
+    {
+      "chunk_id": "1695440840052ad6",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Powering down and rebooting by using cephadm cluster commands"
+    }
+  ],
+  "cephadm cluster commands power down": [
+    {
+      "chunk_id": "1695440840052ad6",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Powering down and rebooting by using cephadm cluster commands"
     }
   ],
   "cephadm cluster upgrade": [
@@ -42443,6 +43049,62 @@
       "component": "general",
       "source": "ibm-docs/9.0/home-call-events",
       "title": "Critical events sent to IBM Call Home"
+    }
+  ],
+  "cephadm cluster-shutdown": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "cephadm cluster-shutdown --dry-run": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "cephadm cluster-shutdown --yes-i-really-mean-it": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "cephadm cluster-start": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "cephadm cluster-start --parallel": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "cephadm cluster-start --parallel 10": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
+    }
+  ],
+  "cephadm cluster-status": [
+    {
+      "chunk_id": "7305bde09b6752a2",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Procedure"
     }
   ],
   "cephadm command": [
@@ -42581,7 +43243,45 @@
       "title": "Configuring RGW multi-site with HTTPS using cephadm"
     }
   ],
+  "cephadm continuously": [
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
+  "cephadm continuously monitors": [
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
+  "cephadm continuously monitors the": [
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
+  "cephadm continuously monitors the status": [
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
   "cephadm deployments": [
+    {
+      "chunk_id": "8de75351e5659405",
+      "component": "rados",
+      "source": "ibm-docs/9.0/configuration-cephx-daemon-keyrings",
+      "title": "Keyring lifecycle in cephadm deployments"
+    },
     {
       "chunk_id": "1bc88abf02890b1d",
       "component": "mgr",
@@ -42597,10 +43297,40 @@
   ],
   "cephadm deploys": [
     {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
+    },
+    {
       "chunk_id": "faec2dd560ae1b22",
       "component": "general",
       "source": "ibm-docs/9.0/server-configuring-https",
       "title": "Procedure"
+    }
+  ],
+  "cephadm deploys grafana": [
+    {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
+    }
+  ],
+  "cephadm deploys grafana by": [
+    {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
+    }
+  ],
+  "cephadm deploys grafana by using": [
+    {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
     }
   ],
   "cephadm deploys the": [
@@ -42729,6 +43459,12 @@
   ],
   "cephadm generates": [
     {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
+    },
+    {
       "chunk_id": "faec2dd560ae1b22",
       "component": "general",
       "source": "ibm-docs/9.0/server-configuring-https",
@@ -42757,6 +43493,30 @@
       "component": "general",
       "source": "ibm-docs/9.0/server-configuring-https",
       "title": "Procedure"
+    }
+  ],
+  "cephadm generates and": [
+    {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
+    }
+  ],
+  "cephadm generates and signs": [
+    {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
+    }
+  ],
+  "cephadm generates and signs a": [
+    {
+      "chunk_id": "7cece9f73a2a0fcc",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "About this task"
     }
   ],
   "cephadm health": [
@@ -42805,6 +43565,22 @@
       "component": "cephadm",
       "source": "ibm-docs/9.0/troubleshooting-pause-disable-cephadm",
       "title": "Pause or disable cephadm"
+    }
+  ],
+  "cephadm initiates": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm initiates renewal": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
     }
   ],
   "cephadm install": [
@@ -42869,6 +43645,70 @@
       "component": "general",
       "source": "ibm-docs/9.0/home-call-events",
       "title": "Critical events sent to IBM Call Home"
+    }
+  ],
+  "cephadm issues": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    },
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
+  "cephadm issues a": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    },
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
+  "cephadm issues a health": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    },
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
+  "cephadm issues a health error": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    },
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
+    }
+  ],
+  "cephadm issues a health warning": [
+    {
+      "chunk_id": "e40c6c026a1789a5",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate health monitoring"
     }
   ],
   "cephadm list-networks": [
@@ -43335,6 +44175,38 @@
       "component": "cephadm",
       "source": "ibm-docs/9.0/setup-cephadm-commands",
       "title": "cephadm commands"
+    }
+  ],
+  "cephadm provides": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm provides several": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm provides several configuration": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm provides several configuration options": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
     }
   ],
   "cephadm redeploys": [
@@ -44155,9 +45027,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "40c2c40845f13031",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     },
     {
@@ -44228,6 +45100,12 @@
     },
     {
       "chunk_id": "6bbe475bec7cf9ae",
+      "component": "general",
+      "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "c2f919c60692bf86",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
       "title": "Procedure"
@@ -44383,6 +45261,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "19792572d3c412d3",
+      "component": "mgr",
+      "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
+      "title": "Before you begin"
+    },
+    {
       "chunk_id": "f923dac97d9a6930",
       "component": "mgr",
       "source": "ibm-docs/9.0/alerts-configuring-grafana-certificate",
@@ -44408,6 +45292,12 @@
     },
     {
       "chunk_id": "d18bf58c8ab31a87",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "6b731b6c46859d82",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
       "title": "Procedure"
@@ -44593,9 +45483,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "3f8c385ecdaa00c9",
+      "chunk_id": "e0a836dc7e1b465f",
       "component": "dev",
-      "source": "ibm-docs/9.0/api-enabling-securing-ceph-module",
+      "source": "ibm-docs/9.0/api-enabling-securing-ceph",
       "title": "Procedure"
     },
     {
@@ -44713,6 +45603,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "84fa12f798aea15b",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-snapset-metadata-options",
+      "title": "clear-snapset command"
+    },
+    {
       "chunk_id": "43cafce8ecc77c7b",
       "component": "mgr",
       "source": "ibm-docs/9.0/troubleshooting-call-home",
@@ -44811,9 +45707,9 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "40c2c40845f13031",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     },
     {
@@ -44824,6 +45720,12 @@
     },
     {
       "chunk_id": "6bbe475bec7cf9ae",
+      "component": "general",
+      "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "c2f919c60692bf86",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
       "title": "Procedure"
@@ -44848,6 +45750,12 @@
     },
     {
       "chunk_id": "d18bf58c8ab31a87",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "6b731b6c46859d82",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
       "title": "Procedure"
@@ -44983,9 +45891,9 @@
   ],
   "cephadm shell --mount osd_spec": [
     {
-      "chunk_id": "11e841c8c769854c",
+      "chunk_id": "40c2c40845f13031",
       "component": "rados",
-      "source": "ibm-docs/9.0/osds-deploying-ceph-using-advanced-service-specifications",
+      "source": "ibm-docs/9.0/osds-deploying-ceph-using-service-specifications",
       "title": "Procedure"
     }
   ],
@@ -45011,7 +45919,19 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "c2f919c60692bf86",
+      "component": "general",
+      "source": "ibm-docs/9.0/gateway-deploying-ceph-object-using-service-specification",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "d18bf58c8ab31a87",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+      "title": "Procedure"
+    },
+    {
+      "chunk_id": "6b731b6c46859d82",
       "component": "radosgw",
       "source": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
       "title": "Procedure"
@@ -45109,6 +46029,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/operations-manipulating-object-attribute-key",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "84fa12f798aea15b",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-snapset-metadata-options",
+      "title": "clear-snapset command"
     }
   ],
   "cephadm shell --name daemon_name": [
@@ -45205,6 +46131,12 @@
       "component": "general",
       "source": "ibm-docs/9.0/operations-manipulating-object-attribute-key",
       "title": "Procedure"
+    },
+    {
+      "chunk_id": "84fa12f798aea15b",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-snapset-metadata-options",
+      "title": "clear-snapset command"
     }
   ],
   "cephadm shell --name osd_id": [
@@ -45627,30 +46559,6 @@
       "title": "Exiting the cephadm shell"
     }
   ],
-  "cephadm should": [
-    {
-      "chunk_id": "b5ee6ece826cbc49",
-      "component": "general",
-      "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
-    }
-  ],
-  "cephadm should initiate": [
-    {
-      "chunk_id": "b5ee6ece826cbc49",
-      "component": "general",
-      "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
-    }
-  ],
-  "cephadm should initiate renewal": [
-    {
-      "chunk_id": "b5ee6ece826cbc49",
-      "component": "general",
-      "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
-    }
-  ],
   "cephadm ssh": [
     {
       "chunk_id": "c3273434864a9cb8",
@@ -45721,12 +46629,106 @@
       "title": "cephadm-ansible module options"
     }
   ],
+  "cephadm still": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm still checks": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm still checks certificates": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm still checks certificates periodically": [
+    {
+      "chunk_id": "b5ee6ece826cbc49",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Lifecycle configuration"
+    }
+  ],
+  "cephadm this": [
+    {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    }
+  ],
+  "cephadm this release": [
+    {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    }
+  ],
+  "cephadm this release introduces": [
+    {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    }
+  ],
+  "cephadm this release introduces support": [
+    {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    }
+  ],
   "cephadm to": [
     {
       "chunk_id": "4f83c80c5d04ecf2",
       "component": "cephadm",
       "source": "ibm-docs/9.0/upgrading-990-rhel-10-stretch-mode-enabled-from-previous-versions",
       "title": "What to do next"
+    },
+    {
+      "chunk_id": "e43f3cb5a0e5ec70",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate management"
+    }
+  ],
+  "cephadm to generate": [
+    {
+      "chunk_id": "e43f3cb5a0e5ec70",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate management"
+    }
+  ],
+  "cephadm to generate a": [
+    {
+      "chunk_id": "e43f3cb5a0e5ec70",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate management"
+    }
+  ],
+  "cephadm to generate a self-signed": [
+    {
+      "chunk_id": "e43f3cb5a0e5ec70",
+      "component": "general",
+      "source": "ibm-docs/9.0/operations-certificate-management",
+      "title": "Certificate management"
     }
   ],
   "cephadm to upgrade": [
@@ -45977,6 +46979,12 @@
       "title": "cephadm utility"
     },
     {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    },
+    {
       "chunk_id": "e38642f6eb84e80d",
       "component": "cephadm",
       "source": "ibm-docs/9.0/installation-cephadm-utility",
@@ -46039,6 +47047,30 @@
       "title": "cephadm utility"
     }
   ],
+  "cephadm utility support": [
+    {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    }
+  ],
+  "cephadm utility support for": [
+    {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    }
+  ],
+  "cephadm utility support for configuring": [
+    {
+      "chunk_id": "f2f4866e70a2efc3",
+      "component": "general",
+      "source": "ibm-docs/9.0/9902-new-features-enhancements",
+      "title": "cephadm utility"
+    }
+  ],
   "cephadm utility the": [
     {
       "chunk_id": "e38642f6eb84e80d",
@@ -46055,60 +47087,36 @@
       "title": "cephadm commands"
     }
   ],
-  "cephadm will": [
+  "cephadm when": [
     {
-      "chunk_id": "b5ee6ece826cbc49",
+      "chunk_id": "e40c6c026a1789a5",
       "component": "general",
       "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
+      "title": "Certificate health monitoring"
     }
   ],
-  "cephadm will issue": [
+  "cephadm when automated": [
     {
-      "chunk_id": "b5ee6ece826cbc49",
+      "chunk_id": "e40c6c026a1789a5",
       "component": "general",
       "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
+      "title": "Certificate health monitoring"
     }
   ],
-  "cephadm will issue a": [
+  "cephadm when automated rotation": [
     {
-      "chunk_id": "b5ee6ece826cbc49",
+      "chunk_id": "e40c6c026a1789a5",
       "component": "general",
       "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
+      "title": "Certificate health monitoring"
     }
   ],
-  "cephadm will issue a health": [
+  "cephadm when automated rotation is": [
     {
-      "chunk_id": "b5ee6ece826cbc49",
+      "chunk_id": "e40c6c026a1789a5",
       "component": "general",
       "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
-    }
-  ],
-  "cephadm will still": [
-    {
-      "chunk_id": "b5ee6ece826cbc49",
-      "component": "general",
-      "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
-    }
-  ],
-  "cephadm will still check": [
-    {
-      "chunk_id": "b5ee6ece826cbc49",
-      "component": "general",
-      "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
-    }
-  ],
-  "cephadm will still check periodically": [
-    {
-      "chunk_id": "b5ee6ece826cbc49",
-      "component": "general",
-      "source": "ibm-docs/9.0/operations-certificate-management",
-      "title": "Lifecycle configuration"
+      "title": "Certificate health monitoring"
     }
   ],
   "cephadm works": [
@@ -47381,6 +48389,12 @@
       "title": "Ceph Object Gateway multi-site"
     },
     {
+      "chunk_id": "9653a2c83ec5ae6b",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Results"
+    },
+    {
       "chunk_id": "9831caebd0d27ab9",
       "component": "general",
       "source": "ibm-docs/9.0/zone-deleting-objects-in-archive",
@@ -48221,6 +49235,12 @@
   ],
   "radosgw-admin bucket sync": [
     {
+      "chunk_id": "9653a2c83ec5ae6b",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Results"
+    },
+    {
       "chunk_id": "64ac0bc2967f90c6",
       "component": "general",
       "source": "ibm-docs/9.0/policies-creating-sync-policy-group",
@@ -48305,6 +49325,12 @@
   ],
   "radosgw-admin bucket sync status": [
     {
+      "chunk_id": "9653a2c83ec5ae6b",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Results"
+    },
+    {
       "chunk_id": "243854622be2557e",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-syncing-multi-site-ceph-object",
@@ -48312,6 +49338,12 @@
     }
   ],
   "radosgw-admin bucket sync status --bucket": [
+    {
+      "chunk_id": "9653a2c83ec5ae6b",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Results"
+    },
     {
       "chunk_id": "243854622be2557e",
       "component": "general",
@@ -48443,6 +49475,12 @@
       "component": "rados",
       "source": "ibm-docs/9.0/platforms-using-radosgw-admin-cli-cloud-restore-operations",
       "title": "Using the radosgw-admin cli for cloud restore operations"
+    },
+    {
+      "chunk_id": "19f89a1462350c5f",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/operations-s3-bucket-policies",
+      "title": "Creation and removal"
     }
   ],
   "radosgw-admin cli for": [
@@ -48509,6 +49547,14 @@
       "component": "rados",
       "source": "ibm-docs/9.0/platforms-using-radosgw-admin-cli-cloud-restore-operations",
       "title": "Using the radosgw-admin cli for cloud restore operations"
+    }
+  ],
+  "radosgw-admin cli tool": [
+    {
+      "chunk_id": "19f89a1462350c5f",
+      "component": "radosgw",
+      "source": "ibm-docs/9.0/operations-s3-bucket-policies",
+      "title": "Creation and removal"
     }
   ],
   "radosgw-admin command": [
@@ -50171,12 +51217,6 @@
       "title": "Deleting a zone group"
     },
     {
-      "chunk_id": "0da14fc398cddb97",
-      "component": "general",
-      "source": "ibm-docs/9.0/groups-setting-zone-group-map",
-      "title": "Setting a zone group map"
-    },
-    {
       "chunk_id": "5aaaf50014094ae5",
       "component": "general",
       "source": "ibm-docs/9.0/groups-setting-zone-group",
@@ -50467,12 +51507,6 @@
       "title": "Deleting a zone group"
     },
     {
-      "chunk_id": "0da14fc398cddb97",
-      "component": "general",
-      "source": "ibm-docs/9.0/groups-setting-zone-group-map",
-      "title": "Setting a zone group map"
-    },
-    {
       "chunk_id": "5aaaf50014094ae5",
       "component": "general",
       "source": "ibm-docs/9.0/groups-setting-zone-group",
@@ -50677,12 +51711,6 @@
       "component": "general",
       "source": "ibm-docs/9.0/groups-deleting-zone-group",
       "title": "Deleting a zone group"
-    },
-    {
-      "chunk_id": "0da14fc398cddb97",
-      "component": "general",
-      "source": "ibm-docs/9.0/groups-setting-zone-group-map",
-      "title": "Setting a zone group map"
     },
     {
       "chunk_id": "5aaaf50014094ae5",
@@ -51879,10 +52907,10 @@
       "title": "Procedure"
     },
     {
-      "chunk_id": "aa5b27a8413f2a11",
+      "chunk_id": "8de76ac5f443224e",
       "component": "radosgw",
       "source": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
-      "title": "Verification"
+      "title": "What to do next"
     }
   ],
   "radosgw-admin reshard add": [
@@ -51973,7 +53001,7 @@
       "title": "Procedure"
     }
   ],
-  "radosgw-admin reshard stale-instances list": [
+  "radosgw-admin reshard stale-instances delete": [
     {
       "chunk_id": "bbc134c5edccda12",
       "component": "radosgw",
@@ -51981,7 +53009,7 @@
       "title": "Procedure"
     }
   ],
-  "radosgw-admin reshard stale-instances rm": [
+  "radosgw-admin reshard stale-instances list": [
     {
       "chunk_id": "bbc134c5edccda12",
       "component": "radosgw",
@@ -52015,10 +53043,10 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "aa5b27a8413f2a11",
+      "chunk_id": "8de76ac5f443224e",
       "component": "radosgw",
       "source": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
-      "title": "Verification"
+      "title": "What to do next"
     }
   ],
   "radosgw-admin reshard status --bucket": [
@@ -52047,10 +53075,10 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "aa5b27a8413f2a11",
+      "chunk_id": "8de76ac5f443224e",
       "component": "radosgw",
       "source": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
-      "title": "Verification"
+      "title": "What to do next"
     }
   ],
   "radosgw-admin reshard status --bucket bucket": [
@@ -52073,10 +53101,10 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "aa5b27a8413f2a11",
+      "chunk_id": "8de76ac5f443224e",
       "component": "radosgw",
       "source": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
-      "title": "Verification"
+      "title": "What to do next"
     }
   ],
   "radosgw-admin reshard status --bucket bucket_name": [
@@ -52113,10 +53141,10 @@
       "title": "Verification"
     },
     {
-      "chunk_id": "aa5b27a8413f2a11",
+      "chunk_id": "8de76ac5f443224e",
       "component": "radosgw",
       "source": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
-      "title": "Verification"
+      "title": "What to do next"
     }
   ],
   "radosgw-admin restore": [
@@ -52210,6 +53238,12 @@
     }
   ],
   "radosgw-admin role": [
+    {
+      "chunk_id": "93f8acb3b4695fe7",
+      "component": "general",
+      "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
+      "title": "Migrate an existing user to an account"
+    },
     {
       "chunk_id": "a0fabe341010c52d",
       "component": "general",
@@ -52361,6 +53395,12 @@
   ],
   "radosgw-admin role list": [
     {
+      "chunk_id": "93f8acb3b4695fe7",
+      "component": "general",
+      "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
+      "title": "Migrate an existing user to an account"
+    },
+    {
       "chunk_id": "90ae7ade2b1aa9c4",
       "component": "general",
       "source": "ibm-docs/9.0/management-listing-role",
@@ -52387,6 +53427,22 @@
       "component": "general",
       "source": "ibm-docs/9.0/management-listing-role",
       "title": "Procedure"
+    }
+  ],
+  "radosgw-admin role list command": [
+    {
+      "chunk_id": "93f8acb3b4695fe7",
+      "component": "general",
+      "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
+      "title": "Migrate an existing user to an account"
+    }
+  ],
+  "radosgw-admin role list command with": [
+    {
+      "chunk_id": "93f8acb3b4695fe7",
+      "component": "general",
+      "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
+      "title": "Migrate an existing user to an account"
     }
   ],
   "radosgw-admin role list has": [
@@ -52726,6 +53782,12 @@
     }
   ],
   "radosgw-admin sync": [
+    {
+      "chunk_id": "9653a2c83ec5ae6b",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Results"
+    },
     {
       "chunk_id": "f5d08272205d3260",
       "component": "general",
@@ -53707,6 +54769,12 @@
   ],
   "radosgw-admin sync status": [
     {
+      "chunk_id": "9653a2c83ec5ae6b",
+      "component": "cephadm",
+      "source": "ibm-docs/9.0/pdrc-powering-down-rebooting-by-using-cephadm-cluster-commands",
+      "title": "Results"
+    },
+    {
       "chunk_id": "f5d08272205d3260",
       "component": "general",
       "source": "ibm-docs/9.0/gateway-deploying-multi-site-ceph-object",
@@ -54247,10 +55315,10 @@
       "title": "Migrate an existing user to an account"
     },
     {
-      "chunk_id": "55cf274896c5200c",
+      "chunk_id": "0656b02a8299f82e",
       "component": "general",
       "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
-      "title": "Migrating users from non-account to RGW accounts"
+      "title": "Migrating users from non-account to Ceph Object Gateway accounts"
     },
     {
       "chunk_id": "018d8730faea589d",
@@ -54717,10 +55785,10 @@
       "title": "Migrate an existing user to an account"
     },
     {
-      "chunk_id": "55cf274896c5200c",
+      "chunk_id": "0656b02a8299f82e",
       "component": "general",
       "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
-      "title": "Migrating users from non-account to RGW accounts"
+      "title": "Migrating users from non-account to Ceph Object Gateway accounts"
     },
     {
       "chunk_id": "18a04ec505b86b12",
@@ -54743,10 +55811,10 @@
       "title": "Migrate an existing user to an account"
     },
     {
-      "chunk_id": "55cf274896c5200c",
+      "chunk_id": "0656b02a8299f82e",
       "component": "general",
       "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
-      "title": "Migrating users from non-account to RGW accounts"
+      "title": "Migrating users from non-account to Ceph Object Gateway accounts"
     },
     {
       "chunk_id": "18a04ec505b86b12",
@@ -54755,28 +55823,44 @@
       "title": "Modify user information"
     }
   ],
-  "radosgw-admin user policy": [
+  "radosgw-admin user modify --uid user_id": [
     {
-      "chunk_id": "55cf274896c5200c",
+      "chunk_id": "0656b02a8299f82e",
       "component": "general",
       "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
-      "title": "Migrating users from non-account to RGW accounts"
+      "title": "Migrating users from non-account to Ceph Object Gateway accounts"
+    }
+  ],
+  "radosgw-admin user modify command": [
+    {
+      "chunk_id": "93f8acb3b4695fe7",
+      "component": "general",
+      "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
+      "title": "Migrate an existing user to an account"
+    }
+  ],
+  "radosgw-admin user policy": [
+    {
+      "chunk_id": "0656b02a8299f82e",
+      "component": "general",
+      "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
+      "title": "Migrating users from non-account to Ceph Object Gateway accounts"
     }
   ],
   "radosgw-admin user policy attach": [
     {
-      "chunk_id": "55cf274896c5200c",
+      "chunk_id": "0656b02a8299f82e",
       "component": "general",
       "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
-      "title": "Migrating users from non-account to RGW accounts"
+      "title": "Migrating users from non-account to Ceph Object Gateway accounts"
     }
   ],
   "radosgw-admin user policy attach --uid": [
     {
-      "chunk_id": "55cf274896c5200c",
+      "chunk_id": "0656b02a8299f82e",
       "component": "general",
       "source": "ibm-docs/9.0/iam-migrate-existing-user-account",
-      "title": "Migrating users from non-account to RGW accounts"
+      "title": "Migrating users from non-account to Ceph Object Gateway accounts"
     }
   ],
   "radosgw-admin user rename": [
@@ -56497,38 +57581,6 @@
       "component": "general",
       "source": "ibm-docs/9.0/configuration-add-wildcard-dns",
       "title": "Procedure"
-    }
-  ],
-  "radosgw-admin zonegroup-map": [
-    {
-      "chunk_id": "0da14fc398cddb97",
-      "component": "general",
-      "source": "ibm-docs/9.0/groups-setting-zone-group-map",
-      "title": "Setting a zone group map"
-    }
-  ],
-  "radosgw-admin zonegroup-map set": [
-    {
-      "chunk_id": "0da14fc398cddb97",
-      "component": "general",
-      "source": "ibm-docs/9.0/groups-setting-zone-group-map",
-      "title": "Setting a zone group map"
-    }
-  ],
-  "radosgw-admin zonegroup-map set --infile": [
-    {
-      "chunk_id": "0da14fc398cddb97",
-      "component": "general",
-      "source": "ibm-docs/9.0/groups-setting-zone-group-map",
-      "title": "Setting a zone group map"
-    }
-  ],
-  "radosgw-admin zonegroup-map set --infile zonegroupmap": [
-    {
-      "chunk_id": "0da14fc398cddb97",
-      "component": "general",
-      "source": "ibm-docs/9.0/groups-setting-zone-group-map",
-      "title": "Setting a zone group map"
     }
   ],
   "rbd -": [
@@ -59429,12 +60481,6 @@
   ],
   "rbd images": [
     {
-      "chunk_id": "40411d19474e5470",
-      "component": "rbd",
-      "source": "ibm-docs/9.0/target-defining-block-devices-use-nvmetcp",
-      "title": "Procedure"
-    },
-    {
       "chunk_id": "354c2fe1f750b32a",
       "component": "rbd",
       "source": "ibm-docs/9.0/cli-defining-block-devices-use-nvmetcp-nvmeof",
@@ -59442,12 +60488,6 @@
     }
   ],
   "rbd images in": [
-    {
-      "chunk_id": "40411d19474e5470",
-      "component": "rbd",
-      "source": "ibm-docs/9.0/target-defining-block-devices-use-nvmetcp",
-      "title": "Procedure"
-    },
     {
       "chunk_id": "354c2fe1f750b32a",
       "component": "rbd",
@@ -59457,12 +60497,6 @@
   ],
   "rbd images in a": [
     {
-      "chunk_id": "40411d19474e5470",
-      "component": "rbd",
-      "source": "ibm-docs/9.0/target-defining-block-devices-use-nvmetcp",
-      "title": "Procedure"
-    },
-    {
       "chunk_id": "354c2fe1f750b32a",
       "component": "rbd",
       "source": "ibm-docs/9.0/cli-defining-block-devices-use-nvmetcp-nvmeof",
@@ -59470,12 +60504,6 @@
     }
   ],
   "rbd images in a ceph": [
-    {
-      "chunk_id": "40411d19474e5470",
-      "component": "rbd",
-      "source": "ibm-docs/9.0/target-defining-block-devices-use-nvmetcp",
-      "title": "Procedure"
-    },
     {
       "chunk_id": "354c2fe1f750b32a",
       "component": "rbd",
@@ -59955,6 +60983,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "b39f48962601f840",
+      "component": "general",
+      "source": "ibm-docs/9.0/images-preparing-import-only-migration",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "ad18509861f38022",
       "component": "general",
       "source": "ibm-docs/9.0/images-preparing-import-only-migration",
@@ -59968,6 +61002,12 @@
     }
   ],
   "rbd migration commit c2pool1": [
+    {
+      "chunk_id": "b39f48962601f840",
+      "component": "general",
+      "source": "ibm-docs/9.0/images-preparing-import-only-migration",
+      "title": "Procedure"
+    },
     {
       "chunk_id": "ad18509861f38022",
       "component": "general",
@@ -60015,6 +61055,12 @@
       "title": "Procedure"
     },
     {
+      "chunk_id": "b39f48962601f840",
+      "component": "general",
+      "source": "ibm-docs/9.0/images-preparing-import-only-migration",
+      "title": "Procedure"
+    },
+    {
       "chunk_id": "ad18509861f38022",
       "component": "general",
       "source": "ibm-docs/9.0/images-preparing-import-only-migration",
@@ -60028,6 +61074,12 @@
     }
   ],
   "rbd migration execute c2pool1": [
+    {
+      "chunk_id": "b39f48962601f840",
+      "component": "general",
+      "source": "ibm-docs/9.0/images-preparing-import-only-migration",
+      "title": "Procedure"
+    },
     {
       "chunk_id": "ad18509861f38022",
       "component": "general",

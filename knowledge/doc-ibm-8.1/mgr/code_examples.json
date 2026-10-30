@@ -1185,26 +1185,6 @@
     "commands_used": []
   },
   {
-    "entity_id": "599ba10c230142f9",
-    "code": "keytool -import -noprompt -trustcacerts -alias ca -file ../ca.cer -keystore /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.272.b10-3.el8_3.x86_64/lib/security/cacert",
-    "language": "bash",
-    "context": "Creating an admin account for syncing users to the Ceph dashboard",
-    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
-    "component": "mgr",
-    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
-    "commands_used": []
-  },
-  {
-    "entity_id": "e6d1566c525f18b7",
-    "code": "[root@host01 ~]# keytool -import -noprompt -trustcacerts -alias ca -file ../ca.cer -keystore /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.272.b10-3.el8_3.x86_64/lib/security/cacert",
-    "language": "bash",
-    "context": "Creating an admin account for syncing users to the Ceph dashboard",
-    "source_file": "ibm-docs/8.1/dashboard-creating-admin-account-syncing-users-ceph",
-    "component": "mgr",
-    "section_title": "Creating an admin account for syncing users to the Ceph dashboard",
-    "commands_used": []
-  },
-  {
     "entity_id": "15f0e13e6930d72b",
     "code": "./standalone.sh",
     "language": "bash",

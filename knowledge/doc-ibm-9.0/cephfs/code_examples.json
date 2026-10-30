@@ -585,6 +585,18 @@
     ]
   },
   {
+    "entity_id": "7a385dafc856882b",
+    "code": "ceph orch ls --service-type nfs --export",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the command line interface",
+    "source_file": "ibm-docs/9.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the command line interface",
+    "commands_used": [
+      "ceph orch ls --service-type nfs"
+    ]
+  },
+  {
     "entity_id": "ec32fb0e2a02d8c8",
     "code": "[root@host01 ~]# cephadm shell",
     "language": "bash",
@@ -854,6 +866,40 @@
     "section_title": "Deploying the NFS service gateway using the service specification",
     "commands_used": [
       "ceph orch ps --daemon_type"
+    ]
+  },
+  {
+    "entity_id": "4add490a9ffd8ee5",
+    "code": "service_type: nfs\nservice_id: nfsganesha\nplacement:\n  hosts:\n    - example0\n    - example1\n    - example2\nspec:\n  idmap_conf:\n    general:\n      Domain: domain.org\n    mapping:\n      Nobody-Group: nfsnobody\n      Nobody-User: nfsnobody",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the service specification",
+    "source_file": "ibm-docs/9.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the service specification",
+    "commands_used": []
+  },
+  {
+    "entity_id": "df83e3e8f0d34f03",
+    "code": "ceph orch apply -i FILE_NAME.yaml",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the service specification",
+    "source_file": "ibm-docs/9.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the service specification",
+    "commands_used": [
+      "ceph orch apply -i FILE_NAME"
+    ]
+  },
+  {
+    "entity_id": "0805981149e58947",
+    "code": "ceph orch redeploy nfs.nfsganesha",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the service specification",
+    "source_file": "ibm-docs/9.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the service specification",
+    "commands_used": [
+      "ceph orch redeploy nfs"
     ]
   },
   {
@@ -1972,15 +2018,15 @@
     ]
   },
   {
-    "entity_id": "9c6e6d7759d86b5f",
-    "code": "ceph orch ls --service_name nfs.nfs-rgw-service --service_type nfs",
+    "entity_id": "c32def6ecba0adb8",
+    "code": "ceph orch ls --SERVICE_NAME nfs.nfs-rgw-service --SERVICE_TYPE nfs",
     "language": "bash",
     "context": "Deploying NFS service with Ceph Object Storage backend",
     "source_file": "ibm-docs/9.0/deployment-deploying-nfs-service-ceph-object-storage-backend",
     "component": "cephfs",
     "section_title": "Deploying NFS service with Ceph Object Storage backend",
     "commands_used": [
-      "ceph orch ls --service_name nfs"
+      "ceph orch ls --SERVICE_NAME nfs"
     ]
   },
   {
@@ -3275,8 +3321,8 @@
     ]
   },
   {
-    "entity_id": "7e1206182c77932f",
-    "code": "ceph smb cluster create CLUSTER_ID {user} [--domain-realm=DOMAIN_REALM] \n[--domain-join-user-pass=DOMAIN_JOIN_USER_PASS] \n[--define-user-pass=DEFINE_USER_PASS] [--custom-dns=CUSTOM_DNS] \n[--placement=PLACEMENT] [--clustering=CLUSTERING]",
+    "entity_id": "75b991e1b0be3ea6",
+    "code": "ceph smb cluster create CLUSTER_ID {user} [--domain-realm=DOMAIN_REALM] [--domain-join-user-pass=DOMAIN_JOIN_USER_PASS] [--define-user-pass=DEFINE_USER_PASS] [--custom-dns=CUSTOM_DNS] [--placement=PLACEMENT] [--clustering=CLUSTERING] [--client-compat={default|macos}]",
     "language": "bash",
     "context": "Managing SMB clusters by using imperative method",
     "source_file": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-imperative-method",
@@ -3477,20 +3523,20 @@
     "entity_id": "fce1d12445d9abb9",
     "code": "[\n  {\"resource_type\": \"ceph.smb.cluster\",\n   \"cluster_id\": \"rhumba\",\n   \"...\": \"... other fields skipped for brevity ...\"\n  }\n]",
     "language": "bash",
-    "context": "Managing SMB clusters by using declarative method",
+    "context": "Managing SMB clusters by using the declarative method",
     "source_file": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
     "component": "cephfs",
-    "section_title": "Managing SMB clusters by using declarative method",
+    "section_title": "Managing SMB clusters by using the declarative method",
     "commands_used": []
   },
   {
     "entity_id": "9fb73bf7a2e83fbc",
     "code": "[user@client ~]$ ceph smb apply -i /path/to/resources.yaml",
     "language": "bash",
-    "context": "Managing SMB clusters by using declarative method",
+    "context": "Managing SMB clusters by using the declarative method",
     "source_file": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
     "component": "cephfs",
-    "section_title": "Managing SMB clusters by using declarative method",
+    "section_title": "Managing SMB clusters by using the declarative method",
     "commands_used": [
       "ceph smb apply -i"
     ]
@@ -3499,22 +3545,22 @@
     "entity_id": "7d586fb70db1ae45",
     "code": "ceph smb show [RESOURCE_NAME...]",
     "language": "bash",
-    "context": "Managing SMB clusters by using declarative method",
+    "context": "Managing SMB clusters by using the declarative method",
     "source_file": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
     "component": "cephfs",
-    "section_title": "Managing SMB clusters by using declarative method",
+    "section_title": "Managing SMB clusters by using the declarative method",
     "commands_used": [
       "ceph smb show"
     ]
   },
   {
-    "entity_id": "292917eac8822b43",
-    "code": "$ ceph smb show ceph.smb.cluster.bob ceph.smb.share.Cluster1",
+    "entity_id": "d93093ea85d02307",
+    "code": "[user@client ~]$ ceph smb show ceph.smb.cluster.bob ceph.smb.share.Cluster1",
     "language": "bash",
-    "context": "Managing SMB clusters by using declarative method",
+    "context": "Managing SMB clusters by using the declarative method",
     "source_file": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
     "component": "cephfs",
-    "section_title": "Managing SMB clusters by using declarative method",
+    "section_title": "Managing SMB clusters by using the declarative method",
     "commands_used": [
       "ceph smb show ceph"
     ]
@@ -3523,10 +3569,10 @@
     "entity_id": "9949189af17b89c8",
     "code": "resource_type: ceph.smb.cluster\ncluster_id: rhumba\nintent: removed",
     "language": "bash",
-    "context": "Managing SMB clusters by using declarative method",
+    "context": "Managing SMB clusters by using the declarative method",
     "source_file": "ibm-docs/9.0/shares-managing-smb-clusters-by-using-declarative-method",
     "component": "cephfs",
-    "section_title": "Managing SMB clusters by using declarative method",
+    "section_title": "Managing SMB clusters by using the declarative method",
     "commands_used": []
   },
   {
@@ -5373,10 +5419,10 @@
     ]
   },
   {
-    "entity_id": "b834779da58e870c",
-    "code": "ceph tell mds.cephfs.ceph-gene-amk-diyngp-node4.paipgc counter dump",
+    "entity_id": "859439919b3f691d",
+    "code": "ceph tell mds.0 counter dump",
     "language": "bash",
-    "context": "Viewing subvolume metrics for CephFS metadata server clients",
+    "context": "To view aggregated subvolume metrics, including the mds_subvolume_metrics section, query MDS rank 0 by using the following command:",
     "source_file": "ibm-docs/9.0/subvolumes-viewing-subvolume-metrics-cephfs-metadata-server-clients",
     "component": "cephfs",
     "section_title": "Viewing subvolume metrics for CephFS metadata server clients",
@@ -7111,30 +7157,6 @@
     ]
   },
   {
-    "entity_id": "2687b6e8b0cada6f",
-    "code": "ceph fs authorize FILE_SYSTEM_NAME CLIENT_NAME / rwps",
-    "language": "bash",
-    "context": "Configuring a snapshot mirror for a Ceph File System",
-    "source_file": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
-    "component": "cephfs",
-    "section_title": "Configuring a snapshot mirror for a Ceph File System",
-    "commands_used": [
-      "ceph fs authorize FILE_SYSTEM_NAME CLIENT_NAME"
-    ]
-  },
-  {
-    "entity_id": "a4c0ff8b5dac8bfd",
-    "code": "[ceph: root@host01 /]# ceph fs authorize cephfs client.mirror_remote / rwps\n[client.mirror_remote]\n        key = AQCjZ5Jg739AAxAAxduIKoTZbiFJ0lgose8luQ==",
-    "language": "bash",
-    "context": "Configuring a snapshot mirror for a Ceph File System",
-    "source_file": "ibm-docs/9.0/preview-configuring-snapshot-mirror-ceph-file-system",
-    "component": "cephfs",
-    "section_title": "Configuring a snapshot mirror for a Ceph File System",
-    "commands_used": [
-      "ceph fs authorize cephfs client"
-    ]
-  },
-  {
     "entity_id": "5f05b080430975d8",
     "code": "ceph mgr module enable mirroring",
     "language": "bash",
@@ -7399,8 +7421,8 @@
     ]
   },
   {
-    "entity_id": "25393cb358b9a8a5",
-    "code": "[ceph: root@host01 /]# ceph fs snapshot mirror daemon status\n[\n  {\n    \"daemon_id\": 15594,\n    \"filesystems\": [\n      {\n        \"filesystem_id\": 1,\n        \"name\": \"cephfs\",\n        \"directory_count\": 1,\n        \"peers\": [\n          {\n            \"uuid\": \"e5ecb883-097d-492d-b026-a585d1d7da79\",\n            \"remote\": {\n              \"client_name\": \"client.mirror_remote\",\n              \"cluster_name\": \"remote-site\",\n              \"fs_name\": \"cephfs\"\n            },\n            \"stats\": {\n              \"failure_count\": 1,\n              \"recovery_count\": 0\n            }\n          }\n        ]\n      }\n    ]\n  }\n]",
+    "entity_id": "c0e9983df9895430",
+    "code": "[ceph: root@host01 /]$ ceph fs snapshot mirror daemon status\n[\n  {\n    \"daemon_id\": 284167,\n    \"filesystems\": [\n      {\n        \"filesystem_id\": 1,\n        \"name\": \"a\",\n        \"directory_count\": 1,\n        \"peers\": [\n          {\n            \"uuid\": \"02117353-8cd1-44db-976b-eb20609aa160\",\n            \"remote\": {\n              \"client_name\": \"client.mirror_remote\",\n              \"cluster_name\": \"ceph\",\n              \"fs_name\": \"backup_fs\",\n              \"mon_host\": \"[v2:192.168.64.5:40183,v1:192.168.64.5:40184]\",\n              \"fsid\": \"5682c8e5-50cd-4cfd-b75c-5354dcdda487\"\n            },\n            \"stats\": {\n              \"failure_count\": 1,\n              \"recovery_count\": 0\n            }\n          }\n        ]\n      }\n    ]\n  }\n]",
     "language": "bash",
     "context": "Viewing the mirror status for a Ceph File System",
     "source_file": "ibm-docs/9.0/preview-viewing-mirror-status-ceph-file-system",
@@ -7519,8 +7541,8 @@
     ]
   },
   {
-    "entity_id": "bf78f7619f0f94b5",
-    "code": "[ceph: root@mirror-host01 /]# ceph --admin-daemon ASOK_FILE_NAME counter dump",
+    "entity_id": "5e57eb2b8d3a6c36",
+    "code": "ceph --admin-daemon ASOK_FILE_NAME counter dump",
     "language": "bash",
     "context": "Viewing metrics for Ceph File System snapshot mirroring",
     "source_file": "ibm-docs/9.0/preview-viewing-metrics-ceph-file-system-snapshot-mirroring",

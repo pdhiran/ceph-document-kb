@@ -933,7 +933,7 @@
     "entity_id": "2d1aeb54c3b6750b",
     "code": "ceph orch daemon rotate-key NAME",
     "language": "bash",
-    "context": "Syntax",
+    "context": "Enabling key rotation",
     "source_file": "ibm-docs/9.1/management-enabling-key-rotation",
     "component": "general",
     "section_title": "Enabling key rotation",
@@ -945,7 +945,7 @@
     "entity_id": "628a76284071027d",
     "code": "[ceph: root@host01 /]# ceph orch daemon rotate-key mgr.ceph-key-host01\nScheduled to rotate-key mgr.ceph-key-host01 on host 'my-host-host01-installer'",
     "language": "bash",
-    "context": "Example",
+    "context": "Enabling key rotation",
     "source_file": "ibm-docs/9.1/management-enabling-key-rotation",
     "component": "general",
     "section_title": "Enabling key rotation",
@@ -957,7 +957,7 @@
     "entity_id": "af2db15d5b301076",
     "code": "ceph orch restart SERVICE_TYPE",
     "language": "bash",
-    "context": "Syntax",
+    "context": "Enabling key rotation",
     "source_file": "ibm-docs/9.1/management-enabling-key-rotation",
     "component": "general",
     "section_title": "Enabling key rotation",
@@ -969,7 +969,7 @@
     "entity_id": "2aad6d0f82fe44ad",
     "code": "[ceph: root@host01 /]# ceph orch restart rgw",
     "language": "bash",
-    "context": "Example",
+    "context": "Enabling key rotation",
     "source_file": "ibm-docs/9.1/management-enabling-key-rotation",
     "component": "general",
     "section_title": "Enabling key rotation",
@@ -1324,71 +1324,71 @@
     "commands_used": []
   },
   {
-    "entity_id": "8c1d3d6e3166c574",
+    "entity_id": "f6e281ed78ce8056",
     "code": "# systemctl enable firewalld\n# systemctl start firewalld\n# systemctl status firewalld",
     "language": "bash",
-    "context": "Start the firewalld service, enable it to run on boot, and ensure that it is\nrunning:",
-    "source_file": "ibm-docs/9.1/security-hardening-network-service",
+    "context": "Hardening the network service",
+    "source_file": "ibm-docs/9.1/architecture-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
     "commands_used": []
   },
   {
-    "entity_id": "e0a9c3a3b7eba155",
+    "entity_id": "e1e9bc8800763c4f",
     "code": "# firewall-cmd --list-all",
     "language": "bash",
-    "context": "Take an inventory of all open ports.",
-    "source_file": "ibm-docs/9.1/security-hardening-network-service",
+    "context": "Hardening the network service",
+    "source_file": "ibm-docs/9.1/architecture-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
     "commands_used": []
   },
   {
-    "entity_id": "badd8c08a76c2ae4",
+    "entity_id": "4eaee6168eca2d66",
     "code": "sources:\nservices: ssh dhcpv6-client",
     "language": "bash",
-    "context": "On a new installation, the sources: section should be blank indicating that no\nports have been opened specifically. The services section should indicate\nssh indicating that the SSH service (and port 2",
-    "source_file": "ibm-docs/9.1/security-hardening-network-service",
+    "context": "On a new installation, the sources: line is empty, and the services line shows only ssh (port 22) and dhcpv6-client:",
+    "source_file": "ibm-docs/9.1/architecture-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
     "commands_used": []
   },
   {
-    "entity_id": "ed9bbe901dafbed6",
+    "entity_id": "9a06020237e8374a",
     "code": "# getenforce\nEnforcing",
     "language": "bash",
-    "context": "Ensure SELinux is running and Enforcing.",
-    "source_file": "ibm-docs/9.1/security-hardening-network-service",
+    "context": "Hardening the network service",
+    "source_file": "ibm-docs/9.1/architecture-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
     "commands_used": []
   },
   {
-    "entity_id": "77d3eb866f267ac6",
+    "entity_id": "9661c8dba02b57be",
     "code": "# setenforce 1",
     "language": "bash",
-    "context": "If SELinux is Permissive, set it to Enforcing.",
-    "source_file": "ibm-docs/9.1/security-hardening-network-service",
+    "context": "Hardening the network service",
+    "source_file": "ibm-docs/9.1/architecture-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
     "commands_used": []
   },
   {
-    "entity_id": "05d9ca9dd2aea1cc",
-    "code": "firewall-cmd --zone=<zone-name> --add-rich-rule=\"rule family=\"ipv4\" \\\nsource address=\"<ip-address>/<netmask>\" port protocol=\"tcp\" \\\nport=\"<port-number>\" accept\"",
+    "entity_id": "118374982b2a420d",
+    "code": "# firewall-cmd --zone=<zone-name> --add-rich-rule=\"rule family=\\\"ipv4\\\" \\\nsource address=\\\"<ip-address>/<netmask>\\\" port protocol=\\\"tcp\\\" \\\nport=\\\"<port-number>\\\" accept\"",
     "language": "bash",
-    "context": "On the Ceph Storage Cluster zone\u2019s hosts, consider enabling only hosts running Ceph clients to\nconnect to the Ceph Storage Cluster daemons. For example:",
-    "source_file": "ibm-docs/9.1/security-hardening-network-service",
+    "context": "Hardening the network service",
+    "source_file": "ibm-docs/9.1/architecture-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
     "commands_used": []
   },
   {
-    "entity_id": "05d9ca9dd2aea1cc",
-    "code": "firewall-cmd --zone=<zone-name> --add-rich-rule=\"rule family=\"ipv4\" \\\nsource address=\"<ip-address>/<netmask>\" port protocol=\"tcp\" \\\nport=\"<port-number>\" accept\" --permanent",
+    "entity_id": "118374982b2a420d",
+    "code": "# firewall-cmd --zone=<zone-name> --add-rich-rule=\"rule family=\\\"ipv4\\\" \\\nsource address=\\\"<ip-address>/<netmask>\\\" port protocol=\\\"tcp\\\" \\\nport=\\\"<port-number>\\\" accept\" --permanent",
     "language": "bash",
-    "context": "Replace <zone-name> with the zone name, <ipaddress>\nwith the IP address, <netmask> with the subnet mask in CIDR notation, and\n<port-number> with the port number or range. Repeat the process with the\n-",
-    "source_file": "ibm-docs/9.1/security-hardening-network-service",
+    "context": "Hardening the network service",
+    "source_file": "ibm-docs/9.1/architecture-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
     "commands_used": []
@@ -3710,8 +3710,8 @@
     ]
   },
   {
-    "entity_id": "6059c41970d2a81b",
-    "code": "ceph config set global public_network IP_ADDRESS_WITH_SUBNET",
+    "entity_id": "2a8c0086ad8bc717",
+    "code": "ceph config set global public_network NETWORK_ADDRESS_CIDR",
     "language": "bash",
     "context": "Configuring a public network",
     "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
@@ -3722,8 +3722,8 @@
     ]
   },
   {
-    "entity_id": "c86171f31c8d18ac",
-    "code": "[ceph: root@host01 /]# ceph config set global public_network 192.168.0.0/24",
+    "entity_id": "d255740db31fb93f",
+    "code": "[ceph: root@host01 /]# ceph config set global public_network \"10.58.145.0/24,10.58.146.0/24,10.58.148.0/24\"",
     "language": "bash",
     "context": "Configuring a public network",
     "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
@@ -3734,39 +3734,103 @@
     ]
   },
   {
-    "entity_id": "c136c75c1903006b",
-    "code": "[ceph: root@host01 /]# ceph orch ls",
+    "entity_id": "80c76355b844c302",
+    "code": "[ceph: root@host01 /]# ceph orch ps --daemon_type mon",
     "language": "bash",
     "context": "Configuring a public network",
     "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
     "component": "general",
     "section_title": "Configuring a public network",
     "commands_used": [
-      "ceph orch ls"
+      "ceph orch ps --daemon_type mon"
     ]
   },
   {
-    "entity_id": "64a63b7f765a8397",
-    "code": "ceph orch restart mon",
+    "entity_id": "eebcda4c17f20db8",
+    "code": "cat /var/lib/ceph/FSID/mon.MON_ID/config",
+    "language": "bash",
+    "context": "Configuring a public network",
+    "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
+    "component": "general",
+    "section_title": "Configuring a public network",
+    "commands_used": []
+  },
+  {
+    "entity_id": "32a6bf0cda2c3030",
+    "code": "[root@host01 ~]# cat /var/lib/ceph/a4b15188-c43e-11ee-9388-5cba2c8ed070/mon.host01/config\n\n[mon.host01]\npublic network = 10.58.145.0/24,10.58.146.0/24",
+    "language": "bash",
+    "context": "Configuring a public network",
+    "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
+    "component": "general",
+    "section_title": "Configuring a public network",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2907412a88285dc7",
+    "code": "ceph orch daemon reconfig mon.MON_ID",
     "language": "bash",
     "context": "Configuring a public network",
     "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
     "component": "general",
     "section_title": "Configuring a public network",
     "commands_used": [
-      "ceph orch restart mon"
+      "ceph orch daemon reconfig mon"
     ]
   },
   {
-    "entity_id": "e7286d73a566ea19",
-    "code": "[ceph: root@host01 /]# ceph orch restart mon",
+    "entity_id": "d1b59c2303dd172c",
+    "code": "[ceph: root@host01 /]# ceph orch daemon reconfig mon.host01",
     "language": "bash",
     "context": "Configuring a public network",
     "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
     "component": "general",
     "section_title": "Configuring a public network",
     "commands_used": [
-      "ceph orch restart mon"
+      "ceph orch daemon reconfig mon"
+    ]
+  },
+  {
+    "entity_id": "eebcda4c17f20db8",
+    "code": "cat /var/lib/ceph/FSID/mon.MON_ID/config",
+    "language": "bash",
+    "context": "Configuring a public network",
+    "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
+    "component": "general",
+    "section_title": "Configuring a public network",
+    "commands_used": []
+  },
+  {
+    "entity_id": "32a6bf0cda2c3030",
+    "code": "[root@host01 ~]# cat /var/lib/ceph/a4b15188-c43e-11ee-9388-5cba2c8ed070/mon.host01/config\n\n[mon.host01]\npublic network = 10.58.145.0/24,10.58.146.0/24,10.58.148.0/24",
+    "language": "bash",
+    "context": "Configuring a public network",
+    "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
+    "component": "general",
+    "section_title": "Configuring a public network",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fce900073bba6218",
+    "code": "ceph orch daemon restart mon.MON_ID",
+    "language": "bash",
+    "context": "Configuring a public network",
+    "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
+    "component": "general",
+    "section_title": "Configuring a public network",
+    "commands_used": [
+      "ceph orch daemon restart mon"
+    ]
+  },
+  {
+    "entity_id": "a36156395fbb4e12",
+    "code": "[ceph: root@host01 /]# ceph orch daemon restart mon.host01",
+    "language": "bash",
+    "context": "Configuring a public network",
+    "source_file": "ibm-docs/9.1/configuration-configuring-public-network",
+    "component": "general",
+    "section_title": "Configuring a public network",
+    "commands_used": [
+      "ceph orch daemon restart mon"
     ]
   },
   {
@@ -3949,7 +4013,7 @@
     "entity_id": "bb2078787eefa5a5",
     "code": "[root@host01 ~]# ssh-copy-id -f -i /etc/ceph/ceph.pub root@host02 \n[root@host01 ~]# ssh-copy-id -f -i /etc/ceph/ceph.pub root@host03",
     "language": "bash",
-    "context": "For examplel",
+    "context": "For example,",
     "source_file": "ibm-docs/9.1/configuration-configuring-multiple-public-networks-cluster",
     "component": "general",
     "section_title": "Configuring multiple public networks to the cluster",
@@ -3968,8 +4032,8 @@
     ]
   },
   {
-    "entity_id": "a2c0ba06ed7de8b3",
-    "code": "ceph orch host add host02 10.10.0.102 label1 \nceph orch host add host03 10.10.0.103 label2",
+    "entity_id": "d513451c01da5e40",
+    "code": "ceph orch host add host02 10.41.0.102 label1\nceph orch host add host03 10.42.0.103 label2",
     "language": "bash",
     "context": "For example,",
     "source_file": "ibm-docs/9.1/configuration-configuring-multiple-public-networks-cluster",
@@ -3981,27 +4045,27 @@
     ]
   },
   {
-    "entity_id": "7ca0d400dc51b8f8",
-    "code": "ceph config set mon public_network \"SUBNET_1,SUBNET_2, ...\"",
+    "entity_id": "a89ccdee2b98f9a5",
+    "code": "ceph config set global public_network \"SUBNET_1,SUBNET_2, ...\"",
     "language": "bash",
     "context": "Configuring multiple public networks to the cluster",
     "source_file": "ibm-docs/9.1/configuration-configuring-multiple-public-networks-cluster",
     "component": "general",
     "section_title": "Configuring multiple public networks to the cluster",
     "commands_used": [
-      "ceph config set mon public_network"
+      "ceph config set global public_network"
     ]
   },
   {
-    "entity_id": "deae0996ae3a1fcf",
-    "code": "[root@host01 ~]# ceph config set mon public_network \"192.168.0.0/24, 10.42.0.0/24, ...\"",
+    "entity_id": "94696922d749d4a2",
+    "code": "[root@host01 ~]# ceph config set global public_network \"10.40.0.0/24,10.41.0.0/24,10.42.0.0/24\"",
     "language": "bash",
     "context": "For example,",
     "source_file": "ibm-docs/9.1/configuration-configuring-multiple-public-networks-cluster",
     "component": "general",
     "section_title": "Configuring multiple public networks to the cluster",
     "commands_used": [
-      "ceph config set mon public_network"
+      "ceph config set global public_network"
     ]
   },
   {
@@ -9308,8 +9372,8 @@
     ]
   },
   {
-    "entity_id": "4d6167734ba8c6e4",
-    "code": "[ceph: root@host01 /]# ospmaptool map \u2013upmap balance.sh",
+    "entity_id": "3e29a2a9d5c0389f",
+    "code": "osdmaptool map --upmap balance.sh",
     "language": "bash",
     "context": "Balancing a Ceph cluster using read balancer",
     "source_file": "ibm-docs/9.1/module-balancing-ceph-cluster-using-read-balancer",
@@ -9937,9 +10001,9 @@
   },
   {
     "entity_id": "d89019ec3b8af45b",
-    "code": "service_type: rgw\nservice_id: REALM_NAME.ZONE_NAME\nplacement:\n  hosts:\n  - HOST_NAME_1\n  - HOST_NAME_2\n  count_per_host: NUMBER_OF_DAEMONS\nspec:\n  rgw_realm: REALM_NAME\n  rgw_zone: ZONE_NAME\n  rgw_zonegroup: ZONE_GROUP_NAME\n  rgw_frontend_port: FRONT_END_PORT\nnetworks:\n  -  NETWORK_CIDR # Ceph Object Gateway service binds to a specific network",
+    "code": "service_type: rgw\nservice_id: REALM_NAME.ZONE_NAME\nplacement:\n  hosts:\n  - HOST_NAME_1\n  - HOST_NAME_2\n  count_per_host: NUMBER_OF_DAEMONS\nspec:\n  rgw_realm: REALM_NAME\n  rgw_zone: ZONE_NAME\n  rgw_zonegroup: ZONE_GROUP_NAME\n  rgw_frontend_port: FRONT_END_PORT\n  \nnetworks:\n  -  NETWORK_CIDR",
     "language": "bash",
-    "context": "Edit the rgw_spec.yaml file to include the following details for the default\nrealm, zone, and zone group.",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
     "source_file": "ibm-docs/9.1/gateway-deploying-ceph-object-using-service-specification",
     "component": "general",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
@@ -9947,13 +10011,28 @@
   },
   {
     "entity_id": "260542d43222ab1d",
-    "code": "service_type: rgw\nservice_id: default\nplacement:\n  hosts:\n  - host01\n  - host02\n  - host03\n  count_per_host: 2\nspec:\n  rgw_realm: default\n  rgw_zone: default\n  rgw_zonegroup: default\n  rgw_frontend_port: 1234\nnetworks:\n  - 192.169.142.0/24",
+    "code": "service_type: rgw\nservice_id: default\nplacement:\n  hosts:\n  - host01\n  - host02\n  - host03\n  count_per_host: 2\nspec:\n  rgw_realm: default\n  rgw_zone: default\n  rgw_zonegroup: default\n  rgw_frontend_port: 1234\n  \nnetworks:\n  - 192.169.142.0/24",
     "language": "bash",
     "context": "Deploying the Ceph Object Gateway using the service specification",
     "source_file": "ibm-docs/9.1/gateway-deploying-ceph-object-using-service-specification",
     "component": "general",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
     "commands_used": []
+  },
+  {
+    "entity_id": "e7bbb933fe3a6048",
+    "code": "radosgw-admin realm create --rgw-realm=test_realm --default\nradosgw-admin zonegroup create --rgw-zonegroup=test_zonegroup --default\nradosgw-admin zone create --rgw-zonegroup=test_zonegroup --rgw-zone=test_zone --default\nradosgw-admin period update --rgw-realm=test_realm --commit",
+    "language": "bash",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
+    "source_file": "ibm-docs/9.1/gateway-deploying-ceph-object-using-service-specification",
+    "component": "general",
+    "section_title": "Deploying the Ceph Object Gateway using the service specification",
+    "commands_used": [
+      "radosgw-admin realm create --rgw-realm",
+      "radosgw-admin zonegroup create --rgw-zonegroup",
+      "radosgw-admin zone create --rgw-zonegroup",
+      "radosgw-admin period update --rgw-realm"
+    ]
   },
   {
     "entity_id": "8dec21afc4cd272d",
@@ -9991,6 +10070,18 @@
     "commands_used": []
   },
   {
+    "entity_id": "4f9995b76035912b",
+    "code": "cephadm shell --mount rgw_spec.yaml:/var/lib/ceph/radosgw/rgw_spec.yaml",
+    "language": "bash",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
+    "source_file": "ibm-docs/9.1/gateway-deploying-ceph-object-using-service-specification",
+    "component": "general",
+    "section_title": "Deploying the Ceph Object Gateway using the service specification",
+    "commands_used": [
+      "cephadm shell --mount rgw_spec"
+    ]
+  },
+  {
     "entity_id": "d0faa67a0e9a5f5c",
     "code": "[root@host01 ~]# cephadm shell --mount rgw_spec.yaml:/var/lib/ceph/radosgw/rgw_spec.yaml",
     "language": "bash",
@@ -10006,7 +10097,7 @@
     "entity_id": "1286fbf6feecf02e",
     "code": "ceph orch apply -i FILE_NAME.yaml",
     "language": "bash",
-    "context": "Deploy the Ceph Object Gateway using the service specification.",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
     "source_file": "ibm-docs/9.1/gateway-deploying-ceph-object-using-service-specification",
     "component": "general",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
@@ -10025,16 +10116,6 @@
     "commands_used": [
       "ceph orch apply -i"
     ]
-  },
-  {
-    "entity_id": "723cef8fcbfa46ba",
-    "code": "[root@host1 ~]$ cat rgw_spec.yaml \nservice_type: rgw\nservice_id: foo\nplacement:\n  count_per_host: 1\n  hosts:\n    - rgw_node\nspec:\n  rgw_frontend_port: 8081\nextra_container_args:\n  - \"--stop-timeout=120\"",
-    "language": "bash",
-    "context": "Deploying the Ceph Object Gateway using the service specification",
-    "source_file": "ibm-docs/9.1/gateway-deploying-ceph-object-using-service-specification",
-    "component": "general",
-    "section_title": "Deploying the Ceph Object Gateway using the service specification",
-    "commands_used": []
   },
   {
     "entity_id": "b0f11d97813cfb31",
@@ -10064,7 +10145,7 @@
     "entity_id": "52ff994b5c4ca1a3",
     "code": "[ceph: root@host01 /]# ceph orch ps --daemon_type=rgw",
     "language": "bash",
-    "context": "Deploying the Ceph Object Gateway using the service specification",
+    "context": "For example,",
     "source_file": "ibm-docs/9.1/gateway-deploying-ceph-object-using-service-specification",
     "component": "general",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
@@ -11160,48 +11241,8 @@
     ]
   },
   {
-    "entity_id": "b0aa68b6b9b71c0b",
-    "code": "mgr/cephadm/certificate_automated_rotation_enabled",
-    "language": "bash",
-    "context": "Certificate management",
-    "source_file": "ibm-docs/9.1/operations-certificate-management",
-    "component": "general",
-    "section_title": "Certificate management",
-    "commands_used": []
-  },
-  {
-    "entity_id": "e946c2c2e166f9c8",
-    "code": "mgr/cephadm/certificate_duration_days",
-    "language": "bash",
-    "context": "Certificate management",
-    "source_file": "ibm-docs/9.1/operations-certificate-management",
-    "component": "general",
-    "section_title": "Certificate management",
-    "commands_used": []
-  },
-  {
-    "entity_id": "3057eb38bc4cd862",
-    "code": "mgr/cephadm/certificate_renewal_threshold_days",
-    "language": "bash",
-    "context": "Certificate management",
-    "source_file": "ibm-docs/9.1/operations-certificate-management",
-    "component": "general",
-    "section_title": "Certificate management",
-    "commands_used": []
-  },
-  {
-    "entity_id": "aa2c1a11327ff092",
-    "code": "mgr/cephadm/certificate_check_period",
-    "language": "bash",
-    "context": "Certificate management",
-    "source_file": "ibm-docs/9.1/operations-certificate-management",
-    "component": "general",
-    "section_title": "Certificate management",
-    "commands_used": []
-  },
-  {
     "entity_id": "806a82a77760ab0e",
-    "code": "ceph orch certmgr cert set --cert-name CERT_NAME --service-name SERVICE_NAME -i CERT_FILE\nceph orch certmgr key set --key-name KEY_NAME --service-name SERIVCE_NAME -i KEY_FILE",
+    "code": "ceph orch certmgr cert set --cert-name CERT_NAME --service-name SERVICE_NAME -i CERT_FILE\nceph orch certmgr key set --key-name KEY_NAME --service-name SERVICE_NAME -i KEY_FILE",
     "language": "bash",
     "context": "Certificate management",
     "source_file": "ibm-docs/9.1/operations-certificate-management",
@@ -12817,40 +12858,6 @@
     "component": "general",
     "section_title": "Getting a zone group",
     "commands_used": []
-  },
-  {
-    "entity_id": "25e02278446c5205",
-    "code": "{\n    \"zonegroups\": [\n        {\n            \"key\": \"90b28698-e7c3-462c-a42d-4aa780d24eda\",\n            \"val\": {\n                \"id\": \"90b28698-e7c3-462c-a42d-4aa780d24eda\",\n                \"name\": \"us\",\n                \"api_name\": \"us\",\n                \"is_master\": \"true\",\n                \"endpoints\": [\n                    \"http://rgw1:80\"\n                ],\n                \"hostnames\": [],\n                \"hostnames_s3website\": [],\n                \"master_zone\": \"9248cab2-afe7-43d8-a661-a40bf316665e\",\n                \"zones\": [\n                    {\n                        \"id\": \"9248cab2-afe7-43d8-a661-a40bf316665e\",\n                        \"name\": \"us-east\",\n                        \"endpoints\": [\n                            \"http://rgw1\"\n                        ],\n                        \"log_meta\": \"true\",\n                        \"log_data\": \"true\",\n                        \"bucket_index_max_shards\": 11,\n                        \"read_only\": \"false\"\n                    },\n                    {\n                        \"id\": \"d1024e59-7d28-49d1-8222-af101965a939\",\n                        \"name\": \"us-west\",\n                        \"endpoints\": [\n                            \"http://rgw2:80\"\n                        ],\n                        \"log_meta\": \"false\",\n                        \"log_data\": \"true\",\n                        \"bucket_index_max_shards\": 11,\n                        \"read_only\": \"false\"\n                    }\n                ],\n                \"placement_targets\": [\n                    {\n                        \"name\": \"default-placement\",\n                        \"tags\": []\n                    }\n                ],\n                \"default_placement\": \"default-placement\",\n                \"realm_id\": \"ae031368-8715-4e27-9a99-0c9468852cfe\"\n            }\n        }\n    ],\n    \"master_zonegroup\": \"90b28698-e7c3-462c-a42d-4aa780d24eda\",\n    \"bucket_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    },\n    \"user_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    }\n}",
-    "language": "bash",
-    "context": "You may only have one zone group with is_master equal to true,\nand it must be specified as the master_zonegroup at the end of the zone group map.\nThe following JSON object is an example of a default z",
-    "source_file": "ibm-docs/9.1/groups-setting-zone-group-map",
-    "component": "general",
-    "section_title": "Setting a zone group map",
-    "commands_used": []
-  },
-  {
-    "entity_id": "f016a9383c0bada5",
-    "code": "[ceph: root@host01 /]# radosgw-admin zonegroup-map set --infile zonegroupmap.json",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/groups-setting-zone-group-map",
-    "component": "general",
-    "section_title": "Setting a zone group map",
-    "commands_used": [
-      "radosgw-admin zonegroup-map set --infile zonegroupmap"
-    ]
-  },
-  {
-    "entity_id": "a9e88feb12e4169f",
-    "code": "[ceph: root@host01 /]#  radosgw-admin period update --commit",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/groups-setting-zone-group-map",
-    "component": "general",
-    "section_title": "Setting a zone group map",
-    "commands_used": [
-      "radosgw-admin period update --commit"
-    ]
   },
   {
     "entity_id": "3623d8acffb9aeee",
@@ -15765,6 +15772,16 @@
     "commands_used": []
   },
   {
+    "entity_id": "b1e5ef2544017b54",
+    "code": "{\n  \"Rules\": [\n    {\n      \"ID\": \"AbortIncompleteMultipartUploads\",\n      \"Status\": \"Enabled\",\n      \"Filter\": {\n        \"Prefix\": \"\"\n      },\n      \"AbortIncompleteMultipartUpload\": {\n        \"DaysAfterInitiation\": 7\n      }\n    }\n  ]\n}",
+    "language": "bash",
+    "context": "The following example aborts incomplete multipart uploads that remain incomplete for more than 7 days:",
+    "source_file": "ibm-docs/9.1/lifecycle-creating-management-policy",
+    "component": "general",
+    "section_title": "Creating a lifecycle management policy",
+    "commands_used": []
+  },
+  {
     "entity_id": "b98caaabffc8deba",
     "code": "aws --endpoint-url=_RADOSGW_ENDPOINT_URL_:PORT s3api put-bucket-lifecycle-configuration --bucket _BUCKET_NAME_ --lifecycle-configuration file://_PATH_TO_LIFECYCLE_CONFIGURATION_FILE_/_LIFECYCLE_CONFIGURATION_FILE_.json",
     "language": "bash",
@@ -16621,10 +16638,10 @@
     ]
   },
   {
-    "entity_id": "b906b569b8d3bf16",
-    "code": "radosgw-admin user modify --uid={userid} --account-id={accountid}",
+    "entity_id": "d76119f74d936645",
+    "code": "radosgw-admin user modify --uid=USER_ID --account-id=ACCOUNT_ID",
     "language": "bash",
-    "context": "Migrate an existing user to an account",
+    "context": "To modify an existing user IAM account:",
     "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
     "component": "general",
     "section_title": "Migrate an existing user to an account",
@@ -16636,7 +16653,7 @@
     "entity_id": "17041824bf26a299",
     "code": "{\"TopicConfigurations\": [{ \"Id\": \"ID1\", \"TopicArn\": \"arn:aws:sns:default::topic1\", \"Events\": [\"s3:ObjectCreated:*\"]}]}",
     "language": "bash",
-    "context": "For example, if a bucket\u2019s existing notification configuration is:",
+    "context": "For example, if a bucket's existing notification configuration is:",
     "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
     "component": "general",
     "section_title": "Migrate an existing user to an account",
@@ -16653,20 +16670,10 @@
     "commands_used": []
   },
   {
-    "entity_id": "ab3421fb4fe52402",
-    "code": "In this example, RGW00000000000000001 is the account ID, topic1 is the topic name and ID1 is the notification ID.",
+    "entity_id": "7c678188aeb516e2",
+    "code": "radosgw-admin topic rm --topic topic1",
     "language": "bash",
-    "context": "The updated configuration would be:",
-    "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
-    "component": "general",
-    "section_title": "Migrate an existing user to an account",
-    "commands_used": []
-  },
-  {
-    "entity_id": "20afe23ba35ca8c9",
-    "code": "$ radosgw-admin topic rm --topic topic1",
-    "language": "bash",
-    "context": "Migrate an existing user to an account",
+    "context": "Once no buckets are subscribed to the old user-owned topics, they can be removed by an administrator:",
     "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
     "component": "general",
     "section_title": "Migrate an existing user to an account",
@@ -16675,20 +16682,20 @@
     ]
   },
   {
-    "entity_id": "9b9a4c5e939a78fb",
-    "code": "radosgw-admin user modify --uid <user_ID> --account-id <Account_ID> --account-root",
+    "entity_id": "e0ed914327942968",
+    "code": "radosgw-admin user modify --uid USER_ID --account-id ACCOUNT_ID --account-root",
     "language": "bash",
     "context": "Migrate an existing user to an account",
     "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
     "component": "general",
     "section_title": "Migrate an existing user to an account",
     "commands_used": [
-      "radosgw-admin user modify --uid"
+      "radosgw-admin user modify --uid USER_ID"
     ]
   },
   {
-    "entity_id": "f8223fd2f30f2b6b",
-    "code": "radosgw-admin user policy attach --uid <user_ID> --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess",
+    "entity_id": "d1288e2d87489050",
+    "code": "radosgw-admin user policy attach --uid USER_ID --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess",
     "language": "bash",
     "context": "Migrate an existing user to an account",
     "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
@@ -16699,15 +16706,27 @@
     ]
   },
   {
-    "entity_id": "f34ae13a513d2f00",
-    "code": "radosgw-admin user modify --uid <user_ID> --account-root=0",
+    "entity_id": "01dc7b3330ba1d72",
+    "code": "radosgw-admin bucket chown --bucket BUCKET_NAME --account-id ACCOUNT_ID",
+    "language": "bash",
+    "context": "After migrating the user to an account, update the ACL ownership of objects that were created before the migration.",
+    "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
+    "component": "general",
+    "section_title": "Migrate an existing user to an account",
+    "commands_used": [
+      "radosgw-admin bucket chown --bucket BUCKET_NAME"
+    ]
+  },
+  {
+    "entity_id": "a6bb988d95eca9a9",
+    "code": "radosgw-admin user modify --uid USER_ID --account-root=0",
     "language": "bash",
     "context": "Migrate an existing user to an account",
     "source_file": "ibm-docs/9.1/iam-migrate-existing-user-account",
     "component": "general",
     "section_title": "Migrate an existing user to an account",
     "commands_used": [
-      "radosgw-admin user modify --uid"
+      "radosgw-admin user modify --uid USER_ID"
     ]
   },
   {
@@ -16748,8 +16767,8 @@
     ]
   },
   {
-    "entity_id": "c661c674714a2317",
-    "code": "radosgw-admin user create --uid=USER_ID \n[--key-type=KEY_TYPE] [--gen-access-key|--access-key=ACCESS_KEY]\n[--gen-secret | --secret=SECRET_KEY] \n[--email=EMAIL] --display-name=DISPLAY_NAME",
+    "entity_id": "5d22507d0ccac7d5",
+    "code": "radosgw-admin user create --uid=USER_ID\n[--key-type=KEY_TYPE] [--gen-access-key|--access-key=ACCESS_KEY]\n[--gen-secret | --secret=SECRET_KEY]\n[--email=EMAIL] --display-name=DISPLAY_NAME\n[--storage-class=STORAGE_CLASS]\n[--placement-id=PLACEMENT_ID]",
     "language": "bash",
     "context": "Syntax",
     "source_file": "ibm-docs/9.1/management-create-user",
@@ -16764,6 +16783,18 @@
     "code": "[root@host01 ~]# radosgw-admin user create --uid=janedoe --access-key=11BS02LGFB6AL6H1ADMW --secret=vzCEkuryfn060dfee4fgQPqFrncKEIkh3ZcdOANY --email=jane@example.com --display-name=Jane Doe\n\n{ \"user_id\": \"janedoe\",\n  \"display_name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"suspended\": 0,\n  \"max_buckets\": 1000,\n  \"auid\": 0,\n  \"subusers\": [],\n  \"keys\": [\n        { \"user\": \"janedoe\",\n          \"access_key\": \"11BS02LGFB6AL6H1ADMW\",\n          \"secret_key\": \"vzCEkuryfn060dfee4fgQPqFrncKEIkh3ZcdOANY\"}],\n  \"swift_keys\": [],\n  \"caps\": [],\n  \"op_mask\": \"read, write, delete\",\n  \"default_placement\": \"\",\n  \"placement_tags\": [],\n  \"bucket_quota\": { \"enabled\": false,\n      \"max_size_kb\": -1,\n      \"max_objects\": -1},\n  \"user_quota\": { \"enabled\": false,\n      \"max_size_kb\": -1,\n      \"max_objects\": -1},\n  \"temp_url_keys\": []}",
     "language": "bash",
     "context": "Example",
+    "source_file": "ibm-docs/9.1/management-create-user",
+    "component": "general",
+    "section_title": "Create a user",
+    "commands_used": [
+      "radosgw-admin user create --uid"
+    ]
+  },
+  {
+    "entity_id": "63717a43634e5850",
+    "code": "[root@host01 ~]# radosgw-admin user create --uid=user1 --display-name=\"User One\" --access-key=user123 --secret=user123 --storage-class=cold --placement-id=default-placement",
+    "language": "bash",
+    "context": "Example: Create a user with a default storage class and placement target.",
     "source_file": "ibm-docs/9.1/management-create-user",
     "component": "general",
     "section_title": "Create a user",
@@ -16824,6 +16855,18 @@
     "code": "[root@host01 ~]# radosgw-admin user modify --uid=janedoe --display-name=\"Jane E. Doe\"",
     "language": "bash",
     "context": "Example",
+    "source_file": "ibm-docs/9.1/management-modify-user-information",
+    "component": "general",
+    "section_title": "Modify user information",
+    "commands_used": [
+      "radosgw-admin user modify --uid"
+    ]
+  },
+  {
+    "entity_id": "e64e5c4a2d714b48",
+    "code": "[root@host01 ~]# radosgw-admin user modify --uid=user1 --storage-class=cold --placement-id=default-placement",
+    "language": "bash",
+    "context": "Example: Modify a user's default storage class and placement target.",
     "source_file": "ibm-docs/9.1/management-modify-user-information",
     "component": "general",
     "section_title": "Modify user information",
@@ -18925,8 +18968,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "028db123cae9db89",
-    "code": "cat /etc/sysconfig/qat\n\nServicesEnabled=sym,dc\nPOLICY=8",
+    "entity_id": "7f89209f9fc8d102",
+    "code": "cat /etc/sysconfig/qat\n\nServicesEnabled=sym;dc\nPOLICY=8\nQAT_USER=ceph",
     "language": "bash",
     "context": "QAT acceleration for encryption and compression",
     "source_file": "ibm-docs/9.1/security-qat-acceleration-encryption-compression",
@@ -19017,14 +19060,16 @@
     "commands_used": []
   },
   {
-    "entity_id": "1339bf34267cb71d",
-    "code": "plugin crypto accelerator = crypto_qat",
+    "entity_id": "32afe14838b50db1",
+    "code": "ceph config set client.rgw.rgw_qat plugin_crypto_accelerator crypto_qat",
     "language": "bash",
     "context": "QAT acceleration for encryption and compression",
     "source_file": "ibm-docs/9.1/security-qat-acceleration-encryption-compression",
     "component": "general",
     "section_title": "QAT acceleration for encryption and compression",
-    "commands_used": []
+    "commands_used": [
+      "ceph config set client"
+    ]
   },
   {
     "entity_id": "36aac7d7caf5b8f3",
@@ -19037,31 +19082,31 @@
     "commands_used": []
   },
   {
-    "entity_id": "d890eaca7a8c8552",
+    "entity_id": "10d5fbaaaf848aaa",
     "code": "frontend http_web *:80\n    mode http\n    default_backend rgw\n\nfrontend rgw\u00ad-https\n  bind *:443 ssl crt /etc/ssl/private/example.com.pem\n  default_backend rgw\n\nbackend rgw\n    balance roundrobin\n    mode http\n    server  rgw1 10.0.0.71:8080 check\n    server  rgw2 10.0.0.80:8080 check",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/encryption-configuring-server-side",
+    "source_file": "ibm-docs/9.1/requests-configuring-server-side-encryption",
     "component": "general",
     "section_title": "Configuring server-side encryption",
     "commands_used": []
   },
   {
-    "entity_id": "a5601518900a0ccf",
+    "entity_id": "3d137c21b927ed7d",
     "code": "#     frontend http_web *:80\n#     mode http\n#     default_backend rgw\n\nfrontend rgw\u00ad-https\n  bind *:443 ssl crt /etc/ssl/private/example.com.pem\n  http-request set-header X-Forwarded-Proto https if { ssl_fc }\n  http-request set-header X-Forwarded-Proto https\n# here we set the incoming HTTPS port on the load balancer (eg : 443)\n  http-request set-header X-Forwarded-Port 443\n  default_backend rgw\n\nbackend rgw\n    balance roundrobin\n    mode http\n    server  rgw1 10.0.0.71:8080 check\n    server  rgw2 10.0.0.80:8080 check",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/encryption-configuring-server-side",
+    "source_file": "ibm-docs/9.1/requests-configuring-server-side-encryption",
     "component": "general",
     "section_title": "Configuring server-side encryption",
     "commands_used": []
   },
   {
-    "entity_id": "da30fe5a46cf6128",
+    "entity_id": "43aa10ed71c04ab3",
     "code": "[ceph: root@host01 /]# ceph config set client.rgw rgw_trust_forwarded_https true",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/9.1/encryption-configuring-server-side",
+    "source_file": "ibm-docs/9.1/requests-configuring-server-side-encryption",
     "component": "general",
     "section_title": "Configuring server-side encryption",
     "commands_used": [
@@ -19069,11 +19114,11 @@
     ]
   },
   {
-    "entity_id": "d96cd24068b17bf0",
+    "entity_id": "db5c8b28180f955b",
     "code": "[root@host01 ~]# systemctl enable haproxy\n[root@host01 ~]# systemctl start haproxy",
     "language": "bash",
     "context": "Enable and start HAProxy:",
-    "source_file": "ibm-docs/9.1/encryption-configuring-server-side",
+    "source_file": "ibm-docs/9.1/requests-configuring-server-side-encryption",
     "component": "general",
     "section_title": "Configuring server-side encryption",
     "commands_used": []
@@ -20009,7 +20054,7 @@
   },
   {
     "entity_id": "d0a6a73164783f3f",
-    "code": "[root@host01 ~]$ noobaa namespacestore create azure-blob  az --account-key='EXAMPLE_AZURE_ACCOUNT_KEY' --account-name='transitionrgw' --target-blob-container='mcgnamespace'",
+    "code": "[root@host01 ~]$ noobaa namespacestore create azure-blob  az --account-key='REDACTED_EXAMPLE_AZURE_ACCOUNT_KEY' --account-name='transitionrgw' --target-blob-container='mcgnamespace'",
     "language": "bash",
     "context": "Transitioning data to Azure cloud service",
     "source_file": "ibm-docs/9.1/platforms-transitioning-data-azure-cloud-service",
@@ -20316,6 +20361,72 @@
     "commands_used": []
   },
   {
+    "entity_id": "c68d61b70a6c6bae",
+    "code": "ceph config set client rgw_cors_allowed_origins \"*\"\nceph config set client rgw_cors_allowed_methods \"GET, PUT, POST\"\nceph config set client rgw_cors_allowed_headers \"*\"\nceph config set client rgw_cors_expose_headers \"ETag\"\nceph config set client rgw_cors_max_age 3600",
+    "language": "bash",
+    "context": "Configuring a global CORS policy for Object Gateway",
+    "source_file": "ibm-docs/9.1/gateway-configuring-global-cors-policy-object",
+    "component": "general",
+    "section_title": "Configuring a global CORS policy for Object Gateway",
+    "commands_used": [
+      "ceph config set client rgw_cors_allowed_origins",
+      "ceph config set client rgw_cors_allowed_methods",
+      "ceph config set client rgw_cors_allowed_headers",
+      "ceph config set client rgw_cors_expose_headers",
+      "ceph config set client rgw_cors_max_age"
+    ]
+  },
+  {
+    "entity_id": "9a0103dc6d75110f",
+    "code": "rgw_cors_allowed_origins = https://example.com",
+    "language": "bash",
+    "context": "Allowed origins \u2014 Domains that can access the gateway.",
+    "source_file": "ibm-docs/9.1/gateway-configuring-global-cors-policy-object",
+    "component": "general",
+    "section_title": "Configuring a global CORS policy for Object Gateway",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fd1f3574523da1ca",
+    "code": "rgw_cors_allowed_methods = GET, PUT, POST, DELETE",
+    "language": "bash",
+    "context": "Allowed methods \u2014 Permitted HTTP methods.",
+    "source_file": "ibm-docs/9.1/gateway-configuring-global-cors-policy-object",
+    "component": "general",
+    "section_title": "Configuring a global CORS policy for Object Gateway",
+    "commands_used": []
+  },
+  {
+    "entity_id": "020777078f846aab",
+    "code": "rgw_cors_allowed_headers = *",
+    "language": "bash",
+    "context": "Allowed headers \u2014 Allowed request headers.",
+    "source_file": "ibm-docs/9.1/gateway-configuring-global-cors-policy-object",
+    "component": "general",
+    "section_title": "Configuring a global CORS policy for Object Gateway",
+    "commands_used": []
+  },
+  {
+    "entity_id": "42aece89b5b102c8",
+    "code": "rgw_cors_expose_headers = ETag",
+    "language": "bash",
+    "context": "Exposed headers \u2014 Response headers visible to clients.",
+    "source_file": "ibm-docs/9.1/gateway-configuring-global-cors-policy-object",
+    "component": "general",
+    "section_title": "Configuring a global CORS policy for Object Gateway",
+    "commands_used": []
+  },
+  {
+    "entity_id": "21760a8bd1392f03",
+    "code": "rgw_cors_max_age = 3600",
+    "language": "bash",
+    "context": "Maximum age \u2014 Cache duration for preflight responses.",
+    "source_file": "ibm-docs/9.1/gateway-configuring-global-cors-policy-object",
+    "component": "general",
+    "section_title": "Configuring a global CORS policy for Object Gateway",
+    "commands_used": []
+  },
+  {
     "entity_id": "ed2f8965fd7e58dc",
     "code": "[root@host01:~]# rdma link show\nlink bnxt_re0/1 state ACTIVE physical_state LINK_UP netdev eno12399np0",
     "language": "bash",
@@ -20376,94 +20487,50 @@
     "commands_used": []
   },
   {
-    "entity_id": "776894eafb297628",
-    "code": "- resource_type: ceph.smb.cluster\n  cluster_id: rhumba\n  # ... other fields skipped for brevity ...\n- resource_type: ceph.smb.cluster\n  cluster_id: salsa\n  # ... other fields skipped for brevity ...\n- resource_type: ceph.smb.share\n  cluster_id: salsa\n  share_id: foo",
+    "entity_id": "b7c097b9313d319a",
+    "code": "resources:\n  # Define an Active Directory member server cluster\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    auth_mode: active-directory\n    domain_settings:\n      realm: DOMAIN1.SINK.TEST\n      join_sources:\n        - source_type: resource\n          ref: join1-admin\n    custom_dns:\n      - \"192.168.76.204\"\n    placement:\n      count: 1\n      label: ilovesmb\n\n  # Define join credentials used to join Active Directory\n  # Warning: Typically do not use the Administrator user in a production AD environment\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    auth:\n      username: Administrator\n      password: Passw0rd\n\n  # A share that uses the root of a subvolume with access control configured\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    cephfs:\n      volume: cephfs\n      subvolumegroup: smb1\n      subvolume: cache\n      path: /\n    restrict_access: true\n    login_control:\n      - name: auditor\n        category: user\n        access: read\n\n  # A share that uses a subdirectory of a subvolume\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    name: \"Staff Pics\"\n    cephfs:\n      volume: cephfs\n      subvolumegroup: smb1\n      subvolume: staff\n      path: /pics",
     "language": "bash",
-    "context": "Composing resource specifications for declarative method",
-    "source_file": "ibm-docs/9.1/shares-composing-resource-specifications-declarative-method",
-    "component": "general",
-    "section_title": "Composing resource specifications for declarative method",
-    "commands_used": []
-  },
-  {
-    "entity_id": "d879ace3a03b5487",
-    "code": "[\n  {\"resource_type\": \"ceph.smb.cluster\",\n   \"cluster_id\": \"rhumba\",\n   \"...\": \"... other fields skipped for brevity ...\"\n  },\n  {\"resource_type\": \"ceph.smb.cluster\",\n   \"cluster_id\": \"salsa\",\n   \"...\": \"... other fields skipped for brevity ...\"\n  },\n  {\"resource_type\": \"ceph.smb.share\",\n   \"cluster_id\": \"salsa\",\n   \"share_id\": \"foo\",\n   \"...\": \"... other fields skipped for brevity ...\"\n  }\n]",
-    "language": "bash",
-    "context": "Composing resource specifications for declarative method",
-    "source_file": "ibm-docs/9.1/shares-composing-resource-specifications-declarative-method",
-    "component": "general",
-    "section_title": "Composing resource specifications for declarative method",
-    "commands_used": []
-  },
-  {
-    "entity_id": "cc24d532e0465d66",
-    "code": "resources:\n  - resource_type: ceph.smb.cluster\n    cluster_id: rhumba\n    # ... other fields skipped for brevity ...\n  - resource_type: ceph.smb.cluster\n    cluster_id: salsa\n    # ... other fields skipped for brevity ...\n  - resource_type: ceph.smb.share\n    cluster_id: salsa\n    share_id: foo",
-    "language": "bash",
-    "context": "Composing resource specifications for declarative method",
-    "source_file": "ibm-docs/9.1/shares-composing-resource-specifications-declarative-method",
-    "component": "general",
-    "section_title": "Composing resource specifications for declarative method",
-    "commands_used": []
-  },
-  {
-    "entity_id": "9882632d86b37ff5",
-    "code": "{\n  \"resources\": [\n    {\"resource_type\": \"ceph.smb.cluster\",\n     \"cluster_id\": \"rhumba\",\n     \"...\": \"... other fields skipped for brevity ...\"\n    },\n    {\"resource_type\": \"ceph.smb.cluster\",\n     \"cluster_id\": \"salsa\",\n     \"...\": \"... other fields skipped for brevity ...\"\n    },\n    {\"resource_type\": \"ceph.smb.share\",\n     \"cluster_id\": \"salsa\",\n     \"share_id\": \"foo\",\n     \"...\": \"... other fields skipped for brevity ...\"\n    }\n  ]\n}",
-    "language": "bash",
-    "context": "Composing resource specifications for declarative method",
-    "source_file": "ibm-docs/9.1/shares-composing-resource-specifications-declarative-method",
-    "component": "general",
-    "section_title": "Composing resource specifications for declarative method",
-    "commands_used": []
-  },
-  {
-    "entity_id": "d8c46ffbacf23c5c",
-    "code": "---\nresource_type: ceph.smb.cluster\ncluster_id: rhumba\n# ... other fields skipped for brevity ...\n---\nresource_type: ceph.smb.cluster\ncluster_id: salsa\n# ... other fields skipped for brevity ...\n---\nresource_type: ceph.smb.share\ncluster_id: salsa\nshare_id: foo",
-    "language": "bash",
-    "context": "Composing resource specifications for declarative method",
-    "source_file": "ibm-docs/9.1/shares-composing-resource-specifications-declarative-method",
-    "component": "general",
-    "section_title": "Composing resource specifications for declarative method",
-    "commands_used": []
-  },
-  {
-    "entity_id": "e61a869137ce4ca2",
-    "code": "resources:\n  # Define an AD member server cluster\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    auth_mode: active-directory\n    domain_settings:\n      realm: DOMAIN1.SINK.TEST\n      join_sources:\n        - source_type: resource\n          ref: join1-admin\n    custom_dns:\n      - \"192.168.76.204\"\n    # deploy 1 set of samba containers on a host labeled \"ilovesmb\"\n    placement:\n      count: 1\n      label: ilovesmb\n  # Define a join auth that our cluster will use to join AD\n  # Warning: Typically you do not want to use the Administrator user\n  # to perform joins on a production AD\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    auth:\n      username: Administrator\n      password: Passw0rd\n  # A share that uses the root of a subvolume\n  # The share name is the same as its id\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    cephfs:\n      volume: cephfs\n      subvolumegroup: smb1\n      subvolume: cache\n      path: /\n  # A share that uses the a sub-dir of a subvolume\n  # The share name is not the same as its id\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    name: \"Staff Pics\"\n    cephfs:\n      volume: cephfs\n      path: /pics\n      subvolumegroup: smb1\n      subvolume: staff",
-    "language": "bash",
-    "context": "Declarative method configuration example",
+    "context": "Using resource descriptions in a YAML configuration file, you can define and deploy an entire SMB environment in a single operation. The following resources.yaml example creates an Active Directory me",
     "source_file": "ibm-docs/9.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
     "commands_used": []
   },
   {
-    "entity_id": "c9f8742f0520c8a0",
-    "code": "ceph smb apply -i resources.yaml",
+    "entity_id": "3ea09c2c6874a007",
+    "code": "- resource_type: ceph.smb.share\n  cluster_id: tango\n  share_id: reports\n  cephfs:\n    volume: cephfs\n    subvolumegroup: smb1\n    subvolume: reports\n    path: /\n  restrict_access: true\n  login_control:\n    - name: auditor\n      category: user\n      access: read",
     "language": "bash",
-    "context": "Declarative method configuration example",
+    "context": "The following example restricts access to a single read-only user:",
     "source_file": "ibm-docs/9.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
-    "commands_used": [
-      "ceph smb apply -i resources"
-    ]
+    "commands_used": []
   },
   {
-    "entity_id": "7d65bba58bd68f98",
-    "code": "ceph smb apply -i removed.yaml",
+    "entity_id": "7fb4820a69e8b8f8",
+    "code": "- resource_type: ceph.smb.share\n  cluster_id: tango\n  share_id: projects\n  cephfs:\n    volume: cephfs\n    subvolumegroup: smb1\n    subvolume: projects\n    path: /\n  restrict_access: true\n  login_control:\n    - name: admin1\n      category: user\n      access: read-write\n    - name: admin2\n      category: user\n      access: read-write\n    - name: admin3\n      category: user\n      access: read-write",
     "language": "bash",
-    "context": "Use the following command to remove the removed.yaml file.",
+    "context": "The following example grants read and write access to multiple users:",
     "source_file": "ibm-docs/9.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
-    "commands_used": [
-      "ceph smb apply -i removed"
-    ]
+    "commands_used": []
+  },
+  {
+    "entity_id": "876ef0a83f9bdfb6",
+    "code": "- resource_type: ceph.smb.share\n  cluster_id: tango\n  share_id: devshare\n  cephfs:\n    volume: cephfs\n    subvolumegroup: smb1\n    subvolume: developers\n    path: /\n  restrict_access: true\n  login_control:\n    - name: developers\n      category: group\n      access: read-write",
+    "language": "bash",
+    "context": "The following example grants read and write access to all members of an Active Directory group:",
+    "source_file": "ibm-docs/9.1/shares-declarative-method-configuration-example",
+    "component": "general",
+    "section_title": "Declarative method configuration example",
+    "commands_used": []
   },
   {
     "entity_id": "cf692e3e9ab33e2f",
     "code": "resources:\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    intent: removed\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    intent: removed\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    intent: removed\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    intent: removed",
     "language": "bash",
-    "context": "Declarative method configuration example",
+    "context": "To remove previously defined declarative resources, create a configuration file such as removed.yaml and set intent: removed for each resource:",
     "source_file": "ibm-docs/9.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
@@ -21489,18 +21556,6 @@
     "section_title": "Removing a file system subvolume",
     "commands_used": [
       "ceph fs subvolume snapshot clone"
-    ]
-  },
-  {
-    "entity_id": "cb3983b263cf739f",
-    "code": "[root@mon ~]# ceph fs subvolume info cephfs01 sub1 subgroup0\n\n{\n\"atime\": \"2025-01-08 04:21:37\",\n\"bytes_pcent\": \"undefined\",\n\"bytes_quota\": \"infinite\",\n\"bytes_used\": 0,\n\"created_at\": \"2025-01-08 04:42:46\",\n\"ctime\": \"2025-01-08 04:42:47\",\n\"data_pool\": \"cephfs.cephfs01.data\",\n\"earmark\": \"\",\n\"features\": [\n\"snapshot-clone\",\n\"snapshot-autoprotect\",\n\"snapshot-retention\"\n],\n\"flavor\": 2,\n\"gid\": 0,\n\"mode\": 16877,\n\"mon_addrs\": [\n\"10.0.64.12:6789\",\n\"10.0.67.102:6789\",\n\"10.0.66.135:6789\"\n],\n\"mtime\": \"2025-01-08 04:21:37\",\n\"path\": \"/volumes/subgroup0/sub1/6bd615e9-8985-4c25-8dd9-c80d9ebb8033\",\n\"pool_namespace\": \"fsvolumens_sub0\",\n\"state\": \"complete\",\n\"type\": \"clone\",\n\"uid\": 0\n}",
-    "language": "bash",
-    "context": "Removing a file system subvolume",
-    "source_file": "ibm-docs/9.1/subvolumes-removing-file-system-subvolume",
-    "component": "general",
-    "section_title": "Removing a file system subvolume",
-    "commands_used": [
-      "ceph fs subvolume info cephfs01"
     ]
   },
   {
@@ -22675,7 +22730,7 @@
     "entity_id": "82e24de904cbe4c4",
     "code": "rbd create IMAGE_NAME --size MEGABYTES --pool POOL_NAME",
     "language": "bash",
-    "context": "Syntax",
+    "context": "Creating images",
     "source_file": "ibm-docs/9.1/devices-creating-images",
     "component": "general",
     "section_title": "Creating images",
@@ -22687,7 +22742,7 @@
     "entity_id": "a434ff6f7e656bfd",
     "code": "[root@rbd-client ~]# rbd create image1 --size 1024 --pool pool1",
     "language": "bash",
-    "context": "Example",
+    "context": "Creating images",
     "source_file": "ibm-docs/9.1/devices-creating-images",
     "component": "general",
     "section_title": "Creating images",
@@ -23504,8 +23559,8 @@
     ]
   },
   {
-    "entity_id": "7c72b24d51fa4213",
-    "code": "{\n    \"type\": \"native\",\n    [\"cluster_name\": \"CLUSTER_NAME\",] (specify if image in another cluster, requires `CLUSTER_NAME.conf` file)\n    [\"client_name\": \"CLIENT_NAME\",] (for connecting to another cluster, default is `client.admin`)\n    \"pool_name\": \"POOL_NAME\",\n    [\"pool_id\": \"POOL_ID\",] (optional, alternative to \"POOL_NAME\" key)\n    [\"pool_namespace\": \"POOL_NAMESPACE\",] (optional)\n    \"image_name\": \"IMAGE_NAME>\",\n    [\"image_id\": \"IMAGE_ID\",] (specify if image is in trash)\n    \"snap_name\": \"SNAP_NAME\",\n    [\"snap_id\": \"SNAP_ID\",] (optional, alternative to \"SNAP_NAME\" key)\n}",
+    "entity_id": "df56d9bd3970a7ad",
+    "code": "{\n \"type\": \"native\",\n\n [\"mon_host\": \"<mon-host>\",]\n Specify if the image is in another cluster. Must be specified together\n with \"key\". Mutually exclusive with \"cluster_name\".\n\n [\"key\": \"<key or key-ref>\",]\n For connecting to another cluster. Must be specified together with\n \"mon_host\". Mutually exclusive with \"cluster_name\".\n\n [\"cluster_name\": \"<cluster-name>\",]\n Specify if the image is in another cluster. Requires a\n \"<cluster-name>.conf\" file. Mutually exclusive with \"mon_host\" and \"key\".\n\n [\"client_name\": \"<client-name>\",]\n For connecting to another cluster. Default: \"client.admin\".\n\n \"pool_name\": \"<pool-name>\",\n\n [\"pool_id\": <pool-id>,]\n Optional alternative to \"pool_name\".\n\n [\"pool_namespace\": \"<pool-namespace>\",]\n Optional.\n\n \"image_name\": \"<image-name>\",\n\n [\"image_id\": \"<image-id>\",]\n Specify if the image is in trash.\n\n \"snap_name\": \"<snap-name>\",\n\n [\"snap_id\": \"<snap-id>\",]\n Optional alternative to \"snap_name\".\n}",
     "language": "bash",
     "context": "Use the following source-spec JSON example file for live migration.",
     "source_file": "ibm-docs/9.1/images-live-migration-formats",
@@ -23771,6 +23826,106 @@
     "section_title": "Preparing import-only migration",
     "commands_used": [
       "rbd migration prepare --import-only --source-spec-path"
+    ]
+  },
+  {
+    "entity_id": "f6749cbbde26c4b5",
+    "code": "{\n  \"type\": \"raw\",\n  \"stream\": {\n    \"type\": \"s3\",\n    \"url\": \"http://10.74.253.18:80/testbucket1/image.raw\",\n    \"access_key\": \"RLJOCP6345BGB38YQXI5\",\n    \"secret_key\": \"oahWRB2ote2rnLy4dojYjDrsvaBADriDDgtSfk6o\"\n  }\n}",
+    "language": "bash",
+    "context": "To import data from an S3 source:",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "de42687e62e351b3",
+    "code": "{\n  \"cluster_name\": \"c1\",\n  \"type\": \"native\",\n  \"pool_name\": \"pool1\",\n  \"image_name\": \"image1\",\n  \"snap_name\": \"snap1\"\n}",
+    "language": "bash",
+    "context": "To import data from an image in another Ceph cluster by using a cluster configuration file:",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e12a2a559197fb19",
+    "code": "{\n  \"type\": \"native\",\n  \"mon_host\": \"10.0.0.11,10.0.0.12,10.0.0.13\",\n  \"client_name\": \"client.migration\",\n  \"key\": \"AQAz7EVWygILFRAAdIcuJ12opU/JKyfFmxhuaw==\",\n  \"pool_name\": \"pool1\",\n  \"image_name\": \"image1\",\n  \"snap_name\": \"snap1\"\n}",
+    "language": "bash",
+    "context": "Alternatively, specify monitor endpoints and authentication credentials directly in the source-spec file:",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "295b16e0d40a0241",
+    "code": "[ceph: root@rbd-client /]# ceph config-key set rbd/native/my_key AQAz7EVWygILFRAAdIcuJ12opU/JKyfFmxhuaw==",
+    "language": "bash",
+    "context": "Store the key:",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": [
+      "ceph config-key set rbd"
+    ]
+  },
+  {
+    "entity_id": "e12a2a559197fb19",
+    "code": "{\n  \"type\": \"native\",\n  \"mon_host\": \"10.0.0.11,10.0.0.12,10.0.0.13\",\n  \"client_name\": \"client.migration\",\n  \"key\": \"config://rbd/native/my_key\",\n  \"pool_name\": \"pool1\",\n  \"image_name\": \"image1\",\n  \"snap_name\": \"snap1\"\n}",
+    "language": "bash",
+    "context": "Reference the stored key in the source-spec file:",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6f4b8b3dde9ef411",
+    "code": "rbd migration prepare --import-only --source-spec-path JSON_FILE TARGET_POOL_NAME/SOURCE_IMAGE_NAME",
+    "language": "bash",
+    "context": "Preparing import-only migration",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": [
+      "rbd migration prepare --import-only --source-spec-path"
+    ]
+  },
+  {
+    "entity_id": "e230102176618ef1",
+    "code": "[ceph: root@rbd-client /]# rbd migration prepare \\\n--import-only \\\n--source-spec-path /tmp/native_spec \\\nc2pool1/c2image1 \\\n--cluster c2",
+    "language": "bash",
+    "context": "Preparing import-only migration",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": [
+      "rbd migration prepare"
+    ]
+  },
+  {
+    "entity_id": "699bc3d1bc46c11a",
+    "code": "[ceph: root@rbd-client /]# rbd migration execute c2pool1/c2image1 --cluster c2\nImage migration: 100% complete...done.",
+    "language": "bash",
+    "context": "Preparing import-only migration",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": [
+      "rbd migration execute c2pool1"
+    ]
+  },
+  {
+    "entity_id": "ff3200bea6d86273",
+    "code": "[ceph: root@rbd-client /]# rbd migration commit c2pool1/c2image1 --cluster c2\nCommit image migration: 100% complete...done.",
+    "language": "bash",
+    "context": "Preparing import-only migration",
+    "source_file": "ibm-docs/9.1/images-preparing-import-only-migration",
+    "component": "general",
+    "section_title": "Preparing import-only migration",
+    "commands_used": [
+      "rbd migration commit c2pool1"
     ]
   },
   {
@@ -26635,8 +26790,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "74e423d941a59925",
-    "code": "enable_mtls: true",
+    "entity_id": "c1770bf098a692f2",
+    "code": "enable_auth: true",
     "language": "bash",
     "context": "Configuring mTLS authentication",
     "source_file": "ibm-docs/9.1/gateway-configuring-mtls-authentication",
@@ -26646,7 +26801,7 @@
   },
   {
     "entity_id": "9088d1b1a7f8fb47",
-    "code": "vi gw-conf-with-mtls.yaml\n\nservice_type: nvmeof\nservice_id: nvmeof-pool\nservice_name: nvmeof.nvmeof-pool.group1\nplacement:\n  hosts:\n  - a-rhel9-node2\nspec:\n  pool: nvmeof-pool\n  enable_mtls: true",
+    "code": "vi gw-conf-with-mtls.yaml\n\nservice_type: nvmeof\nservice_id: nvmeof-pool\nservice_name: nvmeof.nvmeof-pool.group1\nplacement:\n  hosts:\n  - a-rhel9-node2\nspec:\n  pool: nvmeof-pool\n  enable_auth: true",
     "language": "bash",
     "context": "Configuring mTLS authentication",
     "source_file": "ibm-docs/9.1/gateway-configuring-mtls-authentication",
@@ -26772,7 +26927,7 @@
   },
   {
     "entity_id": "c025894fb5c25783",
-    "code": "ceph nvmeof subsystem add --nqn NQN [--enable-ha] [--max_namespaces MAX_NAMESPACES] [--no-group-append] [--serial_number VALUE] [--dhchap_key KEY_VALUE] [--network-mask SUBNET]",
+    "code": "ceph nvmeof subsystem add --nqn NQN [--enable-ha] [--max_namespaces MAX_NAMESPACES] [--no-group-append] [--serial_number VALUE] [--dhchap_key KEY_VALUE] [--network_mask SUBNET] [--secure_listeners]",
     "language": "bash",
     "context": "Managing subsystems",
     "source_file": "ibm-docs/9.1/target-managing-subsystems",
@@ -26879,15 +27034,15 @@
     ]
   },
   {
-    "entity_id": "a13485306b00874d",
-    "code": "ceph nvmeof subsystem list --gw_group GW_GROUP --server-address SERVER_ADDRESS",
+    "entity_id": "ce90c97a875943b9",
+    "code": "ceph nvmeof subsystem list [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS]",
     "language": "bash",
     "context": "Managing subsystems",
     "source_file": "ibm-docs/9.1/target-managing-subsystems",
     "component": "general",
     "section_title": "Managing subsystems",
     "commands_used": [
-      "ceph nvmeof subsystem list --gw_group"
+      "ceph nvmeof subsystem list"
     ]
   },
   {
@@ -26952,7 +27107,7 @@
   },
   {
     "entity_id": "179d7e20d225825c",
-    "code": "ceph nvmeof host add --nqn NQN [--host_nqn HOST_NQN] [--dhchap_key KEY_VALUE] [--psk PSK_VALUE] [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS] [--dhchap_controller_key KEY_VALUE]",
+    "code": "ceph nvmeof host add --nqn NQN [--host_nqn HOST_NQN] [--dhchap_key KEY_VALUE] [--psk PSK_VALUE] [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS] [--dhchap_controller_key KEY_VALUE] [--psk TLS_PSK_KEY]",
     "language": "bash",
     "context": "Managing host access",
     "source_file": "ibm-docs/9.1/target-managing-host-access",
@@ -27132,9 +27287,9 @@
   },
   {
     "entity_id": "8cfc8c781f3def81",
-    "code": "ceph nvmeof listener add --nqn NQN --host_name HOST_NAME [--traddr LISTENER_ADDRESS] [--server-address SERVER_ADDRESS] [--trsvcid PORT] [--adrfam:int IPV_TYPE] [--gw_group GW_GROUP]",
+    "code": "ceph nvmeof listener add --nqn NQN --host_name HOST_NAME [--traddr LISTENER_ADDRESS] [--server-address SERVER_ADDRESS] [--trsvcid PORT] [--adrfam:int IPV_TYPE] [--gw_group GW_GROUP] [--secure]",
     "language": "bash",
-    "context": "When required, manually add listeners for any of the gateways through any of the gateways in the gateway group. Adding listeners through a gateway group is useful in cases that you plan to add more ga",
+    "context": "When required, manually add listeners for gateways in the gateway group. Adding listeners through a gateway group is useful in cases that you plan to add more gateways to a gateway group but the new g",
     "source_file": "ibm-docs/9.1/target-managing-listeners",
     "component": "general",
     "section_title": "Managing listeners",
@@ -27252,7 +27407,7 @@
   },
   {
     "entity_id": "318f9f393bbc3f17",
-    "code": "ceph nvmeof namespace add --nqn NQN [--rbd_image_name IMAGE_NAME] [--rbd_pool POOL_NAME] [--create-image] [--size POOL_SIZE] [--rbd_image_size IMAGE_SIZE] [--location LOCATION] [--rados_namespace RADOS_NAMESPACE]",
+    "code": "ceph nvmeof namespace add --nqn NQN [--rbd_image_name IMAGE_NAME] [--rbd_pool POOL_NAME] [--create-image] [--rbd_image_size IMAGE_SIZE] [--location LOCATION] [--rados_namespace RADOS_NAMESPACE]",
     "language": "bash",
     "context": "Managing namespaces",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
@@ -27264,7 +27419,7 @@
   },
   {
     "entity_id": "ec2ba1c11a4b0bea",
-    "code": "[root@host01 ~]# ceph nvmeof namespace add --nqn nqn.2016-06.io.spdk:cnode1.group1 --rbd_pool pool1 --rbd_image_name image1 --location DC2\nSuccess",
+    "code": "[root@host01 ~]# ceph nvmeof namespace add --nqn nqn.2016-06.io.spdk:cnode1.group1 --rbd_pool pool1 --rbd_image_name image1 --location DC2 \nSuccess",
     "language": "bash",
     "context": "Managing namespaces",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
@@ -27288,7 +27443,7 @@
   },
   {
     "entity_id": "7c627c7d4855310d",
-    "code": "[root@host01 ~]# ceph nvmeof namespace add --nqn nqn.2016-06.io.spdk:cnode1.group1 --rbd_image image1 --rbd_pool pool1 --create-image --rbd-trash-image-on-delete",
+    "code": "[root@host01 ~]# ceph nvmeof namespace add --nqn nqn.2016-06.io.spdk:cnode1.group1 --rbd_image image1 --rbd_pool pool1 --create-image --trash-image",
     "language": "bash",
     "context": "Managing namespaces",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
@@ -27312,7 +27467,7 @@
   },
   {
     "entity_id": "ec2ba1c11a4b0bea",
-    "code": "[root@host01 ~]# ceph nvmeof namespace add --nqn nqn.2016-06.io.spdk:cnode1.group1 --rbd_pool pool1 --create-image --size 100MB --rados-namespace rbd_namespace\nSuccess",
+    "code": "[root@host01 ~]# ceph nvmeof namespace add --nqn nqn.2016-06.io.spdk:cnode1.group1 --rbd_pool pool1 --create-image --rbd_image_size 100MB --rados-namespace rbd_namespace\nSuccess",
     "language": "bash",
     "context": "Managing namespaces",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
@@ -27359,27 +27514,27 @@
     ]
   },
   {
-    "entity_id": "b969f8ee32ef999c",
-    "code": "ceph nvmeof namespace del_host --nqn NQN --nsid NSID --host_nqn HOST_NQN [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS] [--i-am-sure]",
+    "entity_id": "b7c3fb0a6c4ed492",
+    "code": "ceph nvmeof namespace update --nqn NQN [--nsid NSID] [--rbd_image_size IMAGE_SIZE] [--load_balancing_group LOAD_BALANCING_GROUP] [--rw_ios_per_second RW_IOS_PER_SECOND] [--rw_mbytes-per_second RW_MBYTES_PER_SECOND] [--r_mbytes-per_second READ_MBYTES_PER_SECOND] [--w_mbytes-per_second WRITE_MBYTES_PER_SECOND] [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS] [--location LOCATION] [--trash-image]",
     "language": "bash",
     "context": "Managing namespaces",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
     "component": "general",
     "section_title": "Managing namespaces",
     "commands_used": [
-      "ceph nvmeof namespace del_host --nqn"
+      "ceph nvmeof namespace update --nqn"
     ]
   },
   {
-    "entity_id": "545193bf8f8c6e33",
-    "code": "[root@host01 ~]# ceph nvmeof namespace del_host --nqn nqn.2016-06.io.spdk:cnode1.group1 --nsid 1 --host_nqn nqn.2014-08.org.nvmexpress:uuid:950ddadf-f995-47b7-9416-b9bb233f66e3\nSuccess",
+    "entity_id": "c7dcdbfe33096665",
+    "code": "[root@host01 ~]# ceph nvmeof namespace update --nqn nqn.2016-06.io.spdk:cnode1.group1 --nsid 1 --load_balancing_group 2\n+-----------------------------------------+---------+--------+--------+--------------+----------+-----------+-----------+------------+-------------+------------+-----+----+------------------------------------+-----------------------------------+-----------+-------------------+---------+\n|Bdev Name                                |Rbd Image|Rbd Pool|Lb Group|Rbd Image Size|Block Size|R/W Ios/Sec|R/W Mbs/Sec|Read Mbs/Sec|Write Mbs/Sec|Auto Visible|Hosts|Nsid|Uuid                                |Ns Subsystem Nqn                   |Trash Image|Disable Auto Resize|Read Only|\n+-----------------------------------------+---------+--------+--------+--------------+----------+-----------+-----------+------------+-------------+------------+-----+----+------------------------------------+-----------------------------------+-----------+-------------------+---------+\n|bdev_19040e4a-7d18-4e7c-80f1-db9fb98af602|myimage1 |mypool  |4       |200MB         |512B      |0          |0          |0           |0            |True        |[]   |1   |19040e4a-7d18-4e7c-80f1-db9fb98af602|nqn.2016-06.io.spdk:cnode1.mygroup1|False      |False              |False    |\n+-----------------------------------------+---------+--------+--------+--------------+----------+-----------+-----------+------------+-------------+------------+-----+----+------------------------------------+-----------------------------------+-----------+-------------------+---------+",
     "language": "bash",
     "context": "Managing namespaces",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
     "component": "general",
     "section_title": "Managing namespaces",
     "commands_used": [
-      "ceph nvmeof namespace del_host --nqn"
+      "ceph nvmeof namespace update --nqn"
     ]
   },
   {
@@ -27431,27 +27586,15 @@
     ]
   },
   {
-    "entity_id": "b7c3fb0a6c4ed492",
-    "code": "ceph nvmeof namespace update --nqn NQN [--nsid NSID] [--rbd_image_size IMAGE_SIZE] [--load_balancing_group LOAD_BALANCING_GROUP] [--rw_ios_per_second RW_IOS_PER_SECOND] [--rw_mbytes-per_second RW_MBYTES_PER_SECOND] [--r_mbytes-per_second READ_MBYTES_PER_SECOND] [--w_mbytes-per_second WRITE_MBYTES_PER_SECOND] [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS] [--location LOCATION] [--trash-image]",
+    "entity_id": "2c42d9754fda0ff8",
+    "code": "ceph nvmeof namespace set_rbd_trash_image --nqn NQN --nsid NSID --trash-image <yes|no> [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS]",
     "language": "bash",
-    "context": "Managing namespaces",
+    "context": "The image status for automatic deletion can be changed at any time, until the namespace is deleted, only if the namespace was created with the --trash-image parameter. For more information, see Adding",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
     "component": "general",
     "section_title": "Managing namespaces",
     "commands_used": [
-      "ceph nvmeof namespace update --nqn"
-    ]
-  },
-  {
-    "entity_id": "c7dcdbfe33096665",
-    "code": "[root@host01 ~]# ceph nvmeof namespace update --nqn nqn.2016-06.io.spdk:cnode1.group1 --nsid 1 --load_balancing_group 2\n+-----------------------------------------+---------+--------+--------+--------------+----------+-----------+-----------+------------+-------------+------------+-----+----+------------------------------------+-----------------------------------+-----------+-------------------+---------+\n|Bdev Name                                |Rbd Image|Rbd Pool|Lb Group|Rbd Image Size|Block Size|R/W Ios/Sec|R/W Mbs/Sec|Read Mbs/Sec|Write Mbs/Sec|Auto Visible|Hosts|Nsid|Uuid                                |Ns Subsystem Nqn                   |Trash Image|Disable Auto Resize|Read Only|\n+-----------------------------------------+---------+--------+--------+--------------+----------+-----------+-----------+------------+-------------+------------+-----+----+------------------------------------+-----------------------------------+-----------+-------------------+---------+\n|bdev_19040e4a-7d18-4e7c-80f1-db9fb98af602|myimage1 |mypool  |4       |200MB         |512B      |0          |0          |0           |0            |True        |[]   |1   |19040e4a-7d18-4e7c-80f1-db9fb98af602|nqn.2016-06.io.spdk:cnode1.mygroup1|False      |False              |False    |\n+-----------------------------------------+---------+--------+--------+--------------+----------+-----------+-----------+------------+-------------+------------+-----+----+------------------------------------+-----------------------------------+-----------+-------------------+---------+",
-    "language": "bash",
-    "context": "Managing namespaces",
-    "source_file": "ibm-docs/9.1/target-managing-namespaces",
-    "component": "general",
-    "section_title": "Managing namespaces",
-    "commands_used": [
-      "ceph nvmeof namespace update --nqn"
+      "ceph nvmeof namespace set_rbd_trash_image --nqn"
     ]
   },
   {
@@ -27479,20 +27622,32 @@
     ]
   },
   {
-    "entity_id": "cbfbf3592993de4e",
-    "code": "ceph nvmeof namespace set_rbd_trash_image --nqn NQN --nsid NSID --rbd-trash-image-on-delete <yes|no> [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS]",
+    "entity_id": "b969f8ee32ef999c",
+    "code": "ceph nvmeof namespace del_host --nqn NQN --nsid NSID --host_nqn HOST_NQN [--gw_group GW_GROUP] [--server-address SERVER_ADDRESS] [--i-am-sure]",
     "language": "bash",
-    "context": "The image status for automatic deletion can be changed at any time, until the namespace is deleted, only if the namespace was created with the --trash-image parameter. For more information, see Adding",
+    "context": "Managing namespaces",
     "source_file": "ibm-docs/9.1/target-managing-namespaces",
     "component": "general",
     "section_title": "Managing namespaces",
     "commands_used": [
-      "ceph nvmeof namespace set_rbd_trash_image --nqn"
+      "ceph nvmeof namespace del_host --nqn"
+    ]
+  },
+  {
+    "entity_id": "545193bf8f8c6e33",
+    "code": "[root@host01 ~]# ceph nvmeof namespace del_host --nqn nqn.2016-06.io.spdk:cnode1.group1 --nsid 1 --host_nqn nqn.2014-08.org.nvmexpress:uuid:950ddadf-f995-47b7-9416-b9bb233f66e3\nSuccess",
+    "language": "bash",
+    "context": "Managing namespaces",
+    "source_file": "ibm-docs/9.1/target-managing-namespaces",
+    "component": "general",
+    "section_title": "Managing namespaces",
+    "commands_used": [
+      "ceph nvmeof namespace del_host --nqn"
     ]
   },
   {
     "entity_id": "9e9ac9eebb0eda82",
-    "code": "ceph nvmeof namespace add --nqn NQN [--rbd_image_name IMAGE_NAME] [--rbd_pool POOL_NAME] [--create-image] [--size POOL_SIZE] [--rbd_image_size IMAGE_SIZE] --no-auto-visible",
+    "code": "ceph nvmeof namespace add --nqn NQN [--rbd_image_name IMAGE_NAME] [--rbd_pool POOL_NAME] [--create-image] [--rbd_image_size IMAGE_SIZE] --no-auto-visible",
     "language": "bash",
     "context": "Managing masked namespaces",
     "source_file": "ibm-docs/9.1/target-managing-masked-namespaces",
@@ -29417,6 +29572,48 @@
     "commands_used": []
   },
   {
+    "entity_id": "facd805cc1581cc3",
+    "code": "systemctl status ceph-osd@OSD_ID",
+    "language": "bash",
+    "context": "Snapset metadata options",
+    "source_file": "ibm-docs/9.1/operations-snapset-metadata-options",
+    "component": "general",
+    "section_title": "Snapset metadata options",
+    "commands_used": []
+  },
+  {
+    "entity_id": "d911995d95a7a33b",
+    "code": "cephadm shell --name osd.OSD_ID",
+    "language": "bash",
+    "context": "Snapset metadata options",
+    "source_file": "ibm-docs/9.1/operations-snapset-metadata-options",
+    "component": "general",
+    "section_title": "Snapset metadata options",
+    "commands_used": [
+      "cephadm shell --name osd"
+    ]
+  },
+  {
+    "entity_id": "66c12836a0a55b9b",
+    "code": "ceph-objectstore-tool ... OBJECT clear-snapset [corrupt|seq|snaps|clones|clone_size|clone_overlap|size]",
+    "language": "bash",
+    "context": "Snapset metadata options",
+    "source_file": "ibm-docs/9.1/operations-snapset-metadata-options",
+    "component": "general",
+    "section_title": "Snapset metadata options",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4cf7122fd98aac67",
+    "code": "ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-0 'OBJECT-JSON' clear-snapset corrupt",
+    "language": "bash",
+    "context": "The following example clears the entire snapset for an object:",
+    "source_file": "ibm-docs/9.1/operations-snapset-metadata-options",
+    "component": "general",
+    "section_title": "Snapset metadata options",
+    "commands_used": []
+  },
+  {
     "entity_id": "29e53ca3eca30779",
     "code": "ceph orch export NVME_SERVICE > file.yaml",
     "language": "bash",
@@ -29561,5 +29758,63 @@
     "component": "general",
     "section_title": "Testing Virtual IP and failovers",
     "commands_used": []
+  },
+  {
+    "entity_id": "d862ac1dcd85d303",
+    "code": "[ceph: root@host01 /]# ceph health detail\n\n[WRN] AUTH_INSECURE_CLIENT_KEY_TYPE:\nentity client.admin using insecure key type: aes\nentity client.storage-user using insecure key type: aes",
+    "language": "bash",
+    "context": "CephX authentication health checks",
+    "source_file": "ibm-docs/9.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "abb14518e348b0fc",
+    "code": "[ceph: root@host01 /]# ceph health detail\n\n[ERR] AUTH_INSECURE_ROTATING_SERVICE_KEY_TYPE:\nrotating service keys for mon using insecure key type: aes\nrotating service keys for osd using insecure key type: aes",
+    "language": "bash",
+    "context": "CephX authentication health checks",
+    "source_file": "ibm-docs/9.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "4ebfd6bbe1239685",
+    "code": "[WRN] AUTH_INSECURE_KEYS_ALLOWED:\nMonitors are configured to allow auth using insecure key types\n  insecure cipher aes allowed for auth\n\n[WRN] AUTH_INSECURE_KEYS_CREATABLE:\nMonitors are configured to allow creation of insecure key types",
+    "language": "bash",
+    "context": "For example:",
+    "source_file": "ibm-docs/9.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": []
+  },
+  {
+    "entity_id": "b18de15a6eed890d",
+    "code": "ceph mon set auth_allowed_ciphers aes256k",
+    "language": "bash",
+    "context": "After all required keys are rotated, disable the old cipher by running:",
+    "source_file": "ibm-docs/9.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph mon set auth_allowed_ciphers aes256k"
+    ]
+  },
+  {
+    "entity_id": "197bc58f6c1113d5",
+    "code": "ceph nfs cluster rotate-key CLUSTER_NAME --key-type aes256k",
+    "language": "bash",
+    "context": "Use the following command to rotate the NFS keys:",
+    "source_file": "ibm-docs/9.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph nfs cluster rotate-key CLUSTER_NAME"
+    ]
   }
 ]

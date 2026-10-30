@@ -1890,24 +1890,188 @@
     ]
   },
   {
+    "entity_id": "690717217e8e9c5f",
+    "code": "/var/lib/ceph/FSID/DAEMON-TYPE.DAEMON-ID/keyring",
+    "language": "bash",
+    "context": "In deployments that use the cephadm orchestrator, the daemon data directory defaults to the following path on the host where the daemon runs:",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "dd8ab4a9fabc3254",
+    "code": "/var/lib/ceph/a7f3b1c2-4d5e-6f78-.../osd.2/keyring",
+    "language": "bash",
+    "context": "For example, the keyring for osd.2 in a cluster with FSID a7f3b1c2-4d5e-6f78-... is stored at:",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
     "entity_id": "43f90ec1a2012fab",
     "code": "/var/lib/ceph/$type/CLUSTER-ID",
     "language": "bash",
-    "context": "Cephx daemon keyrings",
+    "context": "In legacy (non-cephadm) deployments, the data directory defaults to directories of the form:",
     "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
     "component": "rados",
-    "section_title": "Cephx daemon keyrings",
+    "section_title": "CephX daemon keyrings",
     "commands_used": []
   },
   {
     "entity_id": "45e5a4c27101a04a",
     "code": "/var/lib/ceph/osd/ceph-12",
     "language": "bash",
-    "context": "Cephx daemon keyrings",
+    "context": "For example:",
     "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
     "component": "rados",
-    "section_title": "Cephx daemon keyrings",
+    "section_title": "CephX daemon keyrings",
     "commands_used": []
+  },
+  {
+    "entity_id": "7f8582a9d1affe4c",
+    "code": "[osd.0]\n        key = AQCvCKRkAAAAABAAX1mxBEDDMnHkubu0hJPk2A==\n        caps mgr = \"allow profile osd\"\n        caps mon = \"allow profile osd\"\n        caps osd = \"allow *\"",
+    "language": "bash",
+    "context": "A keyring file is a plain-text file in INI format. Each section corresponds to a CephX entity. The following example shows the keyring for osd.0:",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "50e364529c193194",
+    "code": "caps mon = \"allow *\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "6c9dacdd741f0a5c",
+    "code": "caps mgr = \"allow profile osd\"\ncaps mon = \"allow profile osd\"\ncaps osd = \"allow *\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "fe4e69f92e4912a0",
+    "code": "caps mds = \"allow *\"\ncaps mon = \"allow profile mgr\"\ncaps osd = \"allow *\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "2ec4eb133ccb59b7",
+    "code": "caps mds = \"allow\"\ncaps mon = \"allow profile mds\"\ncaps osd = \"allow rwx pool=CEPHFS-POOLS\"",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "42531b28f9294dd8",
+    "code": "ceph orch daemon rotate-key DAEMON-TYPE.DAEMON-ID",
+    "language": "bash",
+    "context": "To rotate a daemon key without redeploying the daemon, run:",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph orch daemon rotate-key DAEMON-TYPE"
+    ]
+  },
+  {
+    "entity_id": "1816f59fc6be56a2",
+    "code": "ceph auth ls",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth ls"
+    ]
+  },
+  {
+    "entity_id": "3262a2b344a1587d",
+    "code": "ceph auth get ENTITY",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth get ENTITY"
+    ]
+  },
+  {
+    "entity_id": "e502d2dee1ece734",
+    "code": "ceph auth get osd.0",
+    "language": "bash",
+    "context": "For example, to inspect the credentials for osd.0:",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth get osd"
+    ]
+  },
+  {
+    "entity_id": "7f8582a9d1affe4c",
+    "code": "[osd.0]\n        key = AQCvCKRkAAAAABAAX1mxBEDDMnHkubu0hJPk2A==\n        caps mgr = \"allow profile osd\"\n        caps mon = \"allow profile osd\"\n        caps osd = \"allow *\"",
+    "language": "bash",
+    "context": "Example output:",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": []
+  },
+  {
+    "entity_id": "23e4084ab670b04f",
+    "code": "ceph auth get ENTITY -o /path/to/keyring",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph auth get ENTITY -o"
+    ]
+  },
+  {
+    "entity_id": "53417a60d9d9d259",
+    "code": "ceph orch ps",
+    "language": "bash",
+    "context": "CephX daemon keyrings",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph orch ps"
+    ]
+  },
+  {
+    "entity_id": "7bd94033f9c6dcdd",
+    "code": "ceph orch daemon logs DAEMON-TYPE.DAEMON-ID",
+    "language": "bash",
+    "context": "If a daemon fails to authenticate, its status in ceph orch ps shows as error or the daemon restarts repeatedly. Check the daemon log for authentication errors:",
+    "source_file": "ibm-docs/8.0/configuration-cephx-daemon-keyrings",
+    "component": "rados",
+    "section_title": "CephX daemon keyrings",
+    "commands_used": [
+      "ceph orch daemon logs DAEMON-TYPE"
+    ]
   },
   {
     "entity_id": "db83199c0c574f85",
@@ -5949,6 +6113,28 @@
     ]
   },
   {
+    "entity_id": "f4f39853faa8fd96",
+    "code": "service_type:osd\nservice_id:<service_id>\nunmanaged:true",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/osds-replacing",
+    "component": "rados",
+    "section_title": "Replacing the OSDs",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bcffc73e1224ff03",
+    "code": "ceph orch apply -i <osds.yaml>",
+    "language": "bash",
+    "context": "Apply the updated specification:",
+    "source_file": "ibm-docs/8.0/osds-replacing",
+    "component": "rados",
+    "section_title": "Replacing the OSDs",
+    "commands_used": [
+      "ceph orch apply -i"
+    ]
+  },
+  {
     "entity_id": "b047863462817710",
     "code": "ceph orch osd rm OSD_ID --replace",
     "language": "bash",
@@ -5985,6 +6171,28 @@
     ]
   },
   {
+    "entity_id": "771b7021e4afc922",
+    "code": "unmanaged: false",
+    "language": "bash",
+    "context": "Replacing the OSDs",
+    "source_file": "ibm-docs/8.0/osds-replacing",
+    "component": "rados",
+    "section_title": "Replacing the OSDs",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bcffc73e1224ff03",
+    "code": "ceph orch apply -i <osds.yaml>",
+    "language": "bash",
+    "context": "Replacing the OSDs",
+    "source_file": "ibm-docs/8.0/osds-replacing",
+    "component": "rados",
+    "section_title": "Replacing the OSDs",
+    "commands_used": [
+      "ceph orch apply -i"
+    ]
+  },
+  {
     "entity_id": "b970f16986d5fa86",
     "code": "[ceph: root@host01 /]# ceph osd tree",
     "language": "bash",
@@ -6006,6 +6214,28 @@
     "section_title": "Replacing the OSDs with pre-created LVM",
     "commands_used": [
       "cephadm shell"
+    ]
+  },
+  {
+    "entity_id": "7908bf86be4e582b",
+    "code": "service_type: osd\nservice_id: <service_id>\nunmanaged: true",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/osds-replacing-pre-created-lvm",
+    "component": "rados",
+    "section_title": "Replacing the OSDs with pre-created LVM",
+    "commands_used": []
+  },
+  {
+    "entity_id": "140945744655aeda",
+    "code": "ceph orch apply -i <osds.yaml>",
+    "language": "bash",
+    "context": "Example",
+    "source_file": "ibm-docs/8.0/osds-replacing-pre-created-lvm",
+    "component": "rados",
+    "section_title": "Replacing the OSDs with pre-created LVM",
+    "commands_used": [
+      "ceph orch apply -i"
     ]
   },
   {
@@ -6091,8 +6321,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "81a25bb4fb9f98ac",
-    "code": "[ceph: root@host01 /]# ceph orch apply -i osd.yml\n Scheduled osd.osd_service update...",
+    "entity_id": "86a74c52a4644fd0",
+    "code": "ceph orch apply -i osd.yml",
     "language": "bash",
     "context": "Example",
     "source_file": "ibm-docs/8.0/osds-replacing-pre-created-lvm",
@@ -6100,6 +6330,28 @@
     "section_title": "Replacing the OSDs with pre-created LVM",
     "commands_used": [
       "ceph orch apply -i osd"
+    ]
+  },
+  {
+    "entity_id": "65d5400142982664",
+    "code": "unmanaged: false",
+    "language": "bash",
+    "context": "Replacing the OSDs with pre-created LVM",
+    "source_file": "ibm-docs/8.0/osds-replacing-pre-created-lvm",
+    "component": "rados",
+    "section_title": "Replacing the OSDs with pre-created LVM",
+    "commands_used": []
+  },
+  {
+    "entity_id": "140945744655aeda",
+    "code": "ceph orch apply -i <osds.yaml>",
+    "language": "bash",
+    "context": "Replacing the OSDs with pre-created LVM",
+    "source_file": "ibm-docs/8.0/osds-replacing-pre-created-lvm",
+    "component": "rados",
+    "section_title": "Replacing the OSDs with pre-created LVM",
+    "commands_used": [
+      "ceph orch apply -i"
     ]
   },
   {
@@ -8526,27 +8778,27 @@
     "commands_used": []
   },
   {
-    "entity_id": "2796ed0959ab7067",
-    "code": "ceph mon remove SHORT_HOST_NAME --cluster CLUSTER_NAME",
+    "entity_id": "27dfd7ea0a8db3f6",
+    "code": "ceph mon remove SHORT_HOST_NAME",
     "language": "bash",
     "context": "Replacing a failed Monitor",
     "source_file": "ibm-docs/8.0/monitors-replacing-failed-monitor",
     "component": "rados",
     "section_title": "Replacing a failed Monitor",
     "commands_used": [
-      "ceph mon remove SHORT_HOST_NAME --cluster"
+      "ceph mon remove SHORT_HOST_NAME"
     ]
   },
   {
-    "entity_id": "8e01a21bd724b61e",
-    "code": "[ceph: root@host01 /]# ceph mon remove host01 --cluster remote",
+    "entity_id": "1adfece3f250da47",
+    "code": "[ceph: root@host01 /]# ceph mon remove host01",
     "language": "bash",
     "context": "Replacing a failed Monitor",
     "source_file": "ibm-docs/8.0/monitors-replacing-failed-monitor",
     "component": "rados",
     "section_title": "Replacing a failed Monitor",
     "commands_used": [
-      "ceph mon remove host01 --cluster"
+      "ceph mon remove host01"
     ]
   },
   {

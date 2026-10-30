@@ -192,26 +192,6 @@
     ]
   },
   {
-    "entity_id": "d6fe4870993de7c9",
-    "code": "subscription-manager repos --enable=ibmceph-8-tools-for-rhel-8-x86_64-rpms",
-    "language": "bash",
-    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
-    "source_file": "ibm-docs/8.1/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
-    "component": "rbd",
-    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
-    "commands_used": []
-  },
-  {
-    "entity_id": "dc649e685ab8afb5",
-    "code": "[root@rbd-client ~]# subscription-manager repos --enable=ibmceph-8-tools-for-rhel-8-x86_64-rpms",
-    "language": "bash",
-    "context": "Map and mount a Ceph Block Device on Linux using the command-line",
-    "source_file": "ibm-docs/8.1/ccbduiflkmc-map-mount-ceph-block-device-linux-using-command-line",
-    "component": "rbd",
-    "section_title": "Map and mount a Ceph Block Device on Linux using the command-line",
-    "commands_used": []
-  },
-  {
     "entity_id": "c5dd7a37be76031d",
     "code": "subscription-manager repos --enable=ibmceph-8-tools-for-rhel-9-x86_64-rpms",
     "language": "bash",
@@ -1553,6 +1533,56 @@
   {
     "entity_id": "bf33aa5d3b4203f0",
     "code": "$ cat /mnt/nvmeof/hello.txt\nHello NVMe-oF",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.1/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "8f5151d827f0f525",
+    "code": "echo nvme-fabrics | sudo tee /etc/modules-load.d/nvme-fabrics.conf",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.1/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c04d7448a587f91e",
+    "code": "cat >> /etc/nvme/discovery.conf\n--transport=tcp --traddr=10.0.66.9 --trsvcid=8009\n--transport=tcp --traddr=10.0.67.10 --trsvcid=8009",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.1/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "7c53b8c9999c3c00",
+    "code": "systemctl enable nvmf-autoconnect.service",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.1/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "25b1f02722ad96b4",
+    "code": "systemctl status nvmf-autoconnect.service",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/8.1/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ba971debd96f7d08",
+    "code": "systemctl status nvmf-autoconnect.service\n\u25cb nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot\n     Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)\n     Active: inactive (dead) since Sat 2026-07-25 05:29:53 UTC; 17s ago\n Invocation: 26bda68314044c7c93451c7dcec5606f\n    Process: 1341 ExecStart=/usr/sbin/nvme connect-all --context=autoconnect (code=exited, status=0/SUCCESS)\n   Main PID: 1341 (code=exited, status=0/SUCCESS)\n   Mem peak: 4.9M\n        CPU: 81ms",
     "language": "bash",
     "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
     "source_file": "ibm-docs/8.1/initiator-configuring-nvme-red-hat-enterprise-linux",

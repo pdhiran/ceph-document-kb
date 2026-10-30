@@ -477,6 +477,16 @@
     "commands_used": []
   },
   {
+    "entity_id": "5f6ed187ed2f1914",
+    "code": "$ curl --ipv4 --http1.1 --aws-sigv4 aws:amz:us-east-1:s3 \\\n-u 'ACCESS_KEY:SECRET_KEY' \\\n-H x-amz-content-sha256:UNSIGNED-PAYLOAD \\\n-X PUT \\\n\"http://HOSTNAME/admin/user?default-placement=default-placement&default-storage-class=cold&display-name=test4&uid=curl4\"",
+    "language": "bash",
+    "context": "Example: Create a user with a default storage class and placement target.",
+    "source_file": "ibm-docs/8.0/api-create-user",
+    "component": "dev",
+    "section_title": "Create a user",
+    "commands_used": []
+  },
+  {
     "entity_id": "49c63e6dbed23136",
     "code": "`users=write`",
     "language": "bash",

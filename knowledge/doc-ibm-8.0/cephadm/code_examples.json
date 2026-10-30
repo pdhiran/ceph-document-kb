@@ -930,8 +930,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "02c224c2877cc127",
-    "code": "[root@admin ~]# subscription-manager register",
+    "entity_id": "d13b8e5d9003f59f",
+    "code": "subscription-manager register",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -960,8 +960,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "c19296a112c22257",
-    "code": "[root@admin ~]# subscription-manager attach --pool=pool1",
+    "entity_id": "60270439beb23102",
+    "code": "subscription-manager attach --pool=pool1",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1000,8 +1000,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "2784ef01a37750cc",
-    "code": "[root@admin ~]# subscription-manager repos --enable=rhel-9-for-x86_64-baseos-rpms \n\n[root@admin ~]# subscription-manager repos --enable=rhel-9-for-x86_64-appstream-rpms",
+    "entity_id": "a8a37368cc9645b5",
+    "code": "# subscription-manager repos --enable=rhel-9-for-x86_64-baseos-rpms \n\n# subscription-manager repos --enable=rhel-9-for-x86_64-appstream-rpms",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1060,8 +1060,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "067c8bfc4c9f24fe",
-    "code": "[root@admin ~]# htpasswd -bBc /opt/registry/auth/htpasswd myregistryusername myregistrypassword1",
+    "entity_id": "f5bb6f650b1371ac",
+    "code": "# htpasswd -bBc /opt/registry/auth/htpasswd myregistryusername myregistrypassword1",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1080,8 +1080,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "4134b5b35f42a0c5",
-    "code": "[root@admin ~] # openssl req -newkey rsa:4096 -nodes -sha256 -keyout /opt/registry/certs/domain.key -x509 -days 365 -out /opt/registry/certs/domain.crt -addext \"subjectAltName = DNS:admin.lab.ibm.com\"",
+    "entity_id": "e4316050a7a5d3af",
+    "code": "# openssl req -newkey rsa:4096 -nodes -sha256 -keyout /opt/registry/certs/domain.key -x509 -days 365 -out /opt/registry/certs/domain.crt -addext \"subjectAltName = DNS:admin.lab.ibm.com\"",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1100,8 +1100,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "aa0c9fc482a07afd",
-    "code": "[root@admin ~]# ln -s /opt/registry/certs/domain.crt /opt/registry/certs/domain.cert",
+    "entity_id": "a864632389043e4c",
+    "code": "# ln -s /opt/registry/certs/domain.crt /opt/registry/certs/domain.cert",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1140,8 +1140,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "a107bbe23a9cc8f2",
-    "code": "[root@admin ~]# cp /opt/registry/certs/domain.crt /etc/pki/ca-trust/source/anchors/\n[root@admin ~]# update-ca-trust\n[root@admin ~]# trust list | grep -i \"admin.lab.ibm.com\"\n\n     label: admin.lab.ibm.com",
+    "entity_id": "9321deb60fbae3a2",
+    "code": "# cp /opt/registry/certs/domain.crt /etc/pki/ca-trust/source/anchors/\n# update-ca-trust\n# trust list | grep -i \"admin.lab.ibm.com\"\n\n     label: admin.lab.ibm.com",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1150,8 +1150,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "2e992d8729996abc",
-    "code": "[root@admin ~]# podman run --restart=always --name NAME_OF_CONTAINER \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
+    "entity_id": "0f81569bbd299ead",
+    "code": "# podman run --restart=always --name NAME_OF_CONTAINER \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1160,8 +1160,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "370fe38ad83056ab",
-    "code": "[root@admin ~]# podman run --restart=always --name myprivateregistry \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
+    "entity_id": "888aada587d986e2",
+    "code": "# podman run --restart=always --name myprivateregistry \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1210,8 +1210,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "a67ff9edbe6a4ba0",
-    "code": "[root@admin ~]# scp /opt/registry/certs/domain.crt root@host01:/etc/pki/ca-trust/source/anchors/\n[root@admin ~]# ssh root@host01\n[root@host01 ~]# update-ca-trust\n[root@host01 ~]# trust list | grep -i \"admin.lab.ibm.com\"\n\n    label: admin.lab.ibm.com",
+    "entity_id": "0929edec09c7b559",
+    "code": "# scp /opt/registry/certs/domain.crt root@host01:/etc/pki/ca-trust/source/anchors/\n# ssh root@host01\n# update-ca-trust\n# trust list | grep -i \"admin.lab.ibm.com\"\n\n    label: admin.lab.ibm.com",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1232,16 +1232,6 @@
   {
     "entity_id": "ec657598b039284a",
     "code": "podman login cp.icr.io",
-    "language": "bash",
-    "context": "Configuring a private registry for a disconnected installation",
-    "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
-    "component": "cephadm",
-    "section_title": "Configuring a private registry for a disconnected installation",
-    "commands_used": []
-  },
-  {
-    "entity_id": "73e636e156a747cc",
-    "code": "podman login registry.redhat.io",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1460,8 +1450,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "378802daf03042c9",
-    "code": "[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/ceph-8-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/ceph-8-rhel9:latest\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-node-exporter:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-node-exporter:v4.15\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/grafana-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/grafana-rhel9:latest\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus:v4.15\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-alertmanager:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-alertmanager:v4.15",
+    "entity_id": "247554e28bcd3b9b",
+    "code": "# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/ceph-8-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/ceph-8-rhel9:latest\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-node-exporter:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-node-exporter:v4.15\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/grafana-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/grafana-rhel9:latest\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus:v4.15\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-alertmanager:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-alertmanager:v4.15",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -1480,8 +1470,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "095e51fbf52bc49f",
-    "code": "[root@admin ~]# curl -u myregistryusername:myregistrypassword1 https://admin.lab.ibm.com:5000/v2/_catalog\n\n{\"repositories\":[\"ibm-ceph/prometheus\",\"ibm-ceph/prometheus-alertmanager\",\"ibm-ceph/prometheus-node-exporter\",\"ibm-ceph/ceph-8-dashboard-rhel9\",\"ibm-ceph/ceph-8-rhel9\"]}",
+    "entity_id": "3b71c241044852cb",
+    "code": "# curl -u myregistryusername:myregistrypassword1 https://admin.lab.ibm.com:5000/v2/_catalog\n\n{\"repositories\":[\"ibm-ceph/prometheus\",\"ibm-ceph/prometheus-alertmanager\",\"ibm-ceph/prometheus-node-exporter\",\"ibm-ceph/ceph-8-dashboard-rhel9\",\"ibm-ceph/ceph-8-rhel9\"]}",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.0/installation-configuring-private-registry-disconnected",
@@ -3625,8 +3615,8 @@
     ]
   },
   {
-    "entity_id": "b93e0178dea787ad",
-    "code": "[root@client01 ~] dnf update ceph-common\n[root@client01 ~] ceph --version",
+    "entity_id": "a478e9882ba539e5",
+    "code": "[root@client01 ~] dnf update ceph-common librados2 librbd1 python3-rados python3-rbd\n[root@client01 ~] ceph --version",
     "language": "bash",
     "context": "Upgrading the IBM Storage Ceph cluster",
     "source_file": "ibm-docs/8.0/cephadm-upgrading-storage-ceph-cluster",
@@ -3634,6 +3624,30 @@
     "section_title": "Upgrading the IBM Storage Ceph cluster",
     "commands_used": [
       "ceph --version"
+    ]
+  },
+  {
+    "entity_id": "406c962a2c34325c",
+    "code": "[ceph: root@host01 /]# ceph orch apply ceph-exporter --placement='*'",
+    "language": "bash",
+    "context": "Upgrading the IBM Storage Ceph cluster",
+    "source_file": "ibm-docs/8.0/cephadm-upgrading-storage-ceph-cluster",
+    "component": "cephadm",
+    "section_title": "Upgrading the IBM Storage Ceph cluster",
+    "commands_used": [
+      "ceph orch apply ceph-exporter --placement"
+    ]
+  },
+  {
+    "entity_id": "5d6505bc46cd5c43",
+    "code": "ceph orch ls",
+    "language": "bash",
+    "context": "Upgrading the IBM Storage Ceph cluster",
+    "source_file": "ibm-docs/8.0/cephadm-upgrading-storage-ceph-cluster",
+    "component": "cephadm",
+    "section_title": "Upgrading the IBM Storage Ceph cluster",
+    "commands_used": [
+      "ceph orch ls"
     ]
   },
   {
@@ -4212,6 +4226,43 @@
     "section_title": "Updating an NVMe-oF service with a gateway group name",
     "commands_used": [
       "ceph orch reconfig nvmeof"
+    ]
+  },
+  {
+    "entity_id": "e8aed38164f38a83",
+    "code": "ceph nvme-gw show NVME-OF_POOL_NAME ''",
+    "language": "bash",
+    "context": "List the gateways with an empty group name:",
+    "source_file": "ibm-docs/8.0/cephadm-updating-nvme-service-gateway-group-name",
+    "component": "cephadm",
+    "section_title": "Updating an NVMe-oF service with a gateway group name",
+    "commands_used": [
+      "ceph nvme-gw show NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "a33f3d62b938cbf6",
+    "code": "ceph nvme-gw delete GATEWAY_ID NVME-OF_POOL_NAME ''",
+    "language": "bash",
+    "context": "For each gateway listed, delete it:",
+    "source_file": "ibm-docs/8.0/cephadm-updating-nvme-service-gateway-group-name",
+    "component": "cephadm",
+    "section_title": "Updating an NVMe-oF service with a gateway group name",
+    "commands_used": [
+      "ceph nvme-gw delete GATEWAY_ID NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "0e7860110ad12e2d",
+    "code": "[ceph: root@host01 /]# ceph nvme-gw show nvmeof_pool01 ''\n[\n  {\n    \"gw-id\": \"client.nvmeof.nvmeof_pool01.host01.asdfk\"\n  }\n]\n\n[ceph: root@host01 /]# ceph nvme-gw delete client.nvmeof.nvmeof_pool01.host01.asdfk nvmeof_pool01 ''",
+    "language": "bash",
+    "context": "Updating an NVMe-oF service with a gateway group name",
+    "source_file": "ibm-docs/8.0/cephadm-updating-nvme-service-gateway-group-name",
+    "component": "cephadm",
+    "section_title": "Updating an NVMe-oF service with a gateway group name",
+    "commands_used": [
+      "ceph nvme-gw show nvmeof_pool01",
+      "ceph nvme-gw delete client"
     ]
   },
   {
@@ -5128,93 +5179,93 @@
     ]
   },
   {
-    "entity_id": "1686e91367dccb34",
+    "entity_id": "4886fe2faf6ce010",
     "code": "[ansible@admin ~]$ cd /usr/share/cephadm-ansible",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "415aec971a87ebe0",
+    "entity_id": "472245199e858168",
     "code": "sudo vi INVENTORY_FILE\n\nHOST1 labels=\"['LABEL1', 'LABEL2']\"\nHOST2 labels=\"['LABEL1', 'LABEL2']\"\nHOST3 labels=\"['LABEL1']\"\n\n[admin]\nADMIN_HOST monitor_address=MONITOR_IP_ADDRESS labels=\"['ADMIN_LABEL', 'LABEL1', 'LABEL2']\"",
     "language": "bash",
-    "context": "Syntax",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "context": "Bootstrapping a storage cluster with Ansible",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "5ec0595ed98b01c6",
+    "entity_id": "aea3317e1410e033",
     "code": "[ansible@admin cephadm-ansible]$ sudo vi hosts\n\nhost02 labels=\"['mon', 'mgr']\"\nhost03 labels=\"['mon', 'mgr']\"\nhost04 labels=\"['osd']\"\nhost05 labels=\"['osd']\"\nhost06 labels=\"['osd']\"\n\n[admin]\nhost01 monitor_address=10.10.128.68 labels=\"['_admin', 'mon', 'mgr']\"",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "7657a6586799c591",
+    "entity_id": "57ad9ebdb3f8e932",
     "code": "ansible-playbook -i INVENTORY_FILE cephadm-preflight.yml --extra-vars \"ceph_origin=ibm\"",
     "language": "bash",
-    "context": "Syntax",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "context": "Bootstrapping a storage cluster with Ansible",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "465e69e1a83a4601",
+    "entity_id": "ebff57ae4607699f",
     "code": "[ansible@admin cephadm-ansible]$ ansible-playbook -i hosts cephadm-preflight.yml --extra-vars \"ceph_origin=ibm\"",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "f5c01b6dd4336398",
+    "entity_id": "f23f256311e772b0",
     "code": "sudo vi PLAYBOOK_FILENAME.yml\n\n---\n- name: NAME_OF_PLAY\n  hosts: BOOTSTRAP_HOST\n  become: USE_ELEVATED_PRIVILEGES\n  gather_facts: GATHER_FACTS_ABOUT_REMOTE_HOSTS\n  tasks:\n    -name: NAME_OF_TASK\n     cephadm_registry_login:\n       state: STATE\n       registry_url: REGISTRY_URL\n       registry_username: REGISTRY_USER_NAME\n       registry_password: REGISTRY_PASSWORD\n\n    - name: NAME_OF_TASK\n      cephadm_bootstrap:\n        mon_ip: \"{{ monitor_address }}\"\n        dashboard_user: DASHBOARD_USER\n        dashboard_password: DASHBOARD_PASSWORD\n        allow_fqdn_hostname: ALLOW_FQDN_HOSTNAME\n        cluster_network: NETWORK_CIDR",
     "language": "bash",
-    "context": "Syntax",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "context": "Bootstrapping a storage cluster with Ansible",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "6b36d48703113303",
+    "entity_id": "4707db42f9f56e21",
     "code": "[ansible@admin cephadm-ansible]$ sudo vi bootstrap.yml\n\n---\n- name: bootstrap the cluster\n  hosts: host01\n  become: true\n  gather_facts: false\n  tasks:\n    - name: login to registry\n      cephadm_registry_login:\n        state: login\n        registry_url: cp.icr.io/cp\n        registry_username: user1\n        registry_password: mypassword1\n\n    - name: bootstrap initial cluster\n      cephadm_bootstrap:\n        mon_ip: \"{{ monitor_address }}\"\n        dashboard_user: mydashboarduser\n        dashboard_password: mydashboardpassword\n        allow_fqdn_hostname: true\n        cluster_network: 10.10.128.0/28",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "bd9c4806fd6cc468",
+    "entity_id": "a41f2a3637c5ef65",
     "code": "ansible-playbook -i INVENTORY_FILE PLAYBOOK_FILENAME.yml -vvv",
     "language": "bash",
-    "context": "Syntax",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "context": "Bootstrapping a storage cluster with Ansible",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {
-    "entity_id": "043dfb0813e2db6b",
+    "entity_id": "2350d7214223a01a",
     "code": "ansible@admin cephadm-ansible]$ ansible-playbook -i hosts bootstrap.yml -vvv",
     "language": "bash",
     "context": "Example",
-    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster",
+    "source_file": "ibm-docs/8.0/modules-bootstrapping-storage-cluster-ansible",
     "component": "cephadm",
-    "section_title": "Bootstrapping storage cluster",
+    "section_title": "Bootstrapping a storage cluster with Ansible",
     "commands_used": []
   },
   {

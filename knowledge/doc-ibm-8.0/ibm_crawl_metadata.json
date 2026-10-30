@@ -2,7 +2,8 @@
   "ibm_version": "8.0",
   "url_version": "8.0.0",
   "upstream_equivalent": "reef-18.x",
-  "pages_indexed": 1731,
-  "build_timestamp": "2026-07-17T13:34:20.558438+00:00",
-  "source": "https://www.ibm.com/docs/en/storage-ceph"
+  "pages_indexed": 1735,
+  "build_timestamp": "2026-10-29T19:13:15.600322+00:00",
+  "source": "https://www.ibm.com/docs/en/storage-ceph",
+  "updated_since": "2026-07-01"
 }

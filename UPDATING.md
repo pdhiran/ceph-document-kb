@@ -19,8 +19,8 @@ cd /path/to/ceph-document-kb
 | Variable | Default | Meaning |
 |---|---|---|
 | `CEPH_DOCS_REPO` | `/tmp/ceph-docs` | Ceph git checkout containing `doc/` |
-| `CEPH_VERSION` | `20.2.1` | Upstream index label (`knowledge/doc-<version>/`) |
-| `IBM_VERSIONS` | `9.1` | Space-separated IBM versions to recrawl |
+| `CEPH_VERSION` | `20.2.4` | Upstream index label (`knowledge/doc-<version>/`) |
+| `IBM_VERSIONS` | `9.2` | Space-separated IBM versions to recrawl |
 | `SKIP_UPSTREAM=1` | off | Skip RST incremental |
 | `SKIP_IBM=1` | off | Skip IBM recrawl |
 
@@ -61,15 +61,15 @@ Disable with `--no-auto-update` (stops git pull **and** the trigger watcher). In
 
 ```bash
 python3 index_docs.py --since 2026-08-01 --docs-path /tmp/ceph-docs/doc \
-    --repo-path /tmp/ceph-docs --version 20.2.1 --verbose
+    --repo-path /tmp/ceph-docs --version 20.2.4 --verbose
 
-python3 index_ibm_docs.py --version 9.1 --since 2026-08-01 \
-    --cache-dir ./cache/ibm-9.1 --verbose
+python3 index_ibm_docs.py --version 9.2 --since 2026-10-01 \
+    --cache-dir ./cache/ibm-9.2 --verbose
 
 touch .reload_trigger
 ```
 
-IBM versions: `8.0`, `8.1`, `9.0`, `9.1`.
+IBM versions: `8.0`, `8.1`, `9.0`, `9.1`, `9.2` (docs VRMF `9.9.0`–`9.9.2`). IBM crawl needs `curl_cffi` (Akamai blocks plain httpx).
 
 ## Files that must stay untracked
 

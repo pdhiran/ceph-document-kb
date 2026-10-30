@@ -10,8 +10,8 @@
 #
 # Environment:
 #   CEPH_DOCS_REPO   Path to a ceph git checkout with doc/ (default: /tmp/ceph-docs)
-#   CEPH_VERSION     Upstream version label (default: 20.2.1)
-#   IBM_VERSIONS     Space-separated IBM versions to recrawl (default: "9.1")
+#   CEPH_VERSION     Upstream version label (default: 20.2.4)
+#   IBM_VERSIONS     Space-separated IBM versions to recrawl (default: "9.2")
 #   SKIP_IBM=1       Skip IBM recrawl
 #   SKIP_UPSTREAM=1  Skip upstream RST incremental
 
@@ -20,8 +20,8 @@ cd "$(dirname "$0")"
 
 LAST_RUN_FILE=".last_index_update"
 CEPH_DOCS_REPO="${CEPH_DOCS_REPO:-/tmp/ceph-docs}"
-CEPH_VERSION="${CEPH_VERSION:-20.2.1}"
-IBM_VERSIONS="${IBM_VERSIONS:-9.1}"
+CEPH_VERSION="${CEPH_VERSION:-20.2.4}"
+IBM_VERSIONS="${IBM_VERSIONS:-9.2}"
 
 if [[ "${1:-}" == "--reset" ]]; then
     rm -f "$LAST_RUN_FILE"

@@ -15,6 +15,8 @@ IBM_VERSIONS = {
     "8.1": {"url_version": "8.1.0", "ceph_upstream": "reef-18.x", "product_id": "SSEG27_8.1"},
     "9.0": {"url_version": "9.9.0", "ceph_upstream": "squid-19.x", "product_id": "SSEG27_9.9.0"},
     "9.1": {"url_version": "9.9.1", "ceph_upstream": "tentacle-20.x", "product_id": "SSEG27_9.9.1"},
+    # Product docs VRMF 9.9.2 (GA 2026-10-14); KB key stays 9.2 to match ibm-docs/9.2/ paths.
+    "9.2": {"url_version": "9.9.2", "ceph_upstream": "tentacle-20.x", "product_id": "SSEG27_9.9.2"},
 }
 
 IBM_TOPIC_COMPONENT_MAP: dict[str, str] = {

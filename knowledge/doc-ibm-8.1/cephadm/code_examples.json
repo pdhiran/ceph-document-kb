@@ -920,8 +920,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "134dbd08676db50e",
-    "code": "[root@admin ~]# subscription-manager register",
+    "entity_id": "f5591665ed7df18e",
+    "code": "subscription-manager register",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -950,8 +950,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "5711d11bab31581b",
-    "code": "[root@admin ~]# subscription-manager attach --pool=pool1",
+    "entity_id": "050eaccba9a25bc3",
+    "code": "subscription-manager attach --pool=pool1",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -990,8 +990,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "9b3e7fb5ebaba487",
-    "code": "[root@admin ~]# subscription-manager repos --enable=rhel-9-for-x86_64-baseos-rpms \n\n[root@admin ~]# subscription-manager repos --enable=rhel-9-for-x86_64-appstream-rpms",
+    "entity_id": "de0174a6edb01b10",
+    "code": "# subscription-manager repos --enable=rhel-9-for-x86_64-baseos-rpms \n\n# subscription-manager repos --enable=rhel-9-for-x86_64-appstream-rpms",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1050,8 +1050,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "a678c05e7f4b3b94",
-    "code": "[root@admin ~]# htpasswd -bBc /opt/registry/auth/htpasswd myregistryusername myregistrypassword1",
+    "entity_id": "fcf5e289aa84576b",
+    "code": "# htpasswd -bBc /opt/registry/auth/htpasswd myregistryusername myregistrypassword1",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1070,8 +1070,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "65d65253bf247d9a",
-    "code": "[root@admin ~] # openssl req -newkey rsa:4096 -nodes -sha256 -keyout /opt/registry/certs/domain.key -x509 -days 365 -out /opt/registry/certs/domain.crt -addext \"subjectAltName = DNS:admin.lab.ibm.com\"",
+    "entity_id": "1511052447ca84b5",
+    "code": "# openssl req -newkey rsa:4096 -nodes -sha256 -keyout /opt/registry/certs/domain.key -x509 -days 365 -out /opt/registry/certs/domain.crt -addext \"subjectAltName = DNS:admin.lab.ibm.com\"",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1090,8 +1090,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "eb4894ed4103593b",
-    "code": "[root@admin ~]# ln -s /opt/registry/certs/domain.crt /opt/registry/certs/domain.cert",
+    "entity_id": "3966c15d258e84ce",
+    "code": "# ln -s /opt/registry/certs/domain.crt /opt/registry/certs/domain.cert",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1130,8 +1130,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "5f1464378e4cb20e",
-    "code": "[root@admin ~]# cp /opt/registry/certs/domain.crt /etc/pki/ca-trust/source/anchors/\n[root@admin ~]# update-ca-trust\n[root@admin ~]# trust list | grep -i \"admin.lab.ibm.com\"\n\n     label: admin.lab.ibm.com",
+    "entity_id": "d44a4753f8b0959c",
+    "code": "# cp /opt/registry/certs/domain.crt /etc/pki/ca-trust/source/anchors/\n# update-ca-trust\n# trust list | grep -i \"admin.lab.ibm.com\"\n\n     label: admin.lab.ibm.com",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1140,8 +1140,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "e377b80ee29f76a6",
-    "code": "[root@admin ~]# podman run --restart=always --name NAME_OF_CONTAINER \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
+    "entity_id": "7d33d3064057a6df",
+    "code": "# podman run --restart=always --name NAME_OF_CONTAINER \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1150,8 +1150,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "0d6b35ecbfd89f6f",
-    "code": "[root@admin ~]# podman run --restart=always --name myprivateregistry \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
+    "entity_id": "4c26217963e45c86",
+    "code": "# podman run --restart=always --name myprivateregistry \\\n-p 5000:5000 -v /opt/registry/data:/var/lib/registry:z \\\n-v /opt/registry/auth:/auth:z \\\n-v /opt/registry/certs:/certs:z \\\n-e \"REGISTRY_AUTH=htpasswd\" \\\n-e \"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm\" \\\n-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \\\n-e \"REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt\" \\\n-e \"REGISTRY_HTTP_TLS_KEY=/certs/domain.key\" \\\n-e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \\\n-d registry:2",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1200,8 +1200,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "7013493fed6f29ad",
-    "code": "[root@admin ~]# scp /opt/registry/certs/domain.crt root@host01:/etc/pki/ca-trust/source/anchors/\n[root@admin ~]# ssh root@host01\n[root@host01 ~]# update-ca-trust\n[root@host01 ~]# trust list | grep -i \"admin.lab.ibm.com\"\n\n    label: admin.lab.ibm.com",
+    "entity_id": "932937b443071fdf",
+    "code": "# scp /opt/registry/certs/domain.crt root@host01:/etc/pki/ca-trust/source/anchors/\n# ssh root@host01\n# update-ca-trust\n# trust list | grep -i \"admin.lab.ibm.com\"\n\n    label: admin.lab.ibm.com",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1222,16 +1222,6 @@
   {
     "entity_id": "b289e79c3caa69eb",
     "code": "podman login cp.icr.io",
-    "language": "bash",
-    "context": "Configuring a private registry for a disconnected installation",
-    "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
-    "component": "cephadm",
-    "section_title": "Configuring a private registry for a disconnected installation",
-    "commands_used": []
-  },
-  {
-    "entity_id": "6c10a1d884e516b8",
-    "code": "podman login registry.redhat.io",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1450,8 +1440,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "12e350093f58006a",
-    "code": "[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/ceph-8-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/ceph-8-rhel9:latest\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-node-exporter:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-node-exporter:v4.15\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/grafana-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/grafana-rhel9:latest\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus:v4.15\n\n[root@admin ~]# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-alertmanager:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-alertmanager:v4.15",
+    "entity_id": "fea3063b81af45a2",
+    "code": "# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/ceph-8-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/ceph-8-rhel9:latest\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-node-exporter:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-node-exporter:v4.15\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/grafana-rhel9:latest docker://admin.lab.ibm.com:5000/ibm-ceph/grafana-rhel9:latest\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus:v4.15\n\n# podman run -v /opt/registry/certs:/certs:Z -v /opt/registry/certs/domain.cert:/certs/domain.cert:Z --rm registry.redhat.io/rhel9/skopeo skopeo copy --remove-signatures --src-creds myusername:mypassword1 --dest-cert-dir=./certs/ --dest-creds myregistryusername:myregistrypassword1 docker://cp.icr.io/cp/ibm-ceph/prometheus-alertmanager:v4.15 docker://admin.lab.ibm.com:5000/ibm-ceph/prometheus-alertmanager:v4.15",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -1470,8 +1460,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "d966ae68e0b4cb39",
-    "code": "[root@admin ~]# curl -u myregistryusername:myregistrypassword1 https://admin.lab.ibm.com:5000/v2/_catalog\n\n{\"repositories\":[\"ibm-ceph/prometheus\",\"ibm-ceph/prometheus-alertmanager\",\"ibm-ceph/prometheus-node-exporter\",\"ibm-ceph/ceph-8-dashboard-rhel9\",\"ibm-ceph/ceph-8-rhel9\"]}",
+    "entity_id": "c53740c06cc2a680",
+    "code": "# curl -u myregistryusername:myregistrypassword1 https://admin.lab.ibm.com:5000/v2/_catalog\n\n{\"repositories\":[\"ibm-ceph/prometheus\",\"ibm-ceph/prometheus-alertmanager\",\"ibm-ceph/prometheus-node-exporter\",\"ibm-ceph/ceph-8-dashboard-rhel9\",\"ibm-ceph/ceph-8-rhel9\"]}",
     "language": "bash",
     "context": "Configuring a private registry for a disconnected installation",
     "source_file": "ibm-docs/8.1/installation-configuring-private-registry-disconnected",
@@ -3059,36 +3049,6 @@
     ]
   },
   {
-    "entity_id": "0e3cfb5fcc414c8d",
-    "code": "host02\nhost03\nhost04\n\n[admin]\nhost01\n\n[clients]\nclient01\nclient02\nclient03",
-    "language": "bash",
-    "context": "Purging the Ceph storage cluster",
-    "source_file": "ibm-docs/8.1/installation-purging-ceph-storage-cluster",
-    "component": "cephadm",
-    "section_title": "Purging the Ceph storage cluster",
-    "commands_used": []
-  },
-  {
-    "entity_id": "a84821f6f2edefba",
-    "code": "ansible-playbook -i hosts cephadm-purge-cluster.yml -e fsid=FSID -vvv",
-    "language": "bash",
-    "context": "Purging the Ceph storage cluster",
-    "source_file": "ibm-docs/8.1/installation-purging-ceph-storage-cluster",
-    "component": "cephadm",
-    "section_title": "Purging the Ceph storage cluster",
-    "commands_used": []
-  },
-  {
-    "entity_id": "f52e147c6fcdc467",
-    "code": "[ansible@host01 cephadm-ansible]$ ansible-playbook -i hosts cephadm-purge-cluster.yml -e fsid=a6ca415a-cde7-11eb-a41a-002590fc2544 -vvv",
-    "language": "bash",
-    "context": "Purging the Ceph storage cluster",
-    "source_file": "ibm-docs/8.1/installation-purging-ceph-storage-cluster",
-    "component": "cephadm",
-    "section_title": "Purging the Ceph storage cluster",
-    "commands_used": []
-  },
-  {
     "entity_id": "b20f1b6f7170e06b",
     "code": "[ceph-admin@admin ~]$ cd /usr/share/cephadm-ansible",
     "language": "bash",
@@ -3617,8 +3577,8 @@
     ]
   },
   {
-    "entity_id": "0428b918b140df7a",
-    "code": "[root@client01 ~] dnf update ceph-common\n[root@client01 ~] ceph --version",
+    "entity_id": "4e2e373bdb71e795",
+    "code": "[root@client01 ~] dnf update ceph-common librados2 librbd1 python3-rados python3-rbd\n[root@client01 ~] ceph --version",
     "language": "bash",
     "context": "Upgrading the IBM Storage Ceph cluster",
     "source_file": "ibm-docs/8.1/cephadm-upgrading-storage-ceph-cluster",
@@ -3626,6 +3586,30 @@
     "section_title": "Upgrading the IBM Storage Ceph cluster",
     "commands_used": [
       "ceph --version"
+    ]
+  },
+  {
+    "entity_id": "15b1cfd3f557c218",
+    "code": "[ceph: root@host01 /]# ceph orch apply ceph-exporter --placement='*'",
+    "language": "bash",
+    "context": "Upgrading the IBM Storage Ceph cluster",
+    "source_file": "ibm-docs/8.1/cephadm-upgrading-storage-ceph-cluster",
+    "component": "cephadm",
+    "section_title": "Upgrading the IBM Storage Ceph cluster",
+    "commands_used": [
+      "ceph orch apply ceph-exporter --placement"
+    ]
+  },
+  {
+    "entity_id": "4415e263660f0acf",
+    "code": "ceph orch ls",
+    "language": "bash",
+    "context": "Upgrading the IBM Storage Ceph cluster",
+    "source_file": "ibm-docs/8.1/cephadm-upgrading-storage-ceph-cluster",
+    "component": "cephadm",
+    "section_title": "Upgrading the IBM Storage Ceph cluster",
+    "commands_used": [
+      "ceph orch ls"
     ]
   },
   {
@@ -4499,6 +4483,43 @@
     ]
   },
   {
+    "entity_id": "f00815f0b75c40f8",
+    "code": "ceph nvme-gw show NVME-OF_POOL_NAME ''",
+    "language": "bash",
+    "context": "List the gateways with an empty group name:",
+    "source_file": "ibm-docs/8.1/cephadm-updating-nvme-service-gateway-group-name",
+    "component": "cephadm",
+    "section_title": "Updating an NVMe-oF service with a gateway group name",
+    "commands_used": [
+      "ceph nvme-gw show NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "b79ff78643886331",
+    "code": "ceph nvme-gw delete GATEWAY_ID NVME-OF_POOL_NAME ''",
+    "language": "bash",
+    "context": "For each gateway listed, delete it:",
+    "source_file": "ibm-docs/8.1/cephadm-updating-nvme-service-gateway-group-name",
+    "component": "cephadm",
+    "section_title": "Updating an NVMe-oF service with a gateway group name",
+    "commands_used": [
+      "ceph nvme-gw delete GATEWAY_ID NVME-OF_POOL_NAME"
+    ]
+  },
+  {
+    "entity_id": "f3c18b14a3b9c1b4",
+    "code": "[ceph: root@host01 /]# ceph nvme-gw show nvmeof_pool01 ''\n[\n  {\n    \"gw-id\": \"client.nvmeof.nvmeof_pool01.host01.asdfk\"\n  }\n]\n\n[ceph: root@host01 /]# ceph nvme-gw delete client.nvmeof.nvmeof_pool01.host01.asdfk nvmeof_pool01 ''",
+    "language": "bash",
+    "context": "Updating an NVMe-oF service with a gateway group name",
+    "source_file": "ibm-docs/8.1/cephadm-updating-nvme-service-gateway-group-name",
+    "component": "cephadm",
+    "section_title": "Updating an NVMe-oF service with a gateway group name",
+    "commands_used": [
+      "ceph nvme-gw show nvmeof_pool01",
+      "ceph nvme-gw delete client"
+    ]
+  },
+  {
     "entity_id": "bee4702aa9f4ac16",
     "code": "ceph orch certmgr cert ls",
     "language": "bash",
@@ -4666,6 +4687,263 @@
       "ceph mgr module disable dashboard",
       "ceph mgr module enable dashboard"
     ]
+  },
+  {
+    "entity_id": "6f4702710887af57",
+    "code": "ceph mon set auth_preferred_cipher aes256k",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph mon set auth_preferred_cipher aes256k"
+    ]
+  },
+  {
+    "entity_id": "f3e659ff81c462f6",
+    "code": "ceph health detail",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "e1cf6452e4ca29b3",
+    "code": "[ERR] AUTH_INSECURE_CLIENT_KEY_TYPE:\nentity client.admin using insecure key type: aes\nentity client.bootstrap-mds using insecure key type: aes",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c65060b56114b354",
+    "code": "ceph auth get-or-create client.admin-backup mon \"allow *\" | tee ./client.admin-backup.keyring",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph auth get-or-create client"
+    ]
+  },
+  {
+    "entity_id": "91d01043e96717fe",
+    "code": "ceph -n client.admin-backup -k ./client.admin-backup.keyring auth ls",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph -n client"
+    ]
+  },
+  {
+    "entity_id": "4551215e980debc2",
+    "code": "ceph auth rotate client.admin --key-type aes256k",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph auth rotate client"
+    ]
+  },
+  {
+    "entity_id": "b9246c14190d70cf",
+    "code": "ceph auth get client.admin -o /etc/ceph/ceph.client.admin.keyring",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph auth get client"
+    ]
+  },
+  {
+    "entity_id": "00e380a780585be5",
+    "code": "ceph auth ls",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph auth ls"
+    ]
+  },
+  {
+    "entity_id": "0a3c90d528039fd3",
+    "code": "ceph auth rm client.admin-backup",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph auth rm client"
+    ]
+  },
+  {
+    "entity_id": "3b9f045715af33dd",
+    "code": "ceph auth rotate client.CLIENT_ID --key-type aes256k",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph auth rotate client"
+    ]
+  },
+  {
+    "entity_id": "64f81791d276ce5b",
+    "code": "monclient(hunting): handle_auth_bad_method server allowed_methods [2] and I support [2,1]\n\n[errno 13] RADOS permission denied (error connecting to the cluster)",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3c27cd81920bcd7b",
+    "code": "ceph nfs cluster rotate-key CLUSTER_NAME --key-type aes256k",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph nfs cluster rotate-key CLUSTER_NAME"
+    ]
+  },
+  {
+    "entity_id": "d9cef7f939cc7b88",
+    "code": "ceph auth rotate client.smb.CLUSTER_NAME --key-type aes256k\nceph auth rotate client.smb.CLUSTER_NAME.DAEMON_ID-rgw --key-type aes256k",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph auth rotate client",
+      "ceph auth rotate client"
+    ]
+  },
+  {
+    "entity_id": "baaca625de975381",
+    "code": "ceph orch redeploy smb.SERVICE_NAME",
+    "language": "bash",
+    "context": "Redeploy the protocol service after rotating the required protocol keys.",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph orch redeploy smb"
+    ]
+  },
+  {
+    "entity_id": "4f00e4fda8b45eeb",
+    "code": "ceph orch redeploy rbd-mirror",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph orch redeploy rbd-mirror"
+    ]
+  },
+  {
+    "entity_id": "85a7c5bed123a6a3",
+    "code": "ceph config set client.rgw rgw_sigv4_insecure true --force",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph config set client"
+    ]
+  },
+  {
+    "entity_id": "e2e6907bfa7031ab",
+    "code": "ceph config set client.rgw rgw_sigv4_insecure false",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph config set client"
+    ]
+  },
+  {
+    "entity_id": "6082a6c7fd0d9293",
+    "code": "ceph mon set auth_allowed_ciphers aes256k",
+    "language": "bash",
+    "context": "Disable the old cipher only after all reported entities are updated to use the new cipher.",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph mon set auth_allowed_ciphers aes256k"
+    ]
+  },
+  {
+    "entity_id": "f3e659ff81c462f6",
+    "code": "ceph health detail",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "5dee99dae1aa090f",
+    "code": "[WRN] AUTH_INSECURE_CLIENT_KEY_TYPE:\nentity client.storage-user using insecure key type: aes",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": []
+  },
+  {
+    "entity_id": "4fd6fcce98e7d5f7",
+    "code": "ceph mon dump | grep cipher",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": [
+      "ceph mon dump"
+    ]
+  },
+  {
+    "entity_id": "d75453379549b7d9",
+    "code": "auth_service_cipher aes256k\nauth_allowed_ciphers aes256k\nauth_preferred_cipher aes256k",
+    "language": "bash",
+    "context": "Rotating CephX keys",
+    "source_file": "ibm-docs/8.1/cephadm-rotating-cephx-keys",
+    "component": "cephadm",
+    "section_title": "Rotating CephX keys",
+    "commands_used": []
   },
   {
     "entity_id": "ad9091fdff2f6c59",

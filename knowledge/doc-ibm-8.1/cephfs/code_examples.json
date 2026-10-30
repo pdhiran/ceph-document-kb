@@ -585,6 +585,18 @@
     ]
   },
   {
+    "entity_id": "e7abb54df72d7c5a",
+    "code": "ceph orch ls --service-type nfs --export",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the command line interface",
+    "source_file": "ibm-docs/8.1/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the command line interface",
+    "commands_used": [
+      "ceph orch ls --service-type nfs"
+    ]
+  },
+  {
     "entity_id": "782c3940b6430a6c",
     "code": "[root@host01 ~]# cephadm shell",
     "language": "bash",
@@ -854,6 +866,40 @@
     "section_title": "Deploying the NFS service gateway using the service specification",
     "commands_used": [
       "ceph orch ps --daemon_type"
+    ]
+  },
+  {
+    "entity_id": "8519b2bd1d653774",
+    "code": "service_type: nfs\nservice_id: nfsganesha\nplacement:\n  hosts:\n    - example0\n    - example1\n    - example2\nspec:\n  idmap_conf:\n    general:\n      Domain: domain.org\n    mapping:\n      Nobody-Group: nfsnobody\n      Nobody-User: nfsnobody",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the service specification",
+    "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the service specification",
+    "commands_used": []
+  },
+  {
+    "entity_id": "bc6beb17f982b84a",
+    "code": "ceph orch apply -i FILE_NAME.yaml",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the service specification",
+    "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the service specification",
+    "commands_used": [
+      "ceph orch apply -i FILE_NAME"
+    ]
+  },
+  {
+    "entity_id": "4ac911ae41000225",
+    "code": "ceph orch redeploy nfs.nfsganesha",
+    "language": "bash",
+    "context": "Deploying the NFS service gateway using the service specification",
+    "source_file": "ibm-docs/8.1/orchestrator-deploying-nfs-service-gateway-using-service-specification",
+    "component": "cephfs",
+    "section_title": "Deploying the NFS service gateway using the service specification",
+    "commands_used": [
+      "ceph orch redeploy nfs"
     ]
   },
   {

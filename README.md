@@ -10,11 +10,12 @@ This KB contains **multiple versions**. If the user did not name one, **ask** be
 
 | Version filter | Content |
 |----------------|---------|
-| `upstream` | Upstream Ceph RST (currently `doc-20.2.1`) |
+| `upstream` | Upstream Ceph RST (currently `doc-20.2.4`) |
 | `ibm-8.0` | IBM Storage Ceph 8.0 (Reef-era product docs) |
 | `ibm-8.1` | IBM Storage Ceph 8.1 |
-| `ibm-9.0` | IBM Storage Ceph 9.0 |
-| `ibm-9.1` | IBM Storage Ceph 9.1 (Tentacle-era product docs) |
+| `ibm-9.0` | IBM Storage Ceph 9.0 (docs VRMF 9.9.0) |
+| `ibm-9.1` | IBM Storage Ceph 9.1 (docs VRMF 9.9.1) |
+| `ibm-9.2` | IBM Storage Ceph 9.2 (docs VRMF 9.9.2, Tentacle) |
 
 IBM docs cover content that is **not** in upstream: container registry, licensing, crossgrade, staggered upgrade, IBM Dashboard, Call Home, Storage Insights, etc.
 
@@ -155,21 +156,22 @@ Needs a Ceph git checkout with `doc/`. Re-parses only RST files touched since th
 
 ```bash
 # First-time full build
-git clone --depth 1 --branch v20.2.1 --sparse https://github.com/ceph/ceph.git /tmp/ceph-docs
-cd /tmp/ceph-docs && git sparse-checkout set doc
+git clone --filter=blob:none --sparse https://github.com/ceph/ceph.git /tmp/ceph-docs
+cd /tmp/ceph-docs && git sparse-checkout set doc && git fetch --tags origin tag v20.2.4 && git checkout v20.2.4
 cd /path/to/ceph-document-kb
-python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.1 --verbose
+python3 index_docs.py --docs-path /tmp/ceph-docs/doc --version 20.2.4 --verbose
 
 # Date delta (git log --since). Needs git history covering the date —
 # a `--depth 1` clone from the full-build step above is not enough.
 python3 index_docs.py --since 2026-08-01 \
     --docs-path /tmp/ceph-docs/doc \
     --repo-path /tmp/ceph-docs \
-    --version 20.2.1 --verbose
+    --version 20.2.4 --verbose
 
 # Tag-to-tag delta (git diff between tags)
 python3 index_docs.py --update --docs-path /tmp/ceph-docs/doc \
-    --repo-path /tmp/ceph-docs --from-version v20.2.1 --to-version v20.2.2
+    --repo-path /tmp/ceph-docs --from-version v20.2.1 --to-version v20.2.4 \
+    --version 20.2.4 --output knowledge/doc-20.2.4
 ```
 
 Requires an existing `knowledge/doc-{version}/` for `--since`. Deleted RST files drop out of the index.
@@ -178,15 +180,17 @@ Requires an existing `knowledge/doc-{version}/` for `--since`. Deleted RST files
 
 IBM has no git history. `--since` **recrawls** the IBM docs API, hash-compares against `--cache-dir`, and skips the FAISS rebuild when HTML is unchanged. If pages changed, the IBM index is rebuilt from the current snapshot. Without `--cache-dir`, `--since` still recrawls and **always full-rebuilds** (no hash-diff).
 
+Crawling uses `curl_cffi` chrome TLS impersonation (plain `httpx`/curl get Akamai 403).
+
 ```bash
-python3 index_ibm_docs.py --version 9.1 --since 2026-08-01 \
-    --cache-dir ./cache/ibm-9.1 --verbose
+python3 index_ibm_docs.py --version 9.2 --since 2026-10-01 \
+    --cache-dir ./cache/ibm-9.2 --verbose
 
 python3 index_ibm_docs.py --version 8.1 --verbose          # full
 python3 index_ibm_docs.py --version 8.1 --max-pages 5      # smoke test
 ```
 
-Supported IBM versions: `8.0`, `8.1`, `9.0`, `9.1` (see `IBM_VERSIONS` in `src/ceph_doc_kb/constants.py`). Output: `knowledge/doc-ibm-{version}/`.
+Supported IBM versions: `8.0`, `8.1`, `9.0`, `9.1`, `9.2` (see `IBM_VERSIONS` in `src/ceph_doc_kb/constants.py`). Output: `knowledge/doc-ibm-{version}/`. Docs URLs use VRMF (`9.9.2` for KB key `9.2`).
 
 ### Maintainer wrapper
 
@@ -197,7 +201,7 @@ Supported IBM versions: `8.0`, `8.1`, `9.0`, `9.1` (see `IBM_VERSIONS` in `src/c
 ./update_index.sh --reset
 ```
 
-Environment: `CEPH_DOCS_REPO` (default `/tmp/ceph-docs`), `CEPH_VERSION` (default `20.2.1`), `IBM_VERSIONS` (default `9.1`), `SKIP_UPSTREAM=1`, `SKIP_IBM=1`.
+Environment: `CEPH_DOCS_REPO` (default `/tmp/ceph-docs`), `CEPH_VERSION` (default `20.2.4`), `IBM_VERSIONS` (default `9.2`), `SKIP_UPSTREAM=1`, `SKIP_IBM=1`.
 
 Metadata fields: `last_incremental_since` on `metadata.json`; IBM also writes `updated_since` on `ibm_crawl_metadata.json`.
 
@@ -208,8 +212,8 @@ Full maintainer help: [UPDATING.md](UPDATING.md).
 ## Architecture
 
 ```
-Upstream RST  → parser → scorer → embedder → knowledge/doc-20.2.1/<component>/
-IBM HTML API  → crawler → ibm_parser ──────→ knowledge/doc-ibm-9.1/<component>/
+Upstream RST  → parser → scorer → embedder → knowledge/doc-20.2.4/<component>/
+IBM HTML API  → crawler → ibm_parser ──────→ knowledge/doc-ibm-9.2/<component>/
                                               command_xref.json
                                                       │
                                                       ▼

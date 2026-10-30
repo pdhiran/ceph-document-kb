@@ -1085,26 +1085,6 @@
     "commands_used": []
   },
   {
-    "entity_id": "2d503a7f60b02120",
-    "code": "keytool -import -noprompt -trustcacerts -alias ca -file ../ca.cer -keystore /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.272.b10-3.el8_3.x86_64/lib/security/cacert",
-    "language": "bash",
-    "context": "Creating an admin account with Red Hat Single Sign-On 7.6.0",
-    "source_file": "ibm-docs/8.1/uopops-creating-admin-account-red-hat-single-sign-760",
-    "component": "general",
-    "section_title": "Creating an admin account with Red Hat Single Sign-On 7.6.0",
-    "commands_used": []
-  },
-  {
-    "entity_id": "e17526c1443eab4e",
-    "code": "[root@host01 ~]# keytool -import -noprompt -trustcacerts -alias ca -file ../ca.cer -keystore /etc/java/java-1.8.0-openjdk/java-1.8.0-openjdk-1.8.0.272.b10-3.el8_3.x86_64/lib/security/cacert",
-    "language": "bash",
-    "context": "Creating an admin account with Red Hat Single Sign-On 7.6.0",
-    "source_file": "ibm-docs/8.1/uopops-creating-admin-account-red-hat-single-sign-760",
-    "component": "general",
-    "section_title": "Creating an admin account with Red Hat Single Sign-On 7.6.0",
-    "commands_used": []
-  },
-  {
     "entity_id": "45a8ef0513e1724a",
     "code": "./standalone.sh",
     "language": "bash",
@@ -1229,7 +1209,7 @@
     "entity_id": "cf5ba004cd7c2cbd",
     "code": "# systemctl enable firewalld\n# systemctl start firewalld\n# systemctl status firewalld",
     "language": "bash",
-    "context": "Start the firewalld service, enable it to run on boot, and ensure that it is\nrunning:",
+    "context": "Start the firewalld service, enable it to run on boot, and ensure that it is running:",
     "source_file": "ibm-docs/8.1/security-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
@@ -1249,7 +1229,7 @@
     "entity_id": "935321a6fb7097e0",
     "code": "sources:\nservices: ssh dhcpv6-client",
     "language": "bash",
-    "context": "On a new installation, the sources: section should be blank indicating that no\nports have been opened specifically. The services section should indicate\nssh indicating that the SSH service (and port 2",
+    "context": "On a new installation, the sources: section should be blank indicating that no ports have been opened specifically. The services section should indicate ssh indicating that the SSH service (and port 2",
     "source_file": "ibm-docs/8.1/security-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
@@ -1279,7 +1259,7 @@
     "entity_id": "a7ac3f0f00b478df",
     "code": "firewall-cmd --zone=<zone-name> --add-rich-rule=\"rule family=\"ipv4\" \\\nsource address=\"<ip-address>/<netmask>\" port protocol=\"tcp\" \\\nport=\"<port-number>\" accept\"",
     "language": "bash",
-    "context": "On the Ceph Storage Cluster zone\u2019s hosts, consider enabling only hosts running Ceph clients to\nconnect to the Ceph Storage Cluster daemons. For example:",
+    "context": "On the Ceph Storage Cluster zone\u2019s hosts, consider enabling only hosts running Ceph clients to connect to the Ceph Storage Cluster daemons. For example:",
     "source_file": "ibm-docs/8.1/security-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
@@ -1289,7 +1269,7 @@
     "entity_id": "a7ac3f0f00b478df",
     "code": "firewall-cmd --zone=<zone-name> --add-rich-rule=\"rule family=\"ipv4\" \\\nsource address=\"<ip-address>/<netmask>\" port protocol=\"tcp\" \\\nport=\"<port-number>\" accept\" --permanent",
     "language": "bash",
-    "context": "Replace <zone-name> with the zone name, <ipaddress>\nwith the IP address, <netmask> with the subnet mask in CIDR notation, and\n<port-number> with the port number or range. Repeat the process with the\n-",
+    "context": "Replace <zone-name> with the zone name, <ipaddress> with the IP address, <netmask> with the subnet mask in CIDR notation, and <port-number> with the port number or range. Repeat the process with the -",
     "source_file": "ibm-docs/8.1/security-hardening-network-service",
     "component": "general",
     "section_title": "Hardening the network service",
@@ -7600,39 +7580,65 @@
     "commands_used": []
   },
   {
-    "entity_id": "1ac535e5dab6c5e1",
-    "code": "ceph osd set-require-min-compat-client luminous",
+    "entity_id": "5fdf5544f91b7cf3",
+    "code": "ceph osd df deviceclass",
     "language": "bash",
     "context": "Using the Ceph Manager balancer module",
     "source_file": "ibm-docs/8.1/daemons-using-ceph-manager-balancer-module",
     "component": "general",
     "section_title": "Using the Ceph Manager balancer module",
     "commands_used": [
-      "ceph osd set-require-min-compat-client luminous"
+      "ceph osd df deviceclass"
     ]
   },
   {
-    "entity_id": "3d3213f7de774ed6",
-    "code": "ceph osd set-require-min-compat-client luminous --yes-i-really-mean-it",
+    "entity_id": "bc0a20c70851c194",
+    "code": "ceph osd reweight osd.ID 1.000",
     "language": "bash",
     "context": "Using the Ceph Manager balancer module",
     "source_file": "ibm-docs/8.1/daemons-using-ceph-manager-balancer-module",
     "component": "general",
     "section_title": "Using the Ceph Manager balancer module",
     "commands_used": [
-      "ceph osd set-require-min-compat-client luminous --yes-i-really-mean-it"
+      "ceph osd reweight osd"
     ]
   },
   {
-    "entity_id": "6764f24122352b7d",
-    "code": "[ceph: root@host01 /]# ceph features",
+    "entity_id": "27ad0749b50b6ffe",
+    "code": "ceph config set global max_pg_per_osd 500\nceph config set global mon_target_pg_per_osd 300\nceph config set mgr/balancer/upmap_max_deviation 1",
     "language": "bash",
     "context": "Using the Ceph Manager balancer module",
     "source_file": "ibm-docs/8.1/daemons-using-ceph-manager-balancer-module",
     "component": "general",
     "section_title": "Using the Ceph Manager balancer module",
     "commands_used": [
-      "ceph features"
+      "ceph config set global max_pg_per_osd",
+      "ceph config set global mon_target_pg_per_osd",
+      "ceph config set mgr"
+    ]
+  },
+  {
+    "entity_id": "5879e9954eeceaf1",
+    "code": "ceph osd pool ls detail",
+    "language": "bash",
+    "context": "Using the Ceph Manager balancer module",
+    "source_file": "ibm-docs/8.1/daemons-using-ceph-manager-balancer-module",
+    "component": "general",
+    "section_title": "Using the Ceph Manager balancer module",
+    "commands_used": [
+      "ceph osd pool ls detail"
+    ]
+  },
+  {
+    "entity_id": "3b3e8957d351915d",
+    "code": "ceph osd crush rule dump | jq 'map(select(.rule_id == RULE_ID) | .steps)'",
+    "language": "bash",
+    "context": "Using the Ceph Manager balancer module",
+    "source_file": "ibm-docs/8.1/daemons-using-ceph-manager-balancer-module",
+    "component": "general",
+    "section_title": "Using the Ceph Manager balancer module",
+    "commands_used": [
+      "ceph osd crush rule dump"
     ]
   },
   {
@@ -8143,8 +8149,8 @@
     ]
   },
   {
-    "entity_id": "466e0db6c7c47fcd",
-    "code": "[ceph: root@host01 /]# ospmaptool map \u2013upmap balance.sh",
+    "entity_id": "32dd29f0ba1cd66e",
+    "code": "[ceph: root@host01 /]# osdmaptool map --upmap balance.sh",
     "language": "bash",
     "context": "Balancing a Ceph cluster using read balancer",
     "source_file": "ibm-docs/8.1/module-balancing-ceph-cluster-using-read-balancer",
@@ -8156,7 +8162,7 @@
     "entity_id": "77fa7646d1668583",
     "code": "[ceph: root@host01 /]# source balance.sh",
     "language": "bash",
-    "context": "Run the following command if there are any recommendations in the balance.sh\nfile.",
+    "context": "Run the following command if there are any recommendations in the balance.sh file.",
     "source_file": "ibm-docs/8.1/module-balancing-ceph-cluster-using-read-balancer",
     "component": "general",
     "section_title": "Balancing a Ceph cluster using read balancer",
@@ -10473,19 +10479,6 @@
   },
   {
     "entity_id": "d40f9f99d1fa6cb0",
-    "code": "[ceph: root@host01 /]# ceph config set mgr mgr/cephadm/container_image_haproxy cp.icr.io/cp/ibm-ceph/haproxy-rhel8:latest\n[ceph: root@host01 /]# ceph config set mgr mgr/cephadm/container_image_keepalived cp.icr.io/cp/ibm-ceph/keepalived-rhel8:latest",
-    "language": "bash",
-    "context": "Configuring high availability for the Ceph Object Gateway",
-    "source_file": "ibm-docs/8.1/gateway-configuring-high-availability-ceph-object",
-    "component": "general",
-    "section_title": "Configuring high availability for the Ceph Object Gateway",
-    "commands_used": [
-      "ceph config set mgr mgr",
-      "ceph config set mgr mgr"
-    ]
-  },
-  {
-    "entity_id": "d40f9f99d1fa6cb0",
     "code": "[ceph: root@host01 /]# ceph config set mgr mgr/cephadm/container_image_haproxy cp.icr.io/cp/ibm-ceph/haproxy-rhel9:latest\n[ceph: root@host01 /]# ceph config set mgr mgr/cephadm/container_image_keepalived cp.icr.io/cp/ibm-ceph/keepalived-rhel9:latest",
     "language": "bash",
     "context": "Configuring high availability for the Ceph Object Gateway",
@@ -11473,40 +11466,6 @@
     "component": "general",
     "section_title": "Getting a zone group",
     "commands_used": []
-  },
-  {
-    "entity_id": "0ada0eb79958fefe",
-    "code": "{\n    \"zonegroups\": [\n        {\n            \"key\": \"90b28698-e7c3-462c-a42d-4aa780d24eda\",\n            \"val\": {\n                \"id\": \"90b28698-e7c3-462c-a42d-4aa780d24eda\",\n                \"name\": \"us\",\n                \"api_name\": \"us\",\n                \"is_master\": \"true\",\n                \"endpoints\": [\n                    \"http://rgw1:80\"\n                ],\n                \"hostnames\": [],\n                \"hostnames_s3website\": [],\n                \"master_zone\": \"9248cab2-afe7-43d8-a661-a40bf316665e\",\n                \"zones\": [\n                    {\n                        \"id\": \"9248cab2-afe7-43d8-a661-a40bf316665e\",\n                        \"name\": \"us-east\",\n                        \"endpoints\": [\n                            \"http://rgw1\"\n                        ],\n                        \"log_meta\": \"true\",\n                        \"log_data\": \"true\",\n                        \"bucket_index_max_shards\": 11,\n                        \"read_only\": \"false\"\n                    },\n                    {\n                        \"id\": \"d1024e59-7d28-49d1-8222-af101965a939\",\n                        \"name\": \"us-west\",\n                        \"endpoints\": [\n                            \"http://rgw2:80\"\n                        ],\n                        \"log_meta\": \"false\",\n                        \"log_data\": \"true\",\n                        \"bucket_index_max_shards\": 11,\n                        \"read_only\": \"false\"\n                    }\n                ],\n                \"placement_targets\": [\n                    {\n                        \"name\": \"default-placement\",\n                        \"tags\": []\n                    }\n                ],\n                \"default_placement\": \"default-placement\",\n                \"realm_id\": \"ae031368-8715-4e27-9a99-0c9468852cfe\"\n            }\n        }\n    ],\n    \"master_zonegroup\": \"90b28698-e7c3-462c-a42d-4aa780d24eda\",\n    \"bucket_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    },\n    \"user_quota\": {\n        \"enabled\": false,\n        \"max_size_kb\": -1,\n        \"max_objects\": -1\n    }\n}",
-    "language": "bash",
-    "context": "You may only have one zone group with is_master equal to true,\nand it must be specified as the master_zonegroup at the end of the zone group map.\nThe following JSON object is an example of a default z",
-    "source_file": "ibm-docs/8.1/groups-setting-zone-group-map",
-    "component": "general",
-    "section_title": "Setting a zone group map",
-    "commands_used": []
-  },
-  {
-    "entity_id": "03c587c9fff323a8",
-    "code": "[ceph: root@host01 /]# radosgw-admin zonegroup-map set --infile zonegroupmap.json",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/8.1/groups-setting-zone-group-map",
-    "component": "general",
-    "section_title": "Setting a zone group map",
-    "commands_used": [
-      "radosgw-admin zonegroup-map set --infile zonegroupmap"
-    ]
-  },
-  {
-    "entity_id": "83017db1faa937ee",
-    "code": "[ceph: root@host01 /]#  radosgw-admin period update --commit",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/8.1/groups-setting-zone-group-map",
-    "component": "general",
-    "section_title": "Setting a zone group map",
-    "commands_used": [
-      "radosgw-admin period update --commit"
-    ]
   },
   {
     "entity_id": "46b8c699108fd761",
@@ -15361,8 +15320,8 @@
     ]
   },
   {
-    "entity_id": "497f6a8de61d9e64",
-    "code": "radosgw-admin user create --uid=USER_ID \n[--key-type=KEY_TYPE] [--gen-access-key|--access-key=ACCESS_KEY]\n[--gen-secret | --secret=SECRET_KEY] \n[--email=EMAIL] --display-name=DISPLAY_NAME",
+    "entity_id": "44f781de94413cd4",
+    "code": "radosgw-admin user create --uid=USER_ID\n[--key-type=KEY_TYPE] [--gen-access-key|--access-key=ACCESS_KEY]\n[--gen-secret | --secret=SECRET_KEY]\n[--email=EMAIL] --display-name=DISPLAY_NAME\n[--storage-class=STORAGE_CLASS]\n[--placement-id=PLACEMENT_ID]",
     "language": "bash",
     "context": "Syntax",
     "source_file": "ibm-docs/8.1/management-create-user",
@@ -15377,6 +15336,18 @@
     "code": "[root@host01 ~]# radosgw-admin user create --uid=janedoe --access-key=11BS02LGFB6AL6H1ADMW --secret=vzCEkuryfn060dfee4fgQPqFrncKEIkh3ZcdOANY --email=jane@example.com --display-name=Jane Doe\n\n{ \"user_id\": \"janedoe\",\n  \"display_name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"suspended\": 0,\n  \"max_buckets\": 1000,\n  \"auid\": 0,\n  \"subusers\": [],\n  \"keys\": [\n        { \"user\": \"janedoe\",\n          \"access_key\": \"11BS02LGFB6AL6H1ADMW\",\n          \"secret_key\": \"vzCEkuryfn060dfee4fgQPqFrncKEIkh3ZcdOANY\"}],\n  \"swift_keys\": [],\n  \"caps\": [],\n  \"op_mask\": \"read, write, delete\",\n  \"default_placement\": \"\",\n  \"placement_tags\": [],\n  \"bucket_quota\": { \"enabled\": false,\n      \"max_size_kb\": -1,\n      \"max_objects\": -1},\n  \"user_quota\": { \"enabled\": false,\n      \"max_size_kb\": -1,\n      \"max_objects\": -1},\n  \"temp_url_keys\": []}",
     "language": "bash",
     "context": "Example",
+    "source_file": "ibm-docs/8.1/management-create-user",
+    "component": "general",
+    "section_title": "Create a user",
+    "commands_used": [
+      "radosgw-admin user create --uid"
+    ]
+  },
+  {
+    "entity_id": "a66e9ef8187ac6f6",
+    "code": "[root@host01 ~]# radosgw-admin user create --uid=user1 --display-name=\"User One\" --access-key=user123 --secret=user123 --storage-class=cold --placement-id=default-placement",
+    "language": "bash",
+    "context": "Example: Create a user with a default storage class and placement target.",
     "source_file": "ibm-docs/8.1/management-create-user",
     "component": "general",
     "section_title": "Create a user",
@@ -15437,6 +15408,18 @@
     "code": "[root@host01 ~]# radosgw-admin user modify --uid=janedoe --display-name=\"Jane E. Doe\"",
     "language": "bash",
     "context": "Example",
+    "source_file": "ibm-docs/8.1/management-modify-user-information",
+    "component": "general",
+    "section_title": "Modify user information",
+    "commands_used": [
+      "radosgw-admin user modify --uid"
+    ]
+  },
+  {
+    "entity_id": "b30011d47d7d2d60",
+    "code": "[root@host01 ~]# radosgw-admin user modify --uid=user1 --storage-class=cold --placement-id=default-placement",
+    "language": "bash",
+    "context": "Example: Modify a user's default storage class and placement target.",
     "source_file": "ibm-docs/8.1/management-modify-user-information",
     "component": "general",
     "section_title": "Modify user information",
@@ -18542,7 +18525,7 @@
   },
   {
     "entity_id": "8982071440d05648",
-    "code": "[root@host01 ~]$ noobaa namespacestore create azure-blob  az --account-key='EXAMPLE_AZURE_ACCOUNT_KEY' --account-name='transitionrgw' --target-blob-container='mcgnamespace'",
+    "code": "[root@host01 ~]$ noobaa namespacestore create azure-blob  az --account-key='REDACTED_EXAMPLE_AZURE_ACCOUNT_KEY' --account-name='transitionrgw' --target-blob-container='mcgnamespace'",
     "language": "bash",
     "context": "Transitioning data to Azure cloud service",
     "source_file": "ibm-docs/8.1/platforms-transitioning-data-azure-cloud-service",
@@ -21005,44 +20988,50 @@
     "commands_used": []
   },
   {
-    "entity_id": "98781b262251f577",
-    "code": "resources:\n  # Define an AD member server cluster\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    auth_mode: active-directory\n    domain_settings:\n      realm: DOMAIN1.SINK.TEST\n      join_sources:\n        - source_type: resource\n          ref: join1-admin\n    custom_dns:\n      - \"192.168.76.204\"\n    # deploy 1 set of samba containers on a host labeled \"ilovesmb\"\n    placement:\n      count: 1\n      label: ilovesmb\n  # Define a join auth that our cluster will use to join AD\n  # Warning: Typically you do not want to use the Administrator user\n  # to perform joins on a production AD\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    auth:\n      username: Administrator\n      password: Passw0rd\n  # A share that uses the root of a subvolume\n  # The share name is the same as its id\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    cephfs:\n      volume: cephfs\n      subvolumegroup: smb1\n      subvolume: cache\n      path: /\n  # A share that uses the a sub-dir of a subvolume\n  # The share name is not the same as its id\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    name: \"Staff Pics\"\n    cephfs:\n      volume: cephfs\n      path: /pics\n      subvolumegroup: smb1\n      subvolume: staff",
+    "entity_id": "bfa76db87b5b4280",
+    "code": "resources:\n  # Define an Active Directory member server cluster\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    auth_mode: active-directory\n    domain_settings:\n      realm: DOMAIN1.SINK.TEST\n      join_sources:\n        - source_type: resource\n          ref: join1-admin\n    custom_dns:\n      - \"192.168.76.204\"\n    placement:\n      count: 1\n      label: ilovesmb\n\n  # Define join credentials used to join Active Directory\n  # Warning: Typically do not use the Administrator user in a production AD environment\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    auth:\n      username: Administrator\n      password: Passw0rd\n\n  # A share that uses the root of a subvolume with access control configured\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    cephfs:\n      volume: cephfs\n      subvolumegroup: smb1\n      subvolume: cache\n      path: /\n    restrict_access: true\n    login_control:\n      - name: auditor\n        category: user\n        access: read\n\n  # A share that uses a subdirectory of a subvolume\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    name: \"Staff Pics\"\n    cephfs:\n      volume: cephfs\n      subvolumegroup: smb1\n      subvolume: staff\n      path: /pics",
     "language": "bash",
-    "context": "Declarative method configuration example",
+    "context": "Using resource descriptions in a YAML configuration file, you can define and deploy an entire SMB environment in a single operation. The following resources.yaml example creates an Active Directory me",
     "source_file": "ibm-docs/8.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
     "commands_used": []
   },
   {
-    "entity_id": "30cd95f2897942d9",
-    "code": "ceph smb apply -i resources.yaml",
+    "entity_id": "da22981d22174d57",
+    "code": "- resource_type: ceph.smb.share\n  cluster_id: tango\n  share_id: reports\n  cephfs:\n    volume: cephfs\n    subvolumegroup: smb1\n    subvolume: reports\n    path: /\n  restrict_access: true\n  login_control:\n    - name: auditor\n      category: user\n      access: read",
     "language": "bash",
-    "context": "Declarative method configuration example",
+    "context": "The following example restricts access to a single read-only user:",
     "source_file": "ibm-docs/8.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
-    "commands_used": [
-      "ceph smb apply -i resources"
-    ]
+    "commands_used": []
   },
   {
-    "entity_id": "18b9ec2af5259f4d",
-    "code": "ceph smb apply -i removed.yaml",
+    "entity_id": "f42323902f50ea52",
+    "code": "- resource_type: ceph.smb.share\n  cluster_id: tango\n  share_id: projects\n  cephfs:\n    volume: cephfs\n    subvolumegroup: smb1\n    subvolume: projects\n    path: /\n  restrict_access: true\n  login_control:\n    - name: admin1\n      category: user\n      access: read-write\n    - name: admin2\n      category: user\n      access: read-write\n    - name: admin3\n      category: user\n      access: read-write",
     "language": "bash",
-    "context": "Use the following command to remove the removed.yaml file.",
+    "context": "The following example grants read and write access to multiple users:",
     "source_file": "ibm-docs/8.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
-    "commands_used": [
-      "ceph smb apply -i removed"
-    ]
+    "commands_used": []
+  },
+  {
+    "entity_id": "00cb9d885b90d00e",
+    "code": "- resource_type: ceph.smb.share\n  cluster_id: tango\n  share_id: devshare\n  cephfs:\n    volume: cephfs\n    subvolumegroup: smb1\n    subvolume: developers\n    path: /\n  restrict_access: true\n  login_control:\n    - name: developers\n      category: group\n      access: read-write",
+    "language": "bash",
+    "context": "The following example grants read and write access to all members of an Active Directory group:",
+    "source_file": "ibm-docs/8.1/shares-declarative-method-configuration-example",
+    "component": "general",
+    "section_title": "Declarative method configuration example",
+    "commands_used": []
   },
   {
     "entity_id": "682f29fc7f2495a4",
     "code": "resources:\n  - resource_type: ceph.smb.cluster\n    cluster_id: tango\n    intent: removed\n  - resource_type: ceph.smb.join.auth\n    auth_id: join1-admin\n    intent: removed\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: cache\n    intent: removed\n  - resource_type: ceph.smb.share\n    cluster_id: tango\n    share_id: sp1\n    intent: removed",
     "language": "bash",
-    "context": "Declarative method configuration example",
+    "context": "To remove previously defined declarative resources, create a configuration file such as removed.yaml and set intent: removed for each resource:",
     "source_file": "ibm-docs/8.1/shares-declarative-method-configuration-example",
     "component": "general",
     "section_title": "Declarative method configuration example",
@@ -28111,5 +28100,63 @@
     "component": "general",
     "section_title": "Testing Virtual IP and failovers",
     "commands_used": []
+  },
+  {
+    "entity_id": "ea064d681a2dbb95",
+    "code": "[ceph: root@host01 /]# ceph health detail\n\n[WRN] AUTH_INSECURE_CLIENT_KEY_TYPE:\nentity client.admin using insecure key type: aes\nentity client.storage-user using insecure key type: aes",
+    "language": "bash",
+    "context": "CephX authentication health checks",
+    "source_file": "ibm-docs/8.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "0428a8be99ea9691",
+    "code": "[ceph: root@host01 /]# ceph health detail\n\n[ERR] AUTH_INSECURE_ROTATING_SERVICE_KEY_TYPE:\nrotating service keys for mon using insecure key type: aes\nrotating service keys for osd using insecure key type: aes",
+    "language": "bash",
+    "context": "CephX authentication health checks",
+    "source_file": "ibm-docs/8.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph health detail"
+    ]
+  },
+  {
+    "entity_id": "992706c4dc1e3b1b",
+    "code": "[WRN] AUTH_INSECURE_KEYS_ALLOWED:\nMonitors are configured to allow auth using insecure key types\n  insecure cipher aes allowed for auth\n\n[WRN] AUTH_INSECURE_KEYS_CREATABLE:\nMonitors are configured to allow creation of insecure key types",
+    "language": "bash",
+    "context": "For example:",
+    "source_file": "ibm-docs/8.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": []
+  },
+  {
+    "entity_id": "c4a806c3fefa000e",
+    "code": "ceph mon set auth_allowed_ciphers aes256k",
+    "language": "bash",
+    "context": "After all required keys are rotated, disable the old cipher by running:",
+    "source_file": "ibm-docs/8.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph mon set auth_allowed_ciphers aes256k"
+    ]
+  },
+  {
+    "entity_id": "f11806ce1a1b6313",
+    "code": "ceph nfs cluster rotate-key CLUSTER_NAME --key-type aes256k",
+    "language": "bash",
+    "context": "Use the following command to rotate the NFS keys:",
+    "source_file": "ibm-docs/8.1/cluster-cephx-authentication-health-checks",
+    "component": "general",
+    "section_title": "CephX authentication health checks",
+    "commands_used": [
+      "ceph nfs cluster rotate-key CLUSTER_NAME"
+    ]
   }
 ]

@@ -2252,7 +2252,7 @@
     "entity_id": "f5c16246254ebde7",
     "code": "[root@host01 ~]# cephadm shell",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring a Grafana certificate",
     "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
     "component": "mgr",
     "section_title": "Configuring a Grafana certificate",
@@ -2261,99 +2261,74 @@
     ]
   },
   {
-    "entity_id": "767a6fc17df335b3",
-    "code": "[ceph: root@host01 /]# ceph config-key set mgr/cephadm/grafana_key -i $PWD/key.pem\n [ceph: root@host01 /]# ceph config-key set mgr/cephadm/grafana_crt -i $PWD/certificate.pem",
+    "entity_id": "47eeb585fc174760",
+    "code": "service_type: grafana\nplacement:\n  hosts:\n  - ceph-node-hostname\nspec:\n  ssl: true\n  certificate_source: reference",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring a Grafana certificate",
+    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ddaf1127a2dae9e8",
+    "code": "ceph orch certmgr cert set \\\n--cert-name GRAFANA_CERTIFICATE \\\n--hostname CEPH_HOSTNAME \\\n-i $PWD/certificate.pem",
+    "language": "bash",
+    "context": "Configuring a Grafana certificate",
     "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
     "component": "mgr",
     "section_title": "Configuring a Grafana certificate",
     "commands_used": [
-      "ceph config-key set mgr",
-      "ceph config-key set mgr"
+      "ceph orch certmgr cert set"
     ]
   },
   {
-    "entity_id": "65de3b5307cd161a",
-    "code": "[ceph: root@host01 /]# ceph orch reconfig grafana",
+    "entity_id": "df990b6c12705c5d",
+    "code": "[ceph: root@host01 /]# ceph orch certmgr cert set \\\n--cert-name grafana_ssl_cert \\\n--hostname ceph-node-hostname \\\n-i $PWD/certificate.pem",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring a Grafana certificate",
+    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": [
+      "ceph orch certmgr cert set"
+    ]
+  },
+  {
+    "entity_id": "e72195dd20129658",
+    "code": "ceph orch certmgr key set \\\n--key-name GRAFANA_KEY \\\n--hostname CEPH_HOSTNAME \\\n-i $PWD/key.pem",
+    "language": "bash",
+    "context": "Configuring a Grafana certificate",
+    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": [
+      "ceph orch certmgr key set"
+    ]
+  },
+  {
+    "entity_id": "aa9b62c599ec2f60",
+    "code": "[ceph: root@host01 /]# ceph orch certmgr key set \\\n--key-name grafana_ssl_key \\\n--hostname ceph-node-hostname \\\n-i $PWD/key.pem",
+    "language": "bash",
+    "context": "Configuring a Grafana certificate",
+    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
+    "component": "mgr",
+    "section_title": "Configuring a Grafana certificate",
+    "commands_used": [
+      "ceph orch certmgr key set"
+    ]
+  },
+  {
+    "entity_id": "294f2ac87aabe925",
+    "code": "ceph orch reconfig grafana",
+    "language": "bash",
+    "context": "Configuring a Grafana certificate",
     "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
     "component": "mgr",
     "section_title": "Configuring a Grafana certificate",
     "commands_used": [
       "ceph orch reconfig grafana"
     ]
-  },
-  {
-    "entity_id": "f8c69e7b3de42210",
-    "code": "[root@host01 ~]# mkdir /root/internalca\n [root@host01 ~]# cd /root/internalca",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
-    "component": "mgr",
-    "section_title": "Configuring a Grafana certificate",
-    "commands_used": []
-  },
-  {
-    "entity_id": "1744f3d1cbf31206",
-    "code": "[root@host01 internalca]# openssl ecparam -genkey -name secp384r1 -out $(date +%F).key",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
-    "component": "mgr",
-    "section_title": "Configuring a Grafana certificate",
-    "commands_used": []
-  },
-  {
-    "entity_id": "d73ce76742712cab",
-    "code": "[root@host01 internalca]# openssl ec -text -in $(date +%F).key | less",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
-    "component": "mgr",
-    "section_title": "Configuring a Grafana certificate",
-    "commands_used": []
-  },
-  {
-    "entity_id": "444ef0bb2941e575",
-    "code": "[root@host01 internalca]# umask 077; openssl req -config openssl-san.cnf -new -sha256 -key $(date +%F).key -out $(date +%F).csr",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
-    "component": "mgr",
-    "section_title": "Configuring a Grafana certificate",
-    "commands_used": []
-  },
-  {
-    "entity_id": "30c0bcd7ea3ad9c0",
-    "code": "[root@host01 internalca]# openssl req -text -in $(date +%F).csr | less",
-    "language": "bash",
-    "context": "Example",
-    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
-    "component": "mgr",
-    "section_title": "Configuring a Grafana certificate",
-    "commands_used": []
-  },
-  {
-    "entity_id": "595979feee3712fc",
-    "code": "[root@host01 internalca]#  openssl ca -extensions v3_req -in $(date +%F).csr -out $(date +%F).crt -extfile openssl-san.cnf",
-    "language": "bash",
-    "context": "Configuring a Grafana certificate",
-    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
-    "component": "mgr",
-    "section_title": "Configuring a Grafana certificate",
-    "commands_used": []
-  },
-  {
-    "entity_id": "7a2599846e4c19ca",
-    "code": "[root@host01 internalca]#  openssl x509 -text -in $(date +%F).crt -noout | less",
-    "language": "bash",
-    "context": "Configuring a Grafana certificate",
-    "source_file": "ibm-docs/9.1/alerts-configuring-grafana-certificate",
-    "component": "mgr",
-    "section_title": "Configuring a Grafana certificate",
-    "commands_used": []
   },
   {
     "entity_id": "f002e95d0f92731b",

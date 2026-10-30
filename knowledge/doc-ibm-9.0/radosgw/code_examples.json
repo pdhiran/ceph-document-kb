@@ -936,9 +936,9 @@
   },
   {
     "entity_id": "602060a3a988abf9",
-    "code": "service_type: rgw\nservice_id: REALM_NAME.ZONE_NAME\nplacement:\n  hosts:\n  - HOST_NAME_1\n  - HOST_NAME_2\n  count_per_host: NUMBER_OF_DAEMONS\nspec:\n  rgw_realm: REALM_NAME\n  rgw_zone: ZONE_NAME\n  rgw_zonegroup: ZONE_GROUP_NAME\n  rgw_frontend_port: FRONT_END_PORT\nnetworks:\n  -  NETWORK_CIDR # Ceph Object Gateway service binds to a specific network",
+    "code": "service_type: rgw\nservice_id: REALM_NAME.ZONE_NAME\nplacement:\n  hosts:\n  - HOST_NAME_1\n  - HOST_NAME_2\n  count_per_host: NUMBER_OF_DAEMONS\nspec:\n  rgw_realm: REALM_NAME\n  rgw_zone: ZONE_NAME\n  rgw_zonegroup: ZONE_GROUP_NAME\n  rgw_frontend_port: FRONT_END_PORT\n  \nnetworks:\n  -  NETWORK_CIDR",
     "language": "bash",
-    "context": "Edit the rgw_spec.yaml file to include the following details for the default\nrealm, zone, and zone group.",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
     "source_file": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
     "component": "radosgw",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
@@ -946,13 +946,28 @@
   },
   {
     "entity_id": "67156b8443a83c52",
-    "code": "service_type: rgw\nservice_id: default\nplacement:\n  hosts:\n  - host01\n  - host02\n  - host03\n  count_per_host: 2\nspec:\n  rgw_realm: default\n  rgw_zone: default\n  rgw_zonegroup: default\n  rgw_frontend_port: 1234\nnetworks:\n  - 192.169.142.0/24",
+    "code": "service_type: rgw\nservice_id: default\nplacement:\n  hosts:\n  - host01\n  - host02\n  - host03\n  count_per_host: 2\nspec:\n  rgw_realm: default\n  rgw_zone: default\n  rgw_zonegroup: default\n  rgw_frontend_port: 1234\n  \nnetworks:\n  - 192.169.142.0/24",
     "language": "bash",
     "context": "Deploying the Ceph Object Gateway using the service specification",
     "source_file": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
     "component": "radosgw",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
     "commands_used": []
+  },
+  {
+    "entity_id": "3bb278d3011da6a6",
+    "code": "radosgw-admin realm create --rgw-realm=test_realm --default\nradosgw-admin zonegroup create --rgw-zonegroup=test_zonegroup --default\nradosgw-admin zone create --rgw-zonegroup=test_zonegroup --rgw-zone=test_zone --default\nradosgw-admin period update --rgw-realm=test_realm --commit",
+    "language": "bash",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
+    "source_file": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+    "component": "radosgw",
+    "section_title": "Deploying the Ceph Object Gateway using the service specification",
+    "commands_used": [
+      "radosgw-admin realm create --rgw-realm",
+      "radosgw-admin zonegroup create --rgw-zonegroup",
+      "radosgw-admin zone create --rgw-zonegroup",
+      "radosgw-admin period update --rgw-realm"
+    ]
   },
   {
     "entity_id": "54e8e2562a052210",
@@ -990,6 +1005,18 @@
     "commands_used": []
   },
   {
+    "entity_id": "adc73c4409c28f96",
+    "code": "cephadm shell --mount rgw_spec.yaml:/var/lib/ceph/radosgw/rgw_spec.yaml",
+    "language": "bash",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
+    "source_file": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
+    "component": "radosgw",
+    "section_title": "Deploying the Ceph Object Gateway using the service specification",
+    "commands_used": [
+      "cephadm shell --mount rgw_spec"
+    ]
+  },
+  {
     "entity_id": "d76af98c4d31606e",
     "code": "[root@host01 ~]# cephadm shell --mount rgw_spec.yaml:/var/lib/ceph/radosgw/rgw_spec.yaml",
     "language": "bash",
@@ -1005,7 +1032,7 @@
     "entity_id": "bbd6f176d6bbf41f",
     "code": "ceph orch apply -i FILE_NAME.yaml",
     "language": "bash",
-    "context": "Deploy the Ceph Object Gateway using the service specification.",
+    "context": "Deploying the Ceph Object Gateway using the service specification",
     "source_file": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
     "component": "radosgw",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
@@ -1024,16 +1051,6 @@
     "commands_used": [
       "ceph orch apply -i"
     ]
-  },
-  {
-    "entity_id": "6fa8e2772f2deef9",
-    "code": "[root@host1 ~]$ cat rgw_spec.yaml \nservice_type: rgw\nservice_id: foo\nplacement:\n  count_per_host: 1\n  hosts:\n    - rgw_node\nspec:\n  rgw_frontend_port: 8081\nextra_container_args:\n  - \"--stop-timeout=120\"",
-    "language": "bash",
-    "context": "Deploying the Ceph Object Gateway using the service specification",
-    "source_file": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
-    "component": "radosgw",
-    "section_title": "Deploying the Ceph Object Gateway using the service specification",
-    "commands_used": []
   },
   {
     "entity_id": "954461e92a688983",
@@ -1063,7 +1080,7 @@
     "entity_id": "6e40b5da4c5f05a8",
     "code": "[ceph: root@host01 /]# ceph orch ps --daemon_type=rgw",
     "language": "bash",
-    "context": "Deploying the Ceph Object Gateway using the service specification",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/deployment-deploying-ceph-object-gateway-using-service-specification",
     "component": "radosgw",
     "section_title": "Deploying the Ceph Object Gateway using the service specification",
@@ -3972,7 +3989,7 @@
     "entity_id": "96a454d75c689ef0",
     "code": "[root@host01 ~]# cephadm shell",
     "language": "bash",
-    "context": "Example",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -3994,7 +4011,7 @@
   },
   {
     "entity_id": "196fb5000a004d70",
-    "code": "ceph config set client.rgw rgw_crypt_sse_s3_vault_auth agent\nceph config set client.rgw rgw_crypt_sse_s3_vault_addr http://_VAULT_AGENT_:_VAULT_AGENT_PORT_",
+    "code": "ceph config set client.rgw rgw_crypt_sse_s3_vault_auth agent\nceph config set client.rgw rgw_crypt_sse_s3_vault_addr http://VAULT_AGENT:VAULT_AGENT_PORT",
     "language": "bash",
     "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
@@ -4009,7 +4026,7 @@
     "entity_id": "0d060d8b43eafdf3",
     "code": "[ceph: root@host01 ~]# ceph config set client.rgw rgw_crypt_sse_s3_vault_auth agent\n[ceph: root@host01 ~]# ceph config set client.rgw rgw_crypt_sse_s3_vault_addr http://vaultagent:8100",
     "language": "bash",
-    "context": "Example",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4019,8 +4036,8 @@
     ]
   },
   {
-    "entity_id": "e84a0f84286b3464",
-    "code": "vault read auth/approle/role/rgw-ap/role-id -format=json | \\ jq -r .rgw-ap-role-id > _PATH_TO_FILE_",
+    "entity_id": "f0b2ce500f6174c7",
+    "code": "vault read auth/approle/role/rgw-ap/role-id -format=json | \\ jq -r .rgw-ap-role-id > PATH_TO_FILE",
     "language": "bash",
     "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
@@ -4029,8 +4046,8 @@
     "commands_used": []
   },
   {
-    "entity_id": "d645b220fb15a2a9",
-    "code": "vault read auth/approle/role/rgw-ap/role-id -format=json | \\ jq -r .rgw-ap-secret-id > _PATH_TO_FILE_",
+    "entity_id": "1598bb28e8e6a535",
+    "code": "vault read auth/approle/role/rgw-ap/role-id -format=json | \\ jq -r .rgw-ap-secret-id > PATH_TO_FILE",
     "language": "bash",
     "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
@@ -4042,17 +4059,17 @@
     "entity_id": "ee7ba6d7eadd81f5",
     "code": "pid_file = \"/run/rgw-vault-agent-pid\"\nauto_auth {\n  method \"AppRole\" {\n    mount_path = \"auth/approle\"\n    config = {\n      role_id_file_path =\"/usr/local/etc/vault/.rgw-ap-role-id\"\n      secret_id_file_path =\"/usr/local/etc/vault/.rgw-ap-secret-id\"\n      remove_secret_id_file_after_reading =\"false\"\n    }\n  }\n}\ncache {\n  use_auto_auth_token = true\n}\nlistener \"tcp\" {\n  address = \"127.0.0.1:8100\"\n  tls_disable = true\n}\nvault {\n  address = \"https://vaultserver:8200\"\n}",
     "language": "bash",
-    "context": "Example",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "commands_used": []
   },
   {
-    "entity_id": "ed46d7656e5feb7e",
-    "code": "[root@host01 ~]# /usr/local/bin/vault agent -config=/usr/local/etc/vault/rgw-agent.hcl",
+    "entity_id": "c01811cc78bfb245",
+    "code": "/usr/local/bin/vault agent -config=/usr/local/etc/vault/rgw-agent.hcl",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4060,7 +4077,7 @@
   },
   {
     "entity_id": "7e2096bb9ced867f",
-    "code": "ceph config set client.rgw rgw_crypt_sse_s3_vault_auth token\nceph config set client.rgw rgw_crypt_sse_s3_vault_token_file _PATH_TO_TOKEN_FILE_\nceph config set client.rgw rgw_crypt_sse_s3_vault_addr http://_VAULT_SERVER_:_VAULT_PORT_",
+    "code": "ceph config set client.rgw rgw_crypt_sse_s3_vault_auth token\nceph config set client.rgw rgw_crypt_sse_s3_vault_token_file PATH_TO_TOKEN_FILE\nceph config set client.rgw rgw_crypt_sse_s3_vault_addr http://VAULT_SERVER:VAULT_PORT",
     "language": "bash",
     "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
@@ -4076,7 +4093,7 @@
     "entity_id": "93e69dbf4a8625a6",
     "code": "[ceph: root@host01 ~]# ceph config set client.rgw rgw_crypt_sse_s3_vault_auth token\n[ceph: root@host01 ~]# ceph config set client.rgw rgw_crypt_sse_s3_vault_token_file /run/.rgw-vault-token\n[ceph: root@host01 ~]# ceph config set client.rgw rgw_crypt_sse_s3_vault_addr http://vaultserver:8200",
     "language": "bash",
-    "context": "Example",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4087,10 +4104,10 @@
     ]
   },
   {
-    "entity_id": "c52a8eac5e82f3df",
-    "code": "[ceph: root@host01 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_secret_engine kv",
+    "entity_id": "a016d0fd90fe18f8",
+    "code": "ceph config set client.rgw",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4099,16 +4116,14 @@
     ]
   },
   {
-    "entity_id": "0ed6b0c3f8b663ee",
-    "code": "[ceph: root@host01 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_secret_engine transit",
+    "entity_id": "15e33df12390ae7f",
+    "code": "rgw_crypt_sse_s3_vault_secret_engine transit",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
-    "commands_used": [
-      "ceph config set client"
-    ]
+    "commands_used": []
   },
   {
     "entity_id": "97f3ba4adfc0018a",
@@ -4123,10 +4138,10 @@
     ]
   },
   {
-    "entity_id": "b28a37a12e955654",
-    "code": "[ceph: root@host01 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_prefix /v1/secret/data",
+    "entity_id": "a016d0fd90fe18f8",
+    "code": "ceph config set client.rgw",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4135,22 +4150,20 @@
     ]
   },
   {
-    "entity_id": "42542874ee430e9f",
-    "code": "[ceph: root@host01 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_prefix /v1/transit",
+    "entity_id": "7404ae7900051cec",
+    "code": "rgw_crypt_sse_s3_vault_prefix /v1/transit",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
-    "commands_used": [
-      "ceph config set client"
-    ]
+    "commands_used": []
   },
   {
     "entity_id": "89cb973993316d64",
     "code": "http://vaultserver:8200/v1/transit",
     "language": "bash",
-    "context": "Example",
+    "context": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4175,7 +4188,7 @@
     "entity_id": "9bfdbae24a6c2c78",
     "code": "[ceph: root@host01 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_verify_ssl true\n[ceph: root@host01 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_ssl_cacert /etc/ceph/vault.ca\n[ceph: root@host01 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_ssl_clientcert /etc/ceph/vault.crt\n[ceph: root@host03 /]# ceph config set client.rgw rgw_crypt_sse_s3_vault_ssl_clientkey /etc/ceph/vault.key",
     "language": "bash",
-    "context": "Example",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4200,7 +4213,7 @@
     "entity_id": "4433a827fb633291",
     "code": "[root@host01 ~]# systemctl restart ceph-c4b34c6f-8365-11ba-dc31-529020a7702d@rgw.realm.zone.host01.gwasto.service",
     "language": "bash",
-    "context": "Example",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4222,7 +4235,7 @@
     "entity_id": "1c09422d42b9bab2",
     "code": "[ceph: root@host01 /]# ceph orch restart rgw",
     "language": "bash",
-    "context": "Example",
+    "context": "For example,",
     "source_file": "ibm-docs/9.0/uhv-configuring-ceph-object-gateway-use-sse-s3-vault",
     "component": "radosgw",
     "section_title": "Configuring the Ceph Object Gateway to use SSE-S3 with Vault",
@@ -4233,6 +4246,16 @@
   {
     "entity_id": "7c458d84c7ec6e65",
     "code": "ln: failed to access '/tmp/rgwrbi-object-list.4053207': No such file or directory",
+    "language": "bash",
+    "context": "Recovering bucket index",
+    "source_file": "ibm-docs/9.0/resharding-recovering-bucket-index",
+    "component": "radosgw",
+    "section_title": "Recovering bucket index",
+    "commands_used": []
+  },
+  {
+    "entity_id": "491ab4b14cab0e7b",
+    "code": "[root@host01 ~]# time rgw-restore-bucket-index  --proceed serp-bu-ver-1 default.rgw.buckets.data\nNOTICE: This tool is currently considered EXPERIMENTAL.\nmarker is e871fb65-b87f-4c16-a7c3-064b66feb1c4.25076.5\nbucket_id is e871fb65-b87f-4c16-a7c3-064b66feb1c4.25076.5\nError: this bucket appears to be versioned, and this tool cannot work with versioned buckets.",
     "language": "bash",
     "context": "Recovering bucket index",
     "source_file": "ibm-docs/9.0/resharding-recovering-bucket-index",
@@ -4273,16 +4296,6 @@
     "commands_used": [
       "radosgw-admin bucket list --bucket"
     ]
-  },
-  {
-    "entity_id": "491ab4b14cab0e7b",
-    "code": "[root@host01 ~]# time rgw-restore-bucket-index  --proceed serp-bu-ver-1 default.rgw.buckets.data\nNOTICE: This tool is currently considered EXPERIMENTAL.\nmarker is e871fb65-b87f-4c16-a7c3-064b66feb1c4.25076.5\nbucket_id is e871fb65-b87f-4c16-a7c3-064b66feb1c4.25076.5\nError: this bucket appears to be versioned, and this tool cannot work with versioned buckets.",
-    "language": "bash",
-    "context": "Recovering bucket index",
-    "source_file": "ibm-docs/9.0/resharding-recovering-bucket-index",
-    "component": "radosgw",
-    "section_title": "Recovering bucket index",
-    "commands_used": []
   },
   {
     "entity_id": "04bdefa5d606df52",
@@ -5031,10 +5044,10 @@
     ]
   },
   {
-    "entity_id": "800888e9459826ca",
-    "code": "[ceph: root@host01 /]# radosgw-admin reshard stale-instances list",
+    "entity_id": "eb88891b804082b8",
+    "code": "radosgw-admin reshard stale-instances list",
     "language": "bash",
-    "context": "List stale instances:",
+    "context": "Cleaning stale instances of bucket entries after resharding",
     "source_file": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
     "component": "radosgw",
     "section_title": "Cleaning stale instances of bucket entries after resharding",
@@ -5043,22 +5056,22 @@
     ]
   },
   {
-    "entity_id": "43174b8b072e8636",
-    "code": "[ceph: root@host01 /]# radosgw-admin reshard stale-instances rm",
+    "entity_id": "4aa1a88eacfc08f3",
+    "code": "radosgw-admin reshard stale-instances delete",
     "language": "bash",
-    "context": "Clean the stale instances of the bucket entries:",
+    "context": "Cleaning stale instances of bucket entries after resharding",
     "source_file": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
     "component": "radosgw",
     "section_title": "Cleaning stale instances of bucket entries after resharding",
     "commands_used": [
-      "radosgw-admin reshard stale-instances rm"
+      "radosgw-admin reshard stale-instances delete"
     ]
   },
   {
     "entity_id": "839ef21899fca0ec",
     "code": "radosgw-admin reshard status --bucket BUCKET",
     "language": "bash",
-    "context": "Syntax",
+    "context": "Cleaning stale instances of bucket entries after resharding",
     "source_file": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
     "component": "radosgw",
     "section_title": "Cleaning stale instances of bucket entries after resharding",
@@ -5070,7 +5083,7 @@
     "entity_id": "e16d358627d55214",
     "code": "[ceph: root@host01 /]# radosgw-admin reshard status --bucket data",
     "language": "bash",
-    "context": "Example",
+    "context": "Cleaning stale instances of bucket entries after resharding",
     "source_file": "ibm-docs/9.0/resharding-cleaning-stale-instances-bucket-entries-after",
     "component": "radosgw",
     "section_title": "Cleaning stale instances of bucket entries after resharding",
@@ -7614,7 +7627,7 @@
     "entity_id": "c6c4bc2bf988895c",
     "code": "$ cat > examplepol\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"Principal\": {\"AWS\": [\"arn:aws:iam::usfolks:user/fred\"]},\n    \"Action\": \"s3:PutObjectAcl\",\n    \"Resource\": [\n      \"arn:aws:s3:::happybucket/*\"\n    ]\n  }]\n}\n\n$ s3cmd setpolicy examplepol s3://happybucket\n$ s3cmd delpolicy s3://happybucket",
     "language": "bash",
-    "context": "Example",
+    "context": "The following is an example of setting and deleting an S3 bucket policy:",
     "source_file": "ibm-docs/9.0/operations-s3-bucket-policies",
     "component": "radosgw",
     "section_title": "S3 bucket policies",
@@ -7836,6 +7849,54 @@
     "component": "radosgw",
     "section_title": "S3 delete PublicAccessBlock",
     "commands_used": []
+  },
+  {
+    "entity_id": "de3a03e5c62a79ef",
+    "code": "aws --profile ceph --endpoint-url https://rgw.example.com s3api put-bucket-tagging \\\n  --bucket finance-data \\\n--tagging '\n    \"TagSet\": [\n      {\n        \"Key\": \"environment\",\n        \"Value\": \"production\"\n      },\n      {\n        \"Key\": \"department\",\n        \"Value\": \"finance\"\n      }\n    ]'",
+    "language": "bash",
+    "context": "Managing bucket tags",
+    "source_file": "ibm-docs/9.0/operations-bucket-tagging",
+    "component": "radosgw",
+    "section_title": "Managing bucket tags",
+    "commands_used": [
+      "ceph --endpoint-url https"
+    ]
+  },
+  {
+    "entity_id": "957876cd2957e4d0",
+    "code": "aws --profile ceph --endpoint-url https://rgw.example.com s3api get-bucket-tagging --bucket finance-data",
+    "language": "bash",
+    "context": "Managing bucket tags",
+    "source_file": "ibm-docs/9.0/operations-bucket-tagging",
+    "component": "radosgw",
+    "section_title": "Managing bucket tags",
+    "commands_used": [
+      "ceph --endpoint-url https"
+    ]
+  },
+  {
+    "entity_id": "de3a03e5c62a79ef",
+    "code": "aws --profile ceph --endpoint-url https://rgw.example.com s3api put-bucket-tagging \\\n  --bucket finance-data \\\n  --tagging '{\n    \"TagSet\": [\n      {\n        \"Key\": \"environment\",\n        \"Value\": \"test\"\n      }\n    ]\n  }'",
+    "language": "bash",
+    "context": "Managing bucket tags",
+    "source_file": "ibm-docs/9.0/operations-bucket-tagging",
+    "component": "radosgw",
+    "section_title": "Managing bucket tags",
+    "commands_used": [
+      "ceph --endpoint-url https"
+    ]
+  },
+  {
+    "entity_id": "7bf9ef109d0cc666",
+    "code": "aws --profile ceph --endpoint-url https://rgw.example.com s3api delete-bucket-tagging --bucket finance-data",
+    "language": "bash",
+    "context": "Managing bucket tags",
+    "source_file": "ibm-docs/9.0/operations-bucket-tagging",
+    "component": "radosgw",
+    "section_title": "Managing bucket tags",
+    "commands_used": [
+      "ceph --endpoint-url https"
+    ]
   },
   {
     "entity_id": "dd13bbf762e724b6",

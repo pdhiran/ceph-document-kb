@@ -74,7 +74,7 @@ ceph-document-kb/
 │
 ├── knowledge/                  # Built indices (committed so MCP auto-update can ship them)
 │   ├── doc-20.2.1/             # Upstream RST
-│   └── doc-ibm-{8.0,8.1,9.0,9.1}/
+│   └── doc-ibm-{8.0,8.1,9.0,9.1,9.2}/
 │
 ├── vscode-extension/           # VS Code extension
 ├── examples/                   # Integration examples

@@ -56,8 +56,8 @@ Each Ceph release gets its own index directory:
 
 ```
 knowledge/
-  doc-20.2.1/     # Tentacle upstream RST
-  doc-ibm-9.1/    # IBM Storage Ceph 9.1 HTML (also 8.0, 8.1, 9.0)
+  doc-20.2.4/     # Tentacle upstream RST
+  doc-ibm-9.2/    # IBM Storage Ceph 9.2 HTML (also 8.0, 8.1, 9.0, 9.1)
 ```
 
 The MCP server loads the latest available version by default, or a specific version via `--version` argument.

@@ -1986,6 +1986,56 @@
     "commands_used": []
   },
   {
+    "entity_id": "dc4e7da814d42457",
+    "code": "echo nvme-fabrics | sudo tee /etc/modules-load.d/nvme-fabrics.conf",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/9.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "0818332080993637",
+    "code": "cat >> /etc/nvme/discovery.conf\n--transport=tcp --traddr=10.0.66.9 --trsvcid=8009\n--transport=tcp --traddr=10.0.67.10 --trsvcid=8009",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/9.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "e2ff0de4b85cfe57",
+    "code": "systemctl enable nvmf-autoconnect.service",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/9.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "3b3111b4737af58a",
+    "code": "systemctl status nvmf-autoconnect.service",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/9.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
+    "entity_id": "ed9918c8b6ad1b8b",
+    "code": "systemctl status nvmf-autoconnect.service\n\u25cb nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot\n     Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)\n     Active: inactive (dead) since Sat 2026-07-25 05:29:53 UTC; 17s ago\n Invocation: 26bda68314044c7c93451c7dcec5606f\n    Process: 1341 ExecStart=/usr/sbin/nvme connect-all --context=autoconnect (code=exited, status=0/SUCCESS)\n   Main PID: 1341 (code=exited, status=0/SUCCESS)\n   Mem peak: 4.9M\n        CPU: 81ms",
+    "language": "bash",
+    "context": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "source_file": "ibm-docs/9.0/initiator-configuring-nvme-red-hat-enterprise-linux",
+    "component": "rbd",
+    "section_title": "Configuring the NVMe-oF initiator for Red Hat Enterprise Linux",
+    "commands_used": []
+  },
+  {
     "entity_id": "618d2866eb7650a5",
     "code": "esxcli nvme fabrics enable --protocol TCP --device vmnicN",
     "language": "bash",
@@ -2429,15 +2479,15 @@
     ]
   },
   {
-    "entity_id": "53b0d1ce1b7f41af",
-    "code": "[ceph: root@host01 /]# ceph orch rm nqn.2016-06.io.spdk:cnode1.group1",
+    "entity_id": "59f85b5b487f3ca6",
+    "code": "[ceph: root@host01 /]# ceph orch rm nvmeof.nvmeof.pool1",
     "language": "bash",
     "context": "Removing the NVMe-oF service",
     "source_file": "ibm-docs/9.0/gateway-removing-nvme-service",
     "component": "rbd",
     "section_title": "Removing the NVMe-oF service",
     "commands_used": [
-      "ceph orch rm nqn"
+      "ceph orch rm nvmeof"
     ]
   },
   {

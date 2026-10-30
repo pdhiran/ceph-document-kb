@@ -3,13 +3,13 @@
   "ceph_version": "ibm-8.0",
   "embedding_model": "BAAI/bge-small-en-v1.5",
   "embedding_dimensions": 384,
-  "total_chunks": 5073,
-  "total_code_examples": 5626,
+  "total_chunks": 5113,
+  "total_code_examples": 5668,
   "components": {
     "cephadm": {
       "name": "cephadm",
       "chunk_count": 245,
-      "code_example_count": 533,
+      "code_example_count": 537,
       "topics": [
         "access",
         "administration",
@@ -92,8 +92,8 @@
     },
     "dev": {
       "name": "dev",
-      "chunk_count": 61,
-      "code_example_count": 71,
+      "chunk_count": 62,
+      "code_example_count": 72,
       "topics": [
         "api",
         "developer",
@@ -106,10 +106,13 @@
     },
     "general": {
       "name": "general",
-      "chunk_count": 2534,
-      "code_example_count": 2360,
+      "chunk_count": 2558,
+      "code_example_count": 2366,
       "topics": [
         "80",
+        "80z2",
+        "80z3",
+        "80z4",
         "access",
         "adi",
         "adjustments",
@@ -262,8 +265,8 @@
     },
     "rados": {
       "name": "rados",
-      "chunk_count": 760,
-      "code_example_count": 872,
+      "chunk_count": 767,
+      "code_example_count": 895,
       "topics": [
         "ac",
         "administration",
@@ -343,8 +346,8 @@
     },
     "radosgw": {
       "name": "radosgw",
-      "chunk_count": 550,
-      "code_example_count": 773,
+      "chunk_count": 554,
+      "code_example_count": 776,
       "topics": [
         "acog",
         "acogsa",
@@ -402,8 +405,8 @@
     },
     "rbd": {
       "name": "rbd",
-      "chunk_count": 158,
-      "code_example_count": 185,
+      "chunk_count": 162,
+      "code_example_count": 190,
       "topics": [
         "ccbduiflkmc",
         "ceph",
@@ -443,5 +446,6 @@
       "code_examples_path": "troubleshooting/code_examples.json"
     }
   },
-  "build_timestamp": "2026-07-17T13:34:20.555267+00:00"
+  "build_timestamp": "2026-10-29T19:13:15.598131+00:00",
+  "last_incremental_since": "2026-07-01"
 }

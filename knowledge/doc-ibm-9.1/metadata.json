@@ -3,13 +3,13 @@
   "ceph_version": "ibm-9.1",
   "embedding_model": "BAAI/bge-small-en-v1.5",
   "embedding_dimensions": 384,
-  "total_chunks": 6000,
-  "total_code_examples": 6444,
+  "total_chunks": 6140,
+  "total_code_examples": 6550,
   "components": {
     "cephadm": {
       "name": "cephadm",
-      "chunk_count": 287,
-      "code_example_count": 568,
+      "chunk_count": 303,
+      "code_example_count": 614,
       "topics": [
         "administration",
         "bootstrap",
@@ -47,8 +47,8 @@
     },
     "cephfs": {
       "name": "cephfs",
-      "chunk_count": 775,
-      "code_example_count": 705,
+      "chunk_count": 792,
+      "code_example_count": 716,
       "topics": [
         "ac",
         "benchmark",
@@ -68,7 +68,6 @@
         "integration",
         "kecns",
         "management",
-        "method",
         "mmsuco",
         "mnsguco",
         "mscs",
@@ -103,8 +102,8 @@
     },
     "dev": {
       "name": "dev",
-      "chunk_count": 61,
-      "code_example_count": 71,
+      "chunk_count": 74,
+      "code_example_count": 77,
       "topics": [
         "api",
         "developer",
@@ -117,11 +116,12 @@
     },
     "general": {
       "name": "general",
-      "chunk_count": 2827,
-      "code_example_count": 2567,
+      "chunk_count": 2863,
+      "code_example_count": 2589,
       "topics": [
         "991",
         "9911",
+        "9912",
         "accounts",
         "adi",
         "adjustments",
@@ -220,6 +220,7 @@
         "red",
         "reference",
         "release",
+        "requests",
         "resharding",
         "retention",
         "roles",
@@ -246,6 +247,7 @@
         "tradeoffs",
         "traps",
         "uopops",
+        "updates",
         "usage",
         "users",
         "utility",
@@ -260,8 +262,8 @@
     },
     "mgr": {
       "name": "mgr",
-      "chunk_count": 202,
-      "code_example_count": 220,
+      "chunk_count": 225,
+      "code_example_count": 217,
       "topics": [
         "alerts",
         "cd",
@@ -285,8 +287,8 @@
     },
     "rados": {
       "name": "rados",
-      "chunk_count": 836,
-      "code_example_count": 1006,
+      "chunk_count": 838,
+      "code_example_count": 1009,
       "topics": [
         "ac",
         "administration",
@@ -356,7 +358,6 @@
         "size",
         "stack",
         "storage",
-        "store",
         "strategies",
         "target",
         "tcpg",
@@ -373,8 +374,8 @@
     },
     "radosgw": {
       "name": "radosgw",
-      "chunk_count": 643,
-      "code_example_count": 817,
+      "chunk_count": 659,
+      "code_example_count": 822,
       "topics": [
         "accounts",
         "acog",
@@ -433,8 +434,8 @@
     },
     "rbd": {
       "name": "rbd",
-      "chunk_count": 312,
-      "code_example_count": 419,
+      "chunk_count": 329,
+      "code_example_count": 435,
       "topics": [
         "ccbduiflkmc",
         "ceph",
@@ -478,5 +479,6 @@
       "code_examples_path": "troubleshooting/code_examples.json"
     }
   },
-  "build_timestamp": "2026-08-26T04:23:04.760017+00:00"
+  "build_timestamp": "2026-10-29T16:30:17.331961+00:00",
+  "last_incremental_since": "2026-07-01"
 }

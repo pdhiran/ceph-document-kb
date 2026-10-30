@@ -905,7 +905,7 @@
   {
     "entity_id": "af938fa4341afe2d",
     "title": "Deploying the NFS service gateway using the command line interface",
-    "content": "You can use the Ceph Orchestrator with Cephadm in the backend to deploy the NFS service\ngateway using the placement specification. In this case, you have to create a RADOS pool and create\na namespace before deploying the gateway.",
+    "content": "You can use the Ceph Orchestrator with Cephadm in the backend to deploy the NFS service gateway using the placement specification. In this case, you have to create a RADOS pool and create a namespace before deploying the gateway.",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -924,7 +924,7 @@
   {
     "entity_id": "7baebbf52c145c30",
     "title": "Before you begin",
-    "content": "Before you begin, make sure that you have the following prerequisites in place:\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.\n- All manager, monitor and OSD daemons are deployed.",
+    "content": "Before you begin, make sure that you have the following prerequisites in place:\n\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.\n- All manager, monitor and OSD daemons are deployed.",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -962,7 +962,7 @@
   {
     "entity_id": "d2ee025941ab4691",
     "title": "Procedure",
-    "content": "1. Log into the Cephadm shell.For\nexample,\n```\n[root@host01 ~]# cephadm shell\n```\n2. Create the RADOS pool namespace, and enable the application.For Ceph Block\nDevice (`rbd`) pools, enable\n`rbd`.\n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME freeform/rgw/rbd/cephfs/nfs\nrbd pool init -p POOL_NAME\n```\nFor\nexample,\n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool nfs\n[ceph: root@host01 /]# rbd pool init -p nfs-service\n```\n3. Deploy NFS service gateway using placement specification in the command line\ninterface.\n\n```bash\nceph orch apply nfs SERVICE_ID --placement=\"NUMBER_OF_DAEMONS HOST_NAME_1 HOST_NAME_2 HOST_NAME_3\"\n```\n\nThe following example deploys an NFS service cluster `nfsservice`\nwith one daemon on `host01` and\n`host02`.\n```\n[ceph: root@host01 /]# ceph orch apply nfs foo --placement=\"2 host01 host02\"\n```",
+    "content": "1. Log into the Cephadm shell.\nFor example,\n \n```\n[root@host01 ~]# cephadm shell\n```\n2. Create the RADOS pool namespace, and enable the application.\nFor Ceph Block Device (`rbd`) pools, enable `rbd`.\n \n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME freeform/rgw/rbd/cephfs/nfs\nrbd pool init -p POOL_NAME\n```\n\nFor example,\n \n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool nfs\n[ceph: root@host01 /]# rbd pool init -p nfs-service\n```\n3. Deploy NFS service gateway using placement specification in the command line interface.\n\n```bash\nceph orch apply nfs SERVICE_ID --placement=\"NUMBER_OF_DAEMONS HOST_NAME_1 HOST_NAME_2 HOST_NAME_3\"\n```\n\nThe following example deploys an NFS service cluster `nfsservice` with one daemon on `host01` and `host02`.\n \n```\n[ceph: root@host01 /]# ceph orch apply nfs foo --placement=\"2 host01 host02\"\n```",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -1000,7 +1000,7 @@
   {
     "entity_id": "54c108b23d313541",
     "title": "What to do next",
-    "content": "- List the service.For example,\n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and\nprocesses.\n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\nFor\nexample,\n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
+    "content": "- List the service.\n For example,\n \n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and processes.\n \n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\n\nFor example,\n \n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
     "component": "cephfs",
     "topic": "mnsguco",
     "source_file": "ibm-docs/8.0/mnsguco-deploying-nfs-service-gateway-using-command-line-interface",
@@ -1024,7 +1024,7 @@
   {
     "entity_id": "8b4cbb18da4bc91b",
     "title": "Deploying the NFS service gateway using the service specification",
-    "content": "You can use the Ceph Orchestrator with Cephadm in the backend to deploy the NFS service\ngateway using the service specification. In this case, you have to create a RADOS pool and create a\nnamespace before deploying the gateway.",
+    "content": "You can use the Ceph Orchestrator with `cephadm` in the backend to deploy the NFS service gateway using the service specification. In this case, you have to create a RADOS pool and create a namespace before deploying the gateway.",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -1043,7 +1043,7 @@
   {
     "entity_id": "5713ab852ac52e88",
     "title": "Before you begin",
-    "content": "Before you begin, make sure that you have the following prerequisites in place:\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.",
+    "content": "Before you begin, make sure that you have the following prerequisites in place:\n\n- A running IBM Storage Ceph cluster.\n- Hosts are added to the cluster.",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -1062,7 +1062,7 @@
   {
     "entity_id": "095d24b2608964c1",
     "title": "Procedure",
-    "content": "1. Create the `nfs.yaml` file.For\nexample,\n```\n[root@host01 ~]# touch nfs.yaml\n```\n2. Edit the nfs.yaml specification file.\n\n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\n```\n\nFor example,\n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\n```\n\n- Optional: Enable the NLM to support locking for NFS protocol v3 support by adding\n`enable_nlm: true` in the NFS.yaml specification\nfile.\n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\nspec:\n enable_nlm: true\n```\nFor example,\n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\nspec:\n enable_nlm: true\n```\n3. Mount the YAML file under a directory in the container.\n\n```bash\ncephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n\nFor\nexample,\n```\n[root@host01 ~]# cephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n4. Create the RADOS pool, namespace, and enable RBD.\n\n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME rbd\nrbd pool init -p POOL_NAME\n```\n\nFor example,\n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool rbd\n[ceph: root@host01 /]# rbd pool init -p nfs-pool\n```\n5. Navigate to the directory.For\nexample,\n```\n[ceph: root@host01 /]# cd /var/lib/ceph/\n```\n6. Deploy NFS service gateway using service specification.\n\n```bash\nceph orch apply -i FILE_NAME.yaml\n```\n\nFor\nexample,\n```\n[ceph: root@host01 ceph]# ceph orch apply -i nfs.yaml\n```",
+    "content": "1. Create the `nfs.yaml` file.\nFor example,\n \n```\n[root@host01 ~]# touch nfs.yaml\n```\n2. Edit the nfs.yaml specification file.\n\n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\n```\n\nFor example,\n \n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\n```\n\n- Optional: Enable the NLM to support locking for NFS protocol v3 support by adding `enable_nlm: true` in the NFS.yaml specification file.\n \n```bash\nservice_type: nfs\nservice_id: SERVICE_ID\nplacement:\n hosts:\n - HOST_NAME_1\n - HOST_NAME_2\nspec:\n enable_nlm: true\n```\n\n For example,\n \n```\nservice_type: nfs\nservice_id: foo\nplacement:\n hosts:\n - host01\n - host02\nspec:\n enable_nlm: true\n```\n3. Mount the YAML file under a directory in the container.\n\n```bash\ncephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n\nFor example,\n \n```\n[root@host01 ~]# cephadm shell --mount nfs.yaml:/var/lib/ceph/nfs.yaml\n```\n4. Create the RADOS pool, namespace, and enable RBD.\n\n```bash\nceph osd pool create POOL_NAME\nceph osd pool application enable POOL_NAME rbd\nrbd pool init -p POOL_NAME\n```\n\nFor example,\n \n```\n[ceph: root@host01 /]# ceph osd pool create nfs-pool\n[ceph: root@host01 /]# ceph osd pool application enable nfs-pool rbd\n[ceph: root@host01 /]# rbd pool init -p nfs-pool\n```\n5. Navigate to the directory.\nFor example,\n \n```\n[ceph: root@host01 /]# cd /var/lib/ceph/\n```\n6. Deploy NFS service gateway using service specification.\n\n```bash\nceph orch apply -i FILE_NAME.yaml\n```\n\nFor example,\n \n```\n[ceph: root@host01 ceph]# ceph orch apply -i nfs.yaml\n```",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -1105,7 +1105,7 @@
   {
     "entity_id": "a576e8d04cce195a",
     "title": "What to do next",
-    "content": "- List the service, by using the ceph orch ls\ncommand.\n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and\nprocesses.\n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\nFor\nexample,\n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
+    "content": "- List the service, by using the ceph orch ls command.\n \n```\n[ceph: root@host01 /]# ceph orch ls\n```\n- List the hosts, daemons, and processes.\n \n```bash\nceph orch ps --daemon_type=DAEMON_NAME\n```\n\n For example,\n \n```\n[ceph: root@host01 /]# ceph orch ps --daemon_type=nfs\n```",
     "component": "cephfs",
     "topic": "orchestrator",
     "source_file": "ibm-docs/8.0/orchestrator-deploying-nfs-service-gateway-using-service-specification",
@@ -11469,7 +11469,7 @@
   {
     "entity_id": "d9e4f3f894bfc73b",
     "title": "Managing SMB clusters by using imperative method",
-    "content": "Learn how to create, list, or remove SMB clusters by using imperative specific\ncommand-line instructions.",
+    "content": "Learn how to create, list, or remove SMB clusters by using imperative specific command-line instructions.",
     "component": "cephfs",
     "topic": "shares",
     "source_file": "ibm-docs/8.0/shares-managing-smb-clusters-by-using-imperative-method",
@@ -11488,21 +11488,16 @@
   {
     "entity_id": "8c333e7d4571428b",
     "title": "Before you begin",
-    "content": "Before you begin, make sure that you have the following prerequisites in place:\n- Ensure that the SMB module is configured with cephadm orchestration to function properly.\n- Gather information about the domain if you are using active-directory.\n- Create a domain user to join to active directory (AD).\n- Determine whether you need to use custom_dns setting.\n- Which users to define if you are not using AD.\n- Set the earmark for SMB. For more information see, Earmarking a file system subvolume.",
+    "content": "Before you begin, make sure that you have the following prerequisites in place:\n\n- Ensure that the SMB module is configured with `cephadm` orchestration to function properly.\n- Gather information about the domain if you are using active-directory.\n- Create a domain user to join to active directory (AD).\n- Determine whether you need to use custom_dns setting.\n- Which users to define if you are not using AD.\n- Set the earmark for SMB. For more information see, Earmarking a file system subvolume.",
     "component": "cephfs",
     "topic": "shares",
     "source_file": "ibm-docs/8.0/shares-managing-smb-clusters-by-using-imperative-method",
     "section_path": "Managing SMB clusters by using imperative method > Before you begin",
     "doc_url": "https://www.ibm.com/docs/en/storage-ceph/8.0.0?topic=shares-managing-smb-clusters-by-using-imperative-method",
-    "commands_referenced": [
-      "cephadm orchestration",
-      "cephadm orchestration to",
-      "cephadm orchestration to function",
-      "cephadm orchestration to function properly"
-    ],
+    "commands_referenced": [],
     "keywords": [],
     "version": "ibm-8.0",
-    "quality_score": 0.7999999999999999,
+    "quality_score": 0.6,
     "deprecated": false,
     "version_added": "",
     "version_changed": "",
@@ -11512,7 +11507,7 @@
   {
     "entity_id": "84ed7c89edd76485",
     "title": "About this task",
-    "content": "This method uses commands like ceph smb cluster create and ceph smb\ncluster rm, similar to those used in Ceph NFS manager module on the command line.",
+    "content": "This method uses commands like ceph smb cluster create and ceph smb cluster rm, similar to those used in Ceph NFS manager module on the command line.",
     "component": "cephfs",
     "topic": "shares",
     "source_file": "ibm-docs/8.0/shares-managing-smb-clusters-by-using-imperative-method",
@@ -11537,7 +11532,7 @@
   {
     "entity_id": "88039a690297f19e",
     "title": "Creating SMB clusters",
-    "content": "Create SMB clusters by using the imperative method.\n\nCreate a new logical cluster, which is identified by the cluster ID value. The cluster create\ncommand must specify the authentication mode the cluster uses. Authentication mode is either custom\nusers or groups, also known as a stand-alone server, with the `user`\nkeyword.\n```bash\nceph smb cluster create CLUSTER_ID {user} [--domain-realm=DOMAIN_REALM] \n[--domain-join-user-pass=<domain_join_user_pass>] \n[--define-user-pass=<define_user_pass>] [--custom-dns=<custom_dns>] \n[--placement=<placement>] [--clustering=<clustering>]\n```\n\nFor example,\n```\nauth_mode: user\n[ceph: root@host01 ~]# ceph smb cluster create smb1 user --define_user_pass user1%passwd --placement label:smb --clustering default\n\nauth_mode: AD\n[ceph: root@host01 ~]# ceph smb cluster create smb1 active-directory --domain_realm samba.qe --domain_join_user_pass Administrator%RT@123 --custom_dns 10.71.34.153 --placement label:smb --clustering default\n```\n\nTable 1 lists the parameters that are required\nfor creating the cluster.\n| Parameters | Description |\n| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| cluster_id | A unique string identifying the cluster. |\n| auth_mode | Specify either user or active-directory. |\n| domain_realm | Required for Active Directory setups. |\n| domain_join_user_pass | Credentials in the form <username>%<password>for joining Samba servers to the AD domain. |\n| define_user_pass | Authentication details for a user in the user-auth mode in the form <username>%<password>. This parameter accepts multiple username and password combinations. For example,--define-user-pass=alice%foo --define-user-pass=bob%bar --define-user-pass=charlie%baz |\n| custom_dns | IP addresses to override default DNS resolvers. |\n| placement | A specification for Ceph orchestration placement. |\n| clustering | Optional. Control if a cluster abstraction actually uses Samba\u2019s clustering mechanism. The value may be one of default, always, or never. A default value indicates that clustering should be enabled if the placement count value is any value other than 1. A value of always enables clustering regardless of the placement count. A value of never disables clustering regardless of the placement count. If unspecified, default is assumed. |\n| public_addrs | Optional. A string in the form of <ipaddress/prefixlength>[%<destination interface>]. Supported only when using Samba\u2019s clustering. Assign \u201cvirtual\u201d IP addresses that will be managed by the clustering subsystem and may automatically move between nodes running Samba containers. |",
+    "content": "Create SMB clusters by using the imperative method.\n\nCreate a new logical cluster, which is identified by the cluster ID value. The cluster create command must specify the authentication mode the cluster uses. Authentication mode is either custom users or groups, also known as a stand-alone server, with the `user` keyword.\n \n```bash\nceph smb cluster create CLUSTER_ID {user} [--domain-realm=DOMAIN_REALM] \n[--domain-join-user-pass=DOMAIN_JOIN_USER_PASS] \n[--define-user-pass=DEFINE_USER_PASS] [--custom-dns=CUSTOM_DNS] \n[--placement=PLACEMENT] [--clustering=CLUSTERING]\n```\n\nFor example,\n \n```\nauth_mode: user\n[ceph: root@host01 ~]# ceph smb cluster create smb1 user --define_user_pass user1%passwd --placement label:smb --clustering default\n\nauth_mode: AD\n[ceph: root@host01 ~]# ceph smb cluster create smb1 active-directory --domain_realm samba.qe --domain_join_user_pass Administrator%RT@123 --custom_dns 10.71.34.153 --placement label:smb --clustering default\n```\n\nTable 1 lists the parameters that are required for creating the cluster.\n \n| Parameters | Description |\n| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| auth_mode | Specify either user or active-directory. |\n| cluster_id | A unique string identifying the cluster. |\n| clustering | Optional. Control if a cluster abstraction actually uses SMB\u2019s clustering mechanism. The value may be one of default, always, or never. A default value indicates that clustering should be enabled if the placement count value is any value other than 1. A value of always enables clustering regardless of the placement count. A value of never disables clustering regardless of the placement count. If unspecified, default is assumed. |\n| custom_dns | IP addresses to override default DNS resolvers. |\n| define_user_pass | Authentication details for a user in the user-auth mode in the form <username>%<password>. This parameter accepts multiple username and password combinations. For example, --define-user-pass=alice%foo --define-user-pass=bob%bar --define-user-pass=charlie%baz |\n| domain_join_user_pass | Credentials in the form <username>%<password> for joining SMB servers to the AD domain. |\n| domain_realm | Required for Active Directory setups. |\n| password_filter | Optional. One of none or base64. If the filter is none the password values on the command line are assumed to be plain text. If the filter is base64 the password values are assumed to be obscured with base64 encoding the string. If --password-filter-out is not specified this filter will also be applied to the output. |\n| password_filter_out | Optional. One of none, base64, or hidden. If the filter is none the password fields in the output are emitted as plain text. If the filter is base64 password fields will be obscured by base64 encoding the string. If the filter is hidden the password values will be replaced by an invalid generic replacement string containing only asterisks. |\n| placement | A specification for Ceph orchestration placement. |\n| public_addrs | Optional. A string in the form of <ipaddress/prefixlength>[%<destination interface>]. Supported only when using SMB\u2019s clustering. Assign virtual IP addresses that will be managed by the clustering subsystem and may automatically move between nodes running SMB containers. |",
     "component": "cephfs",
     "topic": "shares",
     "source_file": "ibm-docs/8.0/shares-managing-smb-clusters-by-using-imperative-method",
@@ -11562,7 +11557,7 @@
   {
     "entity_id": "57537e4af3976695",
     "title": "Listing SMB clusters",
-    "content": "By listing SMB clusters, you can help ensure robust data protection and efficient\nmanagement. The listing of cluster IDs output defaults to JSON. Select YAML encoding with the\n--format=yaml option.List all SMB clusters by using the smb cluster\nls\ncommand.\n```bash\nceph smb cluster ls [--format=FORMAT]\n```\nFor\nexample,\n```\n[ceph: root@host01 ~]# ceph smb cluster ls\n[\n \"smb1\"\n]\n```",
+    "content": "By listing SMB clusters, you can help ensure robust data protection and efficient management. The listing of cluster IDs output defaults to JSON. Select YAML encoding with the --format=yaml option.\n List all SMB clusters by using the smb cluster ls command.\n \n```bash\nceph smb cluster ls [--format=FORMAT]\n```\n\nFor example,\n \n```\n[ceph: root@host01 ~]# ceph smb cluster ls\n[\n \"smb1\"\n]\n```",
     "component": "cephfs",
     "topic": "shares",
     "source_file": "ibm-docs/8.0/shares-managing-smb-clusters-by-using-imperative-method",
@@ -11585,7 +11580,7 @@
   {
     "entity_id": "4000f13fbdedc1d5",
     "title": "Removing SMB clusters",
-    "content": "Delete an SMB cluster by using the imperative\nmethod.\n```bash\nceph smb cluster rm CLUSTER_ID\n```",
+    "content": "Delete an SMB cluster by using the imperative method.\n \n```bash\nceph smb cluster rm CLUSTER_ID\n```",
     "component": "cephfs",
     "topic": "shares",
     "source_file": "ibm-docs/8.0/shares-managing-smb-clusters-by-using-imperative-method",
